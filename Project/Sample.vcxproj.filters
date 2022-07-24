@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="BaseEngine">
+      <UniqueIdentifier>{fe4ff290-9602-4bdb-b942-9bcb61c1bce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Actor">
+      <UniqueIdentifier>{133e7768-fa84-4e23-96b2-52c1ed08a487}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component">
+      <UniqueIdentifier>{a0a9f92b-f8e8-409c-859a-a1a0ca319a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Math">
+      <UniqueIdentifier>{602b4677-d6b8-4c4e-9b62-05322e011af5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Math\Vector">
+      <UniqueIdentifier>{e9e3329b-86a0-4c5b-8fb2-179a89fb27bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Adapter">
+      <UniqueIdentifier>{48775d60-b533-485d-a2ea-ae08374644e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Texture">
+      <UniqueIdentifier>{03863ff4-f8f1-4d2b-9ee3-a4c9323c350b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Common">
+      <UniqueIdentifier>{2828e965-a577-413d-89c7-8a1de1beb430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Empty">
+      <UniqueIdentifier>{c431da7f-c0c8-4be2-a062-33f4b3ae78b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Texture\Mof">
+      <UniqueIdentifier>{0c78b1f9-9290-41aa-a2dd-3db88ee7b17c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\AssetHandleManager">
+      <UniqueIdentifier>{4778fb6e-4f39-4a37-ab09-d9fe87b309d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Render">
+      <UniqueIdentifier>{387cc02f-2ae5-4e7b-bc83-8679d47f7e31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent">
+      <UniqueIdentifier>{d6e3b69b-5ec2-4d9b-bdb7-cdca76549770}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent\SpriteComponent">
+      <UniqueIdentifier>{78450f0a-d030-4b0e-a6b3-9fdaa166b0c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\CollisionComponent">
+      <UniqueIdentifier>{aa8aa870-fadc-41bf-af58-a82dc71f90bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shapes">
+      <UniqueIdentifier>{cdee9ba7-6491-4b29-9321-51519e574684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shapes\Primitive">
+      <UniqueIdentifier>{85d0750a-865b-4187-be4b-f53df20f2a29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Actor\Input">
+      <UniqueIdentifier>{7473ae44-da35-4b53-8b98-8d1645e23362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\Input">
+      <UniqueIdentifier>{269fae4c-5f53-468d-a9da-9e19e920f4ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot">
+      <UniqueIdentifier>{16ef7d1b-6e6d-4799-aa1a-3e441b5b583a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain">
+      <UniqueIdentifier>{eb33f71c-9d97-41d9-96d2-b1d18807e5b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\InputManager">
+      <UniqueIdentifier>{5fcab346-eba0-49cd-8043-f3be330bf93b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\LivingEntity">
+      <UniqueIdentifier>{bf70085c-f333-4a09-88a3-64a4be5ba1af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\LivingEntity\Player">
+      <UniqueIdentifier>{b2bce6d0-96ec-4226-9e60-11ffd8bb33a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\LivingEntity\Enemy">
+      <UniqueIdentifier>{96dcdabd-265e-4378-8079-6828e84f347a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent\ShapeRenderComponent">
+      <UniqueIdentifier>{80bef507-02d6-47eb-8729-9074225e7e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Utilities">
+      <UniqueIdentifier>{6b18e16a-bce8-4de1-a9e2-7d4abd8dc060}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApp.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>BaseEngine\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>BaseEngine\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>BaseEngine\Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent\SpriteComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureFactory.cpp">
+      <Filter>BaseEngine\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineEmpty.cpp">
+      <Filter>BaseEngine\Empty</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEngineCore.cpp">
+      <Filter>BaseEngine\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineTexture.cpp">
+      <Filter>BaseEngine\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureMof.cpp">
+      <Filter>BaseEngine\Texture\Mof</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>BaseEngine\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineRender.cpp">
+      <Filter>BaseEngine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMof.cpp">
+      <Filter>BaseEngine\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>BaseEngine\Component\CollisionComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry2D.cpp">
+      <Filter>BaseEngine\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry2D.ipp">
+      <Filter>BaseEngine\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="InputActor.cpp">
+      <Filter>BaseEngine\Actor\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="InputComponent.cpp">
+      <Filter>BaseEngine\Component\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeRenderComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent\ShapeRenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="IShape.cpp">
+      <Filter>BaseEngine\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="Rect.cpp">
+      <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameApp.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>BaseEngine\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>BaseEngine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>BaseEngine\Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent\SpriteComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter.h">
+      <Filter>BaseEngine\Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureFactory.h">
+      <Filter>BaseEngine\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEngineCore.h">
+      <Filter>BaseEngine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineComponent.h">
+      <Filter>BaseEngine\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineEmpty.h">
+      <Filter>BaseEngine\Empty</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEngineEmpty.h">
+      <Filter>BaseEngine\Empty</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineTexture.h">
+      <Filter>BaseEngine\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureMof.h">
+      <Filter>BaseEngine\Texture\Mof</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetHandleManager.h">
+      <Filter>BaseEngine\AssetHandleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>BaseEngine\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineRender.h">
+      <Filter>BaseEngine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderMof.h">
+      <Filter>BaseEngine\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>BaseEngine\Component\CollisionComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry2D.h">
+      <Filter>BaseEngine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="2DShapes.h">
+      <Filter>BaseEngine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="InputActor.h">
+      <Filter>BaseEngine\Actor\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputComponent.h">
+      <Filter>BaseEngine\Component\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerActor.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeRenderComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent\ShapeRenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="IShape.h">
+      <Filter>BaseEngine\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Rect.h">
+      <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="YesNo.h">
+      <Filter>BaseEngine\Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LICENSE">
+      <Filter>BaseEngine\Utilities</Filter>
+    </Text>
+  </ItemGroup>
+</Project>
