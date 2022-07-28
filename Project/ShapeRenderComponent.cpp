@@ -3,6 +3,8 @@
 #include <Utilities/GraphicsUtilities.h>
 
 #include "IShape.h"
+#include "Circle.h"
+#include "Point.h"
 #include "Rect.h"
 namespace base_engine {
 ShapeRenderComponent::ShapeRenderComponent(Actor* owner, int draw_order)
@@ -35,6 +37,18 @@ void ShapeRenderComponent::Draw(const Rect& rect) const {
   } else {
     Mof::CGraphicsUtilities::RenderRect(rect + p, color_);
   }
+}
+void ShapeRenderComponent::Draw(const Circle& circle) const {
+  Vector2 p = owner_->GetPosition();
+  if (fill_mode_) {
+    Mof::CGraphicsUtilities::RenderFillCircle(circle + p, color_);
+  } else {
+    Mof::CGraphicsUtilities::RenderCircle(circle + p, color_);
+  }
+}
+void ShapeRenderComponent::Draw(const Point& point) const {
+  Vector2 p = owner_->GetPosition();
+  Mof::CGraphicsUtilities::RenderLine(point + p, point + p, color_);
 }
 
 }  // namespace base_engine

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "Vector.h"
 #include <vector>
 #include <Graphics/CameraBase.h>
@@ -25,8 +25,7 @@ class Game {
 
   std::vector<class Actor*> actors_;
   std::vector<class RenderComponent*> sprites_;
-
-  // Update’†ƒtƒ‰ƒbƒO
+  
   bool updating_actors_;
   std::vector<class Actor*> pending_actors_;
 

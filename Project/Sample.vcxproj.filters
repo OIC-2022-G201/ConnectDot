@@ -94,6 +94,15 @@
     <Filter Include="BaseEngine\Utilities">
       <UniqueIdentifier>{6b18e16a-bce8-4de1-a9e2-7d4abd8dc060}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics">
+      <UniqueIdentifier>{6a6572d8-4205-42b0-be36-ba214123573a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine">
+      <UniqueIdentifier>{45e24e77-66c7-40f8-952d-ebf1dc6e9d3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Collision">
+      <UniqueIdentifier>{b67da92c-ef6a-497c-8c3b-6983daff5bb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -172,6 +181,24 @@
       <Filter>BaseEngine\Shapes</Filter>
     </ClCompile>
     <ClCompile Include="Rect.cpp">
+      <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="Beacon.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>BaseEngine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Circle.cpp">
+      <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineCollider.cpp">
+      <Filter>BaseEngine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEngineCollision.cpp">
+      <Filter>BaseEngine\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClCompile>
   </ItemGroup>
@@ -265,6 +292,30 @@
     </ClInclude>
     <ClInclude Include="YesNo.h">
       <Filter>BaseEngine\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="IReceivablePower.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="ISendablePower.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="Beacon.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>BaseEngine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Circle.h">
+      <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineCollider.h">
+      <Filter>BaseEngine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEngineCollision.h">
+      <Filter>BaseEngine\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

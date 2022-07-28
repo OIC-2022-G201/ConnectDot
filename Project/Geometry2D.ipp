@@ -4,7 +4,7 @@
 #include <Math/Vector2.h>
 namespace base_engine::Geometry2D {
 namespace detail {
-float DistanceSqrf(const float t_x1, const float t_y1, const float t_x2,
+inline float DistanceSqrf(const float t_x1, const float t_y1, const float t_x2,
                    const float t_y2) {
   float dx = t_x2 - t_x1;
   float dy = t_y2 - t_y1;

@@ -8,7 +8,7 @@ namespace base_engine {
 using COLOR = MofU32;
 using FillMode = YesNo<struct Fill_mode>;
 
-class ShapeRenderComponent : RenderComponent {
+class ShapeRenderComponent : public RenderComponent {
   std::unique_ptr<class IShape> shape_;
 
   FillMode fill_mode_ = FillMode::No;
@@ -23,5 +23,7 @@ class ShapeRenderComponent : RenderComponent {
   void CreateRect(const Mof::CRectangle& rect);
   void Draw() override;
   void Draw(const class Rect& rect) const;
+  void Draw(const class Circle& rect) const;
+  void Draw(const class Point& rect) const;
 };
 }  // namespace base_engine

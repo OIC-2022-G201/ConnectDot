@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 namespace base_engine {
 template <class Tag>
 struct YesNo {

@@ -2,6 +2,8 @@
 
 #include "IBaseEngineEmpty.h"
 #include "IBaseEngineTexture.h"
+#include "IBaseEngineRender.h"
+#include "IBaseEngineCollider.h"
 namespace base_engine {
 namespace detail {
 template <size_t I, class Tuple>

@@ -1,8 +1,8 @@
-#pragma once
+ï»¿#pragma once
 #include <Math/Vector2.h>
 namespace base_engine {
 
-// TODO Mof‚ÉˆË‘¶‚µ‚Ä‚é‚©‚ç“Æ©ƒNƒ‰ƒX‚É‚·‚é
+// TODO Mofã«ä¾å­˜ã—ã¦ã‚‹ã‹ã‚‰ç‹¬è‡ªã‚¯ãƒ©ã‚¹ã«ã™ã‚‹
 using Vector2 = Mof::Vector2;
 
 }  // namespace base_engine

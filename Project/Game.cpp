@@ -4,13 +4,13 @@
 
 #include "IBaseEngineEmpty.h"
 #include "IBaseEngineTexture.h"
-#include "RenderComponent.h"
 #include "InputComponent.h"
 #include "InputManager.h"
+#include "Mof.h"
 #include "PlayerActor.h"
+#include "RenderComponent.h"
 #include "ShapeRenderComponent.h"
 #include "SpriteComponent.h"
-
 namespace base_engine {
 bool Game::Initialize() {
   auto inputActor = new InputActor(this);
@@ -29,13 +29,10 @@ bool Game::Initialize() {
   sc = new SpriteComponent(a, 80);
   sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
 
-
-  auto player = new PlayerActor(this);
-  player->SetInput(input);
-  auto shape = new ShapeRenderComponent(player, 110);
-  shape->CreateRect(0, 0, 50, 50);
-  shape->SetFillMode(FillMode::Yes).SetColor(MOF_COLOR_GREEN);
-    return true;
+    auto player = new PlayerActor(this);
+    player->SetInput(input);
+  
+  return true;
 }
 
 void Game::Update() {
@@ -49,7 +46,7 @@ void Game::Shutdown() {
   }
 }
 
-void Game::AddActor(Actor* actor) { actors_.emplace_back(actor); }
+void Game::AddActor(Actor* actor) { pending_actors_.emplace_back(actor); }
 
 void Game::RemoveActor(Actor* actor) {
   auto iter = std::find(actors_.begin(), actors_.end(), actor);
@@ -86,16 +83,17 @@ void Game::ProcessInput() {
 
 void Game::UpdateGame() {
   updating_actors_ = true;
-  for (auto actor : actors_) {
-    actor->UpdateActor();
-  }
-  updating_actors_ = false;
 
   for (auto pending : pending_actors_) {
     pending->StartActor();
     actors_.emplace_back(pending);
   }
   pending_actors_.clear();
+
+  for (auto actor : actors_) {
+    actor->UpdateActor();
+  }
+  updating_actors_ = false;
 
   std::vector<Actor*> dead_actors;
   for (auto actor : actors_) {
@@ -112,6 +110,8 @@ void Game::Render() const {
   for (const auto sprite : sprites_) {
     sprite->Draw();
   }
+  CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
+                                   CUtilities::GetFPS());
 }
 
 }  // namespace base_engine

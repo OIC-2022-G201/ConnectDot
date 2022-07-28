@@ -92,12 +92,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
+    <ClCompile Include="Beacon.cpp" />
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Geometry2D.cpp" />
+    <ClCompile Include="IBaseEngineCollider.cpp" />
     <ClCompile Include="IBaseEngineRender.cpp" />
     <ClCompile Include="IBaseEngineTexture.cpp" />
     <ClCompile Include="IBaseEngineEmpty.cpp" />
@@ -107,6 +111,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IShape.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderMof.cpp" />
@@ -117,28 +122,36 @@
     <ClCompile Include="TextureMof.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Adapter.h" />
     <ClInclude Include="AssetHandleManager.h" />
+    <ClInclude Include="BaseEngineCollision.h" />
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
+    <ClInclude Include="Beacon.h" />
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Geometry2D.h" />
+    <ClInclude Include="IBaseEngineCollider.h" />
     <ClInclude Include="IBaseEngineRender.h" />
     <ClInclude Include="IBaseEngineTexture.h" />
     <ClInclude Include="IBaseEngineEmpty.h" />
     <ClInclude Include="InputActor.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="IReceivablePower.h" />
+    <ClInclude Include="ISendablePower.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="PlayerActor.h" />
+    <ClInclude Include="Point.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderMof.h" />
@@ -148,6 +161,7 @@
     <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="World.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>
   <ItemGroup>

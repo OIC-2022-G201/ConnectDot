@@ -1,15 +1,17 @@
-﻿#pragma once
-#include <Collision/Rectangle.h>
+#pragma once
+
+#include <Math/Vector2.h>
 
 #include "IShape.h"
 
 namespace base_engine {
 
-class Rect final : public Mof::CRectangle, public IShape {
+class Point : public Mof::Vector2, public IShape {
  public:
-  explicit Rect(const CRectangle& pObj) : CRectangle(pObj) {}
+  Point(float vx, float vy);
 
-  Rect(float left, float top, float right, float bottom);
+  explicit Point(const Vector2& pObj);
+
   void Draw(const ShapeRenderComponent& drawable) override;
   bool Collision(const IShape* shape) const override;
 

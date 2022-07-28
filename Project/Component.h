@@ -1,26 +1,27 @@
-#pragma once
+ï»¿#pragma once
 
 namespace base_engine {
 
 class Component {
  public:
-  // ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-  // (updateOder‚ª¬‚³‚¢’öAæ‚ÉXV‚³‚ê‚é)
+  // ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+  // (updateOderãŒå°ã•ã„ç¨‹ã€å…ˆã«æ›´æ–°ã•ã‚Œã‚‹)
   Component(class Actor* owner, int update_order = 100);
-  // ƒfƒXƒgƒ‰ƒNƒ^
+  // ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
   virtual ~Component();
   virtual void Start() {}
-  // ‚±‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì“ü—Íˆ—
+  // ã“ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å…¥åŠ›å‡¦ç†
   virtual void ProcessInput() {}
-  // ‚±‚ÌƒRƒ“ƒ|[ƒlƒ“ƒg‚ÌXVˆ—
+  // ã“ã®ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®æ›´æ–°å‡¦ç†
   virtual void Update() {}
+  virtual void OnCollision(class CollisionComponent* collision) {}
 
-  int GetUpdateOrder() const { return update_order_; }
+  [[nodiscard]] int GetUpdateOrder() const { return update_order_; }
 
  protected:
-  // ‚±‚ÌComponent‚ğŠ—L‚·‚éActor
+  // ã“ã®Componentã‚’æ‰€æœ‰ã™ã‚‹Actor
   class Actor* owner_;
-  // XV‚Ì‡”Ô
+  // æ›´æ–°ã®é †ç•ª
   int update_order_;
 };
 }  // namespace base_engine

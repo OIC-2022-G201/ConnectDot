@@ -1,0 +1,73 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+namespace base_engine {
+	class Actor {
+		+Actor(class Game* game)
+		+~Actor()
+		+SetName(const std::string_view name) : Actor&
+		#state_ : State
+		#position_ : Vector2
+		+GetPosition() : Vector2& {query}
+		+GetGame() : class Game* {query}
+		-game : class Game*
+		+GetRotation() : float {query}
+		+GetScale() : float {query}
+		#rotation_ : float
+		#scale_ : float
+		+GetState() : int {query}
+		#name_ : std::string
+		+GetName() : std::string_view
+		-components_ : std::vector<class Component*>
+		-pending_components_ : std::vector<class Component*>
+		-AddComponent() : void
+		+AddComponent(class Component*) : void
+		+Input() : void
+		+ProcessInput() : void
+		+RemoveComponent(class Component*) : void
+		+SetPosition(const Vector2& pos) : void
+		+SetRotation(const float rotation) : void
+		+SetScale(const float scale) : void
+		+SetState(State state) : void
+		+Start() : void
+		+StartActor() : void
+		+Update() : void
+		+UpdateActor() : void
+	}
+
+	enum Actor::State {
+		kActive
+		kDead
+		kPause
+		kStart
+	}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+base_engine.Actor +-- base_engine.Actor::State
+
+
+
+
+@enduml

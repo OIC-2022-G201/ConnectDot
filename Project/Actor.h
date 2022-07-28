@@ -1,13 +1,14 @@
-#pragma once
+ï»¿#pragma once
 
 #include <string>
 #include <vector>
 
 #include "Vector.h"
+#include "IBaseEngineCollider.h"
 namespace base_engine {
 class Actor {
  public:
-  enum State { kActive, kPause, kDead };
+  enum State { kStart,kActive, kPause, kDead };
 
   Actor(class Game* game);
   virtual ~Actor();
@@ -20,7 +21,21 @@ class Actor {
   void UpdateActor();
   virtual void Update() {}
 
-  // Getters,Setters
+  template<class T>
+  void SendCallbackMessage(T* callback)
+  {
+    for (auto element : components_)
+      {
+      callback->SendComponentsMessage(element);
+      }
+  }
+
+  template <class T,class D>
+  void SendCallbackMessage(T* callback,D* data) {
+    for (auto element : components_) {
+      callback->SendComponentsMessage(element, data);
+    }
+  }
   [[nodiscard]] State GetState() const { return state_; }
   void SetState(const State state) { state_ = state; }
 
@@ -42,16 +57,14 @@ class Actor {
 
 protected:
   std::string name_ = "Actor";
-  // Actor‚Ìó‘Ô
   State state_;
-  //ƒgƒ‰ƒ“ƒXƒtƒH[ƒ€
   Vector2 position_;
   float rotation_;
   float scale_;
 private:
-  // GameƒNƒ‰ƒX‚Ìpublicƒƒ“ƒo‚ÉƒAƒNƒZƒX‚·‚éƒ|ƒCƒ“ƒ^
+  void AddComponent();
   class Game* game;
-  // component”z—ñ
   std::vector<class Component*> components_;
+  std::vector<class Component*> pending_components_;
 };
 }  // namespace base_engine

@@ -5,7 +5,11 @@
 inline bool IsKeyPush(const int key) { return g_pInput->IsKeyPush(key); }
 
 inline bool IsKeyHold(const int key) { return g_pInput->IsKeyHold(key); }
-
+inline Mof::Vector2 GetMousePos() {
+  Vector2 result;
+  g_pInput->GetMousePos(result);
+  return result;
+};
 InputManager::InputManager(base_engine::InputActor* owner)
     : InputComponent(owner) {}
 
@@ -26,8 +30,7 @@ void InputManager::ProcessInput() {
   collect_beacon_fire_ = IsKeyPush(MOFKEY_E);
   pause_fire_ = IsKeyPush(MOFKEY_ESCAPE);
   sneak_fire_ = IsKeyPush(MOFKEY_LSHIFT) || IsKeyPush(MOFKEY_RSHIFT);
+  mouse_position_ = GetMousePos();
 }
 
 void InputManager::Update() {}
-
-

@@ -7,13 +7,16 @@ namespace base_engine {
 class IBaseEngineEmpty;
 class IBaseEngineTexture;
 class IBaseEngineRender;
+class IBaseEngineCollider;
 
 class BaseEngineCore {
  private:
   inline static BaseEngineCore* engine_ = nullptr;
 
-  std::tuple<BaseEngineComponent<IBaseEngineEmpty>
-             ,BaseEngineComponent<IBaseEngineTexture>>
+  std::tuple<BaseEngineComponent<IBaseEngineEmpty>,
+             BaseEngineComponent<IBaseEngineTexture>,
+             BaseEngineComponent<IBaseEngineRender>,
+             BaseEngineComponent<IBaseEngineCollider>>
       components_;
 
  public:
@@ -25,8 +28,7 @@ class BaseEngineCore {
 
   template <class Interface>
   [[nodiscard]] static auto* Get() noexcept {
-    return std::get<BaseEngineComponent<Interface>>(engine_->components_)
-        .get();
+    return std::get<BaseEngineComponent<Interface>>(engine_->components_).get();
   }
 };
 

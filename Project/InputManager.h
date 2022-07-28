@@ -11,6 +11,7 @@ class InputManager final : public base_engine::InputComponent {
   bool pause_fire_;
   bool sneak_fire_;
 
+  Mof::Vector2 mouse_position_;
  public:
   explicit InputManager(base_engine::InputActor* owner);
   ~InputManager() override;
@@ -26,6 +27,8 @@ class InputManager final : public base_engine::InputComponent {
   [[nodiscard]] inline bool ActionFire() const;
   [[nodiscard]] inline bool PauseFire() const;
   [[nodiscard]] inline bool SneakFire() const;
+
+  [[nodiscard]] inline Mof::Vector2 MousePosition() const;
 };
 float InputManager::MoveHorizontal() const { return move_horizontal_; }
 
@@ -40,3 +43,4 @@ bool InputManager::ActionFire() const { return action_fire_; }
 bool InputManager::PauseFire() const { return pause_fire_; }
 
 bool InputManager::SneakFire() const { return sneak_fire_; }
+Mof::Vector2 InputManager::MousePosition() const { return mouse_position_; }
