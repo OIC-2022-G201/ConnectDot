@@ -1,0 +1,155 @@
+\hypertarget{classbase__engine_1_1_component}{}\doxysection{base\+\_\+engine\+::Component クラス}
+\label{classbase__engine_1_1_component}\index{base\_engine::Component@{base\_engine::Component}}
+
+
+{\ttfamily \#include $<$Component.\+h$>$}
+
+
+
+base\+\_\+engine\+::Component の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+base\+\_\+engine\+::Component 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classbase__engine_1_1_component__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8}{Component}} (class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$owner, int update\+\_\+order=100)
+\item 
+virtual \mbox{\hyperlink{classbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4}{$\sim$\+Component}} ()
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_component_a5742655608cb78246f14806bfcb77539}{Start}} ()
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_component_a50dbba2000b6e97a3b95c35b35a7b0d2}{Process\+Input}} ()
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_component_a4b3398789031ade978ea135d32e8dc44}{Update}} ()
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f}{On\+Collision}} (class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$collision)
+\item 
+int \mbox{\hyperlink{classbase__engine_1_1_component_aa574dea76022fcb3360247c7be3af4af}{Get\+Update\+Order}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$ \mbox{\hyperlink{classbase__engine_1_1_component_ae0c9e7382857954e0f7aaaa6457ebc0a}{owner\+\_\+}}
+\item 
+int \mbox{\hyperlink{classbase__engine_1_1_component_a62374eb1c376286152db95a2ebd35861}{update\+\_\+order\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8}\label{classbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8}} 
+\index{base\_engine::Component@{base\_engine::Component}!Component@{Component}}
+\index{Component@{Component}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{Component()}{Component()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Component\+::\+Component (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$}]{owner,  }\item[{int}]{update\+\_\+order = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4}\label{classbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4}} 
+\index{base\_engine::Component@{base\_engine::Component}!````~Component@{$\sim$Component}}
+\index{````~Component@{$\sim$Component}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{$\sim$Component()}{~Component()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Component\+::$\sim$\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_component_aa574dea76022fcb3360247c7be3af4af}\label{classbase__engine_1_1_component_aa574dea76022fcb3360247c7be3af4af}} 
+\index{base\_engine::Component@{base\_engine::Component}!GetUpdateOrder@{GetUpdateOrder}}
+\index{GetUpdateOrder@{GetUpdateOrder}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{GetUpdateOrder()}{GetUpdateOrder()}}
+{\footnotesize\ttfamily int base\+\_\+engine\+::\+Component\+::\+Get\+Update\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f}\label{classbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f}} 
+\index{base\_engine::Component@{base\_engine::Component}!OnCollision@{OnCollision}}
+\index{OnCollision@{OnCollision}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{OnCollision()}{OnCollision()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+Component\+::\+On\+Collision (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_player_component_a93fa9255d127f5a569bc170743c8fbc7}{Player\+Component}}で再実装されています。
+
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_component_a50dbba2000b6e97a3b95c35b35a7b0d2}\label{classbase__engine_1_1_component_a50dbba2000b6e97a3b95c35b35a7b0d2}} 
+\index{base\_engine::Component@{base\_engine::Component}!ProcessInput@{ProcessInput}}
+\index{ProcessInput@{ProcessInput}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{ProcessInput()}{ProcessInput()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+Component\+::\+Process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_input_component_a60fdec375a0d33ea78a887eccc3564b2}{base\+\_\+engine\+::\+Input\+Component}}, \mbox{\hyperlink{class_input_manager_ac1a25762d7c5b3c4574d47b981a0b41c}{Input\+Manager}}で再実装されています。
+
+\mbox{\Hypertarget{classbase__engine_1_1_component_a5742655608cb78246f14806bfcb77539}\label{classbase__engine_1_1_component_a5742655608cb78246f14806bfcb77539}} 
+\index{base\_engine::Component@{base\_engine::Component}!Start@{Start}}
+\index{Start@{Start}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+Component\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_component_a4b3398789031ade978ea135d32e8dc44}\label{classbase__engine_1_1_component_a4b3398789031ade978ea135d32e8dc44}} 
+\index{base\_engine::Component@{base\_engine::Component}!Update@{Update}}
+\index{Update@{Update}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+Component\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}{base\+\_\+engine\+::\+Collision\+Component}}, \mbox{\hyperlink{classbase__engine_1_1_input_component_a9c2bf66eead8bb241a171860a55f1066}{base\+\_\+engine\+::\+Input\+Component}}, \mbox{\hyperlink{class_input_manager_a6d69523254b06baf8799c045aed67bbe}{Input\+Manager}}, \mbox{\hyperlink{classbase__engine_1_1_render_component_a1812bbe2bc5cf3bc6e61eecd42f1e225}{base\+\_\+engine\+::\+Render\+Component}}, \mbox{\hyperlink{classbase__engine_1_1_sprite_component_a1a7eb4a6835e856df67a043ff3d19b21}{base\+\_\+engine\+::\+Sprite\+Component}}で再実装されています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_component_ae0c9e7382857954e0f7aaaa6457ebc0a}\label{classbase__engine_1_1_component_ae0c9e7382857954e0f7aaaa6457ebc0a}} 
+\index{base\_engine::Component@{base\_engine::Component}!owner\_@{owner\_}}
+\index{owner\_@{owner\_}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{owner\_}{owner\_}}
+{\footnotesize\ttfamily class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}}$\ast$ base\+\_\+engine\+::\+Component\+::owner\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_component_a62374eb1c376286152db95a2ebd35861}\label{classbase__engine_1_1_component_a62374eb1c376286152db95a2ebd35861}} 
+\index{base\_engine::Component@{base\_engine::Component}!update\_order\_@{update\_order\_}}
+\index{update\_order\_@{update\_order\_}!base\_engine::Component@{base\_engine::Component}}
+\doxysubsubsection{\texorpdfstring{update\_order\_}{update\_order\_}}
+{\footnotesize\ttfamily int base\+\_\+engine\+::\+Component\+::update\+\_\+order\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_component_8h}{Component.\+h}}\item 
+Project/\mbox{\hyperlink{_component_8cpp}{Component.\+cpp}}\end{DoxyCompactItemize}

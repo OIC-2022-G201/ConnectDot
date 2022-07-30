@@ -1,0 +1,34 @@
+\hypertarget{_point_8h_source}{}\doxysection{Point.\+h}
+\label{_point_8h_source}\index{Project/Point.h@{Project/Point.h}}
+\mbox{\hyperlink{_point_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <Math/Vector2.h>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_shape_8h}{IShape.h}}"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebase__engine}{base\_engine}} \{}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_point}{Point}} : \textcolor{keyword}{public} \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Mof::Vector2}}, \textcolor{keyword}{public} \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} \{}
+\DoxyCodeLine{10   \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Mof::Vector2}} fix\_;}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12  \textcolor{keyword}{public}:}
+\DoxyCodeLine{13   \mbox{\hyperlink{classbase__engine_1_1_point_a7242532666107e003ae1bf050d98b536}{Point}}(\textcolor{keywordtype}{float} vx, \textcolor{keywordtype}{float} vy);}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15   \textcolor{keyword}{explicit} \mbox{\hyperlink{classbase__engine_1_1_point_a7242532666107e003ae1bf050d98b536}{Point}}(\textcolor{keyword}{const} \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}}\& pObj);}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_point_a394077615dc31b22659efe5c1c78085a}{Draw}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_shape_render_component}{ShapeRenderComponent}}\& drawable) \textcolor{keyword}{override};}
+\DoxyCodeLine{18   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_point_af993814599d845f73a3a79e3fbfaa61e}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}}* shape) \textcolor{keyword}{const override};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20   [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_point_af993814599d845f73a3a79e3fbfaa61e}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_rect}{Rect}}\& rect) \textcolor{keyword}{const override};}
+\DoxyCodeLine{21   }
+\DoxyCodeLine{22   [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_point_af993814599d845f73a3a79e3fbfaa61e}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_circle}{Circle}}\& circle) \textcolor{keyword}{const override};}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   [[nodiscard]] \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_point_af993814599d845f73a3a79e3fbfaa61e}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_point}{Point}}\& point) \textcolor{keyword}{const override};}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_point_a9ab093e04b6009703141af35cb6be980}{ChangeNotification}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{27 \};}
+\DoxyCodeLine{28 \}  \textcolor{comment}{// namespace base\_engine}}
+
+\end{DoxyCode}

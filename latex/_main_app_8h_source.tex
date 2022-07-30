@@ -1,0 +1,109 @@
+\hypertarget{_main_app_8h_source}{}\doxysection{Main\+App.\+h}
+\label{_main_app_8h_source}\index{Project/MainApp.h@{Project/MainApp.h}}
+\mbox{\hyperlink{_main_app_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <Mof.h>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}vector"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_main_app}{MainApp}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8     std::vector<Vector2> vectors\_;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10     std::vector<int> outers;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{bool} isRender = \textcolor{keyword}{false};}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int}\& n;}
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_app_a8a2d21d319c917d1a1ba7c56502ddc27}{Initialize}}()}
+\DoxyCodeLine{15     \{}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17     \}}
+\DoxyCodeLine{18     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_app_a5d55188a012217b274343c0c89784f4c}{Update}}()}
+\DoxyCodeLine{19     \{}
+\DoxyCodeLine{20         \textcolor{keywordflow}{if} (GetMousePush<MOFMOUSE\_LBUTTON>())}
+\DoxyCodeLine{21         \{}
+\DoxyCodeLine{22             \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}} result;}
+\DoxyCodeLine{23             g\_pInput-\/>GetMousePos(result);}
+\DoxyCodeLine{24             vectors\_.emplace\_back(result);}
+\DoxyCodeLine{25             isRender = \textcolor{keyword}{false};}
+\DoxyCodeLine{26         \}}
+\DoxyCodeLine{27         \textcolor{keywordflow}{if} (GetMousePush<MOFMOUSE\_RBUTTON>())}
+\DoxyCodeLine{28         \{}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30         \}}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         \textcolor{keywordflow}{if}(GetKeyPush<MOFKEY\_SPACE>())}
+\DoxyCodeLine{33         \{}
+\DoxyCodeLine{34             \mbox{\hyperlink{class_main_app_a4256100777385301ba04505dfb9aade1}{AutoConvexHull}}();}
+\DoxyCodeLine{35             isRender = \textcolor{keyword}{true};}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37     \}}
+\DoxyCodeLine{38     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_app_abe5dceae6edcf736c38b1267b0944702}{Render}}()}
+\DoxyCodeLine{39     \{}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} vector : vectors\_)}
+\DoxyCodeLine{42         \{}
+\DoxyCodeLine{43             CGraphicsUtilities::RenderCircle(vector.x,vector.y, 5, MOF\_COLOR\_BLACK);}
+\DoxyCodeLine{44         \}}
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} len = outers.size();}
+\DoxyCodeLine{46         \textcolor{keywordflow}{if}(len<1 || !isRender)\textcolor{keywordflow}{return};}
+\DoxyCodeLine{47         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < len; ++i)}
+\DoxyCodeLine{48         \{}
+\DoxyCodeLine{49             CGraphicsUtilities::RenderLine(vectors\_[outers[i -\/ 1]], vectors\_[outers[i]], MOF\_COLOR\_WHITE);}
+\DoxyCodeLine{50         \}}
+\DoxyCodeLine{51         CGraphicsUtilities::RenderLine(vectors\_[outers[len -\/ 1]], vectors\_[outers[0]], MOF\_COLOR\_WHITE);}
+\DoxyCodeLine{52     \}}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_main_app_a4256100777385301ba04505dfb9aade1}{AutoConvexHull}}()}
+\DoxyCodeLine{55     \{}
+\DoxyCodeLine{56         \textcolor{keyword}{auto} iter}
+\DoxyCodeLine{57             = std::min\_element(vectors\_.begin()}
+\DoxyCodeLine{58                 , vectors\_.end()}
+\DoxyCodeLine{59                 , [](\textcolor{keyword}{const} \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}}\& a, \textcolor{keyword}{const} \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}}\& b)}
+\DoxyCodeLine{60                 \{}
+\DoxyCodeLine{61                     return b.y < a.y;}
+\DoxyCodeLine{62                 \});}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64         \textcolor{keywordtype}{size\_t} index\_a = std::distance(vectors\_.begin(), iter);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67         \textcolor{keywordtype}{int} index\_b;}
+\DoxyCodeLine{68         outers.clear();}
+\DoxyCodeLine{69         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{70             outers.emplace\_back(index\_a);}
+\DoxyCodeLine{71             index\_b = 0;}
+\DoxyCodeLine{72             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} index\_c = 1; index\_c < vectors\_.size(); index\_c++) \{}
+\DoxyCodeLine{73                 \textcolor{keywordflow}{if} (index\_b == index\_a) \{}
+\DoxyCodeLine{74                     index\_b = index\_c;}
+\DoxyCodeLine{75                 \}}
+\DoxyCodeLine{76                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{77                     CVector2 ab = vectors\_[index\_b] -\/ vectors\_[index\_a];}
+\DoxyCodeLine{78                     CVector2 ac = vectors\_[index\_c] -\/ vectors\_[index\_a];}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80                     \textcolor{keyword}{auto} v = ab.x * ac.y -\/ ab.y * ac.x;}
+\DoxyCodeLine{81                     \textcolor{keywordflow}{if} (v > 0 || (v == 0 \&\& ac.Length() > ab.Length())) \{}
+\DoxyCodeLine{82                         index\_b = index\_c;}
+\DoxyCodeLine{83                     \}}
+\DoxyCodeLine{84                 \}}
+\DoxyCodeLine{85             \}}
+\DoxyCodeLine{86             index\_a = index\_b;}
+\DoxyCodeLine{87         \} \textcolor{keywordflow}{while} (index\_a != outers[0]);}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92     \textcolor{keyword}{template}<\textcolor{keywordtype}{int} key>}
+\DoxyCodeLine{93     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_main_app_a2d730d3afdf9e65b07c224415a1cdd9d}{GetMousePush}}()}
+\DoxyCodeLine{94     \{}
+\DoxyCodeLine{95         \textcolor{keywordflow}{return} g\_pInput-\/>IsMouseKeyPush(key);}
+\DoxyCodeLine{96     \}}
+\DoxyCodeLine{97     \textcolor{keyword}{template}<\textcolor{keywordtype}{int} key>}
+\DoxyCodeLine{98     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_main_app_aa24465e24a248541ca24ba26e52be421}{GetKeyPush}}()}
+\DoxyCodeLine{99     \{}
+\DoxyCodeLine{100         \textcolor{keywordflow}{return} g\_pInput-\/>IsKeyPush(key);}
+\DoxyCodeLine{101     \}}
+\DoxyCodeLine{102 \};}
+\DoxyCodeLine{103 }
+
+\end{DoxyCode}

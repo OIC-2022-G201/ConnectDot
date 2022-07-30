@@ -9,12 +9,13 @@ BaseEngineCollision::~BaseEngineCollision() = default;
 void BaseEngineCollision::Collide() {
   size_t body_size = body_list_.size();
   for (int body_a_index = 0; body_a_index < body_size; ++body_a_index) {
-    const auto body_a = body_list_[body_a_index];
+    auto body_a = body_list_[body_a_index];
 
-    for (int body_b_index = body_a_index; body_b_index < body_size;
+    for (int body_b_index = body_a_index + 1; body_b_index < body_size;
          ++body_b_index) {
-      const auto body_b = body_list_[body_b_index];
-      if (body_a->GetShape()->Collision(body_b->GetShape())) {
+      auto body_b = body_list_[body_b_index];
+      if (body_a->IsMatch(body_b))
+      if (body_a->Collision(body_b)) {
         body_a->CollisionSender(body_b);
         body_b->CollisionSender(body_a);
       }
@@ -31,8 +32,8 @@ void BaseEngineCollision::Remove(CollisionComponent* component) {
                    body_list_.end());
 }
 
-void BaseEngineCollision::SendComponentsMessage(Component* component,CollisionComponent* collision)
-{
+void BaseEngineCollision::SendComponentsMessage(Component* component,
+                                                CollisionComponent* collision) {
   component->OnCollision(collision);
 }
 }  // namespace base_engine

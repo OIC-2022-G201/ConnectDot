@@ -1,0 +1,6 @@
+<map id="base_engine::SpriteComponent::Draw" name="base_engine::SpriteComponent::Draw">
+<area shape="rect" id="node1" title=" " alt="" coords="5,71,208,112"/>
+<area shape="rect" id="node2" href="$classbase__engine_1_1_actor.html#a3a1380c56129b4b9c396a04fa2c32c10" title=" " alt="" coords="256,5,391,47"/>
+<area shape="rect" id="node3" href="$classbase__engine_1_1_actor.html#a1886acd3b1b6d43437bbfbaeba8ee7f8" title=" " alt="" coords="256,71,391,112"/>
+<area shape="rect" id="node4" href="$classbase__engine_1_1_actor.html#a994618f30de3b4c0b4e6b4824bbd7f43" title=" " alt="" coords="256,136,391,177"/>
+</map>

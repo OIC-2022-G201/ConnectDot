@@ -1,0 +1,270 @@
+\hypertarget{class_c_game_app}{}\doxysection{CGame\+App クラス}
+\label{class_c_game_app}\index{CGameApp@{CGameApp}}
+
+
+基本ゲームアプリ。  
+
+
+
+
+{\ttfamily \#include $<$Game\+App.\+h$>$}
+
+
+
+CGame\+App の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_c_game_app__inherit__graph}
+\end{center}
+\end{figure}
+
+
+CGame\+App 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{class_c_game_app__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_game_app_a5c874a5fe5ddc3dc3aad3f242d27d2dc}{CGame\+App}} ()
+\begin{DoxyCompactList}\small\item\em コンストラクタ \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_c_game_app_aa1ccf80041cebe116197fec9d63c02ce}{$\sim$\+CGame\+App}} ()
+\begin{DoxyCompactList}\small\item\em デストラクタ \end{DoxyCompactList}\item 
+virtual Mof\+Bool \mbox{\hyperlink{class_c_game_app_a7a589541fb7a912332a9ae73354d1824}{Initialize}} (void)
+\begin{DoxyCompactList}\small\item\em アプリケーションの初期化 \end{DoxyCompactList}\item 
+virtual Mof\+Bool \mbox{\hyperlink{class_c_game_app_a505c4110ea793043b053f89d070dbad6}{Update}} (void)
+\begin{DoxyCompactList}\small\item\em アプリケーションの更新 \end{DoxyCompactList}\item 
+virtual Mof\+Bool \mbox{\hyperlink{class_c_game_app_a53766dbadca25eaada321d7c2bfd0820}{Render}} (void)
+\begin{DoxyCompactList}\small\item\em アプリケーションの描画 \end{DoxyCompactList}\item 
+virtual Mof\+Bool \mbox{\hyperlink{class_c_game_app_a0576084d03c60cd47c9481e39b845be2}{Release}} (void)
+\begin{DoxyCompactList}\small\item\em アプリケーションの解放 \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+基本ゲームアプリ。 
+
+\begin{DoxyAuthor}{著者}
+濱田　享 
+\end{DoxyAuthor}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_c_game_app_a5c874a5fe5ddc3dc3aad3f242d27d2dc}\label{class_c_game_app_a5c874a5fe5ddc3dc3aad3f242d27d2dc}} 
+\index{CGameApp@{CGameApp}!CGameApp@{CGameApp}}
+\index{CGameApp@{CGameApp}!CGameApp@{CGameApp}}
+\doxysubsubsection{\texorpdfstring{CGameApp()}{CGameApp()}}
+{\footnotesize\ttfamily CGame\+App\+::\+CGame\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+コンストラクタ 
+
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+None 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_c_game_app_aa1ccf80041cebe116197fec9d63c02ce}\label{class_c_game_app_aa1ccf80041cebe116197fec9d63c02ce}} 
+\index{CGameApp@{CGameApp}!````~CGameApp@{$\sim$CGameApp}}
+\index{````~CGameApp@{$\sim$CGameApp}!CGameApp@{CGameApp}}
+\doxysubsubsection{\texorpdfstring{$\sim$CGameApp()}{~CGameApp()}}
+{\footnotesize\ttfamily virtual CGame\+App\+::$\sim$\+CGame\+App (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+デストラクタ 
+
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+None 
+\end{DoxyReturn}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_game_app_aa1ccf80041cebe116197fec9d63c02ce_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_c_game_app_a7a589541fb7a912332a9ae73354d1824}\label{class_c_game_app_a7a589541fb7a912332a9ae73354d1824}} 
+\index{CGameApp@{CGameApp}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!CGameApp@{CGameApp}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily Mof\+Bool CGame\+App\+::\+Initialize (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+アプリケーションの初期化 
+
+�\+A�v���\+P�\mbox{[}�\+V�����̏�����
+
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE 成功~\newline
+ それ以外 失敗、エラーコードが戻り値となる
+\end{DoxyReturn}
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE ����~\newline
+ ����ȊO ���s�\+A�\+G���\mbox{[}�\+R�\mbox{[}�h���߂�l�ƂȂ� 
+\end{DoxyReturn}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_game_app_a7a589541fb7a912332a9ae73354d1824_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_c_game_app_a0576084d03c60cd47c9481e39b845be2}\label{class_c_game_app_a0576084d03c60cd47c9481e39b845be2}} 
+\index{CGameApp@{CGameApp}!Release@{Release}}
+\index{Release@{Release}!CGameApp@{CGameApp}}
+\doxysubsubsection{\texorpdfstring{Release()}{Release()}}
+{\footnotesize\ttfamily Mof\+Bool CGame\+App\+::\+Release (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+アプリケーションの解放 
+
+�\+A�v���\+P�\mbox{[}�\+V�����̉��
+
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE 成功~\newline
+ それ以外 失敗、エラーコードが戻り値となる
+\end{DoxyReturn}
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE ����~\newline
+ ����ȊO ���s�\+A�\+G���\mbox{[}�\+R�\mbox{[}�h���߂�l�ƂȂ� 
+\end{DoxyReturn}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{class_c_game_app_a0576084d03c60cd47c9481e39b845be2_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_game_app_a0576084d03c60cd47c9481e39b845be2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_c_game_app_a53766dbadca25eaada321d7c2bfd0820}\label{class_c_game_app_a53766dbadca25eaada321d7c2bfd0820}} 
+\index{CGameApp@{CGameApp}!Render@{Render}}
+\index{Render@{Render}!CGameApp@{CGameApp}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily Mof\+Bool CGame\+App\+::\+Render (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+アプリケーションの描画 
+
+�\+A�v���\+P�\mbox{[}�\+V�����̕\`{}��
+
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE 成功~\newline
+ それ以外 失敗、エラーコードが戻り値となる
+\end{DoxyReturn}
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE ����~\newline
+ ����ȊO ���s�\+A�\+G���\mbox{[}�\+R�\mbox{[}�h���߂�l�ƂȂ� 
+\end{DoxyReturn}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{class_c_game_app_a53766dbadca25eaada321d7c2bfd0820_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_c_game_app_a505c4110ea793043b053f89d070dbad6}\label{class_c_game_app_a505c4110ea793043b053f89d070dbad6}} 
+\index{CGameApp@{CGameApp}!Update@{Update}}
+\index{Update@{Update}!CGameApp@{CGameApp}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily Mof\+Bool CGame\+App\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+アプリケーションの更新 
+
+�\+A�v���\+P�\mbox{[}�\+V�����̍\+X�V
+
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE 成功~\newline
+ それ以外 失敗、エラーコードが戻り値となる
+\end{DoxyReturn}
+
+\begin{DoxyParams}{引数}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+TRUE ����~\newline
+ ����ȊO ���s�\+A�\+G���\mbox{[}�\+R�\mbox{[}�h���߂�l�ƂȂ� 
+\end{DoxyReturn}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_c_game_app_a505c4110ea793043b053f89d070dbad6_cgraph}
+\end{center}
+\end{figure}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_game_app_8h}{Game\+App.\+h}}\item 
+Project/\mbox{\hyperlink{_game_app_8cpp}{Game\+App.\+cpp}}\end{DoxyCompactItemize}

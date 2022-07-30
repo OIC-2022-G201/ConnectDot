@@ -1,0 +1,75 @@
+\hypertarget{_actor_8h_source}{}\doxysection{Actor.\+h}
+\label{_actor_8h_source}\index{Project/Actor.h@{Project/Actor.h}}
+\mbox{\hyperlink{_actor_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_base_engine_collider_8h}{IBaseEngineCollider.h}}"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_vector_8h}{Vector.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebase__engine}{base\_engine}} \{}
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} \{}
+\DoxyCodeLine{10  \textcolor{keyword}{public}:}
+\DoxyCodeLine{11   \textcolor{keyword}{enum} \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} \{ \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5a113eddcc3a2a45a91d04da47786aff2b}{kStart}}, \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5a57605df46bbf0068c50e400328c874c8}{kActive}}, \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5acc227b5f899a3ec7cb181d4607540c8d}{kPause}}, \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5a901cfa0ade1b26cc248b5d833df6532c}{kDead}} \};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13   \mbox{\hyperlink{classbase__engine_1_1_actor_ad730f7831a6abeccd1be0ad109cbbc1e}{Actor}}(\textcolor{keyword}{class} \mbox{\hyperlink{classbase__engine_1_1_game}{Game}}* game);}
+\DoxyCodeLine{14   \textcolor{keyword}{virtual} \mbox{\hyperlink{classbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846}{\string~Actor}}();}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa}{StartActor}}();}
+\DoxyCodeLine{17   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d}{Start}}() \{\}}
+\DoxyCodeLine{18   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc}{ProcessInput}}();}
+\DoxyCodeLine{19   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737}{Input}}() \{\}}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3}{UpdateActor}}();}
+\DoxyCodeLine{22   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f}{Update}}() \{\}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24   \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{25   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492}{SendCallbackMessage}}(T* callback) \{}
+\DoxyCodeLine{26     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} element : components\_) \{}
+\DoxyCodeLine{27       callback-\/>SendComponentsMessage(element);}
+\DoxyCodeLine{28     \}}
+\DoxyCodeLine{29   \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31   \textcolor{keyword}{template} <\textcolor{keyword}{class} T, \textcolor{keyword}{class} D>}
+\DoxyCodeLine{32   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a661d01352eb297c00915534839d68f26}{SendCallbackMessage}}(T* callback, D* data) \{}
+\DoxyCodeLine{33     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} element : components\_) \{}
+\DoxyCodeLine{34       callback-\/>SendComponentsMessage(element, data);}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36   \}}
+\DoxyCodeLine{37   [[nodiscard]] \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} \mbox{\hyperlink{classbase__engine_1_1_actor_a27f76807f2cc1ca1229d6408b70e1e6f}{GetState}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classbase__engine_1_1_actor_a576214108a2fc391c9f69e14656495c0}{state\_}}; \}}
+\DoxyCodeLine{38   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a610db1ed151789a1045e26c0f38d7197}{SetState}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} state) \{ \mbox{\hyperlink{classbase__engine_1_1_actor_a576214108a2fc391c9f69e14656495c0}{state\_}} = state; \}}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40   [[nodiscard]] \textcolor{keyword}{const} \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}}\& \mbox{\hyperlink{classbase__engine_1_1_actor_a3a1380c56129b4b9c396a04fa2c32c10}{GetPosition}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classbase__engine_1_1_actor_a0fd30a0d893c87f08c54e940065b381c}{position\_}}; \}}
+\DoxyCodeLine{41   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_aa98ff31750ed05c40cb23eca3d8dc056}{SetPosition}}(\textcolor{keyword}{const} \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}}\& pos) \{ \mbox{\hyperlink{classbase__engine_1_1_actor_a0fd30a0d893c87f08c54e940065b381c}{position\_}} = pos; \}}
+\DoxyCodeLine{42   \textcolor{keywordtype}{float} \mbox{\hyperlink{classbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8}{GetRotation}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{43   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_accc52afe84ca2033ec4f87c95777136f}{SetRotation}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} rotation) \{ \mbox{\hyperlink{classbase__engine_1_1_actor_a9af4f2144d06f51324f676c205381c3f}{rotation\_}} = rotation; \}}
+\DoxyCodeLine{44   [[nodiscard]] \textcolor{keywordtype}{float} \mbox{\hyperlink{classbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43}{GetScale}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classbase__engine_1_1_actor_aec2557a98dffd21d51259e4db46865c5}{scale\_}}; \}}
+\DoxyCodeLine{45   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a139aff5a93815d77d403120e9f14a217}{SetScale}}(\textcolor{keyword}{const} \textcolor{keywordtype}{float} scale) \{ \mbox{\hyperlink{classbase__engine_1_1_actor_aec2557a98dffd21d51259e4db46865c5}{scale\_}} = scale; \}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47   \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_game}{Game}}* \mbox{\hyperlink{classbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810}{GetGame}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{48     \textcolor{keywordflow}{return} game;}
+\DoxyCodeLine{49   \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51   \textcolor{keywordtype}{void} AddComponent(\textcolor{keyword}{class} \mbox{\hyperlink{classbase__engine_1_1_component}{Component}}* component);}
+\DoxyCodeLine{52   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22}{RemoveComponent}}(\textcolor{keyword}{class} \mbox{\hyperlink{classbase__engine_1_1_component}{Component}}* component);}
+\DoxyCodeLine{53   std::string\_view \mbox{\hyperlink{classbase__engine_1_1_actor_a93978a1fae202568cbd3ecc20bd2240b}{GetName}}() \{ \textcolor{keywordflow}{return} \mbox{\hyperlink{classbase__engine_1_1_actor_afb97bc552e7f9cdc8ce84fed5e958474}{name\_}}; \}}
+\DoxyCodeLine{54   \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}}\& \mbox{\hyperlink{classbase__engine_1_1_actor_abda6e41ddb2c9a7bb5b8169cfc54b0fa}{SetName}}(\textcolor{keyword}{const} std::string\_view name);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56  \textcolor{keyword}{protected}:}
+\DoxyCodeLine{57   std::string \mbox{\hyperlink{classbase__engine_1_1_actor_afb97bc552e7f9cdc8ce84fed5e958474}{name\_}} = \textcolor{stringliteral}{"{}Actor"{}};}
+\DoxyCodeLine{58   \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} \mbox{\hyperlink{classbase__engine_1_1_actor_a576214108a2fc391c9f69e14656495c0}{state\_}};}
+\DoxyCodeLine{59   \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}} \mbox{\hyperlink{classbase__engine_1_1_actor_a0fd30a0d893c87f08c54e940065b381c}{position\_}};}
+\DoxyCodeLine{60   \textcolor{keywordtype}{float} \mbox{\hyperlink{classbase__engine_1_1_actor_a9af4f2144d06f51324f676c205381c3f}{rotation\_}};}
+\DoxyCodeLine{61   \textcolor{keywordtype}{float} \mbox{\hyperlink{classbase__engine_1_1_actor_aec2557a98dffd21d51259e4db46865c5}{scale\_}};}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63  \textcolor{keyword}{private}:}
+\DoxyCodeLine{64   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_actor_a6509d1484921be2f77ae30c4f1d53f25}{AddComponent}}();}
+\DoxyCodeLine{65   \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_game}{Game}}* game;}
+\DoxyCodeLine{66   std::vector<class Component*> components\_;}
+\DoxyCodeLine{67   std::vector<class Component*> pending\_components\_;}
+\DoxyCodeLine{68 \};}
+\DoxyCodeLine{69 \}  \textcolor{comment}{// namespace base\_engine}}
+
+\end{DoxyCode}

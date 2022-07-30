@@ -3,12 +3,12 @@
 #include <string>
 #include <vector>
 
-#include "Vector.h"
 #include "IBaseEngineCollider.h"
+#include "Vector.h"
 namespace base_engine {
 class Actor {
  public:
-  enum State { kStart,kActive, kPause, kDead };
+  enum State { kStart, kActive, kPause, kDead };
 
   Actor(class Game* game);
   virtual ~Actor();
@@ -21,17 +21,15 @@ class Actor {
   void UpdateActor();
   virtual void Update() {}
 
-  template<class T>
-  void SendCallbackMessage(T* callback)
-  {
-    for (auto element : components_)
-      {
+  template <class T>
+  void SendCallbackMessage(T* callback) {
+    for (auto element : components_) {
       callback->SendComponentsMessage(element);
-      }
+    }
   }
 
-  template <class T,class D>
-  void SendCallbackMessage(T* callback,D* data) {
+  template <class T, class D>
+  void SendCallbackMessage(T* callback, D* data) {
     for (auto element : components_) {
       callback->SendComponentsMessage(element, data);
     }
@@ -50,18 +48,23 @@ class Actor {
     return game;
   }
 
-  void AddComponent(class Component*);
-  void RemoveComponent(class Component*);
+  void AddComponent(class Component* component);
+  void RemoveComponent(class Component* component);
   std::string_view GetName() { return name_; }
   Actor& SetName(const std::string_view name);
 
-protected:
+  void SetTag(std::string_view tag);
+  std::string_view GetTag() const;
+
+ protected:
   std::string name_ = "Actor";
+  std::string tag_ = "Object";
   State state_;
   Vector2 position_;
   float rotation_;
   float scale_;
-private:
+
+ private:
   void AddComponent();
   class Game* game;
   std::vector<class Component*> components_;

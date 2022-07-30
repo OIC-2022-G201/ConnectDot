@@ -1,0 +1,4 @@
+<map id="PlayerActor" name="PlayerActor">
+<area shape="rect" id="node1" title=" " alt="" coords="27,80,118,107"/>
+<area shape="rect" id="node2" href="$classbase__engine_1_1_actor.html" title=" " alt="" coords="5,5,140,32"/>
+</map>

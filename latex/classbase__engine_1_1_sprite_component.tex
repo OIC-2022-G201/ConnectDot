@@ -1,0 +1,114 @@
+\hypertarget{classbase__engine_1_1_sprite_component}{}\doxysection{base\+\_\+engine\+::Sprite\+Component クラス}
+\label{classbase__engine_1_1_sprite_component}\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+
+
+{\ttfamily \#include $<$Sprite\+Component.\+h$>$}
+
+
+
+base\+\_\+engine\+::Sprite\+Component の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classbase__engine_1_1_sprite_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+base\+\_\+engine\+::Sprite\+Component 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classbase__engine_1_1_sprite_component__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_sprite_component_a77e656345fc3cfcb896a1bf00e1a1a90}{Sprite\+Component}} (class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$owner, int draw\+\_\+order=100)
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_sprite_component_aa3201b97cac6dc42cbf556c40975ff61}{$\sim$\+Sprite\+Component}} ()
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_sprite_component_a1a7eb4a6835e856df67a043ff3d19b21}{Update}} () override
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_sprite_component_a8ae948a81590e28c3d0152cdade68a1c}{Draw}} () override
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_sprite_component_aa0feefc6ad9262e4376c1eb07b18d61d}{Set\+Image}} (Mof\+::\+LPTexture img)
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_sprite_component_a49ee38e4a2cbb1f7c295797c3fca6867}{Set\+Color}} (const \mbox{\hyperlink{namespacebase__engine_a6b2946d361a2cf769a7b03a882ade25b}{COLOR}} \&color)
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_sprite_component_ad3d70f7f5ffc08367edcba50e8664df7}{Start\+Flash}} (float time, const \mbox{\hyperlink{namespacebase__engine_a6b2946d361a2cf769a7b03a882ade25b}{COLOR}} \&color)
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_a77e656345fc3cfcb896a1bf00e1a1a90}\label{classbase__engine_1_1_sprite_component_a77e656345fc3cfcb896a1bf00e1a1a90}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!SpriteComponent@{SpriteComponent}}
+\index{SpriteComponent@{SpriteComponent}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{SpriteComponent()}{SpriteComponent()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Sprite\+Component\+::\+Sprite\+Component (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$}]{owner,  }\item[{int}]{draw\+\_\+order = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_aa3201b97cac6dc42cbf556c40975ff61}\label{classbase__engine_1_1_sprite_component_aa3201b97cac6dc42cbf556c40975ff61}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!````~SpriteComponent@{$\sim$SpriteComponent}}
+\index{````~SpriteComponent@{$\sim$SpriteComponent}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$SpriteComponent()}{~SpriteComponent()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Sprite\+Component\+::$\sim$\+Sprite\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_a8ae948a81590e28c3d0152cdade68a1c}\label{classbase__engine_1_1_sprite_component_a8ae948a81590e28c3d0152cdade68a1c}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!Draw@{Draw}}
+\index{Draw@{Draw}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Sprite\+Component\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_render_component_a2a4ecfa55b5b585a58f718bf1e84019d}{base\+\_\+engine\+::\+Render\+Component}}を実装しています。
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_sprite_component_a8ae948a81590e28c3d0152cdade68a1c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_a49ee38e4a2cbb1f7c295797c3fca6867}\label{classbase__engine_1_1_sprite_component_a49ee38e4a2cbb1f7c295797c3fca6867}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!SetColor@{SetColor}}
+\index{SetColor@{SetColor}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{SetColor()}{SetColor()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Sprite\+Component\+::\+Set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebase__engine_a6b2946d361a2cf769a7b03a882ade25b}{COLOR}} \&}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_aa0feefc6ad9262e4376c1eb07b18d61d}\label{classbase__engine_1_1_sprite_component_aa0feefc6ad9262e4376c1eb07b18d61d}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!SetImage@{SetImage}}
+\index{SetImage@{SetImage}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{SetImage()}{SetImage()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Sprite\+Component\+::\+Set\+Image (\begin{DoxyParamCaption}\item[{Mof\+::\+LPTexture}]{img }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_ad3d70f7f5ffc08367edcba50e8664df7}\label{classbase__engine_1_1_sprite_component_ad3d70f7f5ffc08367edcba50e8664df7}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!StartFlash@{StartFlash}}
+\index{StartFlash@{StartFlash}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{StartFlash()}{StartFlash()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Sprite\+Component\+::\+Start\+Flash (\begin{DoxyParamCaption}\item[{float}]{time,  }\item[{const \mbox{\hyperlink{namespacebase__engine_a6b2946d361a2cf769a7b03a882ade25b}{COLOR}} \&}]{color }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_sprite_component_a1a7eb4a6835e856df67a043ff3d19b21}\label{classbase__engine_1_1_sprite_component_a1a7eb4a6835e856df67a043ff3d19b21}} 
+\index{base\_engine::SpriteComponent@{base\_engine::SpriteComponent}!Update@{Update}}
+\index{Update@{Update}!base\_engine::SpriteComponent@{base\_engine::SpriteComponent}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Sprite\+Component\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_render_component_a1812bbe2bc5cf3bc6e61eecd42f1e225}{base\+\_\+engine\+::\+Render\+Component}}を再実装しています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_sprite_component_8h}{Sprite\+Component.\+h}}\item 
+Project/\mbox{\hyperlink{_sprite_component_8cpp}{Sprite\+Component.\+cpp}}\end{DoxyCompactItemize}

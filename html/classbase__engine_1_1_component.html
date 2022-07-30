@@ -1,0 +1,397 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ConnectDot: base_engine::Component クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ConnectDot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacebase__engine.html">base_engine</a></li><li class="navelem"><a class="el" href="classbase__engine_1_1_component.html">Component</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="classbase__engine_1_1_component-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">base_engine::Component クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_component_8h_source.html">Component.h</a>&gt;</code></p>
+<div class="dynheader">
+base_engine::Component の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_component__inherit__graph.png" border="0" usemap="#abase__engine_1_1_component_inherit__map" alt="Inheritance graph"/></div>
+<map name="abase__engine_1_1_component_inherit__map" id="abase__engine_1_1_component_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,107,175,133"/>
+<area shape="rect" href="class_beacon.html" title=" " alt="" coords="299,5,365,32"/>
+<area shape="rect" href="class_player_component.html" title=" " alt="" coords="269,56,395,83"/>
+<area shape="rect" href="classbase__engine_1_1_collision_component.html" title=" " alt="" coords="223,107,441,133"/>
+<area shape="rect" href="classbase__engine_1_1_input_component.html" title=" " alt="" coords="233,157,431,184"/>
+<area shape="rect" href="classbase__engine_1_1_render_component.html" title=" " alt="" coords="227,212,437,239"/>
+<area shape="rect" href="class_input_manager.html" title=" " alt="" coords="541,153,641,180"/>
+<area shape="rect" href="classbase__engine_1_1_shape_render_component.html" title=" " alt="" coords="500,205,681,246"/>
+<area shape="rect" href="classbase__engine_1_1_sprite_component.html" title=" " alt="" coords="489,271,692,297"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+base_engine::Component 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_component__coll__graph.png" border="0" usemap="#abase__engine_1_1_component_coll__map" alt="Collaboration graph"/></div>
+<map name="abase__engine_1_1_component_coll__map" id="abase__engine_1_1_component_coll__map">
+<area shape="rect" title=" " alt="" coords="5,95,175,121"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html" title=" " alt="" coords="23,5,157,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:afbac49874f4cf28ca04794f00afb9dd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#afbac49874f4cf28ca04794f00afb9dd8">Component</a> (class <a class="el" href="classbase__engine_1_1_actor.html">Actor</a> *owner, int update_order=100)</td></tr>
+<tr class="separator:afbac49874f4cf28ca04794f00afb9dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add46eab7dc53e658e1afa16acb116ab4"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#add46eab7dc53e658e1afa16acb116ab4">~Component</a> ()</td></tr>
+<tr class="separator:add46eab7dc53e658e1afa16acb116ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5742655608cb78246f14806bfcb77539"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#a5742655608cb78246f14806bfcb77539">Start</a> ()</td></tr>
+<tr class="separator:a5742655608cb78246f14806bfcb77539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50dbba2000b6e97a3b95c35b35a7b0d2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#a50dbba2000b6e97a3b95c35b35a7b0d2">ProcessInput</a> ()</td></tr>
+<tr class="separator:a50dbba2000b6e97a3b95c35b35a7b0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b3398789031ade978ea135d32e8dc44"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#a4b3398789031ade978ea135d32e8dc44">Update</a> ()</td></tr>
+<tr class="separator:a4b3398789031ade978ea135d32e8dc44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44897bea450aba5c50d3990467a0588f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#a44897bea450aba5c50d3990467a0588f">OnCollision</a> (class <a class="el" href="classbase__engine_1_1_collision_component.html">CollisionComponent</a> *collision)</td></tr>
+<tr class="separator:a44897bea450aba5c50d3990467a0588f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa574dea76022fcb3360247c7be3af4af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#aa574dea76022fcb3360247c7be3af4af">GetUpdateOrder</a> () const</td></tr>
+<tr class="separator:aa574dea76022fcb3360247c7be3af4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:ae0c9e7382857954e0f7aaaa6457ebc0a"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="classbase__engine_1_1_actor.html">Actor</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#ae0c9e7382857954e0f7aaaa6457ebc0a">owner_</a></td></tr>
+<tr class="separator:ae0c9e7382857954e0f7aaaa6457ebc0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62374eb1c376286152db95a2ebd35861"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_component.html#a62374eb1c376286152db95a2ebd35861">update_order_</a></td></tr>
+<tr class="separator:a62374eb1c376286152db95a2ebd35861"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="afbac49874f4cf28ca04794f00afb9dd8" name="afbac49874f4cf28ca04794f00afb9dd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbac49874f4cf28ca04794f00afb9dd8">&#9670;&nbsp;</a></span>Component()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">base_engine::Component::Component </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classbase__engine_1_1_actor.html">Actor</a> *&#160;</td>
+          <td class="paramname"><em>owner</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>update_order</em> = <code>100</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8_cgraph" id="aclassbase__engine_1_1_component_afbac49874f4cf28ca04794f00afb9dd8_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,175,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#a6509d1484921be2f77ae30c4f1d53f25" title=" " alt="" coords="223,5,357,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="add46eab7dc53e658e1afa16acb116ab4" name="add46eab7dc53e658e1afa16acb116ab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add46eab7dc53e658e1afa16acb116ab4">&#9670;&nbsp;</a></span>~Component()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">base_engine::Component::~Component </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4_cgraph" id="aclassbase__engine_1_1_component_add46eab7dc53e658e1afa16acb116ab4_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,175,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#ab096f559c36c05630d08da77dff22f22" title=" " alt="" coords="223,5,365,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="aa574dea76022fcb3360247c7be3af4af" name="aa574dea76022fcb3360247c7be3af4af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa574dea76022fcb3360247c7be3af4af">&#9670;&nbsp;</a></span>GetUpdateOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int base_engine::Component::GetUpdateOrder </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a44897bea450aba5c50d3990467a0588f" name="a44897bea450aba5c50d3990467a0588f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44897bea450aba5c50d3990467a0588f">&#9670;&nbsp;</a></span>OnCollision()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Component::OnCollision </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classbase__engine_1_1_collision_component.html">CollisionComponent</a> *&#160;</td>
+          <td class="paramname"><em>collision</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_component.html#a93fa9255d127f5a569bc170743c8fbc7">PlayerComponent</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f_icgraph" id="aclassbase__engine_1_1_component_a44897bea450aba5c50d3990467a0588f_icgraph">
+<area shape="rect" title=" " alt="" coords="276,5,445,47"/>
+<area shape="rect" href="classbase__engine_1_1_base_engine_collision.html#afdda70f168dba62b290efd2e11ae040e" title=" " alt="" coords="5,5,228,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a50dbba2000b6e97a3b95c35b35a7b0d2" name="a50dbba2000b6e97a3b95c35b35a7b0d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50dbba2000b6e97a3b95c35b35a7b0d2">&#9670;&nbsp;</a></span>ProcessInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Component::ProcessInput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classbase__engine_1_1_input_component.html#a60fdec375a0d33ea78a887eccc3564b2">base_engine::InputComponent</a>, <a class="el" href="class_input_manager.html#ac1a25762d7c5b3c4574d47b981a0b41c">InputManager</a>で再実装されています。</p>
+
+</div>
+</div>
+<a id="a5742655608cb78246f14806bfcb77539" name="a5742655608cb78246f14806bfcb77539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5742655608cb78246f14806bfcb77539">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Component::Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b3398789031ade978ea135d32e8dc44" name="a4b3398789031ade978ea135d32e8dc44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b3398789031ade978ea135d32e8dc44">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Component::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classbase__engine_1_1_collision_component.html#afe023ea065028ef2e7aa3968792a52a8">base_engine::CollisionComponent</a>, <a class="el" href="classbase__engine_1_1_input_component.html#a9c2bf66eead8bb241a171860a55f1066">base_engine::InputComponent</a>, <a class="el" href="class_input_manager.html#a6d69523254b06baf8799c045aed67bbe">InputManager</a>, <a class="el" href="classbase__engine_1_1_render_component.html#a1812bbe2bc5cf3bc6e61eecd42f1e225">base_engine::RenderComponent</a>, <a class="el" href="classbase__engine_1_1_sprite_component.html#a1a7eb4a6835e856df67a043ff3d19b21">base_engine::SpriteComponent</a>で再実装されています。</p>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="ae0c9e7382857954e0f7aaaa6457ebc0a" name="ae0c9e7382857954e0f7aaaa6457ebc0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0c9e7382857954e0f7aaaa6457ebc0a">&#9670;&nbsp;</a></span>owner_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">class <a class="el" href="classbase__engine_1_1_actor.html">Actor</a>* base_engine::Component::owner_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a62374eb1c376286152db95a2ebd35861" name="a62374eb1c376286152db95a2ebd35861"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62374eb1c376286152db95a2ebd35861">&#9670;&nbsp;</a></span>update_order_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int base_engine::Component::update_order_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Project/<a class="el" href="_component_8h_source.html">Component.h</a></li>
+<li>Project/<a class="el" href="_component_8cpp.html">Component.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

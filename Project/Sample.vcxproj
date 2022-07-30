@@ -111,6 +111,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IShape.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
+    <ClCompile Include="PlayerComponent.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
@@ -118,17 +119,14 @@
     <ClCompile Include="ShapeRenderComponent.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
-    <ClCompile Include="TextureFactory.cpp" />
     <ClCompile Include="TextureMof.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2DShapes.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Adapter.h" />
-    <ClInclude Include="AssetHandleManager.h" />
     <ClInclude Include="BaseEngineCollision.h" />
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
@@ -151,17 +149,17 @@
     <ClInclude Include="ISendablePower.h" />
     <ClInclude Include="IShape.h" />
     <ClInclude Include="PlayerActor.h" />
+    <ClInclude Include="PlayerComponent.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Pow.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderMof.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteComponent.h" />
-    <ClInclude Include="TextureFactory.h" />
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="Vector.h" />
-    <ClInclude Include="World.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>
   <ItemGroup>

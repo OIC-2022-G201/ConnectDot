@@ -16,17 +16,21 @@ bool Point::Collision(const IShape* shape) const {
 }
 
 bool Point::Collision(const Rect& rect) const {
-  return Geometry2D::Intersect(static_cast<Mof::Vector2>(*this),
+  return Geometry2D::Intersect(fix_,
                                static_cast<Mof::CRectangle>(rect));
 }
 
 bool Point::Collision(const Circle& circle) const {
-  return Geometry2D::Intersect(static_cast<Mof::Vector2>(*this),
+  return Geometry2D::Intersect(fix_,
                                static_cast<Mof::CCircle>(circle));
 }
 
 bool Point::Collision(const Point& point) const {
-  return Geometry2D::Intersect(static_cast<Mof::Vector2>(*this),
+  return Geometry2D::Intersect(fix_,
                                static_cast<Mof::Vector2>(point));
+}
+void Point::ChangeNotification() {
+  fix_ = static_cast<Mof::Vector2>(*this);
+  fix_ += offset_;
 }
 }  // namespace base_engine

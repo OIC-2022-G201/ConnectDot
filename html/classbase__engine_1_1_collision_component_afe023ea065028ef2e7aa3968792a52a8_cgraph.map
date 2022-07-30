@@ -1,0 +1,6 @@
+<map id="base_engine::CollisionComponent::Update" name="base_engine::CollisionComponent::Update">
+<area shape="rect" id="node1" title=" " alt="" coords="5,39,224,80"/>
+<area shape="rect" id="node2" href="$classbase__engine_1_1_actor.html#a3a1380c56129b4b9c396a04fa2c32c10" title=" " alt="" coords="276,5,411,47"/>
+<area shape="rect" id="node3" href="$classbase__engine_1_1_i_shape.html#a75d6e4380505fc6a5deefedbcebeb41b" title=" " alt="" coords="272,71,415,112"/>
+<area shape="rect" id="node4" href="$classbase__engine_1_1_i_shape.html#a5917e6bac76da64f85cbcdc8ade73b7a" title=" " alt="" coords="463,71,605,112"/>
+</map>

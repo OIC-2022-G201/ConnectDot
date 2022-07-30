@@ -1,0 +1,170 @@
+\hypertarget{class_input_manager}{}\doxysection{Input\+Manager クラス}
+\label{class_input_manager}\index{InputManager@{InputManager}}
+
+
+{\ttfamily \#include $<$Input\+Manager.\+h$>$}
+
+
+
+Input\+Manager の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_input_manager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Input\+Manager 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{class_input_manager__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_input_manager_a65abbae4de7d8f6929b0172c1a19eaba}{Input\+Manager}} (\mbox{\hyperlink{classbase__engine_1_1_input_actor}{base\+\_\+engine\+::\+Input\+Actor}} $\ast$owner)
+\item 
+\mbox{\hyperlink{class_input_manager_ac07b6252aae165bce8f3608d23761ecf}{$\sim$\+Input\+Manager}} () override
+\item 
+void \mbox{\hyperlink{class_input_manager_ac1a25762d7c5b3c4574d47b981a0b41c}{Process\+Input}} () override
+\item 
+void \mbox{\hyperlink{class_input_manager_a6d69523254b06baf8799c045aed67bbe}{Update}} () override
+\item 
+float \mbox{\hyperlink{class_input_manager_a12fe6d48728a3d53cb10abf8d42af4df}{Move\+Horizontal}} () const
+\item 
+bool \mbox{\hyperlink{class_input_manager_a344d2769e865a670240fc54de3aad51d}{Jump\+Fire}} () const
+\item 
+bool \mbox{\hyperlink{class_input_manager_a809f5d4e91329692c2a2d48d2fc7f7db}{Place\+Beacon\+Fire}} () const
+\item 
+bool \mbox{\hyperlink{class_input_manager_a88916bb8d8ded581ec6b47f7c400ffd1}{Collect\+Beacon\+Fire}} () const
+\item 
+bool \mbox{\hyperlink{class_input_manager_a9de788270ab1fac3e1e4c85cb5a4280d}{Action\+Fire}} () const
+\item 
+bool \mbox{\hyperlink{class_input_manager_ad84c1a4724e7af895dfadfe7d23d3ce8}{Pause\+Fire}} () const
+\item 
+bool \mbox{\hyperlink{class_input_manager_ab3bef0bfbb35b3391352cc02b784cbc1}{Sneak\+Fire}} () const
+\item 
+Mof\+::\+Vector2 \mbox{\hyperlink{class_input_manager_a38c6ce45633d58bef66e40c79663ef73}{Mouse\+Position}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_input_manager_a65abbae4de7d8f6929b0172c1a19eaba}\label{class_input_manager_a65abbae4de7d8f6929b0172c1a19eaba}} 
+\index{InputManager@{InputManager}!InputManager@{InputManager}}
+\index{InputManager@{InputManager}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{InputManager()}{InputManager()}}
+{\footnotesize\ttfamily Input\+Manager\+::\+Input\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_input_actor}{base\+\_\+engine\+::\+Input\+Actor}} $\ast$}]{owner }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{class_input_manager_ac07b6252aae165bce8f3608d23761ecf}\label{class_input_manager_ac07b6252aae165bce8f3608d23761ecf}} 
+\index{InputManager@{InputManager}!````~InputManager@{$\sim$InputManager}}
+\index{````~InputManager@{$\sim$InputManager}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{$\sim$InputManager()}{~InputManager()}}
+{\footnotesize\ttfamily Input\+Manager\+::$\sim$\+Input\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_input_manager_a9de788270ab1fac3e1e4c85cb5a4280d}\label{class_input_manager_a9de788270ab1fac3e1e4c85cb5a4280d}} 
+\index{InputManager@{InputManager}!ActionFire@{ActionFire}}
+\index{ActionFire@{ActionFire}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{ActionFire()}{ActionFire()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Action\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_manager_a88916bb8d8ded581ec6b47f7c400ffd1}\label{class_input_manager_a88916bb8d8ded581ec6b47f7c400ffd1}} 
+\index{InputManager@{InputManager}!CollectBeaconFire@{CollectBeaconFire}}
+\index{CollectBeaconFire@{CollectBeaconFire}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{CollectBeaconFire()}{CollectBeaconFire()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Collect\+Beacon\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_manager_a344d2769e865a670240fc54de3aad51d}\label{class_input_manager_a344d2769e865a670240fc54de3aad51d}} 
+\index{InputManager@{InputManager}!JumpFire@{JumpFire}}
+\index{JumpFire@{JumpFire}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{JumpFire()}{JumpFire()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Jump\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_manager_a38c6ce45633d58bef66e40c79663ef73}\label{class_input_manager_a38c6ce45633d58bef66e40c79663ef73}} 
+\index{InputManager@{InputManager}!MousePosition@{MousePosition}}
+\index{MousePosition@{MousePosition}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{MousePosition()}{MousePosition()}}
+{\footnotesize\ttfamily Mof\+::\+Vector2 Input\+Manager\+::\+Mouse\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_input_manager_a38c6ce45633d58bef66e40c79663ef73_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_input_manager_a12fe6d48728a3d53cb10abf8d42af4df}\label{class_input_manager_a12fe6d48728a3d53cb10abf8d42af4df}} 
+\index{InputManager@{InputManager}!MoveHorizontal@{MoveHorizontal}}
+\index{MoveHorizontal@{MoveHorizontal}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{MoveHorizontal()}{MoveHorizontal()}}
+{\footnotesize\ttfamily float Input\+Manager\+::\+Move\+Horizontal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_input_manager_a12fe6d48728a3d53cb10abf8d42af4df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_input_manager_ad84c1a4724e7af895dfadfe7d23d3ce8}\label{class_input_manager_ad84c1a4724e7af895dfadfe7d23d3ce8}} 
+\index{InputManager@{InputManager}!PauseFire@{PauseFire}}
+\index{PauseFire@{PauseFire}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{PauseFire()}{PauseFire()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Pause\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_manager_a809f5d4e91329692c2a2d48d2fc7f7db}\label{class_input_manager_a809f5d4e91329692c2a2d48d2fc7f7db}} 
+\index{InputManager@{InputManager}!PlaceBeaconFire@{PlaceBeaconFire}}
+\index{PlaceBeaconFire@{PlaceBeaconFire}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{PlaceBeaconFire()}{PlaceBeaconFire()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Place\+Beacon\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_manager_ac1a25762d7c5b3c4574d47b981a0b41c}\label{class_input_manager_ac1a25762d7c5b3c4574d47b981a0b41c}} 
+\index{InputManager@{InputManager}!ProcessInput@{ProcessInput}}
+\index{ProcessInput@{ProcessInput}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{ProcessInput()}{ProcessInput()}}
+{\footnotesize\ttfamily void Input\+Manager\+::\+Process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_input_component_a60fdec375a0d33ea78a887eccc3564b2}{base\+\_\+engine\+::\+Input\+Component}}を再実装しています。
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{class_input_manager_ac1a25762d7c5b3c4574d47b981a0b41c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_input_manager_ab3bef0bfbb35b3391352cc02b784cbc1}\label{class_input_manager_ab3bef0bfbb35b3391352cc02b784cbc1}} 
+\index{InputManager@{InputManager}!SneakFire@{SneakFire}}
+\index{SneakFire@{SneakFire}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{SneakFire()}{SneakFire()}}
+{\footnotesize\ttfamily bool Input\+Manager\+::\+Sneak\+Fire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{class_input_manager_a6d69523254b06baf8799c045aed67bbe}\label{class_input_manager_a6d69523254b06baf8799c045aed67bbe}} 
+\index{InputManager@{InputManager}!Update@{Update}}
+\index{Update@{Update}!InputManager@{InputManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Input\+Manager\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_input_component_a9c2bf66eead8bb241a171860a55f1066}{base\+\_\+engine\+::\+Input\+Component}}を再実装しています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_input_manager_8h}{Input\+Manager.\+h}}\item 
+Project/\mbox{\hyperlink{_input_manager_8cpp}{Input\+Manager.\+cpp}}\end{DoxyCompactItemize}

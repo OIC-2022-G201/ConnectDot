@@ -1,0 +1,5 @@
+<map id="base_engine::Actor::GetPosition" name="base_engine::Actor::GetPosition">
+<area shape="rect" id="node1" title=" " alt="" coords="272,39,407,80"/>
+<area shape="rect" id="node2" href="$classbase__engine_1_1_sprite_component.html#a8ae948a81590e28c3d0152cdade68a1c" title=" " alt="" coords="13,5,216,47"/>
+<area shape="rect" id="node3" href="$classbase__engine_1_1_collision_component.html#afe023ea065028ef2e7aa3968792a52a8" title=" " alt="" coords="5,71,224,112"/>
+</map>

@@ -18,29 +18,33 @@ class InputManager final : public base_engine::InputComponent {
   void ProcessInput() override;
   void Update() override;
 
-  [[nodiscard]] inline float MoveHorizontal() const;
-  [[nodiscard]] inline bool JumpFire() const;
+  [[nodiscard]] float MoveHorizontal() const;
+  [[nodiscard]] bool JumpFire() const;
 
-  [[nodiscard]] inline bool PlaceBeaconFire() const;
+  [[nodiscard]] bool PlaceBeaconFire() const;
 
-  [[nodiscard]] inline bool CollectBeaconFire() const;
-  [[nodiscard]] inline bool ActionFire() const;
-  [[nodiscard]] inline bool PauseFire() const;
-  [[nodiscard]] inline bool SneakFire() const;
+  [[nodiscard]] bool CollectBeaconFire() const;
+  [[nodiscard]] bool ActionFire() const;
+  [[nodiscard]] bool PauseFire() const;
+  [[nodiscard]] bool SneakFire() const;
 
-  [[nodiscard]] inline Mof::Vector2 MousePosition() const;
+  [[nodiscard]] Mof::Vector2 MousePosition() const;
 };
-float InputManager::MoveHorizontal() const { return move_horizontal_; }
+inline float InputManager::MoveHorizontal() const { return move_horizontal_; }
 
-bool InputManager::JumpFire() const { return jump_fire_; }
+inline bool InputManager::JumpFire() const { return jump_fire_; }
 
-bool InputManager::PlaceBeaconFire() const { return place_beacon_fire_; }
+inline bool InputManager::PlaceBeaconFire() const { return place_beacon_fire_; }
 
-bool InputManager::CollectBeaconFire() const { return collect_beacon_fire_; }
+inline bool InputManager::CollectBeaconFire() const {
+  return collect_beacon_fire_;
+}
 
-bool InputManager::ActionFire() const { return action_fire_; }
+inline bool InputManager::ActionFire() const { return action_fire_; }
 
-bool InputManager::PauseFire() const { return pause_fire_; }
+inline bool InputManager::PauseFire() const { return pause_fire_; }
 
-bool InputManager::SneakFire() const { return sneak_fire_; }
-Mof::Vector2 InputManager::MousePosition() const { return mouse_position_; }
+inline bool InputManager::SneakFire() const { return sneak_fire_; }
+inline Mof::Vector2 InputManager::MousePosition() const {
+  return mouse_position_;
+}

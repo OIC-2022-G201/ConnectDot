@@ -49,7 +49,6 @@ MofBool CGameApp::Render(void) {
   //‰æ–Ê‚ÌƒNƒŠƒA
   g_pGraphics->ClearTarget(0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0);
   game_.Render();
-
   //•`‰æ‚ÌI—¹
   g_pGraphics->RenderEnd();
   return TRUE;

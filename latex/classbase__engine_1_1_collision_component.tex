@@ -1,0 +1,134 @@
+\hypertarget{classbase__engine_1_1_collision_component}{}\doxysection{base\+\_\+engine\+::Collision\+Component クラス}
+\label{classbase__engine_1_1_collision_component}\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+
+
+{\ttfamily \#include $<$Collision\+Component.\+h$>$}
+
+
+
+base\+\_\+engine\+::Collision\+Component の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classbase__engine_1_1_collision_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+base\+\_\+engine\+::Collision\+Component 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classbase__engine_1_1_collision_component__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_collision_component_a1312ce1352d8b2ac04a805470fd2391f}{Collision\+Component}} (class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$owner, int update\+\_\+order)
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$ \mbox{\hyperlink{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}{Get\+Shape}} () const
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}{Set\+Shape}} (\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$shape)
+\item 
+bool \mbox{\hyperlink{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}{Collision}} (\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$target)
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}{Collision\+Sender}} (\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$target)
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_collision_component_a29b1baa19cc2ef2ae90c6b3548125a22}{$\sim$\+Collision\+Component}} () override
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}{Update}} () override
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a1312ce1352d8b2ac04a805470fd2391f}\label{classbase__engine_1_1_collision_component_a1312ce1352d8b2ac04a805470fd2391f}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$}]{owner,  }\item[{int}]{update\+\_\+order }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a29b1baa19cc2ef2ae90c6b3548125a22}\label{classbase__engine_1_1_collision_component_a29b1baa19cc2ef2ae90c6b3548125a22}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!````~CollisionComponent@{$\sim$CollisionComponent}}
+\index{````~CollisionComponent@{$\sim$CollisionComponent}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionComponent()}{~CollisionComponent()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Collision\+Component\+::$\sim$\+Collision\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}\label{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!Collision@{Collision}}
+\index{Collision@{Collision}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{Collision()}{Collision()}}
+{\footnotesize\ttfamily bool base\+\_\+engine\+::\+Collision\+Component\+::\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{target }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}\label{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!CollisionSender@{CollisionSender}}
+\index{CollisionSender@{CollisionSender}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionSender()}{CollisionSender()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Collision\+Sender (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{target }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}\label{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!GetShape@{GetShape}}
+\index{GetShape@{GetShape}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{GetShape()}{GetShape()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$ base\+\_\+engine\+::\+Collision\+Component\+::\+Get\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}\label{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!SetShape@{SetShape}}
+\index{SetShape@{SetShape}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{SetShape()}{SetShape()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Set\+Shape (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$}]{shape }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}\label{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!Update@{Update}}
+\index{Update@{Update}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_component_a4b3398789031ade978ea135d32e8dc44}{base\+\_\+engine\+::\+Component}}を再実装しています。
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8_cgraph}
+\end{center}
+\end{figure}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_collision_component_8h}{Collision\+Component.\+h}}\item 
+Project/\mbox{\hyperlink{_collision_component_8cpp}{Collision\+Component.\+cpp}}\end{DoxyCompactItemize}

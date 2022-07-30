@@ -2,8 +2,8 @@
 
 #include <Utilities/GraphicsUtilities.h>
 
-#include "IShape.h"
 #include "Circle.h"
+#include "IShape.h"
 #include "Point.h"
 #include "Rect.h"
 namespace base_engine {
@@ -20,16 +20,10 @@ ShapeRenderComponent& ShapeRenderComponent::SetFillMode(const FillMode mode) {
   return *this;
 }
 
-void ShapeRenderComponent::CreateRect(float left, float top, float right,
-                                      float bottom) {
-  shape_ = std::make_unique<Rect>(left, top, right, bottom);
-}
-void ShapeRenderComponent::CreateRect(const Mof::CRectangle& rect) {
-  shape_ = std::make_unique<Rect>(rect);
-}
-
 void ShapeRenderComponent::Draw() { shape_->Draw(*this); }
-
+void ShapeRenderComponent::SetShape(const std::shared_ptr<IShape>& shape) {
+  shape_ = shape;
+}
 void ShapeRenderComponent::Draw(const Rect& rect) const {
   Vector2 p = owner_->GetPosition();
   if (fill_mode_) {

@@ -1,0 +1,11 @@
+<map id="base_engine::Component" name="base_engine::Component">
+<area shape="rect" id="node1" title=" " alt="" coords="5,107,175,133"/>
+<area shape="rect" id="node2" href="$class_beacon.html" title=" " alt="" coords="299,5,365,32"/>
+<area shape="rect" id="node3" href="$class_player_component.html" title=" " alt="" coords="269,56,395,83"/>
+<area shape="rect" id="node4" href="$classbase__engine_1_1_collision_component.html" title=" " alt="" coords="223,107,441,133"/>
+<area shape="rect" id="node5" href="$classbase__engine_1_1_input_component.html" title=" " alt="" coords="233,157,431,184"/>
+<area shape="rect" id="node7" href="$classbase__engine_1_1_render_component.html" title=" " alt="" coords="227,212,437,239"/>
+<area shape="rect" id="node6" href="$class_input_manager.html" title=" " alt="" coords="541,153,641,180"/>
+<area shape="rect" id="node8" href="$classbase__engine_1_1_shape_render_component.html" title=" " alt="" coords="500,205,681,246"/>
+<area shape="rect" id="node9" href="$classbase__engine_1_1_sprite_component.html" title=" " alt="" coords="489,271,692,297"/>
+</map>

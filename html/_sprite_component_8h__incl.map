@@ -1,0 +1,15 @@
+<map id="Project/SpriteComponent.h" name="Project/SpriteComponent.h">
+<area shape="rect" id="node1" title=" " alt="" coords="280,5,459,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,144,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="168,80,307,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="164,155,297,196"/>
+<area shape="rect" id="node5" title=" " alt="" coords="321,162,468,189"/>
+<area shape="rect" id="node6" href="$_actor_8h.html" title=" " alt="" coords="615,162,679,189"/>
+<area shape="rect" id="node12" href="$_render_component_8h.html" title=" " alt="" coords="433,80,573,107"/>
+<area shape="rect" id="node7" title=" " alt="" coords="498,244,553,271"/>
+<area shape="rect" id="node8" title=" " alt="" coords="619,319,675,345"/>
+<area shape="rect" id="node9" href="$_i_base_engine_collider_8h.html" title=" " alt="" coords="628,244,777,271"/>
+<area shape="rect" id="node10" href="$_vector_8h.html" title=" " alt="" coords="802,244,873,271"/>
+<area shape="rect" id="node11" title=" " alt="" coords="782,319,893,345"/>
+<area shape="rect" id="node13" href="$_component_8h.html" title=" " alt="" coords="492,162,591,189"/>
+</map>

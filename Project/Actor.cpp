@@ -84,4 +84,6 @@ Actor& Actor::SetName(const std::string_view name) {
 
   return *this;
 }
+void Actor::SetTag(std::string_view tag) { tag_ = tag; }
+std::string_view Actor::GetTag() const { return tag_; }
 }  // namespace base_engine

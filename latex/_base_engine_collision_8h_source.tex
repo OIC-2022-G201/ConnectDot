@@ -1,0 +1,22 @@
+\hypertarget{_base_engine_collision_8h_source}{}\doxysection{Base\+Engine\+Collision.\+h}
+\label{_base_engine_collision_8h_source}\index{Project/BaseEngineCollision.h@{Project/BaseEngineCollision.h}}
+\mbox{\hyperlink{_base_engine_collision_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_base_engine_collider_8h}{IBaseEngineCollider.h}}"{}}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebase__engine}{base\_engine}} \{}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_base_engine_collision}{BaseEngineCollision}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider}{IBaseEngineCollider}} \{}
+\DoxyCodeLine{7  \textcolor{keyword}{public}:}
+\DoxyCodeLine{8   \mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_acba21ce803bda3cb15aeb23d1f5df0e3}{\string~BaseEngineCollision}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{9   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_ac2682a20ffccf3edc346f5a320ace59c}{Collide}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{10   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_a032c2f1798def85f7111c099e362b3ee}{Register}}(\mbox{\hyperlink{classbase__engine_1_1_collision_component}{CollisionComponent}}* component) \textcolor{keyword}{override};}
+\DoxyCodeLine{11   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_a15a2717685820ec28d01c4497d526183}{Remove}}(\mbox{\hyperlink{classbase__engine_1_1_collision_component}{CollisionComponent}}* component) \textcolor{keyword}{override};}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_afdda70f168dba62b290efd2e11ae040e}{SendComponentsMessage}}(\mbox{\hyperlink{classbase__engine_1_1_component}{Component}}* component,\mbox{\hyperlink{classbase__engine_1_1_collision_component}{CollisionComponent}}* collision) \textcolor{keyword}{override};}
+\DoxyCodeLine{14   }
+\DoxyCodeLine{15 \};}
+\DoxyCodeLine{16 \}  \textcolor{comment}{// namespace base\_engine}}
+
+\end{DoxyCode}

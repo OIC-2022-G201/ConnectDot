@@ -1,0 +1,110 @@
+\hypertarget{class_player_actor}{}\doxysection{Player\+Actor クラス}
+\label{class_player_actor}\index{PlayerActor@{PlayerActor}}
+
+
+{\ttfamily \#include $<$Player\+Actor.\+h$>$}
+
+
+
+Player\+Actor の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_player_actor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Player\+Actor 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=181pt]{class_player_actor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_player_actor_a3fba32036d1ef9fe6b04b7e97b723cde}{Player\+Actor}} (\mbox{\hyperlink{classbase__engine_1_1_game}{base\+\_\+engine\+::\+Game}} $\ast$game)
+\item 
+\mbox{\hyperlink{class_player_actor_acfc0e471cc23896725b71e825a0d5568}{$\sim$\+Player\+Actor}} () override
+\item 
+void \mbox{\hyperlink{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285}{Input}} () override
+\item 
+void \mbox{\hyperlink{class_player_actor_a485ad411999ee45778e68115b140c976}{Update}} () override
+\item 
+void \mbox{\hyperlink{class_player_actor_a0d46c2bcb5e46e189e4219f3f8dc047b}{Start}} () override
+\item 
+void \mbox{\hyperlink{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}{Set\+Input}} (class \mbox{\hyperlink{class_input_manager}{Input\+Manager}} $\ast$input\+\_\+manager)
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{class_player_actor_a3fba32036d1ef9fe6b04b7e97b723cde}\label{class_player_actor_a3fba32036d1ef9fe6b04b7e97b723cde}} 
+\index{PlayerActor@{PlayerActor}!PlayerActor@{PlayerActor}}
+\index{PlayerActor@{PlayerActor}!PlayerActor@{PlayerActor}}
+\doxysubsubsection{\texorpdfstring{PlayerActor()}{PlayerActor()}}
+{\footnotesize\ttfamily Player\+Actor\+::\+Player\+Actor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_game}{base\+\_\+engine\+::\+Game}} $\ast$}]{game }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+\mbox{\Hypertarget{class_player_actor_acfc0e471cc23896725b71e825a0d5568}\label{class_player_actor_acfc0e471cc23896725b71e825a0d5568}} 
+\index{PlayerActor@{PlayerActor}!````~PlayerActor@{$\sim$PlayerActor}}
+\index{````~PlayerActor@{$\sim$PlayerActor}!PlayerActor@{PlayerActor}}
+\doxysubsubsection{\texorpdfstring{$\sim$PlayerActor()}{~PlayerActor()}}
+{\footnotesize\ttfamily Player\+Actor\+::$\sim$\+Player\+Actor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285}\label{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285}} 
+\index{PlayerActor@{PlayerActor}!Input@{Input}}
+\index{Input@{Input}!PlayerActor@{PlayerActor}}
+\doxysubsubsection{\texorpdfstring{Input()}{Input()}}
+{\footnotesize\ttfamily void Player\+Actor\+::\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737}{base\+\_\+engine\+::\+Actor}}を再実装しています。
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}\label{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}} 
+\index{PlayerActor@{PlayerActor}!SetInput@{SetInput}}
+\index{SetInput@{SetInput}!PlayerActor@{PlayerActor}}
+\doxysubsubsection{\texorpdfstring{SetInput()}{SetInput()}}
+{\footnotesize\ttfamily void Player\+Actor\+::\+Set\+Input (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{class_input_manager}{Input\+Manager}} $\ast$}]{input\+\_\+manager }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{class_player_actor_a0d46c2bcb5e46e189e4219f3f8dc047b}\label{class_player_actor_a0d46c2bcb5e46e189e4219f3f8dc047b}} 
+\index{PlayerActor@{PlayerActor}!Start@{Start}}
+\index{Start@{Start}!PlayerActor@{PlayerActor}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Player\+Actor\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d}{base\+\_\+engine\+::\+Actor}}を再実装しています。
+
+\mbox{\Hypertarget{class_player_actor_a485ad411999ee45778e68115b140c976}\label{class_player_actor_a485ad411999ee45778e68115b140c976}} 
+\index{PlayerActor@{PlayerActor}!Update@{Update}}
+\index{Update@{Update}!PlayerActor@{PlayerActor}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Player\+Actor\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f}{base\+\_\+engine\+::\+Actor}}を再実装しています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_player_actor_8h}{Player\+Actor.\+h}}\item 
+Project/\mbox{\hyperlink{_player_actor_8cpp}{Player\+Actor.\+cpp}}\end{DoxyCompactItemize}

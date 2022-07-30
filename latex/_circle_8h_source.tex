@@ -1,0 +1,33 @@
+\hypertarget{_circle_8h_source}{}\doxysection{Circle.\+h}
+\label{_circle_8h_source}\index{Project/Circle.h@{Project/Circle.h}}
+\mbox{\hyperlink{_circle_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <Collision/Circle.h>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_i_shape_8h}{IShape.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebase__engine}{base\_engine}} \{}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_circle}{Circle}} final : \textcolor{keyword}{public} Mof::CCircle, \textcolor{keyword}{public} \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} \{}
+\DoxyCodeLine{8   Mof::CCircle fix\_;}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10  \textcolor{keyword}{public}:}
+\DoxyCodeLine{11   \textcolor{keyword}{explicit} \mbox{\hyperlink{classbase__engine_1_1_circle_ae64b4e4dd77491db657f9e77a784b41a}{Circle}}(\textcolor{keyword}{const} CCircle\& pObj);}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13   \mbox{\hyperlink{classbase__engine_1_1_circle_ae64b4e4dd77491db657f9e77a784b41a}{Circle}}(\textcolor{keywordtype}{float} cx, \textcolor{keywordtype}{float} cy, \textcolor{keywordtype}{float} cr);}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_circle_a53b3488a10293fa0282a273d523eaf95}{Draw}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_shape_render_component}{ShapeRenderComponent}}\& drawable) \textcolor{keyword}{override};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_circle_a9276cac8e1c671b74326d9a6100650bc}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}}* shape) \textcolor{keyword}{const override};}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_circle_a9276cac8e1c671b74326d9a6100650bc}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_rect}{Rect}}\& rect) \textcolor{keyword}{const override};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_circle_a9276cac8e1c671b74326d9a6100650bc}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_circle}{Circle}}\& circle) \textcolor{keyword}{const override};}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_circle_a9276cac8e1c671b74326d9a6100650bc}{Collision}}(\textcolor{keyword}{const} \mbox{\hyperlink{classbase__engine_1_1_point}{Point}}\& point) \textcolor{keyword}{const override};}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_circle_a83eab1c5e4ce9331290ceee365141d32}{ChangeNotification}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{26 \};}
+\DoxyCodeLine{27 \}  \textcolor{comment}{// namespace base\_engine}}
+
+\end{DoxyCode}

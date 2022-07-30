@@ -1,0 +1,120 @@
+\hypertarget{classbase__engine_1_1_i_base_engine_collider}{}\doxysection{base\+\_\+engine\+::IBase\+Engine\+Collider クラス}
+\label{classbase__engine_1_1_i_base_engine_collider}\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+
+
+{\ttfamily \#include $<$IBase\+Engine\+Collider.\+h$>$}
+
+
+
+base\+\_\+engine\+::IBase\+Engine\+Collider の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{classbase__engine_1_1_i_base_engine_collider__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_a4b49430604d97be3ff1e5f882dd542e4}{$\sim$\+IBase\+Engine\+Collider}} ()
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_afc20081c118c34bac6c02f034f3d9820}{Collide}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_a85aefffaf57afb41e5ede32f8857c386}{Register}} (class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$collision)=0
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_a0b4059f5a2732bd3116ef9183bc1e4f9}{Remove}} (class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$collision)=0
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_a19039f731217501640b77b2695ee4a22}{Send\+Components\+Message}} (class \mbox{\hyperlink{classbase__engine_1_1_component}{Component}} $\ast$component, class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$collision)
+\end{DoxyCompactItemize}
+\doxysubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider}{IBase\+Engine\+Collider}} $\ast$ \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_ada22bd2c2f37f682358999ee252514c8}{Create}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$ $>$ \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider_ac843b2ecdda280dd3f00bd921e93bc39}{body\+\_\+list\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_a4b49430604d97be3ff1e5f882dd542e4}\label{classbase__engine_1_1_i_base_engine_collider_a4b49430604d97be3ff1e5f882dd542e4}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!````~IBaseEngineCollider@{$\sim$IBaseEngineCollider}}
+\index{````~IBaseEngineCollider@{$\sim$IBaseEngineCollider}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{$\sim$IBaseEngineCollider()}{~IBaseEngineCollider()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::$\sim$\+IBase\+Engine\+Collider (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_afc20081c118c34bac6c02f034f3d9820}\label{classbase__engine_1_1_i_base_engine_collider_afc20081c118c34bac6c02f034f3d9820}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!Collide@{Collide}}
+\index{Collide@{Collide}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{Collide()}{Collide()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::\+Collide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_ac2682a20ffccf3edc346f5a320ace59c}{base\+\_\+engine\+::\+Base\+Engine\+Collision}}で実装されています。
+
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_i_base_engine_collider_afc20081c118c34bac6c02f034f3d9820_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_ada22bd2c2f37f682358999ee252514c8}\label{classbase__engine_1_1_i_base_engine_collider_ada22bd2c2f37f682358999ee252514c8}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!Create@{Create}}
+\index{Create@{Create}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_i_base_engine_collider}{IBase\+Engine\+Collider}} $\ast$ base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::\+Create (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_a85aefffaf57afb41e5ede32f8857c386}\label{classbase__engine_1_1_i_base_engine_collider_a85aefffaf57afb41e5ede32f8857c386}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!Register@{Register}}
+\index{Register@{Register}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{Register()}{Register()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::\+Register (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_a032c2f1798def85f7111c099e362b3ee}{base\+\_\+engine\+::\+Base\+Engine\+Collision}}で実装されています。
+
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_a0b4059f5a2732bd3116ef9183bc1e4f9}\label{classbase__engine_1_1_i_base_engine_collider_a0b4059f5a2732bd3116ef9183bc1e4f9}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!Remove@{Remove}}
+\index{Remove@{Remove}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{Remove()}{Remove()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::\+Remove (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_a15a2717685820ec28d01c4497d526183}{base\+\_\+engine\+::\+Base\+Engine\+Collision}}で実装されています。
+
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_a19039f731217501640b77b2695ee4a22}\label{classbase__engine_1_1_i_base_engine_collider_a19039f731217501640b77b2695ee4a22}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!SendComponentsMessage@{SendComponentsMessage}}
+\index{SendComponentsMessage@{SendComponentsMessage}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{SendComponentsMessage()}{SendComponentsMessage()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::\+Send\+Components\+Message (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_component}{Component}} $\ast$}]{component,  }\item[{class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{collision }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_base_engine_collision_afdda70f168dba62b290efd2e11ae040e}{base\+\_\+engine\+::\+Base\+Engine\+Collision}}で再実装されています。
+
+
+
+\doxysubsection{メンバ詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_i_base_engine_collider_ac843b2ecdda280dd3f00bd921e93bc39}\label{classbase__engine_1_1_i_base_engine_collider_ac843b2ecdda280dd3f00bd921e93bc39}} 
+\index{base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}!body\_list\_@{body\_list\_}}
+\index{body\_list\_@{body\_list\_}!base\_engine::IBaseEngineCollider@{base\_engine::IBaseEngineCollider}}
+\doxysubsubsection{\texorpdfstring{body\_list\_}{body\_list\_}}
+{\footnotesize\ttfamily std\+::vector$<$class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}}$\ast$$>$ base\+\_\+engine\+::\+IBase\+Engine\+Collider\+::body\+\_\+list\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_i_base_engine_collider_8h}{IBase\+Engine\+Collider.\+h}}\item 
+Project/\mbox{\hyperlink{_i_base_engine_collider_8cpp}{IBase\+Engine\+Collider.\+cpp}}\end{DoxyCompactItemize}

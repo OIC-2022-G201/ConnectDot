@@ -1,0 +1,110 @@
+\hypertarget{classbase__engine_1_1_render_component}{}\doxysection{base\+\_\+engine\+::Render\+Component クラス}
+\label{classbase__engine_1_1_render_component}\index{base\_engine::RenderComponent@{base\_engine::RenderComponent}}
+
+
+{\ttfamily \#include $<$Render\+Component.\+h$>$}
+
+
+
+base\+\_\+engine\+::Render\+Component の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_render_component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+base\+\_\+engine\+::Render\+Component 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classbase__engine_1_1_render_component__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_render_component_a68307fc11b9ec44a76850c174f643a92}{Render\+Component}} (class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$owner, int draw\+\_\+order=100)
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_render_component_a724b02e1baffb1220f0b68bf0ab61933}{$\sim$\+Render\+Component}} () override
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_render_component_a1812bbe2bc5cf3bc6e61eecd42f1e225}{Update}} () override
+\item 
+virtual void \mbox{\hyperlink{classbase__engine_1_1_render_component_a2a4ecfa55b5b585a58f718bf1e84019d}{Draw}} ()=0
+\item 
+int \mbox{\hyperlink{classbase__engine_1_1_render_component_af15152f5244bc50ad09694f969a2472f}{Get\+Draw\+Order}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{その他の継承メンバ}
+
+
+\doxysubsection{構築子と解体子}
+\mbox{\Hypertarget{classbase__engine_1_1_render_component_a68307fc11b9ec44a76850c174f643a92}\label{classbase__engine_1_1_render_component_a68307fc11b9ec44a76850c174f643a92}} 
+\index{base\_engine::RenderComponent@{base\_engine::RenderComponent}!RenderComponent@{RenderComponent}}
+\index{RenderComponent@{RenderComponent}!base\_engine::RenderComponent@{base\_engine::RenderComponent}}
+\doxysubsubsection{\texorpdfstring{RenderComponent()}{RenderComponent()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Render\+Component\+::\+Render\+Component (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$}]{owner,  }\item[{int}]{draw\+\_\+order = {\ttfamily 100} }\end{DoxyParamCaption})}
+
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_render_component_a68307fc11b9ec44a76850c174f643a92_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_render_component_a724b02e1baffb1220f0b68bf0ab61933}\label{classbase__engine_1_1_render_component_a724b02e1baffb1220f0b68bf0ab61933}} 
+\index{base\_engine::RenderComponent@{base\_engine::RenderComponent}!````~RenderComponent@{$\sim$RenderComponent}}
+\index{````~RenderComponent@{$\sim$RenderComponent}!base\_engine::RenderComponent@{base\_engine::RenderComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$RenderComponent()}{~RenderComponent()}}
+{\footnotesize\ttfamily base\+\_\+engine\+::\+Render\+Component\+::$\sim$\+Render\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+\doxysubsection{関数詳解}
+\mbox{\Hypertarget{classbase__engine_1_1_render_component_a2a4ecfa55b5b585a58f718bf1e84019d}\label{classbase__engine_1_1_render_component_a2a4ecfa55b5b585a58f718bf1e84019d}} 
+\index{base\_engine::RenderComponent@{base\_engine::RenderComponent}!Draw@{Draw}}
+\index{Draw@{Draw}!base\_engine::RenderComponent@{base\_engine::RenderComponent}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily virtual void base\+\_\+engine\+::\+Render\+Component\+::\+Draw (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3}{base\+\_\+engine\+::\+Shape\+Render\+Component}}, \mbox{\hyperlink{classbase__engine_1_1_sprite_component_a8ae948a81590e28c3d0152cdade68a1c}{base\+\_\+engine\+::\+Sprite\+Component}}で実装されています。
+
+\mbox{\Hypertarget{classbase__engine_1_1_render_component_af15152f5244bc50ad09694f969a2472f}\label{classbase__engine_1_1_render_component_af15152f5244bc50ad09694f969a2472f}} 
+\index{base\_engine::RenderComponent@{base\_engine::RenderComponent}!GetDrawOrder@{GetDrawOrder}}
+\index{GetDrawOrder@{GetDrawOrder}!base\_engine::RenderComponent@{base\_engine::RenderComponent}}
+\doxysubsubsection{\texorpdfstring{GetDrawOrder()}{GetDrawOrder()}}
+{\footnotesize\ttfamily int base\+\_\+engine\+::\+Render\+Component\+::\+Get\+Draw\+Order (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classbase__engine_1_1_render_component_af15152f5244bc50ad09694f969a2472f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_render_component_a1812bbe2bc5cf3bc6e61eecd42f1e225}\label{classbase__engine_1_1_render_component_a1812bbe2bc5cf3bc6e61eecd42f1e225}} 
+\index{base\_engine::RenderComponent@{base\_engine::RenderComponent}!Update@{Update}}
+\index{Update@{Update}!base\_engine::RenderComponent@{base\_engine::RenderComponent}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Render\+Component\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_component_a4b3398789031ade978ea135d32e8dc44}{base\+\_\+engine\+::\+Component}}を再実装しています。
+
+
+
+\mbox{\hyperlink{classbase__engine_1_1_sprite_component_a1a7eb4a6835e856df67a043ff3d19b21}{base\+\_\+engine\+::\+Sprite\+Component}}で再実装されています。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project/\mbox{\hyperlink{_render_component_8h}{Render\+Component.\+h}}\item 
+Project/\mbox{\hyperlink{_render_component_8cpp}{Render\+Component.\+cpp}}\end{DoxyCompactItemize}

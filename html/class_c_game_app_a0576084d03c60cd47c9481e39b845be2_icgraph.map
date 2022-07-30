@@ -1,0 +1,4 @@
+<map id="CGameApp::Release" name="CGameApp::Release">
+<area shape="rect" id="node1" title="アプリケーションの解放" alt="" coords="225,5,369,32"/>
+<area shape="rect" id="node2" href="$class_c_game_app.html#aa1ccf80041cebe116197fec9d63c02ce" title="デストラクタ" alt="" coords="5,5,177,32"/>
+</map>

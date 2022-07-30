@@ -1,0 +1,6 @@
+<map id="base_engine::Geometry2D::Intersect" name="base_engine::Geometry2D::Intersect">
+<area shape="rect" id="node1" title=" " alt="" coords="192,71,368,112"/>
+<area shape="rect" id="node2" href="$classbase__engine_1_1_rect.html#a4cef67cb5b8699fe130a87a60eaa0597" title=" " alt="" coords="5,5,144,47"/>
+<area shape="rect" id="node3" href="$classbase__engine_1_1_circle.html#ad1a8de091930deb8760cec3de38dbf61" title=" " alt="" coords="7,71,143,112"/>
+<area shape="rect" id="node4" href="$classbase__engine_1_1_point.html#a91f0213402c3c86797bbd248dd12028f" title=" " alt="" coords="8,136,141,177"/>
+</map>

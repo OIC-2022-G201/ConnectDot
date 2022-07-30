@@ -43,9 +43,6 @@
     <Filter Include="BaseEngine\Texture\Mof">
       <UniqueIdentifier>{0c78b1f9-9290-41aa-a2dd-3db88ee7b17c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BaseEngine\AssetHandleManager">
-      <UniqueIdentifier>{4778fb6e-4f39-4a37-ab09-d9fe87b309d5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="BaseEngine\Render">
       <UniqueIdentifier>{387cc02f-2ae5-4e7b-bc83-8679d47f7e31}</UniqueIdentifier>
     </Filter>
@@ -103,6 +100,15 @@
     <Filter Include="BaseEngine\Collision">
       <UniqueIdentifier>{b67da92c-ef6a-497c-8c3b-6983daff5bb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Tag">
+      <UniqueIdentifier>{2980059f-4bf4-4117-8828-627bee9ae8f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constexpr">
+      <UniqueIdentifier>{585af6fb-1ce0-42a3-919c-9e6043f47dbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Constexpr\math">
+      <UniqueIdentifier>{8ebd35c1-5c94-4baa-93c6-89af038d2595}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -125,9 +131,6 @@
     </ClCompile>
     <ClCompile Include="SpriteComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent\SpriteComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="TextureFactory.cpp">
-      <Filter>BaseEngine\Texture</Filter>
     </ClCompile>
     <ClCompile Include="IBaseEngineEmpty.cpp">
       <Filter>BaseEngine\Empty</Filter>
@@ -186,9 +189,6 @@
     <ClCompile Include="Beacon.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
-      <Filter>BaseEngine\Collision</Filter>
-    </ClCompile>
     <ClCompile Include="Circle.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClCompile>
@@ -200,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -224,9 +227,6 @@
     <ClInclude Include="Adapter.h">
       <Filter>BaseEngine\Adapter</Filter>
     </ClInclude>
-    <ClInclude Include="TextureFactory.h">
-      <Filter>BaseEngine\Texture</Filter>
-    </ClInclude>
     <ClInclude Include="BaseEngineCore.h">
       <Filter>BaseEngine\Common</Filter>
     </ClInclude>
@@ -244,9 +244,6 @@
     </ClInclude>
     <ClInclude Include="TextureMof.h">
       <Filter>BaseEngine\Texture\Mof</Filter>
-    </ClInclude>
-    <ClInclude Include="AssetHandleManager.h">
-      <Filter>BaseEngine\AssetHandleManager</Filter>
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>BaseEngine\Texture</Filter>
@@ -302,9 +299,6 @@
     <ClInclude Include="Beacon.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>BaseEngine\Collision</Filter>
-    </ClInclude>
     <ClInclude Include="Circle.h">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClInclude>
@@ -316,6 +310,12 @@
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerComponent.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Pow.h">
+      <Filter>Constexpr\math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

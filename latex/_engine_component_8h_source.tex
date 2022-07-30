@@ -1,0 +1,42 @@
+\hypertarget{_engine_component_8h_source}{}\doxysection{Engine\+Component.\+h}
+\label{_engine_component_8h_source}\index{Project/EngineComponent.h@{Project/EngineComponent.h}}
+\mbox{\hyperlink{_engine_component_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <concepts>}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebase__engine}{base\_engine}} \{}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{template} <\textcolor{keyword}{class} Interface>}
+\DoxyCodeLine{8 \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_base_engine_component}{BaseEngineComponent}} \{}
+\DoxyCodeLine{9  \textcolor{keyword}{private}:}
+\DoxyCodeLine{10   Interface* interface\_ = Interface::Create();}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12  \textcolor{keyword}{public}:}
+\DoxyCodeLine{13   \mbox{\hyperlink{classbase__engine_1_1_base_engine_component_a06442f65a765665f07f8e1f85a421333}{\string~BaseEngineComponent}}();}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15   [[nodiscard]] Interface* \mbox{\hyperlink{classbase__engine_1_1_base_engine_component_a09dd6ebe002e176242e7077f9edc9f83}{get}}() \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{17   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_base_engine_component_a870d81d5150a77732af9f65d72bc655e}{release}}();}
+\DoxyCodeLine{18 \};}
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{keyword}{template} <\textcolor{keyword}{class} Interface>}
+\DoxyCodeLine{21 \mbox{\hyperlink{classbase__engine_1_1_base_engine_component_a06442f65a765665f07f8e1f85a421333}{BaseEngineComponent<Interface>::\string~BaseEngineComponent}}() \{}
+\DoxyCodeLine{22   \textcolor{comment}{// must be released prior to the destructor executing}}
+\DoxyCodeLine{23   assert(interface\_ == \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{24 \}}
+\DoxyCodeLine{25 }
+\DoxyCodeLine{26 \textcolor{keyword}{template} <\textcolor{keyword}{class} Interface>}
+\DoxyCodeLine{27 Interface* \mbox{\hyperlink{classbase__engine_1_1_base_engine_component_a09dd6ebe002e176242e7077f9edc9f83}{BaseEngineComponent<Interface>::get}}() noexcept \{}
+\DoxyCodeLine{28   \textcolor{keywordflow}{return} interface\_;}
+\DoxyCodeLine{29 \}}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{keyword}{template} <\textcolor{keyword}{class} Interface>}
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_base_engine_component_a870d81d5150a77732af9f65d72bc655e}{BaseEngineComponent<Interface>::release}}() \{}
+\DoxyCodeLine{33   \textcolor{keyword}{delete} interface\_;}
+\DoxyCodeLine{34   interface\_ = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{35 \}}
+\DoxyCodeLine{36 \}  \textcolor{comment}{// namespace base\_engine}}
+
+\end{DoxyCode}

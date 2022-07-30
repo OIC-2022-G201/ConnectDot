@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ConnectDot: Project/ShapeRenderComponent.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ConnectDot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ffd1f789ec7bd0a45fc6ad92579c5070.html">Project</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">ShapeRenderComponent.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_shape_render_component_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_render_component_8h.html">RenderComponent.h</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_yes_no_8h.html">YesNo.h</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacebase__engine.html">base_engine</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="namespacebase__engine.html#a6b2946d361a2cf769a7b03a882ade25b">    8</a></span><span class="keyword">using </span><a class="code hl_typedef" href="namespacebase__engine.html#a6b2946d361a2cf769a7b03a882ade25b">COLOR</a> = MofU32;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacebase__engine.html#aa0919ff72e3b9522baeff0899769edfd">    9</a></span><span class="keyword">using </span><a class="code hl_class" href="structbase__engine_1_1_yes_no.html">FillMode</a> = <a class="code hl_class" href="structbase__engine_1_1_yes_no.html">YesNo&lt;struct Fill_mode&gt;</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classbase__engine_1_1_shape_render_component.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classbase__engine_1_1_shape_render_component.html">ShapeRenderComponent</a> : <span class="keyword">public</span> <a class="code hl_class" href="classbase__engine_1_1_render_component.html">RenderComponent</a> {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  std::unique_ptr&lt;class IShape&gt; shape_;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  <a class="code hl_class" href="structbase__engine_1_1_yes_no.html">FillMode</a> fill_mode_ = <a class="code hl_variable" href="structbase__engine_1_1_yes_no.html#affd342be3aa0b59c78544361b4f8ea7c">FillMode::No</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <a class="code hl_typedef" href="namespacebase__engine.html#a6b2946d361a2cf769a7b03a882ade25b">COLOR</a> color_ = MOF_COLOR_WHITE;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#a08fa52c2578f8d34faa2a43ad2cb854c">ShapeRenderComponent</a>(<a class="code hl_class" href="classbase__engine_1_1_actor.html">Actor</a>* owner, <span class="keywordtype">int</span> draw_order);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <a class="code hl_class" href="classbase__engine_1_1_shape_render_component.html">ShapeRenderComponent</a>&amp; <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#ad5cbc28f576389ae8bc403d07bec68d9">SetColor</a>(<span class="keyword">const</span> <a class="code hl_typedef" href="namespacebase__engine.html#a6b2946d361a2cf769a7b03a882ade25b">COLOR</a> color);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  <a class="code hl_class" href="classbase__engine_1_1_shape_render_component.html">ShapeRenderComponent</a>&amp; <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#a2d1a6603bd76eca5cd9cfe354c340a1e">SetFillMode</a>(<span class="keyword">const</span> <a class="code hl_class" href="structbase__engine_1_1_yes_no.html">FillMode</a> mode);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#a5c3f56a89029afe098db17def1f4d700">CreateRect</a>(<span class="keywordtype">float</span> left, <span class="keywordtype">float</span> top, <span class="keywordtype">float</span> right, <span class="keywordtype">float</span> bottom);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#a5c3f56a89029afe098db17def1f4d700">CreateRect</a>(<span class="keyword">const</span> Mof::CRectangle&amp; rect);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#abd053c040dba93bc63e2890e229ae3b3">Draw</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classbase__engine_1_1_shape_render_component.html#a05c6b4d1deb4e6fdbaf6042842236d03">   25</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#a05c6b4d1deb4e6fdbaf6042842236d03">Draw</a>(<span class="keyword">const</span> <span class="keyword">class</span> <a class="code hl_class" href="classbase__engine_1_1_rect.html">Rect</a>&amp; rect) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classbase__engine_1_1_shape_render_component.html#ad4a41ebb8390d6f1f5bc48332bf78176">   26</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#ad4a41ebb8390d6f1f5bc48332bf78176">Draw</a>(<span class="keyword">const</span> <span class="keyword">class</span> <a class="code hl_class" href="classbase__engine_1_1_circle.html">Circle</a>&amp; rect) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classbase__engine_1_1_shape_render_component.html#a2570f96d797f158590c7edbdaceee8fc">   27</a></span>  <span class="keywordtype">void</span> <a class="code hl_function" href="classbase__engine_1_1_shape_render_component.html#a2570f96d797f158590c7edbdaceee8fc">Draw</a>(<span class="keyword">const</span> <span class="keyword">class</span> <a class="code hl_class" href="classbase__engine_1_1_point.html">Point</a>&amp; rect) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>};</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}  <span class="comment">// namespace base_engine</span></div>
+<div class="ttc" id="a_render_component_8h_html"><div class="ttname"><a href="_render_component_8h.html">RenderComponent.h</a></div></div>
+<div class="ttc" id="a_yes_no_8h_html"><div class="ttname"><a href="_yes_no_8h.html">YesNo.h</a></div></div>
+<div class="ttc" id="aclassbase__engine_1_1_actor_html"><div class="ttname"><a href="classbase__engine_1_1_actor.html">base_engine::Actor</a></div><div class="ttdef"><b>Definition:</b> Actor.h:9</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_circle_html"><div class="ttname"><a href="classbase__engine_1_1_circle.html">base_engine::Circle</a></div><div class="ttdef"><b>Definition:</b> Circle.h:7</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_point_html"><div class="ttname"><a href="classbase__engine_1_1_point.html">base_engine::Point</a></div><div class="ttdef"><b>Definition:</b> Point.h:9</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_rect_html"><div class="ttname"><a href="classbase__engine_1_1_rect.html">base_engine::Rect</a></div><div class="ttdef"><b>Definition:</b> Rect.h:8</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_render_component_html"><div class="ttname"><a href="classbase__engine_1_1_render_component.html">base_engine::RenderComponent</a></div><div class="ttdef"><b>Definition:</b> RenderComponent.h:9</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html">base_engine::ShapeRenderComponent</a></div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.h:11</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_a05c6b4d1deb4e6fdbaf6042842236d03"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#a05c6b4d1deb4e6fdbaf6042842236d03">base_engine::ShapeRenderComponent::Draw</a></div><div class="ttdeci">void Draw(const class Rect &amp;rect) const</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_a08fa52c2578f8d34faa2a43ad2cb854c"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#a08fa52c2578f8d34faa2a43ad2cb854c">base_engine::ShapeRenderComponent::ShapeRenderComponent</a></div><div class="ttdeci">ShapeRenderComponent(Actor *owner, int draw_order)</div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.cpp:10</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_a2570f96d797f158590c7edbdaceee8fc"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#a2570f96d797f158590c7edbdaceee8fc">base_engine::ShapeRenderComponent::Draw</a></div><div class="ttdeci">void Draw(const class Point &amp;rect) const</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_a2d1a6603bd76eca5cd9cfe354c340a1e"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#a2d1a6603bd76eca5cd9cfe354c340a1e">base_engine::ShapeRenderComponent::SetFillMode</a></div><div class="ttdeci">ShapeRenderComponent &amp; SetFillMode(const FillMode mode)</div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.cpp:18</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_a5c3f56a89029afe098db17def1f4d700"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#a5c3f56a89029afe098db17def1f4d700">base_engine::ShapeRenderComponent::CreateRect</a></div><div class="ttdeci">void CreateRect(float left, float top, float right, float bottom)</div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.cpp:23</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_abd053c040dba93bc63e2890e229ae3b3"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#abd053c040dba93bc63e2890e229ae3b3">base_engine::ShapeRenderComponent::Draw</a></div><div class="ttdeci">void Draw() override</div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.cpp:31</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_ad4a41ebb8390d6f1f5bc48332bf78176"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#ad4a41ebb8390d6f1f5bc48332bf78176">base_engine::ShapeRenderComponent::Draw</a></div><div class="ttdeci">void Draw(const class Circle &amp;rect) const</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_shape_render_component_html_ad5cbc28f576389ae8bc403d07bec68d9"><div class="ttname"><a href="classbase__engine_1_1_shape_render_component.html#ad5cbc28f576389ae8bc403d07bec68d9">base_engine::ShapeRenderComponent::SetColor</a></div><div class="ttdeci">ShapeRenderComponent &amp; SetColor(const COLOR color)</div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.cpp:13</div></div>
+<div class="ttc" id="anamespacebase__engine_html"><div class="ttname"><a href="namespacebase__engine.html">base_engine</a></div><div class="ttdef"><b>Definition:</b> Actor.cpp:5</div></div>
+<div class="ttc" id="anamespacebase__engine_html_a6b2946d361a2cf769a7b03a882ade25b"><div class="ttname"><a href="namespacebase__engine.html#a6b2946d361a2cf769a7b03a882ade25b">base_engine::COLOR</a></div><div class="ttdeci">MofU32 COLOR</div><div class="ttdef"><b>Definition:</b> ShapeRenderComponent.h:8</div></div>
+<div class="ttc" id="astructbase__engine_1_1_yes_no_html"><div class="ttname"><a href="structbase__engine_1_1_yes_no.html">base_engine::YesNo&lt; struct Fill_mode &gt;</a></div></div>
+<div class="ttc" id="astructbase__engine_1_1_yes_no_html_affd342be3aa0b59c78544361b4f8ea7c"><div class="ttname"><a href="structbase__engine_1_1_yes_no.html#affd342be3aa0b59c78544361b4f8ea7c">base_engine::YesNo&lt; struct Fill_mode &gt;::No</a></div><div class="ttdeci">static constexpr Helper No</div><div class="ttdef"><b>Definition:</b> YesNo.h:30</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

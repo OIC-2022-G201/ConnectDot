@@ -1,0 +1,1006 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.4"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ConnectDot: base_engine::Actor クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ConnectDot
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.4 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacebase__engine.html">base_engine</a></li><li class="navelem"><a class="el" href="classbase__engine_1_1_actor.html">Actor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="classbase__engine_1_1_actor-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">base_engine::Actor クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_actor_8h_source.html">Actor.h</a>&gt;</code></p>
+<div class="dynheader">
+base_engine::Actor の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor__inherit__graph.png" border="0" usemap="#abase__engine_1_1_actor_inherit__map" alt="Inheritance graph"/></div>
+<map name="abase__engine_1_1_actor_inherit__map" id="abase__engine_1_1_actor_inherit__map">
+<area shape="rect" title=" " alt="" coords="58,5,193,32"/>
+<area shape="rect" href="class_player_actor.html" title=" " alt="" coords="5,80,96,107"/>
+<area shape="rect" href="classbase__engine_1_1_input_actor.html" title=" " alt="" coords="120,80,283,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+公開型</h2></td></tr>
+<tr class="memitem:a5d6d2362f5f0335c9c1a3610af3fcac5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a> { <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5a113eddcc3a2a45a91d04da47786aff2b">kStart</a>
+, <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5a57605df46bbf0068c50e400328c874c8">kActive</a>
+, <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5acc227b5f899a3ec7cb181d4607540c8d">kPause</a>
+, <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5a901cfa0ade1b26cc248b5d833df6532c">kDead</a>
+ }</td></tr>
+<tr class="separator:a5d6d2362f5f0335c9c1a3610af3fcac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ad730f7831a6abeccd1be0ad109cbbc1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#ad730f7831a6abeccd1be0ad109cbbc1e">Actor</a> (class <a class="el" href="classbase__engine_1_1_game.html">Game</a> *game)</td></tr>
+<tr class="separator:ad730f7831a6abeccd1be0ad109cbbc1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7820af3563b08106822a2733ef6846"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#acc7820af3563b08106822a2733ef6846">~Actor</a> ()</td></tr>
+<tr class="separator:acc7820af3563b08106822a2733ef6846"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29bb894f051d1fadee36bd58723438fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a29bb894f051d1fadee36bd58723438fa">StartActor</a> ()</td></tr>
+<tr class="separator:a29bb894f051d1fadee36bd58723438fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8981816936be39e6ed54acd4be1ea98d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a8981816936be39e6ed54acd4be1ea98d">Start</a> ()</td></tr>
+<tr class="separator:a8981816936be39e6ed54acd4be1ea98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e1cfbe1746fc3fa7db5801705a79bfc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a3e1cfbe1746fc3fa7db5801705a79bfc">ProcessInput</a> ()</td></tr>
+<tr class="separator:a3e1cfbe1746fc3fa7db5801705a79bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3b78695f031fab569306bce963ea737"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#ad3b78695f031fab569306bce963ea737">Input</a> ()</td></tr>
+<tr class="separator:ad3b78695f031fab569306bce963ea737"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0e1cc39806af94b93199ce9352e3ed3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#ae0e1cc39806af94b93199ce9352e3ed3">UpdateActor</a> ()</td></tr>
+<tr class="separator:ae0e1cc39806af94b93199ce9352e3ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4b7ddbf893bf78f4e273c5d6b18d8f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#abc4b7ddbf893bf78f4e273c5d6b18d8f">Update</a> ()</td></tr>
+<tr class="separator:abc4b7ddbf893bf78f4e273c5d6b18d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40307e5ab50cdbcfb8f0b58a4215c492"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a40307e5ab50cdbcfb8f0b58a4215c492"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a40307e5ab50cdbcfb8f0b58a4215c492">SendCallbackMessage</a> (T *callback)</td></tr>
+<tr class="separator:a40307e5ab50cdbcfb8f0b58a4215c492"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a661d01352eb297c00915534839d68f26"><td class="memTemplParams" colspan="2">template&lt;class T , class D &gt; </td></tr>
+<tr class="memitem:a661d01352eb297c00915534839d68f26"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a661d01352eb297c00915534839d68f26">SendCallbackMessage</a> (T *callback, D *data)</td></tr>
+<tr class="separator:a661d01352eb297c00915534839d68f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f76807f2cc1ca1229d6408b70e1e6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a27f76807f2cc1ca1229d6408b70e1e6f">GetState</a> () const</td></tr>
+<tr class="separator:a27f76807f2cc1ca1229d6408b70e1e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a610db1ed151789a1045e26c0f38d7197"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a610db1ed151789a1045e26c0f38d7197">SetState</a> (const <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a> state)</td></tr>
+<tr class="separator:a610db1ed151789a1045e26c0f38d7197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a1380c56129b4b9c396a04fa2c32c10"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="namespacebase__engine.html#ac9c792a90192659b9977cacd1bfe36a7">Vector2</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a3a1380c56129b4b9c396a04fa2c32c10">GetPosition</a> () const</td></tr>
+<tr class="separator:a3a1380c56129b4b9c396a04fa2c32c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa98ff31750ed05c40cb23eca3d8dc056"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#aa98ff31750ed05c40cb23eca3d8dc056">SetPosition</a> (const <a class="el" href="namespacebase__engine.html#ac9c792a90192659b9977cacd1bfe36a7">Vector2</a> &amp;pos)</td></tr>
+<tr class="separator:aa98ff31750ed05c40cb23eca3d8dc056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1886acd3b1b6d43437bbfbaeba8ee7f8"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a1886acd3b1b6d43437bbfbaeba8ee7f8">GetRotation</a> () const</td></tr>
+<tr class="separator:a1886acd3b1b6d43437bbfbaeba8ee7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accc52afe84ca2033ec4f87c95777136f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#accc52afe84ca2033ec4f87c95777136f">SetRotation</a> (const float rotation)</td></tr>
+<tr class="separator:accc52afe84ca2033ec4f87c95777136f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a994618f30de3b4c0b4e6b4824bbd7f43"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a994618f30de3b4c0b4e6b4824bbd7f43">GetScale</a> () const</td></tr>
+<tr class="separator:a994618f30de3b4c0b4e6b4824bbd7f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a139aff5a93815d77d403120e9f14a217"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a139aff5a93815d77d403120e9f14a217">SetScale</a> (const float scale)</td></tr>
+<tr class="separator:a139aff5a93815d77d403120e9f14a217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1028189dcfbf5473f53a5ae2d404810"><td class="memItemLeft" align="right" valign="top">class <a class="el" href="classbase__engine_1_1_game.html">Game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#ae1028189dcfbf5473f53a5ae2d404810">GetGame</a> () const</td></tr>
+<tr class="separator:ae1028189dcfbf5473f53a5ae2d404810"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6509d1484921be2f77ae30c4f1d53f25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a6509d1484921be2f77ae30c4f1d53f25">AddComponent</a> (class <a class="el" href="classbase__engine_1_1_component.html">Component</a> *component)</td></tr>
+<tr class="separator:a6509d1484921be2f77ae30c4f1d53f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab096f559c36c05630d08da77dff22f22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#ab096f559c36c05630d08da77dff22f22">RemoveComponent</a> (class <a class="el" href="classbase__engine_1_1_component.html">Component</a> *component)</td></tr>
+<tr class="separator:ab096f559c36c05630d08da77dff22f22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93978a1fae202568cbd3ecc20bd2240b"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a93978a1fae202568cbd3ecc20bd2240b">GetName</a> ()</td></tr>
+<tr class="separator:a93978a1fae202568cbd3ecc20bd2240b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abda6e41ddb2c9a7bb5b8169cfc54b0fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbase__engine_1_1_actor.html">Actor</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#abda6e41ddb2c9a7bb5b8169cfc54b0fa">SetName</a> (const std::string_view name)</td></tr>
+<tr class="separator:abda6e41ddb2c9a7bb5b8169cfc54b0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:afb97bc552e7f9cdc8ce84fed5e958474"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#afb97bc552e7f9cdc8ce84fed5e958474">name_</a> = &quot;Actor&quot;</td></tr>
+<tr class="separator:afb97bc552e7f9cdc8ce84fed5e958474"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a576214108a2fc391c9f69e14656495c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a576214108a2fc391c9f69e14656495c0">state_</a></td></tr>
+<tr class="separator:a576214108a2fc391c9f69e14656495c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fd30a0d893c87f08c54e940065b381c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacebase__engine.html#ac9c792a90192659b9977cacd1bfe36a7">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a0fd30a0d893c87f08c54e940065b381c">position_</a></td></tr>
+<tr class="separator:a0fd30a0d893c87f08c54e940065b381c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9af4f2144d06f51324f676c205381c3f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#a9af4f2144d06f51324f676c205381c3f">rotation_</a></td></tr>
+<tr class="separator:a9af4f2144d06f51324f676c205381c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec2557a98dffd21d51259e4db46865c5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_actor.html#aec2557a98dffd21d51259e4db46865c5">scale_</a></td></tr>
+<tr class="separator:aec2557a98dffd21d51259e4db46865c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">列挙型メンバ詳解</h2>
+<a id="a5d6d2362f5f0335c9c1a3610af3fcac5" name="a5d6d2362f5f0335c9c1a3610af3fcac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d6d2362f5f0335c9c1a3610af3fcac5">&#9670;&nbsp;</a></span>State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">base_engine::Actor::State</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a5d6d2362f5f0335c9c1a3610af3fcac5a113eddcc3a2a45a91d04da47786aff2b" name="a5d6d2362f5f0335c9c1a3610af3fcac5a113eddcc3a2a45a91d04da47786aff2b"></a>kStart&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5d6d2362f5f0335c9c1a3610af3fcac5a57605df46bbf0068c50e400328c874c8" name="a5d6d2362f5f0335c9c1a3610af3fcac5a57605df46bbf0068c50e400328c874c8"></a>kActive&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5d6d2362f5f0335c9c1a3610af3fcac5acc227b5f899a3ec7cb181d4607540c8d" name="a5d6d2362f5f0335c9c1a3610af3fcac5acc227b5f899a3ec7cb181d4607540c8d"></a>kPause&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5d6d2362f5f0335c9c1a3610af3fcac5a901cfa0ade1b26cc248b5d833df6532c" name="a5d6d2362f5f0335c9c1a3610af3fcac5a901cfa0ade1b26cc248b5d833df6532c"></a>kDead&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="ad730f7831a6abeccd1be0ad109cbbc1e" name="ad730f7831a6abeccd1be0ad109cbbc1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad730f7831a6abeccd1be0ad109cbbc1e">&#9670;&nbsp;</a></span>Actor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">base_engine::Actor::Actor </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classbase__engine_1_1_game.html">Game</a> *&#160;</td>
+          <td class="paramname"><em>game</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_ad730f7831a6abeccd1be0ad109cbbc1e_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_ad730f7831a6abeccd1be0ad109cbbc1e_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_ad730f7831a6abeccd1be0ad109cbbc1e_cgraph" id="aclassbase__engine_1_1_actor_ad730f7831a6abeccd1be0ad109cbbc1e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" href="classbase__engine_1_1_game.html#a1c38fb3cc811ec748ca0c4b899fdbc67" title=" " alt="" coords="188,5,335,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acc7820af3563b08106822a2733ef6846" name="acc7820af3563b08106822a2733ef6846"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7820af3563b08106822a2733ef6846">&#9670;&nbsp;</a></span>~Actor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">base_engine::Actor::~Actor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846_cgraph" id="aclassbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" href="classbase__engine_1_1_game.html#a2c767ead8c40e5db98040b35deba91c3" title=" " alt="" coords="188,5,335,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a6509d1484921be2f77ae30c4f1d53f25" name="a6509d1484921be2f77ae30c4f1d53f25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6509d1484921be2f77ae30c4f1d53f25">&#9670;&nbsp;</a></span>AddComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::AddComponent </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classbase__engine_1_1_component.html">Component</a> *&#160;</td>
+          <td class="paramname"><em>component</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a6509d1484921be2f77ae30c4f1d53f25_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a6509d1484921be2f77ae30c4f1d53f25_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a6509d1484921be2f77ae30c4f1d53f25_icgraph" id="aclassbase__engine_1_1_actor_a6509d1484921be2f77ae30c4f1d53f25_icgraph">
+<area shape="rect" title=" " alt="" coords="223,39,357,80"/>
+<area shape="rect" href="classbase__engine_1_1_component.html#afbac49874f4cf28ca04794f00afb9dd8" title=" " alt="" coords="5,5,175,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#ae0e1cc39806af94b93199ce9352e3ed3" title=" " alt="" coords="23,71,157,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae1028189dcfbf5473f53a5ae2d404810" name="ae1028189dcfbf5473f53a5ae2d404810"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1028189dcfbf5473f53a5ae2d404810">&#9670;&nbsp;</a></span>GetGame()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">class <a class="el" href="classbase__engine_1_1_game.html">Game</a> * base_engine::Actor::GetGame </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810_icgraph" id="aclassbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810_icgraph">
+<area shape="rect" title=" " alt="" coords="264,5,399,47"/>
+<area shape="rect" href="classbase__engine_1_1_render_component.html#a68307fc11b9ec44a76850c174f643a92" title=" " alt="" coords="5,5,216,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a93978a1fae202568cbd3ecc20bd2240b" name="a93978a1fae202568cbd3ecc20bd2240b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93978a1fae202568cbd3ecc20bd2240b">&#9670;&nbsp;</a></span>GetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string_view base_engine::Actor::GetName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a1380c56129b4b9c396a04fa2c32c10" name="a3a1380c56129b4b9c396a04fa2c32c10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a1380c56129b4b9c396a04fa2c32c10">&#9670;&nbsp;</a></span>GetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="namespacebase__engine.html#ac9c792a90192659b9977cacd1bfe36a7">Vector2</a> &amp; base_engine::Actor::GetPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a3a1380c56129b4b9c396a04fa2c32c10_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a3a1380c56129b4b9c396a04fa2c32c10_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a3a1380c56129b4b9c396a04fa2c32c10_icgraph" id="aclassbase__engine_1_1_actor_a3a1380c56129b4b9c396a04fa2c32c10_icgraph">
+<area shape="rect" title=" " alt="" coords="272,39,407,80"/>
+<area shape="rect" href="classbase__engine_1_1_sprite_component.html#a8ae948a81590e28c3d0152cdade68a1c" title=" " alt="" coords="13,5,216,47"/>
+<area shape="rect" href="classbase__engine_1_1_collision_component.html#afe023ea065028ef2e7aa3968792a52a8" title=" " alt="" coords="5,71,224,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a1886acd3b1b6d43437bbfbaeba8ee7f8" name="a1886acd3b1b6d43437bbfbaeba8ee7f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1886acd3b1b6d43437bbfbaeba8ee7f8">&#9670;&nbsp;</a></span>GetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float base_engine::Actor::GetRotation </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8_icgraph" id="aclassbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8_icgraph">
+<area shape="rect" title=" " alt="" coords="256,5,391,47"/>
+<area shape="rect" href="classbase__engine_1_1_sprite_component.html#a8ae948a81590e28c3d0152cdade68a1c" title=" " alt="" coords="5,5,208,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a994618f30de3b4c0b4e6b4824bbd7f43" name="a994618f30de3b4c0b4e6b4824bbd7f43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a994618f30de3b4c0b4e6b4824bbd7f43">&#9670;&nbsp;</a></span>GetScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float base_engine::Actor::GetScale </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43_icgraph" id="aclassbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43_icgraph">
+<area shape="rect" title=" " alt="" coords="256,5,391,47"/>
+<area shape="rect" href="classbase__engine_1_1_sprite_component.html#a8ae948a81590e28c3d0152cdade68a1c" title=" " alt="" coords="5,5,208,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a27f76807f2cc1ca1229d6408b70e1e6f" name="a27f76807f2cc1ca1229d6408b70e1e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27f76807f2cc1ca1229d6408b70e1e6f">&#9670;&nbsp;</a></span>GetState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a> base_engine::Actor::GetState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3b78695f031fab569306bce963ea737" name="ad3b78695f031fab569306bce963ea737"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3b78695f031fab569306bce963ea737">&#9670;&nbsp;</a></span>Input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Actor::Input </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classbase__engine_1_1_input_actor.html#a2bae4f40e6642dc15ce7f6ad2e8db226">base_engine::InputActor</a>, <a class="el" href="class_player_actor.html#aa0e9adf50d1d451663ad2e37633b9285">PlayerActor</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737_icgraph" id="aclassbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,323,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#a3e1cfbe1746fc3fa7db5801705a79bfc" title=" " alt="" coords="5,5,140,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3e1cfbe1746fc3fa7db5801705a79bfc" name="a3e1cfbe1746fc3fa7db5801705a79bfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e1cfbe1746fc3fa7db5801705a79bfc">&#9670;&nbsp;</a></span>ProcessInput()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::ProcessInput </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc_cgraph" id="aclassbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#ad3b78695f031fab569306bce963ea737" title=" " alt="" coords="188,5,323,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab096f559c36c05630d08da77dff22f22" name="ab096f559c36c05630d08da77dff22f22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab096f559c36c05630d08da77dff22f22">&#9670;&nbsp;</a></span>RemoveComponent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::RemoveComponent </td>
+          <td>(</td>
+          <td class="paramtype">class <a class="el" href="classbase__engine_1_1_component.html">Component</a> *&#160;</td>
+          <td class="paramname"><em>component</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22_icgraph" id="aclassbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22_icgraph">
+<area shape="rect" title=" " alt="" coords="223,5,365,47"/>
+<area shape="rect" href="classbase__engine_1_1_component.html#add46eab7dc53e658e1afa16acb116ab4" title=" " alt="" coords="5,5,175,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a40307e5ab50cdbcfb8f0b58a4215c492" name="a40307e5ab50cdbcfb8f0b58a4215c492"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40307e5ab50cdbcfb8f0b58a4215c492">&#9670;&nbsp;</a></span>SendCallbackMessage() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::SendCallbackMessage </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492_icgraph" id="aclassbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492_icgraph">
+<area shape="rect" title=" " alt="" coords="272,5,435,47"/>
+<area shape="rect" href="classbase__engine_1_1_collision_component.html#a08516482651efa1933cb007d5df2d680" title=" " alt="" coords="5,5,224,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a661d01352eb297c00915534839d68f26" name="a661d01352eb297c00915534839d68f26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a661d01352eb297c00915534839d68f26">&#9670;&nbsp;</a></span>SendCallbackMessage() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class D &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::SendCallbackMessage </td>
+          <td>(</td>
+          <td class="paramtype">T *&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">D *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abda6e41ddb2c9a7bb5b8169cfc54b0fa" name="abda6e41ddb2c9a7bb5b8169cfc54b0fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abda6e41ddb2c9a7bb5b8169cfc54b0fa">&#9670;&nbsp;</a></span>SetName()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classbase__engine_1_1_actor.html">Actor</a> &amp; base_engine::Actor::SetName </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa98ff31750ed05c40cb23eca3d8dc056" name="aa98ff31750ed05c40cb23eca3d8dc056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa98ff31750ed05c40cb23eca3d8dc056">&#9670;&nbsp;</a></span>SetPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::SetPosition </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacebase__engine.html#ac9c792a90192659b9977cacd1bfe36a7">Vector2</a> &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_aa98ff31750ed05c40cb23eca3d8dc056_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_aa98ff31750ed05c40cb23eca3d8dc056_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_aa98ff31750ed05c40cb23eca3d8dc056_icgraph" id="aclassbase__engine_1_1_actor_aa98ff31750ed05c40cb23eca3d8dc056_icgraph">
+<area shape="rect" title=" " alt="" coords="392,5,527,47"/>
+<area shape="rect" href="classbase__engine_1_1_game.html#a61e43e90378bc137fb74ba342e54c926" title=" " alt="" coords="197,5,344,47"/>
+<area shape="rect" href="class_c_game_app.html#a7a589541fb7a912332a9ae73354d1824" title="アプリケーションの初期化" alt="" coords="5,13,149,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="accc52afe84ca2033ec4f87c95777136f" name="accc52afe84ca2033ec4f87c95777136f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accc52afe84ca2033ec4f87c95777136f">&#9670;&nbsp;</a></span>SetRotation()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::SetRotation </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>rotation</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a139aff5a93815d77d403120e9f14a217" name="a139aff5a93815d77d403120e9f14a217"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a139aff5a93815d77d403120e9f14a217">&#9670;&nbsp;</a></span>SetScale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::SetScale </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>scale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a139aff5a93815d77d403120e9f14a217_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a139aff5a93815d77d403120e9f14a217_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a139aff5a93815d77d403120e9f14a217_icgraph" id="aclassbase__engine_1_1_actor_a139aff5a93815d77d403120e9f14a217_icgraph">
+<area shape="rect" title=" " alt="" coords="392,5,527,47"/>
+<area shape="rect" href="classbase__engine_1_1_game.html#a61e43e90378bc137fb74ba342e54c926" title=" " alt="" coords="197,5,344,47"/>
+<area shape="rect" href="class_c_game_app.html#a7a589541fb7a912332a9ae73354d1824" title="アプリケーションの初期化" alt="" coords="5,13,149,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a610db1ed151789a1045e26c0f38d7197" name="a610db1ed151789a1045e26c0f38d7197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a610db1ed151789a1045e26c0f38d7197">&#9670;&nbsp;</a></span>SetState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::SetState </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8981816936be39e6ed54acd4be1ea98d" name="a8981816936be39e6ed54acd4be1ea98d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8981816936be39e6ed54acd4be1ea98d">&#9670;&nbsp;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Actor::Start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_player_actor.html#a0d46c2bcb5e46e189e4219f3f8dc047b">PlayerActor</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d_icgraph" id="aclassbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,323,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#a29bb894f051d1fadee36bd58723438fa" title=" " alt="" coords="5,5,140,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a29bb894f051d1fadee36bd58723438fa" name="a29bb894f051d1fadee36bd58723438fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29bb894f051d1fadee36bd58723438fa">&#9670;&nbsp;</a></span>StartActor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::StartActor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa_cgraph" id="aclassbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,140,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#a8981816936be39e6ed54acd4be1ea98d" title=" " alt="" coords="188,5,323,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="abc4b7ddbf893bf78f4e273c5d6b18d8f" name="abc4b7ddbf893bf78f4e273c5d6b18d8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc4b7ddbf893bf78f4e273c5d6b18d8f">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void base_engine::Actor::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classbase__engine_1_1_input_actor.html#a9dce7b0a0cf9f0f949e3e235a05f7d53">base_engine::InputActor</a>, <a class="el" href="class_player_actor.html#a485ad411999ee45778e68115b140c976">PlayerActor</a>で再実装されています。</p>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f_icgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f_icgraph" id="aclassbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f_icgraph">
+<area shape="rect" title=" " alt="" coords="188,5,323,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#ae0e1cc39806af94b93199ce9352e3ed3" title=" " alt="" coords="5,5,140,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0e1cc39806af94b93199ce9352e3ed3" name="ae0e1cc39806af94b93199ce9352e3ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0e1cc39806af94b93199ce9352e3ed3">&#9670;&nbsp;</a></span>UpdateActor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::Actor::UpdateActor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3_cgraph.png" border="0" usemap="#aclassbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3_cgraph" alt=""/></div>
+<map name="aclassbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3_cgraph" id="aclassbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,39,140,80"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#a6509d1484921be2f77ae30c4f1d53f25" title=" " alt="" coords="188,5,323,47"/>
+<area shape="rect" href="classbase__engine_1_1_actor.html#abc4b7ddbf893bf78f4e273c5d6b18d8f" title=" " alt="" coords="188,71,323,112"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="afb97bc552e7f9cdc8ce84fed5e958474" name="afb97bc552e7f9cdc8ce84fed5e958474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb97bc552e7f9cdc8ce84fed5e958474">&#9670;&nbsp;</a></span>name_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string base_engine::Actor::name_ = &quot;Actor&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0fd30a0d893c87f08c54e940065b381c" name="a0fd30a0d893c87f08c54e940065b381c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fd30a0d893c87f08c54e940065b381c">&#9670;&nbsp;</a></span>position_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacebase__engine.html#ac9c792a90192659b9977cacd1bfe36a7">Vector2</a> base_engine::Actor::position_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9af4f2144d06f51324f676c205381c3f" name="a9af4f2144d06f51324f676c205381c3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9af4f2144d06f51324f676c205381c3f">&#9670;&nbsp;</a></span>rotation_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float base_engine::Actor::rotation_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec2557a98dffd21d51259e4db46865c5" name="aec2557a98dffd21d51259e4db46865c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec2557a98dffd21d51259e4db46865c5">&#9670;&nbsp;</a></span>scale_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float base_engine::Actor::scale_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a576214108a2fc391c9f69e14656495c0" name="a576214108a2fc391c9f69e14656495c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576214108a2fc391c9f69e14656495c0">&#9670;&nbsp;</a></span>state_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classbase__engine_1_1_actor.html#a5d6d2362f5f0335c9c1a3610af3fcac5">State</a> base_engine::Actor::state_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>Project/<a class="el" href="_actor_8h_source.html">Actor.h</a></li>
+<li>Project/<a class="el" href="_actor_8cpp.html">Actor.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.4
+</small></address>
+</body>
+</html>

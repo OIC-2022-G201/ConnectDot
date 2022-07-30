@@ -1,0 +1,24 @@
+\hypertarget{_collision_component_8h_source}{}\doxysection{Collision\+Component.\+h}
+\label{_collision_component_8h_source}\index{Project/CollisionComponent.h@{Project/CollisionComponent.h}}
+\mbox{\hyperlink{_collision_component_8h}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_component_8h}{Component.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacebase__engine}{base\_engine}} \{}
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_collision_component}{CollisionComponent}} final : \textcolor{keyword}{public} \mbox{\hyperlink{classbase__engine_1_1_component}{Component}} \{}
+\DoxyCodeLine{7   \textcolor{keyword}{class }\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}}* shape\_;}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9  \textcolor{keyword}{public}:}
+\DoxyCodeLine{10   \mbox{\hyperlink{classbase__engine_1_1_collision_component_a1312ce1352d8b2ac04a805470fd2391f}{CollisionComponent}}(\textcolor{keyword}{class} \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}}* owner, \textcolor{keywordtype}{int} update\_order);}
+\DoxyCodeLine{11   [[nodiscard]] \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}}* \mbox{\hyperlink{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}{GetShape}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{12   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}{SetShape}}(\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}}* shape);}
+\DoxyCodeLine{13   \textcolor{keywordtype}{bool} \mbox{\hyperlink{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}{Collision}}(\mbox{\hyperlink{classbase__engine_1_1_collision_component}{CollisionComponent}}* target);}
+\DoxyCodeLine{14   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}{CollisionSender}}(\mbox{\hyperlink{classbase__engine_1_1_collision_component}{CollisionComponent}}* target);}
+\DoxyCodeLine{15   \mbox{\hyperlink{classbase__engine_1_1_collision_component_a29b1baa19cc2ef2ae90c6b3548125a22}{\string~CollisionComponent}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{16   \textcolor{keywordtype}{void} \mbox{\hyperlink{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}{Update}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{17 \};}
+\DoxyCodeLine{18 \}  \textcolor{comment}{// namespace base\_engine}}
+
+\end{DoxyCode}

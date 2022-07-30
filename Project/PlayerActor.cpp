@@ -1,6 +1,8 @@
 ﻿#include "PlayerActor.h"
 
 #include "InputManager.h"
+#include "PlayerComponent.h"
+#include "Rect.h"
 #include "ShapeRenderComponent.h"
 
 PlayerActor::PlayerActor(base_engine::Game* game)
@@ -9,8 +11,9 @@ PlayerActor::PlayerActor(base_engine::Game* game)
 PlayerActor::~PlayerActor() {}
 void PlayerActor::Start() {
   auto shape = new base_engine::ShapeRenderComponent(this, 110);
-  shape->CreateRect(0, 0, 50, 50);
+  shape->SetShape(std::make_shared<base_engine::Rect>(0,0,50,50));
   shape->SetFillMode(base_engine::FillMode::Yes).SetColor(MOF_COLOR_GREEN);
+  new PlayerComponent(this, 100);
 }
 
 void PlayerActor::SetInput(InputManager* input_manager) {
