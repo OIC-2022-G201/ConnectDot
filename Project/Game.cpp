@@ -7,7 +7,6 @@
 #include "IBaseEngineTexture.h"
 #include "InputComponent.h"
 #include "InputManager.h"
-#include "Mof.h"
 #include "PlayerActor.h"
 #include "RenderComponent.h"
 #include "ShapeRenderComponent.h"
@@ -25,6 +24,9 @@ bool Game::Initialize() {
   a->SetPosition({3, 3});
   a->SetScale(1.0f);
   BASE_ENGINE(Texture)->Load("ice.png");
+  BASE_ENGINE(Texture)->Load("Player.png");
+  //Mof::CTexture texture;
+  //texture.Load("ice.png");
   auto sc = new SpriteComponent(a, 100);
   sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
   auto collision = new CollisionComponent(a, 100);
@@ -46,7 +48,9 @@ bool Game::Initialize() {
     collision = new CollisionComponent(player, 100);
     const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
     collision->SetShape(shape_player);
-  
+
+    auto playerSprite = new SpriteComponent(player, 100);
+    playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
     b_collision = BASE_ENGINE(Collider);
   return true;
 }
@@ -127,8 +131,8 @@ void Game::Render() const {
   for (const auto sprite : sprites_) {
     sprite->Draw();
   }
-  CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
-                                   CUtilities::GetFPS());
+  Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
+                                   Mof::CUtilities::GetFPS());
 }
 
 }  // namespace base_engine

@@ -33,6 +33,6 @@ void SpriteComponent::Draw() {
   sprite_.m_Position = pos;
   //sprite_.Render();
   //sprite_.UpdateActor();
-  Mof::CGraphicsUtilities::RenderTexture(p.x, p.x, color_, texture_);
+  Mof::CGraphicsUtilities::RenderTexture(p.x, p.y, color_, texture_);
 }
 }  // namespace base_engine

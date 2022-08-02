@@ -25,7 +25,6 @@ void PlayerActor::Input() {
 
   move_vector_.x = horizontal * 3;
   position_ = input_manager_->MousePosition();
-
 }
 
 void PlayerActor::Update() {}
