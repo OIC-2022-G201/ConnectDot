@@ -14,11 +14,20 @@ class Actor {
   virtual ~Actor();
 
   void StartActor();
+  /**
+   * \brief Actorを継承した各クラスが登録された後に呼び出される
+   */
   virtual void Start() {}
   void ProcessInput();
+  /**
+   * \brief Update前に毎フレーム呼び出される
+   */
   virtual void Input() {}
 
   void UpdateActor();
+  /**
+   * \brief 毎フレーム呼び出される
+   */
   virtual void Update() {}
 
   template <class T>
@@ -44,7 +53,7 @@ class Actor {
   [[nodiscard]] float GetScale() const { return scale_; }
   void SetScale(const float scale) { scale_ = scale; }
 
-  class Game* GetGame() const {
+  [[nodiscard]] Game* GetGame() const {
     return game;
   }
 
@@ -54,7 +63,7 @@ class Actor {
   Actor& SetName(const std::string_view name);
 
   void SetTag(std::string_view tag);
-  std::string_view GetTag() const;
+  [[nodiscard]] std::string_view GetTag() const;
 
  protected:
   std::string name_ = "Actor";

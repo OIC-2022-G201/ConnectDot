@@ -1,5 +1,7 @@
 ﻿#include "PlayerActor.h"
 
+#include <Utilities/InputUtilities.h>
+
 #include "InputManager.h"
 #include "PlayerComponent.h"
 #include "Rect.h"
@@ -21,10 +23,11 @@ void PlayerActor::SetInput(InputManager* input_manager) {
 }
 
 void PlayerActor::Input() {
-  float horizontal = input_manager_->MoveHorizontal();
+    const float horizontal = input_manager_->MoveHorizontal();
 
   move_vector_.x = horizontal * 3;
-  position_ = input_manager_->MousePosition();
 }
-
-void PlayerActor::Update() {}
+void PlayerActor::Update()
+{
+    position_ += move_vector_;
+}
