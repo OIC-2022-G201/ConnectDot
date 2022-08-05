@@ -109,6 +109,12 @@
     <Filter Include="Constexpr\math">
       <UniqueIdentifier>{8ebd35c1-5c94-4baa-93c6-89af038d2595}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StateMachine">
+      <UniqueIdentifier>{f45f9f4d-389b-43c3-af3d-a842d03c9cd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\LivingEntity\Player\State">
+      <UniqueIdentifier>{1600c90c-92ee-48ac-8808-9765bda35a89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -203,6 +209,12 @@
     </ClCompile>
     <ClCompile Include="PlayerComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Idle.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Jump.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -316,6 +328,15 @@
     </ClInclude>
     <ClInclude Include="Pow.h">
       <Filter>Constexpr\math</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Idle.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Jump.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
