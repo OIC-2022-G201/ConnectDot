@@ -3,6 +3,9 @@
 #include "Actor.h"
 class PlayerActor final : public base_engine::Actor {
   Mof::Vector2 move_vector_;
+  bool IsJumpStart = false;
+  bool JumpFlg     = false;
+  int  JumpMode = 1;
  public:
   explicit PlayerActor(base_engine::Game* game);
 
