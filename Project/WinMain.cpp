@@ -9,6 +9,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLi
 	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 	Mof::LPFramework pFrame = new Mof::CDX11GameFramework(); 
 	Mof::WINDOWSGAMEFRAMEWORKINITIALIZEINFO Info;
+        Info.WindowCreateInfo.Height = 1080;
+        Info.WindowCreateInfo.Width = 1920;
 	Info.pApplication = new CGameApp();
 	pFrame->Initialize(&Info);
 	pFrame->Run();

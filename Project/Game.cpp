@@ -21,7 +21,7 @@ bool Game::Initialize() {
   auto input = new InputManager(inputActor);
 
   Actor* a = new Actor(this);
-  a->SetPosition({3, 3});
+  a->SetPosition({0, 0});
   a->SetScale(1.0f);
   BASE_ENGINE(Texture)->Load("ice.png");
   BASE_ENGINE(Texture)->Load("Player.png");
@@ -44,10 +44,13 @@ bool Game::Initialize() {
   */
   auto player = new PlayerActor(this);
   player->SetInput(input);
-  auto collision = new CollisionComponent(player, 100);
-  const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
+
+  auto collision = new ShapeRenderComponent(a, 100);
+  const auto shape_player = std::make_shared<Rect>(0, 1080-230, 1920, 1081);
   collision->SetShape(shape_player);
 
+  collision = new ShapeRenderComponent(a, 100);
+  collision->SetShape(std::make_shared<Rect>(0, 1080 - 30, 1920, 1081));
   auto playerSprite = new SpriteComponent(player, 100);
   playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
   b_collision = BASE_ENGINE(Collider);
