@@ -11,9 +11,6 @@ PlayerActor::PlayerActor(base_engine::Game* game)
 
 PlayerActor::~PlayerActor() {}
 void PlayerActor::Start() {
-  auto shape = new base_engine::ShapeRenderComponent(this, 110);
-  shape->SetShape(std::make_shared<base_engine::Rect>(0,0,50,50));
-  shape->SetFillMode(base_engine::FillMode::Yes).SetColor(MOF_COLOR_GREEN);
   new PlayerComponent(this, 100);
 }
 
@@ -43,6 +40,7 @@ void PlayerActor::Update() {
         {
             JumpFlg = true;
             move_vector_.y = -10;
+            return;
         }
 
         move_vector_.y += 0.3f;
@@ -56,8 +54,9 @@ void PlayerActor::Update() {
     {
         if (IsJumpStart && !JumpFlg)
         {
-            JumpFlg = true;
-            move_vector_.y = -15;
+          JumpFlg = true;
+          move_vector_.y = -15;
+          return;
         }
 
         move_vector_.y += 0.5f;

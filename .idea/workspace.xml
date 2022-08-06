@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="93f04e49-a997-4544-8552-465d001d9446" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Sample.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Sample.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/2_d_shapes_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/2_d_shapes_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/2_d_shapes_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/2_d_shapes_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_actor_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_actor_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_actor_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_actor_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_actor_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_actor_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_actor_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_actor_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_actor_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_actor_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_actor_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_actor_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_adapter_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_adapter_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_adapter_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_adapter_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_collision_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_collision_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_collision_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_collision_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_collision_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_collision_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_collision_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_collision_8cpp__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_collision_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_collision_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_collision_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_collision_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_core_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_core_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_core_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_core_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_core_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_core_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_core_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_core_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_core_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_core_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_empty_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_empty_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_base_engine_empty_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_base_engine_empty_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_beacon_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_beacon_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_beacon_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_beacon_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_beacon_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_beacon_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_circle_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_circle_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_circle_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_circle_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_circle_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_circle_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8cpp__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_collision_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_collision_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_component_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_component_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_component_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_component_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_component_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_component_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_engine_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_engine_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_engine_component_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_engine_component_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_engine_component_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_engine_component_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_engine_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_engine_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8cpp__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_game_app_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_game_app_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_geometry2_d_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_geometry2_d_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_geometry2_d_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_geometry2_d_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_geometry2_d_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_geometry2_d_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_geometry2_d_8ipp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_geometry2_d_8ipp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_collider_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_collider_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_collider_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_collider_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_collider_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_collider_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_collider_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_collider_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_collider_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_collider_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_collider_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_collider_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_empty_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_empty_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_empty_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_empty_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_empty_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_empty_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_render_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_render_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_render_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_render_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_render_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_render_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_texture_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_texture_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_texture_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_texture_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_base_engine_texture_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_base_engine_texture_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_receivable_power_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_receivable_power_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_receivable_power_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_receivable_power_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_sendable_power_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_sendable_power_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_sendable_power_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_sendable_power_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_shape_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_shape_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_shape_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_shape_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_shape_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_shape_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_shape_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_shape_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_shape_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_shape_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_i_shape_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_i_shape_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_actor_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_actor_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_actor_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_actor_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_actor_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_actor_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_manager_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_manager_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_manager_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_manager_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_input_manager_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_input_manager_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_main_app_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_main_app_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_main_app_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_main_app_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_main_app_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_main_app_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_actor_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_actor_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_actor_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_actor_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_actor_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_actor_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_actor_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_actor_8cpp__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_actor_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_actor_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_actor_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_actor_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_component_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_component_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_component_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_component_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_component_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_component_8cpp__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_player_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_player_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_point_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_point_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_point_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_point_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_point_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_point_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_rect_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_rect_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_rect_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_rect_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_rect_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_rect_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_rect_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_rect_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_rect_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_rect_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_rect_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_rect_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_render_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_render_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_render_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_render_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_render_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_render_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_render_mof_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_render_mof_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_render_mof_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_render_mof_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_render_mof_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_render_mof_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_shape_render_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_shape_render_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_shape_render_component_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_shape_render_component_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_shape_render_component_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_shape_render_component_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_shape_render_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_shape_render_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_shape_render_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_shape_render_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_sprite_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_sprite_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_sprite_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_sprite_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_sprite_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_sprite_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_sprite_component_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_sprite_component_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_sprite_component_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_sprite_component_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_sprite_component_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_sprite_component_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_texture_mof_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_texture_mof_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_texture_mof_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_texture_mof_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_texture_mof_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_texture_mof_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_vector_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_vector_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_vector_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_vector_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_vector_8h__dep__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/_vector_8h__dep__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_vector_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/_vector_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_vector_8h__dep__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/_vector_8h__dep__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_vector_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_vector_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_win_main_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_win_main_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_yes_no_8h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_yes_no_8h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/_yes_no_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/_yes_no_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/annotated.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/annotated.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_beacon-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_beacon-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_beacon.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_beacon.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_c_game_app-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_c_game_app-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_c_game_app.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_c_game_app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_i_receivable_power-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_i_receivable_power-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_i_receivable_power.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_i_receivable_power.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_i_sendable_power-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_i_sendable_power-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_i_sendable_power.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_i_sendable_power.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_input_manager-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_input_manager-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_input_manager.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_input_manager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_main_app-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_main_app-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_main_app.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_main_app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_actor-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_actor-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_actor.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_actor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_component__coll__graph.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_component__coll__graph.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_component__coll__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_component__coll__graph.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_component__inherit__graph.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_component__inherit__graph.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_player_component__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_player_component__inherit__graph.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_sprite-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_sprite-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/class_sprite.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/class_sprite.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_actor-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_actor-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_actor.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_actor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_collision-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_collision-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_collision.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_collision.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_core-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_core-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_core.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_core.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_empty-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_empty-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_empty.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_base_engine_empty.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_circle-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_circle-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_circle.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_circle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_collision_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_collision_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_collision_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_collision_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_component__inherit__graph.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_component__inherit__graph.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_component__inherit__graph.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_component__inherit__graph.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_game-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_game-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_game.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_game.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_collider-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_collider-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_collider.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_collider.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_empty-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_empty-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_empty.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_empty.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_render-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_render-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_render.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_render.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_texture-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_texture-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_texture.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_base_engine_texture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_shape-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_shape-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_i_shape.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_i_shape.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_input_actor-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_input_actor-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_input_actor.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_input_actor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_input_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_input_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_input_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_input_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_point-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_point-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_point.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_point.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_rect-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_rect-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_rect.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_rect.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_render_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_render_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_render_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_render_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_render_mof-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_render_mof-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_render_mof.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_render_mof.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_shape_render_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_shape_render_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_shape_render_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_shape_render_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_sprite_component-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_sprite_component-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_sprite_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_sprite_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_texture_mof-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_texture_mof-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classbase__engine_1_1_texture_mof.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classbase__engine_1_1_texture_mof.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classes.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classes.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/dir_ffd1f789ec7bd0a45fc6ad92579c5070.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/dir_ffd1f789ec7bd0a45fc6ad92579c5070.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_b.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_b.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_c.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_c.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_d.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_e.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_e.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_enum.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_enum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_eval.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_eval.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_g.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_g.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_h.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_h.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_i.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_i.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_j.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_j.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_k.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_k.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_l.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_l.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_m.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_m.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_n.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_n.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_o.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_o.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_p.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_p.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_r.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_r.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_s.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_s.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_t.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_t.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_u.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_u.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_vars.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_vars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_y.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_y.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/functions_~.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/functions_~.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/globals.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/globals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/globals_defs.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/globals_defs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/globals_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/globals_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/globals_vars.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/globals_vars.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/graph_legend.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/graph_legend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/hierarchy.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/hierarchy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_12.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_12.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_12.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_12.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_12.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_13.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_13.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_13.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_13.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_13.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_14.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_14.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_14.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_14.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_14.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_15.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_15.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_15.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_15.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_15.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_3.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_3.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherit_graph_3.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherit_graph_3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/inherits.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/inherits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/menudata.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/menudata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacebase__engine.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacebase__engine.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacebase__engine_1_1_geometry2_d.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacebase__engine_1_1_geometry2_d.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacebase__engine_1_1_geometry2_d_1_1detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacebase__engine_1_1_geometry2_d_1_1detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacebase__engine_1_1detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacebase__engine_1_1detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacemembers.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacemembers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacemembers_func.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacemembers_func.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespacemembers_type.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespacemembers_type.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/namespaces.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/namespaces.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_10.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_10.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_11.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_11.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_12.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_12.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_13.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_13.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_7.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_9.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/all_b.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/all_b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/classes_4.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/classes_4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/files_8.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/files_8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_10.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_10.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_11.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_11.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_12.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_12.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_5.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_6.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_8.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_9.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_a.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_a.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_b.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_b.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_c.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_c.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_d.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_d.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_e.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_e.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/functions_f.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/functions_f.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/searchdata.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/searchdata.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_2.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_3.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_4.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_5.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_6.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_7.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/search/variables_8.js" beforeDir="false" afterPath="$PROJECT_DIR$/html/search/variables_8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/structbase__engine_1_1_texture_handle-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/structbase__engine_1_1_texture_handle-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/structbase__engine_1_1_texture_handle.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/structbase__engine_1_1_texture_handle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/structbase__engine_1_1_yes_no-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/structbase__engine_1_1_yes_no-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/structbase__engine_1_1_yes_no.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/structbase__engine_1_1_yes_no.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/2_d_shapes_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/2_d_shapes_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_actor_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_actor_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_actor_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_actor_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_actor_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_actor_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_actor_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_actor_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_actor_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_actor_8h_source.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_collision_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_collision_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_collision_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_collision_8cpp__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_collision_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_collision_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_core_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_core_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_core_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_core_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_core_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_core_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_base_engine_empty_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_base_engine_empty_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_beacon_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_beacon_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_beacon_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_beacon_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_circle_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_circle_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_circle_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_circle_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8cpp__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8h__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8h__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8h__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8h__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_collision_component_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_collision_component_8h_source.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_component_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_component_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_component_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_component_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_engine_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_engine_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_engine_component_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_engine_component_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_8cpp__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_app_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_app_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_app_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_app_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_app_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_app_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_game_app_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_game_app_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_geometry2_d_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_geometry2_d_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_geometry2_d_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_geometry2_d_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_geometry2_d_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_geometry2_d_8h_source.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_geometry2_d_8ipp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_geometry2_d_8ipp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_collider_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_collider_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_collider_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_collider_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_collider_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_collider_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_collider_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_collider_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_empty_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_empty_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_empty_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_empty_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_render_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_render_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_render_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_render_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_texture_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_texture_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_base_engine_texture_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_base_engine_texture_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_receivable_power_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_receivable_power_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_sendable_power_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_sendable_power_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_shape_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_shape_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_shape_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_shape_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_shape_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_shape_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_i_shape_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_i_shape_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_actor_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_actor_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_actor_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_actor_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_manager_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_manager_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_manager_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_manager_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_input_manager_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_input_manager_8h_source.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_main_app_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_main_app_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_main_app_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_main_app_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_actor_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_actor_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_actor_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_actor_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_actor_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_actor_8cpp__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_actor_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_actor_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_component_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_component_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_component_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_component_8cpp__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_player_component_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_player_component_8h_source.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_point_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_point_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_point_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_point_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_rect_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_rect_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_rect_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_rect_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_rect_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_rect_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_rect_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_rect_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_render_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_render_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_render_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_render_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_render_mof_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_render_mof_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_render_mof_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_render_mof_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_shape_render_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_shape_render_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_shape_render_component_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_shape_render_component_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_shape_render_component_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_shape_render_component_8cpp__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_shape_render_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_shape_render_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_shape_render_component_8h_source.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_shape_render_component_8h_source.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_sprite_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_sprite_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_sprite_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_sprite_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_sprite_component_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_sprite_component_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_sprite_component_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_sprite_component_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_texture_mof_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_texture_mof_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_texture_mof_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_texture_mof_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_vector_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_vector_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_vector_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_vector_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_vector_8h__dep__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_vector_8h__dep__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_vector_8h__dep__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_vector_8h__dep__incl.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_win_main_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_win_main_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/_yes_no_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/_yes_no_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/annotated.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/annotated.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_beacon.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_beacon.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_c_game_app.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_c_game_app.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_i_receivable_power.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_i_receivable_power.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_i_sendable_power.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_i_sendable_power.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_input_manager.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_input_manager.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_main_app.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_main_app.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_player_actor.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_player_actor.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_player_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_player_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_player_component__coll__graph.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_player_component__coll__graph.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_player_component__coll__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_player_component__coll__graph.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_player_component__inherit__graph.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_player_component__inherit__graph.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/class_player_component__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/class_player_component__inherit__graph.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_actor.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_actor.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_base_engine_collision.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_base_engine_collision.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_base_engine_empty.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_base_engine_empty.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_circle.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_circle.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_collision_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_collision_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_component__inherit__graph.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_component__inherit__graph.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_component__inherit__graph.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_component__inherit__graph.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_game.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_game.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_collider.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_collider.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_empty.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_empty.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_render.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_render.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_texture.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_base_engine_texture.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_shape.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_i_shape.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_input_actor.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_input_actor.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_input_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_input_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_point.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_point.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_rect.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_rect.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_render_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_render_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_render_mof.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_render_mof.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_shape_render_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_shape_render_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_sprite_component.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_sprite_component.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classbase__engine_1_1_texture_mof.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classbase__engine_1_1_texture_mof.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/dir_ffd1f789ec7bd0a45fc6ad92579c5070.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/dir_ffd1f789ec7bd0a45fc6ad92579c5070.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/files.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/files.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/hierarchy.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/hierarchy.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/namespacebase__engine.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/namespacebase__engine.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/namespacebase__engine_1_1_geometry2_d.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/namespacebase__engine_1_1_geometry2_d.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/namespacebase__engine_1_1_geometry2_d_1_1detail.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/namespacebase__engine_1_1_geometry2_d_1_1detail.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/namespaces.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/namespaces.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/refman.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/refman.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/structbase__engine_1_1_yes_no.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/structbase__engine_1_1_yes_no.tex" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2022" />
+    <option name="minorVersion" value="2" />
+  </component>
+  <component name="ProjectId" id="2Cx0SJ4BSZAmWN12YWrBbVyNl5S" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/SchoolProgram/CONECTDOT-CMake/CMakeLists.txt&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C/C++&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CONECTDOT_SAMPLE02" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CONECTDOT_SAMPLE02" TARGET_NAME="CONECTDOT_SAMPLE02" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CONECTDOT_SAMPLE02" RUN_TARGET_NAME="CONECTDOT_SAMPLE02">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="93f04e49-a997-4544-8552-465d001d9446" name="Changes" comment="" />
+      <created>1659728926780</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659728926780</updated>
+      <workItem from="1659728928725" duration="511000" />
+      <workItem from="1659729570968" duration="20000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

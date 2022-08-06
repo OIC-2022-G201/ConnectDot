@@ -27,6 +27,7 @@ bool Game::Initialize() {
   BASE_ENGINE(Texture)->Load("Player.png");
   // Mof::CTexture texture;
   // texture.Load("ice.png");
+  /*
   auto sc = new SpriteComponent(a, 100);
   sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
   auto collision = new CollisionComponent(a, 100);
@@ -40,10 +41,10 @@ bool Game::Initialize() {
   a->SetScale(1.0f);
   sc = new SpriteComponent(a, 80);
   sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
-
+  */
   auto player = new PlayerActor(this);
   player->SetInput(input);
-  collision = new CollisionComponent(player, 100);
+  auto collision = new CollisionComponent(player, 100);
   const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
   collision->SetShape(shape_player);
 
