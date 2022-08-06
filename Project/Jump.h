@@ -5,7 +5,10 @@ class Jump
  public:
   Jump() {}
   void Start() {}
-  void Update() {}
+  void Update() {
+    int n = 4;
+    
+  }
   void ProcessInput() {}
   void End() {}
   template <typename Machine>

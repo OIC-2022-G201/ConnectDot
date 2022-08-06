@@ -6,8 +6,7 @@
 
 
 
-base\+\_\+engine\+::Collision\+Component の継承関係図
-\nopagebreak
+base\+\_\+engine\+::Collision\+Component の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ base\+\_\+engine\+::Collision\+Component の継承関係図
 \end{figure}
 
 
-base\+\_\+engine\+::Collision\+Component 連携図
-\nopagebreak
+base\+\_\+engine\+::Collision\+Component 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -31,15 +29,27 @@ base\+\_\+engine\+::Collision\+Component 連携図
 \item 
 \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$ \mbox{\hyperlink{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}{Get\+Shape}} () const
 \item 
-void \mbox{\hyperlink{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}{Set\+Shape}} (\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$shape)
+void \mbox{\hyperlink{classbase__engine_1_1_collision_component_a916bc04083e1f78f4f157119f765b54c}{Set\+Shape}} (const std\+::shared\+\_\+ptr$<$ class \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $>$ \&shape)
 \item 
-bool \mbox{\hyperlink{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}{Collision}} (\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$target)
+bool \mbox{\hyperlink{classbase__engine_1_1_collision_component_a86e8462125826195e8b48048a8f77d58}{Collision}} (\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$target) const
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_collision_component_a16da0c4ddc4181b43551243518810406}{Set\+Target\+Filter}} (const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \&layer)
+\item 
+const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \& \mbox{\hyperlink{classbase__engine_1_1_collision_component_a8de1bed8a49c80a851d149f8811ac3b5}{Get\+Target\+Filter}} () const
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_collision_component_a22611b84d636dbfbbad571eb2f9a9846}{Set\+Object\+Filter}} (const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \&layer)
+\item 
+const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \& \mbox{\hyperlink{classbase__engine_1_1_collision_component_ad41de1c8ce805968b646846174c49150}{Get\+Object\+Filter}} () const
+\item 
+bool \mbox{\hyperlink{classbase__engine_1_1_collision_component_a278b838577a45387a461623944d0332d}{Is\+Match}} (\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$target) const
 \item 
 void \mbox{\hyperlink{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}{Collision\+Sender}} (\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$target)
 \item 
 \mbox{\hyperlink{classbase__engine_1_1_collision_component_a29b1baa19cc2ef2ae90c6b3548125a22}{$\sim$\+Collision\+Component}} () override
 \item 
 void \mbox{\hyperlink{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}{Update}} () override
+\item 
+\mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$ \mbox{\hyperlink{classbase__engine_1_1_collision_component_a32cf1f5158968f99fcd65fb86c497d67}{Get\+Actor}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{その他の継承メンバ}
 
@@ -60,53 +70,65 @@ void \mbox{\hyperlink{classbase__engine_1_1_collision_component_afe023ea065028ef
 
 
 \doxysubsection{関数詳解}
-\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}\label{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97}} 
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a86e8462125826195e8b48048a8f77d58}\label{classbase__engine_1_1_collision_component_a86e8462125826195e8b48048a8f77d58}} 
 \index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!Collision@{Collision}}
 \index{Collision@{Collision}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
 \doxysubsubsection{\texorpdfstring{Collision()}{Collision()}}
-{\footnotesize\ttfamily bool base\+\_\+engine\+::\+Collision\+Component\+::\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{target }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool base\+\_\+engine\+::\+Collision\+Component\+::\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{target }\end{DoxyParamCaption}) const}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_a06a222e0f8be348b82da960e2eae7b97_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}\label{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680}} 
 \index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!CollisionSender@{CollisionSender}}
 \index{CollisionSender@{CollisionSender}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
 \doxysubsubsection{\texorpdfstring{CollisionSender()}{CollisionSender()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Collision\+Sender (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{target }\end{DoxyParamCaption})}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_a08516482651efa1933cb007d5df2d680_cgraph}
-\end{center}
-\end{figure}
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a32cf1f5158968f99fcd65fb86c497d67}\label{classbase__engine_1_1_collision_component_a32cf1f5158968f99fcd65fb86c497d67}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!GetActor@{GetActor}}
+\index{GetActor@{GetActor}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{GetActor()}{GetActor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} $\ast$ base\+\_\+engine\+::\+Collision\+Component\+::\+Get\+Actor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_ad41de1c8ce805968b646846174c49150}\label{classbase__engine_1_1_collision_component_ad41de1c8ce805968b646846174c49150}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!GetObjectFilter@{GetObjectFilter}}
+\index{GetObjectFilter@{GetObjectFilter}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{GetObjectFilter()}{GetObjectFilter()}}
+{\footnotesize\ttfamily const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \& base\+\_\+engine\+::\+Collision\+Component\+::\+Get\+Object\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
 \mbox{\Hypertarget{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}\label{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc}} 
 \index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!GetShape@{GetShape}}
 \index{GetShape@{GetShape}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
 \doxysubsubsection{\texorpdfstring{GetShape()}{GetShape()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$ base\+\_\+engine\+::\+Collision\+Component\+::\+Get\+Shape (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_a20dc917770d96e89f9473df63f4d8abc_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}\label{classbase__engine_1_1_collision_component_add00aa883c98a107cff553f1078d3fd1}} 
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a8de1bed8a49c80a851d149f8811ac3b5}\label{classbase__engine_1_1_collision_component_a8de1bed8a49c80a851d149f8811ac3b5}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!GetTargetFilter@{GetTargetFilter}}
+\index{GetTargetFilter@{GetTargetFilter}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{GetTargetFilter()}{GetTargetFilter()}}
+{\footnotesize\ttfamily const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \& base\+\_\+engine\+::\+Collision\+Component\+::\+Get\+Target\+Filter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a278b838577a45387a461623944d0332d}\label{classbase__engine_1_1_collision_component_a278b838577a45387a461623944d0332d}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!IsMatch@{IsMatch}}
+\index{IsMatch@{IsMatch}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{IsMatch()}{IsMatch()}}
+{\footnotesize\ttfamily bool base\+\_\+engine\+::\+Collision\+Component\+::\+Is\+Match (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_collision_component}{Collision\+Component}} $\ast$}]{target }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a22611b84d636dbfbbad571eb2f9a9846}\label{classbase__engine_1_1_collision_component_a22611b84d636dbfbbad571eb2f9a9846}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!SetObjectFilter@{SetObjectFilter}}
+\index{SetObjectFilter@{SetObjectFilter}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{SetObjectFilter()}{SetObjectFilter()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Set\+Object\+Filter (\begin{DoxyParamCaption}\item[{const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \&}]{layer }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a916bc04083e1f78f4f157119f765b54c}\label{classbase__engine_1_1_collision_component_a916bc04083e1f78f4f157119f765b54c}} 
 \index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!SetShape@{SetShape}}
 \index{SetShape@{SetShape}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
 \doxysubsubsection{\texorpdfstring{SetShape()}{SetShape()}}
-{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Set\+Shape (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $\ast$}]{shape }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Set\+Shape (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ class \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $>$ \&}]{shape }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_collision_component_a16da0c4ddc4181b43551243518810406}\label{classbase__engine_1_1_collision_component_a16da0c4ddc4181b43551243518810406}} 
+\index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!SetTargetFilter@{SetTargetFilter}}
+\index{SetTargetFilter@{SetTargetFilter}!base\_engine::CollisionComponent@{base\_engine::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{SetTargetFilter()}{SetTargetFilter()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Collision\+Component\+::\+Set\+Target\+Filter (\begin{DoxyParamCaption}\item[{const std\+::bitset$<$ \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{k\+Collision\+Filter\+Size}} $>$ \&}]{layer }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}\label{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8}} 
 \index{base\_engine::CollisionComponent@{base\_engine::CollisionComponent}!Update@{Update}}
@@ -118,14 +140,6 @@ void \mbox{\hyperlink{classbase__engine_1_1_collision_component_afe023ea065028ef
 
 \mbox{\hyperlink{classbase__engine_1_1_component_a4b3398789031ade978ea135d32e8dc44}{base\+\_\+engine\+::\+Component}}を再実装しています。
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_collision_component_afe023ea065028ef2e7aa3968792a52a8_cgraph}
-\end{center}
-\end{figure}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

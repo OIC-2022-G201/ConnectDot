@@ -9,5 +9,6 @@ var searchData=
   ['intersectcircletorect_6',['IntersectCircleToRect',['../namespacebase__engine_1_1_geometry2_d_1_1detail.html#a8c39608e28962b9794b49f33076a05a2',1,'base_engine::Geometry2D::detail']]],
   ['isactive_7',['IsActive',['../classbase__engine_1_1_base_engine_core.html#a7d856acb40aeebd372cca72b02457a7c',1,'base_engine::BaseEngineCore']]],
   ['iskeyhold_8',['IsKeyHold',['../_input_manager_8cpp.html#ac29d5e5a5686f3e56b1723220eefb29d',1,'InputManager.cpp']]],
-  ['iskeypush_9',['IsKeyPush',['../_input_manager_8cpp.html#a90b9c360f04351719da86c48b6dd00bb',1,'InputManager.cpp']]]
+  ['iskeypush_9',['IsKeyPush',['../_input_manager_8cpp.html#a90b9c360f04351719da86c48b6dd00bb',1,'InputManager.cpp']]],
+  ['ismatch_10',['IsMatch',['../classbase__engine_1_1_collision_component.html#a278b838577a45387a461623944d0332d',1,'base_engine::CollisionComponent']]]
 ];

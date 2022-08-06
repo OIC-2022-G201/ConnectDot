@@ -4,6 +4,7 @@
 #include "Jump.h"
 #include "StateMachine.h"
 
+class InputManager;
 namespace player {
 
 class PlayerComponent final : public base_engine::Component {
@@ -17,5 +18,10 @@ class PlayerComponent final : public base_engine::Component {
   void ProcessInput() override { machine_.ProcessInput(); }
   void Update() override { machine_.Update(); }
   void OnCollision(base_engine::CollisionComponent* collision) override;
+
+    void SetInput(const InputManager* input_manager) { input_manager_ = input_manager;
+    }
+public:
+    const InputManager* input_manager_;
 };
 }  // namespace player

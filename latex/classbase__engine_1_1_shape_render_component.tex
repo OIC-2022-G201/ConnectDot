@@ -6,8 +6,7 @@
 
 
 
-base\+\_\+engine\+::Shape\+Render\+Component の継承関係図
-\nopagebreak
+base\+\_\+engine\+::Shape\+Render\+Component の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ base\+\_\+engine\+::Shape\+Render\+Component の継承関係図
 \end{figure}
 
 
-base\+\_\+engine\+::Shape\+Render\+Component 連携図
-\nopagebreak
+base\+\_\+engine\+::Shape\+Render\+Component 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -33,9 +31,7 @@ base\+\_\+engine\+::Shape\+Render\+Component 連携図
 \item 
 \mbox{\hyperlink{classbase__engine_1_1_shape_render_component}{Shape\+Render\+Component}} \& \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_a2d1a6603bd76eca5cd9cfe354c340a1e}{Set\+Fill\+Mode}} (const \mbox{\hyperlink{namespacebase__engine_aa0919ff72e3b9522baeff0899769edfd}{Fill\+Mode}} mode)
 \item 
-void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_a5c3f56a89029afe098db17def1f4d700}{Create\+Rect}} (float left, float top, float right, float bottom)
-\item 
-void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_aeabd486f96008e927362e003eb18e6e5}{Create\+Rect}} (const Mof\+::\+CRectangle \&rect)
+void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_aa2f6c6da949d495a0bc06050445b5594}{Set\+Shape}} (const std\+::shared\+\_\+ptr$<$ class \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $>$ \&shape)
 \item 
 void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3}{Draw}} () override
 \item 
@@ -58,18 +54,6 @@ void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_a2570f96d797f
 
 
 \doxysubsection{関数詳解}
-\mbox{\Hypertarget{classbase__engine_1_1_shape_render_component_aeabd486f96008e927362e003eb18e6e5}\label{classbase__engine_1_1_shape_render_component_aeabd486f96008e927362e003eb18e6e5}} 
-\index{base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}!CreateRect@{CreateRect}}
-\index{CreateRect@{CreateRect}!base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}}
-\doxysubsubsection{\texorpdfstring{CreateRect()}{CreateRect()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
-{\footnotesize\ttfamily void base\+\_\+engine\+::\+Shape\+Render\+Component\+::\+Create\+Rect (\begin{DoxyParamCaption}\item[{const Mof\+::\+CRectangle \&}]{rect }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{classbase__engine_1_1_shape_render_component_a5c3f56a89029afe098db17def1f4d700}\label{classbase__engine_1_1_shape_render_component_a5c3f56a89029afe098db17def1f4d700}} 
-\index{base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}!CreateRect@{CreateRect}}
-\index{CreateRect@{CreateRect}!base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}}
-\doxysubsubsection{\texorpdfstring{CreateRect()}{CreateRect()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily void base\+\_\+engine\+::\+Shape\+Render\+Component\+::\+Create\+Rect (\begin{DoxyParamCaption}\item[{float}]{left,  }\item[{float}]{top,  }\item[{float}]{right,  }\item[{float}]{bottom }\end{DoxyParamCaption})}
-
 \mbox{\Hypertarget{classbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3}\label{classbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3}} 
 \index{base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}!Draw@{Draw}}
 \index{Draw@{Draw}!base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}}
@@ -80,14 +64,6 @@ void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_a2570f96d797f
 
 \mbox{\hyperlink{classbase__engine_1_1_render_component_a2a4ecfa55b5b585a58f718bf1e84019d}{base\+\_\+engine\+::\+Render\+Component}}を実装しています。
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_shape_render_component_ad4a41ebb8390d6f1f5bc48332bf78176}\label{classbase__engine_1_1_shape_render_component_ad4a41ebb8390d6f1f5bc48332bf78176}} 
 \index{base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}!Draw@{Draw}}
 \index{Draw@{Draw}!base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}}
@@ -117,6 +93,12 @@ void \mbox{\hyperlink{classbase__engine_1_1_shape_render_component_a2570f96d797f
 \index{SetFillMode@{SetFillMode}!base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}}
 \doxysubsubsection{\texorpdfstring{SetFillMode()}{SetFillMode()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_shape_render_component}{Shape\+Render\+Component}} \& base\+\_\+engine\+::\+Shape\+Render\+Component\+::\+Set\+Fill\+Mode (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebase__engine_aa0919ff72e3b9522baeff0899769edfd}{Fill\+Mode}}}]{mode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classbase__engine_1_1_shape_render_component_aa2f6c6da949d495a0bc06050445b5594}\label{classbase__engine_1_1_shape_render_component_aa2f6c6da949d495a0bc06050445b5594}} 
+\index{base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}!SetShape@{SetShape}}
+\index{SetShape@{SetShape}!base\_engine::ShapeRenderComponent@{base\_engine::ShapeRenderComponent}}
+\doxysubsubsection{\texorpdfstring{SetShape()}{SetShape()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Shape\+Render\+Component\+::\+Set\+Shape (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ class \mbox{\hyperlink{classbase__engine_1_1_i_shape}{IShape}} $>$ \&}]{shape }\end{DoxyParamCaption})}
 
 
 

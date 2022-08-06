@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Actor.h"
-
+class InputManager;
 namespace player {
 
 class PlayerActor final : public base_engine::Actor {
@@ -15,10 +15,10 @@ class PlayerActor final : public base_engine::Actor {
   void Input() override;
   void Update() override;
   void Start() override;
-  void SetInput(class InputManager* input_manager);
+  void SetInput(InputManager* input_manager);
 
  private:
-  class InputManager* input_manager_;
+  InputManager* input_manager_;
 
  public:
 };

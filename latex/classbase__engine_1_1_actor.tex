@@ -6,8 +6,7 @@
 
 
 
-base\+\_\+engine\+::Actor の継承関係図
-\nopagebreak
+base\+\_\+engine\+::Actor の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -33,15 +32,15 @@ virtual \mbox{\hyperlink{classbase__engine_1_1_actor_acc7820af3563b08106822a2733
 void \mbox{\hyperlink{classbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa}{Start\+Actor}} ()
 \item 
 virtual void \mbox{\hyperlink{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d}{Start}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Actorを継承した各クラスが登録された後に呼び出される \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc}{Process\+Input}} ()
 \item 
 virtual void \mbox{\hyperlink{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737}{Input}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Update前に毎フレーム呼び出される \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3}{Update\+Actor}} ()
 \item 
 virtual void \mbox{\hyperlink{classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f}{Update}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em 毎フレーム呼び出される \end{DoxyCompactList}\item 
 {\footnotesize template$<$class T $>$ }\\void \mbox{\hyperlink{classbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492}{Send\+Callback\+Message}} (T $\ast$callback)
 \item 
 {\footnotesize template$<$class T , class D $>$ }\\void \mbox{\hyperlink{classbase__engine_1_1_actor_a661d01352eb297c00915534839d68f26}{Send\+Callback\+Message}} (T $\ast$callback, D $\ast$data)
@@ -71,11 +70,17 @@ void \mbox{\hyperlink{classbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22
 std\+::string\+\_\+view \mbox{\hyperlink{classbase__engine_1_1_actor_a93978a1fae202568cbd3ecc20bd2240b}{Get\+Name}} ()
 \item 
 \mbox{\hyperlink{classbase__engine_1_1_actor}{Actor}} \& \mbox{\hyperlink{classbase__engine_1_1_actor_abda6e41ddb2c9a7bb5b8169cfc54b0fa}{Set\+Name}} (const std\+::string\+\_\+view name)
+\item 
+void \mbox{\hyperlink{classbase__engine_1_1_actor_ad087f06fbaee69b106181d9f1ce74c78}{Set\+Tag}} (std\+::string\+\_\+view tag)
+\item 
+std\+::string\+\_\+view \mbox{\hyperlink{classbase__engine_1_1_actor_a46a5080aab08dc66ad03190cf177b74b}{Get\+Tag}} () const
 \end{DoxyCompactItemize}
 \doxysubsection*{限定公開変数類}
 \begin{DoxyCompactItemize}
 \item 
 std\+::string \mbox{\hyperlink{classbase__engine_1_1_actor_afb97bc552e7f9cdc8ce84fed5e958474}{name\+\_\+}} = \char`\"{}Actor\char`\"{}
+\item 
+std\+::string \mbox{\hyperlink{classbase__engine_1_1_actor_a312b89bbe373f40b07fcfc922c65ea8f}{tag\+\_\+}} = \char`\"{}Object\char`\"{}
 \item 
 \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} \mbox{\hyperlink{classbase__engine_1_1_actor_a576214108a2fc391c9f69e14656495c0}{state\+\_\+}}
 \item 
@@ -121,28 +126,12 @@ k\+Dead&\\
 \doxysubsubsection{\texorpdfstring{Actor()}{Actor()}}
 {\footnotesize\ttfamily base\+\_\+engine\+::\+Actor\+::\+Actor (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_game}{Game}} $\ast$}]{game }\end{DoxyParamCaption})}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=327pt]{classbase__engine_1_1_actor_ad730f7831a6abeccd1be0ad109cbbc1e_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846}\label{classbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!````~Actor@{$\sim$Actor}}
 \index{````~Actor@{$\sim$Actor}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{$\sim$Actor()}{~Actor()}}
 {\footnotesize\ttfamily base\+\_\+engine\+::\+Actor\+::$\sim$\+Actor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=327pt]{classbase__engine_1_1_actor_acc7820af3563b08106822a2733ef6846_cgraph}
-\end{center}
-\end{figure}
 
 
 \doxysubsection{関数詳解}
@@ -152,28 +141,12 @@ k\+Dead&\\
 \doxysubsubsection{\texorpdfstring{AddComponent()}{AddComponent()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Add\+Component (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_component}{Component}} $\ast$}]{component }\end{DoxyParamCaption})}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=344pt]{classbase__engine_1_1_actor_a6509d1484921be2f77ae30c4f1d53f25_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810}\label{classbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!GetGame@{GetGame}}
 \index{GetGame@{GetGame}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{GetGame()}{GetGame()}}
 {\footnotesize\ttfamily class \mbox{\hyperlink{classbase__engine_1_1_game}{Game}} $\ast$ base\+\_\+engine\+::\+Actor\+::\+Get\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_ae1028189dcfbf5473f53a5ae2d404810_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a93978a1fae202568cbd3ecc20bd2240b}\label{classbase__engine_1_1_actor_a93978a1fae202568cbd3ecc20bd2240b}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!GetName@{GetName}}
 \index{GetName@{GetName}!base\_engine::Actor@{base\_engine::Actor}}
@@ -186,47 +159,29 @@ k\+Dead&\\
 \doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
 {\footnotesize\ttfamily const \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}} \& base\+\_\+engine\+::\+Actor\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_a3a1380c56129b4b9c396a04fa2c32c10_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8}\label{classbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!GetRotation@{GetRotation}}
 \index{GetRotation@{GetRotation}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{GetRotation()}{GetRotation()}}
 {\footnotesize\ttfamily float base\+\_\+engine\+::\+Actor\+::\+Get\+Rotation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_a1886acd3b1b6d43437bbfbaeba8ee7f8_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43}\label{classbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!GetScale@{GetScale}}
 \index{GetScale@{GetScale}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{GetScale()}{GetScale()}}
 {\footnotesize\ttfamily float base\+\_\+engine\+::\+Actor\+::\+Get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_a994618f30de3b4c0b4e6b4824bbd7f43_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a27f76807f2cc1ca1229d6408b70e1e6f}\label{classbase__engine_1_1_actor_a27f76807f2cc1ca1229d6408b70e1e6f}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!GetState@{GetState}}
 \index{GetState@{GetState}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{GetState()}{GetState()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} base\+\_\+engine\+::\+Actor\+::\+Get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_actor_a46a5080aab08dc66ad03190cf177b74b}\label{classbase__engine_1_1_actor_a46a5080aab08dc66ad03190cf177b74b}} 
+\index{base\_engine::Actor@{base\_engine::Actor}!GetTag@{GetTag}}
+\index{GetTag@{GetTag}!base\_engine::Actor@{base\_engine::Actor}}
+\doxysubsubsection{\texorpdfstring{GetTag()}{GetTag()}}
+{\footnotesize\ttfamily std\+::string\+\_\+view base\+\_\+engine\+::\+Actor\+::\+Get\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
 \mbox{\Hypertarget{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737}\label{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!Input@{Input}}
@@ -236,44 +191,24 @@ k\+Dead&\\
 
 
 
+Update前に毎フレーム呼び出される 
+
+
+
 \mbox{\hyperlink{classbase__engine_1_1_input_actor_a2bae4f40e6642dc15ce7f6ad2e8db226}{base\+\_\+engine\+::\+Input\+Actor}}, \mbox{\hyperlink{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285}{Player\+Actor}}で再実装されています。
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc}\label{classbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!ProcessInput@{ProcessInput}}
 \index{ProcessInput@{ProcessInput}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{ProcessInput()}{ProcessInput()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Process\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classbase__engine_1_1_actor_a3e1cfbe1746fc3fa7db5801705a79bfc_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22}\label{classbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!RemoveComponent@{RemoveComponent}}
 \index{RemoveComponent@{RemoveComponent}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{RemoveComponent()}{RemoveComponent()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Remove\+Component (\begin{DoxyParamCaption}\item[{class \mbox{\hyperlink{classbase__engine_1_1_component}{Component}} $\ast$}]{component }\end{DoxyParamCaption})}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_ab096f559c36c05630d08da77dff22f22_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492}\label{classbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!SendCallbackMessage@{SendCallbackMessage}}
 \index{SendCallbackMessage@{SendCallbackMessage}!base\_engine::Actor@{base\_engine::Actor}}
@@ -281,14 +216,6 @@ k\+Dead&\\
 {\footnotesize\ttfamily template$<$class T $>$ \\
 void base\+\_\+engine\+::\+Actor\+::\+Send\+Callback\+Message (\begin{DoxyParamCaption}\item[{T $\ast$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_a40307e5ab50cdbcfb8f0b58a4215c492_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a661d01352eb297c00915534839d68f26}\label{classbase__engine_1_1_actor_a661d01352eb297c00915534839d68f26}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!SendCallbackMessage@{SendCallbackMessage}}
 \index{SendCallbackMessage@{SendCallbackMessage}!base\_engine::Actor@{base\_engine::Actor}}
@@ -308,14 +235,6 @@ void base\+\_\+engine\+::\+Actor\+::\+Send\+Callback\+Message (\begin{DoxyParamC
 \doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespacebase__engine_ac9c792a90192659b9977cacd1bfe36a7}{Vector2}} \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_aa98ff31750ed05c40cb23eca3d8dc056_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_accc52afe84ca2033ec4f87c95777136f}\label{classbase__engine_1_1_actor_accc52afe84ca2033ec4f87c95777136f}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!SetRotation@{SetRotation}}
 \index{SetRotation@{SetRotation}!base\_engine::Actor@{base\_engine::Actor}}
@@ -328,19 +247,17 @@ void base\+\_\+engine\+::\+Actor\+::\+Send\+Callback\+Message (\begin{DoxyParamC
 \doxysubsubsection{\texorpdfstring{SetScale()}{SetScale()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Set\+Scale (\begin{DoxyParamCaption}\item[{const float}]{scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classbase__engine_1_1_actor_a139aff5a93815d77d403120e9f14a217_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a610db1ed151789a1045e26c0f38d7197}\label{classbase__engine_1_1_actor_a610db1ed151789a1045e26c0f38d7197}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!SetState@{SetState}}
 \index{SetState@{SetState}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{SetState()}{SetState()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Set\+State (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}}}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_actor_ad087f06fbaee69b106181d9f1ce74c78}\label{classbase__engine_1_1_actor_ad087f06fbaee69b106181d9f1ce74c78}} 
+\index{base\_engine::Actor@{base\_engine::Actor}!SetTag@{SetTag}}
+\index{SetTag@{SetTag}!base\_engine::Actor@{base\_engine::Actor}}
+\doxysubsubsection{\texorpdfstring{SetTag()}{SetTag()}}
+{\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Set\+Tag (\begin{DoxyParamCaption}\item[{std\+::string\+\_\+view}]{tag }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d}\label{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!Start@{Start}}
@@ -350,30 +267,18 @@ void base\+\_\+engine\+::\+Actor\+::\+Send\+Callback\+Message (\begin{DoxyParamC
 
 
 
+Actorを継承した各クラスが登録された後に呼び出される 
+
+
+
 \mbox{\hyperlink{class_player_actor_a0d46c2bcb5e46e189e4219f3f8dc047b}{Player\+Actor}}で再実装されています。
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa}\label{classbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!StartActor@{StartActor}}
 \index{StartActor@{StartActor}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{StartActor()}{StartActor()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Start\+Actor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classbase__engine_1_1_actor_a29bb894f051d1fadee36bd58723438fa_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f}\label{classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!Update@{Update}}
 \index{Update@{Update}!base\_engine::Actor@{base\_engine::Actor}}
@@ -382,30 +287,18 @@ void base\+\_\+engine\+::\+Actor\+::\+Send\+Callback\+Message (\begin{DoxyParamC
 
 
 
+毎フレーム呼び出される 
+
+
+
 \mbox{\hyperlink{classbase__engine_1_1_input_actor_a9dce7b0a0cf9f0f949e3e235a05f7d53}{base\+\_\+engine\+::\+Input\+Actor}}, \mbox{\hyperlink{class_player_actor_a485ad411999ee45778e68115b140c976}{Player\+Actor}}で再実装されています。
 
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classbase__engine_1_1_actor_abc4b7ddbf893bf78f4e273c5d6b18d8f_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{classbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3}\label{classbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3}} 
 \index{base\_engine::Actor@{base\_engine::Actor}!UpdateActor@{UpdateActor}}
 \index{UpdateActor@{UpdateActor}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{UpdateActor()}{UpdateActor()}}
 {\footnotesize\ttfamily void base\+\_\+engine\+::\+Actor\+::\+Update\+Actor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=318pt]{classbase__engine_1_1_actor_ae0e1cc39806af94b93199ce9352e3ed3_cgraph}
-\end{center}
-\end{figure}
 
 
 \doxysubsection{メンバ詳解}
@@ -438,6 +331,12 @@ void base\+\_\+engine\+::\+Actor\+::\+Send\+Callback\+Message (\begin{DoxyParamC
 \index{state\_@{state\_}!base\_engine::Actor@{base\_engine::Actor}}
 \doxysubsubsection{\texorpdfstring{state\_}{state\_}}
 {\footnotesize\ttfamily \mbox{\hyperlink{classbase__engine_1_1_actor_a5d6d2362f5f0335c9c1a3610af3fcac5}{State}} base\+\_\+engine\+::\+Actor\+::state\+\_\+\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classbase__engine_1_1_actor_a312b89bbe373f40b07fcfc922c65ea8f}\label{classbase__engine_1_1_actor_a312b89bbe373f40b07fcfc922c65ea8f}} 
+\index{base\_engine::Actor@{base\_engine::Actor}!tag\_@{tag\_}}
+\index{tag\_@{tag\_}!base\_engine::Actor@{base\_engine::Actor}}
+\doxysubsubsection{\texorpdfstring{tag\_}{tag\_}}
+{\footnotesize\ttfamily std\+::string base\+\_\+engine\+::\+Actor\+::tag\+\_\+ = \char`\"{}Object\char`\"{}\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

@@ -1,13 +1,16 @@
 \hypertarget{_collision_component_8h}{}\doxysection{Project/\+Collision\+Component.h ファイル}
 \label{_collision_component_8h}\index{Project/CollisionComponent.h@{Project/CollisionComponent.h}}
+{\ttfamily \#include $<$bitset$>$}\newline
+{\ttfamily \#include $<$complex$>$}\newline
 {\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include \char`\"{}Component.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Pow.\+h\char`\"{}}\newline
 Collision\+Component.\+h の依存先関係図\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=231pt]{_collision_component_8h__incl}
+\includegraphics[width=350pt]{_collision_component_8h__incl}
 \end{center}
 \end{figure}
 被依存関係図\+:
@@ -27,4 +30,14 @@ class \mbox{\hyperlink{classbase__engine_1_1_collision_component}{base\+\_\+engi
 \begin{DoxyCompactItemize}
 \item 
 namespace \mbox{\hyperlink{namespacebase__engine}{base\+\_\+engine}}
+\end{DoxyCompactItemize}
+\doxysubsection*{関数}
+\begin{DoxyCompactItemize}
+\item 
+constexpr std\+::bitset$<$ k\+Collision\+Filter\+Size $>$ \mbox{\hyperlink{namespacebase__engine_acaff6a6cad4d7767d51bc357414093ce}{base\+\_\+engine\+::k\+Collision\+Filter\+All\+Mask}} ((1ul$<$$<$ k\+Collision\+Filter\+Size) -\/ 1)
+\end{DoxyCompactItemize}
+\doxysubsection*{変数}
+\begin{DoxyCompactItemize}
+\item 
+constexpr size\+\_\+t \mbox{\hyperlink{namespacebase__engine_ae39687faa2341688b6b44228a3b31217}{base\+\_\+engine\+::k\+Collision\+Filter\+Size}} = 32
 \end{DoxyCompactItemize}

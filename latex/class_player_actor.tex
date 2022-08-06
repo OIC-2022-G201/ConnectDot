@@ -6,8 +6,7 @@
 
 
 
-Player\+Actor の継承関係図
-\nopagebreak
+Player\+Actor の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,8 +15,7 @@ Player\+Actor の継承関係図
 \end{figure}
 
 
-Player\+Actor 連携図
-\nopagebreak
+Player\+Actor 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,11 +30,11 @@ Player\+Actor 連携図
 \mbox{\hyperlink{class_player_actor_acfc0e471cc23896725b71e825a0d5568}{$\sim$\+Player\+Actor}} () override
 \item 
 void \mbox{\hyperlink{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285}{Input}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Update前に毎フレーム呼び出される \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_player_actor_a485ad411999ee45778e68115b140c976}{Update}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em 毎フレーム呼び出される \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_player_actor_a0d46c2bcb5e46e189e4219f3f8dc047b}{Start}} () override
-\item 
+\begin{DoxyCompactList}\small\item\em Actorを継承した各クラスが登録された後に呼び出される \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}{Set\+Input}} (class \mbox{\hyperlink{class_input_manager}{Input\+Manager}} $\ast$input\+\_\+manager)
 \end{DoxyCompactItemize}
 \doxysubsection*{その他の継承メンバ}
@@ -66,16 +64,12 @@ void \mbox{\hyperlink{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}{Set\
 
 
 
+Update前に毎フレーム呼び出される 
+
+
+
 \mbox{\hyperlink{classbase__engine_1_1_actor_ad3b78695f031fab569306bce963ea737}{base\+\_\+engine\+::\+Actor}}を再実装しています。
 
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{class_player_actor_aa0e9adf50d1d451663ad2e37633b9285_cgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}\label{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}} 
 \index{PlayerActor@{PlayerActor}!SetInput@{SetInput}}
 \index{SetInput@{SetInput}!PlayerActor@{PlayerActor}}
@@ -90,6 +84,10 @@ void \mbox{\hyperlink{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}{Set\
 
 
 
+Actorを継承した各クラスが登録された後に呼び出される 
+
+
+
 \mbox{\hyperlink{classbase__engine_1_1_actor_a8981816936be39e6ed54acd4be1ea98d}{base\+\_\+engine\+::\+Actor}}を再実装しています。
 
 \mbox{\Hypertarget{class_player_actor_a485ad411999ee45778e68115b140c976}\label{class_player_actor_a485ad411999ee45778e68115b140c976}} 
@@ -97,6 +95,10 @@ void \mbox{\hyperlink{class_player_actor_a151ed6fe3f4e5ddbe75252854485035f}{Set\
 \index{Update@{Update}!PlayerActor@{PlayerActor}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
 {\footnotesize\ttfamily void Player\+Actor\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+毎フレーム呼び出される 
 
 
 

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['update_5forder_5f_0',['update_order_',['../classbase__engine_1_1_component.html#a62374eb1c376286152db95a2ebd35861',1,'base_engine::Component']]]
+  ['scale_5f_0',['scale_',['../classbase__engine_1_1_actor.html#aec2557a98dffd21d51259e4db46865c5',1,'base_engine::Actor']]],
+  ['state_5f_1',['state_',['../classbase__engine_1_1_actor.html#a576214108a2fc391c9f69e14656495c0',1,'base_engine::Actor']]]
 ];

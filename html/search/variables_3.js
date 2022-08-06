@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['offset_5f_0',['offset_',['../classbase__engine_1_1_i_shape.html#ac0e5e67867f7f25814efa863ee466e25',1,'base_engine::IShape']]],
-  ['owner_5f_1',['owner_',['../classbase__engine_1_1_component.html#ae0c9e7382857954e0f7aaaa6457ebc0a',1,'base_engine::Component']]]
+  ['name_5f_0',['name_',['../classbase__engine_1_1_actor.html#afb97bc552e7f9cdc8ce84fed5e958474',1,'base_engine::Actor']]],
+  ['no_1',['No',['../structbase__engine_1_1_yes_no.html#affd342be3aa0b59c78544361b4f8ea7c',1,'base_engine::YesNo']]]
 ];

@@ -16,6 +16,8 @@ void PlayerActor::Start() {
   shape->SetShape(std::make_shared<base_engine::Rect>(0, 0, 50, 50));
   shape->SetFillMode(base_engine::FillMode::Yes).SetColor(MOF_COLOR_GREEN);
   player_component_ = new PlayerComponent(this, 100);
+
+  player_component_->SetInput(input_manager_);
 }
 
 void PlayerActor::SetInput(InputManager* input_manager) {

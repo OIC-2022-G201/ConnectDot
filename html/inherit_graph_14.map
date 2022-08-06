@@ -1,9 +1,3 @@
 <map id="クラス階層図" name="クラス階層図">
-<area shape="rect" id="node1" title=" " alt="" coords="30,5,123,32"/>
-<area shape="rect" id="node2" href="$classbase__engine_1_1_circle.html" title=" " alt="" coords="196,19,332,45"/>
-<area shape="rect" id="node3" title=" " alt="" coords="17,107,136,133"/>
-<area shape="rect" id="node4" href="$classbase__engine_1_1_rect.html" title=" " alt="" coords="199,81,329,108"/>
-<area shape="rect" id="node5" href="$classbase__engine_1_1_i_shape.html" title=" " alt="" coords="5,56,148,83"/>
-<area shape="rect" id="node6" href="$classbase__engine_1_1_point.html" title=" " alt="" coords="197,144,331,171"/>
-<area shape="rect" id="node7" title=" " alt="" coords="29,157,125,184"/>
+<area shape="rect" id="node1" href="$class_main_app.html" title=" " alt="" coords="5,5,79,32"/>
 </map>

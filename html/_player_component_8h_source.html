@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ConnectDot: Project/PlayerComponent.h ソースファイル</title>
+<title>My Project: Project/PlayerComponent.h ソースファイル</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ConnectDot
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -72,7 +72,7 @@ $(function() {
 <a href="_player_component_8h.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_component_8h.html">Component.h</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_player_component.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_player_component.html">PlayerComponent</a> : <a class="code hl_class" href="classbase__engine_1_1_component.html">base_engine::Component</a></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_player_component.html">    4</a></span><span class="keyword">class </span><a class="code hl_class" href="class_player_component.html">PlayerComponent</a> final : <span class="keyword">public</span> <a class="code hl_class" href="classbase__engine_1_1_component.html">base_engine::Component</a></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <a class="code hl_function" href="class_player_component.html#a9cebe0b18720e637933c42bcbd470c6e">PlayerComponent</a>(<a class="code hl_class" href="classbase__engine_1_1_actor.html">base_engine::Actor</a>* owner, <span class="keywordtype">int</span> update_order);</div>
@@ -81,10 +81,10 @@ $(function() {
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>};</div>
 <div class="ttc" id="a_component_8h_html"><div class="ttname"><a href="_component_8h.html">Component.h</a></div></div>
 <div class="ttc" id="aclass_player_component_html"><div class="ttname"><a href="class_player_component.html">PlayerComponent</a></div><div class="ttdef"><b>Definition:</b> PlayerComponent.h:5</div></div>
-<div class="ttc" id="aclass_player_component_html_a93fa9255d127f5a569bc170743c8fbc7"><div class="ttname"><a href="class_player_component.html#a93fa9255d127f5a569bc170743c8fbc7">PlayerComponent::OnCollision</a></div><div class="ttdeci">void OnCollision(base_engine::CollisionComponent *collision) override</div><div class="ttdef"><b>Definition:</b> PlayerComponent.cpp:7</div></div>
-<div class="ttc" id="aclass_player_component_html_a9cebe0b18720e637933c42bcbd470c6e"><div class="ttname"><a href="class_player_component.html#a9cebe0b18720e637933c42bcbd470c6e">PlayerComponent::PlayerComponent</a></div><div class="ttdeci">PlayerComponent(base_engine::Actor *owner, int update_order)</div><div class="ttdef"><b>Definition:</b> PlayerComponent.cpp:3</div></div>
+<div class="ttc" id="aclass_player_component_html_a93fa9255d127f5a569bc170743c8fbc7"><div class="ttname"><a href="class_player_component.html#a93fa9255d127f5a569bc170743c8fbc7">PlayerComponent::OnCollision</a></div><div class="ttdeci">void OnCollision(base_engine::CollisionComponent *collision) override</div><div class="ttdef"><b>Definition:</b> PlayerComponent.cpp:12</div></div>
+<div class="ttc" id="aclass_player_component_html_a9cebe0b18720e637933c42bcbd470c6e"><div class="ttname"><a href="class_player_component.html#a9cebe0b18720e637933c42bcbd470c6e">PlayerComponent::PlayerComponent</a></div><div class="ttdeci">PlayerComponent(base_engine::Actor *owner, int update_order)</div><div class="ttdef"><b>Definition:</b> PlayerComponent.cpp:8</div></div>
 <div class="ttc" id="aclassbase__engine_1_1_actor_html"><div class="ttname"><a href="classbase__engine_1_1_actor.html">base_engine::Actor</a></div><div class="ttdef"><b>Definition:</b> Actor.h:9</div></div>
-<div class="ttc" id="aclassbase__engine_1_1_collision_component_html"><div class="ttname"><a href="classbase__engine_1_1_collision_component.html">base_engine::CollisionComponent</a></div><div class="ttdef"><b>Definition:</b> CollisionComponent.h:6</div></div>
+<div class="ttc" id="aclassbase__engine_1_1_collision_component_html"><div class="ttname"><a href="classbase__engine_1_1_collision_component.html">base_engine::CollisionComponent</a></div><div class="ttdef"><b>Definition:</b> CollisionComponent.h:12</div></div>
 <div class="ttc" id="aclassbase__engine_1_1_component_html"><div class="ttname"><a href="classbase__engine_1_1_component.html">base_engine::Component</a></div><div class="ttdef"><b>Definition:</b> Component.h:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

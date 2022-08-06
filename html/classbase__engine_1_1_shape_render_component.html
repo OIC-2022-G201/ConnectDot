@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.4"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ConnectDot: base_engine::ShapeRenderComponent クラス</title>
+<title>My Project: base_engine::ShapeRenderComponent クラス</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ConnectDot
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -69,7 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">公開メンバ関数</a> &#124;
 <a href="classbase__engine_1_1_shape_render_component-members.html">全メンバ一覧</a>  </div>
-  <div class="headertitle"><div class="title">base_engine::ShapeRenderComponent クラス</div></div>
+  <div class="headertitle"><div class="title">base_engine::ShapeRenderComponent クラス<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
@@ -104,10 +104,8 @@ base_engine::ShapeRenderComponent 連携図</div>
 <tr class="separator:ad5cbc28f576389ae8bc403d07bec68d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d1a6603bd76eca5cd9cfe354c340a1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classbase__engine_1_1_shape_render_component.html">ShapeRenderComponent</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_shape_render_component.html#a2d1a6603bd76eca5cd9cfe354c340a1e">SetFillMode</a> (const <a class="el" href="namespacebase__engine.html#aa0919ff72e3b9522baeff0899769edfd">FillMode</a> mode)</td></tr>
 <tr class="separator:a2d1a6603bd76eca5cd9cfe354c340a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c3f56a89029afe098db17def1f4d700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_shape_render_component.html#a5c3f56a89029afe098db17def1f4d700">CreateRect</a> (float left, float top, float right, float bottom)</td></tr>
-<tr class="separator:a5c3f56a89029afe098db17def1f4d700"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeabd486f96008e927362e003eb18e6e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_shape_render_component.html#aeabd486f96008e927362e003eb18e6e5">CreateRect</a> (const Mof::CRectangle &amp;rect)</td></tr>
-<tr class="separator:aeabd486f96008e927362e003eb18e6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2f6c6da949d495a0bc06050445b5594"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_shape_render_component.html#aa2f6c6da949d495a0bc06050445b5594">SetShape</a> (const std::shared_ptr&lt; class <a class="el" href="classbase__engine_1_1_i_shape.html">IShape</a> &gt; &amp;shape)</td></tr>
+<tr class="separator:aa2f6c6da949d495a0bc06050445b5594"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd053c040dba93bc63e2890e229ae3b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_shape_render_component.html#abd053c040dba93bc63e2890e229ae3b3">Draw</a> () override</td></tr>
 <tr class="separator:abd053c040dba93bc63e2890e229ae3b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05c6b4d1deb4e6fdbaf6042842236d03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbase__engine_1_1_shape_render_component.html#a05c6b4d1deb4e6fdbaf6042842236d03">Draw</a> (const class <a class="el" href="classbase__engine_1_1_rect.html">Rect</a> &amp;rect) const</td></tr>
@@ -181,64 +179,6 @@ base_engine::ShapeRenderComponent 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">関数詳解</h2>
-<a id="aeabd486f96008e927362e003eb18e6e5" name="aeabd486f96008e927362e003eb18e6e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeabd486f96008e927362e003eb18e6e5">&#9670;&nbsp;</a></span>CreateRect() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void base_engine::ShapeRenderComponent::CreateRect </td>
-          <td>(</td>
-          <td class="paramtype">const Mof::CRectangle &amp;&#160;</td>
-          <td class="paramname"><em>rect</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5c3f56a89029afe098db17def1f4d700" name="a5c3f56a89029afe098db17def1f4d700"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c3f56a89029afe098db17def1f4d700">&#9670;&nbsp;</a></span>CreateRect() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void base_engine::ShapeRenderComponent::CreateRect </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>left</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>top</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>right</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>bottom</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="abd053c040dba93bc63e2890e229ae3b3" name="abd053c040dba93bc63e2890e229ae3b3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd053c040dba93bc63e2890e229ae3b3">&#9670;&nbsp;</a></span>Draw() <span class="overload">[1/4]</span></h2>
 
@@ -263,17 +203,6 @@ base_engine::ShapeRenderComponent 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="classbase__engine_1_1_render_component.html#a2a4ecfa55b5b585a58f718bf1e84019d">base_engine::RenderComponent</a>を実装しています。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="classbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3_icgraph.png" border="0" usemap="#aclassbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3_icgraph" alt=""/></div>
-<map name="aclassbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3_icgraph" id="aclassbase__engine_1_1_shape_render_component_abd053c040dba93bc63e2890e229ae3b3_icgraph">
-<area shape="rect" title=" " alt="" coords="220,71,401,112"/>
-<area shape="rect" href="classbase__engine_1_1_circle.html#a53b3488a10293fa0282a273d523eaf95" title=" " alt="" coords="21,5,157,47"/>
-<area shape="rect" href="classbase__engine_1_1_point.html#a394077615dc31b22659efe5c1c78085a" title=" " alt="" coords="22,71,155,112"/>
-<area shape="rect" href="classbase__engine_1_1_rect.html#a931f67e627c8a51d6af810ed715cd830" title=" " alt="" coords="5,137,172,163"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -360,6 +289,24 @@ base_engine::ShapeRenderComponent 連携図</div>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="namespacebase__engine.html#aa0919ff72e3b9522baeff0899769edfd">FillMode</a>&#160;</td>
           <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa2f6c6da949d495a0bc06050445b5594" name="aa2f6c6da949d495a0bc06050445b5594"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2f6c6da949d495a0bc06050445b5594">&#9670;&nbsp;</a></span>SetShape()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void base_engine::ShapeRenderComponent::SetShape </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; class <a class="el" href="classbase__engine_1_1_i_shape.html">IShape</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>shape</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
