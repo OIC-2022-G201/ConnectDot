@@ -2,6 +2,7 @@
 namespace player {
 class Jump
 {
+ public:
   Jump() {}
   void Start() {}
   void Update() {}

@@ -1,7 +1,10 @@
 #pragma once
 namespace player {
 class Idle {
-  Idle()
+  class PlayerComponent* player_;
+
+ public:
+  explicit Idle(class PlayerComponent* player) : player_(player)
   {
       
   }

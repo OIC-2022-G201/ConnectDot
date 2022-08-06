@@ -41,7 +41,7 @@ bool Game::Initialize() {
   sc = new SpriteComponent(a, 80);
   sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
 
-  auto player = new PlayerActor(this);
+  auto player = new player::PlayerActor(this);
   player->SetInput(input);
   collision = new CollisionComponent(player, 100);
   const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);

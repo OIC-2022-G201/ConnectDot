@@ -4,7 +4,7 @@
 #include <tuple>
 #include <variant>
 
-namespace ice {
+namespace til {
 template <typename T, typename M>
 concept Transitionable = requires(const T& t, M& m) {
   t.Transition(m);

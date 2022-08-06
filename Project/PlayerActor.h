@@ -1,8 +1,13 @@
 ﻿#pragma once
 
 #include "Actor.h"
+
+namespace player {
+
 class PlayerActor final : public base_engine::Actor {
   Mof::Vector2 move_vector_;
+  class PlayerComponent* player_component_;
+
  public:
   explicit PlayerActor(base_engine::Game* game);
 
@@ -11,8 +16,10 @@ class PlayerActor final : public base_engine::Actor {
   void Update() override;
   void Start() override;
   void SetInput(class InputManager* input_manager);
-private:
+
+ private:
   class InputManager* input_manager_;
 
  public:
 };
+}  // namespace player
