@@ -48,6 +48,7 @@ class Actor {
 
   [[nodiscard]] const Vector2& GetPosition() const { return position_; }
   void SetPosition(const Vector2& pos) { position_ = pos; }
+  void AddPosition(const Vector2& pos) { position_ += pos; }
   float GetRotation() const;
   void SetRotation(const float rotation) { rotation_ = rotation; }
   [[nodiscard]] float GetScale() const { return scale_; }
