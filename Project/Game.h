@@ -30,5 +30,6 @@ class Game {
   std::vector<class Actor*> pending_actors_;
 
  public:
+  std::vector<std::function<void()>> debug_render_;
 };
 }  // namespace base_engine

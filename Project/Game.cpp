@@ -129,6 +129,10 @@ void Game::Render() const {
   for (const auto sprite : sprites_) {
     sprite->Draw();
   }
+  for (auto func : debug_render_)
+  {
+    func();   
+  }
   Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
                                         Mof::CUtilities::GetFPS());
 }
