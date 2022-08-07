@@ -58,6 +58,9 @@ class PlayerComponent final : public base_engine::Component {
   inline bool IsJumpKey() { return input_manager_->JumpFire(); }
   inline float GetHorizontal() { return input_manager_->MoveHorizontal(); }
   inline bool IsSneakKey() { return input_manager_->SneakFire(); }
+  inline bool IsPlaceBeaconKey() { return input_manager_->PlaceBeaconFire(); }
+  inline bool IsCollectBeaconKey() { return input_manager_->CollectBeaconFire(); }
+  inline bool IsActionKey() { return input_manager_->ActionFire(); }
 
  private:
   const InputManager* input_manager_;
