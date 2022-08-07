@@ -53,11 +53,26 @@ class Actor {
   [[nodiscard]] float GetScale() const { return scale_; }
   void SetScale(const float scale) { scale_ = scale; }
 
-  [[nodiscard]] Game* GetGame() const {
-    return game;
-  }
+  [[nodiscard]] Game* GetGame() const { return game; }
 
   void AddComponent(class Component* component);
+
+  /**
+   * \brief コンポーネント型を探索して取得する
+   * \tparam T Componentクラスを継承したクラス
+   * \return 成功:最初に見つかったコンポーネントのポインタ, 失敗:nullptr
+   * 同一型のコンポーネントが複数ある場合同じものが返ってくるとは限らない
+   */
+  template <class T>
+  T* GetComponent() const;
+
+  /**
+   * \brief 指定のコンポーネントを全て探索して取得する
+   * \tparam T Componentクラスを継承したクラス
+   * \return 成功:探索したコンポーネントのポインタ,失敗:nullptr
+   */
+  template <class T>
+  T* GetComponents() const;
   void RemoveComponent(class Component* component);
   std::string_view GetName() { return name_; }
   Actor& SetName(const std::string_view name);
@@ -79,4 +94,20 @@ class Actor {
   std::vector<class Component*> components_;
   std::vector<class Component*> pending_components_;
 };
+
+template <class T>
+T* Actor::GetComponent() const
+{
+    for (auto elem : components_) {
+        T* buff = dynamic_cast<T*>(elem);
+        if (buff != nullptr) return buff;
+    }
+    return nullptr;
+}
+
+template <class T>
+T* Actor::GetComponents() const
+{
+      
+}
 }  // namespace base_engine
