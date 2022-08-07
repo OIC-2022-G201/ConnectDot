@@ -1,9 +1,16 @@
+// @file PlayerJump.h
+// @brief プレイヤージャンプのステート
+// @author ICE
+// @date 2022/08/07
+//
+// @details
 #pragma once
+
 namespace player {
-class Jump
+class PlayerJump
 {
  public:
-  Jump() {}
+  PlayerJump() {}
   void Start() {}
   void Update() {
     int n = 4;

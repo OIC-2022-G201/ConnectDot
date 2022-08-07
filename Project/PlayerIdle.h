@@ -1,14 +1,20 @@
+// @file PlayerIdle.h
+// @brief プレイヤー停止のステート
+// @author ICE
+// @date 2022/08/07
+//
+// @details
 #pragma once
 #include "InputManager.h"
 
 namespace player {
-class Jump;
+class PlayerJump;
 
-class Idle {
+class PlayerIdle {
   class PlayerComponent* player_;
   bool is_jump_ = false;
  public:
-  explicit Idle(PlayerComponent* player);
+  explicit PlayerIdle(PlayerComponent* player);
   void Start();
   void Update();
   void ProcessInput();
@@ -18,9 +24,9 @@ class Idle {
   void Transition(Machine& machine) const;
 };
 template <typename Machine>
-void Idle::Transition(Machine& machine) const {
+void PlayerIdle::Transition(Machine& machine) const {
   if (is_jump_)
-    machine.template TransitionTo<Jump>();
+    machine.template TransitionTo<PlayerJump>();
 }
 
 }  // namespace player

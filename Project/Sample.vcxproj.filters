@@ -210,10 +210,10 @@
     <ClCompile Include="PlayerComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Idle.cpp">
+    <ClCompile Include="PlayerIdle.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClCompile>
-    <ClCompile Include="Jump.cpp">
+    <ClCompile Include="PlayerJump.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClCompile>
   </ItemGroup>
@@ -332,10 +332,10 @@
     <ClInclude Include="StateMachine.h">
       <Filter>StateMachine</Filter>
     </ClInclude>
-    <ClInclude Include="Idle.h">
+    <ClInclude Include="PlayerIdle.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
-    <ClInclude Include="Jump.h">
+    <ClInclude Include="PlayerJump.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
