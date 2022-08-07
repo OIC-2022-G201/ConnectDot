@@ -25,9 +25,8 @@ void PlayerActor::SetInput(InputManager* input_manager) {
 }
 
 void PlayerActor::Input() {
-  const float horizontal = input_manager_->MoveHorizontal();
-
-  move_vector_.x = horizontal * 3;
+  // const float horizontal = input_manager_->MoveHorizontal();
+  // move_vector_.x = horizontal * 3;
 }
-void PlayerActor::Update() { position_ += move_vector_; }
+void PlayerActor::Update() { position_ += player_component_->GetVelocity(); }
 }  // namespace player

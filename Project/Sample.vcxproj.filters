@@ -216,6 +216,12 @@
     <ClCompile Include="PlayerJump.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerSneak.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMove.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -337,6 +343,18 @@
     </ClInclude>
     <ClInclude Include="PlayerJump.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSneak.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMove.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerState.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

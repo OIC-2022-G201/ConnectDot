@@ -5,22 +5,25 @@
 //
 // @details
 #pragma once
-
+#include "PlayerState.h"
 namespace player {
 class PlayerJump
 {
+  int frame_ = 0;
+  class PlayerComponent* player_;
+  bool is_idle_ = false;
  public:
-  PlayerJump() {}
-  void Start() {}
-  void Update() {
-    int n = 4;
-    
-  }
-  void ProcessInput() {}
-  void End() {}
+  PlayerJump(PlayerComponent* player);
+  void Start();
+
+  void Update();
+
+  void ProcessInput();
+  void End();
+
   template <typename Machine>
   void Transition(Machine& machine) const {
-    // machine.template TransitionTo<X>();
+    if(is_idle_)machine.template TransitionTo<PlayerIdle>();
   }
 };
 }  // namespace player

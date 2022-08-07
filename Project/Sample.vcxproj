@@ -114,6 +114,8 @@
     <ClCompile Include="PlayerJump.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="PlayerComponent.cpp" />
+    <ClCompile Include="PlayerMove.cpp" />
+    <ClCompile Include="PlayerSneak.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
@@ -144,6 +146,7 @@
     <ClInclude Include="IBaseEngineRender.h" />
     <ClInclude Include="IBaseEngineTexture.h" />
     <ClInclude Include="IBaseEngineEmpty.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerIdle.h" />
     <ClInclude Include="InputActor.h" />
     <ClInclude Include="InputComponent.h" />
@@ -154,6 +157,9 @@
     <ClInclude Include="PlayerJump.h" />
     <ClInclude Include="PlayerActor.h" />
     <ClInclude Include="PlayerComponent.h" />
+    <ClInclude Include="PlayerMove.h" />
+    <ClInclude Include="PlayerSneak.h" />
+    <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pow.h" />
     <ClInclude Include="Rect.h" />
