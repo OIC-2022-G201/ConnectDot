@@ -94,7 +94,7 @@
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
-    <ClCompile Include="Beacon.cpp" />
+    <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -134,7 +134,7 @@
     <ClInclude Include="BaseEngineCollision.h" />
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
-    <ClInclude Include="Beacon.h" />
+    <ClInclude Include="BeaconActor.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="Component.h" />

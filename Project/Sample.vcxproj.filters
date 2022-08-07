@@ -192,7 +192,7 @@
     <ClCompile Include="Rect.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClCompile>
-    <ClCompile Include="Beacon.cpp">
+    <ClCompile Include="BeaconActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
     </ClCompile>
     <ClCompile Include="Circle.cpp">
@@ -314,7 +314,7 @@
     <ClInclude Include="ISendablePower.h">
       <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
     </ClInclude>
-    <ClInclude Include="Beacon.h">
+    <ClInclude Include="BeaconActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
     </ClInclude>
     <ClInclude Include="Circle.h">
