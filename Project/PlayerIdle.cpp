@@ -15,10 +15,6 @@ void player::PlayerIdle::ProcessInput() {
   is_jump_ = player_->IsJumpKey();
   is_move_ = player_->GetHorizontal() != 0;
   is_sneak_ = player_->IsSneakKey();
-  if (is_sneak_)
-  {
-    int nn = 10; 
-  }
 }
 
 void player::PlayerIdle::End() {}

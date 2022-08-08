@@ -95,6 +95,7 @@
     <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
     <ClCompile Include="BeaconActor.cpp" />
+    <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -117,6 +118,7 @@
     <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="PlayerSneak.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="ReceiverComponent.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderMof.cpp" />
@@ -124,6 +126,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureMof.cpp" />
+    <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -135,8 +138,10 @@
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
     <ClInclude Include="BeaconActor.h" />
+    <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
+    <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Game.h" />
@@ -162,6 +167,7 @@
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pow.h" />
+    <ClInclude Include="ReceiverComponent.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderMof.h" />
@@ -170,11 +176,15 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureMof.h" />
+    <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

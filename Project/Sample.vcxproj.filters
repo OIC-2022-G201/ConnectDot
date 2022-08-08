@@ -115,6 +115,12 @@
     <Filter Include="ソース ファイル\ConnectDot\LivingEntity\Player\State">
       <UniqueIdentifier>{1600c90c-92ee-48ac-8808-9765bda35a89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Beacon">
+      <UniqueIdentifier>{04cd7cdf-6534-40e3-bcd6-84589e26ad46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Const">
+      <UniqueIdentifier>{5b78471f-14d3-42be-a41b-c42154b78a9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -192,9 +198,6 @@
     <ClCompile Include="Rect.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClCompile>
-    <ClCompile Include="BeaconActor.cpp">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
-    </ClCompile>
     <ClCompile Include="Circle.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClCompile>
@@ -221,6 +224,18 @@
     </ClCompile>
     <ClCompile Include="PlayerMove.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="TransmitterComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClCompile>
+    <ClCompile Include="ReceiverComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClCompile>
+    <ClCompile Include="BeaconActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClCompile>
+    <ClCompile Include="BeaconTransmitter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -314,9 +329,6 @@
     <ClInclude Include="ISendablePower.h">
       <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
     </ClInclude>
-    <ClInclude Include="BeaconActor.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
-    </ClInclude>
     <ClInclude Include="Circle.h">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClInclude>
@@ -356,10 +368,28 @@
     <ClInclude Include="Player.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
     </ClInclude>
+    <ClInclude Include="TransmitterComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="ReceiverComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconTransmitter.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionLayer.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE">
       <Filter>BaseEngine\Utilities</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

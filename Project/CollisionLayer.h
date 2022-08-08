@@ -18,7 +18,7 @@ class CollisionLayer final {
   enum Layer {
     kPlayerFilter = 1 << 1,
     kMachineFilter = 1 << 4,
-    kReceiveFilter = 1 << 5,
+    kReceiverFilter = 1 << 5,
     kSenderFilter = 1 << 6,
 
     kElectricityAreaFilter = 1 << 8,
@@ -39,11 +39,11 @@ class CollisionLayer final {
 };
 using BitCollisionLayer = std::bitset<base_engine::kCollisionFilterSize>;
 constexpr BitCollisionLayer kBeaconObjectFilter{CollisionLayer::kMachineFilter |
-                                                CollisionLayer::kReceiveFilter |
+                                                CollisionLayer::kReceiverFilter |
                                                 CollisionLayer::kSenderFilter};
 
 constexpr BitCollisionLayer kBeaconTargetFilter{CollisionLayer::kMachineFilter |
-                                                CollisionLayer::kReceiveFilter};
+                                                CollisionLayer::kReceiverFilter};
 /*
 using BitCollisionLayer = std::bitset<base_engine::kCollisionFilterSize>;
 #define SET_DEFINITION_LAYER(layer_name, val) \
