@@ -6,7 +6,7 @@
 namespace base_engine {
 
 class Rect final : public Mof::CRectangle, public IShape {
-  Mof::CRectangle fix;
+  Mof::CRectangle fix_;
  public:
   explicit Rect(const CRectangle& pObj);
 

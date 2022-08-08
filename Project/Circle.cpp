@@ -16,7 +16,7 @@ void Circle::Draw(const ShapeRenderComponent& drawable) {
 }
 
 bool Circle::Collision(const IShape* shape) const {
-  return shape->Collision(this);
+  return shape->Collision(Circle(fix));
 }
 
 bool Circle::Collision(const Rect& rect) const {

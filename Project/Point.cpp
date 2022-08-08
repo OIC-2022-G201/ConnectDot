@@ -12,7 +12,7 @@ Point::Point(const Vector2& pObj) : Vector2(pObj) {}
 void Point::Draw(const ShapeRenderComponent& drawable) { drawable.Draw(*this); }
 
 bool Point::Collision(const IShape* shape) const {
-  return shape->Collision(this);
+  return shape->Collision(Point(fix_));
 }
 
 bool Point::Collision(const Rect& rect) const {

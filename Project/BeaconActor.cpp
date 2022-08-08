@@ -21,13 +21,15 @@ void BeaconActor::OnPowerExit() {}
 BeaconActor::~BeaconActor() {}
 
 void BeaconActor::Start() {
-  auto circle = std::make_shared<base_engine::Circle>(0, 0, 10);
+  auto circle = std::make_shared<base_engine::Circle>(0, 0, 50);
   auto shape = new base_engine::ShapeRenderComponent(this, 110);
   shape->SetShape(circle);
   shape->SetFillMode(base_engine::FillMode::Yes).SetColor(MOF_COLOR_GREEN);
   auto collision = new base_engine::CollisionComponent(this, 100);
   collision->SetShape(circle);
-  collision->SetObjectFilter();
+  collision->SetObjectFilter(kBeaconObjectFilter);
+  collision->SetTargetFilter(kBeaconTargetFilter);
+
   auto transmitter = new TransmitterComponent(this, 100);
   transmitter->Create<BeaconTransmitter>(1);
 }
