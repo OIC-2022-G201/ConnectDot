@@ -4,6 +4,7 @@
 
 #include "BeaconActor.h"
 #include "CollisionComponent.h"
+#include "CollisionLayer.h"
 #include "InputManager.h"
 #include "Player.h"
 #include "PlayerComponent.h"
@@ -26,7 +27,8 @@ void PlayerActor::Start() {
   auto collision = new CollisionComponent(this, 100);
   const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
   collision->SetShape(shape_player);
-
+  collision->SetObjectFilter(kPlayerObjectFilter);
+  collision->SetTargetFilter(kPlayerTargetFilter);
   auto playerSprite = new SpriteComponent(this, 100);
   playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
     SetName("Player");

@@ -38,6 +38,9 @@ class CollisionLayer final {
   Layer val_;
 };
 using BitCollisionLayer = std::bitset<base_engine::kCollisionFilterSize>;
+constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter};
+constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kPlayerFilter};
+
 constexpr BitCollisionLayer kBeaconObjectFilter{CollisionLayer::kMachineFilter |
                                                 CollisionLayer::kReceiverFilter |
                                                 CollisionLayer::kSenderFilter};
