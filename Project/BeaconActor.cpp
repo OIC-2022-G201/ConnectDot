@@ -8,23 +8,18 @@
 #include "ShapeRenderComponent.h"
 #include "TransmitterComponent.h"
 
+
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {}
 
-bool BeaconActor::PowerJoinCondition() { return true; }
 
-void BeaconActor::OnPowerEnter() {}
-
-void BeaconActor::OnPowerChanged() {}
-
-void BeaconActor::OnPowerExit() {}
 
 BeaconActor::~BeaconActor() {}
 
 void BeaconActor::Start() {
-  auto circle = std::make_shared<base_engine::Circle>(0, 0, 50);
+  auto circle = std::make_shared<base_engine::Circle>(0, 0, 200);
   auto shape = new base_engine::ShapeRenderComponent(this, 110);
   shape->SetShape(circle);
-  shape->SetFillMode(base_engine::FillMode::Yes).SetColor(MOF_COLOR_GREEN);
+  shape->SetFillMode(base_engine::FillMode::Yes).SetColor(MOF_ARGB(255-128,255,255,0));
   auto collision = new base_engine::CollisionComponent(this, 100);
   collision->SetShape(circle);
   collision->SetObjectFilter(kBeaconObjectFilter);
@@ -38,8 +33,3 @@ void BeaconActor::Input() {}
 
 void BeaconActor::Update() {}
 
-std::vector<IReceivablePower*> BeaconActor::GetTarget() {
-  return SendTargetList();
-}
-
-void BeaconActor::Sending() {}

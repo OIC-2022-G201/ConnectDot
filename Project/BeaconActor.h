@@ -1,20 +1,11 @@
 #pragma once
 #include "Actor.h"
-#include "IReceivablePower.h"
-#include "ISendablePower.h"
 
-class BeaconActor final : public base_engine::Actor,
-                          public IReceivablePower,
-                          public ISendablePower {
-  using SendTargetList = std::vector<IReceivablePower*>;
+class BeaconActor final : public base_engine::Actor{
 
  public:
   explicit BeaconActor(base_engine::Game* game);
-
-  bool PowerJoinCondition() override;
-  void OnPowerEnter() override;
-  void OnPowerChanged() override;
-  void OnPowerExit() override;
+  
 
   ~BeaconActor() override;
 
@@ -23,6 +14,4 @@ class BeaconActor final : public base_engine::Actor,
   void Update() override;
 
  private:
-  SendTargetList GetTarget() override;
-  void Sending() override;
 };
