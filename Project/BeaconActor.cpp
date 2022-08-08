@@ -29,7 +29,7 @@ void BeaconActor::Start() {
   collision->SetShape(circle);
   collision->SetObjectFilter(kBeaconObjectFilter);
   collision->SetTargetFilter(kBeaconTargetFilter);
-
+  SetName("Beacon");
   auto transmitter = new TransmitterComponent(this, 100);
   transmitter->Create<BeaconTransmitter>(1);
 }

@@ -8,7 +8,9 @@
 #pragma once
 #include <memory>
 
+#include "Actor.h"
 #include "BeaconTransmitter.h"
+#include "CollisionComponent.h"
 #include "Component.h"
 #include "ISendablePower.h"
 
@@ -30,5 +32,9 @@ class TransmitterComponent : public base_engine::Component {
   void Start() override {}
 
   void Update() override {}
-  void OnCollision(base_engine::CollisionComponent* collision) override {}
+  void OnCollision(base_engine::CollisionComponent* collision) override
+  {
+    auto name = collision->GetActor()->GetName();
+    int n = 3;
+  }
 };

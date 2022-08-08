@@ -1,27 +1,21 @@
 ﻿// @file BeaconTransmitter.h
-// @brief 
+// @brief ビーコン送電機
 // @author ICE
 // @date 2022/08/08
-// 
+//
 // @details
 
 #pragma once
 #include "ISendablePower.h"
 
-class BeaconTransmitter :public ISendablePower {
-  float r_;
-    public:
-  BeaconTransmitter(float r)
-  { r_ = r;
-  }
-    std::vector<IReceivablePower*> GetTarget() override
-    {
-        return {};
-    }
+class BeaconTransmitter : public ISendablePower {
+ public:
+  explicit BeaconTransmitter(const int level);
 
-    void Sending() override
-    {
-        
-    }
-    
+  std::vector<IReceivablePower*> GetTarget() override;
+
+  void Sending() override;
+
+ private:
+  int level_;
 };
