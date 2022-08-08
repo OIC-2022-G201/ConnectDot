@@ -47,7 +47,7 @@ MofBool CGameApp::Render(void) {
   //描画開始
   g_pGraphics->RenderStart();
   //画面のクリア
-  g_pGraphics->ClearTarget(0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0);
+  g_pGraphics->ClearTarget(0.2f, 0.2f, 0.2f, 0.0f, 1.0f, 0);
   game_.Render();
   //描画の終了
   g_pGraphics->RenderEnd();

@@ -4,11 +4,13 @@
 
 #include "BaseEngineCollision.h"
 #include "CollisionComponent.h"
+#include "GameWindow.h"
 #include "IBaseEngineEmpty.h"
 #include "IBaseEngineTexture.h"
 #include "InputComponent.h"
 #include "InputManager.h"
 #include "PlayerActor.h"
+#include "PylonActor.h"
 #include "Rect.h"
 #include "RenderComponent.h"
 #include "ShapeRenderComponent.h"
@@ -20,29 +22,14 @@ bool Game::Initialize() {
   auto inputActor = new InputActor(this);
   auto input = new InputManager(inputActor);
 
-  Actor* a = new Actor(this);
-  a->SetPosition({3, 3});
-  a->SetScale(1.0f);
   BASE_ENGINE(Texture)->Load("ice.png");
   BASE_ENGINE(Texture)->Load("Player.png");
-  // Mof::CTexture texture;
-  // texture.Load("ice.png");
-  auto sc = new SpriteComponent(a, 100);
-  sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
-  auto collision = new CollisionComponent(a, 100);
-  const auto shape_block = std::make_shared<Rect>(100, 100, 200, 200);
-  collision->SetShape(shape_block);
-  a->SetTag("Block");
-  auto shape = new ShapeRenderComponent(a, 100);
-  shape->SetShape(shape_block);
-  a = new Actor(this);
-  a->SetPosition({200, 3});
-  a->SetScale(1.0f);
-  sc = new SpriteComponent(a, 80);
-  sc->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
 
+  auto pylon = new PylonActor(this);
+  pylon->SetPosition({100, window::kHeight - 230});
   auto player = new player::PlayerActor(this);
   player->SetInput(input);
+
   b_collision = BASE_ENGINE(Collider);
   return true;
 }
@@ -123,9 +110,8 @@ void Game::Render() const {
   for (const auto sprite : sprites_) {
     sprite->Draw();
   }
-  for (auto func : debug_render_)
-  {
-    func();   
+  for (auto func : debug_render_) {
+    func();
   }
   Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
                                         Mof::CUtilities::GetFPS());
