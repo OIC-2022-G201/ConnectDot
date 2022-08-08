@@ -95,6 +95,7 @@
     <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
     <ClCompile Include="BeaconActor.cpp" />
+    <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
     <ClInclude Include="BeaconActor.h" />
+    <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />

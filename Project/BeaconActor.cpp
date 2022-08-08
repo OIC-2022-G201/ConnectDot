@@ -1,5 +1,6 @@
 #include "BeaconActor.h"
 
+#include "BeaconReceiver.h"
 #include "BeaconTransmitter.h"
 #include "Circle.h"
 #include "CollisionComponent.h"
@@ -27,6 +28,9 @@ void BeaconActor::Start() {
   SetName("Beacon");
   auto transmitter = new TransmitterComponent(this, 100);
   transmitter->Create<BeaconTransmitter>(1);
+
+  auto receiver = new ReceiverComponent(this, 100);
+  receiver->Create<BeaconReceiver>();
 }
 
 void BeaconActor::Input() {}

@@ -246,6 +246,9 @@
     <ClCompile Include="PylonTransmitter.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Pylon</Filter>
     </ClCompile>
+    <ClCompile Include="BeaconReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -400,6 +403,9 @@
     </ClInclude>
     <ClInclude Include="GameWindow.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
