@@ -43,12 +43,6 @@ bool Game::Initialize() {
 
   auto player = new player::PlayerActor(this);
   player->SetInput(input);
-  collision = new CollisionComponent(player, 100);
-  const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
-  collision->SetShape(shape_player);
-
-  auto playerSprite = new SpriteComponent(player, 100);
-  playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
   b_collision = BASE_ENGINE(Collider);
   return true;
 }

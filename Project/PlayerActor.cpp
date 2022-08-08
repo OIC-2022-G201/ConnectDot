@@ -3,11 +3,16 @@
 #include <Utilities/InputUtilities.h>
 
 #include "BeaconActor.h"
+#include "CollisionComponent.h"
 #include "InputManager.h"
 #include "Player.h"
 #include "PlayerComponent.h"
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
+#include "SpriteComponent.h"
+
+#include "IBaseEngineTexture.h"
+using namespace base_engine;
 namespace player {
 PlayerActor::PlayerActor(base_engine::Game* game)
     : Actor(game), input_manager_(nullptr) {}
@@ -17,6 +22,14 @@ void PlayerActor::Start() {
   player_component_ = new PlayerComponent(this, 100);
 
   player_component_->SetInput(input_manager_);
+
+  auto collision = new CollisionComponent(this, 100);
+  const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
+  collision->SetShape(shape_player);
+
+  auto playerSprite = new SpriteComponent(this, 100);
+  playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
+    SetName("Player");
 }
 
 void PlayerActor::SetInput(InputManager* input_manager) {
