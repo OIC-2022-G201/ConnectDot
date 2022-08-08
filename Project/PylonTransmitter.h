@@ -1,5 +1,5 @@
 ﻿// @file PylonTransmitter.h
-// @brief
+// @brief Pylonの送電機ストラテジークラス
 // @author ICE
 // @date 2022/08/08
 //

@@ -1,5 +1,5 @@
 ﻿// @file PylonActor.h
-// @brief 
+// @brief 電気を送り出す元となる動力源のActor
 // @author ICE
 // @date 2022/08/08
 // 
