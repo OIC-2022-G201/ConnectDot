@@ -5,6 +5,7 @@
 #include "BeaconActor.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "GameWindow.h"
 #include "InputManager.h"
 #include "Player.h"
 #include "PlayerComponent.h"
@@ -49,8 +50,7 @@ void PlayerActor::Input() {
 void PlayerActor::Update() {
   player_component_->AddVelocityY(kGravity);
   position_ += player_component_->GetVelocity();
-  float bottom =
-      Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() - 230;
+  float bottom = window::kHeight - 230;
   if (position_.y>bottom)
   {
     position_.y = bottom;

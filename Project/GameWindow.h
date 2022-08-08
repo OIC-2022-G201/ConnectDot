@@ -1,5 +1,5 @@
 ﻿// @file GameInfo.h
-// @brief ゲーム
+// @brief ゲームWindowの定数
 // @author ICE
 // @date 2022/08/08
 // 

@@ -10,6 +10,7 @@
 
 #include "Actor.h"
 #include "BeaconTransmitter.h"
+#include "PylonTransmitter.h"
 #include "CollisionComponent.h"
 #include "Component.h"
 #include "ISendablePower.h"

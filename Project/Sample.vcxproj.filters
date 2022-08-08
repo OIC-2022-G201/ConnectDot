@@ -121,6 +121,9 @@
     <Filter Include="ソース ファイル\ConnectDot\GameMain\Const">
       <UniqueIdentifier>{5b78471f-14d3-42be-a41b-c42154b78a9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Pylon">
+      <UniqueIdentifier>{f2c942d2-6cc1-42cd-835e-73112a53cfd6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -236,6 +239,12 @@
     </ClCompile>
     <ClCompile Include="BeaconTransmitter.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClCompile>
+    <ClCompile Include="PylonActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Pylon</Filter>
+    </ClCompile>
+    <ClCompile Include="PylonTransmitter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Pylon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -381,6 +390,15 @@
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
     </ClInclude>
     <ClInclude Include="CollisionLayer.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="PylonActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Pylon</Filter>
+    </ClInclude>
+    <ClInclude Include="PylonTransmitter.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Pylon</Filter>
+    </ClInclude>
+    <ClInclude Include="GameWindow.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
     </ClInclude>
   </ItemGroup>

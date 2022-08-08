@@ -118,6 +118,8 @@
     <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="PlayerSneak.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="PylonActor.cpp" />
+    <ClCompile Include="PylonTransmitter.cpp" />
     <ClCompile Include="ReceiverComponent.cpp" />
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
@@ -146,6 +148,7 @@
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameApp.h" />
+    <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Geometry2D.h" />
     <ClInclude Include="IBaseEngineCollider.h" />
     <ClInclude Include="IBaseEngineRender.h" />
@@ -167,6 +170,8 @@
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pow.h" />
+    <ClInclude Include="PylonActor.h" />
+    <ClInclude Include="PylonTransmitter.h" />
     <ClInclude Include="ReceiverComponent.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RenderComponent.h" />
