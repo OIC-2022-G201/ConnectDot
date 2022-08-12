@@ -4,6 +4,7 @@
 
 #include "BaseEngineCollision.h"
 #include "CollisionComponent.h"
+#include "DebugStage.h"
 #include "GameWindow.h"
 #include "IBaseEngineEmpty.h"
 #include "IBaseEngineTexture.h"
@@ -19,6 +20,8 @@
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
+  auto stageActor = new DebugStage(this);
+
   auto inputActor = new InputActor(this);
   auto input = new InputManager(inputActor);
 

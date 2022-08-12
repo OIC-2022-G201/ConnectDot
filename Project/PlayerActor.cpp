@@ -24,9 +24,9 @@ void PlayerActor::Start() {
   player_component_ = new PlayerComponent(this, 100);
 
   player_component_->SetInput(input_manager_);
-
+  SetPosition({300, window::kHeight - 430});
   auto collision = new CollisionComponent(this, 100);
-  const auto shape_player = std::make_shared<Rect>(0, 0, 50, 50);
+  const auto shape_player = std::make_shared<Rect>(0, 0, 100, 200);
   collision->SetShape(shape_player);
   collision->SetObjectFilter(kPlayerObjectFilter);
   collision->SetTargetFilter(kPlayerTargetFilter);
@@ -53,7 +53,7 @@ void PlayerActor::Update() {
   float bottom = window::kHeight - 230;
   if (position_.y>bottom)
   {
-    position_.y = bottom;
+    //position_.y = bottom;
   }
 }
 }  // namespace player

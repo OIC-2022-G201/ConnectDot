@@ -9,16 +9,16 @@ namespace base_engine {
 constexpr size_t kCollisionFilterSize = 32;
 constexpr std::bitset<kCollisionFilterSize> kCollisionFilterAllMask(
     (1ul << kCollisionFilterSize) - 1);
-class CollisionComponent final : public Component {
+class CollisionComponent : public Component {
   std::shared_ptr<class IShape> shape_;
   std::bitset<kCollisionFilterSize> target_layer_;
   std::bitset<kCollisionFilterSize> object_layer_;
 
  public:
   CollisionComponent(class Actor* owner, int update_order);
-  [[nodiscard]] IShape* GetShape() const;
-  void SetShape(const std::shared_ptr<class IShape>& shape);
-  bool Collision(CollisionComponent* target) const;
+  [[nodiscard]] const IShape* GetShape() const;
+  void SetShape(const std::shared_ptr<IShape>& shape);
+  virtual bool Collision(const CollisionComponent* target) const;
   void SetTargetFilter(const std::bitset<kCollisionFilterSize>& layer);
   [[nodiscard]] const std::bitset<kCollisionFilterSize>& GetTargetFilter() const;
   void SetObjectFilter(const std::bitset<kCollisionFilterSize>& layer);

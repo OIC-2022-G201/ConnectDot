@@ -124,6 +124,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Pylon">
       <UniqueIdentifier>{f2c942d2-6cc1-42cd-835e-73112a53cfd6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage">
+      <UniqueIdentifier>{4df6c6ca-2722-48c1-85a9-003bf88cdb5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\TileMap">
+      <UniqueIdentifier>{43005580-b1e4-41ee-99cc-1d6ea73dc002}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -248,6 +254,12 @@
     </ClCompile>
     <ClCompile Include="BeaconReceiver.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugStage.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -406,6 +418,15 @@
     </ClInclude>
     <ClInclude Include="BeaconReceiver.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugStage.h">
+      <Filter>ソース ファイル\ConnectDot\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

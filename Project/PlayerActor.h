@@ -5,8 +5,6 @@ class InputManager;
 namespace player {
 
 class PlayerActor final : public base_engine::Actor {
-  Mof::Vector2 move_vector_;
-  class PlayerComponent* player_component_;
 
  public:
   explicit PlayerActor(base_engine::Game* game);
@@ -18,6 +16,8 @@ class PlayerActor final : public base_engine::Actor {
   void SetInput(InputManager* input_manager);
 
  private:
+  Mof::Vector2 move_vector_;
+  class PlayerComponent* player_component_ = nullptr;
   InputManager* input_manager_;
 
  public:

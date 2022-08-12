@@ -14,13 +14,16 @@ CollisionComponent::CollisionComponent(Actor* owner, int update_order)
   BASE_ENGINE(Collider)->Register(this);
 }
 
-IShape* CollisionComponent::GetShape() const { return shape_.get(); }
+const IShape* CollisionComponent::GetShape() const
+{
+    return shape_.get();
+}
 
 void CollisionComponent::SetShape(const std::shared_ptr<IShape>& shape) {
   shape_ = shape;
 }
-bool CollisionComponent::Collision(CollisionComponent* target) const {
-  return GetShape()->Collision(target->GetShape());
+bool CollisionComponent::Collision(const CollisionComponent* target) const {
+    return GetShape()->Collision(target->GetShape());
 }
 
 void CollisionComponent::SetTargetFilter(

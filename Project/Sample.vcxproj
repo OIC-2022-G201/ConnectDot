@@ -100,6 +100,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="DebugStage.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Geometry2D.cpp" />
@@ -129,6 +130,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureMof.cpp" />
+    <ClCompile Include="TileMapComponent.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -147,6 +149,7 @@
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="DebugStage.h" />
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameApp.h" />
@@ -183,6 +186,8 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureMof.h" />
+    <ClInclude Include="TileMap.h" />
+    <ClInclude Include="TileMapComponent.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="YesNo.h" />
