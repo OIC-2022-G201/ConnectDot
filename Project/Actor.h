@@ -55,7 +55,10 @@ class Actor {
   void SetScale(const float scale) { scale_ = scale; }
 
   [[nodiscard]] Game* GetGame() const { return game; }
-
+  /**
+   * \brief Componentのコンストラクタから呼び出す
+   * \param component 
+   */
   void AddComponent(class Component* component);
 
   /**
@@ -74,6 +77,10 @@ class Actor {
    */
   template <class T>
   T* GetComponents() const;
+  /**
+   * \brief Componentのデストラクタから呼び出す
+   * \param component
+   */
   void RemoveComponent(class Component* component);
   std::string_view GetName() { return name_; }
   Actor& SetName(const std::string_view name);
