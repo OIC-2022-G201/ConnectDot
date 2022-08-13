@@ -21,26 +21,12 @@ namespace player {
 
 class PlayerComponent final : public base_engine::Component {
   using Vector2 = Mof::CVector2;
-  til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerJump> machine_ =
-      til::Machine{PlayerIdle{this}, PlayerMove{this}, PlayerSneak{this},
-                   PlayerJump{this}};
-  Vector2 velocity_;
 
  public:
   PlayerComponent(base_engine::Actor* owner, int update_order);
-  void Start() override {
-    owner_->GetGame()->debug_render_.emplace_back([this]()
-    {
-      Mof::CGraphicsUtilities::RenderString(0, 60, "State:%d",
-                                            machine_.current_state());
-    }
-  );
-  }
+  void Start() override;
   void ProcessInput() override { machine_.ProcessInput(); }
-  void Update() override {
-    machine_.Update();
-      
-  }
+  void Update() override;
   void OnCollision(base_engine::CollisionComponent* collision) override;
 
   void SetInput(const InputManager* input_manager) {
@@ -59,10 +45,18 @@ class PlayerComponent final : public base_engine::Component {
   inline float GetHorizontal() { return input_manager_->MoveHorizontal(); }
   inline bool IsSneakKey() { return input_manager_->SneakFire(); }
   inline bool IsPlaceBeaconKey() { return input_manager_->PlaceBeaconFire(); }
-  inline bool IsCollectBeaconKey() { return input_manager_->CollectBeaconFire(); }
+  inline bool IsCollectBeaconKey() {
+    return input_manager_->CollectBeaconFire();
+  }
   inline bool IsActionKey() { return input_manager_->ActionFire(); }
-
+  base_engine::CollisionComponent* GetCollision() { return collision_; }
  private:
-  const InputManager* input_manager_;
+  const InputManager* input_manager_ = nullptr;
+
+  til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerJump> machine_ =
+      til::Machine{PlayerIdle{this}, PlayerMove{this}, PlayerSneak{this},
+                   PlayerJump{this}};
+  Vector2 velocity_;
+  base_engine::CollisionComponent* collision_ = nullptr;
 };
 }  // namespace player

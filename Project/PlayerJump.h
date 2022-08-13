@@ -5,6 +5,9 @@
 //
 // @details
 #pragma once
+#include <numbers>
+
+#include "CollisionComponent.h"
 #include "PlayerState.h"
 namespace player {
 class PlayerJump
@@ -25,5 +28,9 @@ class PlayerJump
   void Transition(Machine& machine) const {
     if(is_idle_)machine.template TransitionTo<PlayerIdle>();
   }
+  void OnEvent(base_engine::CollisionComponent* collision);
+
+private:
+  void JumpSetVelocity();
 };
 }  // namespace player

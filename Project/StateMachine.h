@@ -19,14 +19,19 @@ concept Callable = requires(T& t) {
   t.Update();
 };
 template <typename T>
+concept Endable = requires(T& t) {
+  t.End();
+};
+template <typename T>
 concept Inputable = requires(T& t) {
   t.ProcessInput();
 };
 
-template <typename T>
-concept Endable = requires(T& t) {
-  t.End();
+template <typename T, typename... Args>
+concept Eventable = requires(T& t, Args&&... args) {
+  t.OnEvent(args...);
 };
+
 template <Callable... States>
 class Machine {
  public:
@@ -43,10 +48,19 @@ class Machine {
   Machine& operator=(Machine&&) = default;
 
   ~Machine() = default;
-  
+
   void ProcessInput() {
     auto visitor = [](auto* state) {
       if constexpr (Inputable<decltype(*state)>) state->ProcessInput();
+    };
+    std::visit(visitor, current_);
+  }
+
+  template <typename... Events>
+  void OnEvent(Events&&... inputs) {
+    auto visitor = [&inputs...](auto* state) {
+      if constexpr (Eventable<decltype(*state),Events...>)
+        state->OnEvent(std::forward<Events>(inputs)...);
     };
     std::visit(visitor, current_);
   }
@@ -116,4 +130,4 @@ class Empty {
     // machine.template TransitionTo<X>();
   }
 };
-}  // namespace ice
+}  // namespace til

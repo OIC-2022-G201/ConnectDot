@@ -16,6 +16,6 @@ namespace player {
 
 PLAYER_DATA float kSpeed = 6;
 PLAYER_DATA float kSneakSpeed = 3;
-PLAYER_DATA float kGravity = 3;
+PLAYER_DATA float kGravity = 1.0f;
 
 }

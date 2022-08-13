@@ -110,6 +110,10 @@ T* Actor::GetComponent() const
         T* buff = dynamic_cast<T*>(elem);
         if (buff != nullptr) return buff;
     }
+    for (auto elem : pending_components_) {
+      T* buff = dynamic_cast<T*>(elem);
+      if (buff != nullptr) return buff;
+    }
     return nullptr;
 }
 
