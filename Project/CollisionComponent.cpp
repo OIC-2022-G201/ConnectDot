@@ -11,10 +11,9 @@ CollisionComponent::CollisionComponent(Actor* owner, int update_order)
     : Component(owner, update_order),
       target_layer_(kCollisionFilterAllMask),
       object_layer_(kCollisionFilterAllMask) {
-  BASE_ENGINE(Collider)->Register(this);
 }
 
-const IShape* CollisionComponent::GetShape() const
+IShape* CollisionComponent::GetShape() const
 {
     return shape_.get();
 }
@@ -57,4 +56,7 @@ CollisionComponent::~CollisionComponent() {
 }
 
 void CollisionComponent::Update() { shape_->SetOffset(owner_->GetPosition()); }
+
+void CollisionComponent::Start()
+{ BASE_ENGINE(Collider)->Register(this); }
 }  // namespace base_engine

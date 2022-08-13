@@ -5,6 +5,8 @@
 
 #include "Component.h"
 #include "Pow.h"
+#include "Rect.h"
+
 namespace base_engine {
 constexpr size_t kCollisionFilterSize = 32;
 constexpr std::bitset<kCollisionFilterSize> kCollisionFilterAllMask(
@@ -16,7 +18,7 @@ class CollisionComponent : public Component {
 
  public:
   CollisionComponent(class Actor* owner, int update_order);
-  [[nodiscard]] const IShape* GetShape() const;
+  [[nodiscard]] IShape* GetShape() const;
   void SetShape(const std::shared_ptr<IShape>& shape);
   virtual bool Collision(const CollisionComponent* target) const;
   void SetTargetFilter(const std::bitset<kCollisionFilterSize>& layer);
@@ -31,6 +33,8 @@ class CollisionComponent : public Component {
   [[nodiscard]] Actor* GetActor() const
   { return owner_;
   }
+  Mof::CRectangle AABB() { return GetShape()->AABB(); }
+  void Start() override;;
 };
 inline bool CollisionComponent::IsMatch(CollisionComponent* target) const {
   return ((target_layer_ & target->object_layer_) != 0) ||
