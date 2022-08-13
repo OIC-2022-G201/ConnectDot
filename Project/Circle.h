@@ -5,9 +5,10 @@
 namespace base_engine {
 
 class Circle final : public Mof::CCircle, public IShape {
-  Mof::CCircle fix_;
 
  public:
+  Mof::CCircle fix_;
+
   explicit Circle(const CCircle& pObj);
 
   Circle(float cx, float cy, float cr);
@@ -23,5 +24,6 @@ class Circle final : public Mof::CCircle, public IShape {
   bool Collision(const Point& point) const override;
 
   void ChangeNotification() override;
+  Mof::CRectangle AABB() const override;
 };
 }  // namespace base_engine

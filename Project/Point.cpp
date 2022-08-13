@@ -5,9 +5,9 @@
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
 namespace base_engine {
-Point::Point(float vx, float vy) : Vector2(vx, vy) {}
+Point::Point(float vx, float vy) : Vector2(vx, vy) { ChangeNotification(); }
 
-Point::Point(const Vector2& pObj) : Vector2(pObj) {}
+Point::Point(const Vector2& pObj) : Vector2(pObj) { ChangeNotification(); }
 
 void Point::Draw(const ShapeRenderComponent& drawable) { drawable.Draw(*this); }
 
@@ -17,17 +17,15 @@ bool Point::Collision(const IShape* shape) const {
 
 bool Point::Collision(const Rect& rect) const {
   return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::CRectangle>(rect));
+                               static_cast<Mof::CRectangle>(rect.fix_));
 }
 
 bool Point::Collision(const Circle& circle) const {
-  return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::CCircle>(circle));
+  return Geometry2D::Intersect(fix_, static_cast<Mof::CCircle>(circle.fix_));
 }
 
 bool Point::Collision(const Point& point) const {
-  return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::Vector2>(point));
+  return Geometry2D::Intersect(fix_, static_cast<Mof::Vector2>(point.fix_));
 }
 void Point::ChangeNotification() {
   fix_ = static_cast<Mof::Vector2>(*this);

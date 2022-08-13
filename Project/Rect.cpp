@@ -6,8 +6,7 @@
 #include "Circle.h"
 #include "Point.h"
 namespace base_engine {
-    Rect::Rect(const CRectangle& pObj): CRectangle(pObj)
-    {}
+    Rect::Rect(const CRectangle& pObj): CRectangle(pObj) { ChangeNotification(); }
 
     void Rect::ChangeNotification()
     {
@@ -16,7 +15,9 @@ namespace base_engine {
     }
 
 Rect::Rect(float left, float top, float right, float bottom)
-    : Mof::CRectangle(left, top, right, bottom) {}
+        : Mof::CRectangle(left, top, right, bottom) {
+      ChangeNotification();
+    }
 
 void Rect::Draw(const ShapeRenderComponent& drawable) {
   drawable.Draw(*this);
@@ -28,17 +29,17 @@ bool Rect::Collision(const IShape* shape) const {
 
 bool Rect::Collision(const Rect& rect) const {
   return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::CRectangle>(rect));
+                               static_cast<Mof::CRectangle>(rect.fix_));
 }
 
 bool Rect::Collision(const Circle& circle) const {
   return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::CCircle>(circle));
+                               static_cast<Mof::CCircle>(circle.fix_));
 }
 
 bool Rect::Collision(const Point& point) const {
   return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::Vector2>(point));
+                               static_cast<Mof::Vector2>(point.fix_));
 }
 
 

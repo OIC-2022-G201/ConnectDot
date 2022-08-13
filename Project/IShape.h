@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <Collision/Rectangle.h>
 #include <Math/Vector2.h>
 
 namespace base_engine {
@@ -18,6 +19,8 @@ protected:
       offset_ = offset;
       ChangeNotification();
     }
+
+    virtual Mof::CRectangle AABB() const = 0;
     virtual void ChangeNotification() = 0;
 };
 }  // namespace base_engine
