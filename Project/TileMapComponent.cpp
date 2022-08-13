@@ -22,12 +22,23 @@ void tile_map::TileMapComponent::Load() {
     collision->SetShape(tile_shape_[0]);
   */
   }
+  for (int x = 0; x < 3; ++x) {
+    map_.SetCell(x, 6, 1);
+    auto cell = new base_engine::Actor(owner_->GetGame());
+    cell->SetTag("Field");
+    cell->SetPosition({static_cast<MofFloat>(x * 128), 6 * 128});
+    auto collision = new base_engine::CollisionComponent(cell, 500);
+    collision->SetObjectFilter(kFieldObjectFilter);
+    collision->SetTargetFilter(kFieldTargetFilter);
+    collision->SetShape(
+        std::make_shared<base_engine::Rect>(*tile_shape_[0].get()));
+  }
   for (int x = 0; x < 15; ++x) {
     map_.SetCell(x, 8, 1);
     auto cell = new base_engine::Actor(owner_->GetGame());
     cell->SetTag("Field");
     cell->SetPosition({static_cast<MofFloat>(x * 128), 8 * 128});
-    auto collision = new base_engine::CollisionComponent(cell, 100);
+    auto collision = new base_engine::CollisionComponent(cell, 500);
     collision->SetObjectFilter(kFieldObjectFilter);
     collision->SetTargetFilter(kFieldTargetFilter);
     collision->SetShape(
