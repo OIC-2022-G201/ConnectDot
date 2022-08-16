@@ -17,7 +17,7 @@ PylonActor::~PylonActor()
 
 void PylonActor::Start()
 {
-  auto circle = std::make_shared<base_engine::Circle>(0, 0, 200);
+  auto circle = std::make_shared<base_engine::Circle>(0, 0, 400);
   auto shape = new base_engine::ShapeRenderComponent(this, 110);
   shape->SetShape(circle);
   shape->SetFillMode(base_engine::FillMode::Yes)

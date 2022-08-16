@@ -2,48 +2,60 @@
 
 #include "Player.h"
 #include "PlayerComponent.h"
-
 #include <numbers>
+#include "CollisionComponent.h"
+
+namespace player::detail {
+
+constexpr uint16_t kMaxFrame = 60;
+
+template <std::floating_point Floating>
+constexpr Floating kJumpCoefficient = static_cast<Floating>(
+    -1.0 / 12.0 * std::numbers::pi_v<Floating> * std::numbers::pi_v<Floating>);
+
+template <std::floating_point Floating>
+constexpr Floating kTimeCoefficient =
+    static_cast<Floating>(std::numbers::pi_v<Floating> / kMaxFrame);
+}  // namespace player::detail
+
 player::PlayerJump::PlayerJump(PlayerComponent* player) : player_(player) {}
 
 void player::PlayerJump::Start() {
   is_idle_ = false;
   frame_ = 0;
-  player_->AddVelocityY(-2);
+  player_->AddVelocityY(-16);
 }
 
 void player::PlayerJump::Update() {
-  //d/dx(sin((ƒÎ x)/60)~45) = 3/4 ƒÎ cos((ƒÎ x)/60)
   frame_++;
 
-  if (frame_ > 60) {
-    frame_ = 60;
+  if (frame_ > detail::kMaxFrame) {
+    frame_ = detail::kMaxFrame;
   }
-  JumpSetVelocity();
+  Acceleration();
 }
 
-void player::PlayerJump::ProcessInput()
-{
+void player::PlayerJump::ProcessInput() {
   player_->SetVelocityX(player_->GetHorizontal() * kSpeed);
 }
 
 void player::PlayerJump::End() {}
 
-void player::PlayerJump::OnEvent(base_engine::CollisionComponent* collision)
-{
-    if (collision->GetActor()->GetTag() == "Field")
-    {
-        auto block_top = collision->AABB().Top;
-        auto p_bottom = player_->GetCollision()->AABB().Bottom;
-        auto diff = block_top - p_bottom;
-        if (player_->GetVelocity().y > 0&&diff<0)      is_idle_ = true;
-    }
+void player::PlayerJump::OnEvent(base_engine::CollisionComponent* collision) {
+  if (collision->GetActor()->GetTag() == "Field") {
+    auto block_top = collision->AABB().Top;
+    auto p_bottom = player_->GetCollision()->AABB().Bottom;
+    auto diff = block_top - p_bottom;
+    if (player_->GetVelocity().y > 0 && diff < 0) is_idle_ = true;
+  }
 }
 
-void player::PlayerJump::JumpSetVelocity()
-{
-    const float velocity = 5 * std::numbers::pi_v<float> *
-                           cos((std::numbers::pi_v<float> * frame_) / 60);
-    player_->SetVelocityY(-velocity - kGravity);
-  
+void player::PlayerJump::Acceleration() const {
+  const float velocity = detail::kJumpCoefficient<float> *
+                         sin(frame_ * detail::kTimeCoefficient<float>);
+  if (frame_==60)
+  {
+    int n = 3;
+  }
+  player_->AddVelocityY(-kGravity - velocity);
 }

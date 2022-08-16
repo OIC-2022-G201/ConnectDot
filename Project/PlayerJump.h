@@ -5,16 +5,14 @@
 //
 // @details
 #pragma once
-#include <numbers>
-
 #include "CollisionComponent.h"
 #include "PlayerState.h"
 namespace player {
-class PlayerJump
-{
+class PlayerJump {
   int frame_ = 0;
   class PlayerComponent* player_;
   bool is_idle_ = false;
+
  public:
   PlayerJump(PlayerComponent* player);
   void Start();
@@ -26,11 +24,12 @@ class PlayerJump
 
   template <typename Machine>
   void Transition(Machine& machine) const {
-    if(is_idle_)machine.template TransitionTo<PlayerIdle>();
+    if (is_idle_) machine.template TransitionTo<PlayerIdle>();
   }
   void OnEvent(base_engine::CollisionComponent* collision);
 
-private:
-  void JumpSetVelocity();
+ private:
+  void Acceleration() const;
 };
+
 }  // namespace player

@@ -34,13 +34,24 @@ void PlayerComponent::OnCollision(base_engine::CollisionComponent* collision) {
   machine_.OnEvent(collision);
   auto const tag = collision->GetActor()->GetTag();
   if (collision->GetActor()->GetTag() == "Field") {
+    auto block_right = collision->AABB().Right;
+    auto p_left = collision_->AABB().Left;
+    auto diffX = p_left - block_right;
     auto block_top = collision->AABB().Top;
     auto p_bottom = collision_->AABB().Bottom;
-    auto diff = block_top - p_bottom;
-    if (diff<0)
+    auto diffY = block_top - p_bottom;
+    if (diffY > 0 &&diffX <= 0)
+    {
+      SetVelocityX(0);
+      owner_->AddPosition({0, diffX });
+      collision_->Update();
+        
+    }
+
+    if (diffY < 0)
     {
       SetVelocityY(0);
-      owner_->AddPosition({0, diff});
+      owner_->AddPosition({0, diffY});
       collision_->Update();
     }
   }

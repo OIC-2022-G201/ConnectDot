@@ -24,12 +24,15 @@ void PlayerActor::Start() {
   player_component_ = new PlayerComponent(this, 100);
 
   player_component_->SetInput(input_manager_);
-  SetPosition({300, window::kHeight - 430});
+  SetPosition({300, window::kHeight - 730});
   auto collision = new CollisionComponent(this, 500);
   const auto shape_player = std::make_shared<Rect>(0, 0, 100, 200);
   collision->SetShape(shape_player);
   collision->SetObjectFilter(kPlayerObjectFilter);
   collision->SetTargetFilter(kPlayerTargetFilter);
+  auto debugCollisionRender = new ShapeRenderComponent(this, 500);
+  debugCollisionRender->SetShape(shape_player);
+  debugCollisionRender->SetColor(MOF_COLOR_GREEN);
   auto playerSprite = new SpriteComponent(this, 100);
   playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
     SetName("Player");
