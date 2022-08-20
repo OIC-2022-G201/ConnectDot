@@ -5,11 +5,13 @@
 //
 // @details
 #pragma once
+#include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
 
 namespace player {
 class PlayerIdle {
   class PlayerComponent* player_;
+  base_engine::PhysicsBodyComponent* body_;
   bool is_jump_ = false;
   bool is_move_ = false;
   bool is_sneak_ = false; 

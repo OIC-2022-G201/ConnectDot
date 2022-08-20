@@ -6,7 +6,6 @@
 // @details
 
 #pragma once
-#include "CollisionComponent.h"
 
 namespace detail {
 constexpr unsigned long long Shift(size_t val) { return 1 << val; }

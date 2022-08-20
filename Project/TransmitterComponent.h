@@ -23,7 +23,7 @@ class TransmitterComponent : public base_engine::Component {
 
   void Update() override;
 
-  void OnCollision(base_engine::CollisionComponent* collision) override;
+  void OnCollision(const base_engine::SendManifold& manifold) override;
 
 public:
   template <SendablePower T, class... _Types>

@@ -25,7 +25,7 @@ void PlayerActor::Start() {
 
   player_component_->SetInput(input_manager_);
   SetPosition({300, window::kHeight - 730});
-  auto collision = new CollisionComponent(this, 500);
+  auto collision = new CollisionComponent(this);
   const auto shape_player = std::make_shared<Rect>(0, 0, 100, 200);
   collision->SetShape(shape_player);
   collision->SetObjectFilter(kPlayerObjectFilter);
@@ -35,6 +35,8 @@ void PlayerActor::Start() {
   debugCollisionRender->SetColor(MOF_COLOR_GREEN);
   auto playerSprite = new SpriteComponent(this, 100);
   playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
+
+    auto body = new PhysicsBodyComponent(this);
     SetName("Player");
 }
 

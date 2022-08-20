@@ -8,12 +8,14 @@
 #pragma once
 #include <Math/Vector2.h>
 
+#include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
 
 namespace player {
 class PlayerMove {
   using Vector2 = Mof::CVector2;
   class PlayerComponent* player_;
+  base_engine::PhysicsBodyComponent* body_;
   bool is_idle_ = false;
   bool is_sneak_ = false;
   bool is_jump_ = false;

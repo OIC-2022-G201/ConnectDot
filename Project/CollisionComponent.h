@@ -4,6 +4,9 @@
 #include <memory>
 
 #include "Component.h"
+#include "ComponentParameter.h"
+#include "Manifold.h"
+#include "SendManifold.h"
 #include "Pow.h"
 #include "Rect.h"
 
@@ -12,29 +15,41 @@ constexpr size_t kCollisionFilterSize = 32;
 constexpr std::bitset<kCollisionFilterSize> kCollisionFilterAllMask(
     (1ul << kCollisionFilterSize) - 1);
 class CollisionComponent : public Component {
+ public:
+  CollisionComponent(class Actor* owner,
+                     int update_order = kCollisionUpdateOrder);
+  [[nodiscard]] IShape* GetShape() const;
+  void SetShape(const std::shared_ptr<IShape>& shape);
+  physics::Manifold Collision(const CollisionComponent* target) const;
+  void SetTargetFilter(const std::bitset<kCollisionFilterSize>& layer);
+  [[nodiscard]] const std::bitset<kCollisionFilterSize>& GetTargetFilter()
+      const;
+  void SetObjectFilter(const std::bitset<kCollisionFilterSize>& layer);
+  [[nodiscard]] const std::bitset<kCollisionFilterSize>& GetObjectFilter()
+      const;
+  void SetTrigger(const bool trigger) { is_trigger_ = trigger; }
+  bool GetTrigger() const { return is_trigger_; }
+  bool IsMatch(CollisionComponent* target) const;
+  void CollisionSender(const SendManifold& manifold);
+  ~CollisionComponent() override;
+  void Update() override;
+  [[nodiscard]] Actor* GetActor() const { return owner_; }
+  Mof::CRectangle AABB() const { return GetShape()->AABB() + GetPosition(); }
+  void Start() override;
+
+  [[nodiscard]] class PhysicsBodyComponent* GetPhysicsBody() const
+  {
+    return body_;
+  }
+    void SetPhysicsBody(class PhysicsBodyComponent* body) { body_ = body; }
+ private:
   std::shared_ptr<class IShape> shape_;
   std::bitset<kCollisionFilterSize> target_layer_;
   std::bitset<kCollisionFilterSize> object_layer_;
+  class PhysicsBodyComponent* body_ = nullptr;
+  bool is_trigger_ = false;
 
- public:
-  CollisionComponent(class Actor* owner, int update_order);
-  [[nodiscard]] IShape* GetShape() const;
-  void SetShape(const std::shared_ptr<IShape>& shape);
-  virtual bool Collision(const CollisionComponent* target) const;
-  void SetTargetFilter(const std::bitset<kCollisionFilterSize>& layer);
-  [[nodiscard]] const std::bitset<kCollisionFilterSize>& GetTargetFilter() const;
-  void SetObjectFilter(const std::bitset<kCollisionFilterSize>& layer);
-  [[nodiscard]] const std::bitset<kCollisionFilterSize>& GetObjectFilter() const;;
-
-  bool IsMatch(CollisionComponent* target) const;
-  void CollisionSender(CollisionComponent* target);
-  ~CollisionComponent() override;
-  void Update() override;
-  [[nodiscard]] Actor* GetActor() const
-  { return owner_;
-  }
-  Mof::CRectangle AABB() { return GetShape()->AABB(); }
-  void Start() override;;
+  [[nodiscard]] Vector2 GetPosition() const { return owner_->GetPosition(); }
 };
 inline bool CollisionComponent::IsMatch(CollisionComponent* target) const {
   return ((target_layer_ & target->object_layer_) != 0) ||

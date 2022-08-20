@@ -22,10 +22,12 @@ void PylonActor::Start()
   shape->SetShape(circle);
   shape->SetFillMode(base_engine::FillMode::Yes)
       .SetColor(MOF_ARGB(255 - 32, 255, 255, 0));
-  auto collision = new base_engine::CollisionComponent(this, 500);
+  auto collision = new base_engine::CollisionComponent(this);
   collision->SetShape(circle);
   collision->SetObjectFilter(kBeaconObjectFilter);
   collision->SetTargetFilter(kBeaconTargetFilter);
+  collision->SetTrigger(true);
+
   SetName("Pylon");
   auto transmitter = new TransmitterComponent(this, 100);
   transmitter->Create<PylonTransmitter>();

@@ -17,32 +17,35 @@ void Circle::Draw(const ShapeRenderComponent& drawable) {
   drawable.Draw(*this);
 }
 
-bool Circle::Collision(const IShape* shape) const {
-  return shape->Collision(Circle(fix_));
+bool Circle::Collision(const Vector2& transform, const IShape* shape,
+                       const Vector2& to_transform) const {
+  return shape->Collision(to_transform, *this, transform);
 }
 
-bool Circle::Collision(const Rect& rect) const {
-  return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::CRectangle>(rect.fix_));
+bool Circle::Collision(const Vector2& transform, const Rect& rect,
+                       const Vector2& rect_transform) const {
+  return Geometry2D::Intersect((*this) + transform, rect + rect_transform);
 }
 
-bool Circle::Collision(const Circle& circle) const {
-  return Geometry2D::Intersect(fix_, static_cast<Mof::CCircle>(circle.fix_));
+bool Circle::Collision(const Vector2& transform, const Circle& circle,
+                       const Vector2& circle_transform) const {
+  return Geometry2D::Intersect((*this) + transform, circle + circle_transform);
 }
 
-bool Circle::Collision(const Point& point) const {
-  return Geometry2D::Intersect(fix_, static_cast<Mof::Vector2>(point.fix_));
+bool Circle::Collision(const Vector2& transform, const Point& point,
+                       const Vector2& point_transform) const {
+  return Geometry2D::Intersect((*this) + transform, point + point_transform);
 }
-void Circle::ChangeNotification(){
-  fix_ = static_cast<CCircle>(*this);
-  fix_.Translation(offset_);
+void Circle::ChangeNotification() {}
+
+Mof::CRectangle Circle::AABB() const {
+  const Mof::Vector2 pos(this->Position.x, this->Position.y);
+  return Mof::CRectangle(pos - Mof::Vector2(1, 1) * r,
+                         pos + Mof::Vector2(1, 1) * r);
 }
 
-Mof::CRectangle Circle::AABB() const
+Vector2 Circle::GetFarthestPoint(InVector2 transform, Vector2 direction) const
 {
-    const Mof::Vector2 pos(fix_.Position.x,fix_.Position.y);
-    return 
-        Mof::CRectangle(pos - Mof::Vector2(1, 1) * r,
-                        pos + Mof::Vector2(1, 1) * r);
+    return transform + VectorUtilities::Normalize(direction) * r;
 }
 }  // namespace base_engine

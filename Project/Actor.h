@@ -38,7 +38,7 @@ class Actor {
   }
 
   template <class T, class D>
-  void SendCallbackMessage(T* callback, D* data) {
+  void SendCallbackMessage(T* callback, D&& data) {
     for (auto element : components_) {
       callback->SendComponentsMessage(element, data);
     }
@@ -48,7 +48,7 @@ class Actor {
 
   [[nodiscard]] const Vector2& GetPosition() const { return position_; }
   void SetPosition(const Vector2& pos) { position_ = pos; }
-  void AddPosition(const Vector2& pos) { position_ += pos; }
+  void Translation(const Vector2& pos) { position_ += pos; }
   float GetRotation() const;
   void SetRotation(const float rotation) { rotation_ = rotation; }
   [[nodiscard]] float GetScale() const { return scale_; }
@@ -56,11 +56,14 @@ class Actor {
 
   [[nodiscard]] Game* GetGame() const { return game; }
   /**
-   * \brief Componentのコンストラクタから呼び出す
+   * \brief Componentの追加はコンストラクタから呼び出す
    * \param component 
    */
   void AddComponent(class Component* component);
-
+  /**
+   * \brief コンポーネントを登録する
+   */
+  void AddComponent();
   /**
    * \brief コンポーネント型を探索して取得する
    * \tparam T Componentクラスを継承したクラス
@@ -87,7 +90,7 @@ class Actor {
 
   void SetTag(std::string_view tag);
   [[nodiscard]] std::string_view GetTag() const;
-
+  
  protected:
   std::string name_ = "Actor";
   std::string tag_ = "Object";
@@ -95,9 +98,7 @@ class Actor {
   Vector2 position_;
   float rotation_;
   float scale_;
-
  private:
-  void AddComponent();
   class Game* game;
   std::vector<class Component*> components_;
   std::vector<class Component*> pending_components_;

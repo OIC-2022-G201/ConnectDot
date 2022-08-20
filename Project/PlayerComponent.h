@@ -11,6 +11,7 @@
 #include "Component.h"
 #include "Game.h"
 #include "InputManager.h"
+#include "PhysicsBodyComponent.h"
 #include "PlayerIdle.h"
 #include "PlayerJump.h"
 #include "PlayerMove.h"
@@ -18,28 +19,19 @@
 #include "StateMachine.h"
 
 namespace player {
-
+    
 class PlayerComponent final : public base_engine::Component {
   using Vector2 = Mof::CVector2;
-
  public:
   PlayerComponent(base_engine::Actor* owner, int update_order);
   void Start() override;
   void ProcessInput() override { machine_.ProcessInput(); }
   void Update() override;
-  void OnCollision(base_engine::CollisionComponent* collision) override;
+  void OnCollision(const base_engine::SendManifold& manifold) override;
 
   void SetInput(const InputManager* input_manager) {
     input_manager_ = input_manager;
   }
-
-  inline void AddVelocity(const Vector2& power) { velocity_ += power; }
-  inline void AddVelocityX(const float power) { velocity_.x += power; }
-  inline void AddVelocityY(const float power) { velocity_.y += power; }
-  inline void SetVelocity(const Vector2& power) { velocity_ = power; }
-  inline void SetVelocityX(const float power) { velocity_.x = power; }
-  inline void SetVelocityY(const float power) { velocity_.y = power; }
-  inline Vector2 GetVelocity() { return velocity_; }
 
   inline bool IsJumpKey() { return input_manager_->JumpFire(); }
   inline float GetHorizontal() { return input_manager_->MoveHorizontal(); }
@@ -50,13 +42,17 @@ class PlayerComponent final : public base_engine::Component {
   }
   inline bool IsActionKey() { return input_manager_->ActionFire(); }
   base_engine::CollisionComponent* GetCollision() { return collision_; }
+  base_engine::PhysicsBodyComponent* PhysicsBody() { return physics_body_; }
  private:
   const InputManager* input_manager_ = nullptr;
 
   til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerJump> machine_ =
-      til::Machine{PlayerIdle{this}, PlayerMove{this}, PlayerSneak{this},
+      til::Machine{
+          PlayerIdle{this}, PlayerMove{this},
+                   PlayerSneak{this},
                    PlayerJump{this}};
-  Vector2 velocity_;
   base_engine::CollisionComponent* collision_ = nullptr;
+private:
+  base_engine::PhysicsBodyComponent* physics_body_ = nullptr;
 };
 }  // namespace player

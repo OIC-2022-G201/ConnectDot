@@ -39,7 +39,6 @@ void Actor::ProcessInput() {
 
 void Actor::UpdateActor() {
   if (state_ == kActive) {
-    AddComponent();
 
     for (auto component : components_) {
       component->Update();

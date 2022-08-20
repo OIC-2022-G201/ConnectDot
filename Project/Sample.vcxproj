@@ -61,6 +61,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)\Library\Include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -101,14 +102,18 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugStage.cpp" />
+    <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Geometry2D.cpp" />
+    <ClCompile Include="GJK.cpp" />
     <ClCompile Include="IBaseEngineCollider.cpp" />
     <ClCompile Include="IBaseEngineRender.cpp" />
     <ClCompile Include="IBaseEngineTexture.cpp" />
     <ClCompile Include="IBaseEngineEmpty.cpp" />
     <ClCompile Include="Geometry2D.ipp" />
+    <ClCompile Include="Manifold.cpp" />
+    <ClCompile Include="PhysicsBodyComponent.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
     <ClCompile Include="InputActor.cpp" />
     <ClCompile Include="InputComponent.cpp" />
@@ -133,6 +138,7 @@
     <ClCompile Include="TileMapComponent.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="VectorUtilities.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,16 +155,24 @@
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="DebugStage.h" />
     <ClInclude Include="EngineComponent.h" />
+    <ClInclude Include="EpaSolver.h" />
+    <ClInclude Include="ExpandingSimplex.h" />
+    <ClInclude Include="ExpandingSimplexEdge.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Geometry2D.h" />
+    <ClInclude Include="GJK.h" />
     <ClInclude Include="IBaseEngineCollider.h" />
     <ClInclude Include="IBaseEngineRender.h" />
     <ClInclude Include="IBaseEngineTexture.h" />
     <ClInclude Include="IBaseEngineEmpty.h" />
+    <ClInclude Include="Manifold.h" />
+    <ClInclude Include="MinkowskiSum.h" />
+    <ClInclude Include="PhysicsBodyComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerIdle.h" />
     <ClInclude Include="InputActor.h" />
@@ -181,6 +195,7 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderMof.h" />
+    <ClInclude Include="SendManifold.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteComponent.h" />
@@ -190,6 +205,7 @@
     <ClInclude Include="TileMapComponent.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="VectorUtilities.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>
   <ItemGroup>

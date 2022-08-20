@@ -10,5 +10,5 @@ IBaseEngineCollider* IBaseEngineCollider::Create() {
 IBaseEngineCollider::~IBaseEngineCollider() = default;
 
 void IBaseEngineCollider::SendComponentsMessage(Component* component,
-                                                CollisionComponent* collision) {}
+                                                const SendManifold& manifold) {}
 }  // namespace base_engine

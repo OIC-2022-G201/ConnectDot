@@ -8,16 +8,18 @@
 #pragma once
 #include <Math/Vector2.h>
 
+#include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
 namespace player {
 class PlayerSneak {
   using Vector2 = Mof::CVector2;
   class PlayerComponent* player_;
+  base_engine::PhysicsBodyComponent* body_;
   bool is_jump_ = false;
   bool is_move_ = false;
   bool is_idle_ = false; 
  public:
-  explicit  PlayerSneak(PlayerComponent* player);
+  explicit PlayerSneak(PlayerComponent* player);
   void Start();
   void Update();
   void ProcessInput();

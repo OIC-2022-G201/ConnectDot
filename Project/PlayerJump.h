@@ -6,11 +6,13 @@
 // @details
 #pragma once
 #include "CollisionComponent.h"
+#include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
 namespace player {
 class PlayerJump {
   int frame_ = 0;
   class PlayerComponent* player_;
+  base_engine::PhysicsBodyComponent* body_ = nullptr;
   bool is_idle_ = false;
 
  public:

@@ -10,7 +10,8 @@ class BaseEngineCollision final : public IBaseEngineCollider {
   void Register(CollisionComponent* component) override;
   void Remove(CollisionComponent* component) override;
 
-  void SendComponentsMessage(Component* component,CollisionComponent* collision) override;
+  void SendComponentsMessage(Component* component,
+                             const SendManifold& manifold) override;
   
 };
 }  // namespace base_engine

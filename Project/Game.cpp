@@ -28,8 +28,8 @@ bool Game::Initialize() {
   BASE_ENGINE(Texture)->Load("ice.png");
   BASE_ENGINE(Texture)->Load("Player.png");
 
-  auto pylon = new PylonActor(this);
-  pylon->SetPosition({100, window::kHeight - 230});
+  //auto pylon = new PylonActor(this);
+  //pylon->SetPosition({100, window::kHeight - 230});
   auto player = new player::PlayerActor(this);
   player->SetInput(input);
 
@@ -38,6 +38,7 @@ bool Game::Initialize() {
 }
 
 void Game::Update() {
+  CreateObjectRegister();
   ProcessInput();
   UpdateGame();
   b_collision->Collide();
@@ -76,6 +77,22 @@ void Game::RemoveSprite(RenderComponent* render_component) {
   sprites_.erase(iter);
 }
 
+void Game::CreateObjectRegister()
+{
+  updating_actors_ = true;
+  for (auto pending : pending_actors_) {
+    pending->StartActor();
+    actors_.emplace_back(pending);
+  }
+  pending_actors_.clear();
+
+  
+  for (auto actor : actors_) {
+    actor->AddComponent();
+  }
+    updating_actors_ = false;
+}
+
 void Game::ProcessInput() {
   updating_actors_ = true;
   for (const auto actor : actors_) {
@@ -87,11 +104,7 @@ void Game::ProcessInput() {
 void Game::UpdateGame() {
   updating_actors_ = true;
 
-  for (auto pending : pending_actors_) {
-    pending->StartActor();
-    actors_.emplace_back(pending);
-  }
-  pending_actors_.clear();
+
 
   for (auto actor : actors_) {
     actor->UpdateActor();

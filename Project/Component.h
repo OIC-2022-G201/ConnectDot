@@ -14,7 +14,7 @@ class Component {
   virtual void ProcessInput() {}
   // このコンポーネントの更新処理
   virtual void Update() {}
-  virtual void OnCollision(class CollisionComponent* collision) {}
+  virtual void OnCollision(const class SendManifold& manifold) {}
 
   [[nodiscard]] int GetUpdateOrder() const { return update_order_; }
 

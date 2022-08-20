@@ -20,6 +20,7 @@ class Game {
   void RemoveSprite(class RenderComponent* render_component);
 
  private:
+  void CreateObjectRegister();
   void ProcessInput();
   void UpdateGame();
 

@@ -15,7 +15,7 @@ protected:
   virtual void Register(class CollisionComponent* collision) = 0;
   virtual void Remove(class CollisionComponent* collision) = 0;
   virtual void SendComponentsMessage(class Component* component,
-                                     class CollisionComponent* collision);
+                                     const class SendManifold& manifold);
 };
 }
 ;

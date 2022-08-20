@@ -27,7 +27,7 @@ void tile_map::TileMapComponent::Load() {
     auto cell = new base_engine::Actor(owner_->GetGame());
     cell->SetTag("Field");
     cell->SetPosition({static_cast<MofFloat>(x * 128), 6 * 128});
-    auto collision = new base_engine::CollisionComponent(cell, 500);
+    auto collision = new base_engine::CollisionComponent(cell);
     collision->SetObjectFilter(kFieldObjectFilter);
     collision->SetTargetFilter(kFieldTargetFilter);
     collision->SetShape(
@@ -38,7 +38,7 @@ void tile_map::TileMapComponent::Load() {
     auto cell = new base_engine::Actor(owner_->GetGame());
     cell->SetTag("Field");
     cell->SetPosition({static_cast<MofFloat>(x * 128), 8 * 128});
-    auto collision = new base_engine::CollisionComponent(cell, 500);
+    auto collision = new base_engine::CollisionComponent(cell);
     collision->SetObjectFilter(kFieldObjectFilter);
     collision->SetTargetFilter(kFieldTargetFilter);
     collision->SetShape(

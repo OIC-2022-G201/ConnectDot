@@ -1,7 +1,10 @@
 ﻿#include "InputComponent.h"
+
+#include "ComponentParameter.h"
+
 namespace base_engine {
 InputComponent::InputComponent(InputActor* owner)
-    : Component(owner)
+    : Component(owner,kInputUpdateOrder)
 {
     
 }

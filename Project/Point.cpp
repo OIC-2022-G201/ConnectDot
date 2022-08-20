@@ -11,24 +11,28 @@ Point::Point(const Vector2& pObj) : Vector2(pObj) { ChangeNotification(); }
 
 void Point::Draw(const ShapeRenderComponent& drawable) { drawable.Draw(*this); }
 
-bool Point::Collision(const IShape* shape) const {
-  return shape->Collision(Point(fix_));
+bool Point::Collision(const Vector2&transform, const IShape* shape, const Vector2&to_transform) const {
+  return shape->Collision(to_transform, *this, transform);
 }
 
-bool Point::Collision(const Rect& rect) const {
-  return Geometry2D::Intersect(fix_,
-                               static_cast<Mof::CRectangle>(rect.fix_));
+bool Point::Collision(const Vector2& transform, const Rect& rect, const Vector2& rect_transform) const {
+  return Geometry2D::Intersect((*this) + transform,
+                               rect + rect_transform);
 }
 
-bool Point::Collision(const Circle& circle) const {
-  return Geometry2D::Intersect(fix_, static_cast<Mof::CCircle>(circle.fix_));
+bool Point::Collision(const Vector2& transform, const Circle& circle, const Vector2& circle_transform) const {
+  return Geometry2D::Intersect((*this) + transform, circle + circle_transform);
 }
 
-bool Point::Collision(const Point& point) const {
-  return Geometry2D::Intersect(fix_, static_cast<Mof::Vector2>(point.fix_));
+bool Point::Collision(const Vector2& transform, const Point& point, const Vector2& point_transform) const {
+  return Geometry2D::Intersect((*this) + transform,
+                               point + point_transform);
 }
 void Point::ChangeNotification() {
-  fix_ = static_cast<Mof::Vector2>(*this);
-  fix_ += offset_;
+}
+
+Vector2 Point::GetFarthestPoint(InVector2 transform, Vector2 direction) const
+{
+    return *this + transform;
 }
 }  // namespace base_engine

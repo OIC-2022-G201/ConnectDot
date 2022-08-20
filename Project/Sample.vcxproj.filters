@@ -97,12 +97,6 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine">
       <UniqueIdentifier>{45e24e77-66c7-40f8-952d-ebf1dc6e9d3d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BaseEngine\Collision">
-      <UniqueIdentifier>{b67da92c-ef6a-497c-8c3b-6983daff5bb2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BaseEngine\Tag">
-      <UniqueIdentifier>{2980059f-4bf4-4117-8828-627bee9ae8f7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Constexpr">
       <UniqueIdentifier>{585af6fb-1ce0-42a3-919c-9e6043f47dbb}</UniqueIdentifier>
     </Filter>
@@ -129,6 +123,24 @@
     </Filter>
     <Filter Include="ソース ファイル\ConnectDot\Stage\TileMap">
       <UniqueIdentifier>{43005580-b1e4-41ee-99cc-1d6ea73dc002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics">
+      <UniqueIdentifier>{7d0e0f0a-d457-45f7-bcc8-4582254b85c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Collision">
+      <UniqueIdentifier>{b67da92c-ef6a-497c-8c3b-6983daff5bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Collision\CollisionDetector">
+      <UniqueIdentifier>{363f3ff4-1676-47d3-b441-11cc939388d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Collision\CollisionDetector\GJK">
+      <UniqueIdentifier>{526b9ec4-1a23-4790-985f-c94b37b1d300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Collision\CollisionDetector\GJK\Solver">
+      <UniqueIdentifier>{1385bb70-a388-4e6a-8b2c-5f9b4cfb0ba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\PhysicsBody">
+      <UniqueIdentifier>{0307aef3-4f8b-4422-ad9e-af740f804cd9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -211,10 +223,10 @@
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClCompile>
     <ClCompile Include="IBaseEngineCollider.cpp">
-      <Filter>BaseEngine\Collision</Filter>
+      <Filter>BaseEngine\physics\Collision</Filter>
     </ClCompile>
     <ClCompile Include="BaseEngineCollision.cpp">
-      <Filter>BaseEngine\Collision</Filter>
+      <Filter>BaseEngine\physics\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
@@ -260,6 +272,21 @@
     </ClCompile>
     <ClCompile Include="TileMapComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorUtilities.cpp">
+      <Filter>BaseEngine\Math\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="GJK.cpp">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK</Filter>
+    </ClCompile>
+    <ClCompile Include="EpaSolver.cpp">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK\Solver</Filter>
+    </ClCompile>
+    <ClCompile Include="Manifold.cpp">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsBodyComponent.cpp">
+      <Filter>BaseEngine\Component\PhysicsBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -357,10 +384,10 @@
       <Filter>BaseEngine\Shapes\Primitive</Filter>
     </ClInclude>
     <ClInclude Include="IBaseEngineCollider.h">
-      <Filter>BaseEngine\Collision</Filter>
+      <Filter>BaseEngine\physics\Collision</Filter>
     </ClInclude>
     <ClInclude Include="BaseEngineCollision.h">
-      <Filter>BaseEngine\Collision</Filter>
+      <Filter>BaseEngine\physics\Collision</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>BaseEngine\Shapes\Primitive</Filter>
@@ -427,6 +454,36 @@
     </ClInclude>
     <ClInclude Include="TileMap.h">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorUtilities.h">
+      <Filter>BaseEngine\Math\Vector</Filter>
+    </ClInclude>
+    <ClInclude Include="GJK.h">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK</Filter>
+    </ClInclude>
+    <ClInclude Include="EpaSolver.h">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="Manifold.h">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK</Filter>
+    </ClInclude>
+    <ClInclude Include="MinkowskiSum.h">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpandingSimplexEdge.h">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpandingSimplex.h">
+      <Filter>BaseEngine\physics\Collision\CollisionDetector\GJK\Solver</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsBodyComponent.h">
+      <Filter>BaseEngine\Component\PhysicsBody</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentParameter.h">
+      <Filter>BaseEngine\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SendManifold.h">
+      <Filter>BaseEngine\physics\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
