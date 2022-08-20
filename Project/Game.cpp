@@ -28,8 +28,8 @@ bool Game::Initialize() {
   BASE_ENGINE(Texture)->Load("ice.png");
   BASE_ENGINE(Texture)->Load("Player.png");
 
-  //auto pylon = new PylonActor(this);
-  //pylon->SetPosition({100, window::kHeight - 230});
+  auto pylon = new PylonActor(this);
+  pylon->SetGridPosition(2,5);
   auto player = new player::PlayerActor(this);
   player->SetInput(input);
 

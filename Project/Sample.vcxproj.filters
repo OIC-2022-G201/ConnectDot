@@ -142,6 +142,12 @@
     <Filter Include="BaseEngine\Component\PhysicsBody">
       <UniqueIdentifier>{0307aef3-4f8b-4422-ad9e-af740f804cd9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Const\Electronics">
+      <UniqueIdentifier>{dcbe3ce0-c08d-459a-b59c-4c7e9356c8c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Grid">
+      <UniqueIdentifier>{ff4f6932-075a-446e-a15a-c7a5842a2502}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -287,6 +293,9 @@
     </ClCompile>
     <ClCompile Include="PhysicsBodyComponent.cpp">
       <Filter>BaseEngine\Component\PhysicsBody</Filter>
+    </ClCompile>
+    <ClCompile Include="GridSnapComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -484,6 +493,21 @@
     </ClInclude>
     <ClInclude Include="SendManifold.h">
       <Filter>BaseEngine\physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="StageConstitution.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="ElectronicsPower.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawOrder.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="GridSnapComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectDotUpdateOrder.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

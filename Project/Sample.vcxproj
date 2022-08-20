@@ -107,6 +107,7 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Geometry2D.cpp" />
     <ClCompile Include="GJK.cpp" />
+    <ClCompile Include="GridSnapComponent.cpp" />
     <ClCompile Include="IBaseEngineCollider.cpp" />
     <ClCompile Include="IBaseEngineRender.cpp" />
     <ClCompile Include="IBaseEngineTexture.cpp" />
@@ -156,7 +157,10 @@
     <ClInclude Include="CollisionLayer.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentParameter.h" />
+    <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="DebugStage.h" />
+    <ClInclude Include="DrawOrder.h" />
+    <ClInclude Include="ElectronicsPower.h" />
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="EpaSolver.h" />
     <ClInclude Include="ExpandingSimplex.h" />
@@ -166,6 +170,7 @@
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Geometry2D.h" />
     <ClInclude Include="GJK.h" />
+    <ClInclude Include="GridSnapComponent.h" />
     <ClInclude Include="IBaseEngineCollider.h" />
     <ClInclude Include="IBaseEngineRender.h" />
     <ClInclude Include="IBaseEngineTexture.h" />
@@ -199,6 +204,7 @@
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="StageConstitution.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="TileMap.h" />

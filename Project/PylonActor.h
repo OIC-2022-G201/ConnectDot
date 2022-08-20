@@ -12,6 +12,8 @@ class PylonActor : public base_engine::Actor {
 public:
     explicit PylonActor(base_engine::Game* game);
 
+    PylonActor& SetGridPosition(int x,int y);
+
     ~PylonActor() override;
     void Start() override;
     void Update() override;
