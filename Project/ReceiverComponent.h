@@ -69,7 +69,13 @@ class ReceiverComponent : public base_engine::Component {
   }
 
  private:
-  enum class PowerState { kDisconnected, kDisconnect, kConnect, kConnecting };
+  enum class PowerState
+  {
+      kDisconnected,//接続が切れた瞬間
+      kDisconnect,//接続が切れている
+      kConnect,//接続された瞬間
+      kConnecting//接続されている(kConnectの後から切れるまで)
+  };
   PowerState current_state_ = PowerState::kDisconnect;
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
