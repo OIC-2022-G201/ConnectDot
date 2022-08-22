@@ -13,9 +13,10 @@ SpriteComponent::SpriteComponent(Actor* owner, int draw_order)
 
 SpriteComponent::~SpriteComponent() { sprite_.Release(); }
 
-void SpriteComponent::SetImage(Mof::LPTexture img) {
+SpriteComponent& SpriteComponent::SetImage(Mof::LPTexture img) {
   sprite_.SetTexture(img);
   texture_ = img;
+  return *this;
 }
 
 void SpriteComponent::StartFlash(float time, const COLOR& color) {
@@ -26,7 +27,8 @@ void SpriteComponent::StartFlash(float time, const COLOR& color) {
 void SpriteComponent::Update() { color_ = MOF_ARGB(255, 255, 255, 255); }
 
 void SpriteComponent::Draw() {
-  Vector2 p = owner_->GetPosition();
+  Vector2 p = owner_->GetPosition() + offset_;
+  
   float a = owner_->GetRotation();
   float s = owner_->GetScale();
   Mof::Vector3 pos = {p.x, p.y,0};

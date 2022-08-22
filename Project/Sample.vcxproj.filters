@@ -297,6 +297,9 @@
     <ClCompile Include="GridSnapComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Grid</Filter>
     </ClCompile>
+    <ClCompile Include="GridPosition.cpp">
+      <Filter>ソース ファイル\ConnectDot\Grid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -508,6 +511,9 @@
     </ClInclude>
     <ClInclude Include="ConnectDotUpdateOrder.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="GridPosition.h">
+      <Filter>ソース ファイル\ConnectDot\Grid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,5 +8,5 @@
 #pragma once
 namespace component_update {
 constexpr int kPlayer = 100;
-constexpr int kGrid = 90;
+constexpr int kGridSnap = 90;
 }  // namespace component_update

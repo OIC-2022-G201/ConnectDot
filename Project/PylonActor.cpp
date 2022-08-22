@@ -5,6 +5,7 @@
 #include "CollisionLayer.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "GridSnapComponent.h"
 #include "PylonTransmitter.h"
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
@@ -15,13 +16,6 @@ using base_engine::Floating;
 using base_engine::Vector2;
 
 PylonActor::PylonActor(base_engine::Game* game) : Actor(game) {}
-
-PylonActor& PylonActor::SetGridPosition(int x, int y) {
-  const auto position = Vector2{static_cast<float>(x), static_cast<float>(y)} *
-                        stage::kStageCellSize<Floating>;
-  SetPosition(position);
-  return *this;
-}
 
 PylonActor::~PylonActor() {}
 
@@ -56,8 +50,15 @@ void PylonActor::Start() {
   }
 
   SetName("Pylon");
-  auto transmitter = new TransmitterComponent(this, 100);
-  transmitter->Create<PylonTransmitter>();
+
+  {
+    auto transmitter = new TransmitterComponent(this, 100);
+    transmitter->Create<PylonTransmitter>();
+  }
+  {
+    auto grid = new grid::GridSnapComponent(this);
+    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({3, 5});
+  }
 }
 
 void PylonActor::Update() {}

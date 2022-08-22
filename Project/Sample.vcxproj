@@ -107,6 +107,7 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Geometry2D.cpp" />
     <ClCompile Include="GJK.cpp" />
+    <ClCompile Include="GridPosition.cpp" />
     <ClCompile Include="GridSnapComponent.cpp" />
     <ClCompile Include="IBaseEngineCollider.cpp" />
     <ClCompile Include="IBaseEngineRender.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="Geometry2D.h" />
     <ClInclude Include="GJK.h" />
+    <ClInclude Include="GridPosition.h" />
     <ClInclude Include="GridSnapComponent.h" />
     <ClInclude Include="IBaseEngineCollider.h" />
     <ClInclude Include="IBaseEngineRender.h" />
