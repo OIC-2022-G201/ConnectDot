@@ -16,6 +16,16 @@ class BeaconTransmitter : public ISendablePower {
 
   void Sending() override;
 
+  bool CanSending() override
+  {
+	  return can_sending_;
+  }
+
+  void SetCanSending(bool can_sending)
+  {
+	  can_sending_ = can_sending;
+  }
  private:
   int level_;
+  bool can_sending_ = false;
 };

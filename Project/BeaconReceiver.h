@@ -7,15 +7,18 @@
 
 #pragma once
 #include "IReceivablePower.h"
+#include "BeaconTransmitter.h"
+
 
 class BeaconReceiver : public IReceivablePower {
 public:
     bool PowerJoinCondition() override
-    { return true;
+    { 
+        return true;
     }
     void OnPowerEnter() override
     {
-        int n = 3;
+        transmitter_->SetCanSending(true);
     }
     void OnPowerChanged() override
     {
@@ -23,6 +26,9 @@ public:
     }
     void OnPowerExit() override
     {
-        int n = 3;
+        transmitter_->SetCanSending(false);
     }
+    BeaconReceiver(BeaconTransmitter* transmitter):transmitter_(transmitter){}
+private:
+    BeaconTransmitter* transmitter_;
 };

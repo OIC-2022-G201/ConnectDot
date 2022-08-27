@@ -13,4 +13,8 @@ class PylonTransmitter : public ISendablePower {
   explicit PylonTransmitter();
   std::vector<IReceivablePower*> GetTarget() override;
   void Sending() override;
+  bool CanSending() override
+  {
+	  return true;
+  }
 };

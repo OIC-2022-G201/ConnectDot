@@ -14,4 +14,5 @@ public:
     virtual ~ISendablePower() = default;
     std::vector<IReceivablePower*> virtual GetTarget() = 0;
   void virtual Sending() = 0;
+  bool virtual CanSending() = 0;
 };
