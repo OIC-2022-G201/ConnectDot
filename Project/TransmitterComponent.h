@@ -25,6 +25,10 @@ class TransmitterComponent : public base_engine::Component {
 
   void OnCollision(const base_engine::SendManifold& manifold) override;
 
+  void SetCanSending(bool can_sending)
+  {
+      transmitter_.get()->SetCanSending(can_sending);
+  }
 public:
   template <SendablePower T, class... _Types>
   void Create(_Types&&... args) {

@@ -17,4 +17,8 @@ class PylonTransmitter : public ISendablePower {
   {
 	  return true;
   }
+  void SetCanSending(bool can_sending) override
+  {
+	  
+  }
 };

@@ -50,11 +50,9 @@ void BeaconActor::Start() {
   {
     const auto transmitter = new TransmitterComponent(this, 100);
     transmitter->Create<BeaconTransmitter>(1);
-  }
-
-  {
+  
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<BeaconReceiver>();
+    receiver->Create<BeaconReceiver>(transmitter);
   }
 
   {

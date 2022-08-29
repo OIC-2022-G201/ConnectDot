@@ -15,4 +15,5 @@ public:
     std::vector<IReceivablePower*> virtual GetTarget() = 0;
   void virtual Sending() = 0;
   bool virtual CanSending() = 0;
+  void virtual SetCanSending(bool can_sending) = 0;
 };
