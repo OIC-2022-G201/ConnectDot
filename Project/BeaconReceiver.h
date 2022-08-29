@@ -8,14 +8,14 @@
 #pragma once
 #include "IReceivablePower.h"
 
-
 class BeaconReceiver : public IReceivablePower {
 public:
     bool PowerJoinCondition() override;
     void OnPowerEnter() override;
     void OnPowerChanged() override;
     void OnPowerExit() override;
-    BeaconReceiver(TransmitterComponent* transmitter);
-private:
+    BeaconReceiver(class TransmitterComponent* transmitter);
+
+   private:
     TransmitterComponent* transmitter_;
 };

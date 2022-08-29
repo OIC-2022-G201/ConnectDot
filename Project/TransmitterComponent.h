@@ -12,7 +12,6 @@
 #include "CollisionComponent.h"
 #include "Component.h"
 #include "ISendablePower.h"
-#include "ReceiverComponent.h"
 
 class TransmitterComponent : public base_engine::Component {
  public:
@@ -27,7 +26,7 @@ class TransmitterComponent : public base_engine::Component {
 
   void SetCanSending(bool can_sending)
   {
-      transmitter_.get()->SetCanSending(can_sending);
+      transmitter_->SetCanSending(can_sending);
   }
 public:
   template <SendablePower T, class... _Types>

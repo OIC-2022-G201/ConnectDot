@@ -1,5 +1,6 @@
 ﻿#include "TransmitterComponent.h"
 
+#include "ReceiverComponent.h"
 #include "SendManifold.h"
 
 TransmitterComponent::TransmitterComponent(base_engine::Actor* owner,

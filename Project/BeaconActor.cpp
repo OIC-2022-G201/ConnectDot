@@ -8,6 +8,7 @@
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
+#include "ReceiverComponent.h"
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
