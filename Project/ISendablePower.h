@@ -1,17 +1,12 @@
 #pragma once
 #include <vector>
-#include "IReceivablePower.h"
-
+class ReceiverComponent;
 template <typename T>
-concept SendablePower = requires(T& t) {
-  {
-    t.GetTarget()
-    } -> std::convertible_to<std::vector<IReceivablePower*>>;
-  t.Sending();
+concept SendablePower = requires(T& t, ReceiverComponent* r) {
+  t.Sending(r);
 };
 class ISendablePower {
 public:
     virtual ~ISendablePower() = default;
-    std::vector<IReceivablePower*> virtual GetTarget() = 0;
-  void virtual Sending() = 0;
+  void virtual Sending(class ReceiverComponent*) = 0;
 };

@@ -3,8 +3,4 @@
 PylonTransmitter::PylonTransmitter()
 {}
 
-std::vector<IReceivablePower*> PylonTransmitter::GetTarget()
-{ return {}; }
-
-void PylonTransmitter::Sending()
-{}
+void PylonTransmitter::Sending(ReceiverComponent*) {}

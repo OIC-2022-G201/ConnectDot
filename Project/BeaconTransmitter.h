@@ -10,12 +10,11 @@
 
 class BeaconTransmitter : public ISendablePower {
  public:
-  explicit BeaconTransmitter(const int level);
+  explicit BeaconTransmitter(class BeaconActor* actor);
+  
 
-  std::vector<IReceivablePower*> GetTarget() override;
-
-  void Sending() override;
+  void Sending(ReceiverComponent*) override;
 
  private:
-  int level_;
+  BeaconActor* actor_;
 };

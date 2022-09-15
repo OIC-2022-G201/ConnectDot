@@ -63,11 +63,13 @@ class ReceiverComponent : public base_engine::Component {
     }
     prev_state_ = current_state_;
   }
-  template <class T, class... _Types>
-  void Create(_Types&&... args) {
-    receiver_ = std::make_unique<T>(std::forward<_Types>(args)...);
+  template <
+      class T, class... Types,
+      std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
+  void Create(Types&&... args) {
+    receiver_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
-
+  
  private:
   enum class PowerState
   {

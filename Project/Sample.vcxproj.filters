@@ -148,6 +148,18 @@
     <Filter Include="ソース ファイル\ConnectDot\Grid">
       <UniqueIdentifier>{ff4f6932-075a-446e-a15a-c7a5842a2502}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{cfc6ffb4-f94c-4c04-8201-ab2f72f0636a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Extensions">
+      <UniqueIdentifier>{a75beb9c-fca4-4f8c-9e92-8f46a554f7a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Extensions\Tuple">
+      <UniqueIdentifier>{426f4d68-fc18-43d9-8292-d3c664d10e2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Observable">
+      <UniqueIdentifier>{1b97721b-48a6-4337-8905-2c3434fe0594}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -514,6 +526,9 @@
     </ClInclude>
     <ClInclude Include="GridPosition.h">
       <Filter>ソース ファイル\ConnectDot\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="TupleHasElement.h">
+      <Filter>Utilities\Extensions\Tuple</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

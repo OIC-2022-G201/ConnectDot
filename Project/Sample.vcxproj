@@ -59,7 +59,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Library\Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Library\Include;$(ProjectDir)\include\utilities\observable</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -212,6 +212,7 @@
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TileMapComponent.h" />
     <ClInclude Include="TransmitterComponent.h" />
+    <ClInclude Include="TupleHasElement.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VectorUtilities.h" />
     <ClInclude Include="YesNo.h" />

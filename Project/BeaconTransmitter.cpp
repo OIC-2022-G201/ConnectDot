@@ -1,14 +1,13 @@
 ﻿#include "BeaconTransmitter.h"
 
-BeaconTransmitter::BeaconTransmitter(const int level): level_(level)
-{}
+#include "BeaconActor.h"
 
-std::vector<IReceivablePower*> BeaconTransmitter::GetTarget()
+BeaconTransmitter::BeaconTransmitter(BeaconActor* actor) : actor_(actor)
 {
-    return {};
+  actor_->RegistryPart(this);
 }
 
-void BeaconTransmitter::Sending()
-{
+
+void BeaconTransmitter::Sending(ReceiverComponent*) {
         
 }

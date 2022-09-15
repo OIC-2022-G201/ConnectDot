@@ -25,10 +25,12 @@ class TransmitterComponent : public base_engine::Component {
 
   void OnCollision(const base_engine::SendManifold& manifold) override;
 
-public:
-  template <SendablePower T, class... _Types>
-  void Create(_Types&&... args) {
-    transmitter_ = std::make_unique<T>(std::forward<_Types>(args)...);
+ public:
+  template <
+      SendablePower T, class... Types,
+      std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
+  void Create(Types&&... args) {
+    transmitter_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
 
  private:
