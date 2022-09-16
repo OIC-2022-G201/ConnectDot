@@ -3,12 +3,17 @@
 
 #include "Actor.h"
 #include "BeaconReceiver.h"
-#include "TupleHasElement.h"
+#include "ReactiveProperty.h"
+#include "ShapeRenderComponent.h"
 #include "Subject.h"
+#include "TupleHasElement.h"
+
+
 class BeaconActor final : public base_engine::Actor {
  public:
   using BeaconPartTuple =
-      std::tuple<class BeaconReceiver*,class BeaconTransmitter*>;
+      std::tuple<class BeaconReceiver*, class BeaconTransmitter*,
+                 base_engine::ShapeRenderComponent*>;
 
   explicit BeaconActor(base_engine::Game* game);
 
@@ -26,11 +31,13 @@ class BeaconActor final : public base_engine::Actor {
     auto&& n = std::get<BeaconPart>(tuple_);
     std::get<BeaconPart>(tuple_) = part;
   }
-
-  observable::IObservable<int>* Test() {
-      return &sub;
+  void SetElectricPower(bool flg) { electric_power_ = flg;  }
+  [[nodiscard]] auto&& ElectricPowerTrigger() {
+    return electric_power_.ToReadOnly();
   }
+
  private:
-  observable::Subject<int> sub;
+  observable::ReactiveProperty<bool> electric_power_ = false;
+
   BeaconPartTuple tuple_;
 };

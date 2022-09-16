@@ -11,5 +11,5 @@
 class PylonTransmitter : public ISendablePower {
  public:
   explicit PylonTransmitter();
-  void Sending(ReceiverComponent*) override;
+  bool CanSending() override;
 };

@@ -12,7 +12,7 @@ void TransmitterComponent::Start() {}
 
 void TransmitterComponent::Update() {
   for (auto target : target_) {
-    target->Connecting();
+    target->Connecting(this);
   }
   target_.clear();
 }

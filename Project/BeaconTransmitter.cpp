@@ -8,6 +8,6 @@ BeaconTransmitter::BeaconTransmitter(BeaconActor* actor) : actor_(actor)
 }
 
 
-void BeaconTransmitter::Sending(ReceiverComponent*) {
-        
+bool BeaconTransmitter::CanSending() {
+  return static_cast<bool>(actor_->ElectricPowerTrigger());
 }

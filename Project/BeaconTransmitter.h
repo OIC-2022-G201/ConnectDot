@@ -11,9 +11,9 @@
 class BeaconTransmitter : public ISendablePower {
  public:
   explicit BeaconTransmitter(class BeaconActor* actor);
-  
 
-  void Sending(ReceiverComponent*) override;
+
+  bool CanSending() override;
 
  private:
   BeaconActor* actor_;

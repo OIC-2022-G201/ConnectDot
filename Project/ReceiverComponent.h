@@ -48,7 +48,11 @@ class ReceiverComponent : public base_engine::Component {
 
  public:
   bool CanConnect() { return receiver_->PowerJoinCondition(); }
-  void Connecting() {
+  void Connecting(class TransmitterComponent* stack) {
+    if (stack_ != stack) {
+      if (stack_!=nullptr) return;
+      stack_ = stack;
+    }
     switch (current_state_) {
       case PowerState::kDisconnected:
         break;
@@ -69,16 +73,16 @@ class ReceiverComponent : public base_engine::Component {
   void Create(Types&&... args) {
     receiver_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
-  
+
  private:
-  enum class PowerState
-  {
-      kDisconnected,//接続が切れた瞬間
-      kDisconnect,//接続が切れている
-      kConnect,//接続された瞬間
-      kConnecting//接続されている(kConnectの後から切れるまで)
+  enum class PowerState {
+    kDisconnect,    //接続が切れている
+    kDisconnected,  //接続が切れた瞬間
+    kConnect,       //接続された瞬間
+    kConnecting     //接続されている(kConnectの後から切れるまで)
   };
   PowerState current_state_ = PowerState::kDisconnect;
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
+  class TransmitterComponent* stack_ = nullptr;
 };

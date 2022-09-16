@@ -3,4 +3,4 @@
 PylonTransmitter::PylonTransmitter()
 {}
 
-void PylonTransmitter::Sending(ReceiverComponent*) {}
+bool PylonTransmitter::CanSending() { return true; }

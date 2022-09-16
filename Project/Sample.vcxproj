@@ -177,6 +177,11 @@
     <ClInclude Include="IBaseEngineRender.h" />
     <ClInclude Include="IBaseEngineTexture.h" />
     <ClInclude Include="IBaseEngineEmpty.h" />
+    <ClInclude Include="include\utilities\observable\IObservable.h" />
+    <ClInclude Include="include\utilities\observable\IObserver.h" />
+    <ClInclude Include="include\utilities\observable\ReactiveProperty.h" />
+    <ClInclude Include="include\utilities\observable\Subject.h" />
+    <ClInclude Include="include\utilities\observable\Unit.h" />
     <ClInclude Include="Manifold.h" />
     <ClInclude Include="MinkowskiSum.h" />
     <ClInclude Include="PhysicsBodyComponent.h" />

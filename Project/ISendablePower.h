@@ -2,11 +2,11 @@
 #include <vector>
 class ReceiverComponent;
 template <typename T>
-concept SendablePower = requires(T& t, ReceiverComponent* r) {
-  t.Sending(r);
+concept SendablePower = requires(T& t) {
+  t.CanSending();
 };
 class ISendablePower {
 public:
     virtual ~ISendablePower() = default;
-  void virtual Sending(class ReceiverComponent*) = 0;
+    bool virtual CanSending() = 0;
 };

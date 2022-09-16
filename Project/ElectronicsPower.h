@@ -9,7 +9,7 @@
 #include <cstdint>
 namespace electronics {
 namespace electricity {
-constexpr uint32_t kPowerRadius = 400;
+constexpr uint32_t kPowerRadius = 384;
 }
 
 namespace pylon

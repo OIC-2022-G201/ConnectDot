@@ -530,6 +530,21 @@
     <ClInclude Include="TupleHasElement.h">
       <Filter>Utilities\Extensions\Tuple</Filter>
     </ClInclude>
+    <ClInclude Include="include\utilities\observable\ReactiveProperty.h">
+      <Filter>Utilities\Observable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utilities\observable\Subject.h">
+      <Filter>Utilities\Observable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utilities\observable\Unit.h">
+      <Filter>Utilities\Observable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utilities\observable\IObservable.h">
+      <Filter>Utilities\Observable</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utilities\observable\IObserver.h">
+      <Filter>Utilities\Observable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE">
