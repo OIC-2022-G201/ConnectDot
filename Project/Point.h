@@ -25,5 +25,7 @@ class Point : public Mof::Vector2, public IShape {
   void ChangeNotification() override;
   Mof::CRectangle AABB() const override { return {*this, *this}; }
   [[nodiscard]] Vector2 GetFarthestPoint(InVector2 transform, Vector2 direction) const override;
+
+  ShapeType GetType() const override { return ShapeType::kPoint; }
 };
 }  // namespace base_engine

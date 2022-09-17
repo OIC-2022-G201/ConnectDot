@@ -6,15 +6,13 @@
 // @details GJKによる当たり判定とEPAによる衝突深度を求める
 
 #pragma once
-#include <Mof.h>
 
 #include <vector>
 
 #include "EpaSolver.h"
-#include "IShape.h"
 #include "Manifold.h"
 #include "MinkowskiSum.h"
-#include "Vector.h"
+
 
 namespace base_engine::physics::detector {
 using Simplex = std::vector<Vector2>;
@@ -22,8 +20,13 @@ class Gjk {
  public:
   static Manifold Detect(const IShape& shape1, InVector2 transform1,
                          const IShape& shape2, InVector2 transform2) {
+    if (shape1.GetType() == ShapeType::kCircle &&
+        shape2.GetType() == ShapeType::kCircle) {
+      return DetectCircle(reinterpret_cast<const Circle&>(shape1), transform1,
+                          reinterpret_cast<const Circle&>(shape2), transform2);
+    }
     Simplex simplex;
-    MinkowskiSum minkowski_sum(shape1, transform1, shape2, transform2);
+    const MinkowskiSum minkowski_sum(shape1, transform1, shape2, transform2);
 
     if (Vector2 direction =
             CalcInitialDirection(shape1, transform1, shape2, transform2);
@@ -71,6 +74,9 @@ class Gjk {
     }
   }
 
+  static Manifold DetectCircle(const base_engine::Circle& circle1, InVector2 transform1,
+                               const base_engine::Circle& circle2,
+                               InVector2 transform2);
   /**
    * \brief
    * \param simplex

@@ -5,7 +5,11 @@
 #include "Vector.h"
 
 namespace base_engine {
+class Circle;
+class Rect;
+class Point;
 
+enum class ShapeType { kNone, kRect, kCircle, kPoint };
 class IShape {
  protected:
   Vector2 FindFurthestPoint(const std::vector<Vector2>& vertices,
@@ -23,6 +27,7 @@ class IShape {
 
     return maxPoint;
   }
+
  public:
   virtual ~IShape();
 
@@ -32,20 +37,22 @@ class IShape {
                                        const Vector2& to_transform) const = 0;
 
   [[nodiscard]] virtual bool Collision(const Vector2& transform,
-                                       const class Rect& rect,
+                                       const base_engine::Rect& rect,
                                        const Vector2& rect_transform) const = 0;
 
-  [[nodiscard]] virtual bool Collision(const Vector2& transform,
-                                       const class Circle& circle,
-                                       const Vector2& circle_transform) const = 0;
+  [[nodiscard]] virtual bool Collision(
+      const Vector2& transform, const base_engine::Circle& circle,
+      const Vector2& circle_transform) const = 0;
 
-  [[nodiscard]] virtual bool Collision(const Vector2& transform,
-                                       const class Point& point,
-                                       const Vector2& point_transform) const = 0;
-  [[nodiscard]] virtual Vector2 GetFarthestPoint(InVector2 transform,Vector2 direction) const = 0; 
+  [[nodiscard]] virtual bool Collision(
+      const Vector2& transform, const base_engine::Point& point,
+      const Vector2& point_transform) const = 0;
+  [[nodiscard]] virtual Vector2 GetFarthestPoint(InVector2 transform,
+                                                 Vector2 direction) const = 0;
   void SetOffset(const Mof::Vector2& offset) { ChangeNotification(); }
 
   virtual Mof::CRectangle AABB() const = 0;
+  virtual ShapeType GetType() const = 0;
   virtual void ChangeNotification() = 0;
 };
 }  // namespace base_engine
