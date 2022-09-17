@@ -160,6 +160,12 @@
     <Filter Include="Utilities\Observable">
       <UniqueIdentifier>{1b97721b-48a6-4337-8905-2c3434fe0594}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\AnimationComponent">
+      <UniqueIdentifier>{20603d15-2afa-496a-8962-a3bec0048cd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\AnimationComponent\SpriteAnimationComponent">
+      <UniqueIdentifier>{4d492883-255a-456b-9868-be7b788c855c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -311,6 +317,9 @@
     </ClCompile>
     <ClCompile Include="GridPosition.cpp">
       <Filter>ソース ファイル\ConnectDot\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="MofSpriteAnimationComponent.cpp">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -544,6 +553,12 @@
     </ClInclude>
     <ClInclude Include="include\utilities\observable\IObserver.h">
       <Filter>Utilities\Observable</Filter>
+    </ClInclude>
+    <ClInclude Include="MofSpriteAnimationComponent.h">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpriteAnimationComponent.h">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

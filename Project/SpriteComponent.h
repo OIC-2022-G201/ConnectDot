@@ -17,7 +17,7 @@ class SpriteComponent : public RenderComponent {
   void Update() override;
   void Draw() override;
   SpriteComponent& SetImage(Mof::LPTexture img);
-
+  void SetClipRect(Mof::CRectangle rect) { clip_rect_ = rect; }
   SpriteComponent& SetColor(const COLOR& color) {
     color_ = color;
     return *this;
@@ -32,6 +32,7 @@ class SpriteComponent : public RenderComponent {
   Mof::LPTexture texture_;
   COLOR color_;
   Vector2 offset_;
+  Mof::CRectangle clip_rect_;
 
  public:
   void StartFlash(float time, const COLOR& color);

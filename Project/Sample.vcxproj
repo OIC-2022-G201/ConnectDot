@@ -115,6 +115,7 @@
     <ClCompile Include="IBaseEngineEmpty.cpp" />
     <ClCompile Include="Geometry2D.ipp" />
     <ClCompile Include="Manifold.cpp" />
+    <ClCompile Include="MofSpriteAnimationComponent.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
     <ClCompile Include="InputActor.cpp" />
@@ -182,8 +183,10 @@
     <ClInclude Include="include\utilities\observable\ReactiveProperty.h" />
     <ClInclude Include="include\utilities\observable\Subject.h" />
     <ClInclude Include="include\utilities\observable\Unit.h" />
+    <ClInclude Include="ISpriteAnimationComponent.h" />
     <ClInclude Include="Manifold.h" />
     <ClInclude Include="MinkowskiSum.h" />
+    <ClInclude Include="MofSpriteAnimationComponent.h" />
     <ClInclude Include="PhysicsBodyComponent.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerIdle.h" />
