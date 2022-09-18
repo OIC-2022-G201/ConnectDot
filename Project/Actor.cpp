@@ -67,7 +67,7 @@ void Actor::AddComponent() {
     // ’T‚µo‚µ‚½—v‘f‚Ì‘O‚ÉŽ©•ª‚ð‘}“ü
     components_.insert(iter, pending_components_[i]);
 
-    if (state_ == kActive) pending_components_[i]->Start();
+    if (state_ == kActive) pending_components_[i]d->Start();
   }
   pending_components_.clear();
 }
