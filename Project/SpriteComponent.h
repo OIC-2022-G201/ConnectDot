@@ -26,13 +26,19 @@ class SpriteComponent : public RenderComponent {
     offset_ = offset;
     return *this;
   }
+  SpriteComponent& SetAngle(MofFloat angle) {
+    angle_ = angle;
+    return *this;
+  }
+  MofFloat GetAngle() const { return angle_; }
 
  private:
   int draw_order_;
   Mof::LPTexture texture_;
   COLOR color_;
   Vector2 offset_;
-  Mof::CRectangle clip_rect_;
+  MofFloat angle_ = 0;
+  Mof::CRectangle clip_rect_{};
 
  public:
   void StartFlash(float time, const COLOR& color);

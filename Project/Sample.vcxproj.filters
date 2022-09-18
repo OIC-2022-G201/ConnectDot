@@ -166,6 +166,9 @@
     <Filter Include="BaseEngine\Component\AnimationComponent\SpriteAnimationComponent">
       <UniqueIdentifier>{4d492883-255a-456b-9868-be7b788c855c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Effect">
+      <UniqueIdentifier>{473c09f2-183f-4c77-881b-a80eb21dbaa4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -320,6 +323,9 @@
     </ClCompile>
     <ClCompile Include="MofSpriteAnimationComponent.cpp">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="ElectricEffect.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -559,6 +565,9 @@
     </ClInclude>
     <ClInclude Include="ISpriteAnimationComponent.h">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="ElectricEffect.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

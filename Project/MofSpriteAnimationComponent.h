@@ -9,6 +9,7 @@
 #include <Graphics/SpriteMotionController.h>
 
 #include "Component.h"
+#include "ComponentParameter.h"
 #include "ISpriteAnimationComponent.h"
 #include "SpriteComponent.h"
 
@@ -21,7 +22,8 @@ class MofSpriteAnimationComponent final : public Component,
   static Mof::SpriteAnimationCreate Convert(SpriteAnimationClip data);
 
  public:
-  MofSpriteAnimationComponent(Actor* owner, int update_order);
+  MofSpriteAnimationComponent(Actor* owner,
+                              int update_order = kAnimationUpdateOrder);
 
   void SetSpriteComponent(SpriteComponent* component) override;
 

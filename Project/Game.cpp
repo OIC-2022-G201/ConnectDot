@@ -28,6 +28,11 @@ bool Game::Initialize() {
   BASE_ENGINE(Texture)->Load("ice.png");
   BASE_ENGINE(Texture)->Load("Player.png");
 
+  BASE_ENGINE(Texture)->Load("Effect/Electric/ElectroCellMap.png");
+
+
+
+
   auto pylon = new PylonActor(this);
   auto player = new player::PlayerActor(this);
   player->SetInput(input);
@@ -79,9 +84,10 @@ void Game::RemoveSprite(RenderComponent* render_component) {
 void Game::CreateObjectRegister()
 {
   updating_actors_ = true;
-  for (auto pending : pending_actors_) {
-    pending->StartActor();
-    actors_.emplace_back(pending);
+  for (int i = 0; i < pending_actors_.size(); ++i)
+  {
+    pending_actors_[i]->StartActor();
+    actors_.emplace_back(pending_actors_[i]);
   }
   pending_actors_.clear();
 

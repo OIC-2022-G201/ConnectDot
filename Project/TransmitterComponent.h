@@ -6,13 +6,13 @@
 // @details
 
 #pragma once
+#include <deque>
 #include <memory>
 
 #include "Actor.h"
 #include "CollisionComponent.h"
 #include "Component.h"
 #include "ISendablePower.h"
-#include "ReceiverComponent.h"
 
 class TransmitterComponent : public base_engine::Component {
  public:
@@ -24,7 +24,7 @@ class TransmitterComponent : public base_engine::Component {
   void Update() override;
 
   void OnCollision(const base_engine::SendManifold& manifold) override;
-
+  int Sequential() const { return transmitter_->Sequential(); }
  public:
   template <
       SendablePower T, class... Types,
@@ -32,8 +32,11 @@ class TransmitterComponent : public base_engine::Component {
   void Create(Types&&... args) {
     transmitter_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
+  base_engine::Vector2 GetPosition() const
+  { return owner_->GetPosition();
+  }
 
  private:
-  std::vector<class ReceiverComponent*> target_;
+  std::deque<class ReceiverComponent*> target_;
   std::unique_ptr<ISendablePower> transmitter_;
 };

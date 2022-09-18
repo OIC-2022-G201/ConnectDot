@@ -16,8 +16,11 @@ SpriteComponent::~SpriteComponent() { sprite_.Release(); }
 SpriteComponent& SpriteComponent::SetImage(Mof::LPTexture img) {
   sprite_.SetTexture(img);
   texture_ = img;
-  clip_rect_ = Mof::CRectangle{0, 0, static_cast<float>(img->GetWidth()),
-                               static_cast<float>(img->GetHeight())};
+  if (clip_rect_ == Mof::CRectangle{})
+  {
+      clip_rect_ = Mof::CRectangle{0, 0, static_cast<float>(img->GetWidth()),
+                                   static_cast<float>(img->GetHeight())};
+  }
   return *this;
 }
 
@@ -35,9 +38,9 @@ void SpriteComponent::Draw() {
   float s = owner_->GetScale();
   Mof::Vector3 pos = {p.x, p.y, 0};
   sprite_.m_Position = pos;
-  // sprite_.Render();
-  // sprite_.UpdateActor();
-  Mof::CGraphicsUtilities::RenderTexture(p.x, p.y, clip_rect_, color_,
-                                         texture_);
+  
+  Mof::CGraphicsUtilities::RenderRotateTexture(p.x, p.y, angle_, clip_rect_,
+                                               color_, texture_);
+
 }
 }  // namespace base_engine

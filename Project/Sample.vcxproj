@@ -102,6 +102,7 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugStage.cpp" />
+    <ClCompile Include="ElectricEffect.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="DebugStage.h" />
     <ClInclude Include="DrawOrder.h" />
+    <ClInclude Include="ElectricEffect.h" />
     <ClInclude Include="ElectronicsPower.h" />
     <ClInclude Include="EngineComponent.h" />
     <ClInclude Include="EpaSolver.h" />

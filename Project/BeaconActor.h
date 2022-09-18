@@ -2,12 +2,9 @@
 #include <variant>
 
 #include "Actor.h"
-#include "BeaconReceiver.h"
 #include "ReactiveProperty.h"
 #include "ShapeRenderComponent.h"
-#include "Subject.h"
 #include "TupleHasElement.h"
-
 
 class BeaconActor final : public base_engine::Actor {
  public:
@@ -18,7 +15,8 @@ class BeaconActor final : public base_engine::Actor {
   explicit BeaconActor(base_engine::Game* game);
 
   ~BeaconActor() override;
-
+  void SetSequential(const int sequential) { sequential_ = sequential; }
+  int Sequential() const { return sequential_; }
   void Start() override;
   void Input() override;
   void Update() override;
@@ -31,13 +29,13 @@ class BeaconActor final : public base_engine::Actor {
     auto&& n = std::get<BeaconPart>(tuple_);
     std::get<BeaconPart>(tuple_) = part;
   }
-  void SetElectricPower(bool flg) { electric_power_ = flg;  }
+  void SetElectricPower(bool flg) { electric_power_ = flg; }
   [[nodiscard]] auto&& ElectricPowerTrigger() {
     return electric_power_.ToReadOnly();
   }
 
  private:
   observable::ReactiveProperty<bool> electric_power_ = false;
-
+  int sequential_ = 0;
   BeaconPartTuple tuple_;
 };

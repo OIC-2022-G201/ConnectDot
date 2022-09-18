@@ -12,10 +12,13 @@
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TransmitterComponent.h"
+#include "ReceiverComponent.h"
 
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {}
 
 BeaconActor::~BeaconActor() {}
+
+
 
 void BeaconActor::Start() {
   {
@@ -49,7 +52,7 @@ void BeaconActor::Start() {
 
   {
     const auto transmitter = new TransmitterComponent(this, 100);
-    transmitter->Create<BeaconTransmitter>(this);
+    transmitter->Create<BeaconTransmitter>(this, base_engine::Vector2{64, 64});
   
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<BeaconReceiver>(this);

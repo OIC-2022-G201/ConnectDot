@@ -11,9 +11,22 @@
 
 #include "Component.h"
 #include "IReceivablePower.h"
+#include "SpriteComponent.h"
 
 class ReceiverComponent : public base_engine::Component {
  public:
+  void OnPowerExit() {
+    current_state_ = PowerState::kDisconnect;
+    prev_state_ = PowerState::kDisconnect;
+    receiver_->OnPowerExit(sender_);
+  }
+  void OnPowerEnter() {
+    receiver_->OnPowerEnter(sender_);
+    current_state_ = PowerState::kConnecting;
+  }
+
+  void OnPowerChanged() { receiver_->OnPowerChanged(sender_); }
+
   ReceiverComponent(base_engine::Actor* owner, int update_order)
       : Component(owner, update_order) {}
 
@@ -26,16 +39,13 @@ class ReceiverComponent : public base_engine::Component {
     }
     switch (prev_state_) {
       case PowerState::kDisconnected:
-        current_state_ = PowerState::kDisconnect;
-        prev_state_ = PowerState::kDisconnect;
-        receiver_->OnPowerExit();
+        OnPowerExit();
         break;
       case PowerState::kConnect:
-        receiver_->OnPowerEnter();
-        current_state_ = PowerState::kConnecting;
+        OnPowerEnter();
         break;
       case PowerState::kConnecting:
-        receiver_->OnPowerChanged();
+        OnPowerChanged();
         break;
       case PowerState::kDisconnect:
         return;
@@ -47,26 +57,9 @@ class ReceiverComponent : public base_engine::Component {
   void OnCollision(const base_engine::SendManifold& manifold) override {}
 
  public:
-  bool CanConnect() { return receiver_->PowerJoinCondition(); }
-  void Connecting(class TransmitterComponent* stack) {
-    if (stack_ != stack) {
-      if (stack_!=nullptr) return;
-      stack_ = stack;
-    }
-    switch (current_state_) {
-      case PowerState::kDisconnected:
-        break;
-      case PowerState::kDisconnect:
-        current_state_ = PowerState::kConnect;
-        break;
-      case PowerState::kConnect:
-        current_state_ = PowerState::kConnecting;
-      case PowerState::kConnecting:
-        break;
-      default:;
-    }
-    prev_state_ = current_state_;
-  }
+  bool CanConnect() const { return receiver_->PowerJoinCondition(); }
+  void Connecting(class TransmitterComponent* sender);
+
   template <
       class T, class... Types,
       std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
@@ -84,5 +77,5 @@ class ReceiverComponent : public base_engine::Component {
   PowerState current_state_ = PowerState::kDisconnect;
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
-  class TransmitterComponent* stack_ = nullptr;
+  class TransmitterComponent* sender_ = nullptr;
 };

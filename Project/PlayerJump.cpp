@@ -7,16 +7,18 @@
 #include "PlayerComponent.h"
 
 namespace player::detail {
+using std::numbers::pi_v;
 
 constexpr uint16_t kMaxFrame = 60;
 
+//300 Sin[(Pi x)/60] ‘æ“ñŽŸ”÷•ª
 template <std::floating_point Floating>
 constexpr Floating kJumpCoefficient = static_cast<Floating>(
-    -1.0 / 12.0 * std::numbers::pi_v<Floating> * std::numbers::pi_v<Floating>);
+    static_cast<Floating>(- 1.0 / 12.0 )* pi_v<Floating> * pi_v<Floating>);
 
 template <std::floating_point Floating>
 constexpr Floating kTimeCoefficient =
-    static_cast<Floating>(std::numbers::pi_v<Floating> / kMaxFrame);
+    static_cast<Floating>(pi_v<Floating> / kMaxFrame);
 }  // namespace player::detail
 
 player::PlayerJump::PlayerJump(PlayerComponent* player)

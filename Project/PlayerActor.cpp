@@ -47,9 +47,11 @@ void PlayerActor::SetInput(InputManager* input_manager) {
 void PlayerActor::Input() {
   // const float horizontal = input_manager_->MoveHorizontal();
   // move_vector_.x = horizontal * 3;
-  if (input_manager_->PlaceBeaconFire()) {
+  if (input_manager_->PlaceBeaconFire() && have_beacon_count_ > 0) {
+    --have_beacon_count_;
     auto beacon = new BeaconActor(GetGame());
     beacon->SetPosition(GetPosition());
+    beacon->SetSequential(MaxBeacon() - have_beacon_count_);
   }
 }
 void PlayerActor::Update() {

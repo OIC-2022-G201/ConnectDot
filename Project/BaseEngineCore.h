@@ -32,5 +32,6 @@ class BaseEngineCore {
   }
 };
 
-#define BASE_ENGINE(COMPONENT) BaseEngineCore::Get<IBaseEngine##COMPONENT>()
+#define BASE_ENGINE(COMPONENT) \
+  base_engine::BaseEngineCore::Get<base_engine::IBaseEngine##COMPONENT>()
 }  // namespace base_engine

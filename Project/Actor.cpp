@@ -56,8 +56,8 @@ void Actor::AddComponent(Component* component) {
 void Actor::AddComponent() {
   // ƒ\[ƒgÏ‚Ý”z—ñ‚Ì‘}“üêŠ‚ð’T‚·
   // (Ž©•ª‚æ‚è‡”Ô‚Ì‘å‚«‚¢Å‰‚Ì—v‘f‚ð’T‚·)
-  for (auto component : pending_components_) {
-    int myOrder = component->GetUpdateOrder();
+  for (size_t i = 0; i < std::ssize(pending_components_);++i) {
+    int myOrder = pending_components_[i]->GetUpdateOrder();
     auto iter = components_.begin();
     for (; iter != components_.end(); ++iter) {
       if (myOrder < (*iter)->GetUpdateOrder()) {
@@ -65,9 +65,9 @@ void Actor::AddComponent() {
       }
     }
     // ’T‚µo‚µ‚½—v‘f‚Ì‘O‚ÉŽ©•ª‚ð‘}“ü
-    components_.insert(iter, component);
+    components_.insert(iter, pending_components_[i]);
 
-    if (state_ == kActive) component->Start();
+    if (state_ == kActive) pending_components_[i]->Start();
   }
   pending_components_.clear();
 }

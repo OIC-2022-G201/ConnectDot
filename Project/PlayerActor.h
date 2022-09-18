@@ -19,7 +19,10 @@ class PlayerActor final : public base_engine::Actor {
   Mof::Vector2 move_vector_;
   class PlayerComponent* player_component_ = nullptr;
   InputManager* input_manager_;
-
+  int MaxBeacon() {
+      return 2;
+  }
+  int have_beacon_count_ = MaxBeacon();
  public:
 };
 }  // namespace player

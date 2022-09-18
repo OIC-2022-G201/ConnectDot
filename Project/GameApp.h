@@ -12,7 +12,7 @@
 //INCLUDE
 #include	"Mof.h"
 #include "Game.h"
-
+#undef max
 /*******************************//*!
 @brief	基本ゲームアプリ。
 
