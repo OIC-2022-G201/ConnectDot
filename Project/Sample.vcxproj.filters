@@ -169,6 +169,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Effect">
       <UniqueIdentifier>{473c09f2-183f-4c77-881b-a80eb21dbaa4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\Extensions\Map">
+      <UniqueIdentifier>{6cac71f4-648e-48e3-81fd-d89675c258ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -568,6 +571,12 @@
     </ClInclude>
     <ClInclude Include="ElectricEffect.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineConstant.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="ParameterMap.h">
+      <Filter>Utilities\Extensions\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

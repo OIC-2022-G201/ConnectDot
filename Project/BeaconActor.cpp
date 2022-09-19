@@ -8,29 +8,27 @@
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
+#include "MachineConstant.h"
+#include "ReceiverComponent.h"
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TransmitterComponent.h"
-#include "ReceiverComponent.h"
 
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {}
 
 BeaconActor::~BeaconActor() {}
 
-
-
 void BeaconActor::Start() {
   {
-    auto cellhalf = stage::kStageCellSizeHalf<base_engine::Floating>;
-    auto circle = std::make_shared<base_engine::Circle>(
-        cellhalf.x, cellhalf.y, electronics::kPowerRadius);
+    const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
+    const auto circle = std::make_shared<base_engine::Circle>(
+        cell_half.x, cell_half.y, electronics::kPowerRadius);
     const auto shape = new base_engine::ShapeRenderComponent(this, 110);
     shape->SetShape(circle);
-    shape->SetFillMode(base_engine::FillMode::Yes)
-        .SetColor(MOF_ARGB(255 - 128, 0, 64, 0));
+    shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
     RegistryPart(shape);
-    auto collision = new base_engine::CollisionComponent(this);
+    const auto collision = new base_engine::CollisionComponent(this);
     collision->SetShape(circle);
     collision->SetObjectFilter(kBeaconObjectFilter);
     collision->SetTargetFilter(kBeaconTargetFilter);
@@ -38,11 +36,11 @@ void BeaconActor::Start() {
   }
 
   {
-    auto rect = std::make_shared<base_engine::Rect>(
+    const auto rect = std::make_shared<base_engine::Rect>(
         0, 0, stage::kStageCellSize<base_engine::Floating>.x,
         stage::kStageCellSize<base_engine::Floating>.y);
 
-    auto shape_rect = new base_engine::ShapeRenderComponent(
+    const auto shape_rect = new base_engine::ShapeRenderComponent(
         this, draw_order::kPylonDrawOrder);
     shape_rect->SetShape(rect);
     shape_rect->SetFillMode(base_engine::FillMode::Yes)
@@ -52,14 +50,14 @@ void BeaconActor::Start() {
 
   {
     const auto transmitter = new TransmitterComponent(this, 100);
-    transmitter->Create<BeaconTransmitter>(this, base_engine::Vector2{64, 64});
-  
+    transmitter->Create<BeaconTransmitter>(this, kBeaconTransmitterOffset);
+
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<BeaconReceiver>(this,base_engine::Vector2{64,64});
+    receiver->Create<BeaconReceiver>(this, kBeaconReceiverOffset);
   }
 
   {
-    auto grid = new grid::GridSnapComponent(this);
+    const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No)
         .SetSnapGridPosition(GridPosition::VectorTo(GetPosition()));
   }

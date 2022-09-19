@@ -7,6 +7,7 @@
 
 #pragma once
 #include "ISendablePower.h"
+#include "MachineConstant.h"
 
 class PylonTransmitter : public ISendablePower {
  public:
@@ -16,6 +17,7 @@ class PylonTransmitter : public ISendablePower {
 
   int Sequential() override { return 0; }
   void SetPrevious(ISendablePower* previous) override {}
-  [[nodiscard]] base_engine::Vector2 GetPosition() const override
-  { return {64,64};  }
+  [[nodiscard]] base_engine::Vector2 GetPosition() const override {
+    return kPylonTransmitterOffset;
+  }
 };

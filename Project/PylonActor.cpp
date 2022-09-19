@@ -21,16 +21,15 @@ PylonActor::~PylonActor() {}
 
 void PylonActor::Start() {
   {
-    auto cellhalf = stage::kStageCellSizeHalf<Floating>;
-    auto circle = std::make_shared<base_engine::Circle>(
-        cellhalf.x, cellhalf.y, electronics::kPowerRadius);
-    auto shape = new base_engine::ShapeRenderComponent(
+    const auto cell_half = stage::kStageCellSizeHalf<Floating>;
+    const auto circle = std::make_shared<base_engine::Circle>(
+        cell_half.x, cell_half.y, electronics::kPowerRadius);
+    const auto shape = new base_engine::ShapeRenderComponent(
         this, draw_order::kElectromagneticArea);
     shape->SetShape(circle);
-    shape->SetFillMode(base_engine::FillMode::Yes)
-        .SetColor(MOF_ARGB(255 - 32, 255, 255, 0));
+    shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
 
-    auto collision = new base_engine::CollisionComponent(this);
+    const auto collision = new base_engine::CollisionComponent(this);
     collision->SetShape(circle);
     collision->SetObjectFilter(kBeaconObjectFilter);
     collision->SetTargetFilter(kBeaconTargetFilter);
@@ -38,11 +37,11 @@ void PylonActor::Start() {
   }
 
   {
-    auto rect = std::make_shared<base_engine::Rect>(
+    const auto rect = std::make_shared<base_engine::Rect>(
         0, 0, stage::kStageCellSize<Floating>.x,
         stage::kStageCellSize<Floating>.y);
 
-    auto shape_rect = new base_engine::ShapeRenderComponent(
+    const auto shape_rect = new base_engine::ShapeRenderComponent(
         this, draw_order::kPylonDrawOrder);
     shape_rect->SetShape(rect);
     shape_rect->SetFillMode(base_engine::FillMode::Yes)
@@ -52,11 +51,11 @@ void PylonActor::Start() {
   SetName("Pylon");
 
   {
-    auto transmitter = new TransmitterComponent(this, 100);
+    const auto transmitter = new TransmitterComponent(this, 100);
     transmitter->Create<PylonTransmitter>();
   }
   {
-    auto grid = new grid::GridSnapComponent(this);
+    const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({3, 5});
   }
 }
