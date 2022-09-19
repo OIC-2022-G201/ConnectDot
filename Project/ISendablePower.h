@@ -13,5 +13,5 @@ class ISendablePower {
   virtual const ISendablePower* GetPrevious() = 0;
   virtual void SetPrevious(ISendablePower* previous) = 0;
   virtual int Sequential() = 0;
-  [[nodiscard]] virtual base_engine::Vector2 Position() const = 0;
+  [[nodiscard]] virtual base_engine::Vector2 GetPosition() const = 0;
 };

@@ -10,6 +10,7 @@ void ReceiverComponent::Connecting(TransmitterComponent* sender)
     } else {
         sender_ = sender;
     }
+    if (prev_state_ != PowerState::kDisconnect) return;
     switch (current_state_) {
     case PowerState::kDisconnected:
         break;

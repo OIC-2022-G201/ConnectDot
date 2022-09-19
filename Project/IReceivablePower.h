@@ -1,4 +1,5 @@
 #pragma once
+#include "Vector.h"
 
 class IReceivablePower {
  public:
@@ -8,4 +9,6 @@ class IReceivablePower {
   void virtual OnPowerEnter(class TransmitterComponent* transmitter) = 0;
   void virtual OnPowerChanged(TransmitterComponent* transmitter) = 0;
   void virtual OnPowerExit(TransmitterComponent* transmitter) = 0;
+
+  [[nodiscard]] virtual base_engine::Vector2 GetPosition() const = 0;
 };

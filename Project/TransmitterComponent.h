@@ -32,11 +32,10 @@ class TransmitterComponent : public base_engine::Component {
   void Create(Types&&... args) {
     transmitter_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
-  base_engine::Vector2 GetPosition() const
-  { return owner_->GetPosition();
-  }
 
- private:
+  [[nodiscard]] base_engine::Vector2 GetPosition() const;
+
+private:
   std::deque<class ReceiverComponent*> target_;
   std::unique_ptr<ISendablePower> transmitter_;
 };

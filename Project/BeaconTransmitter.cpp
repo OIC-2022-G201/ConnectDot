@@ -13,9 +13,9 @@ bool BeaconTransmitter::CanSending() {
   return static_cast<bool>(actor_->ElectricPowerTrigger());
 }
 
-base_engine::Vector2 BeaconTransmitter::Position() const
+base_engine::Vector2 BeaconTransmitter::GetPosition() const
 {
-    return actor_->GetPosition()+position_;
+    return position_;
 }
 
 int BeaconTransmitter::Sequential()

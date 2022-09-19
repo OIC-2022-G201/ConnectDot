@@ -8,17 +8,20 @@
 #pragma once
 
 #include "IReceivablePower.h"
-#include "SpriteComponent.h"
 class BeaconReceiver final : public IReceivablePower {
-
  public:
-  explicit BeaconReceiver(class BeaconActor* actor);
+  explicit BeaconReceiver(class BeaconActor* actor,
+                          base_engine::Vector2 position);
   int Sequential() override;
   bool PowerJoinCondition() override;
   void OnPowerEnter(class TransmitterComponent* transmitter) override;
   void OnPowerChanged(TransmitterComponent* transmitter) override;
   void OnPowerExit(TransmitterComponent* transmitter) override;
+
+  [[nodiscard]] base_engine::Vector2 GetPosition() const override;
+
 private:
+  base_engine::Vector2 position_;
   class BeaconActor* actor_;
   class ElectricEffect* effect_;
 };

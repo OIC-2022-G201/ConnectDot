@@ -30,6 +30,11 @@ class SpriteComponent : public RenderComponent {
     angle_ = angle;
     return *this;
   }
+
+  SpriteComponent& SetAlignment(Mof::TextureAlignment alignment) {
+    alignment_ = alignment;
+    return *this;
+  }
   MofFloat GetAngle() const { return angle_; }
 
  private:
@@ -39,6 +44,7 @@ class SpriteComponent : public RenderComponent {
   Vector2 offset_;
   MofFloat angle_ = 0;
   Mof::CRectangle clip_rect_{};
+  Mof::TextureAlignment alignment_ = Mof::TextureAlignment::TEXALIGN_TOPLEFT;
 
  public:
   void StartFlash(float time, const COLOR& color);

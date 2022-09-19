@@ -16,6 +16,6 @@ class PylonTransmitter : public ISendablePower {
 
   int Sequential() override { return 0; }
   void SetPrevious(ISendablePower* previous) override {}
-  [[nodiscard]] base_engine::Vector2 Position() const override
+  [[nodiscard]] base_engine::Vector2 GetPosition() const override
   { return {64,64};  }
 };

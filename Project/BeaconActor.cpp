@@ -55,7 +55,7 @@ void BeaconActor::Start() {
     transmitter->Create<BeaconTransmitter>(this, base_engine::Vector2{64, 64});
   
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<BeaconReceiver>(this);
+    receiver->Create<BeaconReceiver>(this,base_engine::Vector2{64,64});
   }
 
   {

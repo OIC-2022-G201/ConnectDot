@@ -40,7 +40,7 @@ void SpriteComponent::Draw() {
   sprite_.m_Position = pos;
   
   Mof::CGraphicsUtilities::RenderRotateTexture(p.x, p.y, angle_, clip_rect_,
-                                               color_, texture_);
+                                               color_, alignment_, texture_);
 
 }
 }  // namespace base_engine

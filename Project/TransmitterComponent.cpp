@@ -27,3 +27,8 @@ void TransmitterComponent::OnCollision(
     target_.emplace_front(target);
   }
 }
+
+base_engine::Vector2 TransmitterComponent::GetPosition() const
+{
+  return owner_->GetPosition() + transmitter_->GetPosition();
+}
