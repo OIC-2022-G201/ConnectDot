@@ -8,7 +8,10 @@
 #pragma once
 namespace draw_order {
 
-constexpr int kElectromagneticArea = 110;
+constexpr int kElectromagneticAreaDrawOrder = 110;
+constexpr int kEnhancementElectromagneticAreaDrawOrder = 110;
 
 constexpr int kPylonDrawOrder = 120;
+constexpr int kBeaconDrawOrder = 120;
+constexpr int kElectricEffectDrawOrder = 130;
 }  // namespace draw_order

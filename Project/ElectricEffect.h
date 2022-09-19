@@ -11,6 +11,7 @@
 
 #include "Actor.h"
 #include "BaseEngineCore.h"
+#include "DrawOrder.h"
 #include "IBaseEngineTexture.h"
 #include "MofSpriteAnimationComponent.h"
 #include "SpriteComponent.h"
@@ -37,11 +38,10 @@ class ElectricEffect final : public base_engine::Actor {
   }
   void Play(base_engine::Vector2 pos1, base_engine::Vector2 pos2)
   {
-    sprite_ = new base_engine::SpriteComponent(this,500);
+      sprite_ = new base_engine::SpriteComponent(this, draw_order::kElectricEffectDrawOrder);
     sprite_->SetImage(
         BASE_ENGINE(Texture)->Get("Effect/Electric/ElectroCellMap.png"));
     motion_ = new base_engine::MofSpriteAnimationComponent(this,500);
-    motion_->SetSpriteComponent(sprite_);
     const base_engine::Vector2 o_pos = pos2 - pos1;
     const float width = std::abs(base_engine::VectorUtilities::Length(o_pos));
     std::array animations = {base_engine::SpriteAnimationClip{
@@ -49,6 +49,6 @@ class ElectricEffect final : public base_engine::Actor {
     sprite_->SetOffset(pos1);
     sprite_->SetAngle(std::atan2(o_pos.y,o_pos.x));
     sprite_->SetAlignment(Mof::TEXALIGN_CENTERLEFT);
-      motion_->Load(animations);
+    motion_->Load(sprite_, animations);
   }
 };

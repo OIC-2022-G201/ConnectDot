@@ -31,7 +31,7 @@ struct ISpriteAnimationComponent
 {
     virtual ~ISpriteAnimationComponent() = default;
     void virtual SetSpriteComponent(class SpriteComponent* component) = 0;
-    bool virtual Load(std::span<SpriteAnimationClip>) = 0;
+    bool virtual Load(SpriteComponent* component, std::span<SpriteAnimationClip>) = 0;
     bool virtual ChangeMotion(const std::string_view name,
                               bool is_same = true) = 0;
     [[nodiscard]] bool virtual IsMotion(const std::string_view name) const = 0;

@@ -187,7 +187,6 @@
     <ClInclude Include="include\utilities\observable\Subject.h" />
     <ClInclude Include="include\utilities\observable\Unit.h" />
     <ClInclude Include="ISpriteAnimationComponent.h" />
-    <ClInclude Include="MachineConstant.h" />
     <ClInclude Include="Manifold.h" />
     <ClInclude Include="MinkowskiSum.h" />
     <ClInclude Include="MofSpriteAnimationComponent.h" />

@@ -27,12 +27,14 @@ void base_engine::MofSpriteAnimationComponent::SetSpriteComponent(
 }
 
 bool base_engine::MofSpriteAnimationComponent::Load(
-    std::span<SpriteAnimationClip> clips) {
+    base_engine::SpriteComponent* component, std::span<SpriteAnimationClip> clips) {
   std::vector<Mof::SpriteAnimationCreate> pac(clips.size());
   for (MofU32 i = 0; i < clips.size(); i++) {
     pac[i] = Convert(clips[i]);
     motion_map_[clips[i].name] = i;
   }
+  SetSpriteComponent(component);
+  sprite_->SetClipRect(motion_.GetSrcRect());
   return motion_.Create(pac.data(), clips.size());
 }
 

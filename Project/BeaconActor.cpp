@@ -8,13 +8,13 @@
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
-#include "MachineConstant.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TransmitterComponent.h"
-
+using namespace electronics;
+using namespace beacon;
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {}
 
 BeaconActor::~BeaconActor() {}
@@ -23,7 +23,7 @@ void BeaconActor::Start() {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, electronics::kPowerRadius);
+        cell_half.x, cell_half.y, kPowerRadius);
     const auto shape = new base_engine::ShapeRenderComponent(this, 110);
     shape->SetShape(circle);
     shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);

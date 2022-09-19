@@ -572,9 +572,6 @@
     <ClInclude Include="ElectricEffect.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="MachineConstant.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
-    </ClInclude>
     <ClInclude Include="ParameterMap.h">
       <Filter>Utilities\Extensions\Map</Filter>
     </ClInclude>

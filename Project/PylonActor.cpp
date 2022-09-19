@@ -14,7 +14,8 @@
 
 using base_engine::Floating;
 using base_engine::Vector2;
-
+using namespace electronics;
+using namespace pylon;
 PylonActor::PylonActor(base_engine::Game* game) : Actor(game) {}
 
 PylonActor::~PylonActor() {}
@@ -25,7 +26,7 @@ void PylonActor::Start() {
     const auto circle = std::make_shared<base_engine::Circle>(
         cell_half.x, cell_half.y, electronics::kPowerRadius);
     const auto shape = new base_engine::ShapeRenderComponent(
-        this, draw_order::kElectromagneticArea);
+        this, draw_order::kElectromagneticAreaDrawOrder);
     shape->SetShape(circle);
     shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
 
