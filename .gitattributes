@@ -65,3 +65,7 @@
 .VSCodeCounter/* linguist-documentation
 html/* linguist-documentation
 latex/* linguist-documentation
+cmake-build-debug-visual-studio/* linguist-documentation
+CMake/* linguist-documentation
+CMakeList.txt linguist-documentation
+Project/CMakeList.txt linguist-documentation
