@@ -8,7 +8,7 @@
 #pragma once
 
 namespace detail {
-constexpr unsigned long long Shift(size_t val) { return 1 << val; }
+constexpr unsigned long long Shift(size_t val) { return 1ull << val; }
 }  // namespace detail
 
 class CollisionLayer final {
@@ -33,7 +33,7 @@ class CollisionLayer final {
   constexpr CollisionLayer(const U val) noexcept
       : val_(static_cast<Layer>(val)) {}
 
-  constexpr operator U() const { return val_; }
+  explicit constexpr operator U() const { return val_; }
 
  private:
   Layer val_;

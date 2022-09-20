@@ -54,7 +54,10 @@ class ReceiverComponent : public base_engine::Component {
     }
     prev_state_ = PowerState::kDisconnect;
   }
-  void OnCollision(const base_engine::SendManifold& manifold) override {}
+  void OnCollision(const base_engine::SendManifold& manifold) override
+  {
+      
+  }
 
  public:
   bool CanConnect() const { return receiver_->PowerJoinCondition(); }

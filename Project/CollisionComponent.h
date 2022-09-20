@@ -13,7 +13,7 @@
 namespace base_engine {
 constexpr size_t kCollisionFilterSize = 32;
 constexpr std::bitset<kCollisionFilterSize> kCollisionFilterAllMask(
-    (1ul << kCollisionFilterSize) - 1);
+    (1ull << kCollisionFilterSize) - 1);
 class CollisionComponent : public Component {
  public:
   CollisionComponent(class Actor* owner,
