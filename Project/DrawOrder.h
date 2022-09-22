@@ -13,5 +13,7 @@ constexpr int kEnhancementElectromagneticAreaDrawOrder = 110;
 
 constexpr int kPylonDrawOrder = 120;
 constexpr int kBeaconDrawOrder = 120;
+constexpr int kSignboardDrawOrder = 120;
+constexpr int kSignboardDisplayDrawOrder = kSignboardDrawOrder+1;
 constexpr int kElectricEffectDrawOrder = 130;
 }  // namespace draw_order

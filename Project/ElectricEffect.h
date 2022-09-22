@@ -30,24 +30,22 @@ class ElectricEffect final : public base_engine::Actor {
   }
 
   void SetReceiver(ReceiverComponent* receiver) { receiver_ = receiver; }
-  void Start() override {
-  }
-    void Update() override
-  {
-      int n = 3;
-  }
-  void Play(base_engine::Vector2 pos1, base_engine::Vector2 pos2)
-  {
-      sprite_ = new base_engine::SpriteComponent(this, draw_order::kElectricEffectDrawOrder);
+  void Start() override {}
+  void Update() override {}
+
+  // TODO テクスチャを取得するKEYをベタ書きしない
+  void Play(base_engine::Vector2 pos1, base_engine::Vector2 pos2) {
+    sprite_ = new base_engine::SpriteComponent(
+        this, draw_order::kElectricEffectDrawOrder);
     sprite_->SetImage(
         BASE_ENGINE(Texture)->Get("Effect/Electric/ElectroCellMap.png"));
-    motion_ = new base_engine::MofSpriteAnimationComponent(this,500);
+    motion_ = new base_engine::MofSpriteAnimationComponent(this, 500);
     const base_engine::Vector2 o_pos = pos2 - pos1;
     const float width = std::abs(base_engine::VectorUtilities::Length(o_pos));
     std::array animations = {base_engine::SpriteAnimationClip{
         "", 0, 0, width, 128, true, {{5, 0, 0}, {5, 0, 1}, {5, 0, 2}}}};
     sprite_->SetOffset(pos1);
-    sprite_->SetAngle(std::atan2(o_pos.y,o_pos.x));
+    sprite_->SetAngle(std::atan2(o_pos.y, o_pos.x));
     sprite_->SetAlignment(Mof::TEXALIGN_CENTERLEFT);
     motion_->Load(sprite_, animations);
   }

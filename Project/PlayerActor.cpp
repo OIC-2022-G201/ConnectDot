@@ -14,6 +14,7 @@
 #include "SpriteComponent.h"
 
 #include "IBaseEngineTexture.h"
+#include "TexturePaths.h"
 using namespace base_engine;
 namespace player {
 PlayerActor::PlayerActor(base_engine::Game* game)
@@ -34,7 +35,7 @@ void PlayerActor::Start() {
   debugCollisionRender->SetShape(shape_player);
   debugCollisionRender->SetColor(MOF_COLOR_GREEN);
   auto playerSprite = new SpriteComponent(this, 100);
-  playerSprite->SetImage(BASE_ENGINE(Texture)->Get("Player.png"));
+  playerSprite->SetImage(BASE_ENGINE(Texture)->Get(texture::kPlayerTextureKey));
 
     auto body = new PhysicsBodyComponent(this);
     SetName("Player");

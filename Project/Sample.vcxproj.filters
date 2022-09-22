@@ -172,6 +172,9 @@
     <Filter Include="Utilities\Extensions\Map">
       <UniqueIdentifier>{6cac71f4-648e-48e3-81fd-d89675c258ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Signboard">
+      <UniqueIdentifier>{11e5f209-2709-4ac3-ae45-bb21baedb12f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -329,6 +332,9 @@
     </ClCompile>
     <ClCompile Include="ElectricEffect.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SignboardActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Signboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -574,6 +580,15 @@
     </ClInclude>
     <ClInclude Include="ParameterMap.h">
       <Filter>Utilities\Extensions\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="SignboardActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Signboard</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineConst.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const\Electronics</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturePaths.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

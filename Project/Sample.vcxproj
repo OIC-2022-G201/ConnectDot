@@ -136,6 +136,7 @@
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderMof.cpp" />
     <ClCompile Include="ShapeRenderComponent.cpp" />
+    <ClCompile Include="SignboardActor.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureMof.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="ConnectDotUpdateOrder.h" />
+    <ClInclude Include="MachineConst.h" />
     <ClInclude Include="ParameterMap.h" />
     <ClInclude Include="DebugStage.h" />
     <ClInclude Include="DrawOrder.h" />
@@ -215,11 +217,13 @@
     <ClInclude Include="RenderMof.h" />
     <ClInclude Include="SendManifold.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
+    <ClInclude Include="SignboardActor.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StageConstitution.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureMof.h" />
+    <ClInclude Include="TexturePaths.h" />
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TileMapComponent.h" />
     <ClInclude Include="TransmitterComponent.h" />

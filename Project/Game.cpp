@@ -16,6 +16,7 @@
 #include "RenderComponent.h"
 #include "ShapeRenderComponent.h"
 #include "SpriteComponent.h"
+#include "TexturePaths.h"
 
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
@@ -26,9 +27,9 @@ bool Game::Initialize() {
   auto input = new InputManager(inputActor);
 
   BASE_ENGINE(Texture)->Load("ice.png");
-  BASE_ENGINE(Texture)->Load("Player.png");
+  BASE_ENGINE(Texture)->Load(texture::kPlayerTextureKey);
 
-  BASE_ENGINE(Texture)->Load("Effect/Electric/ElectroCellMap.png");
+  BASE_ENGINE(Texture)->Load(texture::effect::kElectricEffectTextureKey);
 
 
 
