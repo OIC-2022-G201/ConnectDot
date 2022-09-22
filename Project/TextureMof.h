@@ -8,18 +8,18 @@
 namespace base_engine {
 class TextureMof final : public IBaseEngineTexture {
   size_t count;
-  std::unordered_map<std::string, Mof::LPTexture> m_textures;
+  std::unordered_map<size_t, Mof::LPTexture> m_textures;
 
  public:
   TextureMof();
   ~TextureMof() override;
 
-  bool Load(const std::string& name) override;
+  bool Load(std::string_view name) override;
 
-  Mof::LPTexture Get(const std::string& name) override;
+  TexturePtr Get(std::string_view name) override;
 
   void Clear() override;
 
-  bool Release(const std::string& name) override;
+  bool Release(std::string_view name) override;
 };
 }  // namespace base_engine
