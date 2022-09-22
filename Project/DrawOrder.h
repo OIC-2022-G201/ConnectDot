@@ -12,6 +12,7 @@ constexpr int kElectromagneticAreaDrawOrder = 110;
 constexpr int kEnhancementElectromagneticAreaDrawOrder = 110;
 
 constexpr int kPylonDrawOrder = 120;
+constexpr int kPowerSupplyUnitDrawOrder = 120;
 constexpr int kBeaconDrawOrder = 120;
 constexpr int kSignboardDrawOrder = 120;
 constexpr int kSignboardDisplayDrawOrder = kSignboardDrawOrder+1;

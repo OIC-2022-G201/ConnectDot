@@ -57,7 +57,7 @@ void PylonActor::Start() {
   }
   {
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({3, 5});
+    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({1, 5});
   }
 }
 

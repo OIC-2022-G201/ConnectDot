@@ -20,18 +20,15 @@ class ReceiverComponent : public base_engine::Component {
     prev_state_ = PowerState::kDisconnect;
     receiver_->OnPowerExit(sender_);
   }
-  void OnPowerEnter() {
-    receiver_->OnPowerEnter(sender_);
-    current_state_ = PowerState::kConnecting;
-  }
+  void OnPowerEnter();
 
   void OnPowerChanged() { receiver_->OnPowerChanged(sender_); }
 
-  ReceiverComponent(base_engine::Actor* owner, int update_order)
-      : Component(owner, update_order) {}
+  ReceiverComponent(base_engine::Actor* owner, int update_order);
 
   ~ReceiverComponent() override {}
-  void Start() override {}
+  void Start() override;
+
   void Update() override {
     if (current_state_ == PowerState::kConnecting &&
         prev_state_ == PowerState::kDisconnect) {
@@ -54,10 +51,7 @@ class ReceiverComponent : public base_engine::Component {
     }
     prev_state_ = PowerState::kDisconnect;
   }
-  void OnCollision(const base_engine::SendManifold& manifold) override
-  {
-      
-  }
+  void OnCollision(const base_engine::SendManifold& manifold) override {}
 
  public:
   bool CanConnect() const { return receiver_->PowerJoinCondition(); }
@@ -68,6 +62,10 @@ class ReceiverComponent : public base_engine::Component {
       std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
   void Create(Types&&... args) {
     receiver_ = std::make_unique<T>(std::forward<Types>(args)...);
+  }
+
+  [[nodiscard]] base_engine::Vector2 GetPosition() const {
+    return owner_->GetPosition() + receiver_->GetPosition();
   }
 
  private:
@@ -81,4 +79,6 @@ class ReceiverComponent : public base_engine::Component {
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
   class TransmitterComponent* sender_ = nullptr;
+
+  class ElectricEffect* effect_ = nullptr;
 };

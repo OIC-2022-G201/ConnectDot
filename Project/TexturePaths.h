@@ -17,6 +17,13 @@ namespace texture {
 //! Player
 constexpr std::string_view kPlayerTextureKey = "Player.png"sv;
 
+//! Beacon
+
+
+//! PowerSupplyUnitActor
+constexpr std::string_view kPowerSupplyUnitTextureKey =
+    "Objects/PowerSupplyUnit/Powersupply_Lv0.png"sv;
+
 //! Signboard
 constexpr std::string_view kSignboardTextureKey =
     "Objects/Signboard/Signboard.png"sv;

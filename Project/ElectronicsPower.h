@@ -34,5 +34,11 @@ const base_engine::Vector2 kBeaconTransmitterOffset = {64, 64};
 const base_engine::Vector2 kBeaconReceiverOffset = {64, 64};
 }  // namespace beacon
 
+namespace psu
+{
+const base_engine::Vector2 kPowerSupplyUnitTransmitterOffset = {64, 64};
+const base_engine::Vector2 kPowerSupplyUnitReceiverOffset = {64, 64};
+}
+
 using namespace electricity;
 }  // namespace electronics

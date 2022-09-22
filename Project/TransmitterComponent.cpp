@@ -20,15 +20,18 @@ void TransmitterComponent::Update() {
 
 void TransmitterComponent::OnCollision(
     const base_engine::SendManifold& manifold) {
-
-  if (auto target = manifold.collision_b->GetActor()
-                        ->GetComponent<ReceiverComponent>();
-      target != nullptr && target->CanConnect() && transmitter_->CanSending()) {
-    target_.emplace_front(target);
-  }
+  AddTarget(
+      manifold.collision_b->GetActor()->GetComponent<ReceiverComponent>());
 }
 
-base_engine::Vector2 TransmitterComponent::GetPosition() const
-{
+bool TransmitterComponent::AddTarget(ReceiverComponent* target) {
+  if (target != nullptr && target->CanConnect() && transmitter_->CanSending()) {
+    target_.emplace_front(target);
+    return true;
+  }
+  return false;
+}
+
+base_engine::Vector2 TransmitterComponent::GetPosition() const {
   return owner_->GetPosition() + transmitter_->GetPosition();
 }

@@ -175,6 +175,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Signboard">
       <UniqueIdentifier>{11e5f209-2709-4ac3-ae45-bb21baedb12f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit">
+      <UniqueIdentifier>{95db4ea9-e339-48df-bfb7-44f246449e3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -335,6 +338,18 @@
     </ClCompile>
     <ClCompile Include="SignboardActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Signboard</Filter>
+    </ClCompile>
+    <ClCompile Include="SignboardReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Signboard</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerSupplyUnitActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerSupplyUnitTransmitter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerSupplyUnitReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -589,6 +604,18 @@
     </ClInclude>
     <ClInclude Include="TexturePaths.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="SignboardReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Signboard</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerSupplyUnitActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerSupplyUnitTransmitter.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerSupplyUnitReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

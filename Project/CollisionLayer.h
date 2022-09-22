@@ -45,32 +45,24 @@ constexpr BitCollisionLayer kFieldTargetFilter{CollisionLayer::kPlayerFilter};
 constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter};
 constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter};
 
+//! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{
     CollisionLayer::kReceiverFilter | CollisionLayer::kSenderFilter};
 
 constexpr BitCollisionLayer kBeaconTargetFilter{
     CollisionLayer::kReceiverFilter};
 
-constexpr BitCollisionLayer kPylonObjectFilter{
-    CollisionLayer::CollisionLayer::kSenderFilter};
+//! PowerSupplyUnitActor
+constexpr BitCollisionLayer kPowerSupplyUnitObjectFilter{kBeaconObjectFilter};
+
+constexpr BitCollisionLayer kPowerSupplyUnitTargetFilter{CollisionLayer::kNone};
+
+//! Pylon
+constexpr BitCollisionLayer kPylonObjectFilter{CollisionLayer::kSenderFilter};
 
 constexpr BitCollisionLayer kPylonTargetFilter{CollisionLayer::kReceiverFilter};
-/*
-using BitCollisionLayer = std::bitset<base_engine::kCollisionFilterSize>;
-#define SET_DEFINITION_LAYER(layer_name, val) \
-  constexpr size_t layer_name##Number = val;  \
-  constexpr CollisionLayer layer_name{detail::Shift(kPlayerFilterNumber)};
 
-#define GET_LAYER(layer_name) layer_name##Number
-#define SET_MULTI_LAYER(layer_name, val) \
-  constexpr CollisionLayer layer_name{val};
+//! Signboard
+constexpr BitCollisionLayer kSignboardObjectFilter{CollisionLayer::kNone};
 
-SET_DEFINITION_LAYER(kPlayerFilter, 0)
-SET_DEFINITION_LAYER(kMachineFilter, 4)
-SET_DEFINITION_LAYER(kReceiverFilter, 6)
-SET_DEFINITION_LAYER(kElectricityAreaFilter, 8)
-
-SET_MULTI_LAYER(kBeaconObjectFilter, GET_LAYER(kMachineFilter))
-constexpr CollisionLayer kBeaconObjectFilter =
-    (kMachineFilter | kReceiverFilter);
-*/
+constexpr BitCollisionLayer kSignboardTargetFilter{CollisionLayer::kNone};

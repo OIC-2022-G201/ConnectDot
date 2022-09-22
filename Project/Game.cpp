@@ -11,10 +11,12 @@
 #include "InputComponent.h"
 #include "InputManager.h"
 #include "PlayerActor.h"
+#include "PowerSupplyUnitActor.h"
 #include "PylonActor.h"
 #include "Rect.h"
 #include "RenderComponent.h"
 #include "ShapeRenderComponent.h"
+#include "SignboardActor.h"
 #include "SpriteComponent.h"
 #include "TexturePaths.h"
 
@@ -30,14 +32,22 @@ bool Game::Initialize() {
   BASE_ENGINE(Texture)->Load(texture::kPlayerTextureKey);
 
   BASE_ENGINE(Texture)->Load(texture::effect::kElectricEffectTextureKey);
+  BASE_ENGINE(Texture)->Load(texture::kSignboardTextureKey);
+  
+  BASE_ENGINE(Texture)->Load(texture::kSignboardDisplayDemoTextureKey);
+  BASE_ENGINE(Texture)->Load(texture::kPowerSupplyUnitTextureKey);
 
 
 
 
   auto pylon = new PylonActor(this);
+  auto signboard = new SignboardActor(this);
+  auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
-  player->SetInput(input);
 
+
+  player->SetInput(input);
+  power_unit->SetTarget(signboard);
   b_collision = BASE_ENGINE(Collider);
   return true;
 }
@@ -130,7 +140,7 @@ void Game::UpdateGame() {
 
 void Game::Render() const {
   for (const auto sprite : sprites_) {
-    sprite->Draw();
+    if(sprite->GetEnabled())sprite->Draw();
   }
   for (auto func : debug_render_) {
     func();

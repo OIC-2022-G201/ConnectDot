@@ -12,11 +12,14 @@ class RenderComponent : public Component {
   ~RenderComponent() override;
 
   void Update() override;
+  void SetEnabled(const bool enabled) { enabled_ = enabled; }
+  bool GetEnabled() const { return enabled_; }
   virtual void Draw() = 0;
 
   [[nodiscard]] int GetDrawOrder() const { return draw_order_; }
   
  private:
   int draw_order_;
+  bool enabled_ = true;
 };
 }  // namespace base_engine

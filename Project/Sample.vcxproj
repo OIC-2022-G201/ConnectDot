@@ -129,6 +129,9 @@
     <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="PlayerSneak.cpp" />
     <ClCompile Include="Point.cpp" />
+    <ClCompile Include="PowerSupplyUnitActor.cpp" />
+    <ClCompile Include="PowerSupplyUnitReceiver.cpp" />
+    <ClCompile Include="PowerSupplyUnitTransmitter.cpp" />
     <ClCompile Include="PylonActor.cpp" />
     <ClCompile Include="PylonTransmitter.cpp" />
     <ClCompile Include="ReceiverComponent.cpp" />
@@ -137,6 +140,7 @@
     <ClCompile Include="RenderMof.cpp" />
     <ClCompile Include="ShapeRenderComponent.cpp" />
     <ClCompile Include="SignboardActor.cpp" />
+    <ClCompile Include="SignboardReceiver.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="TextureMof.cpp" />
@@ -209,6 +213,9 @@
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Pow.h" />
+    <ClInclude Include="PowerSupplyUnitActor.h" />
+    <ClInclude Include="PowerSupplyUnitReceiver.h" />
+    <ClInclude Include="PowerSupplyUnitTransmitter.h" />
     <ClInclude Include="PylonActor.h" />
     <ClInclude Include="PylonTransmitter.h" />
     <ClInclude Include="ReceiverComponent.h" />
@@ -218,6 +225,7 @@
     <ClInclude Include="SendManifold.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="SignboardActor.h" />
+    <ClInclude Include="SignboardReceiver.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StageConstitution.h" />

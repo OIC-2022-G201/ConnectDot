@@ -25,6 +25,7 @@ class TransmitterComponent : public base_engine::Component {
 
   void OnCollision(const base_engine::SendManifold& manifold) override;
   int Sequential() const { return transmitter_->Sequential(); }
+
  public:
   template <
       SendablePower T, class... Types,
@@ -32,10 +33,10 @@ class TransmitterComponent : public base_engine::Component {
   void Create(Types&&... args) {
     transmitter_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
-
+  bool AddTarget(class ReceiverComponent* target);
   [[nodiscard]] base_engine::Vector2 GetPosition() const;
 
-private:
+ private:
   std::deque<class ReceiverComponent*> target_;
   std::unique_ptr<ISendablePower> transmitter_;
 };
