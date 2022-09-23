@@ -2,7 +2,7 @@
 #include <Collision/Rectangle.h>
 
 #include "IShape.h"
-#include "TileMapComponent.h"
+
 
 namespace base_engine {
 

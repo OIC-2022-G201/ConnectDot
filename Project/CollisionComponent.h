@@ -3,11 +3,10 @@
 #include <complex>
 #include <memory>
 
+#include "Actor.h"
 #include "Component.h"
 #include "ComponentParameter.h"
-#include "Manifold.h"
 #include "SendManifold.h"
-#include "Pow.h"
 #include "Rect.h"
 
 namespace base_engine {

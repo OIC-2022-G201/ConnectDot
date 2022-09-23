@@ -27,7 +27,7 @@ void PlayerComponent::Start()
     });
     collision_ = owner_->GetComponent<base_engine::CollisionComponent>();
     physics_body_ = owner_->GetComponent<base_engine::PhysicsBodyComponent>();
-    
+    machine_.TransitionTo<PlayerIdle>();
 }
 
 void PlayerComponent::Update()

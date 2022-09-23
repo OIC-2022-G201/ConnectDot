@@ -98,6 +98,7 @@
     <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
+    <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="BeaconActor.h" />
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
+    <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionLayer.h" />

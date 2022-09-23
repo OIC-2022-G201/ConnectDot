@@ -6,6 +6,7 @@
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "GameWindow.h"
+#include "IBaseEngineRender.h"
 #include "InputManager.h"
 #include "Player.h"
 #include "PlayerComponent.h"
@@ -61,5 +62,6 @@ void PlayerActor::Update() {
   {
     //position_.y = bottom;
   }
+  camera_->SetPosition(GetPosition());
 }
 }  // namespace player

@@ -4,6 +4,7 @@
 namespace base_engine {
 class RenderMof final : public IBaseEngineRender {
   Vector camera_position_{0,0};
+  Vector camera_center_position_{0,0};
 
  public:
   RenderMof();
@@ -19,8 +20,7 @@ class RenderMof final : public IBaseEngineRender {
 
   void AddCircleFrame(const Circle& circle, const Color& color) override;
   void SetCameraPosition(const Vector& position) override;
-  Vector GetCameraPosition() override
-  { return camera_position_;
+  Vector GetCameraPosition() override { return camera_position_;
   }
 private:
 };

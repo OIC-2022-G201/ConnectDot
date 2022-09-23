@@ -18,33 +18,30 @@ Actor::~Actor() {
 
 void Actor::StartActor() {
   if (state_ == kStart) {
+    Start();
     for (auto comp : components_) {
       comp->Start();
     }
 
-    Start();
     state_ = kActive;
   }
 }
 
 void Actor::ProcessInput() {
   if (state_ == kActive) {
+    Input();
     for (auto comp : components_) {
       comp->ProcessInput();
     }
-
-    Input();
   }
 }
 
 void Actor::UpdateActor() {
   if (state_ == kActive) {
-
+    Update();
     for (auto component : components_) {
       component->Update();
     }
-
-    Update();
   }
 }
 
@@ -56,7 +53,7 @@ void Actor::AddComponent(Component* component) {
 void Actor::AddComponent() {
   // ƒ\[ƒgÏ‚İ”z—ñ‚Ì‘}“üêŠ‚ğ’T‚·
   // (©•ª‚æ‚è‡”Ô‚Ì‘å‚«‚¢Å‰‚Ì—v‘f‚ğ’T‚·)
-  for (size_t i = 0; i < std::ssize(pending_components_);++i) {
+  for (size_t i = 0; i < std::ssize(pending_components_); ++i) {
     int myOrder = pending_components_[i]->GetUpdateOrder();
     auto iter = components_.begin();
     for (; iter != components_.end(); ++iter) {
