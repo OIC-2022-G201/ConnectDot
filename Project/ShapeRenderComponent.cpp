@@ -1,8 +1,9 @@
 ﻿#include "ShapeRenderComponent.h"
 
-#include <Utilities/GraphicsUtilities.h>
 
+#include "BaseEngineCore.h"
 #include "Circle.h"
+#include "IBaseEngineRender.h"
 #include "IShape.h"
 #include "Point.h"
 #include "Rect.h"
@@ -27,22 +28,22 @@ void ShapeRenderComponent::SetShape(const std::shared_ptr<IShape>& shape) {
 void ShapeRenderComponent::Draw(const Rect& rect) const {
   Vector2 p = owner_->GetPosition();
   if (fill_mode_) {
-    Mof::CGraphicsUtilities::RenderFillRect(rect + p, color_);
+    BASE_ENGINE(Render)->AddRect(rect + p,color_);
   } else {
-    Mof::CGraphicsUtilities::RenderRect(rect + p, color_);
+    BASE_ENGINE(Render)->AddRectFrame(rect + p, color_);
   }
 }
 void ShapeRenderComponent::Draw(const Circle& circle) const {
   Vector2 p = owner_->GetPosition();
   if (fill_mode_) {
-    Mof::CGraphicsUtilities::RenderFillCircle(circle + p, color_);
+    BASE_ENGINE(Render)->AddCircle(circle + p, color_);
   } else {
-    Mof::CGraphicsUtilities::RenderCircle(circle + p, color_);
+    BASE_ENGINE(Render)->AddCircleFrame(circle + p, color_);
   }
 }
 void ShapeRenderComponent::Draw(const Point& point) const {
   Vector2 p = owner_->GetPosition();
-  Mof::CGraphicsUtilities::RenderLine(point + p, point + p, color_);
+  BASE_ENGINE(Render)->AddLine(point + p, point + p, color_);
 }
 
 }  // namespace base_engine

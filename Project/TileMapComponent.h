@@ -6,11 +6,12 @@
 // @details
 
 #pragma once
-#include <Utilities/GraphicsUtilities.h>
 
 #include <vector>
 
+#include "BaseEngineCore.h"
 #include "Component.h"
+#include "IBaseEngineRender.h"
 #include "IShape.h"
 #include "RenderComponent.h"
 #include "TileMap.h"
@@ -32,7 +33,7 @@ class TileMapComponent : public base_engine::Component {
       for (int y = 0; y < tile_map_->map_.GetYCount(); ++y) {
         for (int x = 0; x < tile_map_->map_.GetXCount(); ++x) {
           if (tile_map_->map_.GetCell(x, y) == kEmptyCell) continue;
-          Mof::CGraphicsUtilities::RenderRect(
+          BASE_ENGINE(Render)->AddRectFrame(
               Mof::CRectangle{
                   static_cast<MofFloat>(x), static_cast<MofFloat>(y),
                   static_cast<MofFloat>(x + 1), static_cast<MofFloat>(y + 1)} *

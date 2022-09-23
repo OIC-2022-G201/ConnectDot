@@ -178,6 +178,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit">
       <UniqueIdentifier>{95db4ea9-e339-48df-bfb7-44f246449e3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\CameraComponent">
+      <UniqueIdentifier>{fd201564-2900-4d4c-9a23-975864afa56a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -350,6 +353,9 @@
     </ClCompile>
     <ClCompile Include="PowerSupplyUnitReceiver.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>BaseEngine\Component\CameraComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -616,6 +622,9 @@
     </ClInclude>
     <ClInclude Include="PowerSupplyUnitReceiver.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\PowerSupplyUnit</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComponent.h">
+      <Filter>BaseEngine\Component\CameraComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

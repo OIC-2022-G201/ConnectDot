@@ -4,6 +4,8 @@
 
 #include "Actor.h"
 #include "Game.h"
+#include "IBaseEngineRender.h"
+
 namespace base_engine {
 SpriteComponent::SpriteComponent(Actor* owner, int draw_order)
     : RenderComponent(owner, draw_order),
@@ -38,9 +40,8 @@ void SpriteComponent::Draw() {
   float s = owner_->GetScale();
   Mof::Vector3 pos = {p.x, p.y, 0};
   sprite_.m_Position = pos;
-  
-  Mof::CGraphicsUtilities::RenderRotateTexture(p.x, p.y, angle_, clip_rect_,
-                                               color_, alignment_, texture_);
+  BASE_ENGINE(Render)->AddTexture(texture_, p, {s,s}, angle_, clip_rect_, color_,
+                                  alignment_);
 
 }
 }  // namespace base_engine

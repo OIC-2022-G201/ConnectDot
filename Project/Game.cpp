@@ -3,10 +3,12 @@
 #include <Utilities/GraphicsUtilities.h>
 
 #include "BaseEngineCollision.h"
+#include "CameraComponent.h"
 #include "CollisionComponent.h"
 #include "DebugStage.h"
 #include "GameWindow.h"
 #include "IBaseEngineEmpty.h"
+#include "IBaseEngineRender.h"
 #include "IBaseEngineTexture.h"
 #include "InputComponent.h"
 #include "InputManager.h"
@@ -23,6 +25,14 @@
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
+
+    BASE_ENGINE(Render)->SetCameraPosition(
+      {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
+       Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() / 2.0f});
+
+    auto camera = new Actor(this);
+    new CameraComponent(camera);
+
   auto stageActor = new DebugStage(this);
 
   auto inputActor = new InputActor(this);
@@ -47,6 +57,7 @@ bool Game::Initialize() {
 
 
   player->SetInput(input);
+  player->SetCamera(camera);
   power_unit->SetTarget(signboard);
   b_collision = BASE_ENGINE(Collider);
   return true;
