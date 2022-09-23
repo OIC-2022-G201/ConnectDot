@@ -6,7 +6,7 @@
 #include "TransmitterComponent.h"
 
 int PowerSupplyUnitReceiver::Sequential()
-{ return 10; }
+{ return 1000; }
 
 bool PowerSupplyUnitReceiver::PowerJoinCondition()
 { return true; }
@@ -15,6 +15,7 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
   receiver_ = target_->GetComponent<ReceiverComponent>();
   actor_->SetElectricPower(true);
   sender_->AddTarget(receiver_);
+  actor_->SetSequential(transmitter->Sequential()+5);
 }
 
 void PowerSupplyUnitReceiver::OnPowerChanged(TransmitterComponent* transmitter)

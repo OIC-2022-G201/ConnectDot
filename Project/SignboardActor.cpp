@@ -10,6 +10,7 @@
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
 #include "MachineConst.h"
+#include "PowerSupplyUnitActor.h"
 #include "ReceiverComponent.h"
 #include "SignboardReceiver.h"
 #include "StageConstitution.h"
@@ -43,15 +44,18 @@ void SignboardActor::Start() {
         BASE_ENGINE(Texture)->Get(texture::kSignboardDisplayDemoTextureKey);
     display_texture_ = img;
     display_->SetImage(display_texture_);
+    display_->SetEnabled(false);
+
   }
   {
     const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
     const auto img = BASE_ENGINE(Texture)->Get(texture::kSignboardTextureKey);
     sign->SetImage(img);
   }
-  
-  const auto receiver = new ReceiverComponent(this, 100);
-  receiver->Create<SignboardReceiver>();
+  {
+    const auto receiver = new ReceiverComponent(this, 100);
+    receiver->Create<SignboardReceiver>(display_);
+  }
   {
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({10, 5});

@@ -52,7 +52,7 @@ void PlayerActor::Input() {
     --have_beacon_count_;
     auto beacon = new BeaconActor(GetGame());
     beacon->SetPosition(GetPosition());
-    beacon->SetSequential(MaxBeacon() - have_beacon_count_);
+    beacon->SetSequential((MaxBeacon() - have_beacon_count_)*10);
   }
 }
 void PlayerActor::Update() {

@@ -1,28 +1,35 @@
 ﻿// @file SignboardReceiver.h
-// @brief 
+// @brief
 // @author ICE
 // @date 2022/09/22
-// 
+//
 // @details
 
 #pragma once
 #include "IReceivablePower.h"
-
+#include "SpriteComponent.h"
+#undef max
 class SignboardReceiver : public IReceivablePower {
-public:
-    SignboardReceiver() = default;
-    int Sequential() override { return 10; }
- bool PowerJoinCondition() override { return true; }
-    void OnPowerEnter(TransmitterComponent* transmitter) override
-    {
-        int n = 0;
-    }
-    void OnPowerChanged(TransmitterComponent* transmitter) override{}
-    void OnPowerExit(TransmitterComponent* transmitter) override{}
-    bool IsWireless() override { return true; }
+ public:
+  explicit SignboardReceiver(base_engine::SpriteComponent* display)
+      : display_(display) {}
 
-  [[nodiscard]] base_engine::Vector2 GetPosition() const override
-  {
-      return {64, 64};
+  int Sequential() override { return std::numeric_limits<int>::max(); }
+  bool PowerJoinCondition() override { return true; }
+  void OnPowerEnter(TransmitterComponent* transmitter) override {
+    display_->SetEnabled(true);
+    int n = 0;
   }
+  void OnPowerChanged(TransmitterComponent* transmitter) override {}
+  void OnPowerExit(TransmitterComponent* transmitter) override {
+    display_->SetEnabled(false);
+  }
+  bool IsWireless() override { return false; }
+
+  [[nodiscard]] base_engine::Vector2 GetPosition() const override {
+    return {64, 64};
+  }
+
+ private:
+  base_engine::SpriteComponent* display_ = nullptr;
 };

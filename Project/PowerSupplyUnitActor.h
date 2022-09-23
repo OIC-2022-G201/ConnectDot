@@ -24,6 +24,6 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   void SetTarget(Actor* target) { target_ = target; }
  private:
   observable::ReactiveProperty<bool> electric_power_ = false;
-  int sequential_ = 0;
+  int sequential_ = 15;
   Actor* target_ = nullptr;
 };
