@@ -187,6 +187,9 @@
     <Filter Include="ソース ファイル\ConnectDot\AssetSystem\Stage">
       <UniqueIdentifier>{8f9f2adb-4eb0-4e24-aeef-1e328fec7122}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\ServiceLocator">
+      <UniqueIdentifier>{f7539243-6c2d-4216-b606-0692bbc690e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -649,6 +652,9 @@
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceLocator.h">
+      <Filter>Utilities\ServiceLocator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

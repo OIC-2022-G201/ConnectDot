@@ -231,6 +231,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ResourcePack.h" />
     <ClInclude Include="SendManifold.h" />
+    <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="SignboardActor.h" />
     <ClInclude Include="SignboardReceiver.h" />
