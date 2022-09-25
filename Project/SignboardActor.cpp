@@ -58,7 +58,7 @@ void SignboardActor::Start() {
   }
   {
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({10, 5});
+    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({10, 5});
   }
 }
 

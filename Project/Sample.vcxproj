@@ -139,6 +139,9 @@
     <ClCompile Include="Rect.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderMof.cpp" />
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ResourcePack.cpp" />
     <ClCompile Include="ShapeRenderComponent.cpp" />
     <ClCompile Include="SignboardActor.cpp" />
     <ClCompile Include="SignboardReceiver.cpp" />
@@ -224,6 +227,9 @@
     <ClInclude Include="Rect.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderMof.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ResourcePack.h" />
     <ClInclude Include="SendManifold.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="SignboardActor.h" />

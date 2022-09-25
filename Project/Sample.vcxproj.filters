@@ -181,6 +181,12 @@
     <Filter Include="BaseEngine\Component\CameraComponent">
       <UniqueIdentifier>{fd201564-2900-4d4c-9a23-975864afa56a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\AssetSystem">
+      <UniqueIdentifier>{1ca490de-7538-43fb-aacc-21cfbc1e96bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\AssetSystem\Stage">
+      <UniqueIdentifier>{8f9f2adb-4eb0-4e24-aeef-1e328fec7122}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -356,6 +362,15 @@
     </ClCompile>
     <ClCompile Include="CameraComponent.cpp">
       <Filter>BaseEngine\Component\CameraComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourcePack.cpp">
+      <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -625,6 +640,15 @@
     </ClInclude>
     <ClInclude Include="CameraComponent.h">
       <Filter>BaseEngine\Component\CameraComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourcePack.h">
+      <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
