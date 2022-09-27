@@ -21,7 +21,7 @@ void TransmitterComponent::Update() {
 void TransmitterComponent::OnCollision(
     const base_engine::SendManifold& manifold) {
   AddTarget(
-      manifold.collision_b->GetActor()->GetComponent<ReceiverComponent>());
+      manifold.collision_b->GetActor()->GetComponent<ReceiverComponent>().lock().get());
 }
 
 bool TransmitterComponent::AddTarget(ReceiverComponent* target) {

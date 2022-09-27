@@ -25,13 +25,12 @@
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
-
-    BASE_ENGINE(Render)->SetCameraPosition(
+  BASE_ENGINE(Render)->SetCameraPosition(
       {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
        Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() / 2.0f});
 
-    auto camera = new Actor(this);
-    new CameraComponent(camera);
+  auto camera = new Actor(this);
+  new CameraComponent(camera);
 
   auto stageActor = new DebugStage(this);
 
@@ -43,18 +42,14 @@ bool Game::Initialize() {
 
   BASE_ENGINE(Texture)->Load(texture::effect::kElectricEffectTextureKey);
   BASE_ENGINE(Texture)->Load(texture::kSignboardTextureKey);
-  
+
   BASE_ENGINE(Texture)->Load(texture::kSignboardDisplayDemoTextureKey);
   BASE_ENGINE(Texture)->Load(texture::kPowerSupplyUnitTextureKey);
-
-
-
 
   auto pylon = new PylonActor(this);
   auto signboard = new SignboardActor(this);
   auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
-
 
   player->SetInput(input);
   player->SetCamera(camera);
@@ -70,17 +65,14 @@ void Game::Update() {
   b_collision->Collide();
 }
 
-void Game::Shutdown() {
-  while (!actors_.empty()) {
-    delete actors_.back();
-  }
-}
+void Game::Shutdown() { actors_.clear(); }
 
 void Game::AddActor(Actor* actor) { pending_actors_.emplace_back(actor); }
 
 void Game::RemoveActor(Actor* actor) {
-  auto iter = std::find(actors_.begin(), actors_.end(), actor);
-  if (iter != actors_.end()) {
+  if (const auto iter = std::ranges::find_if(
+          actors_, [actor](const ActorPtr& n) { return n.get() == actor; });
+      iter != actors_.end()) {
     std::iter_swap(iter, actors_.end() - 1);
     actors_.pop_back();
   }
@@ -103,26 +95,23 @@ void Game::RemoveSprite(RenderComponent* render_component) {
   sprites_.erase(iter);
 }
 
-void Game::CreateObjectRegister()
-{
+void Game::CreateObjectRegister() {
   updating_actors_ = true;
-  for (int i = 0; i < pending_actors_.size(); ++i)
-  {
-    pending_actors_[i]->StartActor();
-    actors_.emplace_back(pending_actors_[i]);
+  for (auto& pending_actor : pending_actors_) {
+    pending_actor->StartActor();
+    actors_.emplace_back(pending_actor);
   }
   pending_actors_.clear();
 
-  
-  for (auto actor : actors_) {
+  for (auto&& actor : actors_) {
     actor->AddComponent();
   }
-    updating_actors_ = false;
+  updating_actors_ = false;
 }
 
 void Game::ProcessInput() {
   updating_actors_ = true;
-  for (const auto actor : actors_) {
+  for (const auto& actor : actors_) {
     actor->ProcessInput();
   }
   updating_actors_ = false;
@@ -131,29 +120,27 @@ void Game::ProcessInput() {
 void Game::UpdateGame() {
   updating_actors_ = true;
 
-
-
-  for (auto actor : actors_) {
+  for (const auto& actor : actors_) {
     actor->UpdateActor();
   }
   updating_actors_ = false;
 
-  std::vector<Actor*> dead_actors;
-  for (auto actor : actors_) {
+  std::vector<ActorPtr> dead_actors;
+  for (const auto& actor : actors_) {
     if (actor->GetState() == Actor::kDead) {
       dead_actors.emplace_back(actor);
     }
   }
-  for (const auto actor : dead_actors) {
-    delete actor;
+  for (auto&& actor : dead_actors) {
+    actor.reset();
   }
 }
 
 void Game::Render() const {
   for (const auto sprite : sprites_) {
-    if(sprite->GetEnabled())sprite->Draw();
+    if (sprite->GetEnabled()) sprite->Draw();
   }
-  for (auto func : debug_render_) {
+  for (auto& func : debug_render_) {
     func();
   }
   Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",

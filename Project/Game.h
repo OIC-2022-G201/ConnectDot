@@ -6,6 +6,7 @@
 #include "BaseEngineCore.h"
 
 namespace base_engine {
+    using ActorPtr = std::shared_ptr<class Actor>;
 class Game {
   BaseEngineCore engine_;
  public:
@@ -14,8 +15,8 @@ class Game {
   void Render() const;
   void Shutdown();
 
-  void AddActor(class Actor* actor);
-  void RemoveActor(class Actor* actor);
+  void AddActor(Actor* actor);
+  void RemoveActor(Actor* actor);
   void AddSprite(class RenderComponent* render_component);
   void RemoveSprite(class RenderComponent* render_component);
 
@@ -24,11 +25,11 @@ class Game {
   void ProcessInput();
   void UpdateGame();
 
-  std::vector<class Actor*> actors_;
+  std::vector<ActorPtr> actors_;
   std::vector<class RenderComponent*> sprites_;
   
   bool updating_actors_;
-  std::vector<class Actor*> pending_actors_;
+  std::vector<ActorPtr> pending_actors_;
 
  public:
   std::vector<std::function<void()>> debug_render_;

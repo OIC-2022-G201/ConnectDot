@@ -20,7 +20,7 @@ class ResourcePack {
             std::enable_if_t<tuple_holds_v<Elements, ResourcePtr<Type>>, bool> =
                 false>
   void Register(ResourcePtr<Type> resource) {
-    std::get<Type>(elements_) = resource;
+    std::get<ResourcePtr<Type>>(elements_) = resource;
   }
 
   template <class T, std::enable_if_t<tuple_holds_v<Elements, ResourcePtr<T>>,

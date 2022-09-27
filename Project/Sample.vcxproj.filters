@@ -190,6 +190,12 @@
     <Filter Include="Utilities\ServiceLocator">
       <UniqueIdentifier>{f7539243-6c2d-4216-b606-0692bbc690e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Object">
+      <UniqueIdentifier>{09b45f67-41f2-4ddd-b5cc-2f1fe9c775a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Object\ObjectDataBase">
+      <UniqueIdentifier>{c5e53cc9-1e7c-485e-bcb5-f97e1fe0eebb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -374,6 +380,15 @@
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>ソース ファイル\ConnectDot\AssetSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>BaseEngine\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectDataBase.cpp">
+      <Filter>BaseEngine\Object\ObjectDataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="WeakRefObject.cpp">
+      <Filter>BaseEngine\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -655,6 +670,18 @@
     </ClInclude>
     <ClInclude Include="ServiceLocator.h">
       <Filter>Utilities\ServiceLocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>BaseEngine\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectID.h">
+      <Filter>BaseEngine\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectDataBase.h">
+      <Filter>BaseEngine\Object\ObjectDataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="WeakRefObject.h">
+      <Filter>BaseEngine\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

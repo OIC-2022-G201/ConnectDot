@@ -41,8 +41,8 @@ class PlayerComponent final : public base_engine::Component {
     return input_manager_->CollectBeaconFire();
   }
   inline bool IsActionKey() { return input_manager_->ActionFire(); }
-  base_engine::CollisionComponent* GetCollision() { return collision_; }
-  base_engine::PhysicsBodyComponent* PhysicsBody() { return physics_body_; }
+  base_engine::CollisionComponent* GetCollision() { return collision_.lock().get(); }
+  base_engine::PhysicsBodyComponent* PhysicsBody() { return physics_body_.lock().get(); }
  private:
   const InputManager* input_manager_ = nullptr;
 
@@ -51,8 +51,8 @@ class PlayerComponent final : public base_engine::Component {
           PlayerIdle{this}, PlayerMove{this},
                    PlayerSneak{this},
                    PlayerJump{this}};
-  base_engine::CollisionComponent* collision_ = nullptr;
+  std::weak_ptr<base_engine::CollisionComponent> collision_;
 private:
-  base_engine::PhysicsBodyComponent* physics_body_ = nullptr;
+  std::weak_ptr < base_engine::PhysicsBodyComponent> physics_body_;
 };
 }  // namespace player

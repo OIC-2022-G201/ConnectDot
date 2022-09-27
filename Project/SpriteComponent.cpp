@@ -13,10 +13,15 @@ SpriteComponent::SpriteComponent(Actor* owner, int draw_order)
       color_(MOF_XRGB(255, 255, 255)),
       mFlashTime(0.0f) {}
 
-SpriteComponent::~SpriteComponent() { sprite_.Release(); }
+SpriteComponent::~SpriteComponent()
+{ if (draw_order_==120)
+{
+    int n = 3;
+  }
+}
 
 SpriteComponent& SpriteComponent::SetImage(Mof::LPTexture img) {
-  sprite_.SetTexture(img);
+
   texture_ = img;
   if (clip_rect_ == Mof::CRectangle{})
   {

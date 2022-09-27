@@ -118,6 +118,8 @@
     <ClCompile Include="Geometry2D.ipp" />
     <ClCompile Include="Manifold.cpp" />
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjectDataBase.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
     <ClCompile Include="InputActor.cpp" />
@@ -152,6 +154,7 @@
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorUtilities.cpp" />
+    <ClCompile Include="WeakRefObject.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +175,9 @@
     <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="MachineConst.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjectDataBase.h" />
+    <ClInclude Include="ObjectID.h" />
     <ClInclude Include="ParameterMap.h" />
     <ClInclude Include="DebugStage.h" />
     <ClInclude Include="DrawOrder.h" />
@@ -247,6 +253,7 @@
     <ClInclude Include="TupleHasElement.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VectorUtilities.h" />
+    <ClInclude Include="WeakRefObject.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>
   <ItemGroup>

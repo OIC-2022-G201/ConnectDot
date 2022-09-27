@@ -48,9 +48,8 @@ void SignboardActor::Start() {
 
   }
   {
-    const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
-    const auto img = BASE_ENGINE(Texture)->Get(texture::kSignboardTextureKey);
-    sign->SetImage(img);
+    auto sign = new SpriteComponent(this, kSignboardDrawOrder);
+    sign->SetImage(BASE_ENGINE(Texture)->Get(texture::kSignboardTextureKey));
   }
   {
     const auto receiver = new ReceiverComponent(this, 100);
@@ -60,6 +59,7 @@ void SignboardActor::Start() {
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({10, 5});
   }
+  SetName("Signboard");
 }
 
 void SignboardActor::Update() {}

@@ -14,19 +14,19 @@ bool PowerSupplyUnitReceiver::PowerJoinCondition()
 void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
   receiver_ = target_->GetComponent<ReceiverComponent>();
   actor_->SetElectricPower(true);
-  sender_->AddTarget(receiver_);
+  sender_->AddTarget(receiver_.lock().get());
   actor_->SetSequential(transmitter->Sequential()+5);
 }
 
 void PowerSupplyUnitReceiver::OnPowerChanged(TransmitterComponent* transmitter)
 {
-  sender_->AddTarget(receiver_);
+  sender_->AddTarget(receiver_.lock().get());
 }
 
 void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter)
 {
   actor_->SetElectricPower(false);
-  receiver_ = nullptr;
+  receiver_.reset();
 }
 
 bool PowerSupplyUnitReceiver::IsWireless()

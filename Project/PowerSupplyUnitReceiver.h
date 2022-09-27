@@ -27,6 +27,6 @@ class PowerSupplyUnitReceiver : public IReceivablePower {
  private:
   class PowerSupplyUnitActor* actor_ = nullptr;
   base_engine::Actor* target_ = nullptr;
-  class ReceiverComponent* receiver_ = nullptr;
+  std::weak_ptr<class ReceiverComponent> receiver_;
   class TransmitterComponent* sender_ = nullptr;
 };

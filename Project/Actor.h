@@ -1,12 +1,19 @@
 ﻿#pragma once
 
+#include <memory>
 #include <string>
 #include <vector>
 
 #include "IBaseEngineCollider.h"
 #include "Vector.h"
 namespace base_engine {
-class Actor {
+    using ComponentPtr = std::shared_ptr<class Component>;
+    using ComponentWeakPtr = std::weak_ptr<class Component>;
+    template <class T>
+    using ComponentDerivedPtr = std::shared_ptr<T>;
+    template <class T>
+    using ComponentDerivedWeakPtr = std::weak_ptr<T>;
+    class Actor {
  public:
   enum State { kStart, kActive, kPause, kDead };
 
@@ -40,7 +47,7 @@ class Actor {
   template <class T, class D>
   void SendCallbackMessage(T* callback, D&& data) {
     for (auto element : components_) {
-      callback->SendComponentsMessage(element, data);
+      callback->SendComponentsMessage(element.get(), data);
     }
   }
   [[nodiscard]] State GetState() const { return state_; }
@@ -71,7 +78,7 @@ class Actor {
    * 同一型のコンポーネントが複数ある場合同じものが返ってくるとは限らない
    */
   template <class T>
-  T* GetComponent() const;
+  [[nodiscard]] ComponentDerivedWeakPtr<T> GetComponent() const;
 
   /**
    * \brief 指定のコンポーネントを全て探索して取得する
@@ -100,22 +107,19 @@ class Actor {
   float scale_;
  private:
   class Game* game;
-  std::vector<class Component*> components_;
-  std::vector<class Component*> pending_components_;
-};
+  std::vector<ComponentPtr> components_;
+  std::vector<ComponentPtr> pending_components_;
+    };
 
 template <class T>
-T* Actor::GetComponent() const
-{
-    for (auto elem : components_) {
-        T* buff = dynamic_cast<T*>(elem);
-        if (buff != nullptr) return buff;
+ComponentDerivedWeakPtr<T> Actor::GetComponent() const {
+    for (auto& elem : components_) {
+        if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem)) return buff;
     }
-    for (auto elem : pending_components_) {
-      T* buff = dynamic_cast<T*>(elem);
-      if (buff != nullptr) return buff;
+    for (auto& elem : pending_components_) {
+        if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem)) return buff;
     }
-    return nullptr;
+    return ComponentDerivedWeakPtr<T>();
 }
 
 template <class T>

@@ -10,16 +10,13 @@ Actor::Actor(Game* game)
 
 Actor::~Actor() {
   game->RemoveActor(this);
-
-  while (!components_.empty()) {
-    delete components_.back();
-  }
+  components_.clear();
 }
 
 void Actor::StartActor() {
   if (state_ == kStart) {
     Start();
-    for (auto comp : components_) {
+    for (const auto& comp : components_) {
       comp->Start();
     }
 
@@ -30,7 +27,7 @@ void Actor::StartActor() {
 void Actor::ProcessInput() {
   if (state_ == kActive) {
     Input();
-    for (auto comp : components_) {
+    for (const auto& comp : components_) {
       comp->ProcessInput();
     }
   }
@@ -39,7 +36,7 @@ void Actor::ProcessInput() {
 void Actor::UpdateActor() {
   if (state_ == kActive) {
     Update();
-    for (auto component : components_) {
+    for (const auto& component : components_) {
       component->Update();
     }
   }
@@ -69,8 +66,10 @@ void Actor::AddComponent() {
   pending_components_.clear();
 }
 void Actor::RemoveComponent(Component* component) {
-  auto iter = std::find(components_.begin(), components_.end(), component);
-  if (iter != components_.end()) {
+  if (const auto iter = std::ranges::find_if(
+          components_,
+          [component](const ComponentPtr& n) { return n.get() == component; });
+      iter != components_.end()) {
     components_.erase(iter);
   }
 }

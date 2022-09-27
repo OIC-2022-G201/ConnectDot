@@ -1,4 +1,7 @@
 ﻿#include "TextureMof.h"
+
+#include <ranges>
+
 namespace base_engine {
 
 TextureMof::TextureMof() { m_textures.reserve(128); }
@@ -20,9 +23,9 @@ TexturePtr TextureMof::Get(std::string_view name) {
 
 void TextureMof::Clear()
 {
-    for (auto&& m_texture : m_textures) {
-        m_texture.second->Release();
-        delete m_texture.second;
+    for (const auto& val : m_textures | std::views::values) {
+        val->Release();
+        delete val;
     }
 }
 
