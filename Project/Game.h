@@ -1,14 +1,17 @@
 ﻿#pragma once
-#include "Vector.h"
+#include <functional>
+#include <memory>
 #include <vector>
-#include <Graphics/CameraBase.h>
+
 
 #include "BaseEngineCore.h"
+#include "GameData.h"
 
 namespace base_engine {
     using ActorPtr = std::shared_ptr<class Actor>;
 class Game {
   BaseEngineCore engine_;
+  GameData game_data_;
  public:
   bool Initialize();
   void Update();

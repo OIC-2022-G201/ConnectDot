@@ -16,7 +16,7 @@ class SignboardActor final : public base_engine::Actor
 {
 public:
     explicit SignboardActor(base_engine::Game* game);
-    ~SignboardActor() override{}
+    ~SignboardActor() override = default;
     void Start() override;
 
     void Update() override;

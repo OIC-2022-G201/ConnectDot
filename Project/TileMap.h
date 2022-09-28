@@ -16,6 +16,7 @@ class Layer {
   using Collection = std::vector<Row>;
 
  public:
+  Layer(){}
   Layer(const size_t x, const size_t y)
       : x_(x), y_(y), layer_(Collection(y, Row(x, kEmptyCell))) {}
   void SetCell(const size_t x, const size_t y, const Cell type) {

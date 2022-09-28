@@ -9,8 +9,8 @@ base_engine::PhysicsBodyComponent::PhysicsBodyComponent(Actor* owner,
 
 void base_engine::PhysicsBodyComponent::Start() {
   const auto collider = owner_->GetComponent<CollisionComponent>();
-  if (collider == nullptr) return;
-  collider->SetPhysicsBody(this);
+  if (collider.expired()) return;
+  collider.lock()->SetPhysicsBody(this);
 }
 using enum base_engine::physics::BodyMotionType;
 void base_engine::PhysicsBodyComponent::OnCollision(

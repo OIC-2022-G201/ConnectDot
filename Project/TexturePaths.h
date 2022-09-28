@@ -17,6 +17,9 @@ namespace texture {
 //! Player
 constexpr std::string_view kPlayerTextureKey = "Player.png"sv;
 
+//! Enemy
+constexpr std::string_view kEnemyTextureKey = "LivingEntity/Enemy/Enemy1.png"sv;
+
 //! Beacon
 
 

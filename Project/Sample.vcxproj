@@ -104,9 +104,11 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugStage.cpp" />
     <ClCompile Include="ElectricEffect.cpp" />
+    <ClCompile Include="EnemyActor.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="GameData.cpp" />
     <ClCompile Include="Geometry2D.cpp" />
     <ClCompile Include="GJK.cpp" />
     <ClCompile Include="GridPosition.cpp" />
@@ -149,6 +151,7 @@
     <ClCompile Include="SignboardReceiver.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="StageActor.cpp" />
     <ClCompile Include="TextureMof.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
@@ -174,6 +177,9 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="ConnectDotUpdateOrder.h" />
+    <ClInclude Include="EnemyActor.h" />
+    <ClInclude Include="EnemyPackage.h" />
+    <ClInclude Include="GameData.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectDataBase.h" />
@@ -237,12 +243,14 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ResourcePack.h" />
     <ClInclude Include="SendManifold.h" />
+    <ClInclude Include="Serializer.h" />
     <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="SignboardActor.h" />
     <ClInclude Include="SignboardReceiver.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="StageActor.h" />
     <ClInclude Include="StageConstitution.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="TextureMof.h" />

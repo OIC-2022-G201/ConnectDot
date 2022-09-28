@@ -196,6 +196,12 @@
     <Filter Include="BaseEngine\Object\ObjectDataBase">
       <UniqueIdentifier>{c5e53cc9-1e7c-485e-bcb5-f97e1fe0eebb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Register">
+      <UniqueIdentifier>{44d8e9e4-c616-4932-84b7-46ac83a6123e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Serialize">
+      <UniqueIdentifier>{77aedf5c-afff-4e3a-abcd-0b47932c791d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -389,6 +395,15 @@
     </ClCompile>
     <ClCompile Include="WeakRefObject.cpp">
       <Filter>BaseEngine\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Register</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="StageActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -682,6 +697,21 @@
     </ClInclude>
     <ClInclude Include="WeakRefObject.h">
       <Filter>BaseEngine\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Register</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyActor.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyPackage.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="StageActor.h">
+      <Filter>ソース ファイル\ConnectDot\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Serializer.h">
+      <Filter>Utilities\Serialize</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

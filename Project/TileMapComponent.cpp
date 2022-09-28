@@ -9,19 +9,9 @@ void tile_map::TileMapComponent::Start() { Load(); }
 void tile_map::TileMapComponent::Update() {}
 
 void tile_map::TileMapComponent::Load() {
+  map_ = Layer(cell_width_, cell_height_);
   tile_shape_.emplace_back(new base_engine::Rect(0, 0, 128, 128));
-  for (int y = 0; y < 9; ++y) {
-    /*
-  map_.SetCell(0, y, 1);
-  auto cell = new base_engine::Actor(owner_->GetGame());
-  cell->SetPosition({0, static_cast<MofFloat>(y * 128)});
-  cell->SetTag("Field");
-  auto collision = new base_engine::CollisionComponent(cell,100);
-  collision->SetObjectFilter(kFieldObjectFilter);
-  collision->SetTargetFilter(kFieldTargetFilter);
-    collision->SetShape(tile_shape_[0]);
-  */
-  }
+  
   for (int x = 0; x < 3; ++x) {
     map_.SetCell(x, 6, 1);
     auto cell = new base_engine::Actor(owner_->GetGame());
@@ -30,10 +20,9 @@ void tile_map::TileMapComponent::Load() {
     auto collision = new base_engine::CollisionComponent(cell);
     collision->SetObjectFilter(kFieldObjectFilter);
     collision->SetTargetFilter(kFieldTargetFilter);
-    collision->SetShape(
-        std::make_shared<base_engine::Rect>(*tile_shape_[0].get()));
+    collision->SetShape(tile_shape_[0]);
   }
-  for (int x = 0; x < 15; ++x) {
+  for (int x = 0; x < cell_width_; ++x) {
     map_.SetCell(x, 8, 1);
     auto cell = new base_engine::Actor(owner_->GetGame());
     cell->SetTag("Field");
@@ -41,8 +30,7 @@ void tile_map::TileMapComponent::Load() {
     auto collision = new base_engine::CollisionComponent(cell);
     collision->SetObjectFilter(kFieldObjectFilter);
     collision->SetTargetFilter(kFieldTargetFilter);
-    collision->SetShape(
-        std::make_shared<base_engine::Rect>(*tile_shape_[0].get()));
+    collision->SetShape(tile_shape_[0]);
   }
 }
 

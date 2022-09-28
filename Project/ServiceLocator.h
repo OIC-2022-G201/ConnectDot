@@ -12,6 +12,7 @@
 #include <unordered_map>
 
 class ServiceLocator {
+  inline static ServiceLocator* Instance = nullptr;
  public:
   ServiceLocator() : instances_(), creators_(){}
   ~ServiceLocator() { clear(); }
@@ -35,7 +36,7 @@ class ServiceLocator {
   }
 
   template <typename T>
-  std::shared_ptr<T> resolve() const {
+  std::shared_ptr<T> Resolve() const {
     const size_t hash = typeid(T).hash_code();
     if (const auto itr1 = instances_.find(hash); itr1 != instances_.end())
       return std::static_pointer_cast<T>(itr1->second);

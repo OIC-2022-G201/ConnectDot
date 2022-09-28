@@ -2,32 +2,23 @@
 
 #include <Utilities/GraphicsUtilities.h>
 
-#include "BaseEngineCollision.h"
 #include "CameraComponent.h"
 #include "CollisionComponent.h"
 #include "DebugStage.h"
-#include "GameWindow.h"
-#include "IBaseEngineEmpty.h"
-#include "IBaseEngineRender.h"
-#include "IBaseEngineTexture.h"
+#include "EnemyActor.h"
 #include "InputComponent.h"
 #include "InputManager.h"
 #include "PlayerActor.h"
 #include "PowerSupplyUnitActor.h"
 #include "PylonActor.h"
-#include "Rect.h"
 #include "RenderComponent.h"
-#include "ShapeRenderComponent.h"
 #include "SignboardActor.h"
-#include "SpriteComponent.h"
 #include "TexturePaths.h"
 
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
-  BASE_ENGINE(Render)->SetCameraPosition(
-      {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
-       Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() / 2.0f});
+  game_data_.Register();
 
   auto camera = new Actor(this);
   new CameraComponent(camera);
@@ -37,23 +28,20 @@ bool Game::Initialize() {
   auto inputActor = new InputActor(this);
   auto input = new InputManager(inputActor);
 
-  BASE_ENGINE(Texture)->Load("ice.png");
-  BASE_ENGINE(Texture)->Load(texture::kPlayerTextureKey);
-
-  BASE_ENGINE(Texture)->Load(texture::effect::kElectricEffectTextureKey);
-  BASE_ENGINE(Texture)->Load(texture::kSignboardTextureKey);
-
-  BASE_ENGINE(Texture)->Load(texture::kSignboardDisplayDemoTextureKey);
-  BASE_ENGINE(Texture)->Load(texture::kPowerSupplyUnitTextureKey);
-
   auto pylon = new PylonActor(this);
   auto signboard = new SignboardActor(this);
   auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
+  auto enemy = new EnemyActor(this);
+
 
   player->SetInput(input);
   player->SetCamera(camera);
   power_unit->SetTarget(signboard);
+
+
+
+
   b_collision = BASE_ENGINE(Collider);
   return true;
 }

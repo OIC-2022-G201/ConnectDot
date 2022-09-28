@@ -5,6 +5,7 @@
 #include "BeaconActor.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "DrawOrder.h"
 #include "GameWindow.h"
 #include "IBaseEngineRender.h"
 #include "InputManager.h"
@@ -35,7 +36,7 @@ void PlayerActor::Start() {
   auto debugCollisionRender = new ShapeRenderComponent(this, 500);
   debugCollisionRender->SetShape(shape_player);
   debugCollisionRender->SetColor(MOF_COLOR_GREEN);
-  auto playerSprite = new SpriteComponent(this, 100);
+  auto playerSprite = new SpriteComponent(this, draw_order::kPlayerDrawOrder);
   playerSprite->SetImage(BASE_ENGINE(Texture)->Get(texture::kPlayerTextureKey));
 
     auto body = new PhysicsBodyComponent(this);
