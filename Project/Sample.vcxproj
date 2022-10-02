@@ -170,6 +170,7 @@
     <ClInclude Include="BeaconActor.h" />
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
+    <ClInclude Include="BinaryArchive.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
@@ -179,6 +180,9 @@
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyPackage.h" />
+    <ClInclude Include="FrozenConcept.h" />
+    <ClInclude Include="FrozenHelper.h" />
+    <ClInclude Include="FrozenMacro.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />
@@ -243,7 +247,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ResourcePack.h" />
     <ClInclude Include="SendManifold.h" />
-    <ClInclude Include="Serializer.h" />
+    <ClInclude Include="Frozen.h" />
     <ClInclude Include="ServiceLocator.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="SignboardActor.h" />
