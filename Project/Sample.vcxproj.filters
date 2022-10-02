@@ -199,8 +199,17 @@
     <Filter Include="ソース ファイル\ConnectDot\GameMain\Register">
       <UniqueIdentifier>{44d8e9e4-c616-4932-84b7-46ac83a6123e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Utilities\Serialize">
+    <Filter Include="Utilities\Frozen">
       <UniqueIdentifier>{77aedf5c-afff-4e3a-abcd-0b47932c791d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Frozen\Archive">
+      <UniqueIdentifier>{d29249f3-3ec5-4390-94e4-14e9e149e0a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Frozen\Detail">
+      <UniqueIdentifier>{1b5499a3-4b8a-4bd6-b4be-bb8b234f19ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Frozen\Types">
+      <UniqueIdentifier>{ca8474b7-9632-4d6f-b793-674ad95980e3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -710,8 +719,20 @@
     <ClInclude Include="StageActor.h">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="Serializer.h">
-      <Filter>Utilities\Serialize</Filter>
+    <ClInclude Include="Frozen.h">
+      <Filter>Utilities\Frozen</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryArchive.h">
+      <Filter>Utilities\Frozen\Archive</Filter>
+    </ClInclude>
+    <ClInclude Include="FrozenConcept.h">
+      <Filter>Utilities\Frozen\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="FrozenHelper.h">
+      <Filter>Utilities\Frozen\Detail</Filter>
+    </ClInclude>
+    <ClInclude Include="FrozenMacro.h">
+      <Filter>Utilities\Frozen</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
