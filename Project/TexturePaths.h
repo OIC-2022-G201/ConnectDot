@@ -22,6 +22,8 @@ constexpr std::string_view kEnemyTextureKey = "LivingEntity/Enemy/Enemy1.png"sv;
 
 //! Beacon
 
+//! Test
+constexpr std::string_view kTestTextureKey = "rails.png"sv;
 
 //! PowerSupplyUnitActor
 constexpr std::string_view kPowerSupplyUnitTextureKey =
