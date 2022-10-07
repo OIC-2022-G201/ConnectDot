@@ -21,6 +21,7 @@ MofBool CGameApp::Initialize(void) {
   CUtilities::SetCurrentDirectory("Resource");
   // CGraphicsUtilities::SetCamera(&camera_);
   //g_pGraphics->SetScreenMode(false);
+//test
   game_.Initialize();
   return TRUE;
 }
