@@ -23,4 +23,7 @@ constexpr int kElectricEffectDrawOrder = 130;
 
 constexpr int kEnemyDrawOrder = 149;
 constexpr int kPlayerDrawOrder = 150;
+
+constexpr int kTestDrawOrder = 200;
+
 }  // namespace draw_order

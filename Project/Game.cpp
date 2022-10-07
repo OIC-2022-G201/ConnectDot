@@ -15,6 +15,8 @@
 #include "SignboardActor.h"
 #include "TexturePaths.h"
 
+#include "testActor.h"
+
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
@@ -34,6 +36,7 @@ bool Game::Initialize() {
   auto player = new player::PlayerActor(this);
   auto enemy = new EnemyActor(this);
 
+  auto test = new testActor(this);
 
   player->SetInput(input);
   player->SetCamera(camera);

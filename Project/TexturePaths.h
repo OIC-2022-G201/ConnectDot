@@ -40,4 +40,7 @@ constexpr std::string_view kElectricEffectTextureKey =
     "Effect/Electric/ElectroCellMap.png"sv;
 }  // namespace effect
 
+//test
+constexpr std::string_view kTestTextureKey = "ice.png"sv;
+
 }  // namespace texture

@@ -152,6 +152,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="StageActor.cpp" />
+    <ClCompile Include="testActor.cpp" />
     <ClCompile Include="TextureMof.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
@@ -257,6 +258,7 @@
     <ClInclude Include="StageActor.h" />
     <ClInclude Include="StageConstitution.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="testActor.h" />
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="TexturePaths.h" />
     <ClInclude Include="TileMap.h" />
