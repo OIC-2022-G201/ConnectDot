@@ -120,6 +120,7 @@
     <ClCompile Include="Geometry2D.ipp" />
     <ClCompile Include="Manifold.cpp" />
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
+    <ClCompile Include="MoveFloor.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectDataBase.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="FrozenMacro.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="MachineConst.h" />
+    <ClInclude Include="MoveFloor.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectDataBase.h" />
     <ClInclude Include="ObjectID.h" />

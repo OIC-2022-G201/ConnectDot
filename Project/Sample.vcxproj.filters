@@ -211,6 +211,9 @@
     <Filter Include="Utilities\Frozen\Types">
       <UniqueIdentifier>{ca8474b7-9632-4d6f-b793-674ad95980e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor">
+      <UniqueIdentifier>{0929e771-5b88-428b-b9fa-a569cff76992}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -413,6 +416,9 @@
     </ClCompile>
     <ClCompile Include="StageActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveFloor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -733,6 +739,9 @@
     </ClInclude>
     <ClInclude Include="FrozenMacro.h">
       <Filter>Utilities\Frozen</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveFloor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
