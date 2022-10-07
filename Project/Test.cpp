@@ -20,3 +20,4 @@ using namespace base_engine;
 		SetPosition(GridPosition::GridTo({ 4,6 }));
 	}
 void Test::Update() {}
+//ƒRƒƒ“ƒg
