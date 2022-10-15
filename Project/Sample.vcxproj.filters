@@ -211,6 +211,21 @@
     <Filter Include="Utilities\Frozen\Types">
       <UniqueIdentifier>{ca8474b7-9632-4d6f-b793-674ad95980e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\physics\Collision\BroadPhase">
+      <UniqueIdentifier>{8798f107-2b73-4e47-8b57-7b4d6a8a36ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Body">
+      <UniqueIdentifier>{e6750cb4-737f-402d-a6ee-792aaaf765c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\ComponentData">
+      <UniqueIdentifier>{87a53e55-de24-4f18-be76-8da8eed9fd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Math">
+      <UniqueIdentifier>{6a14975b-ace5-4840-9cf8-081aaecc9542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Shape">
+      <UniqueIdentifier>{0884103a-c71e-4e2d-8661-ff4bada72d84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -413,6 +428,9 @@
     </ClCompile>
     <ClCompile Include="StageActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="BroadPhase.cpp">
+      <Filter>BaseEngine\physics\Collision\BroadPhase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -733,6 +751,30 @@
     </ClInclude>
     <ClInclude Include="FrozenMacro.h">
       <Filter>Utilities\Frozen</Filter>
+    </ClInclude>
+    <ClInclude Include="BroadPhase.h">
+      <Filter>BaseEngine\physics\Collision\BroadPhase</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsBody2D.h">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponentData.h">
+      <Filter>BaseEngine\physics\ComponentData</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsVector2.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsFixture.h">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsMathUtility.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCollision.h">
+      <Filter>BaseEngine\physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsShapes.h">
+      <Filter>BaseEngine\physics\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

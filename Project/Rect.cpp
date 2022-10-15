@@ -13,7 +13,7 @@ namespace base_engine {
 
     }
 
-    Mof::CRectangle Rect::AABB() const
+    const Mof::CRectangle& Rect::AABB() const
     { return static_cast<CRectangle>(*this); }
 
     Vector2 Rect::GetFarthestPoint(InVector2 transform, Vector2 direction) const

@@ -36,16 +36,16 @@ bool Circle::Collision(const Vector2& transform, const Point& point,
                        const Vector2& point_transform) const {
   return Geometry2D::Intersect((*this) + transform, point + point_transform);
 }
-void Circle::ChangeNotification() {}
-
-Mof::CRectangle Circle::AABB() const {
+void Circle::ChangeNotification() {
   const Mof::Vector2 pos(this->Position.x, this->Position.y);
-  return Mof::CRectangle(pos - Mof::Vector2(1, 1) * r,
-                         pos + Mof::Vector2(1, 1) * r);
+
+  aabb_ = Mof::CRectangle(pos - Mof::Vector2(1, 1) * r,
+                          pos + Mof::Vector2(1, 1) * r);
 }
 
-Vector2 Circle::GetFarthestPoint(InVector2 transform, Vector2 direction) const
-{
-    return transform + VectorUtilities::Normalize(direction) * r;
+const Mof::CRectangle& Circle::AABB() const { return aabb_; }
+
+Vector2 Circle::GetFarthestPoint(InVector2 transform, Vector2 direction) const {
+  return transform + VectorUtilities::Normalize(direction) * r;
 }
 }  // namespace base_engine

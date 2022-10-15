@@ -33,7 +33,10 @@ class CollisionComponent : public Component {
   ~CollisionComponent() override;
   void Update() override;
   [[nodiscard]] Actor* GetActor() const { return owner_; }
-  Mof::CRectangle AABB() const { return GetShape()->AABB() + GetPosition(); }
+  Mof::CRectangle AABB() const
+  {
+      return GetShape()->AABB() + GetPosition();
+  }
   void Start() override;
 
   [[nodiscard]] class PhysicsBodyComponent* GetPhysicsBody() const

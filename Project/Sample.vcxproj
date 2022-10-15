@@ -62,6 +62,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\Library\Include;$(ProjectDir)\include\utilities\observable</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,6 +99,7 @@
     <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
+    <ClCompile Include="BroadPhase.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
@@ -171,6 +173,7 @@
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="BinaryArchive.h" />
+    <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
@@ -217,7 +220,14 @@
     <ClInclude Include="Manifold.h" />
     <ClInclude Include="MinkowskiSum.h" />
     <ClInclude Include="MofSpriteAnimationComponent.h" />
+    <ClInclude Include="PhysicsCollision.h" />
+    <ClInclude Include="PhysicsBody2D.h" />
     <ClInclude Include="PhysicsBodyComponent.h" />
+    <ClInclude Include="PhysicsComponentData.h" />
+    <ClInclude Include="PhysicsFixture.h" />
+    <ClInclude Include="PhysicsMathUtility.h" />
+    <ClInclude Include="PhysicsShapes.h" />
+    <ClInclude Include="PhysicsVector2.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerIdle.h" />
     <ClInclude Include="InputActor.h" />

@@ -33,7 +33,7 @@ class Rect final : public Mof::CRectangle, public IShape {
   bool Collision(const Vector2& transform, const Point& point,
                  const Vector2& point_transform) const override;
   void ChangeNotification() override;
-  Mof::CRectangle AABB() const override;
+  const Mof::CRectangle& AABB() const override;
 
   /**
    * @todo 四角形用に最適化を行う
