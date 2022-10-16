@@ -15,6 +15,7 @@
 namespace base_engine::physics {
 class b2Shape;
 class b2ContactEdge;
+    using int32 = int32_t;
 struct b2Filter {
   b2Filter() {
     categoryBits = 0x0001u;
@@ -171,14 +172,25 @@ class PhysicsFixture {
   friend class b2Contact;
   friend class b2ContactManager;
 
-  PhysicsFixture();
+  PhysicsFixture() {
+    m_body = nullptr;
+    m_next = nullptr;
+    m_proxies = nullptr;
+    m_proxyCount = 0;
+    m_shape = nullptr;
+    m_density = 0.0f;
+  }
 
   // We need separation create/destroy functions from the constructor/destructor
   // because the destructor cannot access the allocator (no destructor arguments
   // allowed by C++).
   void Create(PhysicsBlockAllocator* allocator, PhysicsBody* body,
               const PhysicsFixtureDef* def);
-  void Destroy(PhysicsBlockAllocator* allocator);
+  void Destroy(PhysicsBlockAllocator* allocator)
+  {
+
+    m_shape = nullptr;
+  }
 
   // These support body activation/deactivation.
   void CreateProxies(bp::BroadPhase* broadPhase, const b2Transform& xf);
@@ -207,4 +219,5 @@ class PhysicsFixture {
 
   FixtureUserComponentData m_userData;
 };
+
 }  // namespace base_engine::physics

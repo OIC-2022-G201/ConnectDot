@@ -127,6 +127,7 @@
     <ClCompile Include="PhysicsBlockAllocator.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
     <ClCompile Include="PhysicsDynamicTree.cpp" />
+    <ClCompile Include="PhysicsFixture.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
     <ClCompile Include="InputActor.cpp" />
     <ClCompile Include="InputComponent.cpp" />

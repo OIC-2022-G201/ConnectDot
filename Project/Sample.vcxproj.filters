@@ -447,6 +447,9 @@
     <ClCompile Include="PhysicsDynamicTree.cpp">
       <Filter>BaseEngine\physics\DynamicTree</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsFixture.cpp">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">

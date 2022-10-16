@@ -399,15 +399,6 @@ class b2DynamicTree {
 
     m_root = nodes[0];
     free(nodes);
-    ValidateStructure(m_root);
-    ValidateMetrics(m_root);
-
-    int32_t freeCount = 0;
-    int32_t freeIndex = m_freeList;
-    while (freeIndex != b2_nullNode) {
-      freeIndex = m_nodes[freeIndex].next;
-      ++freeCount;
-    }
   }
 
   void Validate() {

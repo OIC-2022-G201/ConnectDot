@@ -165,10 +165,7 @@ class BroadPhase {
   /// Shift the world origin. Useful for large worlds.
   /// The shift formula is: position -= newOrigin
   /// @param newOrigin the new origin with respect to the old origin
-  void ShiftOrigin(const PVec2& newOrigin)
-  {
-      
-  }
+  void ShiftOrigin(const PVec2& newOrigin) { m_tree.ShiftOrigin(newOrigin); }
 
  private:
   friend class b2DynamicTree;
