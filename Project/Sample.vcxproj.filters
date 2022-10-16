@@ -229,6 +229,12 @@
     <Filter Include="Utilities\Extensions\Enum">
       <UniqueIdentifier>{56898e89-24fb-4c5e-a46d-d7628437d555}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\physics\Allocator">
+      <UniqueIdentifier>{2f5c4728-ec1f-46cf-854c-239d71b83a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\DynamicTree">
+      <UniqueIdentifier>{eda2aae1-b545-4d9c-bb38-b9bf1bde0913}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -434,6 +440,12 @@
     </ClCompile>
     <ClCompile Include="BroadPhase.cpp">
       <Filter>BaseEngine\physics\Collision\BroadPhase</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsBlockAllocator.cpp">
+      <Filter>BaseEngine\physics\Allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsDynamicTree.cpp">
+      <Filter>BaseEngine\physics\DynamicTree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -781,6 +793,21 @@
     </ClInclude>
     <ClInclude Include="EnumExtension.h">
       <Filter>Utilities\Extensions\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsBlockAllocator.h">
+      <Filter>BaseEngine\physics\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsTransform.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsRotate.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsDynamicTree.h">
+      <Filter>BaseEngine\physics\DynamicTree</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCommon.h">
+      <Filter>BaseEngine\physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

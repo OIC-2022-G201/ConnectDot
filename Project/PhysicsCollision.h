@@ -133,4 +133,15 @@ struct PhysicsAABB {
   PVec2 lowerBound;  ///< the lower vertex
   PVec2 upperBound;  ///< the upper vertex
 };
+
+constexpr bool b2TestOverlap(const PhysicsAABB& a, const PhysicsAABB& b) {
+  const PVec2 d1 = b.lowerBound - a.upperBound;
+  const PVec2 d2 = a.lowerBound - b.upperBound;
+
+  if (d1.x > 0.0f || d1.y > 0.0f) return false;
+
+  if (d2.x > 0.0f || d2.y > 0.0f) return false;
+
+  return true;
+}
 }  // namespace base_engine::physics

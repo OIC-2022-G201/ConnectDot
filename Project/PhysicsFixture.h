@@ -6,11 +6,15 @@
 // @details
 
 #pragma once
+#include "BroadPhase.h"
+#include "PhysicsBody2D.h"
 #include "PhysicsCollision.h"
 #include "PhysicsComponentData.h"
+#include "PhysicsShapes.h"
 
 namespace base_engine::physics {
 class b2Shape;
+class b2ContactEdge;
 struct b2Filter {
   b2Filter() {
     categoryBits = 0x0001u;
@@ -76,134 +80,117 @@ struct PhysicsFixtureProxy {
   int32_t childIndex;
   int32_t proxyId;
 };
-class PhysicsFixture
-{
-  /// Get the type of the child shape. You can use this to down cast to the
-  /// concrete shape.
-  /// @return the shape type.
-  b2Shape GetType() const;
+class PhysicsFixture {
+  [[nodiscard]] b2Shape::Type GetType() const noexcept {
+    return m_shape->GetType();
+  }
 
-  /// Get the child shape. You can modify the child shape, however you should
-  /// not change the number of vertices because this will crash some collision
-  /// caching mechanisms. Manipulating the shape may lead to non-physical
-  /// behavior.
-  b2Shape* GetShape();
-  const b2Shape* GetShape() const;
+  b2Shape* GetShape() { return m_shape; }
+  [[nodiscard]] const b2Shape* GetShape() const noexcept { return m_shape; }
 
-  /// Set if this fixture is a sensor.
-  void SetSensor(bool sensor);
+  void SetSensor(bool sensor) noexcept { m_isSensor = sensor; }
 
-  /// Is this fixture a sensor (non-solid)?
-  /// @return the true if the shape is a sensor.
-  bool IsSensor() const;
+  [[nodiscard]] bool IsSensor() const noexcept { return m_isSensor; }
 
-  /// Set the contact filtering data. This will not update contacts until the
-  /// next time step when either parent body is active and awake. This
-  /// automatically calls Refilter.
-  void SetFilterData(const b2Filter& filter);
+  void SetFilterData(const b2Filter& filter) {
+    m_filter = filter;
 
-  /// Get the contact filtering data.
-  const b2Filter& GetFilterData() const;
+    ReFilter();
+  }
 
-  /// Call this if you want to establish collision that was previously disabled
-  /// by b2ContactFilter::ShouldCollide.
-  void Refilter();
+  [[nodiscard]] const b2Filter& GetFilterData() const { return m_filter; }
 
-  /// Get the parent body of this fixture. This is nullptr if the fixture is not
-  /// attached.
-  /// @return the parent body.
-  b2Body* GetBody();
-  const b2Body* GetBody() const;
+  void ReFilter() {
+    /*
+    if (m_body == nullptr) {
+      return;
+    }
 
-  /// Get the next fixture in the parent body's fixture list.
-  /// @return the next shape.
-  b2Fixture* GetNext();
-  const b2Fixture* GetNext() const;
+    // Flag associated contacts for filtering.
+    b2ContactEdge* edge = m_body->GetContactList();
+    while (edge) {
+      b2Contact* contact = edge->contact;
+      PhysicsFixture* fixtureA = contact->GetFixtureA();
+      PhysicsFixture* fixtureB = contact->GetFixtureB();
+      if (fixtureA == this || fixtureB == this) {
+        contact->FlagForFiltering();
+      }
 
-  /// Get the user data that was assigned in the fixture definition. Use this to
-  /// store your application specific data.
-  b2FixtureUserData& GetUserData();
-  const b2FixtureUserData& GetUserData() const;
+      edge = edge->next;
+    }
 
-  /// Test a point for containment in this fixture.
-  /// @param p a point in world coordinates.
-  bool TestPoint(const b2Vec2& p) const;
+    b2World* world = m_body->GetWorld();
 
-  /// Cast a ray against this shape.
-  /// @param output the ray-cast results.
-  /// @param input the ray-cast input parameters.
-  /// @param childIndex the child shape index (e.g. edge index)
-  bool RayCast(b2RayCastOutput* output, const b2RayCastInput& input,
-               int32 childIndex) const;
+    if (world == nullptr) {
+      return;
+    }
 
-  /// Get the mass data for this fixture. The mass data is based on the density
-  /// and the shape. The rotational inertia is about the shape's origin. This
-  /// operation may be expensive.
-  void GetMassData(b2MassData* massData) const;
+    // Touch each proxy so that new pairs may be created
+    bp::BroadPhase* broadPhase = &world->m_contactManager.m_broadPhase;
+    for (int32_t i = 0; i < m_proxyCount; ++i) {
+      broadPhase->TouchProxy(m_proxies[i].proxyId);
+    }
+    */
+  }
 
-  /// Set the density of this fixture. This will _not_ automatically adjust the
-  /// mass of the body. You must call b2Body::ResetMassData to update the body's
-  /// mass.
-  void SetDensity(float density);
+  PhysicsBody* GetBody() { return m_body; }
+  [[nodiscard]] const PhysicsBody* GetBody() const { return m_body; }
 
-  /// Get the density of this fixture.
-  float GetDensity() const;
+  PhysicsFixture* GetNext() { return m_next; }
+  [[nodiscard]] const PhysicsFixture* GetNext() const { return m_next; }
+  
+  FixtureUserComponentData& GetUserData() { return m_userData; }
+  [[nodiscard]] const FixtureUserComponentData& GetUserData() const {
+    return m_userData;
+  }
 
-  /// Get the coefficient of friction.
-  float GetFriction() const;
+  [[nodiscard]] bool TestPoint(const PVec2& p) const
+  {
+    return m_shape->TestPoint(m_body->GetTransform(), p);
+  }
 
-  /// Set the coefficient of friction. This will _not_ change the friction of
-  /// existing contacts.
-  void SetFriction(float friction);
+  bool RayCast(PhysicsRayCastOutput* output, const PhysicsRayCastInput& input,
+               int32_t childIndex) const
+  {
+    return m_shape->RayCast(output, input, m_body->GetTransform(), childIndex);
+  }
 
-  /// Get the coefficient of restitution.
-  float GetRestitution() const;
+  void GetMassData(PhysicsMassData* massData) const noexcept
+  {
+    m_shape->ComputeMass(massData, m_density);
+  }
 
-  /// Set the coefficient of restitution. This will _not_ change the restitution
-  /// of existing contacts.
-  void SetRestitution(float restitution);
-
-  /// Get the restitution velocity threshold.
-  float GetRestitutionThreshold() const;
-
-  /// Set the restitution threshold. This will _not_ change the restitution
-  /// threshold of existing contacts.
-  void SetRestitutionThreshold(float threshold);
-
-  /// Get the fixture's AABB. This AABB may be enlarge and/or stale.
-  /// If you need a more accurate AABB, compute it using the shape and
-  /// the body transform.
-  const b2AABB& GetAABB(int32 childIndex) const;
-
-  /// Dump this fixture to the log file.
-  void Dump(int32 bodyIndex);
+  [[nodiscard]] const PhysicsAABB& GetAABB(int32_t childIndex) const
+  {
+    return m_proxies[childIndex].aabb;
+  }
 
  protected:
-  friend class b2Body;
+  friend class PhysicsBody;
   friend class b2World;
   friend class b2Contact;
   friend class b2ContactManager;
 
-  b2Fixture();
+  PhysicsFixture();
 
   // We need separation create/destroy functions from the constructor/destructor
   // because the destructor cannot access the allocator (no destructor arguments
   // allowed by C++).
-  void Create(b2BlockAllocator* allocator, b2Body* body,
-              const b2FixtureDef* def);
-  void Destroy(b2BlockAllocator* allocator);
+  void Create(PhysicsBlockAllocator* allocator, PhysicsBody* body,
+              const PhysicsFixtureDef* def);
+  void Destroy(PhysicsBlockAllocator* allocator);
 
   // These support body activation/deactivation.
-  void CreateProxies(b2BroadPhase* broadPhase, const b2Transform& xf);
-  void DestroyProxies(b2BroadPhase* broadPhase);
+  void CreateProxies(bp::BroadPhase* broadPhase, const b2Transform& xf);
+  void DestroyProxies(bp::BroadPhase* broadPhase);
 
-  void Synchronize(b2BroadPhase* broadPhase, const b2Transform& xf1,
+  void Synchronize(bp::BroadPhase* broadPhase, const b2Transform& xf1,
                    const b2Transform& xf2);
 
   float m_density;
 
-  b2Fixture* m_next;
-  b2Body* m_body;
+  PhysicsFixture* m_next;
+  PhysicsBody* m_body;
 
   b2Shape* m_shape;
 
@@ -211,14 +198,13 @@ class PhysicsFixture
   float m_restitution;
   float m_restitutionThreshold;
 
-  b2FixtureProxy* m_proxies;
-  int32 m_proxyCount;
+  PhysicsFixtureProxy* m_proxies;
+  int32_t m_proxyCount;
 
   b2Filter m_filter;
 
   bool m_isSensor;
 
-  b2FixtureUserData m_userData;
-
+  FixtureUserComponentData m_userData;
 };
 }  // namespace base_engine::physics

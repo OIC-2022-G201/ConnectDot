@@ -7,8 +7,8 @@
 
 #pragma once
 #include "PhysicsComponentData.h"
+#include "PhysicsTransform.h"
 #include "PhysicsVector2.h"
-#include "Vector.h"
 
 namespace base_engine::physics {
 
@@ -66,5 +66,9 @@ struct BodyDef
 
 class PhysicsBody {
  public:
+  [[nodiscard]] const b2Transform& GetTransform() const { return m_xf; }
+
+ private:
+  b2Transform m_xf;  // the body origin transform
 };
 }  // namespace base_engine::physics

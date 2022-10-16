@@ -10,7 +10,11 @@
 
 namespace base_engine::physics {
 constexpr double kLengthUnitsPerMeter = 1.0;
-constexpr uint8_t kMaxPolygonVertices = 8;
+constexpr double kAABBExtension = 0.1 * kLengthUnitsPerMeter;
+
+constexpr float kAABBMultiplier = 4.0f;
+
+    constexpr uint8_t kMaxPolygonVertices = 8;
 
 template <class Tag>
 struct PointerComponentData {

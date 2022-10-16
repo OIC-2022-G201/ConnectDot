@@ -51,36 +51,6 @@ constexpr PVec2 PhysicsAbs(const PVec2& a) noexcept {
   return {PhysicsAbs(a.x), PhysicsAbs(a.y)};
 }
 
-}  // namespace base_engine::physics
 
-//class IDamageable {
-// public:
-//  void virtual DamageApply(int damage) = 0;
-//};
-//
-//class Player2Component : public base_engine::Component, public IDamageable {
-//  int hp;
-//
-// public:
-//  Player2Component(base_engine::Actor* owner, int update_order)
-//      : Component(owner, update_order) {}
-//
-//  void DamageApply(int damage) override { hp -= damage; }
-//};
-//class TallComponent : public base_engine::Component, public IDamageable {
-//  void Destory() {}
-//
-// public:
-//  TallComponent(base_engine::Actor* owner, int update_order)
-//      : Component(owner, update_order) {}
-//  void DamageApply(int damage) override { Destory(); }
-//};
-//
-//class Enemy {
-//  void Attack() {
-//    base_engine::Actor* dumy;
-//    dumy->AddComponent(new TallComponent(dumy, 10));
-//    auto player = dumy->GetComponent<IDamageable>().lock();
-//    player->DamageApply(10);  // TallComponent
-//  }
-//};
+
+}  // namespace base_engine::physics
