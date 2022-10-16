@@ -226,6 +226,9 @@
     <Filter Include="BaseEngine\physics\Shape">
       <UniqueIdentifier>{0884103a-c71e-4e2d-8661-ff4bada72d84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\Extensions\Enum">
+      <UniqueIdentifier>{56898e89-24fb-4c5e-a46d-d7628437d555}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -775,6 +778,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsShapes.h">
       <Filter>BaseEngine\physics\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumExtension.h">
+      <Filter>Utilities\Extensions\Enum</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
