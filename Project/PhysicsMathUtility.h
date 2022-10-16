@@ -11,6 +11,7 @@
 
 #include "Actor.h"
 #include "Component.h"
+#include "PhysicsRotate.h"
 #include "PhysicsVector2.h"
 namespace base_engine::physics {
 template <class Type>
@@ -50,7 +51,10 @@ constexpr T PhysicsAbs(T a) noexcept {
 constexpr PVec2 PhysicsAbs(const PVec2& a) noexcept {
   return {PhysicsAbs(a.x), PhysicsAbs(a.y)};
 }
-
+/// Rotate a vector
+constexpr PVec2 PhysicsMul(const PRot& q, const PVec2& v) {
+  return {q.c * v.x - q.s * v.y, q.s * v.x + q.c * v.y};
+}
 
 
 }  // namespace base_engine::physics

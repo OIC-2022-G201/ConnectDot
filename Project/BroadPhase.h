@@ -21,6 +21,7 @@ concept HasAddPairs = requires(T& x, void* a, void* b) {
   x.AddPair(a, b);
 };
 class BroadPhase {
+public:
   BroadPhase() {
     m_proxyCount = 0;
 

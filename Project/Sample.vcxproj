@@ -126,6 +126,7 @@
     <ClCompile Include="ObjectDataBase.cpp" />
     <ClCompile Include="PhysicsBlockAllocator.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
+    <ClCompile Include="PhysicsCircleShape.cpp" />
     <ClCompile Include="PhysicsDynamicTree.cpp" />
     <ClCompile Include="PhysicsFixture.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="MinkowskiSum.h" />
     <ClInclude Include="MofSpriteAnimationComponent.h" />
     <ClInclude Include="PhysicsBlockAllocator.h" />
+    <ClInclude Include="PhysicsCircleShape.h" />
     <ClInclude Include="PhysicsCollision.h" />
     <ClInclude Include="PhysicsBody2D.h" />
     <ClInclude Include="PhysicsBodyComponent.h" />

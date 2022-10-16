@@ -15,7 +15,7 @@
 namespace base_engine::physics {
 class b2Shape;
 class b2ContactEdge;
-    using int32 = int32_t;
+using int32 = int32_t;
 struct b2Filter {
   b2Filter() {
     categoryBits = 0x0001u;
@@ -139,30 +139,26 @@ class PhysicsFixture {
 
   PhysicsFixture* GetNext() { return m_next; }
   [[nodiscard]] const PhysicsFixture* GetNext() const { return m_next; }
-  
+
   FixtureUserComponentData& GetUserData() { return m_userData; }
   [[nodiscard]] const FixtureUserComponentData& GetUserData() const {
     return m_userData;
   }
 
-  [[nodiscard]] bool TestPoint(const PVec2& p) const
-  {
+  [[nodiscard]] bool TestPoint(const PVec2& p) const {
     return m_shape->TestPoint(m_body->GetTransform(), p);
   }
 
   bool RayCast(PhysicsRayCastOutput* output, const PhysicsRayCastInput& input,
-               int32_t childIndex) const
-  {
+               int32_t childIndex) const {
     return m_shape->RayCast(output, input, m_body->GetTransform(), childIndex);
   }
 
-  void GetMassData(PhysicsMassData* massData) const noexcept
-  {
+  void GetMassData(PhysicsMassData* massData) const noexcept {
     m_shape->ComputeMass(massData, m_density);
   }
 
-  [[nodiscard]] const PhysicsAABB& GetAABB(int32_t childIndex) const
-  {
+  [[nodiscard]] const PhysicsAABB& GetAABB(int32_t childIndex) const {
     return m_proxies[childIndex].aabb;
   }
 
@@ -186,18 +182,14 @@ class PhysicsFixture {
   // allowed by C++).
   void Create(PhysicsBlockAllocator* allocator, PhysicsBody* body,
               const PhysicsFixtureDef* def);
-  void Destroy(PhysicsBlockAllocator* allocator)
-  {
-
-    m_shape = nullptr;
-  }
+  void Destroy(PhysicsBlockAllocator* allocator);
 
   // These support body activation/deactivation.
   void CreateProxies(bp::BroadPhase* broadPhase, const b2Transform& xf);
   void DestroyProxies(bp::BroadPhase* broadPhase);
 
   void Synchronize(bp::BroadPhase* broadPhase, const b2Transform& xf1,
-                   const b2Transform& xf2);
+                   const b2Transform& xf2) const;
 
   float m_density;
 

@@ -450,6 +450,9 @@
     <ClCompile Include="PhysicsFixture.cpp">
       <Filter>BaseEngine\physics\Body</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsCircleShape.cpp">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -811,6 +814,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsCommon.h">
       <Filter>BaseEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCircleShape.h">
+      <Filter>BaseEngine\physics\Shape</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
