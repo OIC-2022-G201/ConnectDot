@@ -14,9 +14,8 @@
 #include "PhysicsComponentData.h"
 namespace base_engine::physics {
 template <class T>
-concept HasQueryCallback = requires(T& x, int32_t id,
-                                    PhysicsRayCastInput input) {
-  x.QueryCallback(id);
+concept HasQueryCallback = requires(T* x, int32_t id) {
+  x->QueryCallback(id);
 };
 template <class T>
 concept HasRayCastCallback = requires(T& x, int32_t id,

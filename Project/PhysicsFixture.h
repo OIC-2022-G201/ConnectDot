@@ -82,6 +82,8 @@ struct PhysicsFixtureProxy {
   int32_t proxyId;
 };
 class PhysicsFixture {
+
+public:
   [[nodiscard]] b2Shape::Type GetType() const noexcept {
     return m_shape->GetType();
   }
@@ -102,15 +104,15 @@ class PhysicsFixture {
   [[nodiscard]] const b2Filter& GetFilterData() const { return m_filter; }
 
   void ReFilter() {
-    /*
+
     if (m_body == nullptr) {
       return;
     }
-
+    /*
     // Flag associated contacts for filtering.
     b2ContactEdge* edge = m_body->GetContactList();
     while (edge) {
-      b2Contact* contact = edge->contact;
+      PhysicsContact* contact = edge->contact;
       PhysicsFixture* fixtureA = contact->GetFixtureA();
       PhysicsFixture* fixtureB = contact->GetFixtureB();
       if (fixtureA == this || fixtureB == this) {
@@ -120,8 +122,7 @@ class PhysicsFixture {
       edge = edge->next;
     }
 
-    b2World* world = m_body->GetWorld();
-
+    PhysicsWorld* world = m_body->GetWorld();
     if (world == nullptr) {
       return;
     }
@@ -132,6 +133,8 @@ class PhysicsFixture {
       broadPhase->TouchProxy(m_proxies[i].proxyId);
     }
     */
+    
+
   }
 
   PhysicsBody* GetBody() { return m_body; }
@@ -164,7 +167,7 @@ class PhysicsFixture {
 
  protected:
   friend class PhysicsBody;
-  friend class b2World;
+  friend class PhysicsWorld;
   friend class b2Contact;
   friend class b2ContactManager;
 

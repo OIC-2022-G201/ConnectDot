@@ -10,3 +10,5 @@
 #if !defined(NDEBUG)
 #define PHYSICS_DEBUG
 #endif
+
+constexpr uint8_t b2_maxManifoldPoints = 2;

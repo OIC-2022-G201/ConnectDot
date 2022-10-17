@@ -21,7 +21,7 @@ concept HasAddPairs = requires(T& x, void* a, void* b) {
   x.AddPair(a, b);
 };
 class BroadPhase {
-public:
+ public:
   BroadPhase() {
     m_proxyCount = 0;
 
@@ -168,30 +168,6 @@ public:
   /// @param newOrigin the new origin with respect to the old origin
   void ShiftOrigin(const PVec2& newOrigin) { m_tree.ShiftOrigin(newOrigin); }
 
- private:
-  friend class b2DynamicTree;
-
-  void BufferMove(int32_t proxyId) {
-    if (m_moveCount == m_moveCapacity) {
-      int32* oldBuffer = m_moveBuffer;
-      m_moveCapacity *= 2;
-      m_moveBuffer =
-          static_cast<int32*>(malloc(m_moveCapacity * sizeof(int32)));
-      memcpy(m_moveBuffer, oldBuffer, m_moveCount * sizeof(int32));
-      free(oldBuffer);
-    }
-
-    m_moveBuffer[m_moveCount] = proxyId;
-    ++m_moveCount;
-  }
-  void UnBufferMove(int32_t proxyId) {
-    for (int32 i = 0; i < m_moveCount; ++i) {
-      if (m_moveBuffer[i] == proxyId) {
-        m_moveBuffer[i] = kNullProxy;
-      }
-    }
-  }
-
   bool QueryCallback(int32_t proxyId) {
     // A proxy cannot form a pair with itself.
     if (proxyId == m_queryProxyId) {
@@ -219,6 +195,30 @@ public:
     ++m_pairCount;
 
     return true;
+  }
+
+ private:
+  friend class b2DynamicTree;
+
+  void BufferMove(int32_t proxyId) {
+    if (m_moveCount == m_moveCapacity) {
+      int32* oldBuffer = m_moveBuffer;
+      m_moveCapacity *= 2;
+      m_moveBuffer =
+          static_cast<int32*>(malloc(m_moveCapacity * sizeof(int32)));
+      memcpy(m_moveBuffer, oldBuffer, m_moveCount * sizeof(int32));
+      free(oldBuffer);
+    }
+
+    m_moveBuffer[m_moveCount] = proxyId;
+    ++m_moveCount;
+  }
+  void UnBufferMove(int32_t proxyId) {
+    for (int32 i = 0; i < m_moveCount; ++i) {
+      if (m_moveBuffer[i] == proxyId) {
+        m_moveBuffer[i] = kNullProxy;
+      }
+    }
   }
 
   b2DynamicTree m_tree;

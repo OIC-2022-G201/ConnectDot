@@ -235,6 +235,15 @@
     <Filter Include="BaseEngine\physics\DynamicTree">
       <UniqueIdentifier>{eda2aae1-b545-4d9c-bb38-b9bf1bde0913}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\physics\World">
+      <UniqueIdentifier>{2fcfc3c8-f0fc-4dd0-9b08-9e2a128c0904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Contact">
+      <UniqueIdentifier>{87593572-edab-43fa-b699-a25304ba6cad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\CallBack">
+      <UniqueIdentifier>{6f53d5bc-738b-4949-83de-99190189b489}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -452,6 +461,24 @@
     </ClCompile>
     <ClCompile Include="PhysicsCircleShape.cpp">
       <Filter>BaseEngine\physics\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsWorld.cpp">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactManager.cpp">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContact.cpp">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactFilter.cpp">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactListener.cpp">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsBody2D.cpp">
+      <Filter>BaseEngine\physics\Body</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -817,6 +844,27 @@
     </ClInclude>
     <ClInclude Include="PhysicsCircleShape.h">
       <Filter>BaseEngine\physics\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsWorld.h">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactManager.h">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContact.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactFilter.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactListener.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManifold.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSweep.h">
+      <Filter>BaseEngine\physics\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
