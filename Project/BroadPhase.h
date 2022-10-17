@@ -22,19 +22,8 @@ concept HasAddPairs = requires(T& x, void* a, void* b) {
 };
 class BroadPhase {
  public:
-  BroadPhase() {
-    m_proxyCount = 0;
+  BroadPhase();
 
-    m_pairCapacity = 16;
-    m_pairCount = 0;
-    m_pairBuffer =
-        static_cast<b2Pair*>(malloc(m_pairCapacity * sizeof(b2Pair)));
-
-    m_moveCapacity = 16;
-    m_moveCount = 0;
-    m_moveBuffer =
-        static_cast<int32_t*>(malloc(m_moveCapacity * sizeof(int32_t)));
-  }
   ~BroadPhase() {
     free(m_moveBuffer);
     free(m_pairBuffer);
@@ -233,6 +222,6 @@ class BroadPhase {
   int32_t m_pairCapacity;
   int32_t m_pairCount;
 
-  int32_t m_queryProxyId;
+  int32_t m_queryProxyId{};
 };
 }  // namespace base_engine::physics::bp
