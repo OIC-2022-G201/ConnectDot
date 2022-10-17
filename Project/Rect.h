@@ -42,5 +42,6 @@ class Rect final : public Mof::CRectangle, public IShape {
                                          Vector2 direction) const override;
 
   ShapeType GetType() const override { return ShapeType::kRect; }
+  CRectangle aabb_;
 };
 }  // namespace base_engine

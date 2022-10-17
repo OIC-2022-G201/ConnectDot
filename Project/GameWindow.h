@@ -9,6 +9,6 @@
 
 namespace window
 {
-constexpr long kWidth = 1920;
-constexpr long kHeight = 1080;
+constexpr long kWidth = 1920/2;
+constexpr long kHeight = 1080/2;
 }

@@ -8,13 +8,11 @@
 namespace base_engine {
     Rect::Rect(const CRectangle& pObj): CRectangle(pObj) { ChangeNotification(); }
 
-    void Rect::ChangeNotification()
-    {
-
+    void Rect::ChangeNotification() { aabb_ = static_cast<CRectangle>(*this);
     }
 
     const Mof::CRectangle& Rect::AABB() const
-    { return static_cast<CRectangle>(*this); }
+    { return aabb_; }
 
     Vector2 Rect::GetFarthestPoint(InVector2 transform, Vector2 direction) const
     {
