@@ -23,8 +23,9 @@ void tile_map::TileMapComponent::Load() {
     collision->SetShape(tile_shape_[0]);
   }
 
+
   for (int x = 0; x < cell_width_; ++x) {
-    for (int y = 7; y < cell_height_; ++y) {
+    for (int y = 8; y < 9; ++y) {
       map_.SetCell(x, y, 1);
       auto cell = new base_engine::Actor(owner_->GetGame());
       cell->SetTag("Field");
