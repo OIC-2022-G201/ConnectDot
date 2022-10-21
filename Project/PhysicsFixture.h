@@ -19,7 +19,8 @@ using int32 = int32_t;
 struct b2Filter {
   b2Filter() {
     categoryBits = 0x0001u;
-    maskBits = 0xFFFFu;
+    maskTargetBits = 0xFFFFu;
+    maskObjectBits = 0xFFFFu;
     groupIndex = 0u;
   }
 
@@ -28,7 +29,8 @@ struct b2Filter {
 
   /// The collision mask bits. This states the categories that this
   /// shape would accept for collision.
-  uint32_t maskBits;
+  uint32_t maskTargetBits;
+  uint32_t maskObjectBits;
 
   /// Collision groups allow a certain group of objects to never collide
   /// (negative) or always collide (positive). Zero means no collision group.
@@ -50,6 +52,8 @@ struct PhysicsFixtureDef {
   /// can create the shape on the stack.
   const b2Shape* shape;
 
+  //TODO CollisionComponentへの依存をなくす
+  class CollisionComponent* collision = nullptr;
   /// Use this to store application specific fixture data.
   FixtureUserComponentData userData;
 
@@ -168,8 +172,8 @@ public:
  protected:
   friend class PhysicsBody;
   friend class PhysicsWorld;
-  friend class b2Contact;
-  friend class b2ContactManager;
+  friend class PhysicsContact;
+  friend class PhysicsContactManager;
 
   PhysicsFixture() {
     m_body = nullptr;
@@ -213,6 +217,11 @@ public:
   bool m_isSensor;
 
   FixtureUserComponentData m_userData;
+
+public:
+  // TODO CollisionComponentへの依存をなくす
+
+  class CollisionComponent* collision_ = nullptr;
 };
 
 }  // namespace base_engine::physics

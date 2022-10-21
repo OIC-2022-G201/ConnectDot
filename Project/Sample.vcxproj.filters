@@ -480,6 +480,21 @@
     <ClCompile Include="PhysicsBody2D.cpp">
       <Filter>BaseEngine\physics\Body</Filter>
     </ClCompile>
+    <ClCompile Include="PhysicsPolygonShape.cpp">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapShape.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapCollisionComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsPolygonContact.cpp">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsCircleContact.cpp">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -865,6 +880,21 @@
     </ClInclude>
     <ClInclude Include="PhysicsSweep.h">
       <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsPolygonShape.h">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapShape.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapCollisionComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsPolygonContact.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCircleContact.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

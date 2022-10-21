@@ -8,6 +8,7 @@ PhysicsWorld::PhysicsWorld(const PVec2& gravity) {
   m_gravity = gravity;
 
   m_locked = false;
+  m_contactManager.m_allocator = &m_blockAllocator;
 }
 
 PhysicsBody* PhysicsWorld::CreateBody(const BodyDef* def) {
@@ -30,8 +31,7 @@ PhysicsBody* PhysicsWorld::CreateBody(const BodyDef* def) {
   return b;
 }
 
-void PhysicsWorld::DestroyBody(PhysicsBody* b)
-{
+void PhysicsWorld::DestroyBody(PhysicsBody* b) {
   PhysicsFixture* f = b->m_fixtureList;
   while (f) {
     PhysicsFixture* f0 = f;
@@ -66,11 +66,13 @@ void PhysicsWorld::DestroyBody(PhysicsBody* b)
   m_blockAllocator.Free(b, sizeof(PhysicsBody));
 }
 
-void PhysicsWorld::Step(float timeStep)
-{
+void PhysicsWorld::Step(float timeStep) {
   if (m_newContacts) {
     m_contactManager.FindNewContacts();
     m_newContacts = false;
+  }
+  {
+      m_contactManager.Collide();
   }
 }
 

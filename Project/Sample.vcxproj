@@ -127,6 +127,7 @@
     <ClCompile Include="PhysicsBlockAllocator.cpp" />
     <ClCompile Include="PhysicsBody2D.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
+    <ClCompile Include="PhysicsCircleContact.cpp" />
     <ClCompile Include="PhysicsCircleShape.cpp" />
     <ClCompile Include="PhysicsContact.cpp" />
     <ClCompile Include="PhysicsContactFilter.cpp" />
@@ -134,6 +135,8 @@
     <ClCompile Include="PhysicsContactManager.cpp" />
     <ClCompile Include="PhysicsDynamicTree.cpp" />
     <ClCompile Include="PhysicsFixture.cpp" />
+    <ClCompile Include="PhysicsPolygonContact.cpp" />
+    <ClCompile Include="PhysicsPolygonShape.cpp" />
     <ClCompile Include="PhysicsWorld.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
     <ClCompile Include="InputActor.cpp" />
@@ -165,7 +168,9 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="StageActor.cpp" />
     <ClCompile Include="TextureMof.cpp" />
+    <ClCompile Include="TileMapCollisionComponent.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
+    <ClCompile Include="TileMapShape.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorUtilities.cpp" />
@@ -232,6 +237,7 @@
     <ClInclude Include="MinkowskiSum.h" />
     <ClInclude Include="MofSpriteAnimationComponent.h" />
     <ClInclude Include="PhysicsBlockAllocator.h" />
+    <ClInclude Include="PhysicsCircleContact.h" />
     <ClInclude Include="PhysicsCircleShape.h" />
     <ClInclude Include="PhysicsCollision.h" />
     <ClInclude Include="PhysicsBody2D.h" />
@@ -246,6 +252,8 @@
     <ClInclude Include="PhysicsFixture.h" />
     <ClInclude Include="PhysicsManifold.h" />
     <ClInclude Include="PhysicsMathUtility.h" />
+    <ClInclude Include="PhysicsPolygonContact.h" />
+    <ClInclude Include="PhysicsPolygonShape.h" />
     <ClInclude Include="PhysicsRotate.h" />
     <ClInclude Include="PhysicsShapes.h" />
     <ClInclude Include="PhysicsSweep.h" />
@@ -294,7 +302,9 @@
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="TexturePaths.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="TileMapCollisionComponent.h" />
     <ClInclude Include="TileMapComponent.h" />
+    <ClInclude Include="TileMapShape.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="TupleHasElement.h" />
     <ClInclude Include="Vector.h" />

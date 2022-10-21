@@ -114,7 +114,7 @@ class PhysicsBody {
 
   /// Get the world body origin position.
   /// @return the world position of the body's origin.
-  const PVec2& GetPosition() const;
+  const PVec2& GetPosition() const { return m_xf.p; }
 
   /// Get the angle in radians.
   /// @return the current world rotation angle in radians.
@@ -276,11 +276,27 @@ class PhysicsBody {
   /// Set the sleep state of the body. A sleeping body has very
   /// low CPU cost.
   /// @param flag set to true to wake the body, false to put it to sleep.
-  void SetAwake(bool flag);
+  void SetAwake(bool flag) {
+    if (m_type == PhysicsBodyType::kStaticBody) {
+      return;
+    }
+
+    if (flag) {
+      m_flags |= e_awakeFlag;
+      m_sleepTime = 0.0f;
+    } else {
+      m_flags &= ~e_awakeFlag;
+      m_sleepTime = 0.0f;
+      m_linearVelocity.SetZero();
+      m_angularVelocity = 0.0f;
+      m_force.SetZero();
+      m_torque = 0.0f;
+    }
+  }
 
   /// Get the sleeping state of this body.
   /// @return true if the body is awake.
-  bool IsAwake() const;
+  bool IsAwake() const { return (m_flags & e_awakeFlag) == e_awakeFlag; }
 
   /// Allow a body to be disabled. A disabled body is not simulated and cannot
   /// be collided with or woken up.
@@ -377,7 +393,7 @@ class PhysicsBody {
   PhysicsFixture* m_fixtureList;
   int32_t m_fixtureCount;
 
-  b2ContactEdge* m_contactList;
+  b2ContactEdge* m_contactList = nullptr;
   float m_mass, m_invMass;
 
   // Rotational inertia about the center of mass.

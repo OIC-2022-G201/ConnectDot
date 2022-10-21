@@ -1,6 +1,8 @@
 ﻿#include "PhysicsContact.h"
 
+#include "PhysicsCircleContact.h"
 #include "PhysicsFixture.h"
+#include "PhysicsPolygonContact.h"
 
 namespace base_engine::physics {
 
@@ -26,7 +28,13 @@ void PhysicsContact::AddType(b2ContactCreateFcn* createFcn,
   }
 }
 
-void PhysicsContact::InitializeRegisters() {}
+void PhysicsContact::InitializeRegisters() {
+  AddType(PhysicsPolygonContact::Create, PhysicsPolygonContact::Destroy,
+          b2Shape::Type::kPolygon, b2Shape::Type::kPolygon);
+
+      AddType(PhysicsCircleContact::Create, PhysicsCircleContact::Destroy,
+          b2Shape::Type::kCircle, b2Shape::Type::kCircle);
+}
 
 PhysicsContact* PhysicsContact::Create(PhysicsFixture* fixtureA, int32_t indexA,
                                        PhysicsFixture* fixtureB, int32_t indexB,
@@ -50,5 +58,28 @@ PhysicsContact* PhysicsContact::Create(PhysicsFixture* fixtureA, int32_t indexA,
   } else {
     return nullptr;
   }
+}
+
+void PhysicsContact::Destroy(PhysicsContact* contact, PhysicsBlockAllocator* allocator)
+{
+    PhysicsFixture* fixtureA = contact->m_fixtureA;
+    PhysicsFixture* fixtureB = contact->m_fixtureB;
+
+    if (contact->m_manifold.pointCount > 0 && fixtureA->IsSensor() == false &&
+        fixtureB->IsSensor() == false) {
+        fixtureA->GetBody()->SetAwake(true);
+        fixtureB->GetBody()->SetAwake(true);
+    }
+
+    const size_t typeA = static_cast<size_t>(fixtureA->GetType());
+    const size_t typeB = static_cast<size_t>(fixtureB->GetType());
+
+    b2ContactDestroyFcn* destroyFcn = s_registers[typeA][typeB].destroyFcn;
+    destroyFcn(contact, allocator);
+}
+
+void PhysicsContact::Update(IPhysicsContactListener* listener)
+{
+      
 }
 }  // namespace base_engine::physics

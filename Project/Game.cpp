@@ -19,7 +19,7 @@ base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
   game_data_.Register();
-
+  BASE_ENGINE(Collider)->SetCallBack(this);
   auto camera = new Actor(this);
   new CameraComponent(camera);
 

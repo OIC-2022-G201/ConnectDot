@@ -6,11 +6,17 @@
 #include "Actor.h"
 #include "Component.h"
 #include "ComponentParameter.h"
+#include "PhysicsBody2D.h"
 #include "SendManifold.h"
 #include "Rect.h"
 
 namespace base_engine {
-constexpr size_t kCollisionFilterSize = 32;
+    namespace physics
+    {
+        class PhysicsBody;
+    }
+
+    constexpr size_t kCollisionFilterSize = 32;
 constexpr std::bitset<kCollisionFilterSize> kCollisionFilterAllMask(
     (1ull << kCollisionFilterSize) - 1);
 class CollisionComponent : public Component {
@@ -39,18 +45,19 @@ class CollisionComponent : public Component {
   }
   void Start() override;
 
-  [[nodiscard]] class PhysicsBodyComponent* GetPhysicsBody() const
-  {
-    return body_;
+  [[nodiscard]] class PhysicsBodyComponent* GetPhysicsBody();
+  void SetPhysicsBody(class PhysicsBodyComponent* body) { body_ = body; }
+  void SetPhysicsBody(physics::PhysicsBody* physics_body) {
+      physics_body_ = physics_body;
   }
-    void SetPhysicsBody(class PhysicsBodyComponent* body) { body_ = body; }
- private:
+  void SyncPosition();
+private:
   std::shared_ptr<class IShape> shape_;
   std::bitset<kCollisionFilterSize> target_layer_;
   std::bitset<kCollisionFilterSize> object_layer_;
   class PhysicsBodyComponent* body_ = nullptr;
   bool is_trigger_ = false;
-
+  physics::PhysicsBody* physics_body_ = nullptr;
   [[nodiscard]] Vector2 GetPosition() const { return owner_->GetPosition(); }
 };
 inline bool CollisionComponent::IsMatch(CollisionComponent* target) const {

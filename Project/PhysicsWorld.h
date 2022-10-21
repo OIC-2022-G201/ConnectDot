@@ -9,10 +9,11 @@
 #include "PhysicsBlockAllocator.h"
 #include "PhysicsVector2.h"
 #include "PhysicsContactManager.h"
-
+#include "PhysicsFixture.h"
+#include "PhysicsBody2D.h"
 namespace base_engine::physics {
-struct BodyDef;
-class PhysicsBody;
+ 
+    struct BodyDef;
 
 class PhysicsWorld {
  public:
@@ -39,8 +40,28 @@ class PhysicsWorld {
   [[nodiscard]] bool IsLocked() const noexcept { return m_locked; }
 
     void Step(float timeStep);
+    template<class T>
+    void DebugRender(T* renderer)
+    {
+      PhysicsBody* b = m_bodyList;
+      while (b) {
+        PhysicsBody* bNext = b->m_next;
 
-private:
+        PhysicsFixture* f = b->m_fixtureList;
+        while (f) {
+
+          PhysicsFixture* fNext = f->m_next;
+          renderer->Render(f);
+
+            f = fNext;
+        }
+
+        b = bNext;
+      }
+
+    }
+
+   public:
 
 friend class PhysicsBody;
   PhysicsBlockAllocator m_blockAllocator;

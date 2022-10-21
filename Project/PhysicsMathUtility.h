@@ -12,6 +12,7 @@
 #include "Actor.h"
 #include "Component.h"
 #include "PhysicsRotate.h"
+#include "PhysicsTransform.h"
 #include "PhysicsVector2.h"
 namespace base_engine::physics {
 template <class Type>
@@ -36,8 +37,7 @@ constexpr PVec2 PhysicsMin(const PVec2& a, const PVec2& b) noexcept {
 }
 
 template <typename T>
-constexpr T PhysicsClamp(T a, T low,
-                         T high) noexcept {
+constexpr T PhysicsClamp(T a, T low, T high) noexcept {
   return std::clamp(a, low, high);
 }
 constexpr PVec2 PhysicsClamp(const PVec2& a, const PVec2& low,
@@ -55,6 +55,13 @@ constexpr PVec2 PhysicsAbs(const PVec2& a) noexcept {
 constexpr PVec2 PhysicsMul(const PRot& q, const PVec2& v) {
   return {q.c * v.x - q.s * v.y, q.s * v.x + q.c * v.y};
 }
+constexpr PVec2 PhysicsMul(const b2Transform& T, const PVec2& v) {
+  float x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
+  float y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
 
-
+  return {x, y};
+}
+constexpr PVec2 PhysicsMulT(const PRot& q, const PVec2& v) {
+  return {q.c * v.x + q.s * v.y, -q.s * v.x + q.c * v.y};
+}
 }  // namespace base_engine::physics

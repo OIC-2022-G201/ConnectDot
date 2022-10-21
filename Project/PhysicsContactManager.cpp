@@ -41,18 +41,18 @@ void PhysicsContactManager::AddPair(void* proxyUserDataA, void* proxyUserDataB)
       PhysicsFixture* fB = edge->contact->GetFixtureB();
       int32 iA = edge->contact->GetChildIndexA();
       int32 iB = edge->contact->GetChildIndexB();
-
+  
       if (fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB) {
         // A contact already exists.
         return;
       }
-
+  
       if (fA == fixtureB && fB == fixtureA && iA == indexB && iB == indexA) {
         // A contact already exists.
         return;
       }
     }
-
+  
     edge = edge->next;
   }
 
@@ -124,11 +124,118 @@ void PhysicsContactManager::FindNewContacts()
 
 void PhysicsContactManager::Destroy(PhysicsContact* c)
 {
-      
+  PhysicsFixture* fixtureA = c->GetFixtureA();
+  PhysicsFixture* fixtureB = c->GetFixtureB();
+  PhysicsBody* bodyA = fixtureA->GetBody();
+  PhysicsBody* bodyB = fixtureB->GetBody();
+
+  if (m_contactListener && c->IsTouching()) {
+    m_contactListener->EndContact(c);
+  }
+
+  // Remove from the world.
+  if (c->m_prev) {
+    c->m_prev->m_next = c->m_next;
+  }
+
+  if (c->m_next) {
+    c->m_next->m_prev = c->m_prev;
+  }
+
+  if (c == m_contactList) {
+    m_contactList = c->m_next;
+  }
+
+  // Remove from body 1
+  if (c->m_nodeA.prev) {
+    c->m_nodeA.prev->next = c->m_nodeA.next;
+  }
+
+  if (c->m_nodeA.next) {
+    c->m_nodeA.next->prev = c->m_nodeA.prev;
+  }
+
+  if (&c->m_nodeA == bodyA->m_contactList) {
+    bodyA->m_contactList = c->m_nodeA.next;
+  }
+
+  // Remove from body 2
+  if (c->m_nodeB.prev) {
+    c->m_nodeB.prev->next = c->m_nodeB.next;
+  }
+
+  if (c->m_nodeB.next) {
+    c->m_nodeB.next->prev = c->m_nodeB.prev;
+  }
+
+  if (&c->m_nodeB == bodyB->m_contactList) {
+    bodyB->m_contactList = c->m_nodeB.next;
+  }
+
+  // Call the factory.
+  PhysicsContact::Destroy(c, m_allocator);
+  --m_contactCount;
 }
 
 void PhysicsContactManager::Collide()
 {
-      
+  PhysicsContact* c = m_contactList;
+  while (c) {
+    PhysicsFixture* fixtureA = c->GetFixtureA();
+    PhysicsFixture* fixtureB = c->GetFixtureB();
+    int32 indexA = c->GetChildIndexA();
+    int32 indexB = c->GetChildIndexB();
+    PhysicsBody* bodyA = fixtureA->GetBody();
+    PhysicsBody* bodyB = fixtureB->GetBody();
+
+    // Is this contact flagged for filtering?
+    if (c->m_flags & PhysicsContact::e_filterFlag) {
+      // Should these bodies collide?
+      if (bodyB->ShouldCollide(bodyA) == false) {
+        PhysicsContact* cNuke = c;
+        c = cNuke->GetNext();
+        Destroy(cNuke);
+        continue;
+      }
+
+      // Check user filtering.
+      if (m_contactFilter &&
+          m_contactFilter->ShouldCollide(fixtureA, fixtureB) == false) {
+        PhysicsContact* cNuke = c;
+        c = cNuke->GetNext();
+        Destroy(cNuke);
+        continue;
+      }
+
+      // Clear the filtering flag.
+      c->m_flags &= ~PhysicsContact::e_filterFlag;
+    }
+
+    bool activeA = bodyA->IsAwake() && bodyA->m_type !=PhysicsBodyType::kStaticBody;
+    bool activeB =
+        bodyB->IsAwake() && bodyB->m_type != PhysicsBodyType::kStaticBody;
+
+    // At least one body must be awake and it must be dynamic or kinematic.
+    if (activeA == false && activeB == false) {
+      c = c->GetNext();
+      continue;
+    }
+
+    int32 proxyIdA = fixtureA->m_proxies[indexA].proxyId;
+    int32 proxyIdB = fixtureB->m_proxies[indexB].proxyId;
+    bool overlap = m_broadPhase.TestOverlap(proxyIdA, proxyIdB);
+
+    // Here we destroy contacts that cease to overlap in the broad-phase.
+    if (overlap == false) {
+      PhysicsContact* cNuke = c;
+      c = cNuke->GetNext();
+      Destroy(cNuke);
+      continue;
+    }
+
+    // The contact persists.
+    c->Update(m_contactListener);
+    c = c->GetNext();
+  }
 }
 }  // namespace base_engine::physics

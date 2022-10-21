@@ -116,11 +116,35 @@ void PhysicsBody::DestroyFixture(PhysicsFixture* fixture) {
   }
 }
 
+void PhysicsBody::SetTransform(const PVec2& position, float angle)
+{
+  if (m_world->IsLocked() == true) {
+    return;
+  }
+
+  m_xf.q.Set(angle);
+  m_xf.p = position;
+
+  m_sweep.c = PhysicsMul(m_xf, m_sweep.localCenter);
+  m_sweep.a = angle;
+
+  m_sweep.c0 = m_sweep.c;
+  m_sweep.a0 = angle;
+
+  bp::BroadPhase* broadPhase = &m_world->m_contactManager.m_broadPhase;
+  for (PhysicsFixture* f = m_fixtureList; f; f = f->m_next) {
+    f->Synchronize(broadPhase, m_xf, m_xf);
+  }
+
+  // Check for new contacts the next step
+  m_world->m_newContacts = true;
+}
+
 bool PhysicsBody::ShouldCollide(const PhysicsBody* other) const
 {
   if (m_type != PhysicsBodyType::kDynamicBody &&
       other->m_type != PhysicsBodyType::kDynamicBody) {
-    return false;
+    return true;
   }
     return true;
 }
@@ -135,6 +159,23 @@ PhysicsBody::PhysicsBody(const BodyDef* bd, PhysicsWorld* physics_world)
   m_xf.p = bd->position;
   m_xf.q.Set(bd->angle);
 
+	m_flags = 0;
+
+  if (bd->bullet) {
+    m_flags |= e_bulletFlag;
+  }
+  if (bd->fixedRotation) {
+    m_flags |= e_fixedRotationFlag;
+  }
+  if (bd->allowSleep) {
+    m_flags |= e_autoSleepFlag;
+  }
+  if (bd->awake && bd->type != PhysicsBodyType::kStaticBody) {
+    m_flags |= e_awakeFlag;
+  }
+  if (bd->enabled) {
+    m_flags |= e_enabledFlag;
+  }
   m_sweep.localCenter.SetZero();
   m_sweep.c0 = m_xf.p;
   m_sweep.c = m_xf.p;

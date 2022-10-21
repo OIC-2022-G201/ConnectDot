@@ -25,7 +25,7 @@ void tile_map::TileMapComponent::Load() {
 
 
   for (int x = 0; x < cell_width_; ++x) {
-    for (int y = 8; y < 9; ++y) {
+    for (int y = 8; y < 40; ++y) {
       map_.SetCell(x, y, 1);
       auto cell = new base_engine::Actor(owner_->GetGame());
       cell->SetTag("Field");

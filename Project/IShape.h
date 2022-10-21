@@ -9,7 +9,7 @@ class Circle;
 class Rect;
 class Point;
 
-enum class ShapeType { kNone, kRect, kCircle, kPoint };
+enum class ShapeType { kNone, kRect, kCircle, kPoint,kTileMap };
 class IShape {
  protected:
   Vector2 FindFurthestPoint(const std::vector<Vector2>& vertices,

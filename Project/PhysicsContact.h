@@ -15,7 +15,7 @@
 
 namespace base_engine {
 namespace physics {
-class PhysicsContactListener;
+class IPhysicsContactListener;
 class PhysicsFixture;
 struct b2Manifold;
 class PhysicsBody;
@@ -52,7 +52,9 @@ class PhysicsContact {
   // void GetWorldManifold(b2WorldManifold* worldManifold) const;
 
   /// Is this contact touching?
-  bool IsTouching() const;
+  bool IsTouching() const {
+    return (m_flags & e_touchingFlag) == e_touchingFlag;
+  }
 
   /// Enable/disable this contact. This can be used inside the pre-solve
   /// contact listener. The contact is only disabled for the current
@@ -63,8 +65,8 @@ class PhysicsContact {
   bool IsEnabled() const;
 
   /// Get the next contact in the world's contact list.
-  PhysicsContact* GetNext();
-  const PhysicsContact* GetNext() const;
+  PhysicsContact* GetNext() { return m_next; }
+  const PhysicsContact* GetNext() const { return m_next; }
 
   /// Get fixture A in this contact.
   PhysicsFixture* GetFixtureA() { return m_fixtureA; }
@@ -166,11 +168,38 @@ class PhysicsContact {
                       PhysicsBlockAllocator* allocator);
 
   PhysicsContact() : m_fixtureA(nullptr), m_fixtureB(nullptr) {}
-  PhysicsContact(PhysicsFixture* fixtureA, int32_t indexA,
-                 PhysicsFixture* fixtureB, int32_t indexB);
+  PhysicsContact(PhysicsFixture* fA, int32_t indexA, PhysicsFixture* fB,
+                 int32_t indexB) {
+    m_flags = e_enabledFlag;
+
+    m_fixtureA = fA;
+    m_fixtureB = fB;
+
+    m_indexA = indexA;
+    m_indexB = indexB;
+
+    m_manifold.pointCount = 0;
+
+    m_prev = nullptr;
+    m_next = nullptr;
+
+    m_nodeA.contact = nullptr;
+    m_nodeA.prev = nullptr;
+    m_nodeA.next = nullptr;
+    m_nodeA.other = nullptr;
+
+    m_nodeB.contact = nullptr;
+    m_nodeB.prev = nullptr;
+    m_nodeB.next = nullptr;
+    m_nodeB.other = nullptr;
+
+    m_toiCount = 0;
+
+    m_tangentSpeed = 0.0f;
+  }
   virtual ~PhysicsContact() {}
 
-  void Update(PhysicsContactListener* listener);
+  void Update(IPhysicsContactListener* listener);
 
   static b2ContactRegister s_registers[ee::ElementCount<b2Shape::Type>()]
                                       [ee::ElementCount<b2Shape::Type>()];
@@ -178,6 +207,7 @@ class PhysicsContact {
 
   uint32_t m_flags;
 
+ public:
   // World pool and list pointers.
   PhysicsContact* m_prev;
   PhysicsContact* m_next;
