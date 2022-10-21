@@ -24,21 +24,7 @@ BaseEngineCollision::BaseEngineCollision() {
 void BaseEngineCollision::Collide() {
   world_->Step(0.017f);
   size_t body_size = body_list_.size();
-  //for (int body_a_index = 0; body_a_index < body_size; ++body_a_index) {
-  //  auto body_a = body_list_[body_a_index];
-  //
-  //  for (int body_b_index = body_a_index + 1; body_b_index < body_size;
-  //       ++body_b_index) {
-  //    auto body_b = body_list_[body_b_index];
-  //    if (body_a->IsMatch(body_b)) {
-  //      if (const auto manifold = body_a->Collision(body_b);
-  //          manifold.has_collision) {
-  //        body_a->CollisionSender(SendManifold{body_a, body_b, manifold});
-  //        body_b->CollisionSender(SendManifold{body_b, body_a, manifold});
-  //      }
-  //    }
-  //  }
-  //}
+
   auto contact = world_->m_contactManager.m_contactList;
   int n = 0;
     while (contact) {
