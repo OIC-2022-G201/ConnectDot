@@ -3,9 +3,10 @@
 
 namespace base_engine
 {
-    
+    class Game;
 
-class IBaseEngineCollider {
+
+    class IBaseEngineCollider {
 protected:
   std::vector<class CollisionComponent*> body_list_;
  public:
@@ -16,6 +17,8 @@ protected:
   virtual void Remove(class CollisionComponent* collision) = 0;
   virtual void SendComponentsMessage(class Component* component,
                                      const class SendManifold& manifold);
+
+    virtual void SetCallBack(Game* game){}
 };
 }
 ;

@@ -7,6 +7,7 @@
 namespace base_engine {
 
 class Circle final : public Mof::CCircle, public IShape {
+  Mof::CRectangle aabb_{0,0,0,0};
  public:
   explicit Circle(const CCircle& pObj);
 
@@ -27,7 +28,7 @@ class Circle final : public Mof::CCircle, public IShape {
                  const Vector2& point_transform) const override;
 
   void ChangeNotification() override;
-  Mof::CRectangle AABB() const override;
+  const Mof::CRectangle& AABB() const override;
   [[nodiscard]] Vector2 GetFarthestPoint(InVector2 transform,
                                          Vector2 direction) const override;
   ShapeType GetType() const override { return ShapeType::kCircle; }
