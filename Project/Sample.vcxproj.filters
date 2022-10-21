@@ -447,9 +447,6 @@
     <ClCompile Include="StageActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="BroadPhase.cpp">
-      <Filter>BaseEngine\physics\Collision\BroadPhase</Filter>
-    </ClCompile>
     <ClCompile Include="PhysicsBlockAllocator.cpp">
       <Filter>BaseEngine\physics\Allocator</Filter>
     </ClCompile>

@@ -99,7 +99,6 @@
     <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
-    <ClCompile Include="BroadPhase.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
