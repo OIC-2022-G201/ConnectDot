@@ -111,6 +111,7 @@ void BaseEngineCollision::SetCallBack(Game* game) {
 }
 
 void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
+  return;
   auto p = fixture->GetBody()->GetPosition();
 
   switch (fixture->GetType()) {
