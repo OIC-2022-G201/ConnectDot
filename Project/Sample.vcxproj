@@ -100,6 +100,7 @@
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
+    <ClCompile Include="CanvasRender.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -114,11 +115,13 @@
     <ClCompile Include="GJK.cpp" />
     <ClCompile Include="GridPosition.cpp" />
     <ClCompile Include="GridSnapComponent.cpp" />
+    <ClCompile Include="IBaseEngineCanvasRender.cpp" />
     <ClCompile Include="IBaseEngineCollider.cpp" />
     <ClCompile Include="IBaseEngineRender.cpp" />
     <ClCompile Include="IBaseEngineTexture.cpp" />
     <ClCompile Include="IBaseEngineEmpty.cpp" />
     <ClCompile Include="Geometry2D.ipp" />
+    <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="Manifold.cpp" />
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -189,6 +192,7 @@
     <ClInclude Include="BinaryArchive.h" />
     <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="CameraComponent.h" />
+    <ClInclude Include="CanvasRender.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionLayer.h" />
@@ -202,6 +206,8 @@
     <ClInclude Include="FrozenHelper.h" />
     <ClInclude Include="FrozenMacro.h" />
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="IBaseEngineCanvasRender.h" />
+    <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectDataBase.h" />

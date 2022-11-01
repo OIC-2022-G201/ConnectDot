@@ -244,6 +244,15 @@
     <Filter Include="BaseEngine\physics\CallBack">
       <UniqueIdentifier>{6f53d5bc-738b-4949-83de-99190189b489}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Render\CameraBaseRenderer">
+      <UniqueIdentifier>{d597426a-4531-49c8-b8fc-9fd5d0ca0e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Render\CanvasRenderer">
+      <UniqueIdentifier>{ca742881-e499-469a-9158-4c9b3681f4cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent\Canvas">
+      <UniqueIdentifier>{05da9ff2-099b-4821-b052-7e91b8d129bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -281,12 +290,6 @@
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>BaseEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="IBaseEngineRender.cpp">
-      <Filter>BaseEngine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderMof.cpp">
-      <Filter>BaseEngine\Render</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent</Filter>
@@ -492,6 +495,21 @@
     <ClCompile Include="PhysicsCircleContact.cpp">
       <Filter>BaseEngine\physics\Contact</Filter>
     </ClCompile>
+    <ClCompile Include="IBaseEngineRender.cpp">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMof.cpp">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineCanvasRender.cpp">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasRender.cpp">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -535,12 +553,6 @@
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>BaseEngine\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="IBaseEngineRender.h">
-      <Filter>BaseEngine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderMof.h">
-      <Filter>BaseEngine\Render</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
       <Filter>BaseEngine\Component\RenderComponent</Filter>
@@ -892,6 +904,21 @@
     </ClInclude>
     <ClInclude Include="PhysicsCircleContact.h">
       <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineRender.h">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderMof.h">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineCanvasRender.h">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="CanvasRender.h">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
