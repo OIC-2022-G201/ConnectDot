@@ -4,6 +4,8 @@
 class InputManager final : public base_engine::InputComponent {
   // InGame KeyValue
   float move_horizontal_;
+  float button_horizontal_;
+  float button_vertical_;
   bool jump_fire_;
   bool place_beacon_fire_;
   bool collect_beacon_fire_;
@@ -19,6 +21,9 @@ class InputManager final : public base_engine::InputComponent {
   void Update() override;
 
   [[nodiscard]] float MoveHorizontal() const;
+  [[nodiscard]] float ButtonHorizontal() const;
+  [[nodiscard]] float ButtonVertical() const;
+
   [[nodiscard]] bool JumpFire() const;
 
   [[nodiscard]] bool PlaceBeaconFire() const;
@@ -31,6 +36,10 @@ class InputManager final : public base_engine::InputComponent {
   [[nodiscard]] Mof::Vector2 MousePosition() const;
 };
 inline float InputManager::MoveHorizontal() const { return move_horizontal_; }
+
+inline float InputManager::ButtonHorizontal() const { return button_horizontal_; }
+
+inline float InputManager::ButtonVertical() const { return button_vertical_; }
 
 inline bool InputManager::JumpFire() const { return jump_fire_; }
 

@@ -17,7 +17,8 @@ InputManager::~InputManager() {}
 
 void InputManager::ProcessInput() {
   move_horizontal_ = 0;
-
+  button_horizontal_ = 0;
+  button_vertical_ = 0;
   if (IsKeyHold(MOFKEY_A) || IsKeyHold(MOFKEY_LEFT)) {
     move_horizontal_ += -1;
   }
@@ -25,6 +26,18 @@ void InputManager::ProcessInput() {
     move_horizontal_ += 1;
   }
 
+  if (IsKeyPush(MOFKEY_A) || IsKeyPush(MOFKEY_LEFT)) {
+      button_horizontal_ += -1;
+  }
+  if (IsKeyPush(MOFKEY_D) || IsKeyPush(MOFKEY_RIGHT)) {
+      button_horizontal_ += 1;
+  }
+  if (IsKeyPush(MOFKEY_W) || IsKeyPush(MOFKEY_UP)) {
+      button_vertical_ += -1;
+  }
+  if (IsKeyPush(MOFKEY_S) || IsKeyPush(MOFKEY_DOWN)) {
+      button_vertical_ += 1;
+  }
   jump_fire_ = IsKeyPush(MOFKEY_SPACE);
   place_beacon_fire_ = IsKeyPush(MOFKEY_Q);
   collect_beacon_fire_ = IsKeyPush(MOFKEY_E);

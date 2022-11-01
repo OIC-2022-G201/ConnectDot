@@ -2,6 +2,7 @@
 
 #include <Utilities/GraphicsUtilities.h>
 
+#include "Button.h"
 #include "CameraComponent.h"
 #include "CollisionComponent.h"
 #include "DebugStage.h"
@@ -33,13 +34,14 @@ bool Game::Initialize() {
   auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
   auto enemy = new EnemyActor(this);
-
+  auto button = new Button(this);
 
   player->SetInput(input);
   player->SetCamera(camera);
   power_unit->SetTarget(signboard);
 
-
+  auto restart = new Button(this);
+  restart->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kButtonTextureKey));
 
 
   b_collision = BASE_ENGINE(Collider);

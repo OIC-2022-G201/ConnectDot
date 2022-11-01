@@ -22,5 +22,6 @@ void GameData::Register()
 
     BASE_ENGINE(Texture)->Load(texture::kSignboardDisplayDemoTextureKey);
     BASE_ENGINE(Texture)->Load(texture::kPowerSupplyUnitTextureKey);
-
+    BASE_ENGINE(Texture)->Load(texture::kButtonTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kChangeButtonTextureKey);
 }

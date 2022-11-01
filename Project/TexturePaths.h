@@ -33,6 +33,13 @@ constexpr std::string_view kSignboardTextureKey =
 constexpr std::string_view kSignboardDisplayDemoTextureKey =
     "Objects/Signboard/Display.png"sv;
 
+//! ReStart
+constexpr std::string_view kButtonTextureKey =
+"Restart.png";
+//! ChangeReStart
+constexpr  std::string_view kChangeButtonTextureKey =
+"Restart2.png";
+
 namespace effect {
 
 //! ElectricEffect

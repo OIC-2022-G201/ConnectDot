@@ -45,7 +45,6 @@ void SignboardActor::Start() {
     display_texture_ = img;
     display_->SetImage(display_texture_);
     display_->SetEnabled(false);
-
   }
   {
     auto sign = new SpriteComponent(this, kSignboardDrawOrder);
