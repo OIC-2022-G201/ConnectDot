@@ -9,6 +9,7 @@
 
 #include <cmath>
 
+#include "PhysicsVector2.h"
 #include "Vector.h"
 namespace base_engine {
 
@@ -38,5 +39,8 @@ class VectorUtilities {
 
   static bool IsZero(InVector2 v);
   VectorUtilities() = delete;
+
 };
+
+
 }  // namespace base_engine

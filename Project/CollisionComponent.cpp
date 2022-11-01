@@ -6,7 +6,8 @@
 #include "BaseEngineCore.h"
 #include "GJK.h"
 #include "IShape.h"
-
+#include "PhysicsBody2D.h"
+#include "PhysicsBodyComponent.h"
 namespace base_engine {
 CollisionComponent::CollisionComponent(Actor* owner, int update_order)
     : Component(owner, update_order),
@@ -52,7 +53,25 @@ CollisionComponent::~CollisionComponent() {
   BASE_ENGINE(Collider)->Remove(this);
 }
 
-void CollisionComponent::Update() { shape_->SetOffset(owner_->GetPosition()); }
+void CollisionComponent::Update() {
+}
 
 void CollisionComponent::Start() { BASE_ENGINE(Collider)->Register(this); }
+
+PhysicsBodyComponent* CollisionComponent::GetPhysicsBody()
+{
+    if (!body_)
+    {
+        body_ = owner_->GetComponent<PhysicsBodyComponent>().lock().get();
+    }
+    return body_;
+
+}
+
+void CollisionComponent::SyncPosition()
+{
+  auto p = GetPosition();
+
+  physics_body_->SetTransform({p.x, p.y}, 0);
+}
 }  // namespace base_engine

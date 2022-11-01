@@ -46,7 +46,7 @@ void base_engine::PhysicsBodyComponent::Solver(
     return;
   }
 
-  if (motion_type_ == kKinematic && motion_type_ == kKinematic) {
+  if (motion_type_ == kKinematic && target_type == kKinematic) {
     owner_->Translation({manifold.normal * -manifold.depth * 0.5});
     return;
   }

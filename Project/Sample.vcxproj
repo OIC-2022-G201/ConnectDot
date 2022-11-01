@@ -62,6 +62,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\Library\Include;$(ProjectDir)\include\utilities\observable</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -98,9 +99,8 @@
     <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
-    <ClCompile Include="Button.cpp" />
-    <ClCompile Include="ButtonSelecter.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
+    <ClCompile Include="CanvasRender.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
@@ -115,16 +115,31 @@
     <ClCompile Include="GJK.cpp" />
     <ClCompile Include="GridPosition.cpp" />
     <ClCompile Include="GridSnapComponent.cpp" />
+    <ClCompile Include="IBaseEngineCanvasRender.cpp" />
     <ClCompile Include="IBaseEngineCollider.cpp" />
     <ClCompile Include="IBaseEngineRender.cpp" />
     <ClCompile Include="IBaseEngineTexture.cpp" />
     <ClCompile Include="IBaseEngineEmpty.cpp" />
     <ClCompile Include="Geometry2D.ipp" />
+    <ClCompile Include="ImageComponent.cpp" />
     <ClCompile Include="Manifold.cpp" />
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectDataBase.cpp" />
+    <ClCompile Include="PhysicsBlockAllocator.cpp" />
+    <ClCompile Include="PhysicsBody2D.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
+    <ClCompile Include="PhysicsCircleContact.cpp" />
+    <ClCompile Include="PhysicsCircleShape.cpp" />
+    <ClCompile Include="PhysicsContact.cpp" />
+    <ClCompile Include="PhysicsContactFilter.cpp" />
+    <ClCompile Include="PhysicsContactListener.cpp" />
+    <ClCompile Include="PhysicsContactManager.cpp" />
+    <ClCompile Include="PhysicsDynamicTree.cpp" />
+    <ClCompile Include="PhysicsFixture.cpp" />
+    <ClCompile Include="PhysicsPolygonContact.cpp" />
+    <ClCompile Include="PhysicsPolygonShape.cpp" />
+    <ClCompile Include="PhysicsWorld.cpp" />
     <ClCompile Include="PlayerIdle.cpp" />
     <ClCompile Include="InputActor.cpp" />
     <ClCompile Include="InputComponent.cpp" />
@@ -155,7 +170,9 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="StageActor.cpp" />
     <ClCompile Include="TextureMof.cpp" />
+    <ClCompile Include="TileMapCollisionComponent.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
+    <ClCompile Include="TileMapShape.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorUtilities.cpp" />
@@ -173,9 +190,9 @@
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="BinaryArchive.h" />
-    <ClInclude Include="Button.h" />
-    <ClInclude Include="ButtonSelecter.h" />
+    <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="CameraComponent.h" />
+    <ClInclude Include="CanvasRender.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionLayer.h" />
@@ -184,10 +201,13 @@
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyPackage.h" />
+    <ClInclude Include="EnumExtension.h" />
     <ClInclude Include="FrozenConcept.h" />
     <ClInclude Include="FrozenHelper.h" />
     <ClInclude Include="FrozenMacro.h" />
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="IBaseEngineCanvasRender.h" />
+    <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectDataBase.h" />
@@ -221,7 +241,30 @@
     <ClInclude Include="Manifold.h" />
     <ClInclude Include="MinkowskiSum.h" />
     <ClInclude Include="MofSpriteAnimationComponent.h" />
+    <ClInclude Include="PhysicsBlockAllocator.h" />
+    <ClInclude Include="PhysicsCircleContact.h" />
+    <ClInclude Include="PhysicsCircleShape.h" />
+    <ClInclude Include="PhysicsCollision.h" />
+    <ClInclude Include="PhysicsBody2D.h" />
     <ClInclude Include="PhysicsBodyComponent.h" />
+    <ClInclude Include="PhysicsCommon.h" />
+    <ClInclude Include="PhysicsComponentData.h" />
+    <ClInclude Include="PhysicsContact.h" />
+    <ClInclude Include="PhysicsContactFilter.h" />
+    <ClInclude Include="PhysicsContactListener.h" />
+    <ClInclude Include="PhysicsContactManager.h" />
+    <ClInclude Include="PhysicsDynamicTree.h" />
+    <ClInclude Include="PhysicsFixture.h" />
+    <ClInclude Include="PhysicsManifold.h" />
+    <ClInclude Include="PhysicsMathUtility.h" />
+    <ClInclude Include="PhysicsPolygonContact.h" />
+    <ClInclude Include="PhysicsPolygonShape.h" />
+    <ClInclude Include="PhysicsRotate.h" />
+    <ClInclude Include="PhysicsShapes.h" />
+    <ClInclude Include="PhysicsSweep.h" />
+    <ClInclude Include="PhysicsTransform.h" />
+    <ClInclude Include="PhysicsVector2.h" />
+    <ClInclude Include="PhysicsWorld.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerIdle.h" />
     <ClInclude Include="InputActor.h" />
@@ -264,7 +307,9 @@
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="TexturePaths.h" />
     <ClInclude Include="TileMap.h" />
+    <ClInclude Include="TileMapCollisionComponent.h" />
     <ClInclude Include="TileMapComponent.h" />
+    <ClInclude Include="TileMapShape.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="TupleHasElement.h" />
     <ClInclude Include="Vector.h" />

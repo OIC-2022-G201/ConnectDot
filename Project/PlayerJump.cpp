@@ -59,7 +59,8 @@ void player::PlayerJump::Acceleration() const {
   const float velocity = detail::kJumpCoefficient<float> *
                          sin(frame_ * detail::kTimeCoefficient<float>);
   if (frame_ == 60) {
-    int n = 3;
+    if (body_->GetForce().v < 3) return;
+
   }
   body_->AddForce({0, -kGravity - velocity});
 }

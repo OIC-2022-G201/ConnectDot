@@ -3,6 +3,7 @@
 #include "IBaseEngineEmpty.h"
 #include "IBaseEngineTexture.h"
 #include "IBaseEngineRender.h"
+#include "IBaseEngineCanvasRender.h"
 #include "IBaseEngineCollider.h"
 namespace base_engine {
 namespace detail {

@@ -211,6 +211,48 @@
     <Filter Include="Utilities\Frozen\Types">
       <UniqueIdentifier>{ca8474b7-9632-4d6f-b793-674ad95980e3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\physics\Collision\BroadPhase">
+      <UniqueIdentifier>{8798f107-2b73-4e47-8b57-7b4d6a8a36ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Body">
+      <UniqueIdentifier>{e6750cb4-737f-402d-a6ee-792aaaf765c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\ComponentData">
+      <UniqueIdentifier>{87a53e55-de24-4f18-be76-8da8eed9fd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Math">
+      <UniqueIdentifier>{6a14975b-ace5-4840-9cf8-081aaecc9542}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Shape">
+      <UniqueIdentifier>{0884103a-c71e-4e2d-8661-ff4bada72d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities\Extensions\Enum">
+      <UniqueIdentifier>{56898e89-24fb-4c5e-a46d-d7628437d555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Allocator">
+      <UniqueIdentifier>{2f5c4728-ec1f-46cf-854c-239d71b83a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\DynamicTree">
+      <UniqueIdentifier>{eda2aae1-b545-4d9c-bb38-b9bf1bde0913}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\World">
+      <UniqueIdentifier>{2fcfc3c8-f0fc-4dd0-9b08-9e2a128c0904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\Contact">
+      <UniqueIdentifier>{87593572-edab-43fa-b699-a25304ba6cad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\physics\CallBack">
+      <UniqueIdentifier>{6f53d5bc-738b-4949-83de-99190189b489}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Render\CameraBaseRenderer">
+      <UniqueIdentifier>{d597426a-4531-49c8-b8fc-9fd5d0ca0e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Render\CanvasRenderer">
+      <UniqueIdentifier>{ca742881-e499-469a-9158-4c9b3681f4cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent\Canvas">
+      <UniqueIdentifier>{05da9ff2-099b-4821-b052-7e91b8d129bb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -248,12 +290,6 @@
     </ClCompile>
     <ClCompile Include="Sprite.cpp">
       <Filter>BaseEngine\Texture</Filter>
-    </ClCompile>
-    <ClCompile Include="IBaseEngineRender.cpp">
-      <Filter>BaseEngine\Render</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderMof.cpp">
-      <Filter>BaseEngine\Render</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent</Filter>
@@ -414,11 +450,65 @@
     <ClCompile Include="StageActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonSelecter.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="PhysicsBlockAllocator.cpp">
+      <Filter>BaseEngine\physics\Allocator</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="PhysicsDynamicTree.cpp">
+      <Filter>BaseEngine\physics\DynamicTree</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsFixture.cpp">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsCircleShape.cpp">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsWorld.cpp">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactManager.cpp">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContact.cpp">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactFilter.cpp">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsContactListener.cpp">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsBody2D.cpp">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsPolygonShape.cpp">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapShape.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMapCollisionComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsPolygonContact.cpp">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsCircleContact.cpp">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineRender.cpp">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderMof.cpp">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="IBaseEngineCanvasRender.cpp">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="CanvasRender.cpp">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -463,12 +553,6 @@
     </ClInclude>
     <ClInclude Include="Sprite.h">
       <Filter>BaseEngine\Texture</Filter>
-    </ClInclude>
-    <ClInclude Include="IBaseEngineRender.h">
-      <Filter>BaseEngine\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderMof.h">
-      <Filter>BaseEngine\Render</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
       <Filter>BaseEngine\Component\RenderComponent</Filter>
@@ -740,11 +824,101 @@
     <ClInclude Include="FrozenMacro.h">
       <Filter>Utilities\Frozen</Filter>
     </ClInclude>
-    <ClInclude Include="ButtonSelecter.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="BroadPhase.h">
+      <Filter>BaseEngine\physics\Collision\BroadPhase</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="PhysicsBody2D.h">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsComponentData.h">
+      <Filter>BaseEngine\physics\ComponentData</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsVector2.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsFixture.h">
+      <Filter>BaseEngine\physics\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsMathUtility.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCollision.h">
+      <Filter>BaseEngine\physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsShapes.h">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumExtension.h">
+      <Filter>Utilities\Extensions\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsBlockAllocator.h">
+      <Filter>BaseEngine\physics\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsTransform.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsRotate.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsDynamicTree.h">
+      <Filter>BaseEngine\physics\DynamicTree</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCommon.h">
+      <Filter>BaseEngine\physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCircleShape.h">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsWorld.h">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactManager.h">
+      <Filter>BaseEngine\physics\World</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContact.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactFilter.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsContactListener.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManifold.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSweep.h">
+      <Filter>BaseEngine\physics\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsPolygonShape.h">
+      <Filter>BaseEngine\physics\Shape</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapShape.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMapCollisionComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsPolygonContact.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsCircleContact.h">
+      <Filter>BaseEngine\physics\Contact</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineRender.h">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderMof.h">
+      <Filter>BaseEngine\Render\CameraBaseRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="IBaseEngineCanvasRender.h">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="CanvasRender.h">
+      <Filter>BaseEngine\Render\CanvasRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
