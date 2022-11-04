@@ -8,18 +8,22 @@
 #pragma once
 #include "Actor.h"
 class Strategy;
-class EnemyActor : public base_engine::Actor
-{
-public:
-    explicit EnemyActor(base_engine::Game* game);
+namespace enemy {
+    class EnemyActor : public base_engine::Actor
+    {
+        class EnemyComponent* enemy_component_;
+        class EnemyVisionActor* enemy_vision_;
+    public:
+        explicit EnemyActor(base_engine::Game* game);
 
-    ~EnemyActor() override;
+        ~EnemyActor() override;
 
-    void Start() override;
+        void Start() override;
 
-    void Update() override;
+        void Update() override;
 
-    static void Create();
+        static void Create();
 
-private:
-};
+    private:
+    };
+}

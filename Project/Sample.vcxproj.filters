@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="BaseEngine">
       <UniqueIdentifier>{fe4ff290-9602-4bdb-b942-9bcb61c1bce8}</UniqueIdentifier>
     </Filter>
@@ -210,6 +206,13 @@
     </Filter>
     <Filter Include="Utilities\Frozen\Types">
       <UniqueIdentifier>{ca8474b7-9632-4d6f-b793-674ad95980e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState">
+      <UniqueIdentifier>{b27b065c-988c-4b52-ad4e-c1da5bd4b51e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +416,27 @@
     </ClCompile>
     <ClCompile Include="StageActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyMove.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFind.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyChase.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyTurn.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="VisionCreateComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyVisionActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -733,6 +757,33 @@
     </ClInclude>
     <ClInclude Include="FrozenMacro.h">
       <Filter>Utilities\Frozen</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyState.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMove.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyComponent.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFind.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyChase.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyTurn.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="VisionCreateComponent.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyVisionActor.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

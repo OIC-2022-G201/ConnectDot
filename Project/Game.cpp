@@ -32,7 +32,7 @@ bool Game::Initialize() {
   auto signboard = new SignboardActor(this);
   auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
-  auto enemy = new EnemyActor(this);
+  auto enemy = new enemy::EnemyActor(this);
 
 
   player->SetInput(input);
