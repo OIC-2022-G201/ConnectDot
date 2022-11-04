@@ -1,10 +1,14 @@
 #pragma once
-#include "Component.h"
+#include <memory>
 
+#include "Component.h"
+#include"EnemyVisionActor.h"
 namespace enemy
 {
-	class VisionCreateComponent : public base_engine::Component
+	class VisionCreateComponent final : public base_engine::Component
 	{
+		std::weak_ptr<base_engine::CollisionComponent> collision_;
+		EnemyVisionActor* dummy;
 	public:
 		VisionCreateComponent(base_engine::Actor* owner_, int update_order_) :Component(owner_, update_order_) {};
 		~VisionCreateComponent() {};
@@ -12,6 +16,5 @@ namespace enemy
 		void ProcessInput() override;
 		void Update() override;
 		void OnCollision(const base_engine::SendManifold& manifold) override;
-
 	};
 }

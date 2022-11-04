@@ -22,6 +22,8 @@ void enemy::EnemyMove::OnEvent(base_engine::CollisionComponent* collision)
 {
 	if (collision->GetActor()->GetTag() == "Field")
 		is_turn_ = true;
+	if (collision->GetActor()->GetName() == "Player")
+		is_turn_ = true;
 }
 
 

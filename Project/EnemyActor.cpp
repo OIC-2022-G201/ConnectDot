@@ -24,6 +24,7 @@ namespace enemy {
             const auto sprite = new SpriteComponent(this, kEnemyDrawOrder);
             sprite->SetImage(BASE_ENGINE(Texture)->Get(texture::kEnemyTextureKey));
             enemy_component_ = new enemy::EnemyComponent(this, 101);
+            auto enemy_vision = new VisionCreateComponent(this, 102);
         }
         {
             auto body_ = new PhysicsBodyComponent(this);

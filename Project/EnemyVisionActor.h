@@ -5,7 +5,7 @@
 #include "ShapeRenderComponent.h"
 #include "Rect.h"
 namespace enemy {
-	class EnemyVisionActor : base_engine::Actor
+	class EnemyVisionActor : public base_engine::Actor
 	{
 		base_engine::Actor* parent_ = nullptr;
 		base_engine::CollisionComponent* collision_;
@@ -18,6 +18,8 @@ namespace enemy {
 		void Update() override;
 
 		void SetParent(base_engine::Actor* parent) { parent_ = parent; }
+		base_engine::Actor* GetParent() { return parent_; }
+
 	};
 }
 

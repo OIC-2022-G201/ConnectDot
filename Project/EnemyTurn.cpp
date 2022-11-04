@@ -18,6 +18,7 @@ void enemy::EnemyTurn::ProcessInput()
 void enemy::EnemyTurn::Update()
 {
 	is_move_ = true;
+
 }
 
 void enemy::EnemyTurn::End()
