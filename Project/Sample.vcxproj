@@ -99,6 +99,8 @@
     <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
+    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonSelecter.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="CanvasRender.cpp" />
     <ClCompile Include="Circle.cpp" />
@@ -191,6 +193,8 @@
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="BinaryArchive.h" />
     <ClInclude Include="BroadPhase.h" />
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonSelecter.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="CanvasRender.h" />
     <ClInclude Include="Circle.h" />

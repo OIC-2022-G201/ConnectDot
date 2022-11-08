@@ -510,6 +510,12 @@
     <ClCompile Include="ImageComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClCompile>
+    <ClCompile Include="ButtonSelecter.cpp">
+      <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -919,6 +925,12 @@
     </ClInclude>
     <ClInclude Include="ImageComponent.h">
       <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSelecter.h">
+      <Filter>ソース ファイル\ConnectDot</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

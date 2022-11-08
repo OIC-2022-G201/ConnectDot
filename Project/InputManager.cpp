@@ -38,6 +38,8 @@ void InputManager::ProcessInput() {
   if (IsKeyPush(MOFKEY_S) || IsKeyPush(MOFKEY_DOWN)) {
       button_vertical_ += 1;
   }
+
+  button_decision_ = IsKeyPush(MOFKEY_RETURN);
   jump_fire_ = IsKeyPush(MOFKEY_SPACE);
   place_beacon_fire_ = IsKeyPush(MOFKEY_Q);
   collect_beacon_fire_ = IsKeyPush(MOFKEY_E);
