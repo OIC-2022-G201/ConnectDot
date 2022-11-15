@@ -27,18 +27,18 @@ void BaseEngineCollision::Collide() {
 
   auto contact = world_->m_contactManager.m_contactList;
   int n = 0;
-    while (contact) {
+  while (contact) {
     auto body_a = contact->GetFixtureA()->collision_;
     auto body_b = contact->GetFixtureB()->collision_;
-      if (const auto manifold = body_a->Collision(body_b);
+    if (const auto manifold = body_a->Collision(body_b);
         manifold.has_collision) {
       body_a->CollisionSender(SendManifold{body_a, body_b, manifold});
       body_b->CollisionSender(SendManifold{body_b, body_a, manifold});
     }
     contact = contact->m_next;
-      n++;
+    n++;
   }
-    connectCount = n;
+  connectCount = n;
   for (int i = 0; i < body_size; ++i) {
     body_list_[i]->SyncPosition();
   }
@@ -102,9 +102,8 @@ void BaseEngineCollision::SendComponentsMessage(Component* component,
 }
 
 void BaseEngineCollision::SetCallBack(Game* game) {
-  game->debug_render_.emplace_back([this]
-  {
-      world_->DebugRender(this);
+  game->debug_render_.emplace_back([this] {
+    world_->DebugRender(this);
     Mof::CGraphicsUtilities::RenderString(0, 400, MOF_COLOR_BLUE, "count:%d",
                                           connectCount);
   });
@@ -136,5 +135,16 @@ void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
       break;
     default:;
   }
+}
+
+void BaseEngineCollision::QueryAABB(physics::PhysicsQueryCallback* callback,
+                                    const physics::PhysicsAABB& aabb) {
+  world_->QueryAABB(callback, aabb);
+}
+
+void BaseEngineCollision::RayCast(physics::PhysicsRayCastCallback* callback,
+                                  const physics::PVec2& point1,
+                                  const physics::PVec2& point2) const {
+  world_->RayCast(callback, point1, point2);
 }
 }  // namespace base_engine
