@@ -83,10 +83,10 @@ struct b2WorldQueryWrapper {
   }
 
   const bp::BroadPhase* broadPhase;
-  b2QueryCallback* callback;
+  PhysicsQueryCallback* callback;
 };
 
-void PhysicsWorld::QueryAABB(b2QueryCallback* callback,
+void PhysicsWorld::QueryAABB(PhysicsQueryCallback* callback,
                              const PhysicsAABB& aabb) const {
   b2WorldQueryWrapper wrapper{&m_contactManager.m_broadPhase, callback};
   wrapper.broadPhase = &m_contactManager.m_broadPhase;
@@ -113,10 +113,10 @@ struct b2WorldRayCastWrapper {
   }
 
   const bp::BroadPhase* broadPhase;
-  b2RayCastCallback* callback;
+  PhysicsRayCastCallback* callback;
 };
 
-void PhysicsWorld::RayCast(b2RayCastCallback* callback, const PVec2& point1,
+void PhysicsWorld::RayCast(PhysicsRayCastCallback* callback, const PVec2& point1,
                            const PVec2& point2) const
 {
   b2WorldRayCastWrapper wrapper{&m_contactManager.m_broadPhase, callback};

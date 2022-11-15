@@ -13,9 +13,9 @@ class PhysicsFixture;
 
 /// Callback class for AABB queries.
 /// See b2World::Query
-class b2QueryCallback {
+class PhysicsQueryCallback {
  public:
-  virtual ~b2QueryCallback() {}
+  virtual ~PhysicsQueryCallback() {}
 
   /// Called for each fixture found in the query AABB.
   /// @return false to terminate the query.
@@ -24,9 +24,9 @@ class b2QueryCallback {
 
 /// Callback class for ray casts.
 /// See b2World::RayCast
-class b2RayCastCallback {
+class PhysicsRayCastCallback {
  public:
-  virtual ~b2RayCastCallback() {}
+  virtual ~PhysicsRayCastCallback() {}
 
   /// Called for each fixture found in the query. You control how the ray cast
   /// proceeds by returning a float:
