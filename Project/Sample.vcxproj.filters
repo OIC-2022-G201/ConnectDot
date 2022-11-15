@@ -926,19 +926,14 @@
     <ClInclude Include="ImageComponent.h">
       <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    </ClInclude>
-      <Filter>BaseEngine\physics\CallBack</Filter>
     <ClInclude Include="PhysicsWorldCallBack.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>ソース ファイル\ConnectDot</Filter>
     </ClInclude>
     <ClInclude Include="ButtonSelecter.h">
       <Filter>ソース ファイル\ConnectDot</Filter>
-=======
-    <ClInclude Include="PhysicsWorldCallBack.h">
-      <Filter>BaseEngine\physics\CallBack</Filter>
->>>>>>> feature-RayCast
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
