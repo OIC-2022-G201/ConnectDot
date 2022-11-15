@@ -265,6 +265,7 @@
     <ClInclude Include="PhysicsTransform.h" />
     <ClInclude Include="PhysicsVector2.h" />
     <ClInclude Include="PhysicsWorld.h" />
+    <ClInclude Include="PhysicsWorldCallBack.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerIdle.h" />
     <ClInclude Include="InputActor.h" />

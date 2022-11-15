@@ -920,6 +920,9 @@
     <ClInclude Include="ImageComponent.h">
       <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicsWorldCallBack.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE">
