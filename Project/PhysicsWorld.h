@@ -12,7 +12,9 @@
 #include "PhysicsFixture.h"
 #include "PhysicsBody2D.h"
 namespace base_engine::physics {
- 
+    class b2QueryCallback;
+    class b2RayCastCallback;
+
     struct BodyDef;
 
 class PhysicsWorld {
@@ -61,9 +63,22 @@ class PhysicsWorld {
 
     }
 
-   public:
+    
+    /// Query the world for all fixtures that may overlap in AABB.
+    /// @param callback User-implemented callback class.
+    /// @param aabb query box.
+    void QueryAABB(b2QueryCallback* callback, const PhysicsAABB& aabb) const;
 
-friend class PhysicsBody;
+  /// Ray-cast the world for all fixtures in the path of the ray. Your
+    /// callback controls whether you get the closest point, any point, or
+    /// n-points. The ray-cast ignores shapes that contain the starting point.
+    /// @param callback a user implemented callback class.
+    /// @param point1 the ray starting point
+    /// @param point2 the ray ending point
+    void RayCast(b2RayCastCallback* callback, const PVec2& point1,
+                 const PVec2& point2) const;
+
+  friend class PhysicsBody;
   PhysicsBlockAllocator m_blockAllocator;
   PhysicsContactManager m_contactManager;
   PhysicsBody* m_bodyList = nullptr;

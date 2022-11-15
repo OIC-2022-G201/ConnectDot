@@ -926,6 +926,9 @@
     <ClInclude Include="ImageComponent.h">
       <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClInclude>
+    </ClInclude>
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    <ClInclude Include="PhysicsWorldCallBack.h">
     <ClInclude Include="Button.h">
       <Filter>ソース ファイル\ConnectDot</Filter>
     </ClInclude>
