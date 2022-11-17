@@ -53,8 +53,8 @@ class TileMapComponent : public base_engine::Component {
   void Update() override;
 
   void Load();
-
- public:
+  void Load(std::string_view path);
+public:
   void CreateBody();
   TileMapComponent(base_engine::Actor* owner, int update_order);
 

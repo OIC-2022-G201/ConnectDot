@@ -253,6 +253,9 @@
     <Filter Include="BaseEngine\Component\RenderComponent\Canvas">
       <UniqueIdentifier>{05da9ff2-099b-4821-b052-7e91b8d129bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\TileMap\detail">
+      <UniqueIdentifier>{3f8ca3ba-f3cd-4533-b067-600fc5a9e8ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -515,6 +518,9 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\detail</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -934,6 +940,12 @@
     </ClInclude>
     <ClInclude Include="ButtonSelecter.h">
       <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorFrozen.h">
+      <Filter>Utilities\Frozen\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="StringFrozen.h">
+      <Filter>Utilities\Frozen\Types</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@ void tile_map::TileMapComponent::Start() { Load(); }
 void tile_map::TileMapComponent::Update() {}
 
 void tile_map::TileMapComponent::Load() {
+
   map_ = Layer(cell_width_, cell_height_);
   tile_shape_.emplace_back(new base_engine::Rect(0, 0, 128, 128));
 
@@ -36,6 +37,11 @@ void tile_map::TileMapComponent::Load() {
       collision->SetShape(tile_shape_[0]);
     }
   }
+}
+
+void tile_map::TileMapComponent::Load(std::string_view path)
+{
+      
 }
 
 void tile_map::TileMapComponent::CreateBody() {
