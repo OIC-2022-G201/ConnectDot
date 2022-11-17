@@ -16,16 +16,15 @@ template <class Archive, class T, class A>
 void FROZEN_SAVE_FUNCTION_NAME(Archive& ar, std::vector<T, A> const& vector) {
   ar(make_size_tag(
       static_cast<SizeType>(vector.size())));  // number of elements
-  ar(binary_data(vector.data(), vector.size() * sizeof(T)));
+  for (auto&& v : vector) ar(v);
 }
 
 template <class Archive, class T, class A>
 void FROZEN_LOAD_FUNCTION_NAME(Archive& ar, std::vector<T, A>& vector) {
-  SizeType vector_size;
-  ar(make_size_tag(vector_size));
+  SizeType size;
+  ar(make_size_tag(size));
 
-  vector.resize(static_cast<std::size_t>(vector_size));
-  ar(binary_data(vector.data(),
-                 static_cast<std::size_t>(vector_size) * sizeof(T)));
+  vector.resize(static_cast<std::size_t>(size));
+  for (auto&& v : vector) ar(v);
 }
 }  // namespace frozen

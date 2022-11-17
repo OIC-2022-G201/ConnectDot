@@ -10,33 +10,23 @@ void tile_map::TileMapComponent::Update() {}
 
 void tile_map::TileMapComponent::Load() {
 
-  map_ = Layer(cell_width_, cell_height_);
+    map_.Load("out.bin");
   tile_shape_.emplace_back(new base_engine::Rect(0, 0, 128, 128));
 
-  for (int x = 0; x < 3; ++x) {
-    map_.SetCell(x, 6, 1);
-    auto cell = new base_engine::Actor(owner_->GetGame());
-    cell->SetTag("Field");
-    cell->SetPosition({static_cast<MofFloat>(x * 128), 6 * 128});
-    auto collision = new base_engine::CollisionComponent(cell);
-    collision->SetObjectFilter(kFieldObjectFilter);
-    collision->SetTargetFilter(kFieldTargetFilter);
-    collision->SetShape(tile_shape_[0]);
-  }
-
-
-  for (int x = 0; x < cell_width_; ++x) {
-    for (int y = 8; y < 9; ++y) {
-      map_.SetCell(x, y, 1);
-      auto cell = new base_engine::Actor(owner_->GetGame());
+  for (int x = 0; x < map_.GetXCount(); ++x) {
+    for (int y = 0; y < map_.GetYCount(); ++y) {
+      if (map_.GetCell(x,y)==0)continue;
+      const auto cell = new base_engine::Actor(owner_->GetGame());
       cell->SetTag("Field");
       cell->SetPosition({static_cast<MofFloat>(x * 128), y * 128.0f});
-      auto collision = new base_engine::CollisionComponent(cell);
+      const auto collision = new base_engine::CollisionComponent(cell);
       collision->SetObjectFilter(kFieldObjectFilter);
       collision->SetTargetFilter(kFieldTargetFilter);
       collision->SetShape(tile_shape_[0]);
     }
   }
+
+    
 }
 
 void tile_map::TileMapComponent::Load(std::string_view path)

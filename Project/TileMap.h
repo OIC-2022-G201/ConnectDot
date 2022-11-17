@@ -30,15 +30,10 @@ class Layer {
   size_t GetYCount() const { return y_; }
   bool Load(const std::filesystem::path& path);
 
-  template <class Archive>
-  void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(x_, y_, layer_);
-  }
-
  private:
-  size_t x_;
-  size_t y_;
-  Collection layer_;
+  size_t x_{};
+  size_t y_{};
+  Collection layer_{};
 };
 
 

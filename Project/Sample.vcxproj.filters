@@ -256,6 +256,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Stage\TileMap\detail">
       <UniqueIdentifier>{3f8ca3ba-f3cd-4533-b067-600fc5a9e8ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utilities\Extensions\Variant">
+      <UniqueIdentifier>{7b5ca211-93ff-47be-bac6-2ef41f8ed522}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -946,6 +949,9 @@
     </ClInclude>
     <ClInclude Include="StringFrozen.h">
       <Filter>Utilities\Frozen\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="VariantUtilities.h">
+      <Filter>Utilities\Extensions\Variant</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

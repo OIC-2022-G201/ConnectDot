@@ -61,7 +61,7 @@ public:
 private:
   int cell_width_ = 100;
   int cell_height_ = 100;
-  Layer map_;
+  Layer map_{};
  std::vector<std::shared_ptr<base_engine::Rect>> tile_shape_;
   TileMapRenderComponent* render_ = nullptr;
 };

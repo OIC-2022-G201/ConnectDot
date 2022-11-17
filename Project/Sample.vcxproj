@@ -319,6 +319,7 @@
     <ClInclude Include="TileMapShape.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="TupleHasElement.h" />
+    <ClInclude Include="VariantUtilities.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VectorFrozen.h" />
     <ClInclude Include="VectorUtilities.h" />
