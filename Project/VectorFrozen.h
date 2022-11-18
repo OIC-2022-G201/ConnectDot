@@ -25,6 +25,9 @@ void FROZEN_LOAD_FUNCTION_NAME(Archive& ar, std::vector<T, A>& vector) {
   ar(make_size_tag(size));
 
   vector.resize(static_cast<std::size_t>(size));
-  for (auto&& v : vector) ar(v);
+  for (auto&& v : vector)
+  {
+      ar(v);
+  }
 }
 }  // namespace frozen

@@ -262,6 +262,12 @@
     <Filter Include="ソース ファイル\ConnectDot\UI">
       <UniqueIdentifier>{2bfab8b5-9dda-44f2-9512-7eca53e32a88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\Loader">
+      <UniqueIdentifier>{8669cd5d-c6bb-4069-bfd1-1f7b1343f524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Math\Point">
+      <UniqueIdentifier>{e41956d6-9c5b-4a7f-8427-a640fa99979c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -527,6 +533,9 @@
     </ClCompile>
     <ClCompile Include="ButtonSelecter.cpp">
       <Filter>ソース ファイル\ConnectDot\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLoader.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -955,6 +964,21 @@
     </ClInclude>
     <ClInclude Include="ButtonSelecter.h">
       <Filter>ソース ファイル\ConnectDot\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLoader.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2d.h">
+      <Filter>BaseEngine\Math\Point</Filter>
+    </ClInclude>
+    <ClInclude Include="VariantFrozen.h">
+      <Filter>Utilities\Frozen\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2dFrozen.h">
+      <Filter>Utilities\Frozen\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadObjectParameter.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

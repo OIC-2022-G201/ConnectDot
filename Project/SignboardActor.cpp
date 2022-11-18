@@ -9,6 +9,7 @@
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
+#include "LoadObjectParameter.h"
 #include "MachineConst.h"
 #include "PowerSupplyUnitActor.h"
 #include "ReceiverComponent.h"
@@ -21,7 +22,18 @@ using namespace electronics::signboard;
 using namespace draw_order;
 SignboardActor::SignboardActor(base_engine::Game* game) : Actor(game) {}
 
-void SignboardActor::Start() {
+void SignboardActor::Start() {}
+
+void SignboardActor::Update() {}
+
+void SignboardActor::SetDisplayImage(base_engine::TexturePtr texture) {
+  display_texture_ = texture;
+  if (display_) {
+    display_->SetImage(display_texture_);
+  }
+}
+
+void SignboardActor::Create(const LoadObject& object) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
@@ -55,17 +67,9 @@ void SignboardActor::Start() {
     receiver->Create<SignboardReceiver>(display_);
   }
   {
+    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({10, 5});
+    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({pos.x, pos.y});
   }
   SetName("Signboard");
-}
-
-void SignboardActor::Update() {}
-
-void SignboardActor::SetDisplayImage(base_engine::TexturePtr texture) {
-  display_texture_ = texture;
-  if (display_) {
-    display_->SetImage(display_texture_);
-  }
 }

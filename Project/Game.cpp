@@ -10,6 +10,7 @@
 #include "EnemyActor.h"
 #include "InputComponent.h"
 #include "InputManager.h"
+#include "ObjectLoader.h"
 #include "PlayerActor.h"
 #include "PowerSupplyUnitActor.h"
 #include "PylonActor.h"
@@ -21,6 +22,8 @@ base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
   game_data_.Register();
+  ObjectLoader object_loader{this};
+  object_loader.Load("MapData/Stage1");
   BASE_ENGINE(Collider)->SetCallBack(this);
   auto camera = new Actor(this);
   new CameraComponent(camera);

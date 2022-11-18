@@ -128,6 +128,7 @@
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjectDataBase.cpp" />
+    <ClCompile Include="ObjectLoader.cpp" />
     <ClCompile Include="PhysicsBlockAllocator.cpp" />
     <ClCompile Include="PhysicsBody2D.cpp" />
     <ClCompile Include="PhysicsBodyComponent.cpp" />
@@ -213,10 +214,12 @@
     <ClInclude Include="GameData.h" />
     <ClInclude Include="IBaseEngineCanvasRender.h" />
     <ClInclude Include="ImageComponent.h" />
+    <ClInclude Include="LoadObjectParameter.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectDataBase.h" />
     <ClInclude Include="ObjectID.h" />
+    <ClInclude Include="ObjectLoader.h" />
     <ClInclude Include="ParameterMap.h" />
     <ClInclude Include="DebugStage.h" />
     <ClInclude Include="DrawOrder.h" />
@@ -286,6 +289,8 @@
     <ClInclude Include="PlayerSneak.h" />
     <ClInclude Include="PlayerState.h" />
     <ClInclude Include="Point.h" />
+    <ClInclude Include="Point2d.h" />
+    <ClInclude Include="Point2dFrozen.h" />
     <ClInclude Include="Pow.h" />
     <ClInclude Include="PowerSupplyUnitActor.h" />
     <ClInclude Include="PowerSupplyUnitReceiver.h" />
@@ -319,6 +324,7 @@
     <ClInclude Include="TileMapShape.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="TupleHasElement.h" />
+    <ClInclude Include="VariantFrozen.h" />
     <ClInclude Include="VariantUtilities.h" />
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VectorFrozen.h" />

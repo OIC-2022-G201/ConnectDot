@@ -9,6 +9,8 @@
 #include "Actor.h"
 #include "ReactiveProperty.h"
 
+struct LoadObject;
+
 class PowerSupplyUnitActor final : public base_engine::Actor {
  public:
   explicit PowerSupplyUnitActor(base_engine::Game* game) : Actor(game) {}
@@ -22,6 +24,9 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   void SetSequential(const int sequential) { sequential_ = sequential; }
   int Sequential() const { return sequential_; }
   void SetTarget(Actor* target) { target_ = target; }
+
+  void Create(const LoadObject& object);
+
  private:
   observable::ReactiveProperty<bool> electric_power_ = false;
   int sequential_ = 15;
