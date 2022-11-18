@@ -23,22 +23,4 @@ struct FrozenMapData {
   }
 };
 
-bool Layer::Load(const std::filesystem::path& path) {
-  {
-    FrozenMapData map_data;
-
-    std::ifstream os(path, std::ios::binary);
-    {
-      frozen::BinaryInputArchive archive(os);
-      archive(map_data);
-    }
-    os.close();
-
-    x_ = map_data.map_max_x;
-    y_ = map_data.map_max_y;
-    layer_ = map_data.tile_data;
-  }
-
-  return true;
-}
 }  // namespace tile_map

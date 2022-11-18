@@ -16,9 +16,14 @@ class Layer {
   using Collection = std::vector<Row>;
 
  public:
-  Layer() {}
+  Layer() = default;
+
   Layer(const size_t x, const size_t y)
       : x_(x), y_(y), layer_(Collection(y, Row(x, kEmptyCell))) {}
+
+  Layer(size_t x, size_t y, const Collection& layer)
+      : x_(x), y_(y), layer_(layer) {}
+
   void SetCell(const size_t x, const size_t y, const Cell type) {
     layer_[y][x] = type;
   }
@@ -35,6 +40,5 @@ class Layer {
   size_t y_{};
   Collection layer_{};
 };
-
 
 }  // namespace tile_map

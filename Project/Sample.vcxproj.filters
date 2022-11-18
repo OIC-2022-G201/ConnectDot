@@ -259,6 +259,9 @@
     <Filter Include="Utilities\Extensions\Variant">
       <UniqueIdentifier>{7b5ca211-93ff-47be-bac6-2ef41f8ed522}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\UI">
+      <UniqueIdentifier>{2bfab8b5-9dda-44f2-9512-7eca53e32a88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -516,14 +519,14 @@
     <ClCompile Include="ImageComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent\Canvas</Filter>
     </ClCompile>
-    <ClCompile Include="ButtonSelecter.cpp">
-      <Filter>ソース ファイル\ConnectDot</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソース ファイル\ConnectDot</Filter>
-    </ClCompile>
     <ClCompile Include="TileMap.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソース ファイル\ConnectDot\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSelecter.cpp">
+      <Filter>ソース ファイル\ConnectDot\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -938,12 +941,6 @@
     <ClInclude Include="PhysicsWorldCallBack.h">
       <Filter>BaseEngine\physics\CallBack</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ソース ファイル\ConnectDot</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonSelecter.h">
-      <Filter>ソース ファイル\ConnectDot</Filter>
-    </ClInclude>
     <ClInclude Include="VectorFrozen.h">
       <Filter>Utilities\Frozen\Types</Filter>
     </ClInclude>
@@ -952,6 +949,12 @@
     </ClInclude>
     <ClInclude Include="VariantUtilities.h">
       <Filter>Utilities\Extensions\Variant</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>ソース ファイル\ConnectDot\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSelecter.h">
+      <Filter>ソース ファイル\ConnectDot\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
