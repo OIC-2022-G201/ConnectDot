@@ -50,6 +50,11 @@ constexpr  std::string_view kChangeRestartButtonTextureKey =
 constexpr  std::string_view kChangeResumeButtonTextureKey =
 "Resume2.png";
 
+constexpr  std::string_view kDoorTextureKey =
+"Objects/Door/Door1.png"sv;
+
+constexpr  std::string_view kOpenDoorTextureKey =
+"Objects/Door/Door2.png"sv;
 namespace effect {
 
 //! ElectricEffect

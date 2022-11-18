@@ -107,6 +107,8 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugStage.cpp" />
+    <ClCompile Include="DoorActor.cpp" />
+    <ClCompile Include="DoorReceiver.cpp" />
     <ClCompile Include="ElectricEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
@@ -203,6 +205,8 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="ConnectDotUpdateOrder.h" />
+    <ClInclude Include="DoorActor.h" />
+    <ClInclude Include="DoorReceiver.h" />
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyPackage.h" />
     <ClInclude Include="EnumExtension.h" />

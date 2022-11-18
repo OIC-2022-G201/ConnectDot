@@ -253,6 +253,9 @@
     <Filter Include="BaseEngine\Component\RenderComponent\Canvas">
       <UniqueIdentifier>{05da9ff2-099b-4821-b052-7e91b8d129bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Door">
+      <UniqueIdentifier>{d4958ad9-3f28-4529-85d7-ef44cd2a7d38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -515,6 +518,12 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -931,6 +940,12 @@
     </ClInclude>
     <ClInclude Include="ButtonSelecter.h">
       <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

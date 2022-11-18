@@ -25,4 +25,7 @@ constexpr int kEnemyDrawOrder = 149;
 constexpr int kPlayerDrawOrder = 150;
 constexpr int kButtonDrawOrder = 151;
 constexpr int kChangeButtonDrawOrder = 152;
+
+constexpr int kDoorDrawOrder = 160;
+constexpr int kOpenDoorDrawOrder = 160;
 }  // namespace draw_order

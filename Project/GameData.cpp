@@ -28,4 +28,6 @@ void GameData::Register()
     BASE_ENGINE(Texture)->Load(texture::kChangeRestartButtonTextureKey);
     BASE_ENGINE(Texture)->Load(texture::kChangeResumeButtonTextureKey);
 
+    BASE_ENGINE(Texture)->Load(texture::kDoorTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kOpenDoorTextureKey);
 }

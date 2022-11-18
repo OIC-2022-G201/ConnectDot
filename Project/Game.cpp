@@ -7,6 +7,7 @@
 #include "CameraComponent.h"
 #include "CollisionComponent.h"
 #include "DebugStage.h"
+#include "DoorActor.h"
 #include "EnemyActor.h"
 #include "InputComponent.h"
 #include "InputManager.h"
@@ -32,6 +33,7 @@ bool Game::Initialize() {
 
   auto pylon = new PylonActor(this);
   auto signboard = new SignboardActor(this);
+  auto door = new DoorActor(this);
   auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
   auto enemy = new EnemyActor(this);
@@ -40,6 +42,8 @@ bool Game::Initialize() {
   player->SetInput(input);
   player->SetCamera(camera);
   power_unit->SetTarget(signboard);
+
+  door->SetPosition({ 50,30 });
 
   auto restart = new Button(this);
   restart->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kRestartButtonTextureKey));
