@@ -41,32 +41,6 @@ bool Game::Initialize() {
   player->SetCamera(camera);
   power_unit->SetTarget(signboard);
 
-  auto restart = new Button(this);
-  restart->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kRestartButtonTextureKey));
-  restart->SetChangeButtonSprite(BASE_ENGINE(Texture)->Get(texture::kChangeRestartButtonTextureKey));
-  restart->SetPosition({100,100});
-
-  auto resume = new Button(this);
-  resume->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kResumeButtonTextureKey));
-  resume->SetChangeButtonSprite(BASE_ENGINE(Texture)->Get(texture::kChangeResumeButtonTextureKey));
-  resume->SetPosition({ 100,150 });
-
-  auto resume2 = new Button(this);
-  resume2->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kResumeButtonTextureKey));
-  resume2->SetChangeButtonSprite(BASE_ENGINE(Texture)->Get(texture::kChangeResumeButtonTextureKey));
-  resume2->SetPosition({ 100,200 });
-  resume2->SetEvent([this]()
-      {
-          auto test = new Actor(this);
-          auto p = new base_engine::ImageComponent(test);
-          p->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
-      });
-
-  auto button_selecter = new ButtonSelecter(this);
-  button_selecter->SetInput(input);
-  button_selecter->ButtonRegister(0, 0, restart);
-  button_selecter->ButtonRegister(0, 1, resume);
-  button_selecter->ButtonRegister(0, 2, resume2);
   b_collision = BASE_ENGINE(Collider);
   return true;
 }
