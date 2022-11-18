@@ -15,6 +15,9 @@
 
 class ReceiverComponent : public base_engine::Component {
  public:
+  bool IsWireless() const
+  { return receiver_->IsWireless();
+  }
   void OnPowerExit() {
     current_state_ = PowerState::kDisconnect;
     prev_state_ = PowerState::kDisconnect;
@@ -51,6 +54,7 @@ class ReceiverComponent : public base_engine::Component {
     }
     prev_state_ = PowerState::kDisconnect;
   }
+
   void OnCollision(const base_engine::SendManifold& manifold) override {}
 
  public:

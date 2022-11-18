@@ -214,6 +214,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor">
       <UniqueIdentifier>{0929e771-5b88-428b-b9fa-a569cff76992}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Lever">
+      <UniqueIdentifier>{4773b417-873d-424e-ba2a-844816c146d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -417,8 +420,26 @@
     <ClCompile Include="StageActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="MoveFloor.cpp">
+    <ClCompile Include="MoveFloorActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverTransmitter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveFloorReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="IPlayerAction.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -740,8 +761,26 @@
     <ClInclude Include="FrozenMacro.h">
       <Filter>Utilities\Frozen</Filter>
     </ClInclude>
-    <ClInclude Include="MoveFloor.h">
+    <ClInclude Include="MoveFloorActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverTransmitter.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveFloorReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\MoveFloor</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="IPlayerAction.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

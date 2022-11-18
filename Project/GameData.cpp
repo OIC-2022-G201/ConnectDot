@@ -16,6 +16,8 @@ void GameData::Register()
     BASE_ENGINE(Texture)->Load("ice.png");
     BASE_ENGINE(Texture)->Load(texture::kEnemyTextureKey);
     BASE_ENGINE(Texture)->Load(texture::kPlayerTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kLeverTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kBeaconTextureKey);
 
     BASE_ENGINE(Texture)->Load(texture::effect::kElectricEffectTextureKey);
     BASE_ENGINE(Texture)->Load(texture::kSignboardTextureKey);

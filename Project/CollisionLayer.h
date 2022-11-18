@@ -21,6 +21,7 @@ class CollisionLayer final {
     kMachineFilter = 1 << 4,
     kReceiverFilter = 1 << 5,
     kSenderFilter = 1 << 6,
+    kMoveFloorFilter=1<<7,
 
     kElectricityAreaFilter = 1 << 8,
 
@@ -44,7 +45,8 @@ constexpr BitCollisionLayer kFieldTargetFilter{CollisionLayer::kPlayerFilter};
 
 constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter};
 constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter};
-
+constexpr BitCollisionLayer kMoveFloorObjectFilter{CollisionLayer::kMoveFloorFilter};
+constexpr BitCollisionLayer kMoveFloorTargetFilter{CollisionLayer::kPlayerFilter};
 //! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{
     CollisionLayer::kReceiverFilter | CollisionLayer::kSenderFilter};

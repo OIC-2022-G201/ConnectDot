@@ -36,7 +36,7 @@ struct GridPosition
       y = other.y;
       return *this;
   }
-
+ 
   static GridPosition VectorTo(base_engine::InVector2 pos)
   {
     int x = floor(pos.x / stage::kStageCellWidth<float>);
@@ -50,4 +50,5 @@ struct GridPosition
     base_engine::Floating y = pos.y * stage::kStageCellHeight<float>;
     return {x, y};
   }
+  
 };

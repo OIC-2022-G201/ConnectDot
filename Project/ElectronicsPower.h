@@ -7,6 +7,7 @@
 
 #pragma once
 #include <cstdint>
+
 #include "ShapeRenderComponent.h"
 namespace electronics {
 namespace electricity {
@@ -34,11 +35,16 @@ const base_engine::Vector2 kBeaconTransmitterOffset = {64, 64};
 const base_engine::Vector2 kBeaconReceiverOffset = {64, 64};
 }  // namespace beacon
 
-namespace psu
-{
+namespace psu {
 const base_engine::Vector2 kPowerSupplyUnitTransmitterOffset = {64, 64};
 const base_engine::Vector2 kPowerSupplyUnitReceiverOffset = {64, 64};
+}  // namespace psu
+namespace lev {
+const base_engine::Vector2 kLeverTransmitterOffset = {64, 64};
+const base_engine::Vector2 kLeverReceiverOffset = {64, 64};
+}  // namespace lev
+namespace mofl {
+const base_engine::Vector2 kMoveFloorReceiverOffset = {64, 64};
 }
-
 using namespace electricity;
 }  // namespace electronics

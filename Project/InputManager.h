@@ -10,7 +10,7 @@ class InputManager final : public base_engine::InputComponent {
   bool action_fire_;
   bool pause_fire_;
   bool sneak_fire_;
-
+  bool move_fire_=false;
   Mof::Vector2 mouse_position_;
  public:
   explicit InputManager(base_engine::InputActor* owner);
@@ -27,8 +27,9 @@ class InputManager final : public base_engine::InputComponent {
   [[nodiscard]] bool ActionFire() const;
   [[nodiscard]] bool PauseFire() const;
   [[nodiscard]] bool SneakFire() const;
-
+  
   [[nodiscard]] Mof::Vector2 MousePosition() const;
+  
 };
 inline float InputManager::MoveHorizontal() const { return move_horizontal_; }
 
@@ -48,3 +49,4 @@ inline bool InputManager::SneakFire() const { return sneak_fire_; }
 inline Mof::Vector2 InputManager::MousePosition() const {
   return mouse_position_;
 }
+

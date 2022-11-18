@@ -14,7 +14,7 @@ void base_engine::PhysicsBodyComponent::Start() {
 }
 using enum base_engine::physics::BodyMotionType;
 void base_engine::PhysicsBodyComponent::OnCollision(
-    const SendManifold& manifold) {
+	const SendManifold& manifold) {
   const auto this_collision = manifold.collision_a;
   const auto target_collision = manifold.collision_b;
   if (this_collision->GetTrigger() || target_collision->GetTrigger()) return;

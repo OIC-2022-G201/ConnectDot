@@ -22,6 +22,8 @@ class GridSnapComponent final : public base_engine::Component {
  public:
   explicit GridSnapComponent(base_engine::Actor* owner,
                              int update_order = component_update::kGridSnap);
+  
+
   void Update() override;
 
  private:

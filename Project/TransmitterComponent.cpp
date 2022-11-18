@@ -19,9 +19,16 @@ void TransmitterComponent::Update() {
 }
 
 void TransmitterComponent::OnCollision(
-    const base_engine::SendManifold& manifold) {
-  AddTarget(
-      manifold.collision_b->GetActor()->GetComponent<ReceiverComponent>().lock().get());
+	const base_engine::SendManifold& manifold) {
+  auto receive =
+      manifold.collision_b->GetActor()->GetComponent<ReceiverComponent>();
+
+  if (receive.expired()) return;
+  if (!receive.lock()->IsWireless()) {
+    return;
+  }
+
+  AddTarget(receive.lock().get());
 }
 
 bool TransmitterComponent::AddTarget(ReceiverComponent* target) {

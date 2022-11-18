@@ -14,6 +14,8 @@
 #include "RenderComponent.h"
 #include "SignboardActor.h"
 #include "TexturePaths.h"
+#include "LeverActor.h"
+#include  "MoveFloorActor.h"
 
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
@@ -33,12 +35,14 @@ bool Game::Initialize() {
   auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
   auto enemy = new EnemyActor(this);
-
+  auto lever = new LeverActor(this);
+  auto movefloor = new MoveFloorActor(this);
 
   player->SetInput(input);
   player->SetCamera(camera);
-  power_unit->SetTarget(signboard);
-
+ 
+  power_unit->SetTarget(lever);
+  lever->SetTarget(signboard);
 
 
 

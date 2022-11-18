@@ -5,6 +5,7 @@
 #include "Actor.h"
 #include "TransmitterComponent.h"
 
+
 int PowerSupplyUnitReceiver::Sequential()
 { return 1000; }
 

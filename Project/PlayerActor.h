@@ -14,7 +14,7 @@ class PlayerActor final : public base_engine::Actor {
   void Update() override;
   void Start() override;
   void SetInput(InputManager* input_manager);
-  void SetCamera(Actor* camera) { camera_ = camera; };
+  void SetCamera(Actor* camera) { camera_ = camera; }
 
  private:
   Mof::Vector2 move_vector_;
