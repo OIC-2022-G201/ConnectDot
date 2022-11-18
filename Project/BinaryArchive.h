@@ -75,4 +75,8 @@ inline void FROZEN_LOAD_FUNCTION_NAME(BinaryInputArchive& ar,
                                       BinaryData<T>& bd) {
   ar.LoadBinary(bd.data, static_cast<std::streamsize>(bd.size));
 }
+template <class Archive, class T>
+requires std::is_same_v<Archive, BinaryOutputArchive> ||
+    std::is_same_v<Archive, BinaryInputArchive>
+void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& ar, SizeTag<T>& t) { ar(t.size_); }
 }  // namespace frozen

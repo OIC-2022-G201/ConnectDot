@@ -6,8 +6,8 @@
 // @details
 
 #pragma once
+#include <filesystem>
 #include <vector>
-
 namespace tile_map {
 using Cell = char;
 constexpr int kEmptyCell = 0;
@@ -16,9 +16,14 @@ class Layer {
   using Collection = std::vector<Row>;
 
  public:
-  Layer(){}
+  Layer() = default;
+
   Layer(const size_t x, const size_t y)
       : x_(x), y_(y), layer_(Collection(y, Row(x, kEmptyCell))) {}
+
+  Layer(size_t x, size_t y, const Collection& layer)
+      : x_(x), y_(y), layer_(layer) {}
+
   void SetCell(const size_t x, const size_t y, const Cell type) {
     layer_[y][x] = type;
   }
@@ -28,10 +33,12 @@ class Layer {
 
   size_t GetXCount() const { return x_; }
   size_t GetYCount() const { return y_; }
+  bool Load(const std::filesystem::path& path);
 
  private:
-  size_t x_;
-  size_t y_;
-  Collection layer_;
+  size_t x_{};
+  size_t y_{};
+  Collection layer_{};
 };
+
 }  // namespace tile_map

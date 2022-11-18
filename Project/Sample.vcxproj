@@ -174,6 +174,7 @@
     <ClCompile Include="TextureMof.cpp" />
     <ClCompile Include="TileMapCollisionComponent.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TileMapShape.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
@@ -309,6 +310,7 @@
     <ClInclude Include="StageActor.h" />
     <ClInclude Include="StageConstitution.h" />
     <ClInclude Include="StateMachine.h" />
+    <ClInclude Include="StringFrozen.h" />
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="TexturePaths.h" />
     <ClInclude Include="TileMap.h" />
@@ -317,7 +319,9 @@
     <ClInclude Include="TileMapShape.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="TupleHasElement.h" />
+    <ClInclude Include="VariantUtilities.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="VectorFrozen.h" />
     <ClInclude Include="VectorUtilities.h" />
     <ClInclude Include="WeakRefObject.h" />
     <ClInclude Include="YesNo.h" />
