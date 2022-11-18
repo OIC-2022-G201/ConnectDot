@@ -253,6 +253,9 @@
     <Filter Include="BaseEngine\Component\RenderComponent\Canvas">
       <UniqueIdentifier>{05da9ff2-099b-4821-b052-7e91b8d129bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\Counter">
+      <UniqueIdentifier>{ace1367b-80b2-4f8d-bf6d-b933d6ccf572}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -515,6 +518,9 @@
     </ClCompile>
     <ClCompile Include="Button.cpp">
       <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClCompile>
+    <ClCompile Include="CounterComponent.cpp">
+      <Filter>BaseEngine\Component\Counter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -931,6 +937,9 @@
     </ClInclude>
     <ClInclude Include="ButtonSelecter.h">
       <Filter>ソース ファイル\ConnectDot</Filter>
+    </ClInclude>
+    <ClInclude Include="CounterComponent.h">
+      <Filter>BaseEngine\Component\Counter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

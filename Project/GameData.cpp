@@ -28,4 +28,14 @@ void GameData::Register()
     BASE_ENGINE(Texture)->Load(texture::kChangeRestartButtonTextureKey);
     BASE_ENGINE(Texture)->Load(texture::kChangeResumeButtonTextureKey);
 
+    BASE_ENGINE(Texture)->Load(texture::kZeroTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kOneTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kTwoTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kThreeTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kFourTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kFiveTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kSixTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kSevenTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kEightTextureKey);
+    BASE_ENGINE(Texture)->Load(texture::kNineTextureKey);
 }

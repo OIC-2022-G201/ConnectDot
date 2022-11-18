@@ -6,6 +6,7 @@
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
 #include "CollisionComponent.h"
+#include "CounterComponent.h"
 #include "DebugStage.h"
 #include "EnemyActor.h"
 #include "InputComponent.h"
@@ -67,6 +68,11 @@ bool Game::Initialize() {
   button_selecter->ButtonRegister(0, 0, restart);
   button_selecter->ButtonRegister(0, 1, resume);
   button_selecter->ButtonRegister(0, 2, resume2);
+
+  auto ctest = new Actor(this);
+  auto c = new base_engine::CounterComponent(ctest);
+  c->SetNumber(31);
+
   b_collision = BASE_ENGINE(Collider);
   return true;
 }
