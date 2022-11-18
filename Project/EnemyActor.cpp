@@ -12,8 +12,10 @@
 #include "CollisionLayer.h"
 #include "ShapeRenderComponent.h"
 #include "VisionCreateComponent.h"
+
 using namespace base_engine;
 using namespace draw_order;
+
 namespace enemy {
     EnemyActor::EnemyActor(base_engine::Game* game) : Actor(game) {}
 
@@ -41,7 +43,7 @@ namespace enemy {
 
         SetName("Enemy");
         SetTag("Enemy");
-        SetPosition(GridPosition::GridTo({ 5,6 }));
+        SetPosition(GridPosition::GridTo({ 9,6 }));
     }
 
     void EnemyActor::Update() {

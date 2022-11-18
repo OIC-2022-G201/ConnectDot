@@ -2,25 +2,27 @@
 
 #include "EnemyComponent.h"
 
-void enemy::EnemyTurn::Start()
-{
-	body_ = enemy_->PhysicsBody();
-	is_move_ = false;
-	enemy_->ReverseDirection();
-	body_.lock().get()->SetForceX(0);
-}
+namespace enemy {
+	void EnemyTurn::Start()
+	{
+		body_ = enemy_->PhysicsBody();
+		is_move_ = false;
+		enemy_->ReverseDirection();
+		body_.lock().get()->SetForceX(0);
+	}
 
-void enemy::EnemyTurn::ProcessInput()
-{
+	void EnemyTurn::ProcessInput()
+	{
 	
-}
+	}
 
-void enemy::EnemyTurn::Update()
-{
-	is_move_ = true;
-}
+	void EnemyTurn::Update()
+	{
+		is_move_ = true;
+	}
 
-void enemy::EnemyTurn::End()
-{
+	void EnemyTurn::End()
+	{
 	
+	}
 }

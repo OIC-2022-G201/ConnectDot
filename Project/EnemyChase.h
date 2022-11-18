@@ -12,6 +12,7 @@ namespace enemy
 		EnemyVisionComponent* vision_ = nullptr;
 		std::weak_ptr<base_engine::PhysicsBodyComponent> body_;
 		bool is_find_ = true;
+		MofFloat player_pos_x = 0.0f;
 
 	public:
 		explicit EnemyChase(EnemyComponent* enemy) :enemy_(enemy) {};
@@ -29,7 +30,7 @@ namespace enemy
 	};
 
 	template<typename Machine>
-	void enemy::EnemyChase::Transition(Machine& machine) const {
+	void EnemyChase::Transition(Machine& machine) const {
 		if (!is_find_) machine.template TransitionTo<EnemyMove>();
 	}
 }

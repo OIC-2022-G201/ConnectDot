@@ -27,6 +27,7 @@ namespace enemy {
 		std::weak_ptr<base_engine::PhysicsBodyComponent> PhysicsBody() { return physics_body_; }
 		base_engine::CollisionComponent* GetCollision() { return collision_.lock().get(); }
 		til::Machine<EnemyMove, EnemyTurn, EnemyFind, EnemyChase>* GetMachine() { return &machine_; }
+		//false == Left, true == Right
 		bool GetDirection() { return direction; }
 		void SetDirection(bool dir) { direction = dir; }
 		void ReverseDirection() { direction = !direction; }

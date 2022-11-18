@@ -28,7 +28,7 @@ namespace enemy {
 	};
 
 	template<typename Machine>
-	void enemy::EnemyMove::Transition(Machine& machine) const {
+	void EnemyMove::Transition(Machine& machine) const {
 		if (is_find_) machine.template TransitionTo<EnemyFind>();
 		if (is_turn_) machine.template TransitionTo<EnemyTurn>();
 	}
