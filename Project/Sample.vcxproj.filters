@@ -438,6 +438,9 @@
     <ClCompile Include="EnemyVisionActor.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyVisionComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -783,6 +786,9 @@
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyVisionActor.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyVisionComponent.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
   </ItemGroup>

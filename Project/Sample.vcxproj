@@ -111,6 +111,7 @@
     <ClCompile Include="EnemyChase.cpp" />
     <ClCompile Include="EnemyTurn.cpp" />
     <ClCompile Include="EnemyVisionActor.cpp" />
+    <ClCompile Include="EnemyVisionComponent.cpp" />
     <ClCompile Include="VisionCreateComponent.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="EnemyChase.h" />
     <ClInclude Include="EnemyTurn.h" />
     <ClInclude Include="EnemyVisionActor.h" />
+    <ClInclude Include="EnemyVisionComponent.h" />
     <ClInclude Include="VisionCreateComponent.h" />
     <ClInclude Include="FrozenConcept.h" />
     <ClInclude Include="FrozenHelper.h" />

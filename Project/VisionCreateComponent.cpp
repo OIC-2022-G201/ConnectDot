@@ -1,13 +1,18 @@
 #include "VisionCreateComponent.h"
-#include"EnemyVisionActor.h"
-#include"PlayerComponent.h"
+
+#include "EnemyVisionActor.h"
+#include "CollisionComponent.h"
+#include "ShapeRenderComponent.h"
+#include "EnemyVisionComponent.h"
+
 namespace enemy
 {
 	void VisionCreateComponent::Start()
 	{
 		auto dummy = new EnemyVisionActor(this->owner_->GetGame());
-		dummy->SetParent(this->owner_);
-		collision_ = dummy->GetComponent<base_engine::CollisionComponent>();
+
+		auto vision_component = new EnemyVisionComponent(dummy, 502);
+		vision_component->SetParent(this->owner_);
 	}
 
 	void VisionCreateComponent::ProcessInput()
@@ -22,9 +27,6 @@ namespace enemy
 
 	void VisionCreateComponent::OnCollision(const base_engine::SendManifold& manifold)
 	{
-		if(manifold.collision_b->GetActor()->GetComponent<player::PlayerComponent>().lock() != nullptr)
-		{
-			
-		}
+		
 	}
 }

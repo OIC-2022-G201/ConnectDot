@@ -7,23 +7,25 @@ void enemy::EnemyMove::Start() {
 	body_ = enemy_->PhysicsBody();
 	is_find_ = false;
 	is_turn_ = false;
-	direction *= -1;
+	body_.lock().get()->SetForceX(enemy_->GetDirection() == Left ? -Speed : Speed);
 }
 
 void enemy::EnemyMove::Update() {
 
+	if (vision_!=nullptr && vision_->IsFindPlayer())
+		is_find_ = true;
 }
 
 void enemy::EnemyMove::ProcessInput() {
-	body_.lock().get()->SetForceX(direction*Speed);
+	
 }
 
 void enemy::EnemyMove::OnEvent(base_engine::CollisionComponent* collision)
 {
 	if (collision->GetActor()->GetTag() == "Field")
+	{
 		is_turn_ = true;
-	if (collision->GetActor()->GetName() == "Player")
-		is_turn_ = true;
+	}
 }
 
 

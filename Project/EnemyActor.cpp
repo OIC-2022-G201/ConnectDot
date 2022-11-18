@@ -40,6 +40,7 @@ namespace enemy {
         }
 
         SetName("Enemy");
+        SetTag("Enemy");
         SetPosition(GridPosition::GridTo({ 5,6 }));
     }
 
