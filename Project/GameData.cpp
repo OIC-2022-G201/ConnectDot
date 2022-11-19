@@ -2,32 +2,28 @@
 
 #include <Utilities/GraphicsUtilities.h>
 
+#include <filesystem>
+
 #include "BaseEngineCore.h"
 #include "IBaseEngineRender.h"
 #include "IBaseEngineTexture.h"
 #include "TexturePaths.h"
 
-void GameData::Register()
-{
-    BASE_ENGINE(Render)->SetCameraPosition(
-        {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
-            Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() / 2.0f});
+/**
+ * \brief Resourceフォルダ内にある画像ファイルを再帰的に探索し全てロードを行う
+ */
+void ResourceFolderTextureAllRegister() {
+  namespace fs = std::filesystem;
+  for (const auto& entry : fs::recursive_directory_iterator(".")) {
+    const auto& path = entry.path();
+    if (path.extension() != ".png") continue;
+    BASE_ENGINE(Texture)->Load(path.generic_string());
+  }
+}
+void GameData::Register() {
+  BASE_ENGINE(Render)->SetCameraPosition(
+      {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
+       Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() / 2.0f});
 
-    BASE_ENGINE(Texture)->Load("ice.png");
-    BASE_ENGINE(Texture)->Load(texture::kEnemyTextureKey);
-    BASE_ENGINE(Texture)->Load(texture::kPlayerTextureKey);
-
-    BASE_ENGINE(Texture)->Load(texture::effect::kElectricEffectTextureKey);
-    BASE_ENGINE(Texture)->Load(texture::kSignboardTextureKey);
-
-    BASE_ENGINE(Texture)->Load(texture::kSignboardDisplayDemoTextureKey);
-    BASE_ENGINE(Texture)->Load(texture::kPowerSupplyUnitTextureKey);
-
-    BASE_ENGINE(Texture)->Load(texture::kRestartButtonTextureKey);
-    BASE_ENGINE(Texture)->Load(texture::kResumeButtonTextureKey);
-    BASE_ENGINE(Texture)->Load(texture::kChangeRestartButtonTextureKey);
-    BASE_ENGINE(Texture)->Load(texture::kChangeResumeButtonTextureKey);
-
-    BASE_ENGINE(Texture)->Load("mapchip\\Stage1.png");
-
+  ResourceFolderTextureAllRegister();
 }
