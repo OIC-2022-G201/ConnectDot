@@ -2,6 +2,7 @@
 
 #include <filesystem>
 #include <ranges>
+#include <Utilities/Utilities.h>
 
 namespace base_engine {
 namespace {
@@ -14,7 +15,6 @@ size_t StringToHash(const std::string_view str)
 }
 }  // namespace
 TextureMof::TextureMof() {
-  none_texture_.Load("no-texture.png");
     textures_.reserve(128);
 }
 
@@ -25,6 +25,10 @@ TextureMof::~TextureMof()
 }
 
 bool TextureMof::Load(std::string_view name) {
+  if (name == "Default")
+  {
+    return none_texture_.Load("no-texture.png");
+  }
   const std::filesystem::path local_path = name;
   if (!exists(local_path)) return false;
   const std::string texture_normal_path = PathToLocalStringPath(local_path);

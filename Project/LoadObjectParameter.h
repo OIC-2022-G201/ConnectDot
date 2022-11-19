@@ -33,8 +33,9 @@ struct LoadObject {
   using ObjectSize = TagWrap<Point2I, struct ObjectSizeTag>;
   using Transform = TagWrap<Point2I, struct TransformTag>;
   using Prefab = TagWrap<AssetID, struct PrefabTag>;
-  using VariantT = std::variant<bool, int, float, Point2I, Point2F, std::string,
-                                AssetID, Transform, ObjectSize, Prefab>;
+  using TexturePath = TagWrap<std::string, struct TexturePathTag>;
+  using VariantT = std::variant<bool, int, float, Point2I, Point2F, std::string, AssetID,
+                   Transform, ObjectSize, Prefab, TexturePath>;
   std::vector<VariantT> parameters;
   std::string name;
   std::string id;

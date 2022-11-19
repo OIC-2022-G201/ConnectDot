@@ -19,6 +19,7 @@ void ResourceFolderTextureAllRegister() {
     if (path.extension() != ".png") continue;
     BASE_ENGINE(Texture)->Load(path.generic_string());
   }
+  BASE_ENGINE(Texture)->Load("Default");
 }
 void GameData::Register() {
   BASE_ENGINE(Render)->SetCameraPosition(

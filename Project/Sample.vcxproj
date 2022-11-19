@@ -108,6 +108,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugStage.cpp" />
     <ClCompile Include="DIActorContainer.cpp" />
+    <ClCompile Include="DoorStubActor.cpp" />
     <ClCompile Include="ElectricEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="PylonTransmitter.cpp" />
     <ClCompile Include="ReceiverComponent.cpp" />
     <ClCompile Include="Rect.cpp" />
+    <ClCompile Include="RenderableStubActor.cpp" />
     <ClCompile Include="RenderComponent.cpp" />
     <ClCompile Include="RenderMof.cpp" />
     <ClCompile Include="Resource.cpp" />
@@ -208,6 +210,7 @@
     <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="DIActorContainer.h" />
+    <ClInclude Include="DoorStubActor.h" />
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyPackage.h" />
     <ClInclude Include="EnumExtension.h" />
@@ -303,6 +306,7 @@
     <ClInclude Include="PylonTransmitter.h" />
     <ClInclude Include="ReceiverComponent.h" />
     <ClInclude Include="Rect.h" />
+    <ClInclude Include="RenderableStubActor.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderMof.h" />
     <ClInclude Include="Resource.h" />

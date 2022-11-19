@@ -4,13 +4,18 @@
 
 #include "DIActorContainer.h"
 #include "PowerSupplyUnitActor.h"
+#include "RenderableStubActor.h"
 #include "SignboardActor.h"
 
 using namespace base_engine;
 using namespace std::string_view_literals;
 
 #pragma region GimmickName
+constexpr std::string_view kDoorName = "Door"sv;
 constexpr std::string_view kPowerSupplyName = "Powersupply"sv;
+constexpr std::string_view kLeverName = "Lever"sv;
+constexpr std::string_view kMoveFloorName = "Movefloor"sv;
+constexpr std::string_view kVentName = "Vent"sv;
 constexpr std::string_view kSignboardName = "Signboard"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
@@ -22,6 +27,9 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 
  public:
   explicit GimmickDiActorContainerSetupImpl(GimmickCreator* creator);
+
+  static Actor* EmptyCreate(GimmickCreator* instance, Game* game,
+                            const LoadObject& object);
 
   static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
@@ -36,15 +44,39 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 };
 using SetupImpl =
     GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl;
-
+using Gc = GimmickCreator;
 constexpr std::array kGimmickMethodTable = {
     std::tuple{
-        kPowerSupplyName, &SetupImpl::PowerSupplyCreate,
-        &GimmickCreator::FactoryRegister<PowerSupplyUnitActor>},  // PowerSupply
-    std::tuple{kSignboardName, &SetupImpl::SignboardCreate,
-               &GimmickCreator::FactoryRegister<SignboardActor>},  // Signboard
-    std::tuple{kSignboardName, &SetupImpl::SignboardCreate,
-               &GimmickCreator::FactoryRegister<SignboardActor>}};
+        kDoorName,                                 // Name
+        &SetupImpl::EmptyCreate,                   // CreateMethod
+        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+    },
+    std::tuple{
+        kPowerSupplyName,                           // Name
+        &SetupImpl::PowerSupplyCreate,              // CreateMethod
+        &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
+    },
+    std::tuple{
+        kLeverName,                                // Name
+        &SetupImpl::EmptyCreate,                   // CreateMethod
+        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+    },
+    std::tuple{
+        kMoveFloorName,                            // Name
+        &SetupImpl::EmptyCreate,                   // CreateMethod
+        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+    },
+    std::tuple{
+        kVentName,                                 // Name
+        &SetupImpl::EmptyCreate,                   // CreateMethod
+        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+    },
+    std::tuple{
+        kSignboardName,                       // Name
+        &SetupImpl::SignboardCreate,          // CreateMethod
+        &Gc::FactoryRegister<SignboardActor>  // FactoryRegister
+    },
+};
 
 GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     GimmickDiActorContainerSetupImpl(GimmickCreator* creator)
@@ -53,6 +85,15 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     Register(std::get<0>(gimmick_method_table),
              std::get<1>(gimmick_method_table));
   }
+}
+
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::EmptyCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
+  const auto empty = new RenderableStubActor(game);
+  empty->Create(object);
+
+  return empty;
 }
 
 Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
