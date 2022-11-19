@@ -34,15 +34,9 @@ bool Game::Initialize() {
   auto input = new InputManager(inputActor);
 
   auto pylon = new PylonActor(this);
-  auto signboard = new SignboardActor(this);
-  auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
-  auto enemy = new EnemyActor(this);
-  auto button = new Button(this);
-
   player->SetInput(input);
   player->SetCamera(camera);
-  power_unit->SetTarget(signboard);
 
   b_collision = BASE_ENGINE(Collider);
   return true;

@@ -11,6 +11,7 @@
 #include <unordered_map>
 
 #include "Actor.h"
+#include "GimmickInjection.h"
 
 namespace base_engine {
 class Game;
@@ -28,10 +29,9 @@ class ObjectLoader {
   void Load(const std::filesystem::path folder);
 
  private:
-  bool CreateObject(const std::filesystem::path path);
+  bool CreateObject(const std::filesystem::path& path);
 
   base_engine::Game* game_ = nullptr;
-  std::unordered_map<std::string, base_engine::Actor*> actor_map_;
-  std::vector<std::function<void()>> bind_event_;
 
+  GimmickCreator creator_;
 };

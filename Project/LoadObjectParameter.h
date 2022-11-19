@@ -37,8 +37,10 @@ struct LoadObject {
                                 AssetID, Transform, ObjectSize, Prefab>;
   std::vector<VariantT> parameters;
   std::string name;
+  std::string id;
+
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(name, parameters);
+    archive(id,name, parameters);
   }
 };
