@@ -127,6 +127,8 @@
     <ClCompile Include="IBaseEngineEmpty.cpp" />
     <ClCompile Include="Geometry2D.ipp" />
     <ClCompile Include="ImageComponent.cpp" />
+    <ClCompile Include="LeverStubActor.cpp" />
+    <ClCompile Include="LeverStubReceiver.cpp" />
     <ClCompile Include="Manifold.cpp" />
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -221,6 +223,8 @@
     <ClInclude Include="GimmickInjection.h" />
     <ClInclude Include="IBaseEngineCanvasRender.h" />
     <ClInclude Include="ImageComponent.h" />
+    <ClInclude Include="LeverStubActor.h" />
+    <ClInclude Include="LeverStubReceiver.h" />
     <ClInclude Include="LoadObjectParameter.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />

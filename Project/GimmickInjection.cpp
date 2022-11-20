@@ -3,6 +3,7 @@
 #include <array>
 
 #include "DIActorContainer.h"
+#include "LeverStubActor.h"
 #include "PowerSupplyUnitActor.h"
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
@@ -30,7 +31,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 
   static Actor* EmptyCreate(GimmickCreator* instance, Game* game,
                             const LoadObject& object);
-
+  static Actor* LeverCreate(GimmickCreator* instance, Game* game,
+                            const LoadObject& object);
   static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
 
@@ -58,8 +60,8 @@ constexpr std::array kGimmickMethodTable = {
     },
     std::tuple{
         kLeverName,                                // Name
-        &SetupImpl::EmptyCreate,                   // CreateMethod
-        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+        &SetupImpl::LeverCreate,                   // CreateMethod
+        &Gc::FactoryRegister<LeverStubActor>  // FactoryRegister
     },
     std::tuple{
         kMoveFloorName,                            // Name
@@ -95,7 +97,14 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::EmptyCreate(
 
   return empty;
 }
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::LeverCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
+  const auto lever = new LeverStubActor(game);
+  lever->Create(object);
 
+  return lever;
+}
 Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     PowerSupplyCreate(GimmickCreator* instance, Game* game,
                       const LoadObject& object) {

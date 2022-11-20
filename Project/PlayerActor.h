@@ -22,7 +22,7 @@ class PlayerActor final : public base_engine::Actor {
   Actor* camera_ = nullptr;
   InputManager* input_manager_;
   int MaxBeacon() {
-      return 2;
+      return 90;
   }
   int have_beacon_count_ = MaxBeacon();
  public:
