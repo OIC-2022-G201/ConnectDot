@@ -34,7 +34,6 @@ void SignboardActor::SetDisplayImage(base_engine::TexturePtr texture) {
 }
 
 void SignboardActor::Create(const LoadObject& object) {
-
   {
     display_ = new SpriteComponent(this, kSignboardDisplayDrawOrder);
     display_->SetOffset(kDisplayOffset);
@@ -45,8 +44,10 @@ void SignboardActor::Create(const LoadObject& object) {
     display_->SetEnabled(false);
   }
   {
-    auto sign = new SpriteComponent(this, kSignboardDrawOrder);
-    sign->SetImage(BASE_ENGINE(Texture)->Get(texture::kSignboardTextureKey));
+    const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
+    const auto path =
+        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
+    sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
   {
     const auto receiver = new ReceiverComponent(this, 100);

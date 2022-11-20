@@ -24,7 +24,7 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   void SetSequential(const int sequential) { sequential_ = sequential; }
   int Sequential() const { return sequential_; }
   void SetTarget(Actor* target) { target_ = target; }
-
+  Actor* GetTarget() { return target_; }
   void Create(const LoadObject& object);
 
  private:
