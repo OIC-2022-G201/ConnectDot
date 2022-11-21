@@ -22,6 +22,10 @@ class PlayerIdle {
   void ProcessInput();
   void End();
 
+  void OnEvent(base_engine::CollisionComponent* collision)
+  {
+      
+  }
   template <typename Machine>
   void Transition(Machine& machine) const {
 

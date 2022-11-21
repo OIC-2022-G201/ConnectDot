@@ -33,6 +33,7 @@ void PlayerComponent::Start() {
 void PlayerComponent::Update() {
   physics_body_.lock()->AddForce({0, kGravity});
   machine_.Update();
+
 }
 
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {

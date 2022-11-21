@@ -42,8 +42,17 @@ class PlayerComponent final : public base_engine::Component {
   }
   inline bool IsActionKey() { return input_manager_->ActionFire(); }
   base_engine::CollisionComponent* GetCollision() { return collision_.lock().get(); }
-  base_engine::PhysicsBodyComponent* PhysicsBody() { return physics_body_.lock().get(); }
+  base_engine::PhysicsBodyComponent* PhysicsBody() {
+    return physics_body_.lock().get();
+  }
+  int MaxBeacon() const { return 90; }
+  int GetBeacon() const { return have_beacon_count_; }
+  void SetBeacon(const int num) { have_beacon_count_ = num; }
+  base_engine::Game* GetGame() { return owner_->GetGame(); }
+  base_engine::Actor* GetOwner() { return owner_; }
  private:
+  int have_beacon_count_ = MaxBeacon();
+
   const InputManager* input_manager_ = nullptr;
 
   til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerJump> machine_ =

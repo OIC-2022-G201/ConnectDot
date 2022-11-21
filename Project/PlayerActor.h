@@ -21,10 +21,6 @@ class PlayerActor final : public base_engine::Actor {
   class PlayerComponent* player_component_ = nullptr;
   Actor* camera_ = nullptr;
   InputManager* input_manager_;
-  int MaxBeacon() {
-      return 90;
-  }
-  int have_beacon_count_ = MaxBeacon();
  public:
 };
 }  // namespace player
