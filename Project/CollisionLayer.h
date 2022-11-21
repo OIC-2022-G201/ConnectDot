@@ -14,7 +14,7 @@ constexpr unsigned long long Shift(size_t val) { return 1ull << val; }
 class CollisionLayer final {
  public:
   // kBeaconTargetFilter = kSenderFilter
-  enum Layer {
+  enum Layer : unsigned long long{
     kNone = 0,
     kFieldFilter = 1 << 1,
     kPlayerFilter = 1 << 2,
@@ -24,7 +24,7 @@ class CollisionLayer final {
 
     kElectricityAreaFilter = 1 << 8,
 
-    kActionable = 1 << 16,
+    kActionable = 1 << 7,
 
   };
 
@@ -77,3 +77,10 @@ constexpr BitCollisionLayer kSignboardTargetFilter{CollisionLayer::kNone};
 constexpr BitCollisionLayer kLeverObjectFilter{CollisionLayer::kActionable};
 
 constexpr BitCollisionLayer kLeverTargetFilter{CollisionLayer::kNone};
+
+//! MoveFloor
+constexpr BitCollisionLayer kMoveFloorObjectFilter{
+    CollisionLayer::kFieldFilter};
+
+constexpr BitCollisionLayer kMoveFloorTargetFilter{
+    CollisionLayer::kPlayerFilter};

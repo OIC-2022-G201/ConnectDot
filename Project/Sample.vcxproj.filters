@@ -268,6 +268,18 @@
     <Filter Include="BaseEngine\Math\Point">
       <UniqueIdentifier>{e41956d6-9c5b-4a7f-8427-a640fa99979c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyStub">
+      <UniqueIdentifier>{04097c74-7a5c-447e-8a1b-d3a067111502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Door">
+      <UniqueIdentifier>{2ac209c2-ff3c-444b-a845-3be13a449cf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Lever">
+      <UniqueIdentifier>{db82b676-5440-4012-8628-bd5cb815f7e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor">
+      <UniqueIdentifier>{518b6a67-e8ca-4df1-924b-03053ac54998}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -536,6 +548,27 @@
     </ClCompile>
     <ClCompile Include="ObjectLoader.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableStubActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
+    </ClCompile>
+    <ClCompile Include="DIActorContainer.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickInjection.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorStubActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverStubActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="LeverStubReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Lever</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveFloorStubActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -979,6 +1012,27 @@
     </ClInclude>
     <ClInclude Include="LoadObjectParameter.h">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="DIActorContainer.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickInjection.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableStubActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorStubActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverStubActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="LeverStubReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Lever</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveFloorStubActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

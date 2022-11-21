@@ -43,6 +43,7 @@ void InputManager::ProcessInput() {
   jump_fire_ = IsKeyPush(MOFKEY_SPACE);
   place_beacon_fire_ = IsKeyPush(MOFKEY_Q);
   collect_beacon_fire_ = IsKeyPush(MOFKEY_E);
+  action_fire_ = IsKeyPush(MOFKEY_P);
   pause_fire_ = IsKeyPush(MOFKEY_ESCAPE);
   sneak_fire_ = IsKeyHold(MOFKEY_LSHIFT) || IsKeyHold(MOFKEY_RSHIFT);
   mouse_position_ = GetMousePos();

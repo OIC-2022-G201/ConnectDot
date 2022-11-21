@@ -36,6 +36,27 @@ struct GridPosition
       y = other.y;
       return *this;
   }
+  GridPosition& operator+=(const GridPosition& other) {
+    x += other.x;
+    y += other.y;
+    return *this;
+  }
+  GridPosition& operator-=(const GridPosition& other) {
+    x -= other.x;
+    y -= other.y;
+    return *this;
+  }
+
+  friend bool operator==(const GridPosition& lhs, const GridPosition& rhs)
+  {
+      return lhs.x == rhs.x
+          && lhs.y == rhs.y;
+  }
+
+  friend bool operator!=(const GridPosition& lhs, const GridPosition& rhs)
+  {
+      return !(lhs == rhs);
+  }
 
   static GridPosition VectorTo(base_engine::InVector2 pos)
   {
@@ -51,3 +72,13 @@ struct GridPosition
     return {x, y};
   }
 };
+
+inline GridPosition operator+(const GridPosition& lhs, const GridPosition& rhs)
+{
+  return GridPosition(lhs) += rhs;
+}
+
+inline GridPosition operator-(const GridPosition& lhs,
+                              const GridPosition& rhs) {
+  return GridPosition(lhs) -= rhs;
+}

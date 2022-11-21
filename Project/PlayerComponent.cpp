@@ -6,6 +6,7 @@
 #include "Actor.h"
 #include "CollisionComponent.h"
 #include "IShape.h"
+#include "LeverStubActor.h"
 #include "Player.h"
 #include "SendManifold.h"
 using namespace std::string_view_literals;
@@ -37,6 +38,14 @@ void PlayerComponent::Update() {
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   machine_.OnEvent(manifold.collision_b);
   auto const tag = manifold.collision_b->GetActor()->GetTag();
+  if (input_manager_->ActionFire())
+  {
+      if (const auto actionable = manifold.collision_b->GetActor()->GetComponent<IActionable>(); !actionable.expired())
+    {
+      actionable.lock()->Action();
+    }
+  }
+
   if (manifold.collision_b->GetActor()->GetTag() == "Field") {
     /*
     auto block_right = collision->AABB().Right;

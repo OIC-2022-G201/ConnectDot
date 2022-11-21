@@ -22,8 +22,6 @@ base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 bool Game::Initialize() {
   game_data_.Register();
-  ObjectLoader object_loader{this};
-  object_loader.Load("MapData/Stage1");
   BASE_ENGINE(Collider)->SetCallBack(this);
   auto camera = new Actor(this);
   new CameraComponent(camera);
@@ -38,7 +36,11 @@ bool Game::Initialize() {
   player->SetInput(input);
   player->SetCamera(camera);
 
+  ObjectLoader object_loader{this};
+  object_loader.Load("MapData/Stage1");
+
   b_collision = BASE_ENGINE(Collider);
+
   return true;
 }
 
@@ -81,9 +83,10 @@ void Game::RemoveSprite(RenderComponent* render_component) {
 
 void Game::CreateObjectRegister() {
   updating_actors_ = true;
-  for (auto& pending_actor : pending_actors_) {
-    pending_actor->StartActor();
-    actors_.emplace_back(pending_actor);
+
+  for (int i = 0; i < pending_actors_.size(); ++i) {
+    pending_actors_[i]-> StartActor();
+    actors_.emplace_back(pending_actors_[i]);
   }
   pending_actors_.clear();
 

@@ -17,24 +17,7 @@ class IActionable {
  public:
   virtual void Action() = 0;
 };
-class LeverStubComponent final : public base_engine::Component,
-                                 public IActionable {
- public:
-  explicit LeverStubComponent(base_engine::Actor* owner,
-                              const int update_order = 100)
-      : Component(owner, update_order) {}
 
-  void Action() override {
-    const auto receiver =
-        owner_->GetComponent<ReceiverComponent>().lock().get();
-    const auto sender =
-        owner_->GetComponent<TransmitterComponent>().lock().get();
-    sender->AddTarget(receiver);
-    
-  }
-
-
-};
 
 class LeverStubActor final : public base_engine::Actor {
  public:
@@ -50,4 +33,26 @@ class LeverStubActor final : public base_engine::Actor {
   bool electric_power_ = false;
   int sequential_ = 15;
   Actor* target_ = nullptr;
+};
+class LeverStubComponent final : public base_engine::Component,
+                                 public IActionable {
+ public:
+  explicit LeverStubComponent(base_engine::Actor* owner,
+                              const int update_order = 100)
+      : Component(owner, update_order) {}
+
+  void Action() override {
+      base_engine::Actor* target = nullptr;
+    if (auto lever = dynamic_cast<LeverStubActor*>(owner_); lever) {
+      if (!lever->GetElectric()) return;
+
+      target = lever->GetTarget();
+      const auto receiver =
+          target->GetComponent<ReceiverComponent>().lock().get();
+      const auto sender =
+          owner_->GetComponent<TransmitterComponent>().lock().get();
+      sender->AddTarget(receiver);
+    }
+
+  }
 };

@@ -21,7 +21,13 @@ void base_engine::PhysicsBodyComponent::OnCollision(
 
   const auto collision_depth = manifold.manifold;
   const auto target_body = target_collision->GetPhysicsBody();
-
+  if (target_collision->GetActor()->GetName() == "MoveFloor")
+  {
+    int n = 3;
+  }else
+  {
+    int n = 3;
+  }
   Solver(collision_depth, target_body);
   AddForce(-GetForce() * collision_depth.normal);
 }

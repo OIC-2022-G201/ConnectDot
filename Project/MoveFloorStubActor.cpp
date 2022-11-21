@@ -1,4 +1,4 @@
-﻿#include "LeverStubActor.h"
+﻿#include "MoveFloorStubActor.h"
 
 #include "BaseEngineCore.h"
 #include "Circle.h"
@@ -20,9 +20,7 @@
 using namespace base_engine;
 using namespace draw_order;
 
-LeverStubActor::LeverStubActor(base_engine::Game* game) : Actor(game) {}
-
-void LeverStubActor::Create(const LoadObject& object) {
+void MoveFloorStubActor::Create(const LoadObject& object) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
     const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y);
@@ -33,9 +31,9 @@ void LeverStubActor::Create(const LoadObject& object) {
 
     const auto collision = new CollisionComponent(this);
     collision->SetShape(rect);
-    collision->SetObjectFilter(kLeverObjectFilter);
-    collision->SetTargetFilter(kLeverTargetFilter);
-    collision->SetTrigger(true);
+    collision->SetObjectFilter(kMoveFloorObjectFilter);
+    collision->SetTargetFilter(kMoveFloorTargetFilter);
+    collision->SetTrigger(false);
   }
   {
     const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
@@ -43,18 +41,42 @@ void LeverStubActor::Create(const LoadObject& object) {
         std::get<LoadObject::TexturePath>(object.parameters[0]).value;
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
-  { auto lever = new LeverStubComponent(this); }
   {
-    const auto transmitter = new TransmitterComponent(this, 100);
-    transmitter->Create<LeverStubTransmitter>(this);
-
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<LeverStubReceiver>(this);
+    receiver->Create<MoveFloorStubReceiver>(this);
   }
   {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    from_position_ = {pos.x, pos.y};
+
+    auto to_pos = std::get<Point2I>(object.parameters[4]);
+    to_position_ = {to_pos.x, to_pos.y};
+    SetTag("Field");
   }
-  SetName("LeverStubActor");
+
+  SetName("MoveFloor");
+}
+
+void MoveFloorStubActor::MoveFloorStubReceiver::OnPowerEnter(
+    TransmitterComponent* transmitter) {
+  const auto grid = actor_->GetComponent<grid::GridSnapComponent>().lock();
+  const auto now_pos = grid->GetSnapGridPosition();
+  const auto from_pos = actor_->from_position_;
+  const auto to_pos = from_pos + actor_->to_position_;
+
+  const auto v = to_pos - from_pos;
+  const auto normal =
+      (abs(v.x) > abs(v.y) ? GridPosition{1, 0} : GridPosition{0, 1});
+
+  const auto move_pos =
+      actor_->is_front_ ? (now_pos + normal) : (now_pos - normal);
+  grid->SetSnapGridPosition(move_pos);
+
+  if (actor_->is_front_) {
+    if ((to_pos - move_pos) == GridPosition{0, 0}) actor_->is_front_ = false;
+  } else {
+    if ((from_pos - move_pos) == GridPosition{0, 0}) actor_->is_front_ = true;
+  }
 }
