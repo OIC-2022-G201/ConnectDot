@@ -56,7 +56,7 @@ class ReceiverComponent : public base_engine::Component {
  public:
   bool CanConnect() const { return receiver_->PowerJoinCondition(); }
   void Connecting(std::weak_ptr<class TransmitterComponent> sender_weak);
-
+  [[nodiscard]] int Sequential() const { return receiver_->Sequential(); }
   template <
       class T, class... Types,
       std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>

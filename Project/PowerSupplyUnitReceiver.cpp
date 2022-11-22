@@ -6,7 +6,7 @@
 #include "ReceiverComponent.h"
 #include "TransmitterComponent.h"
 
-int PowerSupplyUnitReceiver::Sequential() { return 1000; }
+int PowerSupplyUnitReceiver::Sequential() { return 100; }
 
 bool PowerSupplyUnitReceiver::PowerJoinCondition() { return true; }
 

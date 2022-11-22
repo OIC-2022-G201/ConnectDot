@@ -26,6 +26,7 @@ void BaseEngineCollision::Collide() {
   size_t body_size = body_list_.size();
 
   auto contact = world_->m_contactManager.m_contactList;
+  int n = 0;
   while (contact) {
     auto body_a = contact->GetFixtureA()->collision_;
     auto body_b = contact->GetFixtureB()->collision_;
