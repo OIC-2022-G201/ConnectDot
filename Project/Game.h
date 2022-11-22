@@ -33,6 +33,7 @@ class Game {
   void UpdateGame();
 
   std::vector<ActorPtr> actors_;
+  std::vector<ActorPtr> actors_next_frame_delete_;
   std::vector<class RenderComponent*> sprites_;
 
   bool updating_actors_;

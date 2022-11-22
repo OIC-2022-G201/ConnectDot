@@ -1,5 +1,6 @@
 ﻿#include "TransmitterComponent.h"
 
+#include "Game.h"
 #include "ReceiverComponent.h"
 #include "SendManifold.h"
 
@@ -23,6 +24,8 @@ void TransmitterComponent::Update() {
 
 void TransmitterComponent::OnCollision(
     const base_engine::SendManifold& manifold) {
+  auto id = manifold.collision_b->GetActor()->GetId();
+  if (owner_->GetGame()->GetActor(id).expired()) return;
   AddTarget(
       manifold.collision_b->GetActor()->GetComponent<ReceiverComponent>());
 }

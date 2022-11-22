@@ -1,6 +1,7 @@
 ﻿#include "PhysicsWorld.h"
 
 #include "PhysicsBody2D.h"
+#include "PhysicsContact.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 
@@ -33,6 +34,14 @@ PhysicsBody* PhysicsWorld::CreateBody(const BodyDef* def) {
 }
 
 void PhysicsWorld::DestroyBody(PhysicsBody* b) {
+  b2ContactEdge* ce = b->m_contactList;
+  while (ce) {
+    b2ContactEdge* ce0 = ce;
+    ce = ce->next;
+    m_contactManager.Destroy(ce0->contact);
+  }
+  b->m_contactList = nullptr;
+
   PhysicsFixture* f = b->m_fixtureList;
   while (f) {
     PhysicsFixture* f0 = f;

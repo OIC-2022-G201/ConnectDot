@@ -51,7 +51,10 @@ void Game::Update() {
   b_collision->Collide();
 }
 
-void Game::Shutdown() { actors_.clear(); }
+void Game::Shutdown() {
+  actors_.clear();
+  actors_next_frame_delete_.clear();
+}
 
 void Game::AddActor(Actor* actor) {
   actor_id_max_++;
@@ -72,6 +75,13 @@ ActorWeakPtr Game::GetActor(ActorId id) {
   if (const auto iter = std::ranges::find_if(
           actors_, [id](const ActorPtr& n) { return n->GetId() == id; });
       iter != actors_.end()) {
+    return *iter;
+  }
+
+  if (const auto iter = std::ranges::find_if(
+          pending_actors_,
+          [id](const ActorPtr& n) { return n->GetId() == id; });
+      iter != pending_actors_.end()) {
     return *iter;
   }
   return ActorPtr{};
@@ -96,6 +106,7 @@ void Game::RemoveSprite(RenderComponent* render_component) {
 
 void Game::CreateObjectRegister() {
   updating_actors_ = true;
+  actors_next_frame_delete_.clear();
 
   for (int i = 0; i < pending_actors_.size(); ++i) {
     pending_actors_[i]->StartActor();

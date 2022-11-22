@@ -5,9 +5,9 @@
 
 void ReceiverComponent::OnPowerEnter() {
   if (receiver_->IsWireless()) {
-    effect_->Play(sender_->GetPosition(), GetPosition());
+    effect_->Play(sender_.lock()->GetPosition(), GetPosition());
   }
-  receiver_->OnPowerEnter(sender_);
+  receiver_->OnPowerEnter(sender_.lock().get());
   current_state_ = PowerState::kConnecting;
 }
 
@@ -23,11 +23,11 @@ void ReceiverComponent::Start() {
 void ReceiverComponent::Connecting(
     const std::weak_ptr<TransmitterComponent> sender_weak) {
   if (sender_weak.expired()) return;
-  const auto sender = sender_weak.lock().get();
+  const auto sender = sender_weak.lock();
 
   if (sender->Sequential() >= receiver_->Sequential()) return;
-  if (sender_ != nullptr) {
-    if (sender_->Sequential() < sender->Sequential()) sender_ = sender;
+  if (!sender_.expired()) {
+    if (sender_.lock()->Sequential() < sender->Sequential()) sender_ = sender;
   } else {
     sender_ = sender;
   }

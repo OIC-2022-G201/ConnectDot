@@ -10,6 +10,10 @@ Actor::Actor(Game* game)
 
 Actor::~Actor() {
   game->RemoveActor(this);
+  for (const auto& component : components_) {
+    int count = component.use_count();
+    int n = 3;
+  }
   components_.clear();
 }
 

@@ -47,6 +47,7 @@ class CollisionComponent : public Component {
   void SetPhysicsBody(physics::PhysicsBody* physics_body) {
     physics_body_ = physics_body;
   }
+  physics::PhysicsBody* GetEnginePhysicsBody() const { return physics_body_; }
   void SyncPosition();
 
  private:

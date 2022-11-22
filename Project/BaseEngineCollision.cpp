@@ -94,6 +94,9 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
 void BaseEngineCollision::Remove(CollisionComponent* component) {
   body_list_.erase(std::ranges::remove(body_list_, component).begin(),
                    body_list_.end());
+
+  const auto body = component->GetEnginePhysicsBody();
+  world_->DestroyBody(body);
 }
 
 void BaseEngineCollision::SendComponentsMessage(Component* component,

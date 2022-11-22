@@ -138,7 +138,7 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
         std::get<LoadObject::Prefab>(object.parameters[4]).value.uuid;
 
     if (!instance->actor_map_.contains(key)) return;
-    auto actor = game->GetActor(instance->actor_map_[key]->GetId());
+    const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
     power_unit->SetTarget(actor);
   });
   return power_unit;
