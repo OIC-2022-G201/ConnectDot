@@ -55,9 +55,5 @@ void player::PlayerIdle::ProcessInput() {
 void player::PlayerIdle::End() {}
 
 void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {
-  if (player_->IsCollectBeaconKey()) {
-    if (collision->GetActor()->GetTag() == "Beacon") {
-      int n = 3;
-    }
-  }
+
 }

@@ -18,7 +18,6 @@ class SignboardReceiver : public IReceivablePower {
   bool PowerJoinCondition() override { return true; }
   void OnPowerEnter(TransmitterComponent* transmitter) override {
     display_->SetEnabled(true);
-    int n = 0;
   }
   void OnPowerChanged(TransmitterComponent* transmitter) override {}
   void OnPowerExit(TransmitterComponent* transmitter) override {
