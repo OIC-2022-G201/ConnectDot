@@ -51,7 +51,7 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     transmitter->Create<PowerSupplyUnitTransmitter>(this);
 
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<PowerSupplyUnitReceiver>(this, target_, transmitter);
+    receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
   }
 
   {

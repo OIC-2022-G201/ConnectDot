@@ -92,7 +92,7 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
 }
 
 void BaseEngineCollision::Remove(CollisionComponent* component) {
-  body_list_.erase(remove(body_list_.begin(), body_list_.end(), component),
+  body_list_.erase(std::ranges::remove(body_list_, component).begin(),
                    body_list_.end());
 }
 
@@ -110,7 +110,7 @@ void BaseEngineCollision::SetCallBack(Game* game) {
 }
 
 void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
-  return;
+
   auto p = fixture->GetBody()->GetPosition();
 
   switch (fixture->GetType()) {
@@ -118,7 +118,7 @@ void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
       auto ciercle = dynamic_cast<b2CircleShape*>(fixture->GetShape());
 
       CGraphicsUtilities::RenderCircle(
-          p.x + ciercle->m_p.x, p.y + ciercle->m_p.y,
+          p.x + ciercle->m_p.x, p.y + ciercle->m_p.y - 500,
           fixture->GetShape()->m_radius, MOF_COLOR_BLUE);
     } break;
     case b2Shape::Type::kEdge:
@@ -126,8 +126,8 @@ void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
     case b2Shape::Type::kPolygon: {
       auto polygon = dynamic_cast<b2PolygonShape*>(fixture->GetShape());
       CGraphicsUtilities::RenderRect(
-          p.x + polygon->m_vertices[0].x, p.y + polygon->m_vertices[0].y,
-          p.x + polygon->m_vertices[2].x, p.y + polygon->m_vertices[2].y,
+          p.x + polygon->m_vertices[0].x, p.y + polygon->m_vertices[0].y - 500,
+          p.x + polygon->m_vertices[2].x, p.y + polygon->m_vertices[2].y - 500,
           MOF_COLOR_BLUE);
       break;
     }

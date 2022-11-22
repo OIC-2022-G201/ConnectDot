@@ -48,7 +48,7 @@ class LeverStubComponent final : public base_engine::Component,
 
       target = lever->GetTarget();
       const auto receiver =
-          target->GetComponent<ReceiverComponent>().lock().get();
+          target->GetComponent<ReceiverComponent>();
       const auto sender =
           owner_->GetComponent<TransmitterComponent>().lock().get();
       sender->AddTarget(receiver);

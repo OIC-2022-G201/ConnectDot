@@ -11,15 +11,20 @@ void ReceiverComponent::OnPowerEnter() {
   current_state_ = PowerState::kConnecting;
 }
 
-ReceiverComponent::ReceiverComponent(base_engine::Actor* owner, int update_order): Component(owner, update_order)
-{}
+ReceiverComponent::ReceiverComponent(base_engine::Actor* owner,
+                                     int update_order)
+    : Component(owner, update_order) {}
 
 void ReceiverComponent::Start() {
   effect_ = new ElectricEffect(owner_->GetGame());
   effect_->SetReceiver(this);
 }
 
-void ReceiverComponent::Connecting(TransmitterComponent* sender) {
+void ReceiverComponent::Connecting(
+    const std::weak_ptr<TransmitterComponent> sender_weak) {
+  if (sender_weak.expired()) return;
+  const auto sender = sender_weak.lock().get();
+
   if (sender->Sequential() >= receiver_->Sequential()) return;
   if (sender_ != nullptr) {
     if (sender_->Sequential() < sender->Sequential()) sender_ = sender;

@@ -18,8 +18,7 @@
 #include "TransmitterComponent.h"
 using namespace electronics;
 using namespace beacon;
-BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game)
-{
+BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
@@ -33,6 +32,14 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game)
     collision->SetObjectFilter(kBeaconObjectFilter);
     collision->SetTargetFilter(kBeaconTargetFilter);
     collision->SetTrigger(true);
+    const auto cell = stage::kStageCellSize<base_engine::Floating>;
+    const auto rect =
+        std::make_shared<base_engine::Rect>(0, 0, cell.x, cell.y);
+    const auto beacon_body = new base_engine::CollisionComponent(this);
+    beacon_body->SetShape(rect);
+    beacon_body->SetObjectFilter(kBeaconObjectFilter);
+    beacon_body->SetTargetFilter(kPlayerObjectFilter);
+    beacon_body->SetTrigger(true);
   }
 
   {
@@ -63,9 +70,7 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game)
 
 BeaconActor::~BeaconActor() {}
 
-void BeaconActor::Start() {
-  
-}
+void BeaconActor::Start() {}
 
 void BeaconActor::Input() {}
 

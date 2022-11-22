@@ -1,8 +1,11 @@
 #include "PlayerIdle.h"
 
 #include "BeaconActor.h"
-#include "PlayerComponent.h"
+#include "CollisionLayer.h"
 #include "GridSnapComponent.h"
+#include "PhysicsFixture.h"
+#include "PhysicsWorldCallBack.h"
+#include "PlayerComponent.h"
 player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {}
 
 void player::PlayerIdle::Start() {
@@ -11,7 +14,19 @@ void player::PlayerIdle::Start() {
   is_move_ = false;
   is_sneak_ = false;
 }
-
+class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
+ public:
+  bool ReportFixture(base_engine::physics::PhysicsFixture* fixture) override {
+    const auto actor = fixture->collision_->GetActor();
+    
+    if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter
+         && actor->GetTag() == "Beacon") {
+      actor->GetGame()->RemoveActor(actor);
+      return true;
+    }
+    return true;
+  }
+};
 void player::PlayerIdle::Update() {
   if (player_->IsPlaceBeaconKey() && player_->GetBeacon() > 0) {
     player_->SetBeacon(player_->GetBeacon() - 1);
@@ -20,8 +35,14 @@ void player::PlayerIdle::Update() {
     auto pos = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
     pos.x += 1;
     pos.y += 1;
-      grid->SetSnapGridPosition(pos);
+    grid->SetSnapGridPosition(pos);
     beacon->SetSequential((player_->MaxBeacon() - player_->GetBeacon()) * 10);
+  }
+  if (player_->IsCollectBeaconKey()) {
+    auto pos = player_->GetOwner()->GetPosition();
+    BeaconQueryCallBack call_back;
+    BASE_ENGINE(Collider)->QueryAABB(
+        &call_back, {{pos.x, pos.y}, {pos.x + 128, pos.y + 256}});
   }
 }
 
@@ -32,3 +53,11 @@ void player::PlayerIdle::ProcessInput() {
 }
 
 void player::PlayerIdle::End() {}
+
+void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {
+  if (player_->IsCollectBeaconKey()) {
+    if (collision->GetActor()->GetTag() == "Beacon") {
+      int n = 3;
+    }
+  }
+}

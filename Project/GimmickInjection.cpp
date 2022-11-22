@@ -133,12 +133,13 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
   const auto power_unit = new PowerSupplyUnitActor(game);
   power_unit->Create(object);
 
-  instance->bind_event_.emplace_back([power_unit, object, instance]() {
+  instance->bind_event_.emplace_back([power_unit, object, instance, game]() {
     const auto& key =
         std::get<LoadObject::Prefab>(object.parameters[4]).value.uuid;
 
     if (!instance->actor_map_.contains(key)) return;
-    power_unit->SetTarget(instance->actor_map_[key]);
+    auto actor = game->GetActor(instance->actor_map_[key]->GetId());
+    power_unit->SetTarget(actor);
   });
   return power_unit;
 }

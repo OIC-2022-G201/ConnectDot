@@ -55,7 +55,7 @@ class ReceiverComponent : public base_engine::Component {
 
  public:
   bool CanConnect() const { return receiver_->PowerJoinCondition(); }
-  void Connecting(class TransmitterComponent* sender);
+  void Connecting(std::weak_ptr<class TransmitterComponent> sender_weak);
 
   template <
       class T, class... Types,

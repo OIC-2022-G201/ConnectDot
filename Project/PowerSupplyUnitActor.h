@@ -7,6 +7,7 @@
 
 #pragma once
 #include "Actor.h"
+#include "Game.h"
 #include "ReactiveProperty.h"
 
 struct LoadObject;
@@ -23,12 +24,16 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   }
   void SetSequential(const int sequential) { sequential_ = sequential; }
   int Sequential() const { return sequential_; }
-  void SetTarget(Actor* target) { target_ = target; }
-  Actor* GetTarget() { return target_; }
+  void SetTarget(const base_engine::ActorWeakPtr& target) { target_ = target; }
+  Actor* GetTarget() const
+  {
+    if (target_.expired()) return nullptr;
+      return target_.lock().get();
+  }
   void Create(const LoadObject& object);
 
  private:
   observable::ReactiveProperty<bool> electric_power_ = false;
   int sequential_ = 15;
-  Actor* target_ = nullptr;
+  base_engine::ActorWeakPtr target_;
 };

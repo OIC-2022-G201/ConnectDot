@@ -19,7 +19,7 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
   receiver_ = target_->GetComponent<ReceiverComponent>();
 
   actor_->SetElectricPower(true);
-  sender_->AddTarget(receiver_.lock().get());
+  sender_->AddTarget(receiver_);
   actor_->SetSequential(transmitter->Sequential() + 5);
 }
 
@@ -27,7 +27,7 @@ void PowerSupplyUnitReceiver::OnPowerChanged(
     TransmitterComponent* transmitter) {
   if (!target_) return;
 
-  sender_->AddTarget(receiver_.lock().get());
+  sender_->AddTarget(receiver_);
 }
 
 void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter) {
