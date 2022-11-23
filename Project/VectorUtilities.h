@@ -20,7 +20,9 @@ class VectorUtilities {
   static Floating Length(InVector2 a);
   static Vector2 Normalize(InVector2 a);
   static Vector2 TripleProduct(InVector2 a, InVector2 b, InVector2 c);
-
+  static Vector2 Abs(InVector2 a)
+  { return {std::abs(a.x), std::abs(a.y)};
+  }
   static float MagnitudeSquared(const Vector2& v);
 
   /**
