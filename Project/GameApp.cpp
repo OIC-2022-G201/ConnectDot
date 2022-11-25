@@ -49,6 +49,7 @@ MofBool CGameApp::Initialize(void) {
     frozen::BinaryInputArchive archive(stream);
     archive(t2);
   }
+  g_pGraphics->SetCullMode(CULLMODE_NONE);
   game_.Initialize();
   return TRUE;
 }

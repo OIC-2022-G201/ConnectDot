@@ -2,22 +2,21 @@
 
 #include "Player.h"
 #include "PlayerComponent.h"
-player::PlayerMove::PlayerMove(PlayerComponent* player)
-    : player_(player) {}
+player::PlayerMove::PlayerMove(PlayerComponent* player) : player_(player) {}
 
 void player::PlayerMove::Start() {
   body_ = player_->PhysicsBody();
   is_idle_ = false;
   is_jump_ = false;
   is_sneak_ = false;
-  if(player_->GetAnimator()->ChangeMotion("Move"))
-  {
-    int n = 3;
-  }
+  is_fall_ = false;
+  player_->GetAnimator()->ChangeMotion("Move");
+  player_->MovedLookAt();
 }
 
 void player::PlayerMove::Update() {
   if (body_->GetForce().x == 0.0f) is_idle_ = true;
+  if (body_->GetForce().y > 1) is_fall_ = true;
 }
 
 void player::PlayerMove::ProcessInput() {

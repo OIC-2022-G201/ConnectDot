@@ -1,51 +1,45 @@
-#include "PlayerJump.h"
+﻿#include "PlayerFall.h"
 
-#include <numbers>
-
-#include "CollisionComponent.h"
 #include "Player.h"
 #include "PlayerComponent.h"
 #include "PlayerStateConst.h"
 
 using namespace player::jump;
-player::PlayerJump::PlayerJump(PlayerComponent* player) : player_(player) {}
+player::PlayerFall::PlayerFall(PlayerComponent* player) : player_(player) {}
 
-void player::PlayerJump::Start() {
+void player::PlayerFall::Start() {
   body_ = player_->PhysicsBody();
   is_ground_ = false;
   is_sneak_ = false;
-  frame_ = 0;
-  body_->AddForce({0, -16});
-  player_->GetAnimator()->ChangeMotion("Jump");
 
+  // 加速度計算式で使用するがジャンプの中間時点から再生するため最大値を２で割る
+  frame_ = kMaxFrame / 2;
+  player_->GetAnimator()->ChangeMotion("Jump", false);
 }
 
-void player::PlayerJump::Update() {
+void player::PlayerFall::Update() {
   frame_++;
 
   if (frame_ > kMaxFrame) {
     frame_ = kMaxFrame;
   }
-  if (frame_>3)
-  {
-    is_ground_ = player_->IsGround();
-  }
   Acceleration();
   player_->MovedLookAt();
+  is_ground_ = player_->IsGround();
 }
 
-void player::PlayerJump::ProcessInput() {
+void player::PlayerFall::ProcessInput() {
   body_->SetForceX(player_->GetHorizontal() * kSpeed);
   if (player_->IsSneakKey()) is_sneak_ = true;
 }
 
-void player::PlayerJump::End() {}
+void player::PlayerFall::End() {}
 
-void player::PlayerJump::Acceleration() const {
+void player::PlayerFall::Acceleration() const {
   const float velocity =
       kJumpCoefficient<float> * sin(frame_ * jump::kTimeCoefficient<float>);
   if (frame_ == kMaxFrame) {
-    if (body_->GetForce().v < 3) return;
+    if (body_->GetForce().v < 15) return;
   }
   body_->AddForce({0, -kGravity - velocity});
 }

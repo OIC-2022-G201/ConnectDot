@@ -13,14 +13,17 @@
 #include "ISpriteAnimationComponent.h"
 #include "InputManager.h"
 #include "PhysicsBodyComponent.h"
+#include "PlayerFall.h"
 #include "PlayerIdle.h"
 #include "PlayerJump.h"
 #include "PlayerMove.h"
 #include "PlayerSneak.h"
+#include "PlayerSneakMove.h"
+#include "ReactiveProperty.h"
 #include "StateMachine.h"
 
 namespace player {
-
+enum class Dir { kLeft, kRight };
 class PlayerComponent final : public base_engine::Component {
   using Vector2 = Mof::CVector2;
 
@@ -62,6 +65,14 @@ class PlayerComponent final : public base_engine::Component {
   [[nodiscard]] int MaxBeacon() const;
   [[nodiscard]] int GetBeacon() const { return have_beacon_count_; }
   void SetBeacon(const int num) { have_beacon_count_ = num; }
+
+  void LookAtRight() { dir_ = Dir::kRight; }
+  void LookAtLeft() { dir_ = Dir::kLeft; }
+
+  void MovedLookAt();
+
+  bool IsGround() const { return is_ground_; }
+  void SetGround(const bool ground) { is_ground_ = ground; }
   [[nodiscard]] base_engine::Game* GetGame() const { return owner_->GetGame(); }
   [[nodiscard]] base_engine::Actor* GetOwner() const { return owner_; }
 
@@ -70,11 +81,20 @@ class PlayerComponent final : public base_engine::Component {
 
   const InputManager* input_manager_ = nullptr;
 
-  til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerJump> machine_ =
-      til::Machine{PlayerIdle{this}, PlayerMove{this}, PlayerSneak{this},
-                   PlayerJump{this}};
+  til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerSneakMove, PlayerJump,
+               PlayerFall>
+      machine_ = til::Machine{PlayerIdle{this},  PlayerMove{this},
+                              PlayerSneak{this}, PlayerSneakMove{this},
+                              PlayerJump{this},  PlayerFall{this}};
   std::weak_ptr<base_engine::CollisionComponent> collision_;
   std::weak_ptr<base_engine::PhysicsBodyComponent> physics_body_;
   std::weak_ptr<base_engine::ISpriteAnimationComponent> animator_;
+  std::weak_ptr<base_engine::SpriteComponent> sprite_;
+
+  observable::ReactiveProperty<Dir> dir_ = Dir::kRight;
+  bool is_ground_ = false;
+
+private:
+  void CheckGround();
 };
 }  // namespace player

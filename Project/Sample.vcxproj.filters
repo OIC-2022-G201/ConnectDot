@@ -576,6 +576,12 @@
     <ClCompile Include="MoveFloorStubActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerSneakMove.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFall.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1042,6 +1048,18 @@
     </ClInclude>
     <ClInclude Include="SpriteAnimationClipFrozen.h">
       <Filter>BaseEngine\Utilities\FrozenExtension\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumFlags.h">
+      <Filter>Utilities\Extensions\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSneakMove.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFall.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateConst.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
