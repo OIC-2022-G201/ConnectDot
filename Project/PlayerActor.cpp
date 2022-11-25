@@ -20,14 +20,15 @@ namespace player {
 PlayerActor::PlayerActor(base_engine::Game* game)
     : Actor(game), input_manager_(nullptr) {}
 
-PlayerActor::~PlayerActor() {}
+PlayerActor::~PlayerActor() = default;
+
 void PlayerActor::Start() {
   player_component_ = new PlayerComponent(this, 100);
 
   player_component_->SetInput(input_manager_);
-  SetPosition({300, window::kHeight - 730});
+  SetPosition({300, window::kHeight - 930});
   const auto collision = new CollisionComponent(this);
-  const auto shape_player = std::make_shared<Rect>(50, 0, 256 - 50, 256);
+  const auto shape_player = std::make_shared<Rect>(70, 70, 256 - 70, 256);
   collision->SetShape(shape_player);
   collision->SetObjectFilter(kPlayerObjectFilter);
   collision->SetTargetFilter(kPlayerTargetFilter);
@@ -50,11 +51,5 @@ void PlayerActor::SetInput(InputManager* input_manager) {
 }
 
 void PlayerActor::Input() {}
-void PlayerActor::Update() {
-  float bottom = window::kHeight - 230;
-  if (position_.y > bottom) {
-    // position_.y = bottom;
-  }
-  camera_->SetPosition(GetPosition());
-}
+void PlayerActor::Update() { camera_->SetPosition(GetPosition()); }
 }  // namespace player

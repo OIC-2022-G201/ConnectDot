@@ -10,6 +10,10 @@ void player::PlayerMove::Start() {
   is_idle_ = false;
   is_jump_ = false;
   is_sneak_ = false;
+  if(player_->GetAnimator()->ChangeMotion("Move"))
+  {
+    int n = 3;
+  }
 }
 
 void player::PlayerMove::Update() {

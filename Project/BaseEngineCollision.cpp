@@ -102,15 +102,18 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
       break;
     case ShapeType::kRect: {
       b2PolygonShape shape;
-      shape.SetAsBox(component->AABB().GetWidth(),
-                     component->AABB().GetHeight());
+      const auto rect = component->GetShape()->AABB();
+      shape.SetAsRect(rect.Left,rect.Top,rect.Right,rect.Bottom);
+
       fixture_def.shape = &shape;
       fixture_def.collision = component;
       body->CreateFixture(&fixture_def);
     } break;
     case ShapeType::kCircle: {
       physics::b2CircleShape shape;
-      shape.m_p = {64, 64};
+      const auto circle = static_cast<Circle*>(component->GetShape());
+      shape.m_p.x = circle->Position.x;
+      shape.m_p.y = circle->Position.y;
       shape.m_radius = static_cast<Circle*>(component->GetShape())->r;
 
       fixture_def.shape = &shape;
@@ -153,6 +156,7 @@ void BaseEngineCollision::SetCallBack(Game* game) {
 
 void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
   return;
+  
   auto p = fixture->GetBody()->GetPosition();
 
   switch (fixture->GetType()) {

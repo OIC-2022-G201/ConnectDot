@@ -44,6 +44,20 @@ class b2PolygonShape : public b2Shape {
     m_normals[3].Set(-1.0f, 0.0f);
     m_centroid.SetZero();
   }
+
+  void SetAsRect(const float left, const float top, const float right,
+                 const float bottom) {
+    m_count = 4;
+    m_vertices[0].Set(left, top);
+    m_vertices[1].Set(right, top);
+    m_vertices[2].Set(right, bottom);
+    m_vertices[3].Set(left, bottom);
+    m_normals[0].Set(0.0f, -1.0f);
+    m_normals[1].Set(1.0f, 0.0f);
+    m_normals[2].Set(0.0f, 1.0f);
+    m_normals[3].Set(-1.0f, 0.0f);
+    m_centroid.SetZero();
+  }
   /// @see b2Shape::TestPoint
   bool TestPoint(const b2Transform& transform, const PVec2& p) const override;
 
@@ -58,10 +72,7 @@ class b2PolygonShape : public b2Shape {
                    int32_t childIndex) const override;
 
   /// @see b2Shape::ComputeMass
-  void ComputeMass(PhysicsMassData* massData, float density) const override
-  {
-      
-  }
+  void ComputeMass(PhysicsMassData* massData, float density) const override {}
 
   /// Validate convexity. This is a very time consuming operation.
   /// @returns true if valid

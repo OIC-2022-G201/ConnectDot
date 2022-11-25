@@ -39,7 +39,7 @@ class MofSpriteAnimationComponent final : public Component,
 
  private:
   Mof::CSpriteMotionController motion_;
-  std::unordered_map<std::string_view, MofU32> motion_map_;
+  std::unordered_map<std::string, MofU32> motion_map_;
   SpriteComponent* sprite_ = nullptr;
 };
 }  // namespace base_engine

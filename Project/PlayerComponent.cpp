@@ -10,7 +10,7 @@
 #include "Player.h"
 #include "SendManifold.h"
 using namespace std::string_view_literals;
-
+using namespace base_engine;
 namespace player {
 
 PlayerComponent::PlayerComponent(base_engine::Actor* owner, int update_order)
@@ -25,8 +25,9 @@ void PlayerComponent::Start() {
                                           physics_body_.lock()->GetForce().x,
                                           physics_body_.lock()->GetForce().y);
   });
-  collision_ = owner_->GetComponent<base_engine::CollisionComponent>();
-  physics_body_ = owner_->GetComponent<base_engine::PhysicsBodyComponent>();
+  collision_ = owner_->GetComponent<CollisionComponent>();
+  physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
+  animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
   machine_.TransitionTo<PlayerIdle>();
 }
 
@@ -38,7 +39,6 @@ void PlayerComponent::Update() {
 
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   machine_.OnEvent(manifold.collision_b);
-  auto const tag = manifold.collision_b->GetActor()->GetTag();
   if (input_manager_->ActionFire())
   {
       if (const auto actionable = manifold.collision_b->GetActor()->GetComponent<IActionable>(); !actionable.expired())
@@ -46,30 +46,8 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
       actionable.lock()->Action();
     }
   }
-
-  if (manifold.collision_b->GetActor()->GetTag() == "Field") {
-    /*
-    auto block_right = collision->AABB().Right;
-    auto p_left = collision_->AABB().Left;
-    auto diffX = p_left - block_right;
-    auto block_top = collision->AABB().Top;
-    auto p_bottom = collision_->AABB().Bottom;
-    auto diffY = block_top - p_bottom;
-    if (diffY > 0 &&diffX <= 0)
-    {
-      SetVelocityX(0);
-      owner_->Translation({0, diffX });
-      collision_->Update();
-
-    }
-
-    if (diffY < 0)
-    {
-      SetVelocityY(0);
-      owner_->Translation({0, diffY});
-      collision_->Update();
-    }
-    */
-  }
 }
+
+int PlayerComponent::MaxBeacon() const
+{ return 90; }
 }  // namespace player

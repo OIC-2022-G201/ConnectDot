@@ -58,11 +58,11 @@ bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
 
 bool MofSpriteAnimationComponent::ChangeMotion(const std::string_view name,
                                                const bool is_same) {
-  return motion_.ChangeMotion(motion_map_[name], is_same);
+  return motion_.ChangeMotion(motion_map_[name.data()], is_same);
 }
 
 bool MofSpriteAnimationComponent::IsMotion(const std::string_view name) const {
-  const auto& v = motion_map_.find(name);
+  const auto& v = motion_map_.find(name.data());
   if (v == motion_map_.end()) {
     return false;
   }

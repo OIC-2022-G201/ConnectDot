@@ -13,6 +13,7 @@ void player::PlayerIdle::Start() {
   is_jump_ = false;
   is_move_ = false;
   is_sneak_ = false;
+  player_->GetAnimator()->ChangeMotion("Tati");
 }
 class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
  public:
