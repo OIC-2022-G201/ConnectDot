@@ -28,6 +28,7 @@ class MofSpriteAnimationComponent final : public Component,
   void SetSpriteComponent(SpriteComponent* component) override;
 
   bool Load(SpriteComponent* component, std::span<SpriteAnimationClip> clips) override;
+  bool Load(SpriteComponent* component, std::string_view file) override;
 
   bool ChangeMotion(const std::string_view name, const bool is_same) override;
 

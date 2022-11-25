@@ -1,6 +1,12 @@
 ﻿#include "MofSpriteAnimationComponent.h"
 
-Mof::SpriteAnimationCreate base_engine::MofSpriteAnimationComponent::Convert(
+#include <fstream>
+
+#include "BinaryArchive.h"
+#include "SpriteAnimationClipFrozen.h"
+#include "VectorFrozen.h"
+using namespace base_engine;
+Mof::SpriteAnimationCreate MofSpriteAnimationComponent::Convert(
     SpriteAnimationClip data) {
   Mof::SpriteAnimationCreate result{data.name.data(),
                                     data.offset_x,
@@ -17,17 +23,17 @@ Mof::SpriteAnimationCreate base_engine::MofSpriteAnimationComponent::Convert(
   return result;
 }
 
-base_engine::MofSpriteAnimationComponent::MofSpriteAnimationComponent(
-    Actor* owner, int update_order)
+MofSpriteAnimationComponent::MofSpriteAnimationComponent(Actor* owner,
+                                                         int update_order)
     : Component(owner, update_order) {}
 
-void base_engine::MofSpriteAnimationComponent::SetSpriteComponent(
+void MofSpriteAnimationComponent::SetSpriteComponent(
     SpriteComponent* component) {
   sprite_ = component;
 }
 
-bool base_engine::MofSpriteAnimationComponent::Load(
-    base_engine::SpriteComponent* component, std::span<SpriteAnimationClip> clips) {
+bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
+                                       std::span<SpriteAnimationClip> clips) {
   std::vector<Mof::SpriteAnimationCreate> pac(clips.size());
   for (MofU32 i = 0; i < clips.size(); i++) {
     pac[i] = Convert(clips[i]);
@@ -38,13 +44,24 @@ bool base_engine::MofSpriteAnimationComponent::Load(
   return motion_.Create(pac.data(), clips.size());
 }
 
-bool base_engine::MofSpriteAnimationComponent::ChangeMotion(
-    const std::string_view name, const bool is_same) {
+bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
+                                       const std::string_view file) {
+  std::vector<SpriteAnimationClip> sprite_animation_clips;
+
+  {
+    std::ifstream stream(file.data(), std::ios::binary);
+    frozen::BinaryInputArchive archive(stream);
+    archive(sprite_animation_clips);
+  }
+  return Load(component, sprite_animation_clips);
+}
+
+bool MofSpriteAnimationComponent::ChangeMotion(const std::string_view name,
+                                               const bool is_same) {
   return motion_.ChangeMotion(motion_map_[name], is_same);
 }
 
-bool base_engine::MofSpriteAnimationComponent::IsMotion(
-    const std::string_view name) const {
+bool MofSpriteAnimationComponent::IsMotion(const std::string_view name) const {
   const auto& v = motion_map_.find(name);
   if (v == motion_map_.end()) {
     return false;
@@ -53,11 +70,11 @@ bool base_engine::MofSpriteAnimationComponent::IsMotion(
   return motion_.GetMotionNo() == v->second;
 }
 
-bool base_engine::MofSpriteAnimationComponent::IsEndMotion() {
+bool MofSpriteAnimationComponent::IsEndMotion() {
   return motion_.IsEndMotion();
 }
 
-void base_engine::MofSpriteAnimationComponent::Update() {
+void MofSpriteAnimationComponent::Update() {
   motion_.AddTimer(animation_detail::kFrameTime);
   if (!sprite_) return;
   sprite_->SetClipRect(motion_.GetSrcRect());

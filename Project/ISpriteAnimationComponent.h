@@ -13,9 +13,9 @@
 namespace base_engine {
 
 struct AnimationPattern {
-  uint_fast32_t wait;
-  uint_fast32_t no;
-  uint_fast32_t step;
+  float wait;
+  int32_t no;
+  int32_t step;
 };
 struct SpriteAnimationClip {
   std::string name;
@@ -32,6 +32,7 @@ struct ISpriteAnimationComponent
     virtual ~ISpriteAnimationComponent() = default;
     void virtual SetSpriteComponent(class SpriteComponent* component) = 0;
     bool virtual Load(SpriteComponent* component, std::span<SpriteAnimationClip>) = 0;
+    bool virtual Load(SpriteComponent* component, std::string_view file) = 0;
     bool virtual ChangeMotion(const std::string_view name,
                               bool is_same = true) = 0;
     [[nodiscard]] bool virtual IsMotion(const std::string_view name) const = 0;

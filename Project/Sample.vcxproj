@@ -325,6 +325,7 @@
     <ClInclude Include="SignboardActor.h" />
     <ClInclude Include="SignboardReceiver.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteAnimationClipFrozen.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StageActor.h" />
     <ClInclude Include="StageConstitution.h" />
