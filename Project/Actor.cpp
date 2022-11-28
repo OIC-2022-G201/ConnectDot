@@ -9,7 +9,6 @@ Actor::Actor(Game* game)
 }
 
 Actor::~Actor() {
-  game->RemoveActor(this);
   components_.clear();
 }
 
