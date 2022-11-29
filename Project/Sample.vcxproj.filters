@@ -591,6 +591,9 @@
     <ClCompile Include="VentComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
     </ClCompile>
+    <ClCompile Include="VentReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1074,6 +1077,9 @@
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Interface</Filter>
     </ClInclude>
     <ClInclude Include="VentComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
+    </ClInclude>
+    <ClInclude Include="VentReceiver.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,11 +10,8 @@
 #include "Component.h"
 #include "IMachineActionable.h"
 #include "LoadObjectParameter.h"
-#include "ReactiveProperty.h"
 #include "ReceiverComponent.h"
 #include "TransmitterComponent.h"
-
-
 
 class LeverStubActor final : public base_engine::Actor {
  public:
@@ -26,9 +23,9 @@ class LeverStubActor final : public base_engine::Actor {
   [[nodiscard]] Actor* GetTarget() const { return target_; }
   void SetElectric(bool flg) { electric_power_ = flg; }
   bool GetElectric() const { return electric_power_; }
+
  private:
   bool electric_power_ = false;
-  int sequential_ = 15;
   Actor* target_ = nullptr;
 };
 class LeverStubComponent final : public base_engine::Component,
@@ -38,18 +35,15 @@ class LeverStubComponent final : public base_engine::Component,
                               const int update_order = 100)
       : Component(owner, update_order) {}
 
-  void Action() override {
-      base_engine::Actor* target = nullptr;
+  void Action(base_engine::Actor*) override {
+    base_engine::Actor* target = nullptr;
     if (auto lever = dynamic_cast<LeverStubActor*>(owner_); lever) {
       if (!lever->GetElectric()) return;
 
       target = lever->GetTarget();
-      const auto receiver =
-          target->GetComponent<ReceiverComponent>();
-      const auto sender =
-          owner_->GetComponent<TransmitterComponent>().lock().get();
+      const auto receiver = target->GetComponent<ReceiverComponent>();
+      const auto sender = owner_->GetComponent<TransmitterComponent>().lock();
       sender->AddTarget(receiver);
     }
-
   }
 };

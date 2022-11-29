@@ -6,7 +6,6 @@
 // @details
 
 #pragma once
+#include "Actor.h"
 __interface IMachineActionable
-{
-    void Action();
-};
+{ void Action(base_engine::Actor* actor); };

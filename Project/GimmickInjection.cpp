@@ -8,6 +8,7 @@
 #include "PowerSupplyUnitActor.h"
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
+#include "VentComponent.h"
 
 using namespace base_engine;
 using namespace std::string_view_literals;
@@ -42,6 +43,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 
   static Actor* SignboardCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
+  static Actor* VentCreate(GimmickCreator* instance, Game* game,
+                                const LoadObject& object);
 
   void Register(const std::string_view name, CreatorMethod create_method);
 
@@ -74,8 +77,8 @@ constexpr std::array kGimmickMethodTable = {
     },
     std::tuple{
         kVentName,                                 // Name
-        &SetupImpl::EmptyCreate,                   // CreateMethod
-        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+        &SetupImpl::VentCreate,                   // CreateMethod
+        &Gc::FactoryRegister<VentActor>  // FactoryRegister
     },
     std::tuple{
         kSignboardName,                       // Name
@@ -153,6 +156,14 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::SignboardCreate(
   return signboard;
 }
 
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::VentCreate(GimmickCreator* instance, Game* game,
+    const LoadObject& object) {
+  const auto signboard = new VentActor(game);
+  signboard->Create(object);
+
+  return signboard;
+}
+
 void GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::Register(
     const std::string_view name, CreatorMethod create_method) {
   DiActorContainer::Register(name, [this, create_method](auto p, auto a) {
@@ -183,7 +194,7 @@ template <class T>
 void GimmickCreator::FactoryRegister(GimmickCreator* creator,
                                      const std::string_view& key) {
   creator->create_map_[key] = [key, creator]<typename T0>(T0&& PH1) {
-    return DiActorContainer::Create<SignboardActor>(key, creator->game_,
+    return DiActorContainer::Create<T>(key, creator->game_,
                                                     std::forward<T0>(PH1));
   };
 }

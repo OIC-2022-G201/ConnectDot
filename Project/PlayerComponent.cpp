@@ -75,7 +75,7 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
     if (const auto actionable = manifold.collision_b->GetActor()
                                     ->GetComponent<IMachineActionable>();
         !actionable.expired()) {
-      actionable.lock()->Action();
+      actionable.lock()->Action(owner_);
     }
   }
 }

@@ -190,6 +190,7 @@
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorUtilities.cpp" />
     <ClCompile Include="VentComponent.cpp" />
+    <ClCompile Include="VentReceiver.cpp" />
     <ClCompile Include="WeakRefObject.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -353,6 +354,7 @@
     <ClInclude Include="VectorFrozen.h" />
     <ClInclude Include="VectorUtilities.h" />
     <ClInclude Include="VentComponent.h" />
+    <ClInclude Include="VentReceiver.h" />
     <ClInclude Include="WeakRefObject.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>
