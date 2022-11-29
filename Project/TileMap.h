@@ -16,6 +16,8 @@ class Layer {
   using Collection = std::vector<Row>;
 
  public:
+  using CellType = Cell;
+
   Layer() = default;
 
   Layer(const size_t x, const size_t y)

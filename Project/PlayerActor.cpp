@@ -27,6 +27,7 @@ void PlayerActor::Start() {
     player_component_ = new PlayerComponent(this, 100);
 
     player_component_->SetInput(input_manager_);
+    player_component_->SetMap(map_);
     SetPosition({300, window::kHeight - 930});
   }
   {

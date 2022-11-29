@@ -17,6 +17,7 @@
 #include "RenderComponent.h"
 #include "SignboardActor.h"
 #include "TexturePaths.h"
+#include "TileMapComponent.h"
 
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
@@ -27,6 +28,10 @@ bool Game::Initialize() {
   new CameraComponent(camera);
 
   auto stageActor = new DebugStage(this);
+  {
+    stageActor->SetName("Stage");
+    new tile_map::TileMapComponent(stageActor, 100);
+  }
 
   auto inputActor = new InputActor(this);
   auto input = new InputManager(inputActor);
@@ -35,6 +40,8 @@ bool Game::Initialize() {
   auto player = new player::PlayerActor(this);
   player->SetInput(input);
   player->SetCamera(camera);
+  auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
+  player->SetMap(tilemap);
 
   ObjectLoader object_loader{this};
   object_loader.Load("MapData/Stage1");

@@ -8,10 +8,10 @@
 #include "PlayerComponent.h"
 GridPosition g_position{0, 0};
 
-player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player)
-{
+player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {
   player_->GetGame()->debug_render_.emplace_back([] {
-    Mof::CGraphicsUtilities::RenderString(0, 600, "%d,%d", g_position.x,g_position.y);
+    Mof::CGraphicsUtilities::RenderString(0, 600, "%d,%d", g_position.x,
+                                          g_position.y);
   });
 }
 
@@ -26,27 +26,20 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
  public:
   bool ReportFixture(base_engine::physics::PhysicsFixture* fixture) override {
     const auto actor = fixture->collision_->GetActor();
-    
-    if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter
-         && actor->GetTag() == "Beacon") {
+
+    if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter &&
+        actor->GetTag() == "Beacon") {
       actor->GetGame()->RemoveActor(actor);
-      return true;
+      return false;
     }
     return true;
   }
 };
 void player::PlayerIdle::Update() {
   g_position = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
-  
+
   if (player_->IsPlaceBeaconKey() && player_->GetBeacon() > 0) {
-    player_->SetBeacon(player_->GetBeacon() - 1);
-    const auto beacon = new BeaconActor(player_->GetGame());
-    auto grid = beacon->GetComponent<grid::GridSnapComponent>().lock();
-    auto pos = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
-    pos.x += 1;
-    pos.y += 1;
-    grid->SetSnapGridPosition(pos);
-    beacon->SetSequential((player_->MaxBeacon() - player_->GetBeacon()) * 10);
+    PlaceBeacon();
   }
   if (player_->IsCollectBeaconKey()) {
     auto pos = player_->GetOwner()->GetPosition();
@@ -64,6 +57,16 @@ void player::PlayerIdle::ProcessInput() {
 
 void player::PlayerIdle::End() {}
 
-void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {
+void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {}
 
+void player::PlayerIdle::PlaceBeacon() const {
+  auto pos = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
+  pos.x += player_->IsRight() ? 1 :0 ;
+  pos.y += 1;
+  if (!player_->CanPlace(pos)) return;
+  player_->SetBeacon(player_->GetBeacon() - 1);
+  const auto beacon = new BeaconActor(player_->GetGame());
+  const auto grid = beacon->GetComponent<grid::GridSnapComponent>().lock();
+  grid->SetSnapGridPosition(pos);
+  beacon->SetSequential((player_->MaxBeacon() - player_->GetBeacon()) * 10);
 }

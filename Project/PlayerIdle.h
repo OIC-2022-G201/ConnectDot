@@ -37,6 +37,9 @@ class PlayerIdle {
       machine.template TransitionTo<PlayerMove>();
     }
   }
+
+private:
+  void PlaceBeacon() const;
 };
 
 }  // namespace player

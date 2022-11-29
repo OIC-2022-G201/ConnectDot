@@ -1,6 +1,7 @@
 #include "PlayerComponent.h"
 
 #include <Mof.h>
+
 #include <string_view>
 #include <type_traits>
 
@@ -13,6 +14,7 @@
 #include "PhysicsWorldCallBack.h"
 #include "Player.h"
 #include "SendManifold.h"
+#include "TileMapComponent.h"
 using namespace std::string_view_literals;
 using namespace base_engine;
 namespace player {
@@ -78,6 +80,14 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   }
 }
 
+bool PlayerComponent::CanPlace(const GridPosition& pos) const {
+  const auto map = map_.lock();
+  const bool space = map->GetCell(pos) == tile_map::kEmptyCell;
+  const bool ground =
+      map->GetCell(pos + GridPosition{0, 1}) != tile_map::kEmptyCell;
+  return space && ground;
+}
+
 int PlayerComponent::MaxBeacon() const { return 90; }
 
 void PlayerComponent::MovedLookAt() {
@@ -96,16 +106,13 @@ void PlayerComponent::CheckGround() {
   physics::PVec2 p2 = p1;
   p2.y += 2;
   BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
-  if (!callback.ground_fixture_)
-  {
+  if (!callback.ground_fixture_) {
     p1.x += 96;
     p2.x += 96;
     BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
-      
   }
   if (callback.ground_fixture_) {
-    if (g_pInput->IsKeyHold(MOFKEY_Q))
-    {
+    if (g_pInput->IsKeyHold(MOFKEY_Q)) {
       int n = 3;
     }
     SetGround(true);

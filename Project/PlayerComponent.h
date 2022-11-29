@@ -10,6 +10,7 @@
 
 #include "Component.h"
 #include "Game.h"
+#include "GridPosition.h"
 #include "ISpriteAnimationComponent.h"
 #include "InputManager.h"
 #include "PhysicsBodyComponent.h"
@@ -22,10 +23,16 @@
 #include "ReactiveProperty.h"
 #include "StateMachine.h"
 
+namespace tile_map {
+class TileMapComponent;
+}
+
 namespace player {
 enum class Dir { kLeft, kRight };
 class PlayerComponent final : public base_engine::Component {
   using Vector2 = Mof::CVector2;
+  using TileMapWeak =
+      base_engine::ComponentDerivedWeakPtr<tile_map::TileMapComponent>;
 
  public:
   PlayerComponent(base_engine::Actor* owner, int update_order);
@@ -37,7 +44,7 @@ class PlayerComponent final : public base_engine::Component {
   void SetInput(const InputManager* input_manager) {
     input_manager_ = input_manager;
   }
-
+  bool CanPlace(const GridPosition& pos) const;
   [[nodiscard]] bool IsJumpKey() const { return input_manager_->JumpFire(); }
   [[nodiscard]] float GetHorizontal() const {
     return input_manager_->MoveHorizontal();
@@ -68,7 +75,7 @@ class PlayerComponent final : public base_engine::Component {
 
   void LookAtRight() { dir_ = Dir::kRight; }
   void LookAtLeft() { dir_ = Dir::kLeft; }
-
+  bool IsRight() const { return static_cast<Dir>(dir_) == Dir::kRight; }
   void MovedLookAt();
 
   bool IsGround() const { return is_ground_; }
@@ -76,10 +83,13 @@ class PlayerComponent final : public base_engine::Component {
   [[nodiscard]] base_engine::Game* GetGame() const { return owner_->GetGame(); }
   [[nodiscard]] base_engine::Actor* GetOwner() const { return owner_; }
 
+  void SetMap(const TileMapWeak& map) { map_ = map; }
+
  private:
   int have_beacon_count_ = MaxBeacon();
 
   const InputManager* input_manager_ = nullptr;
+  TileMapWeak map_;
 
   til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerSneakMove, PlayerJump,
                PlayerFall>
@@ -94,7 +104,7 @@ class PlayerComponent final : public base_engine::Component {
   observable::ReactiveProperty<Dir> dir_ = Dir::kRight;
   bool is_ground_ = false;
 
-private:
+ private:
   void CheckGround();
 };
 }  // namespace player

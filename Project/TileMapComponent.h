@@ -11,6 +11,7 @@
 
 #include "BaseEngineCore.h"
 #include "Component.h"
+#include "GridPosition.h"
 #include "IBaseEngineRender.h"
 #include "IShape.h"
 #include "RenderComponent.h"
@@ -34,12 +35,19 @@ class TileMapComponent : public base_engine::Component {
  public:
   void Start() override;
   void Update() override;
-  
-  void Load(std::string_view path);
 
- public:
+  void Load(std::string_view path);
+  
   void CreateBody();
   TileMapComponent(base_engine::Actor* owner, int update_order);
+
+  [[nodiscard]] Layer::CellType GetCell(const GridPosition& pos) const {
+    return GetCell(pos.x, pos.y);
+  }
+
+  [[nodiscard]] Layer::CellType GetCell(const size_t x, const size_t y) const {
+    return map_.GetCell(x, y);
+  }
 
  private:
   int cell_width_ = 100;
@@ -51,6 +59,5 @@ class TileMapComponent : public base_engine::Component {
 
   Mof::LPTexture texture_ = nullptr;
   std::vector<Mof::Rectangle> s_rectangles_{};
-
 };
 }  // namespace tile_map
