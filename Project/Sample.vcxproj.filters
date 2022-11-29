@@ -280,6 +280,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor">
       <UniqueIdentifier>{518b6a67-e8ca-4df1-924b-03053ac54998}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Utilities\FrozenExtension">
+      <UniqueIdentifier>{6058f9b3-aceb-419d-b5d0-658b06bf326e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Utilities\FrozenExtension\Types">
+      <UniqueIdentifier>{51085b3b-a77c-44d1-bec0-ff845ed94745}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -569,6 +575,12 @@
     </ClCompile>
     <ClCompile Include="MoveFloorStubActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSneakMove.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerFall.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1007,9 +1019,6 @@
     <ClInclude Include="VariantFrozen.h">
       <Filter>Utilities\Frozen\Types</Filter>
     </ClInclude>
-    <ClInclude Include="Point2dFrozen.h">
-      <Filter>Utilities\Frozen\Types</Filter>
-    </ClInclude>
     <ClInclude Include="LoadObjectParameter.h">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClInclude>
@@ -1033,6 +1042,24 @@
     </ClInclude>
     <ClInclude Include="MoveFloorStubActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub\Movefloor</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2dFrozen.h">
+      <Filter>BaseEngine\Utilities\FrozenExtension\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnimationClipFrozen.h">
+      <Filter>BaseEngine\Utilities\FrozenExtension\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="EnumFlags.h">
+      <Filter>Utilities\Extensions\Enum</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSneakMove.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerFall.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateConst.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

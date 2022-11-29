@@ -1,15 +1,17 @@
-// @file PlayerJump.h
-// @brief ÉvÉåÉCÉÑÅ[ÉWÉÉÉìÉvÇÃÉXÉeÅ[Ég
+Ôªø// @PlayerFall.h
+// @brief
 // @author ICE
-// @date 2022/08/07
+// @date 2022/11/26
 //
 // @details
+
 #pragma once
-#include "CollisionComponent.h"
 #include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
+
 namespace player {
-class PlayerJump {
+
+class PlayerFall {
   int frame_ = 0;
   class PlayerComponent* player_;
   base_engine::PhysicsBodyComponent* body_ = nullptr;
@@ -17,7 +19,7 @@ class PlayerJump {
   bool is_sneak_ = false;
 
  public:
-  explicit PlayerJump(PlayerComponent* player);
+  explicit PlayerFall(PlayerComponent* player);;
   void Start();
 
   void Update();
@@ -31,12 +33,10 @@ class PlayerJump {
       machine.template TransitionTo<PlayerSneak>();
     } else if (is_ground_) {
       machine.template TransitionTo<PlayerIdle>();
-    } else if (frame_ > 30)
-      machine.template TransitionTo<PlayerFall>();
+    }
   }
-  
- private:
+
+private:
   void Acceleration() const;
 };
-
 }  // namespace player

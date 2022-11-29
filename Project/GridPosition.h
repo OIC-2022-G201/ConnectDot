@@ -60,8 +60,8 @@ struct GridPosition
 
   static GridPosition VectorTo(base_engine::InVector2 pos)
   {
-    int x = floor(pos.x / stage::kStageCellWidth<float>);
-    int y = floor(pos.y / stage::kStageCellHeight<float>);
+    int x = floor(pos.x / stage::kStageCellWidth<float> + 0.5f);
+    int y = floor(pos.y / stage::kStageCellHeight<float> + 0.5f);
 
     return {x,y};
   }

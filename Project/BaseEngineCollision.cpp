@@ -15,6 +15,13 @@
 
 using namespace base_engine::physics;
 namespace base_engine {
+
+struct Contact {
+  CollisionComponent* a;
+  CollisionComponent* b;
+  Manifold manifold;
+};
+
 BaseEngineCollision::~BaseEngineCollision() = default;
 
 BaseEngineCollision::BaseEngineCollision() {
@@ -24,19 +31,51 @@ BaseEngineCollision::BaseEngineCollision() {
 void BaseEngineCollision::Collide() {
   world_->Step(0.017f);
   size_t body_size = body_list_.size();
-
-  auto contact = world_->m_contactManager.m_contactList;
+  std::vector<SendManifold> contacts;
+  contacts.reserve(100);
   int n = 0;
-  while (contact) {
-    auto body_a = contact->GetFixtureA()->collision_;
-    auto body_b = contact->GetFixtureB()->collision_;
-    if (const auto manifold = body_a->Collision(body_b);
-        manifold.has_collision) {
-      body_a->CollisionSender(SendManifold{body_a, body_b, manifold});
-      body_b->CollisionSender(SendManifold{body_b, body_a, manifold});
+  {
+    auto contact = world_->m_contactManager.m_contactList;
+    while (contact) {
+      auto body_a = contact->GetFixtureA()->collision_;
+      auto body_b = contact->GetFixtureB()->collision_;
+      if (auto manifold = body_a->Collision(body_b); manifold.has_collision) {
+        if (!(body_a->GetTrigger() || body_b->GetTrigger())) {
+          auto p_a = body_a->GetPhysicsBody();
+          auto p_b = body_b->GetPhysicsBody();
+          if (p_a) p_a->Solver(manifold, p_b);
+          if (p_b) p_b->Solver(manifold, p_a);
+          body_a->SyncPosition();
+        }
+        contacts.emplace_back(body_a, body_b, manifold);
+      }
+      contact = contact->m_next;
+      n++;
     }
-    contact = contact->m_next;
-    n++;
+  }
+  for (int i = contacts.size() - 1; i >= 0; --i) {
+    auto& contact = contacts[i];
+    auto body_a = contact.collision_a;
+    auto body_b = contact.collision_b;
+    auto manifold = body_a->Collision(body_b);
+    if ( manifold.has_collision) {
+        if(!(body_a->GetTrigger() || body_b->GetTrigger()))
+        {
+            auto p_a = body_a->GetPhysicsBody();
+            auto p_b = body_b->GetPhysicsBody();
+            if (p_a) p_a->Solver(manifold, p_b);
+            if (p_b) p_b->Solver(manifold, p_a);
+            body_a->SyncPosition();
+        }
+      contact = {body_a, body_b, manifold};
+    }
+  }
+  for (const auto& contact : contacts) {
+    auto body_a = contact.collision_a;
+    auto body_b = contact.collision_b;
+
+    body_a->CollisionSender({body_a, body_b, contact.manifold});
+    body_b->CollisionSender({body_b, body_a, contact.manifold});
   }
   connectCount = n;
   for (int i = 0; i < body_size; ++i) {
@@ -63,15 +102,18 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
       break;
     case ShapeType::kRect: {
       b2PolygonShape shape;
-      shape.SetAsBox(component->AABB().GetWidth(),
-                     component->AABB().GetHeight());
+      const auto rect = component->GetShape()->AABB();
+      shape.SetAsRect(rect.Left,rect.Top,rect.Right,rect.Bottom);
+
       fixture_def.shape = &shape;
       fixture_def.collision = component;
       body->CreateFixture(&fixture_def);
     } break;
     case ShapeType::kCircle: {
       physics::b2CircleShape shape;
-      shape.m_p = {64, 64};
+      const auto circle = static_cast<Circle*>(component->GetShape());
+      shape.m_p.x = circle->Position.x;
+      shape.m_p.y = circle->Position.y;
       shape.m_radius = static_cast<Circle*>(component->GetShape())->r;
 
       fixture_def.shape = &shape;
@@ -113,8 +155,8 @@ void BaseEngineCollision::SetCallBack(Game* game) {
 }
 
 void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
-
-    return;
+  return;
+  
   auto p = fixture->GetBody()->GetPosition();
 
   switch (fixture->GetType()) {

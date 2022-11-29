@@ -29,7 +29,8 @@ class MinkowskiSum {
     Vector2 point2 = convex2.GetFarthestPoint(transform2,direction);
 
     // return the Minkowski sum point
-    return point1 - point2;
+    const auto result = point1 - point2;
+    return result;
   }
  private:
   const IShape& convex1;

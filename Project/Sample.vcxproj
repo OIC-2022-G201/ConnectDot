@@ -157,8 +157,10 @@
     <ClCompile Include="PlayerJump.cpp" />
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="PlayerComponent.cpp" />
+    <ClCompile Include="PlayerFall.cpp" />
     <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="PlayerSneak.cpp" />
+    <ClCompile Include="PlayerSneakMove.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PowerSupplyUnitActor.cpp" />
     <ClCompile Include="PowerSupplyUnitReceiver.cpp" />
@@ -217,6 +219,7 @@
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyPackage.h" />
     <ClInclude Include="EnumExtension.h" />
+    <ClInclude Include="EnumFlags.h" />
     <ClInclude Include="FrozenConcept.h" />
     <ClInclude Include="FrozenHelper.h" />
     <ClInclude Include="FrozenMacro.h" />
@@ -298,9 +301,12 @@
     <ClInclude Include="PlayerJump.h" />
     <ClInclude Include="PlayerActor.h" />
     <ClInclude Include="PlayerComponent.h" />
+    <ClInclude Include="PlayerFall.h" />
     <ClInclude Include="PlayerMove.h" />
     <ClInclude Include="PlayerSneak.h" />
+    <ClInclude Include="PlayerSneakMove.h" />
     <ClInclude Include="PlayerState.h" />
+    <ClInclude Include="PlayerStateConst.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Point2d.h" />
     <ClInclude Include="Point2dFrozen.h" />
@@ -325,6 +331,7 @@
     <ClInclude Include="SignboardActor.h" />
     <ClInclude Include="SignboardReceiver.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="SpriteAnimationClipFrozen.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StageActor.h" />
     <ClInclude Include="StageConstitution.h" />

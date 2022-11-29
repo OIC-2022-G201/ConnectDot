@@ -5,10 +5,19 @@
 #include <Math/MathCommon.h>
 
 #include "Actor.h"
+#include "EnumFlags.h"
 #include "RenderComponent.h"
 
 namespace base_engine {
 using COLOR = MofU32;
+enum class Flip : size_t{
+  kNone,
+  kHorizontal,
+  kVertical,
+  kHorizontalAndVertical,
+};
+ENUM_CLASS_FLAGS(Flip);
+
 class SpriteComponent : public RenderComponent {
  public:
   SpriteComponent(class Actor* owner, int draw_order = 100);
@@ -18,6 +27,7 @@ class SpriteComponent : public RenderComponent {
   void Draw() override;
   SpriteComponent& SetImage(Mof::LPTexture img);
   void SetClipRect(Mof::CRectangle rect) { clip_rect_ = rect; }
+  Mof::CRectangle GetClipRect() const { return clip_rect_; }
   SpriteComponent& SetColor(const COLOR& color) {
     color_ = color;
     return *this;
@@ -35,6 +45,11 @@ class SpriteComponent : public RenderComponent {
     alignment_ = alignment;
     return *this;
   }
+  SpriteComponent& SetFlip(Flip flip) {
+    flip_ = flip;
+    return *this;
+  }
+
   MofFloat GetAngle() const { return angle_; }
 
  private:
@@ -45,7 +60,7 @@ class SpriteComponent : public RenderComponent {
   MofFloat angle_ = 0;
   Mof::CRectangle clip_rect_{};
   Mof::TextureAlignment alignment_ = Mof::TextureAlignment::TEXALIGN_TOPLEFT;
-
+  Flip flip_ = Flip::kNone;
  public:
   void StartFlash(float time, const COLOR& color);
 

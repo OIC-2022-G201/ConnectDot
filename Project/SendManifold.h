@@ -10,15 +10,17 @@
 namespace base_engine {
 
 struct SendManifold {
-  SendManifold(class CollisionComponent* collision_a,
-               class CollisionComponent* collision_b,
-               const physics::Manifold& manifold)
+    SendManifold() = default;
+
+    SendManifold(class CollisionComponent* collision_a,
+                 class CollisionComponent* collision_b,
+                 const physics::Manifold& manifold)
       : collision_a(collision_a),
         collision_b(collision_b),
         manifold(manifold) {}
 
   CollisionComponent* collision_a;
   CollisionComponent* collision_b;
-  const physics::Manifold& manifold;
+  physics::Manifold manifold;
 };
 }  // namespace base_engine

@@ -1,7 +1,7 @@
-﻿// @file PlayerSneak.h
-// @brief 
+﻿// @PlayerSneakMove.h
+// @brief
 // @author ICE
-// @date 2022/08/07
+// @date 2022/11/26
 // 
 // @details
 
@@ -11,18 +11,23 @@
 #include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
 namespace player {
-class PlayerSneak {
+class PlayerSneakMove {
   using Vector2 = Mof::CVector2;
   class PlayerComponent* player_;
   base_engine::PhysicsBodyComponent* body_;
   bool is_jump_ = false;
   bool is_move_ = false;
-  bool is_idle_ = false; 
+  bool is_idle_ = false;
+
  public:
-  explicit PlayerSneak(PlayerComponent* player);
+  explicit PlayerSneakMove(PlayerComponent* player);
+
   void Start();
+
   void Update();
+
   void ProcessInput();
+
   void End();
 
   template <typename Machine>
@@ -33,8 +38,8 @@ class PlayerSneak {
     if (is_idle_) {
       machine.template TransitionTo<PlayerIdle>();
     }
-    if (is_move_) {
-      machine.template TransitionTo<PlayerSneakMove>();
+    if (!is_move_) {
+      machine.template TransitionTo<PlayerSneak>();
     }
   }
 };
