@@ -18,5 +18,3 @@ base_engine::Vector2 BeaconTransmitter::GetPosition() const
     return position_;
 }
 
-int BeaconTransmitter::Sequential()
-{ return actor_->Sequential(); }

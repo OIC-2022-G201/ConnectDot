@@ -24,7 +24,6 @@ class TransmitterComponent : public base_engine::Component {
   void Update() override;
 
   void OnCollision(const base_engine::SendManifold& manifold) override;
-  int Sequential() const { return transmitter_->Sequential(); }
 
  public:
   template <

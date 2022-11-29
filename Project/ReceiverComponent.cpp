@@ -25,9 +25,7 @@ void ReceiverComponent::Connecting(
   if (sender_weak.expired()) return;
   const auto sender = sender_weak.lock();
 
-  if (sender->Sequential() >= receiver_->Sequential()) return;
   if (!sender_.expired()) {
-    if (sender_.lock()->Sequential() < sender->Sequential()) sender_ = sender;
   } else {
     sender_ = sender;
   }

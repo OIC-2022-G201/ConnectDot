@@ -67,7 +67,18 @@ class ReceiverComponent : public base_engine::Component {
   [[nodiscard]] base_engine::Vector2 GetPosition() const {
     return owner_->GetPosition() + receiver_->GetPosition();
   }
-
+  bool IsConect()const
+  {
+    if (current_state_ != PowerState::kDisconnect)
+      return true;
+      return  false;
+  }
+  bool EqualSender(
+      std::weak_ptr<class TransmitterComponent> sender_weak)
+  const {
+    if (sender_.expired() || sender_weak.expired()) return false;
+    return sender_.lock().get() == sender_weak.lock().get();
+  }
  private:
   enum class PowerState {
     kDisconnect,    //接続が切れている

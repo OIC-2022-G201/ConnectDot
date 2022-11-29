@@ -22,7 +22,7 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
     if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter
          && actor->GetTag() == "Beacon") {
       actor->GetGame()->RemoveActor(actor);
-      return true;
+      return false;
     }
     return true;
   }

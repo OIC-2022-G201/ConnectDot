@@ -57,6 +57,3 @@ base_engine::Vector2 LeverStubTransmitter::GetPosition() const
 { return {};
 }
 
-int LeverStubTransmitter::Sequential()
-{ return 10;
-}

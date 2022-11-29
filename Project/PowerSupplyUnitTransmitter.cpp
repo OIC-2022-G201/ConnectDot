@@ -10,4 +10,3 @@ bool PowerSupplyUnitTransmitter::CanSending() {
   return static_cast<bool>(actor_->ElectricPowerTrigger());
 }
 
-int PowerSupplyUnitTransmitter::Sequential() { return actor_->Sequential(); }

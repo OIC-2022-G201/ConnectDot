@@ -21,7 +21,6 @@ class BeaconTransmitter : public ISendablePower {
   bool CanSending() override;
   [[nodiscard]] base_engine::Vector2 GetPosition() const override;
 
-  int Sequential() override;
 private:
   base_engine::Vector2 position_;
   ISendablePower* previous_ = nullptr;

@@ -18,20 +18,24 @@ void TransmitterComponent::Update() {
     int n = 3;
   }
 
-  if (false) {
-    erase_if(target_, [weak_ptr](const std::weak_ptr<ReceiverComponent>& a) {
-      return a.lock()->Sequential() < weak_ptr.lock()->Sequential();
-    });
-
-    const auto target = std::ranges::min_element(
-        target_, [](const std::weak_ptr<ReceiverComponent>& a,
-                    const std::weak_ptr<ReceiverComponent>& b) {
-          return a.lock()->Sequential() < b.lock()->Sequential();
-        });
-    if (target != target_.end()) {
-      target->lock()->Connecting(weak_ptr);
-    }
+    
+  std::erase_if(target_, [](const std::weak_ptr<ReceiverComponent>& a) {
+    return a.expired();
+  });
+  std::erase_if(target_, [&weak_ptr](const std::weak_ptr<ReceiverComponent>& a)
+  {
+    return a.lock()->IsConect() == true && !a.lock()->EqualSender(weak_ptr);
+  });
+  const auto target = std::ranges::min_element(
+      target_, [](const std::weak_ptr<ReceiverComponent>& a,
+                  const std::weak_ptr<ReceiverComponent>& b) {
+        return a.lock()->Sequential() < b.lock()->Sequential();
+      });
+  if (target != target_.end()) {
+    target->lock()->Connecting(weak_ptr);
   }
+  
+  
   for (const auto& target : target_) {
     if (target.expired()) continue;
 
