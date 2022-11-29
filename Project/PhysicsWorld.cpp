@@ -1,7 +1,9 @@
 ﻿#include "PhysicsWorld.h"
 
 #include "PhysicsBody2D.h"
+#include "PhysicsContact.h"
 #include "PhysicsFixture.h"
+#include "PhysicsWorldCallBack.h"
 
 namespace base_engine::physics {
 PhysicsWorld::PhysicsWorld(const PVec2& gravity) {
@@ -32,6 +34,14 @@ PhysicsBody* PhysicsWorld::CreateBody(const BodyDef* def) {
 }
 
 void PhysicsWorld::DestroyBody(PhysicsBody* b) {
+  b2ContactEdge* ce = b->m_contactList;
+  while (ce) {
+    b2ContactEdge* ce0 = ce;
+    ce = ce->next;
+    m_contactManager.Destroy(ce0->contact);
+  }
+  b->m_contactList = nullptr;
+
   PhysicsFixture* f = b->m_fixtureList;
   while (f) {
     PhysicsFixture* f0 = f;
@@ -71,9 +81,56 @@ void PhysicsWorld::Step(float timeStep) {
     m_contactManager.FindNewContacts();
     m_newContacts = false;
   }
-  {
-      m_contactManager.Collide();
+  { m_contactManager.Collide(); }
+}
+
+struct b2WorldQueryWrapper {
+  bool QueryCallback(int32 proxyId) {
+    auto proxy =
+        static_cast<PhysicsFixtureProxy*>(broadPhase->GetUserData(proxyId));
+    return callback->ReportFixture(proxy->fixture);
   }
+
+  const bp::BroadPhase* broadPhase;
+  PhysicsQueryCallback* callback;
+};
+
+void PhysicsWorld::QueryAABB(PhysicsQueryCallback* callback,
+                             const PhysicsAABB& aabb) const {
+  b2WorldQueryWrapper wrapper{&m_contactManager.m_broadPhase, callback};
+  wrapper.broadPhase = &m_contactManager.m_broadPhase;
+  wrapper.callback = callback;
+  m_contactManager.m_broadPhase.Query(&wrapper, aabb);
+}
+
+struct b2WorldRayCastWrapper {
+  [[nodiscard]] float RayCastCallback(const PhysicsRayCastInput& input,
+                                      const int32 proxyId) const {
+    void* userData = broadPhase->GetUserData(proxyId);
+    const auto proxy = static_cast<PhysicsFixtureProxy*>(userData);
+    PhysicsFixture* fixture = proxy->fixture;
+    const int32 index = proxy->childIndex;
+    PhysicsRayCastOutput output{};
+
+    if (fixture->RayCast(&output, input, index)) {
+      const float fraction = output.fraction;
+      const PVec2 point = (1.0f - fraction) * input.p1 + fraction * input.p2;
+      return callback->ReportFixture(fixture, point, output.normal, fraction);
+    }
+
+    return input.maxFraction;
+  }
+
+  const bp::BroadPhase* broadPhase;
+  PhysicsRayCastCallback* callback;
+};
+
+void PhysicsWorld::RayCast(PhysicsRayCastCallback* callback, const PVec2& point1,
+                           const PVec2& point2) const
+{
+  b2WorldRayCastWrapper wrapper{&m_contactManager.m_broadPhase, callback};
+  const PhysicsRayCastInput input{point1, point2,1.0f};
+  m_contactManager.m_broadPhase.RayCast(&wrapper, input);
 }
 
 PhysicsWorld::~PhysicsWorld() {

@@ -14,7 +14,7 @@ constexpr unsigned long long Shift(size_t val) { return 1ull << val; }
 class CollisionLayer final {
  public:
   // kBeaconTargetFilter = kSenderFilter
-  enum Layer {
+  enum Layer : unsigned long long{
     kNone = 0,
     kFieldFilter = 1 << 1,
     kPlayerFilter = 1 << 2,
@@ -24,10 +24,12 @@ class CollisionLayer final {
 
     kElectricityAreaFilter = 1 << 8,
 
+    kActionable = 1 << 7,
+
   };
 
  private:
-  using U = typename std::underlying_type<Layer>::type;
+  using U = std::underlying_type_t<Layer>;
 
  public:
   constexpr CollisionLayer(const U val) noexcept
@@ -39,11 +41,15 @@ class CollisionLayer final {
   Layer val_;
 };
 using BitCollisionLayer = std::bitset<base_engine::kCollisionFilterSize>;
+
+constexpr BitCollisionLayer kActionableMask{CollisionLayer::kActionable};
+
 constexpr BitCollisionLayer kFieldObjectFilter{CollisionLayer::kFieldFilter};
 constexpr BitCollisionLayer kFieldTargetFilter{CollisionLayer::kPlayerFilter};
 
 constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter};
-constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter};
+constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter |
+                                                CollisionLayer::kActionable};
 
 //! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{
@@ -66,3 +72,15 @@ constexpr BitCollisionLayer kPylonTargetFilter{CollisionLayer::kReceiverFilter};
 constexpr BitCollisionLayer kSignboardObjectFilter{CollisionLayer::kNone};
 
 constexpr BitCollisionLayer kSignboardTargetFilter{CollisionLayer::kNone};
+
+//! Lever
+constexpr BitCollisionLayer kLeverObjectFilter{CollisionLayer::kActionable};
+
+constexpr BitCollisionLayer kLeverTargetFilter{CollisionLayer::kNone};
+
+//! MoveFloor
+constexpr BitCollisionLayer kMoveFloorObjectFilter{
+    CollisionLayer::kFieldFilter};
+
+constexpr BitCollisionLayer kMoveFloorTargetFilter{
+    CollisionLayer::kPlayerFilter};

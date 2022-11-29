@@ -17,6 +17,8 @@ using AutoSnap = base_engine::YesNo<struct YNAutoSnap>;
 class GridSnapComponent final : public base_engine::Component {
  public:
   GridSnapComponent& SetSnapGridPosition(const GridPosition& position);
+  GridPosition GetSnapGridPosition() const;
+
   GridSnapComponent& SetAutoSnap(AutoSnap snap);
 
  public:

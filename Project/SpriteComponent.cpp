@@ -6,6 +6,7 @@
 #include "Game.h"
 #include "IBaseEngineRender.h"
 
+using namespace ee;
 namespace base_engine {
 SpriteComponent::SpriteComponent(Actor* owner, int draw_order)
     : RenderComponent(owner, draw_order),
@@ -13,20 +14,13 @@ SpriteComponent::SpriteComponent(Actor* owner, int draw_order)
       color_(MOF_XRGB(255, 255, 255)),
       mFlashTime(0.0f) {}
 
-SpriteComponent::~SpriteComponent()
-{ if (draw_order_==120)
-{
-    int n = 3;
-  }
-}
+SpriteComponent::~SpriteComponent() {}
 
 SpriteComponent& SpriteComponent::SetImage(Mof::LPTexture img) {
-
   texture_ = img;
-  if (clip_rect_ == Mof::CRectangle{})
-  {
-      clip_rect_ = Mof::CRectangle{0, 0, static_cast<float>(img->GetWidth()),
-                                   static_cast<float>(img->GetHeight())};
+  if (clip_rect_ == Mof::CRectangle{}) {
+    clip_rect_ = Mof::CRectangle{0, 0, static_cast<float>(img->GetWidth()),
+                                 static_cast<float>(img->GetHeight())};
   }
   return *this;
 }
@@ -42,11 +36,17 @@ void SpriteComponent::Draw() {
   Vector2 p = owner_->GetPosition() + offset_;
 
   float a = owner_->GetRotation();
-  float s = owner_->GetScale();
-  Mof::Vector3 pos = {p.x, p.y, 0};
+  const float s = owner_->GetScale();
+  const Mof::Vector3 pos = {p.x, p.y, 0};
   sprite_.m_Position = pos;
-  BASE_ENGINE(Render)->AddTexture(texture_, p, {s,s}, angle_, clip_rect_, color_,
+  auto rect = clip_rect_;
+  if (ee::has<Flip::kHorizontal>(flip_)) {
+    std::swap(rect.Right, rect.Left);
+  }
+  if (ee::has<Flip::kVertical>(flip_)) {
+    std::swap(rect.Top, rect.Bottom);
+  }
+  BASE_ENGINE(Render)->AddTexture(texture_, p, {s, s}, angle_, rect, color_,
                                   alignment_);
-
 }
 }  // namespace base_engine

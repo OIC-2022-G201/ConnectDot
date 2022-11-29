@@ -2,3 +2,4 @@
 // 関数およびマクロの名前などです。
 // 詳細については次を参照してください https://go.microsoft.com/fwlink/?linkid=865984
 #define CONST_SET_SINGLE_LAYER(layer_name, val) constexpr size_t layer_name##Number = val; constexpr CollisionLayer layer_name{detail::Shift(kPlayerFilterNumber)};
+#define BASE_ENGINE(COMPONENT) base_engine::BaseEngineCore::Get<base_engine::IBaseEngine##COMPONENT>()

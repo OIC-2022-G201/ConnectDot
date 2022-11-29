@@ -19,6 +19,8 @@ class PlayerMove {
   bool is_idle_ = false;
   bool is_sneak_ = false;
   bool is_jump_ = false;
+  bool is_fall_ = false;
+
  public:
   explicit PlayerMove(PlayerComponent* player);
   void Start();
@@ -31,8 +33,13 @@ class PlayerMove {
 };
 template <typename Machine>
 void player::PlayerMove::Transition(Machine& machine) const {
-  if (is_idle_) machine.template TransitionTo<PlayerIdle>();
-  if (is_sneak_) machine.template TransitionTo<PlayerSneak>();
-  if (is_jump_) machine.template TransitionTo<PlayerJump>();
+  if (is_idle_)
+    machine.template TransitionTo<PlayerIdle>();
+  else if (is_sneak_)
+    machine.template TransitionTo<PlayerSneak>();
+  else if (is_jump_)
+    machine.template TransitionTo<PlayerJump>();
+  else if (is_fall_)
+    machine.template TransitionTo<PlayerFall>();
 }
 }  // namespace player

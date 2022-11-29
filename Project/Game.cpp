@@ -10,12 +10,14 @@
 #include "EnemyActor.h"
 #include "InputComponent.h"
 #include "InputManager.h"
+#include "ObjectLoader.h"
 #include "PlayerActor.h"
 #include "PowerSupplyUnitActor.h"
 #include "PylonActor.h"
 #include "RenderComponent.h"
 #include "SignboardActor.h"
 #include "TexturePaths.h"
+#include "TileMapComponent.h"
 
 base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
@@ -26,48 +28,26 @@ bool Game::Initialize() {
   new CameraComponent(camera);
 
   auto stageActor = new DebugStage(this);
+  {
+    stageActor->SetName("Stage");
+    new tile_map::TileMapComponent(stageActor, 100);
+  }
 
   auto inputActor = new InputActor(this);
   auto input = new InputManager(inputActor);
 
   auto pylon = new PylonActor(this);
-  auto signboard = new SignboardActor(this);
-  auto power_unit = new PowerSupplyUnitActor(this);
   auto player = new player::PlayerActor(this);
-  auto enemy = new EnemyActor(this);
-  auto button = new Button(this);
-
   player->SetInput(input);
   player->SetCamera(camera);
-  power_unit->SetTarget(signboard);
+  auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
+  player->SetMap(tilemap);
 
-  auto restart = new Button(this);
-  restart->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kRestartButtonTextureKey));
-  restart->SetChangeButtonSprite(BASE_ENGINE(Texture)->Get(texture::kChangeRestartButtonTextureKey));
-  restart->SetPosition({100,100});
+  ObjectLoader object_loader{this};
+  object_loader.Load("MapData/Stage1");
 
-  auto resume = new Button(this);
-  resume->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kResumeButtonTextureKey));
-  resume->SetChangeButtonSprite(BASE_ENGINE(Texture)->Get(texture::kChangeResumeButtonTextureKey));
-  resume->SetPosition({ 100,150 });
-
-  auto resume2 = new Button(this);
-  resume2->SetButtonSprite(BASE_ENGINE(Texture)->Get(texture::kResumeButtonTextureKey));
-  resume2->SetChangeButtonSprite(BASE_ENGINE(Texture)->Get(texture::kChangeResumeButtonTextureKey));
-  resume2->SetPosition({ 100,200 });
-  resume2->SetEvent([this]()
-      {
-          auto test = new Actor(this);
-          auto p = new base_engine::ImageComponent(test);
-          p->SetImage(BASE_ENGINE(Texture)->Get("ice.png"));
-      });
-
-  auto button_selecter = new ButtonSelecter(this);
-  button_selecter->SetInput(input);
-  button_selecter->ButtonRegister(0, 0, restart);
-  button_selecter->ButtonRegister(0, 1, resume);
-  button_selecter->ButtonRegister(0, 2, resume2);
   b_collision = BASE_ENGINE(Collider);
+
   return true;
 }
 
@@ -78,9 +58,16 @@ void Game::Update() {
   b_collision->Collide();
 }
 
-void Game::Shutdown() { actors_.clear(); }
+void Game::Shutdown() {
+  actors_.clear();
+  actors_next_frame_delete_.clear();
+}
 
-void Game::AddActor(Actor* actor) { pending_actors_.emplace_back(actor); }
+void Game::AddActor(Actor* actor) {
+  actor_id_max_++;
+  actor->id_.id = actor_id_max_;
+  pending_actors_.emplace_back(actor);
+}
 
 void Game::RemoveActor(Actor* actor) {
   if (const auto iter = std::ranges::find_if(
@@ -89,6 +76,22 @@ void Game::RemoveActor(Actor* actor) {
     std::iter_swap(iter, actors_.end() - 1);
     actors_.pop_back();
   }
+}
+
+ActorWeakPtr Game::GetActor(ActorId id) {
+  if (const auto iter = std::ranges::find_if(
+          actors_, [id](const ActorPtr& n) { return n->GetId() == id; });
+      iter != actors_.end()) {
+    return *iter;
+  }
+
+  if (const auto iter = std::ranges::find_if(
+          pending_actors_,
+          [id](const ActorPtr& n) { return n->GetId() == id; });
+      iter != pending_actors_.end()) {
+    return *iter;
+  }
+  return ActorPtr{};
 }
 
 void Game::AddSprite(RenderComponent* render_component) {
@@ -110,9 +113,11 @@ void Game::RemoveSprite(RenderComponent* render_component) {
 
 void Game::CreateObjectRegister() {
   updating_actors_ = true;
-  for (auto& pending_actor : pending_actors_) {
-    pending_actor->StartActor();
-    actors_.emplace_back(pending_actor);
+  actors_next_frame_delete_.clear();
+
+  for (int i = 0; i < pending_actors_.size(); ++i) {
+    pending_actors_[i]->StartActor();
+    actors_.emplace_back(pending_actors_[i]);
   }
   pending_actors_.clear();
 

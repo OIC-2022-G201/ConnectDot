@@ -8,8 +8,8 @@
 namespace base_engine {
 class TextureMof final : public IBaseEngineTexture {
   size_t count;
-  std::unordered_map<size_t, Mof::LPTexture> m_textures;
-
+  std::unordered_map<size_t, Mof::LPTexture> textures_;
+  Mof::CTexture none_texture_;
  public:
   TextureMof();
   ~TextureMof() override;

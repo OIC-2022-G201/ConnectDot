@@ -14,6 +14,7 @@ namespace draw_order {
 constexpr int kElectromagneticAreaDrawOrder = 110;
 constexpr int kEnhancementElectromagneticAreaDrawOrder = 110;
 
+constexpr int kStageOrder = 120;
 constexpr int kPylonDrawOrder = 120;
 constexpr int kPowerSupplyUnitDrawOrder = 120;
 constexpr int kBeaconDrawOrder = 120;

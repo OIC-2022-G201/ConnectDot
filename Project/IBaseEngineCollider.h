@@ -1,14 +1,21 @@
 #pragma once
 #include <vector>
 
-namespace base_engine
-{
-    class Game;
+#include "PhysicsVector2.h"
 
+namespace base_engine {
+namespace physics {
+class PhysicsRayCastCallback;
+struct PhysicsAABB;
+class PhysicsQueryCallback;
+}  // namespace physics
 
-    class IBaseEngineCollider {
-protected:
+class Game;
+
+class IBaseEngineCollider {
+ protected:
   std::vector<class CollisionComponent*> body_list_;
+
  public:
   static IBaseEngineCollider* Create();
   virtual ~IBaseEngineCollider();
@@ -18,7 +25,11 @@ protected:
   virtual void SendComponentsMessage(class Component* component,
                                      const class SendManifold& manifold);
 
-    virtual void SetCallBack(Game* game){}
+  virtual void SetCallBack(Game* game) {}
+
+  virtual void QueryAABB(physics::PhysicsQueryCallback* callback,
+                         const physics::PhysicsAABB& aabb) = 0;
+  virtual void RayCast(physics::PhysicsRayCastCallback* callback,
+               const physics::PVec2& point1, const physics::PVec2& point2) const = 0;
 };
-}
-;
+}  // namespace base_engine

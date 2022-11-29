@@ -10,5 +10,5 @@ Component::Component(Actor* owner, int updateOrder)
   owner_->AddComponent(this);
 }
 
-Component::~Component() { owner_->RemoveComponent(this); }
+Component::~Component() {  }
 }  // namespace base_engine

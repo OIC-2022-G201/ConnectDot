@@ -28,6 +28,7 @@ class MofSpriteAnimationComponent final : public Component,
   void SetSpriteComponent(SpriteComponent* component) override;
 
   bool Load(SpriteComponent* component, std::span<SpriteAnimationClip> clips) override;
+  bool Load(SpriteComponent* component, std::string_view file) override;
 
   bool ChangeMotion(const std::string_view name, const bool is_same) override;
 
@@ -38,7 +39,7 @@ class MofSpriteAnimationComponent final : public Component,
 
  private:
   Mof::CSpriteMotionController motion_;
-  std::unordered_map<std::string_view, MofU32> motion_map_;
+  std::unordered_map<std::string, MofU32> motion_map_;
   SpriteComponent* sprite_ = nullptr;
 };
 }  // namespace base_engine

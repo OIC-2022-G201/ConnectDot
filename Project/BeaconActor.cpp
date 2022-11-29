@@ -1,5 +1,6 @@
 #include "BeaconActor.h"
 
+#include "BaseEngineCore.h"
 #include "BeaconReceiver.h"
 #include "BeaconTransmitter.h"
 #include "Circle.h"
@@ -8,18 +9,16 @@
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
+#include "IBaseEngineTexture.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
+#include "TexturePaths.h"
 #include "TransmitterComponent.h"
 using namespace electronics;
 using namespace beacon;
-BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {}
-
-BeaconActor::~BeaconActor() {}
-
-void BeaconActor::Start() {
+BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
@@ -33,20 +32,22 @@ void BeaconActor::Start() {
     collision->SetObjectFilter(kBeaconObjectFilter);
     collision->SetTargetFilter(kBeaconTargetFilter);
     collision->SetTrigger(true);
+    const auto cell = stage::kStageCellSize<base_engine::Floating>;
+    const auto rect =
+        std::make_shared<base_engine::Rect>(0, 0, cell.x, cell.y);
+    const auto beacon_body = new base_engine::CollisionComponent(this);
+    beacon_body->SetShape(rect);
+    beacon_body->SetObjectFilter(kBeaconObjectFilter);
+    beacon_body->SetTargetFilter(kPlayerObjectFilter);
+    beacon_body->SetTrigger(true);
   }
 
   {
-    const auto rect = std::make_shared<base_engine::Rect>(
-        0, 0, stage::kStageCellSize<base_engine::Floating>.x,
-        stage::kStageCellSize<base_engine::Floating>.y);
-
-    const auto shape_rect = new base_engine::ShapeRenderComponent(
-        this, draw_order::kPylonDrawOrder);
-    shape_rect->SetShape(rect);
-    shape_rect->SetFillMode(base_engine::FillMode::Yes)
-        .SetColor(MOF_ARGB(255, 0, 0, 255));
+    const auto sign = new base_engine::SpriteComponent(this, 130);
+    sign->SetImage(BASE_ENGINE(Texture)->Get(texture::kBeaconTextureKey));
   }
   SetName("Beacon");
+  SetTag("Beacon");
 
   {
     const auto transmitter = new TransmitterComponent(this, 100);
@@ -66,6 +67,10 @@ void BeaconActor::Start() {
         MOF_ARGB(255 - 128, 0, 255, 0));
   });
 }
+
+BeaconActor::~BeaconActor() {}
+
+void BeaconActor::Start() {}
 
 void BeaconActor::Input() {}
 

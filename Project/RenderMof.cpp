@@ -12,8 +12,8 @@ void RenderMof::AddTexture(const ITexturePtr texture, const Vector& position,
                            const Color& color,
                            Mof::TextureAlignment alignment) {
   CGraphicsUtilities::RenderScaleRotateTexture(
-      position.x + camera_center_position_.x,
-      position.y + camera_center_position_.y, scale.x, scale.y, angle, uv,
+      roundf(position.x + camera_center_position_.x),
+      roundf(position.y + camera_center_position_.y), scale.x, scale.y, angle, uv,
       color, alignment, texture);
 }
 

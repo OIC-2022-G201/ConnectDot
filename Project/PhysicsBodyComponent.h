@@ -43,14 +43,13 @@ class PhysicsBodyComponent final : public Component {
   void SetForce(InVector2 force) { liner_velocity_ = force; }
   void SetForceX(Floating force) { liner_velocity_.x = force; }
   void SetForceY(Floating force) { liner_velocity_.y = force; }
-  Vector2 GetForce() { return liner_velocity_; }
+  Vector2 GetForce() const { return liner_velocity_; }
   void Update() override
   {
       owner_->Translation(liner_velocity_);
   }
   physics::BodyMotionType GetType() const { return motion_type_; }
-
- private:
-  void Solver(const physics::Manifold& manifold, const PhysicsBodyComponent* target_body) const;
+  
+  void Solver(physics::Manifold& manifold, const PhysicsBodyComponent* target_body);
 };
 }  // namespace base_engine

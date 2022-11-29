@@ -7,22 +7,23 @@
 #include "Component.h"
 #include "ComponentParameter.h"
 #include "PhysicsBody2D.h"
-#include "SendManifold.h"
 #include "Rect.h"
+#include "SendManifold.h"
 
 namespace base_engine {
-    namespace physics
-    {
-        class PhysicsBody;
-    }
+namespace physics {
+class PhysicsBody;
+}
 
-    constexpr size_t kCollisionFilterSize = 32;
+constexpr size_t kCollisionFilterSize = 32;
 constexpr std::bitset<kCollisionFilterSize> kCollisionFilterAllMask(
     (1ull << kCollisionFilterSize) - 1);
 class CollisionComponent : public Component {
  public:
   CollisionComponent(class Actor* owner,
                      int update_order = kCollisionUpdateOrder);
+  ~CollisionComponent() override;
+
   [[nodiscard]] IShape* GetShape() const;
   void SetShape(const std::shared_ptr<IShape>& shape);
   physics::Manifold Collision(const CollisionComponent* target) const;
@@ -36,22 +37,20 @@ class CollisionComponent : public Component {
   bool GetTrigger() const { return is_trigger_; }
   bool IsMatch(CollisionComponent* target) const;
   void CollisionSender(const SendManifold& manifold);
-  ~CollisionComponent() override;
   void Update() override;
   [[nodiscard]] Actor* GetActor() const { return owner_; }
-  Mof::CRectangle AABB() const
-  {
-      return GetShape()->AABB() + GetPosition();
-  }
+  Mof::CRectangle AABB() const { return GetShape()->AABB() + GetPosition(); }
   void Start() override;
 
   [[nodiscard]] class PhysicsBodyComponent* GetPhysicsBody();
   void SetPhysicsBody(class PhysicsBodyComponent* body) { body_ = body; }
   void SetPhysicsBody(physics::PhysicsBody* physics_body) {
-      physics_body_ = physics_body;
+    physics_body_ = physics_body;
   }
+  physics::PhysicsBody* GetEnginePhysicsBody() const { return physics_body_; }
   void SyncPosition();
-private:
+
+ private:
   std::shared_ptr<class IShape> shape_;
   std::bitset<kCollisionFilterSize> target_layer_;
   std::bitset<kCollisionFilterSize> object_layer_;

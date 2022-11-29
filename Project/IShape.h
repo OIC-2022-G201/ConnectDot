@@ -3,6 +3,7 @@
 #include <Math/Vector2.h>
 
 #include "Vector.h"
+#include "VectorUtilities.h"
 
 namespace base_engine {
 class Circle;
@@ -12,14 +13,14 @@ class Point;
 enum class ShapeType { kNone, kRect, kCircle, kPoint,kTileMap };
 class IShape {
  protected:
-  Vector2 FindFurthestPoint(const std::vector<Vector2>& vertices,
-                            Vector2 direction) const {
+    static Vector2 FindFurthestPoint(const std::vector<Vector2>& vertices,
+                                     const Vector2& direction)
+    {
     Vector2 maxPoint;
     float maxDistance = -FLT_MAX;
 
-    for (Vector2 vertex : vertices) {
-      float distance = vertex.x * direction.x + vertex.y * direction.y;
-      if (distance > maxDistance) {
+    for (const Vector2& vertex : vertices) {
+        if (const float distance = VectorUtilities::Dot(vertex, direction); distance > maxDistance) {
         maxDistance = distance;
         maxPoint = vertex;
       }
