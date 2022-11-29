@@ -11,9 +11,11 @@
 #include "GameApp.h"
 
 #include <array>
+#include <fstream>
 
-#include "BinaryArchive.h"
+
 #include "TileMap.h"
+#include "BinaryArchive.h"
 #include "VectorFrozen.h"
 #include "StringFrozen.h"
 struct Test {
@@ -22,6 +24,29 @@ struct Test {
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
     archive(b, str);
+  }
+};
+struct Test2 {
+  std::vector<int> b{};
+  std::string str{};
+  Test t;
+  template <class Archive>
+  void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
+    archive(b, str,t);
+  }
+};
+
+struct Test3 {
+  std::vector<int> b{};
+  std::string str{};
+};
+  struct Test4 {
+  std::vector<int> b{};
+  std::string str{};
+  Test3 t3;
+  template <class Archive>
+  void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
+    archive(b, str, t3);
   }
 };
 /*************************************************************************//*!
@@ -35,20 +60,6 @@ MofBool CGameApp::Initialize(void) {
   CUtilities::SetCurrentDirectory("Resource");
   // CGraphicsUtilities::SetCamera(&camera_);
   // g_pGraphics->SetScreenMode(false);
-
-  std::stringstream stream;
-  Test t1;
-  t1.str = "abcdefg";
-  t1.b = {1, 2, 3};
-  {
-    frozen::BinaryOutputArchive archive(stream);
-    archive(t1);
-  }
-  Test t2;
-  {
-    frozen::BinaryInputArchive archive(stream);
-    archive(t2);
-  }
   g_pGraphics->SetCullMode(CULLMODE_NONE);
   game_.Initialize();
   return TRUE;

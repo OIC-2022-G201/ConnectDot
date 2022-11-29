@@ -19,7 +19,7 @@ class PlayerFall {
   bool is_sneak_ = false;
 
  public:
-  explicit PlayerFall(PlayerComponent* player);;
+  explicit PlayerFall(PlayerComponent* player);
   void Start();
 
   void Update();

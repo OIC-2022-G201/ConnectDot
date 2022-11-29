@@ -60,5 +60,5 @@ void VentActor::Create(const LoadObject& object)
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
   }
-  SetName("LeverStubActor");
+  SetName("VentActor");
 }
