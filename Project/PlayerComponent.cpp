@@ -8,12 +8,12 @@
 #include "Actor.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
-#include "IShape.h"
-#include "LeverStubActor.h"
+#include "IMachineActionable.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "Player.h"
 #include "SendManifold.h"
+#include "SpriteComponent.h"
 #include "TileMapComponent.h"
 using namespace std::string_view_literals;
 using namespace base_engine;
@@ -72,8 +72,8 @@ void PlayerComponent::Update() {
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   machine_.OnEvent(manifold.collision_b);
   if (input_manager_->ActionFire()) {
-    if (const auto actionable =
-            manifold.collision_b->GetActor()->GetComponent<IActionable>();
+    if (const auto actionable = manifold.collision_b->GetActor()
+                                    ->GetComponent<IMachineActionable>();
         !actionable.expired()) {
       actionable.lock()->Action();
     }

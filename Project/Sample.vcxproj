@@ -189,6 +189,7 @@
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorUtilities.cpp" />
+    <ClCompile Include="VentComponent.cpp" />
     <ClCompile Include="WeakRefObject.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
@@ -226,6 +227,7 @@
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GimmickInjection.h" />
     <ClInclude Include="IBaseEngineCanvasRender.h" />
+    <ClInclude Include="IMachineActionable.h" />
     <ClInclude Include="ImageComponent.h" />
     <ClInclude Include="MoveFloorStubActor.h" />
     <ClInclude Include="LeverStubActor.h" />
@@ -350,6 +352,7 @@
     <ClInclude Include="Vector.h" />
     <ClInclude Include="VectorFrozen.h" />
     <ClInclude Include="VectorUtilities.h" />
+    <ClInclude Include="VentComponent.h" />
     <ClInclude Include="WeakRefObject.h" />
     <ClInclude Include="YesNo.h" />
   </ItemGroup>

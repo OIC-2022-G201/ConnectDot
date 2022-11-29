@@ -8,15 +8,12 @@
 #pragma once
 #include "Actor.h"
 #include "Component.h"
+#include "IMachineActionable.h"
 #include "LoadObjectParameter.h"
 #include "ReactiveProperty.h"
 #include "ReceiverComponent.h"
 #include "TransmitterComponent.h"
 
-class IActionable {
- public:
-  virtual void Action() = 0;
-};
 
 
 class LeverStubActor final : public base_engine::Actor {
@@ -35,7 +32,7 @@ class LeverStubActor final : public base_engine::Actor {
   Actor* target_ = nullptr;
 };
 class LeverStubComponent final : public base_engine::Component,
-                                 public IActionable {
+                                 public IMachineActionable {
  public:
   explicit LeverStubComponent(base_engine::Actor* owner,
                               const int update_order = 100)
