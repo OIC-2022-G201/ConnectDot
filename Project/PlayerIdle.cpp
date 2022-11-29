@@ -61,7 +61,7 @@ void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {}
 
 void player::PlayerIdle::PlaceBeacon() const {
   auto pos = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
-  pos.x += player_->IsRight() ? 1 :0 ;
+  pos.x += player_->IsRight() ? 1 : 0;
   pos.y += 1;
   if (!player_->CanPlace(pos)) return;
   player_->SetBeacon(player_->GetBeacon() - 1);
