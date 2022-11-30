@@ -23,3 +23,6 @@ void ElectricEffect::Play(Vector2 pos1, Vector2 pos2)
     motion_->Load(sprite_, animations);
 
 }
+
+
+

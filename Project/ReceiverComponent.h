@@ -10,6 +10,8 @@
 #include <memory>
 
 #include "Component.h"
+
+
 #include "IReceivablePower.h"
 #include "SpriteComponent.h"
 
@@ -19,6 +21,7 @@ class ReceiverComponent : public base_engine::Component {
     current_state_ = PowerState::kDisconnect;
     prev_state_ = PowerState::kDisconnect;
     receiver_->OnPowerExit(sender_.lock().get());
+   
   }
   void OnPowerEnter();
 
@@ -62,8 +65,15 @@ class ReceiverComponent : public base_engine::Component {
       std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
   void Create(Types&&... args) {
     receiver_ = std::make_unique<T>(std::forward<Types>(args)...);
+   
   }
-
+  template <
+      class T, class... Types,
+      std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
+  void ECreate(Types&&... args) {
+    effect_ = std::make_unique<T>(std::forward<Types>(args)...);
+  }
+  
   [[nodiscard]] base_engine::Vector2 GetPosition() const {
     return owner_->GetPosition() + receiver_->GetPosition();
   }
@@ -79,6 +89,7 @@ class ReceiverComponent : public base_engine::Component {
     if (sender_.expired() || sender_weak.expired()) return false;
     return sender_.lock().get() == sender_weak.lock().get();
   }
+
  private:
   enum class PowerState {
     kDisconnect,    //接続が切れている
@@ -91,5 +102,5 @@ class ReceiverComponent : public base_engine::Component {
   std::unique_ptr<IReceivablePower> receiver_;
   std::weak_ptr<class TransmitterComponent> sender_;
 
-  class ElectricEffect* effect_ = nullptr;
+  std::unique_ptr<class eElectriceffect> effect_;
 };

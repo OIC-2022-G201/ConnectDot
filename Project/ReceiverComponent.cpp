@@ -16,9 +16,11 @@ ReceiverComponent::ReceiverComponent(base_engine::Actor* owner,
     : Component(owner, update_order) {}
 
 void ReceiverComponent::Start() {
-  effect_ = new ElectricEffect(owner_->GetGame());
+ 
   effect_->SetReceiver(this);
 }
+
+
 
 void ReceiverComponent::Connecting(
     const std::weak_ptr<TransmitterComponent> sender_weak) {
