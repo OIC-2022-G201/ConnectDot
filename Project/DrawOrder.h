@@ -20,6 +20,7 @@ constexpr int kPowerSupplyUnitDrawOrder = 120;
 constexpr int kBeaconDrawOrder = 120;
 constexpr int kSignboardDrawOrder = 120;
 constexpr int kSignboardDisplayDrawOrder = kSignboardDrawOrder+1;
+constexpr int kVentDrawOrder = 160;
 constexpr int kElectricEffectDrawOrder = 130;
 
 constexpr int kEnemyDrawOrder = 149;

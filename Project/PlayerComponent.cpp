@@ -80,6 +80,11 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   }
 }
 
+void PlayerComponent::VentEnter(VentComponent* vent) {
+  machine_.TransitionTo<PlayerVentAction>();
+  machine_.OnEvent(vent);
+}
+
 bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const auto map = map_.lock();
   const bool space = map->GetCell(pos) == tile_map::kEmptyCell;

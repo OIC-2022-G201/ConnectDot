@@ -1,6 +1,5 @@
 ﻿#include "VentComponent.h"
 
-
 #include "BaseEngineCore.h"
 #include "Circle.h"
 #include "CollisionComponent.h"
@@ -13,6 +12,7 @@
 #include "LeverStubReceiver.h"
 #include "LoadObjectParameter.h"
 #include "MachineConst.h"
+#include "PlayerComponent.h"
 #include "ReceiverComponent.h"
 #include "SignboardReceiver.h"
 #include "StageConstitution.h"
@@ -23,13 +23,9 @@
 using namespace base_engine;
 using namespace draw_order;
 
-VentActor::VentActor(base_engine::Game* game): Actor(game)
-{
-      
-}
+VentActor::VentActor(base_engine::Game* game) : Actor(game) {}
 
-void VentActor::Create(const LoadObject& object)
-{
+void VentActor::Create(const LoadObject& object) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
     const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y);
@@ -45,7 +41,7 @@ void VentActor::Create(const LoadObject& object)
     collision->SetTrigger(true);
   }
   {
-    const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
+    const auto sign = new SpriteComponent(this, kVentDrawOrder);
     const auto& path =
         std::get<LoadObject::TexturePath>(object.parameters[0]).value;
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
@@ -61,4 +57,16 @@ void VentActor::Create(const LoadObject& object)
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
   }
   SetName("VentActor");
+}
+
+VentComponent::VentComponent(base_engine::Actor* owner) : Component(owner) {}
+
+void VentComponent::Start() {}
+
+void VentComponent::Update() {}
+
+void VentComponent::Action(base_engine::Actor* machine_operator) {
+  const auto player =
+      machine_operator->GetComponent<player::PlayerComponent>().lock();
+  player->VentEnter(this);
 }

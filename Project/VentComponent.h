@@ -10,6 +10,7 @@
 #include "Component.h"
 #include "IMachineActionable.h"
 #include "LoadObjectParameter.h"
+#include "StageConstitution.h"
 
 class VentActor final : public base_engine::Actor {
  public:
@@ -25,11 +26,18 @@ class VentActor final : public base_engine::Actor {
 class VentComponent final : public base_engine::Component,
                             public IMachineActionable {
  public:
-  explicit VentComponent(base_engine::Actor* owner) : Component(owner) {}
+  explicit VentComponent(base_engine::Actor* owner);
 
-  void Start() override {}
+  void Start() override;
 
-  void Update() override {}
+  void Update() override;
 
-  void Action(base_engine::Actor* player) override {}
+  void Action(base_engine::Actor* player) override;
+
+  [[nodiscard]] base_engine::Vector2 GetGoInPosition() const
+  {
+    auto pos = owner_->GetPosition();
+    pos.x += stage::kStageCellSizeHalf<float>.x;
+    return pos;
+  }
 };

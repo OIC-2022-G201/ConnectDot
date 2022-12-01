@@ -20,8 +20,11 @@
 #include "PlayerMove.h"
 #include "PlayerSneak.h"
 #include "PlayerSneakMove.h"
+#include "PlayerVentAction.h"
 #include "ReactiveProperty.h"
 #include "StateMachine.h"
+
+class VentComponent;
 
 namespace tile_map {
 class TileMapComponent;
@@ -40,6 +43,7 @@ class PlayerComponent final : public base_engine::Component {
   void ProcessInput() override { machine_.ProcessInput(); }
   void Update() override;
   void OnCollision(const base_engine::SendManifold& manifold) override;
+  void VentEnter(VentComponent* vent);
 
   void SetInput(const InputManager* input_manager) {
     input_manager_ = input_manager;
@@ -92,10 +96,12 @@ class PlayerComponent final : public base_engine::Component {
   TileMapWeak map_;
 
   til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerSneakMove, PlayerJump,
-               PlayerFall>
+               PlayerFall, PlayerVentAction>
       machine_ = til::Machine{PlayerIdle{this},  PlayerMove{this},
                               PlayerSneak{this}, PlayerSneakMove{this},
-                              PlayerJump{this},  PlayerFall{this}};
+                              PlayerJump{this},  PlayerFall{this},
+                              PlayerVentAction{this}};
+
   std::weak_ptr<base_engine::CollisionComponent> collision_;
   std::weak_ptr<base_engine::PhysicsBodyComponent> physics_body_;
   std::weak_ptr<base_engine::ISpriteAnimationComponent> animator_;
