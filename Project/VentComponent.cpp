@@ -46,10 +46,11 @@ void VentActor::Create(const LoadObject& object) {
         std::get<LoadObject::TexturePath>(object.parameters[0]).value;
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
-  { auto lever = new VentComponent(this); }
   {
+    auto vent = new VentComponent(this);
+
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<VentReceiver>(this);
+    receiver->Create<VentReceiver>(vent);
   }
   {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
@@ -66,6 +67,7 @@ void VentComponent::Start() {}
 void VentComponent::Update() {}
 
 void VentComponent::Action(base_engine::Actor* machine_operator) {
+  if (!GetElectric()) return;
   const auto player =
       machine_operator->GetComponent<player::PlayerComponent>().lock();
   player->VentEnter(this);

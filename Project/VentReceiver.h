@@ -10,7 +10,7 @@
 
 class VentReceiver final : public IReceivablePower {
  public:
-  explicit VentReceiver(class VentActor* actor);
+  explicit VentReceiver(class VentComponent* actor);
 
   int Sequential() override;
 
@@ -27,5 +27,5 @@ class VentReceiver final : public IReceivablePower {
   [[nodiscard]] base_engine::Vector2 GetPosition() const override { return {}; }
 
  private:
-  class VentActor* actor_ = nullptr;
+  class VentComponent* vent_ = nullptr;
 };

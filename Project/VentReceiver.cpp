@@ -2,18 +2,17 @@
 
 #include "VentComponent.h"
 
-VentReceiver::VentReceiver(VentActor* actor): actor_(actor)
-{}
+VentReceiver::VentReceiver(VentComponent* actor) : vent_(actor) {}
 
 int VentReceiver::Sequential()
-{ return -1; }
+{ return 100; }
 
 bool VentReceiver::PowerJoinCondition()
 { return true; }
 
 void VentReceiver::OnPowerEnter(TransmitterComponent* transmitter)
 {
-  actor_->SetElectric(true);
+  vent_->SetElectric(true);
 }
 
 void VentReceiver::OnPowerChanged(TransmitterComponent* transmitter)
@@ -23,7 +22,7 @@ void VentReceiver::OnPowerChanged(TransmitterComponent* transmitter)
 
 void VentReceiver::OnPowerExit(TransmitterComponent* transmitter)
 {
-  actor_->SetElectric(false);
+  vent_->SetElectric(false);
 }
 
 bool VentReceiver::IsWireless()
