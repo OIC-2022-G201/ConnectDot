@@ -70,4 +70,5 @@ CMake/* linguist-documentation
 CMakeList.txt linguist-documentation
 Project/CMakeList.txt linguist-documentation
 
-*.vsproj.filters marge=union
+*.vcxproj.filters marge=union
+*.vcxproj marge=union

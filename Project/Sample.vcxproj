@@ -108,6 +108,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DebugStage.cpp" />
     <ClCompile Include="DIActorContainer.cpp" />
+    <ClCompile Include="DoorComponent.cpp" />
     <ClCompile Include="DoorStubActor.cpp" />
     <ClCompile Include="ElectricEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
@@ -218,6 +219,7 @@
     <ClInclude Include="ComponentParameter.h" />
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="DIActorContainer.h" />
+    <ClInclude Include="DoorComponent.h" />
     <ClInclude Include="DoorStubActor.h" />
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyPackage.h" />

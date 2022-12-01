@@ -292,6 +292,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent">
       <UniqueIdentifier>{6fe2ba8e-8c65-4855-87f1-6457b445e71b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Door">
+      <UniqueIdentifier>{ef06b323-405b-4249-921a-504d1e8d0105}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -596,6 +599,9 @@
     </ClCompile>
     <ClCompile Include="PlayerVentAction.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1087,6 +1093,9 @@
     </ClInclude>
     <ClInclude Include="PlayerVentAction.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
