@@ -74,8 +74,10 @@ void Game::RemoveActor(Actor* actor) {
           actors_, [actor](const ActorPtr& n) { return n.get() == actor; });
       iter != actors_.end()) {
     std::iter_swap(iter, actors_.end() - 1);
+    actors_next_frame_delete_.emplace_back(actors_.back());
     actors_.pop_back();
   }
+  actors_next_frame_delete_.clear();
 }
 
 ActorWeakPtr Game::GetActor(ActorId id) {

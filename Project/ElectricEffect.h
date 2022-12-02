@@ -11,7 +11,7 @@
 
 #include "Actor.h"
 #include "MofSpriteAnimationComponent.h"
-#include "SpriteComponent.h"
+
 #include "VectorUtilities.h"
 
 class ElectricEffect final : public base_engine::Actor {
@@ -21,21 +21,15 @@ class ElectricEffect final : public base_engine::Actor {
   base_engine::MofSpriteAnimationComponent* motion_ = nullptr;
 
  public:
-  explicit ElectricEffect(base_engine::Game* game) : Actor(game)
-  {
-	  const auto effect =
-  }
-  
+  explicit ElectricEffect(base_engine::Game* game) : Actor(game) {}
 
   void SetTransmitter(TransmitterComponent* transmitter) {
     transmitter_ = transmitter;
   }
 
-  void SetReceiver(ReceiverComponent* receiver) { receiver_ = receiver; }
-  void Start() override{}
+  void Start() override {}
   void Update() override {}
-
+  void OffSprite() { sprite_->SetEnabled(false); }
   // TODO テクスチャを取得するKEYをベタ書きしない
   void Play(base_engine::Vector2 pos1, base_engine::Vector2 pos2);
-  
 };

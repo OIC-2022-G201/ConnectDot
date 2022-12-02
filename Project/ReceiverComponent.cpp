@@ -1,11 +1,33 @@
 ﻿#include "ReceiverComponent.h"
 
 #include "ElectricEffect.h"
+#include "Game.h"
 #include "TransmitterComponent.h"
+
+ReceiverComponent::~ReceiverComponent()
+{
+  owner_->GetGame()->RemoveActor(effect_.lock().get());
+}
+
+void ReceiverComponent::OnPowerExit()
+{
+	current_state_ = PowerState::kDisconnect;
+	prev_state_ = PowerState::kDisconnect;
+	receiver_->OnPowerExit(sender_.lock().get());
+        if (effect_.expired())return;
+	const auto effect = std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+	effect->OffSprite();
+}
 
 void ReceiverComponent::OnPowerEnter() {
   if (receiver_->IsWireless()) {
-    effect_->Play(sender_.lock()->GetPosition(), GetPosition());
+    if (effect_.expired())
+    {
+      ECreate();
+    }
+    const auto effect =
+        std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+    effect->Play(sender_.lock()->GetPosition(), GetPosition());
   }
   receiver_->OnPowerEnter(sender_.lock().get());
   current_state_ = PowerState::kConnecting;
@@ -17,7 +39,7 @@ ReceiverComponent::ReceiverComponent(base_engine::Actor* owner,
 
 void ReceiverComponent::Start() {
  
-  effect_->SetReceiver(this);
+  
 }
 
 
@@ -46,4 +68,10 @@ void ReceiverComponent::Connecting(
   }
   prev_state_ = current_state_;
   return;
+}
+
+void ReceiverComponent::ECreate()
+{
+	auto actor = new ElectricEffect(owner_->GetGame());
+  effect_ = owner_->GetGame()->GetActor(actor->GetId());
 }
