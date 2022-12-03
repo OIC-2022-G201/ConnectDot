@@ -295,6 +295,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Door">
       <UniqueIdentifier>{ef06b323-405b-4249-921a-504d1e8d0105}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\GameManager">
+      <UniqueIdentifier>{76ba5c21-a8aa-4ab4-8816-700d4c21f942}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -602,6 +605,12 @@
     </ClCompile>
     <ClCompile Include="DoorComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactRayCastCallBack.cpp">
+      <Filter>BaseEngine\physics\CallBack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1096,6 +1105,12 @@
     </ClInclude>
     <ClInclude Include="DoorComponent.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactRayCastCallBack.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

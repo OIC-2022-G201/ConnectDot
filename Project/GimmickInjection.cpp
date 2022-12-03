@@ -3,6 +3,7 @@
 #include <array>
 
 #include "DIActorContainer.h"
+#include "DoorComponent.h"
 #include "LeverStubActor.h"
 #include "MoveFloorStubActor.h"
 #include "PowerSupplyUnitActor.h"
@@ -45,6 +46,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                                 const LoadObject& object);
   static Actor* VentCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
+  static Actor* DoorCreate(GimmickCreator* instance, Game* game,
+                           const LoadObject& object);
 
   void Register(const std::string_view name, CreatorMethod create_method);
 
@@ -57,8 +60,8 @@ using Gc = GimmickCreator;
 constexpr std::array kGimmickMethodTable = {
     std::tuple{
         kDoorName,                                 // Name
-        &SetupImpl::EmptyCreate,                   // CreateMethod
-        &Gc::FactoryRegister<RenderableStubActor>  // FactoryRegister
+        &SetupImpl::DoorCreate,                   // CreateMethod
+        &Gc::FactoryRegister<DoorActor>  // FactoryRegister
     },
     std::tuple{
         kPowerSupplyName,                           // Name
@@ -158,10 +161,19 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::SignboardCreate(
 
 Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::VentCreate(GimmickCreator* instance, Game* game,
     const LoadObject& object) {
-  const auto signboard = new VentActor(game);
-  signboard->Create(object);
+  const auto vent = new VentActor(game);
+  vent->Create(object);
 
-  return signboard;
+  return vent;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::DoorCreate(GimmickCreator* instance, Game* game,
+    const LoadObject& object)
+{
+  const auto door = new DoorActor(game);
+  door->Create(object);
+
+  return door;
 }
 
 void GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::Register(

@@ -21,7 +21,6 @@ class CollisionLayer final {
     kMachineFilter = 1 << 4,
     kReceiverFilter = 1 << 5,
     kSenderFilter = 1 << 6,
-
     kElectricityAreaFilter = 1 << 8,
 
     kActionable = 1 << 7,
@@ -77,6 +76,8 @@ constexpr BitCollisionLayer kSignboardTargetFilter{CollisionLayer::kNone};
 constexpr BitCollisionLayer kLeverObjectFilter{CollisionLayer::kActionable};
 
 constexpr BitCollisionLayer kLeverTargetFilter{CollisionLayer::kNone};
+
+constexpr BitCollisionLayer kGoalTargetFilter{CollisionLayer::kPlayerFilter};
 
 //! MoveFloor
 constexpr BitCollisionLayer kMoveFloorObjectFilter{

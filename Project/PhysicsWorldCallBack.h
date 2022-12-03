@@ -43,4 +43,5 @@ class PhysicsRayCastCallback {
   virtual float ReportFixture(PhysicsFixture* fixture, const PVec2& point,
                               const PVec2& normal, float fraction) = 0;
 };
+
 }  // namespace base_engine::physics
