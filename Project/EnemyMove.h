@@ -20,8 +20,6 @@ namespace enemy {
 		void OnEvent(base_engine::CollisionComponent* collision);
 		void End();
 
-		void SetVisionComponent(EnemyVisionComponent* vision) { vision_ = vision; }
-
 		template <typename Machine>
 		void Transition(Machine& machine) const;
 		

@@ -1,6 +1,6 @@
 #include "VisionCreateComponent.h"
 
-#include "EnemyVisionActor.h"
+#include "DummyActor.h"
 #include "CollisionComponent.h"
 #include "ShapeRenderComponent.h"
 #include "EnemyVisionComponent.h"
@@ -9,9 +9,8 @@ namespace enemy
 {
 	void VisionCreateComponent::Start()
 	{
-		auto dummy = new EnemyVisionActor(this->owner_->GetGame());
-
-		auto vision_component = new EnemyVisionComponent(dummy, 502);
+		parent_ = new DummyActor(this->owner_->GetGame());
+		auto vision_component = new EnemyVisionComponent(parent_, 510);
 		vision_component->SetParent(this->owner_);
 	}
 

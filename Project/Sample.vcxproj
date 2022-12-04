@@ -93,6 +93,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="BaseBodyComponent.cpp" />
+    <ClCompile Include="BaseBodyCreateComponent.cpp" />
     <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
     <ClCompile Include="BeaconActor.cpp" />
@@ -105,13 +107,17 @@
     <ClCompile Include="DebugStage.cpp" />
     <ClCompile Include="ElectricEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
+    <ClCompile Include="EnemyBack.cpp" />
+    <ClCompile Include="EnemyChase2.cpp" />
     <ClCompile Include="EnemyComponent.cpp" />
     <ClCompile Include="EnemyFind.cpp" />
+    <ClCompile Include="EnemyIdle.cpp" />
     <ClCompile Include="EnemyMove.cpp" />
     <ClCompile Include="EnemyChase.cpp" />
     <ClCompile Include="EnemyTurn.cpp" />
-    <ClCompile Include="EnemyVisionActor.cpp" />
+    <ClCompile Include="DummyActor.cpp" />
     <ClCompile Include="EnemyVisionComponent.cpp" />
+    <ClCompile Include="SecondEnemyComponent.cpp" />
     <ClCompile Include="VisionCreateComponent.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -172,6 +178,8 @@
     <ClInclude Include="2DShapes.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Adapter.h" />
+    <ClInclude Include="BaseBodyComponent.h" />
+    <ClInclude Include="BaseBodyCreateComponent.h" />
     <ClInclude Include="BaseEngineCollision.h" />
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
@@ -188,15 +196,19 @@
     <ClInclude Include="ConnectDotUpdateOrder.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyActor.h" />
+    <ClInclude Include="EnemyBack.h" />
+    <ClInclude Include="EnemyChase2.h" />
     <ClInclude Include="EnemyComponent.h" />
     <ClInclude Include="EnemyFind.h" />
+    <ClInclude Include="EnemyIdle.h" />
     <ClInclude Include="EnemyMove.h" />
     <ClInclude Include="EnemyPackage.h" />
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="EnemyChase.h" />
     <ClInclude Include="EnemyTurn.h" />
-    <ClInclude Include="EnemyVisionActor.h" />
+    <ClInclude Include="DummyActor.h" />
     <ClInclude Include="EnemyVisionComponent.h" />
+    <ClInclude Include="SecondEnemyComponent.h" />
     <ClInclude Include="VisionCreateComponent.h" />
     <ClInclude Include="FrozenConcept.h" />
     <ClInclude Include="FrozenHelper.h" />

@@ -2,12 +2,12 @@
 
 #include "Component.h"
 #include "StateMachine.h"
-#include "PhysicsBodyComponent.h"
 #include "EnemyMove.h"
 #include "EnemyTurn.h"
 #include "EnemyFind.h"
 #include "EnemyChase.h"
 #include "Enemy.h"
+#include "VisionCreateComponent.h"
 
 namespace enemy {
 	class EnemyComponent : public base_engine::Component {
@@ -26,10 +26,10 @@ namespace enemy {
 		void OnCollision(const base_engine::SendManifold& manifold) override;
 		std::weak_ptr<base_engine::PhysicsBodyComponent> PhysicsBody() { return physics_body_; }
 		base_engine::CollisionComponent* GetCollision() { return collision_.lock().get(); }
-		til::Machine<EnemyMove, EnemyTurn, EnemyFind, EnemyChase>* GetMachine() { return &machine_; }
 		//false == Left, true == Right
 		bool GetDirection() { return direction; }
 		void SetDirection(bool dir) { direction = dir; }
 		void ReverseDirection() { direction = !direction; }
+		EnemyVisionComponent* GetVision() { return owner_->GetComponent<VisionCreateComponent>().lock()->GetParent()->GetComponent<EnemyVisionComponent>().lock().get(); }
 	};
 }

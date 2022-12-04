@@ -7,6 +7,7 @@
 #include "SpriteComponent.h"
 #include "TexturePaths.h"
 #include "EnemyComponent.h"
+#include "SecondEnemyComponent.h"
 #include "PhysicsBodyComponent.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
@@ -25,8 +26,8 @@ namespace enemy {
         {
             const auto sprite = new SpriteComponent(this, kEnemyDrawOrder);
             sprite->SetImage(BASE_ENGINE(Texture)->Get(texture::kEnemyTextureKey));
-            enemy_component_ = new enemy::EnemyComponent(this, 101);
-            auto enemy_vision = new VisionCreateComponent(this, 102);
+            auto enemy_vision_ = new VisionCreateComponent(this, 102);
+            auto enemy_component_ = new EnemyComponent(this, 101);
         }
         {
             auto body_ = new PhysicsBodyComponent(this);
@@ -36,14 +37,14 @@ namespace enemy {
             collision_->SetObjectFilter(kEnemyObjectFilter);
             collision_->SetTargetFilter(kEnemyTargetFilter);
 
-            auto debugCollisionRender = new ShapeRenderComponent(this, 501);
+            auto debugCollisionRender = new ShapeRenderComponent(this, 200);
             debugCollisionRender->SetShape(shape_enemy);
             debugCollisionRender->SetColor(MOF_COLOR_RED);
         }
 
         SetName("Enemy");
         SetTag("Enemy");
-        SetPosition(GridPosition::GridTo({ 9,6 }));
+        SetPosition(GridPosition::GridTo({ 10,2 }));
     }
 
     void EnemyActor::Update() {

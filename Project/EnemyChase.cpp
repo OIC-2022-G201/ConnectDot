@@ -6,6 +6,7 @@ namespace enemy {
 	void EnemyChase::Start()
 	{
 		body_ = enemy_->PhysicsBody();
+		vision_ = enemy_->GetVision();
 		is_find_ = true;
 	}
 
@@ -14,7 +15,7 @@ namespace enemy {
 		if (vision_ != nullptr && !vision_->IsFindPlayer())
 			is_find_ = false;
 
-		auto player_center_x = vision_->GetPlayerCenterX();
+		auto player_center_x = vision_->GetPlayerCenter().x;
 		auto center_x = enemy_->GetCollision()->AABB().GetCenter().x;
 		if (center_x < player_center_x) enemy_->SetDirection(Right);
 		else enemy_->SetDirection(Left);

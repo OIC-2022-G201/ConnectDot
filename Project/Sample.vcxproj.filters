@@ -435,10 +435,28 @@
     <ClCompile Include="VisionCreateComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyVisionActor.cpp">
+    <ClCompile Include="DummyActor.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="EnemyVisionComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyIdle.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBack.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondEnemyComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyChase2.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseBodyCreateComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseBodyComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -785,10 +803,28 @@
     <ClInclude Include="VisionCreateComponent.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyVisionActor.h">
+    <ClInclude Include="DummyActor.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="EnemyVisionComponent.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyIdle.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBack.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondEnemyComponent.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyChase2.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBodyCreateComponent.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBodyComponent.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
