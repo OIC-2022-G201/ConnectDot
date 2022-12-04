@@ -27,10 +27,6 @@ void DoorActor::Create(const LoadObject& object) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
     const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y * 2);
-    const auto shape = new ShapeRenderComponent(this, 110);
-    shape->SetShape(rect);
-    shape->SetFillMode(electronics::kElectricAreaFillMode)
-        .SetColor(electronics::kElectricAreaColor);
 
     const auto collision = new CollisionComponent(this);
     collision->SetShape(rect);

@@ -298,6 +298,12 @@
     <Filter Include="ソース ファイル\ConnectDot\GameMain\GameManager">
       <UniqueIdentifier>{76ba5c21-a8aa-4ab4-8816-700d4c21f942}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event">
+      <UniqueIdentifier>{eda6bd11-8f0b-4430-9034-bcdff8a82d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\Goal">
+      <UniqueIdentifier>{0e90a1a3-4936-4523-a9a5-a59bc0abe446}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -611,6 +617,12 @@
     </ClCompile>
     <ClCompile Include="ContactRayCastCallBack.cpp">
       <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GoalComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1111,6 +1123,12 @@
     </ClInclude>
     <ClInclude Include="ContactRayCastCallBack.h">
       <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

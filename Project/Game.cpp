@@ -20,6 +20,7 @@
 #include "TileMapComponent.h"
 
 base_engine::IBaseEngineCollider* b_collision;
+
 namespace base_engine {
 bool Game::Initialize() {
   game_data_.Register();
