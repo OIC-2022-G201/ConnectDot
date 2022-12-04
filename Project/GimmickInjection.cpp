@@ -4,6 +4,7 @@
 
 #include "DIActorContainer.h"
 #include "DoorComponent.h"
+#include "GoalComponent.h"
 #include "LeverStubActor.h"
 #include "MoveFloorStubActor.h"
 #include "PowerSupplyUnitActor.h"
@@ -21,6 +22,7 @@ constexpr std::string_view kLeverName = "Lever"sv;
 constexpr std::string_view kMoveFloorName = "Movefloor"sv;
 constexpr std::string_view kVentName = "Vent"sv;
 constexpr std::string_view kSignboardName = "Signboard"sv;
+constexpr std::string_view kGoalName = "Goal"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
 using FactoryRegisterMethod = void (*)(GimmickCreator*,
@@ -44,8 +46,10 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 
   static Actor* SignboardCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
-  static Actor* VentCreate(GimmickCreator* instance, Game* game,
+  static Actor* GoalCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
+  static Actor* VentCreate(GimmickCreator* instance, Game* game,
+                           const LoadObject& object);
   static Actor* DoorCreate(GimmickCreator* instance, Game* game,
                            const LoadObject& object);
 
@@ -87,6 +91,11 @@ constexpr std::array kGimmickMethodTable = {
         kSignboardName,                       // Name
         &SetupImpl::SignboardCreate,          // CreateMethod
         &Gc::FactoryRegister<SignboardActor>  // FactoryRegister
+    },
+    std::tuple{
+        kGoalName,                       // Name
+        &SetupImpl::GoalCreate,          // CreateMethod
+        &Gc::FactoryRegister<GoalActor>  // FactoryRegister
     },
 };
 
@@ -159,8 +168,17 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::SignboardCreate(
   return signboard;
 }
 
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::GoalCreate(GimmickCreator* instance, Game* game,
+    const LoadObject& object)
+{
+  const auto goal = new GoalActor(game);
+  goal->Create(object);
+
+  return goal;
+}
+
 Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::VentCreate(GimmickCreator* instance, Game* game,
-    const LoadObject& object) {
+                                                                                  const LoadObject& object) {
   const auto vent = new VentActor(game);
   vent->Create(object);
 

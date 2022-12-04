@@ -20,7 +20,7 @@ class GoalComponent final : public base_engine::Component {
  public:
   explicit GoalComponent(base_engine::Actor* owner) : Component(owner) {}
 
-  void OnCollision(const base_engine::SendManifold& manifold) override {}
+  void OnCollision(const base_engine::SendManifold& manifold) override;
 
   static void Create(base_engine::Actor* owner);
 };

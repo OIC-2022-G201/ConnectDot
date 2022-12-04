@@ -31,6 +31,11 @@ void GoalActor::Create(const LoadObject& object) {
   }
 }
 
+void GoalComponent::OnCollision(const base_engine::SendManifold& manifold)
+{
+  int n = 3;
+}
+
 void GoalComponent::Create(base_engine::Actor* owner) {
   auto goal = new GoalComponent(owner);
   {
@@ -39,7 +44,7 @@ void GoalComponent::Create(base_engine::Actor* owner) {
 
     const auto shape = new ShapeRenderComponent(owner, 110);
     shape->SetShape(rect);
-    shape->SetFillMode(electronics::kElectricAreaFillMode)
+    shape->SetFillMode(static_cast<FillMode>(true))
         .SetColor(electronics::kElectricAreaColor);
 
     const auto collision = new CollisionComponent(owner);
