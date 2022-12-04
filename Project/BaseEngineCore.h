@@ -7,6 +7,7 @@ namespace base_engine {
 class IBaseEngineEmpty;
 class IBaseEngineTexture;
 class IBaseEngineRender;
+class IBaseEngineCanvasRender;
 class IBaseEngineCollider;
 
 class BaseEngineCore {
@@ -16,6 +17,7 @@ class BaseEngineCore {
   std::tuple<BaseEngineComponent<IBaseEngineEmpty>,
              BaseEngineComponent<IBaseEngineTexture>,
              BaseEngineComponent<IBaseEngineRender>,
+             BaseEngineComponent<IBaseEngineCanvasRender>,
              BaseEngineComponent<IBaseEngineCollider>>
       components_;
 

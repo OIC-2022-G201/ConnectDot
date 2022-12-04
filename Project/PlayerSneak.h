@@ -34,7 +34,7 @@ class PlayerSneak {
       machine.template TransitionTo<PlayerIdle>();
     }
     if (is_move_) {
-      machine.template TransitionTo<PlayerMove>();
+      machine.template TransitionTo<PlayerSneakMove>();
     }
   }
 };

@@ -12,4 +12,7 @@ class PlayerJump;
 class PlayerMove;
 class PlayerSneak;
 class PlayerIdle;
+class PlayerSneakMove;
+class PlayerFall;
+class PlayerVentAction;
 }  // namespace player

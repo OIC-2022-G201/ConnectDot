@@ -72,3 +72,6 @@ cmake-build-debug-visual-studio/* linguist-documentation
 CMake/* linguist-documentation
 CMakeList.txt linguist-documentation
 Project/CMakeList.txt linguist-documentation
+
+*.vcxproj.filters marge=union
+*.vcxproj marge=union

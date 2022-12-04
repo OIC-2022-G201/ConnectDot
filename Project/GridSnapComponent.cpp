@@ -13,6 +13,11 @@ GridSnapComponent& GridSnapComponent::SetSnapGridPosition(
   return *this;
 }
 
+GridPosition GridSnapComponent::GetSnapGridPosition() const
+{
+  return GridPosition::VectorTo(owner_->GetPosition());
+}
+
 void GridSnapComponent::Update() {
   if (!auto_snap_.getBool()) return;
   SetSnapGridPosition(GridPosition::VectorTo(owner_->GetPosition()));

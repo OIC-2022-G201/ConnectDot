@@ -18,11 +18,11 @@ class ReceiverComponent : public base_engine::Component {
   void OnPowerExit() {
     current_state_ = PowerState::kDisconnect;
     prev_state_ = PowerState::kDisconnect;
-    receiver_->OnPowerExit(sender_);
+    receiver_->OnPowerExit(sender_.lock().get());
   }
   void OnPowerEnter();
 
-  void OnPowerChanged() { receiver_->OnPowerChanged(sender_); }
+  void OnPowerChanged() { receiver_->OnPowerChanged(sender_.lock().get()); }
 
   ReceiverComponent(base_engine::Actor* owner, int update_order);
 
@@ -55,8 +55,8 @@ class ReceiverComponent : public base_engine::Component {
 
  public:
   bool CanConnect() const { return receiver_->PowerJoinCondition(); }
-  void Connecting(class TransmitterComponent* sender);
-
+  void Connecting(std::weak_ptr<class TransmitterComponent> sender_weak);
+  [[nodiscard]] int Sequential() const { return receiver_->Sequential(); }
   template <
       class T, class... Types,
       std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
@@ -78,7 +78,7 @@ class ReceiverComponent : public base_engine::Component {
   PowerState current_state_ = PowerState::kDisconnect;
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
-  class TransmitterComponent* sender_ = nullptr;
+  std::weak_ptr<class TransmitterComponent> sender_;
 
   class ElectricEffect* effect_ = nullptr;
 };

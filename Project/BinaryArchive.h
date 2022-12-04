@@ -30,10 +30,8 @@ class BinaryInputArchive : public frozen::InputArchive<BinaryInputArchive> {
   explicit BinaryInputArchive(std::istream& stream)
       : InputArchive<BinaryInputArchive>(this), its_writer_(stream) {}
 
-  inline void LoadBinary(const void* data, std::streamsize size) {
-    std::streamsize writtenSize = 0;
-
-    writtenSize = its_writer_.rdbuf()->sgetn(std::bit_cast<char*>(data), size);
+  inline void LoadBinary(void* const data, std::streamsize size) {
+    its_writer_.read(static_cast<char*>(data), size);
   }
 
  private:
@@ -53,12 +51,12 @@ inline void FROZEN_SERIALIZE_FUNCTION_NAME(BinaryOutputArchive& ar,
 
 template <class T>
 requires std::is_fundamental_v<T>
-inline void FROZEN_LOAD_FUNCTION_NAME(BinaryInputArchive& ar, T const& t) {
+inline void FROZEN_LOAD_FUNCTION_NAME(BinaryInputArchive& ar, T& t) {
   ar.LoadBinary(std::addressof(t), sizeof(t));
 }
 template <class T>
 requires std::is_fundamental_v<T>
-inline void FROZEN_SERIALIZE_FUNCTION_NAME(BinaryInputArchive& ar, T const& t) {
+inline void FROZEN_SERIALIZE_FUNCTION_NAME(BinaryInputArchive& ar, T & t) {
   ar.LoadBinary(std::addressof(t), sizeof(t));
 }
 
@@ -75,4 +73,8 @@ inline void FROZEN_LOAD_FUNCTION_NAME(BinaryInputArchive& ar,
                                       BinaryData<T>& bd) {
   ar.LoadBinary(bd.data, static_cast<std::streamsize>(bd.size));
 }
+template <class Archive, class T>
+requires std::is_same_v<Archive, BinaryOutputArchive> ||
+    std::is_same_v<Archive, BinaryInputArchive>
+void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& ar, SizeTag<T>& t) { ar(t.size_); }
 }  // namespace frozen

@@ -7,13 +7,31 @@
 #include "IBaseEngineCollider.h"
 #include "Vector.h"
 namespace base_engine {
-    using ComponentPtr = std::shared_ptr<class Component>;
-    using ComponentWeakPtr = std::weak_ptr<class Component>;
-    template <class T>
-    using ComponentDerivedPtr = std::shared_ptr<T>;
-    template <class T>
-    using ComponentDerivedWeakPtr = std::weak_ptr<T>;
-    class Actor {
+using ComponentPtr = std::shared_ptr<class Component>;
+using ComponentWeakPtr = std::weak_ptr<class Component>;
+template <class T>
+using ComponentDerivedPtr = std::shared_ptr<T>;
+template <class T>
+using ComponentDerivedWeakPtr = std::weak_ptr<T>;
+
+struct ActorId
+{
+  uint64_t id;
+
+  friend bool operator==(const ActorId& lhs, const ActorId& rhs)
+  {
+      return lhs.id == rhs.id;
+  }
+
+  friend bool operator!=(const ActorId& lhs, const ActorId& rhs)
+  {
+      return !(lhs == rhs);
+  }
+};
+
+class Actor {
+  friend class Game;
+
  public:
   enum State { kStart, kActive, kPause, kDead };
 
@@ -64,7 +82,7 @@ namespace base_engine {
   [[nodiscard]] Game* GetGame() const { return game; }
   /**
    * \brief Componentの追加はコンストラクタから呼び出す
-   * \param component 
+   * \param component
    */
   void AddComponent(class Component* component);
   /**
@@ -97,7 +115,9 @@ namespace base_engine {
 
   void SetTag(std::string_view tag);
   [[nodiscard]] std::string_view GetTag() const;
-  
+
+  [[nodiscard]] ActorId GetId() const { return id_; }
+
  protected:
   std::string name_ = "Actor";
   std::string tag_ = "Object";
@@ -105,26 +125,27 @@ namespace base_engine {
   Vector2 position_;
   float rotation_;
   float scale_;
+
  private:
+  ActorId id_;
   class Game* game;
   std::vector<ComponentPtr> components_;
   std::vector<ComponentPtr> pending_components_;
-    };
+};
 
 template <class T>
 ComponentDerivedWeakPtr<T> Actor::GetComponent() const {
-    for (auto& elem : components_) {
-        if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem)) return buff;
-    }
-    for (auto& elem : pending_components_) {
-        if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem)) return buff;
-    }
-    return ComponentDerivedWeakPtr<T>();
+  for (auto& elem : components_) {
+    if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem))
+      return buff;
+  }
+  for (auto& elem : pending_components_) {
+    if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem))
+      return buff;
+  }
+  return ComponentDerivedWeakPtr<T>();
 }
 
 template <class T>
-T* Actor::GetComponents() const
-{
-      
-}
+T* Actor::GetComponents() const {}
 }  // namespace base_engine

@@ -13,10 +13,11 @@ class PlayerJump {
   int frame_ = 0;
   class PlayerComponent* player_;
   base_engine::PhysicsBodyComponent* body_ = nullptr;
-  bool is_idle_ = false;
+  bool is_ground_ = false;
+  bool is_sneak_ = false;
 
  public:
-  PlayerJump(PlayerComponent* player);
+  explicit PlayerJump(PlayerComponent* player);
   void Start();
 
   void Update();
@@ -26,10 +27,14 @@ class PlayerJump {
 
   template <typename Machine>
   void Transition(Machine& machine) const {
-    if (is_idle_) machine.template TransitionTo<PlayerIdle>();
+    if (is_sneak_ && is_ground_) {
+      machine.template TransitionTo<PlayerSneak>();
+    } else if (is_ground_) {
+      machine.template TransitionTo<PlayerIdle>();
+    } else if (frame_ > 30)
+      machine.template TransitionTo<PlayerFall>();
   }
-  void OnEvent(base_engine::CollisionComponent* collision);
-
+  
  private:
   void Acceleration() const;
 };

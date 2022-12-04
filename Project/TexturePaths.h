@@ -21,6 +21,7 @@ constexpr std::string_view kPlayerTextureKey = "Player.png"sv;
 constexpr std::string_view kEnemyTextureKey = "LivingEntity/Enemy/Enemy1.png"sv;
 
 //! Beacon
+constexpr std::string_view kBeaconTextureKey = "gimmick/Beacon.png";
 
 
 //! PowerSupplyUnitActor
@@ -31,7 +32,24 @@ constexpr std::string_view kPowerSupplyUnitTextureKey =
 constexpr std::string_view kSignboardTextureKey =
     "Objects/Signboard/Signboard.png"sv;
 constexpr std::string_view kSignboardDisplayDemoTextureKey =
-    "Objects/Signboard/Display.png"sv;
+    "gimmick/Objects/Signboard/Signboard_on.png"sv;
+
+//! Restart
+constexpr std::string_view kRestartButtonTextureKey =
+"Restart.png";
+
+//! Resume
+constexpr std::string_view kResumeButtonTextureKey =
+"Resume.png";
+
+
+//! ChangeRestart
+constexpr  std::string_view kChangeRestartButtonTextureKey =
+"Restart2.png";
+
+//! ChangeResume
+constexpr  std::string_view kChangeResumeButtonTextureKey =
+"Resume2.png";
 
 namespace effect {
 

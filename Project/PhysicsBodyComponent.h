@@ -21,12 +21,12 @@ namespace physics {
  * \brief 動作種別
  */
 enum class BodyMotionType {
-  // 物理演算の影響を受ける
-  kDynamic,
+  // 一切動かない
+  kStatic,
   // 物理影響を受けない
   kKinematic,
-  // 一切動かない
-  kStatic
+  // 物理演算の影響を受ける
+  kDynamic
 };
 }
 
@@ -43,12 +43,13 @@ class PhysicsBodyComponent final : public Component {
   void SetForce(InVector2 force) { liner_velocity_ = force; }
   void SetForceX(Floating force) { liner_velocity_.x = force; }
   void SetForceY(Floating force) { liner_velocity_.y = force; }
-  Vector2 GetForce() { return liner_velocity_; }
+  Vector2 GetForce() const { return liner_velocity_; }
   void Update() override
   {
       owner_->Translation(liner_velocity_);
   }
-private:
-  void Solver(const physics::Manifold& manifold, const PhysicsBodyComponent* target_body) const;
+  physics::BodyMotionType GetType() const { return motion_type_; }
+  
+  void Solver(physics::Manifold& manifold, const PhysicsBodyComponent* target_body);
 };
 }  // namespace base_engine

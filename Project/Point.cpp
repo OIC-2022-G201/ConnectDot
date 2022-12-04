@@ -28,8 +28,9 @@ bool Point::Collision(const Vector2& transform, const Point& point, const Vector
   return Geometry2D::Intersect((*this) + transform,
                                point + point_transform);
 }
-void Point::ChangeNotification() {
-}
+void Point::ChangeNotification() { aabb_ = Mof::CRectangle{*this,*this}; }
+
+const Mof::CRectangle& Point::AABB() const { return aabb_; }
 
 Vector2 Point::GetFarthestPoint(InVector2 transform, Vector2 direction) const
 {

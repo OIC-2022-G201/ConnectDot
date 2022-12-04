@@ -1,13 +1,27 @@
 ﻿// @file FrozenHelper.h
-// @brief 
+// @brief
 // @author ICE
 // @date 2022/10/02
-// 
+//
 // @details
 
 #pragma once
 #include <type_traits>
 namespace frozen {
+using SizeType = uint64_t;
+
+template <class T>
+class SizeTag {
+ private:
+  using Type =
+      std::conditional_t<std::is_lvalue_reference_v<T>, T, std::decay_t<T>>;
+  SizeTag& operator=(SizeTag const&) = delete;
+
+ public:
+  explicit SizeTag(T&& sz) : size_(std::forward<T>(sz)) {}
+
+  Type size_;
+};
 template <class T>
 struct BinaryData {
   using TPtr = std::conditional_t<
@@ -21,8 +35,13 @@ struct BinaryData {
 };
 
 template <class T>
-inline BinaryData<T> binary_data(T&& data, size_t size) {
+BinaryData<T> binary_data(T&& data, size_t size) {
   return {std::forward<T>(data), size};
+}
+
+template <class T>
+SizeTag<T> make_size_tag(T&& size) {
+  return SizeTag<T>{std::forward<T>(size)};
 }
 
 }  // namespace frozen

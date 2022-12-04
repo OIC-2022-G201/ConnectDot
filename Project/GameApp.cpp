@@ -10,6 +10,45 @@
 // INCLUDE
 #include "GameApp.h"
 
+#include <array>
+#include <fstream>
+
+
+#include "TileMap.h"
+#include "BinaryArchive.h"
+#include "VectorFrozen.h"
+#include "StringFrozen.h"
+struct Test {
+  std::vector<int> b{};
+  std::string str{};
+  template <class Archive>
+  void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
+    archive(b, str);
+  }
+};
+struct Test2 {
+  std::vector<int> b{};
+  std::string str{};
+  Test t;
+  template <class Archive>
+  void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
+    archive(b, str,t);
+  }
+};
+
+struct Test3 {
+  std::vector<int> b{};
+  std::string str{};
+};
+  struct Test4 {
+  std::vector<int> b{};
+  std::string str{};
+  Test3 t3;
+  template <class Archive>
+  void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
+    archive(b, str, t3);
+  }
+};
 /*************************************************************************//*!
 		@brief			アプリケーションの初期化
 		@param			None
@@ -20,7 +59,8 @@
 MofBool CGameApp::Initialize(void) {
   CUtilities::SetCurrentDirectory("Resource");
   // CGraphicsUtilities::SetCamera(&camera_);
-  //g_pGraphics->SetScreenMode(false);
+  // g_pGraphics->SetScreenMode(false);
+  g_pGraphics->SetCullMode(CULLMODE_NONE);
   game_.Initialize();
   return TRUE;
 }

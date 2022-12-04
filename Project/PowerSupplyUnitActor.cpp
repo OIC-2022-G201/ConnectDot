@@ -10,6 +10,7 @@
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
+#include "LoadObjectParameter.h"
 #include "PowerSupplyUnitReceiver.h"
 #include "PowerSupplyUnitTransmitter.h"
 #include "ReceiverComponent.h"
@@ -20,6 +21,9 @@
 #include "TransmitterComponent.h"
 using namespace electronics;
 void PowerSupplyUnitActor::Start() {
+}
+
+void PowerSupplyUnitActor::Create(const LoadObject& object) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
@@ -47,11 +51,12 @@ void PowerSupplyUnitActor::Start() {
     transmitter->Create<PowerSupplyUnitTransmitter>(this);
 
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<PowerSupplyUnitReceiver>(this, target_, transmitter);
+    receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
   }
 
   {
+    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({7, 7});
+    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
   }
 }
