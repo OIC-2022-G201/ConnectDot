@@ -18,7 +18,16 @@ IShape* CollisionComponent::GetShape() const { return shape_.get(); }
 
 void CollisionComponent::SetShape(const std::shared_ptr<IShape>& shape) {
   shape_ = shape;
+  if (owner_->GetState() == Actor::kActive) {
+    Sync();
+  }
 }
+
+void CollisionComponent::Sync() {
+  BASE_ENGINE(Collider)->Remove(this);
+  BASE_ENGINE(Collider)->Register(this);
+}
+
 physics::Manifold CollisionComponent::Collision(
     const CollisionComponent* target) const {
   return physics::detector::Gjk::Detect(
@@ -53,23 +62,18 @@ CollisionComponent::~CollisionComponent() {
   BASE_ENGINE(Collider)->Remove(this);
 }
 
-void CollisionComponent::Update() {
-}
+void CollisionComponent::Update() {}
 
 void CollisionComponent::Start() { BASE_ENGINE(Collider)->Register(this); }
 
-PhysicsBodyComponent* CollisionComponent::GetPhysicsBody()
-{
-    if (!body_)
-    {
-        body_ = owner_->GetComponent<PhysicsBodyComponent>().lock().get();
-    }
-    return body_;
-
+PhysicsBodyComponent* CollisionComponent::GetPhysicsBody() {
+  if (!body_) {
+    body_ = owner_->GetComponent<PhysicsBodyComponent>().lock().get();
+  }
+  return body_;
 }
 
-void CollisionComponent::SyncPosition()
-{
+void CollisionComponent::SyncPosition() {
   auto p = GetPosition();
 
   physics_body_->SetTransform({p.x, p.y}, 0);

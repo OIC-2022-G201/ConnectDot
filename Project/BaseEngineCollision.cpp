@@ -138,6 +138,7 @@ void BaseEngineCollision::Remove(CollisionComponent* component) {
                    body_list_.end());
 
   const auto body = component->GetEnginePhysicsBody();
+  if (!body)return;
   world_->DestroyBody(body);
 }
 

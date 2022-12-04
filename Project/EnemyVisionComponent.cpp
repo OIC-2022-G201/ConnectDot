@@ -44,10 +44,12 @@ namespace enemy {
 			if (direction)
 			{
 				find_rect_->Left += reverse_width_; find_rect_->Right += reverse_width_;
+                                find_rect_->ChangeNotification();
 			}
 			else
 			{
 				find_rect_->Left -= reverse_width_; find_rect_->Right -= reverse_width_;
+                                find_rect_->ChangeNotification();
 			}
 		}
 		prev_direction = direction;

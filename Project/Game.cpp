@@ -42,6 +42,7 @@ bool Game::Initialize() {
   player->SetCamera(camera);
   auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
   player->SetMap(tilemap);
+  new enemy::EnemyActor(this);
 
   ObjectLoader object_loader{this};
   object_loader.Load("MapData/Stage1");
