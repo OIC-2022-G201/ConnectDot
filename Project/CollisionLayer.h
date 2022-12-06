@@ -18,6 +18,7 @@ class CollisionLayer final {
     kNone = 0,
     kFieldFilter = 1 << 1,
     kPlayerFilter = 1 << 2,
+    kEnemyFilter = 1 << 3,
     kMachineFilter = 1 << 4,
     kReceiverFilter = 1 << 5,
     kSenderFilter = 1 << 6,
@@ -49,6 +50,9 @@ constexpr BitCollisionLayer kFieldTargetFilter{CollisionLayer::kPlayerFilter};
 constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter};
 constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter |
                                                 CollisionLayer::kActionable};
+
+constexpr BitCollisionLayer kEnemyObjectFilter{CollisionLayer::kEnemyFilter};
+constexpr BitCollisionLayer kEnemyTargetFilter{CollisionLayer::kFieldFilter};
 
 //! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{

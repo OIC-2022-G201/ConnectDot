@@ -26,6 +26,7 @@ class CollisionComponent : public Component {
 
   [[nodiscard]] IShape* GetShape() const;
   void SetShape(const std::shared_ptr<IShape>& shape);
+  void Sync();
   physics::Manifold Collision(const CollisionComponent* target) const;
   void SetTargetFilter(const std::bitset<kCollisionFilterSize>& layer);
   [[nodiscard]] const std::bitset<kCollisionFilterSize>& GetTargetFilter()

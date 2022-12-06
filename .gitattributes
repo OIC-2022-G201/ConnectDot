@@ -62,6 +62,9 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
+*.vcxproj.filters marge=union
+*.vcxproj marge=union
+
 .VSCodeCounter/* linguist-documentation
 html/* linguist-documentation
 latex/* linguist-documentation
