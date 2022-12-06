@@ -1,23 +1,13 @@
 #include "Game.h"
 
+#include <Mof.h>
 #include <Utilities/GraphicsUtilities.h>
 
-#include "Button.h"
-#include "ButtonSelecter.h"
-#include "CameraComponent.h"
-#include "CollisionComponent.h"
-#include "DebugStage.h"
-#include "EnemyActor.h"
-#include "InputComponent.h"
-#include "InputManager.h"
-#include "ObjectLoader.h"
-#include "PlayerActor.h"
-#include "PowerSupplyUnitActor.h"
-#include "PylonActor.h"
+#include "Actor.h"
+#include "IBaseEngineCollider.h"
 #include "RenderComponent.h"
-#include "SignboardActor.h"
-#include "TexturePaths.h"
-#include "TileMapComponent.h"
+#include "StageSceneFactory.h"
+
 
 base_engine::IBaseEngineCollider* b_collision;
 
@@ -25,28 +15,8 @@ namespace base_engine {
 bool Game::Initialize() {
   game_data_.Register();
   BASE_ENGINE(Collider)->SetCallBack(this);
-  auto camera = new Actor(this);
-  new CameraComponent(camera);
-
-  auto stageActor = new DebugStage(this);
-  {
-    stageActor->SetName("Stage");
-    new tile_map::TileMapComponent(stageActor, 100);
-  }
-
-  auto inputActor = new InputActor(this);
-  auto input = new InputManager(inputActor);
-
-  auto pylon = new PylonActor(this);
-  auto player = new player::PlayerActor(this);
-  player->SetInput(input);
-  player->SetCamera(camera);
-  auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
-  player->SetMap(tilemap);
-
-  ObjectLoader object_loader{this};
-  object_loader.Load("MapData/Stage1");
-
+  StageSceneFactory stage(this);
+  stage.Factory();
   b_collision = BASE_ENGINE(Collider);
 
   return true;
@@ -57,12 +27,14 @@ void Game::Update() {
   ProcessInput();
   UpdateGame();
   b_collision->Collide();
+  if (g_pInput->IsKeyPush(MOFKEY_N)) {
+    Clear();
+    StageSceneFactory stage(this);
+    stage.Factory();
+  }
 }
 
-void Game::Shutdown() {
-  actors_.clear();
-  actors_next_frame_delete_.clear();
-}
+void Game::Shutdown() { Clear(); }
 
 void Game::AddActor(Actor* actor) {
   actor_id_max_++;
@@ -76,6 +48,8 @@ void Game::RemoveActor(Actor* actor) {
       iter != actors_.end()) {
     std::iter_swap(iter, actors_.end() - 1);
     actors_.pop_back();
+
+    actor_id_max_--;
   }
 }
 
@@ -153,6 +127,12 @@ void Game::UpdateGame() {
   for (auto&& actor : dead_actors) {
     actor.reset();
   }
+}
+
+void Game::Clear() {
+  actors_.clear();
+  actors_next_frame_delete_.clear();
+  debug_render_.clear();
 }
 
 void Game::Render() const {

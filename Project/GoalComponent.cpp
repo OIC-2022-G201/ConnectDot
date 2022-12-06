@@ -7,6 +7,8 @@
 #include "DoorReceiver.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "EventBus.h"
+#include "GoalEvent.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -31,9 +33,8 @@ void GoalActor::Create(const LoadObject& object) {
   }
 }
 
-void GoalComponent::OnCollision(const base_engine::SendManifold& manifold)
-{
-  int n = 3;
+void GoalComponent::OnCollision(const base_engine::SendManifold& manifold) {
+  GoalAction();
 }
 
 void GoalComponent::Create(base_engine::Actor* owner) {
@@ -53,4 +54,13 @@ void GoalComponent::Create(base_engine::Actor* owner) {
     collision->SetTargetFilter(CollisionLayer::kPlayerFilter);
     collision->SetTrigger(true);
   }
+}
+
+void GoalComponent::GoalAction() {
+  auto collision = owner_->GetComponent<CollisionComponent>().lock();
+  collision->SetTargetFilter(CollisionLayer::kNone);
+
+  auto p = std::any(owner_);
+  GoalEvent goal(p);
+  EventBus::FireEvent(goal);
 }

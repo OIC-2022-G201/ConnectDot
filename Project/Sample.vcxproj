@@ -115,6 +115,10 @@
     <ClCompile Include="ElectricEffect.cpp" />
     <ClCompile Include="EnemyActor.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
+    <ClCompile Include="Event.cpp" />
+    <ClCompile Include="EventBus.cpp" />
+    <ClCompile Include="EventHandler.cpp" />
+    <ClCompile Include="EventRegister.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="GameData.cpp" />
@@ -123,6 +127,7 @@
     <ClCompile Include="GimmickInjection.cpp" />
     <ClCompile Include="GJK.cpp" />
     <ClCompile Include="GoalComponent.cpp" />
+    <ClCompile Include="GoalEvent.cpp" />
     <ClCompile Include="GridPosition.cpp" />
     <ClCompile Include="GridSnapComponent.cpp" />
     <ClCompile Include="IBaseEngineCanvasRender.cpp" />
@@ -163,6 +168,7 @@
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="PlayerComponent.cpp" />
     <ClCompile Include="PlayerFall.cpp" />
+    <ClCompile Include="PlayerListener.cpp" />
     <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="PlayerSneak.cpp" />
     <ClCompile Include="PlayerSneakMove.cpp" />
@@ -187,6 +193,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="StageActor.cpp" />
+    <ClCompile Include="StageSceneFactory.cpp" />
     <ClCompile Include="TextureMof.cpp" />
     <ClCompile Include="TileMapCollisionComponent.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
@@ -231,6 +238,10 @@
     <ClInclude Include="EnemyPackage.h" />
     <ClInclude Include="EnumExtension.h" />
     <ClInclude Include="EnumFlags.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventBus.h" />
+    <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="EventRegister.h" />
     <ClInclude Include="FrozenConcept.h" />
     <ClInclude Include="FrozenHelper.h" />
     <ClInclude Include="FrozenMacro.h" />
@@ -238,9 +249,12 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GimmickInjection.h" />
     <ClInclude Include="GoalComponent.h" />
+    <ClInclude Include="GoalEvent.h" />
+    <ClInclude Include="HandlerRegistration.h" />
     <ClInclude Include="IBaseEngineCanvasRender.h" />
     <ClInclude Include="IMachineActionable.h" />
     <ClInclude Include="ImageComponent.h" />
+    <ClInclude Include="ISceneFactory.h" />
     <ClInclude Include="MoveFloorStubActor.h" />
     <ClInclude Include="LeverStubActor.h" />
     <ClInclude Include="LeverStubReceiver.h" />
@@ -316,6 +330,7 @@
     <ClInclude Include="PlayerActor.h" />
     <ClInclude Include="PlayerComponent.h" />
     <ClInclude Include="PlayerFall.h" />
+    <ClInclude Include="PlayerListener.h" />
     <ClInclude Include="PlayerMove.h" />
     <ClInclude Include="PlayerSneak.h" />
     <ClInclude Include="PlayerSneakMove.h" />
@@ -350,8 +365,10 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="StageActor.h" />
     <ClInclude Include="StageConstitution.h" />
+    <ClInclude Include="StageSceneFactory.h" />
     <ClInclude Include="StateMachine.h" />
     <ClInclude Include="StringFrozen.h" />
+    <ClInclude Include="StubEvent.h" />
     <ClInclude Include="TextureMof.h" />
     <ClInclude Include="TexturePaths.h" />
     <ClInclude Include="TileMap.h" />

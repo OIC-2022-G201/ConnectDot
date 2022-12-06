@@ -58,15 +58,18 @@ void BaseEngineCollision::Collide() {
     auto body_a = contact.collision_a;
     auto body_b = contact.collision_b;
     auto manifold = body_a->Collision(body_b);
-    if ( manifold.has_collision) {
-        if(!(body_a->GetTrigger() || body_b->GetTrigger()))
-        {
-            auto p_a = body_a->GetPhysicsBody();
-            auto p_b = body_b->GetPhysicsBody();
-            if (p_a) p_a->Solver(manifold, p_b);
-            if (p_b) p_b->Solver(manifold, p_a);
-            body_a->SyncPosition();
+    if (manifold.has_collision) {
+      if (!(body_a->GetTrigger() || body_b->GetTrigger())) {
+        auto p_a = body_a->GetPhysicsBody();
+        auto p_b = body_b->GetPhysicsBody();
+        if (p_a) p_a->Solver(manifold, p_b);
+        if (p_b) {
+          auto b_manifold = manifold;
+          b_manifold.normal *= -1;
+          p_b->Solver(b_manifold, p_a);
         }
+        body_a->SyncPosition();
+      }
       contact = {body_a, body_b, manifold};
     }
   }
@@ -103,7 +106,7 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
     case ShapeType::kRect: {
       b2PolygonShape shape;
       const auto rect = component->GetShape()->AABB();
-      shape.SetAsRect(rect.Left,rect.Top,rect.Right,rect.Bottom);
+      shape.SetAsRect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 
       fixture_def.shape = &shape;
       fixture_def.collision = component;
@@ -156,7 +159,7 @@ void BaseEngineCollision::SetCallBack(Game* game) {
 
 void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
   return;
-  
+
   auto p = fixture->GetBody()->GetPosition();
 
   switch (fixture->GetType()) {

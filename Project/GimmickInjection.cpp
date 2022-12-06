@@ -102,6 +102,7 @@ constexpr std::array kGimmickMethodTable = {
 GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     GimmickDiActorContainerSetupImpl(GimmickCreator* creator)
     : creator_(creator) {
+  DiActorContainer::Clear();
   for (const auto& gimmick_method_table : kGimmickMethodTable) {
     Register(std::get<0>(gimmick_method_table),
              std::get<1>(gimmick_method_table));

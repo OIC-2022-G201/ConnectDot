@@ -8,6 +8,7 @@
 #include "Actor.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "EventBus.h"
 #include "IMachineActionable.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
@@ -15,6 +16,9 @@
 #include "SendManifold.h"
 #include "SpriteComponent.h"
 #include "TileMapComponent.h"
+
+#include "EventHandler.h"
+#include "GoalEvent.h"
 using namespace std::string_view_literals;
 using namespace base_engine;
 namespace player {
@@ -33,10 +37,24 @@ class HitGroundCallback final : public physics::PhysicsRayCastCallback {
   }
   physics::PhysicsFixture* ground_fixture_ = nullptr;
 };
+
+class PlayerComponent::PlayerListener final : public EventHandler<GoalEvent> {
+ public:
+  PlayerListener() = default;
+  void OnEvent(GoalEvent& e) override {
+    auto p = e.GetSender();
+  }
+};
+
+PlayerComponent::~PlayerComponent() { event_handler_->removeHandler(); }
+
 PlayerComponent::PlayerComponent(base_engine::Actor* owner, int update_order)
     : Component(owner, update_order) {}
 
 void PlayerComponent::Start() {
+  listener_ = std::make_unique<PlayerListener>();
+  event_handler_ = EventBus::AddHandler(*listener_);
+
   owner_->GetGame()->debug_render_.emplace_back([this]() {
     Mof::CGraphicsUtilities::RenderString(0, 60, "State:%d",
                                           machine_.current_state());

@@ -11,6 +11,7 @@
 #include "Component.h"
 #include "Game.h"
 #include "GridPosition.h"
+#include "HandlerRegistration.h"
 #include "ISpriteAnimationComponent.h"
 #include "InputManager.h"
 #include "PhysicsBodyComponent.h"
@@ -24,6 +25,7 @@
 #include "ReactiveProperty.h"
 #include "StateMachine.h"
 
+
 class VentComponent;
 
 namespace tile_map {
@@ -36,8 +38,9 @@ class PlayerComponent final : public base_engine::Component {
   using Vector2 = Mof::CVector2;
   using TileMapWeak =
       base_engine::ComponentDerivedWeakPtr<tile_map::TileMapComponent>;
-
  public:
+  class PlayerListener;
+  ~PlayerComponent() override;
   PlayerComponent(base_engine::Actor* owner, int update_order);
   void Start() override;
   void ProcessInput() override { machine_.ProcessInput(); }
@@ -106,7 +109,8 @@ class PlayerComponent final : public base_engine::Component {
   std::weak_ptr<base_engine::PhysicsBodyComponent> physics_body_;
   std::weak_ptr<base_engine::ISpriteAnimationComponent> animator_;
   std::weak_ptr<base_engine::SpriteComponent> sprite_;
-
+  std::unique_ptr<PlayerListener> listener_;
+  HandlerRegistration* event_handler_ = nullptr;
   observable::ReactiveProperty<Dir> dir_ = Dir::kRight;
   bool is_ground_ = false;
 
