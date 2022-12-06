@@ -15,7 +15,6 @@ class PylonTransmitter : public ISendablePower {
   bool CanSending() override;
   const ISendablePower* GetPrevious() override { return nullptr; }
 
-  int Sequential() override { return 0; }
   void SetPrevious(ISendablePower* previous) override {}
   [[nodiscard]] base_engine::Vector2 GetPosition() const override {
     return electronics::pylon::kPylonTransmitterOffset;

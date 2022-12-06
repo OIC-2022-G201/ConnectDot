@@ -3,11 +3,11 @@
 #include "BaseEngineCore.h"
 #include "DrawOrder.h"
 #include "IBaseEngineTexture.h"
+#include "ReceiverComponent.h"
 using namespace base_engine;
-void ElectricEffect::Play(Vector2 pos1, Vector2 pos2)
-{
-    sprite_ = new SpriteComponent(
-        this, draw_order::kElectricEffectDrawOrder);
+void ElectricEffect::Play(Vector2 pos1, Vector2 pos2) {
+  {
+    sprite_ = new SpriteComponent(this, draw_order::kElectricEffectDrawOrder);
     sprite_->SetImage(
         BASE_ENGINE(Texture)->Get("Effect/Electric/ElectroCellMap.png"));
     motion_ = new MofSpriteAnimationComponent(this, 500);
@@ -21,5 +21,10 @@ void ElectricEffect::Play(Vector2 pos1, Vector2 pos2)
     sprite_->SetAngle(std::atan2(o_pos.y, o_pos.x));
     sprite_->SetAlignment(Mof::TEXALIGN_CENTERLEFT);
     motion_->Load(sprite_, animations);
+  
+  
 
+  }
 }
+
+

@@ -12,21 +12,17 @@
 #include "Component.h"
 #include "IReceivablePower.h"
 #include "SpriteComponent.h"
-
+#include "ElectricEffect.h"
 class ReceiverComponent : public base_engine::Component {
  public:
-  void OnPowerExit() {
-    current_state_ = PowerState::kDisconnect;
-    prev_state_ = PowerState::kDisconnect;
-    receiver_->OnPowerExit(sender_.lock().get());
-  }
+    ~ReceiverComponent() override;
+    void OnPowerExit();
   void OnPowerEnter();
 
   void OnPowerChanged() { receiver_->OnPowerChanged(sender_.lock().get()); }
 
   ReceiverComponent(base_engine::Actor* owner, int update_order);
-
-  ~ReceiverComponent() override {}
+  
   void Start() override;
 
   void Update() override {
@@ -64,8 +60,19 @@ class ReceiverComponent : public base_engine::Component {
     receiver_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
 
+  void ECreate();
+
   [[nodiscard]] base_engine::Vector2 GetPosition() const {
     return owner_->GetPosition() + receiver_->GetPosition();
+  }
+  bool IsConect() const {
+    if (current_state_ != PowerState::kDisconnect) return true;
+    return false;
+  }
+  bool EqualSender(
+      std::weak_ptr<class TransmitterComponent> sender_weak) const {
+    if (sender_.expired() || sender_weak.expired()) return false;
+    return sender_.lock().get() == sender_weak.lock().get();
   }
 
  private:
@@ -80,5 +87,5 @@ class ReceiverComponent : public base_engine::Component {
   std::unique_ptr<IReceivablePower> receiver_;
   std::weak_ptr<class TransmitterComponent> sender_;
 
-  class ElectricEffect* effect_ = nullptr;
+  std::weak_ptr<base_engine::Actor> effect_;
 };

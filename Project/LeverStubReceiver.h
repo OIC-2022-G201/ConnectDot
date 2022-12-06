@@ -43,7 +43,6 @@ class LeverStubTransmitter : public ISendablePower {
 
   [[nodiscard]] base_engine::Vector2 GetPosition() const override;
 
-  int Sequential() override;
 
 private:
   base_engine::Vector2 position_;
