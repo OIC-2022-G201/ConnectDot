@@ -292,6 +292,30 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent">
       <UniqueIdentifier>{6fe2ba8e-8c65-4855-87f1-6457b445e71b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Door">
+      <UniqueIdentifier>{ef06b323-405b-4249-921a-504d1e8d0105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\GameManager">
+      <UniqueIdentifier>{76ba5c21-a8aa-4ab4-8816-700d4c21f942}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event">
+      <UniqueIdentifier>{eda6bd11-8f0b-4430-9034-bcdff8a82d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\Goal">
+      <UniqueIdentifier>{0e90a1a3-4936-4523-a9a5-a59bc0abe446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\EventBus">
+      <UniqueIdentifier>{51aaac7c-eae7-4d1e-b651-5f070105b44a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\Handler">
+      <UniqueIdentifier>{55f90d94-b7ad-48c2-a579-c4eebb942a1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\Handler\Player">
+      <UniqueIdentifier>{486e197c-dcba-4d9b-a75a-b0174b6be8b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Scene">
+      <UniqueIdentifier>{81ae5be4-2e63-45c1-959b-adb0911c990f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -596,6 +620,42 @@
     </ClCompile>
     <ClCompile Include="PlayerVentAction.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactRayCastCallBack.cpp">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GoalComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
+    </ClCompile>
+    <ClCompile Include="GoalEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
+    </ClCompile>
+    <ClCompile Include="EventBus.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClCompile>
+    <ClCompile Include="EventRegister.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerListener.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Handler\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSceneFactory.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1087,6 +1147,51 @@
     </ClInclude>
     <ClInclude Include="PlayerVentAction.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactRayCastCallBack.h">
+      <Filter>BaseEngine\physics\CallBack</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
+    </ClInclude>
+    <ClInclude Include="EventBus.h">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClInclude>
+    <ClInclude Include="EventHandler.h">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClInclude>
+    <ClInclude Include="HandlerRegistration.h">
+      <Filter>ソース ファイル\ConnectDot\Event\EventBus</Filter>
+    </ClInclude>
+    <ClInclude Include="EventRegister.h">
+      <Filter>ソース ファイル\ConnectDot\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerListener.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Handler\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSceneFactory.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ISceneFactory.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="StubEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -17,8 +17,6 @@ class VentActor final : public base_engine::Actor {
   explicit VentActor(base_engine::Game* game);
 
   void Create(const LoadObject& object);
-
- private:
 };
 class VentComponent final : public base_engine::Component,
                             public IMachineActionable {

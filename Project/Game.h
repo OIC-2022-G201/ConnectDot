@@ -5,6 +5,7 @@
 
 #include "BaseEngineCore.h"
 #include "GameData.h"
+#include "GameManager.h"
 
 namespace base_engine {
     struct ActorId;
@@ -13,7 +14,7 @@ namespace base_engine {
 class Game {
   BaseEngineCore engine_;
   GameData game_data_;
-
+  std::unique_ptr<GameManager> game_manager_;
  public:
   bool Initialize();
   void Update();
@@ -32,6 +33,7 @@ class Game {
   void ProcessInput();
   void UpdateGame();
 
+    void Clear();
   std::vector<ActorPtr> actors_;
   std::vector<ActorPtr> actors_next_frame_delete_;
   std::vector<class RenderComponent*> sprites_;
