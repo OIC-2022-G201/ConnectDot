@@ -7,10 +7,13 @@
 using namespace base_engine;
 void ElectricEffect::Play(Vector2 pos1, Vector2 pos2) {
   {
-    sprite_ = new SpriteComponent(this, draw_order::kElectricEffectDrawOrder);
-    sprite_->SetImage(
-        BASE_ENGINE(Texture)->Get("Effect/Electric/ElectroCellMap.png"));
-    motion_ = new MofSpriteAnimationComponent(this, 500);
+    if (!sprite_)
+    {
+        sprite_ = new SpriteComponent(this, draw_order::kElectricEffectDrawOrder);
+        sprite_->SetImage(
+            BASE_ENGINE(Texture)->Get("Effect/Electric/ElectroCellMap.png"));
+        motion_ = new MofSpriteAnimationComponent(this, 500);
+    }
 
     const Vector2 o_pos = pos2 - pos1;
 

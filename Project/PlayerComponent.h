@@ -110,7 +110,7 @@ class PlayerComponent final : public base_engine::Component {
   std::weak_ptr<base_engine::ISpriteAnimationComponent> animator_;
   std::weak_ptr<base_engine::SpriteComponent> sprite_;
   std::unique_ptr<PlayerListener> listener_;
-  HandlerRegistration* event_handler_ = nullptr;
+  std::shared_ptr<HandlerRegistration> event_handler_;
   observable::ReactiveProperty<Dir> dir_ = Dir::kRight;
   bool is_ground_ = false;
 

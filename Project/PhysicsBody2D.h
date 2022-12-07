@@ -323,8 +323,7 @@ class PhysicsBody {
   bool IsFixedRotation() const;
 
   /// Get the list of all fixtures attached to this body.
-  PhysicsFixture* GetFixtureList();
-  const PhysicsFixture* GetFixtureList() const;
+  PhysicsFixture* GetFixtureList() { return this->m_fixtureList; }
 
   /// Get the list of all contacts attached to this body.
   /// @warning this list changes during the time step and you may

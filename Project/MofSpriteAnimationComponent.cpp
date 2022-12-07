@@ -79,3 +79,5 @@ void MofSpriteAnimationComponent::Update() {
   if (!sprite_) return;
   sprite_->SetClipRect(motion_.GetSrcRect());
 }
+
+bool MofSpriteAnimationComponent::Release() { return motion_.Release(); }

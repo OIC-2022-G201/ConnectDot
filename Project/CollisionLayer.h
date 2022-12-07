@@ -64,7 +64,7 @@ constexpr BitCollisionLayer kBeaconTargetFilter{
 //! PowerSupplyUnitActor
 constexpr BitCollisionLayer kPowerSupplyUnitObjectFilter{kBeaconObjectFilter};
 
-constexpr BitCollisionLayer kPowerSupplyUnitTargetFilter{CollisionLayer::kNone};
+constexpr BitCollisionLayer kPowerSupplyUnitTargetFilter{kBeaconTargetFilter};
 
 //! Pylon
 constexpr BitCollisionLayer kPylonObjectFilter{CollisionLayer::kSenderFilter};

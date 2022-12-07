@@ -6,14 +6,17 @@
 #include "Actor.h"
 #include "IBaseEngineCollider.h"
 #include "RenderComponent.h"
+#include "ResourceContainer.h"
 #include "StageSceneFactory.h"
-
-
 base_engine::IBaseEngineCollider* b_collision;
 
 namespace base_engine {
+
 bool Game::Initialize() {
   game_data_.Register();
+  resource_container_ = std::make_shared<ResourceContainer>();
+  resource_container_->Register();
+
   BASE_ENGINE(Collider)->SetCallBack(this);
   StageSceneFactory stage(this);
   stage.Factory();
@@ -49,8 +52,6 @@ void Game::RemoveActor(Actor* actor) {
     std::iter_swap(iter, actors_.end() - 1);
     actors_next_frame_delete_.emplace_back(actors_.back());
     actors_.pop_back();
-
-    actor_id_max_--;
   }
   actors_next_frame_delete_.clear();
 }
@@ -147,5 +148,6 @@ void Game::Render() const {
   Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
                                         Mof::CUtilities::GetFPS());
 }
+Game::~Game() {}
 
 }  // namespace base_engine

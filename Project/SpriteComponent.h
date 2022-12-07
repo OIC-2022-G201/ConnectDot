@@ -26,7 +26,8 @@ class SpriteComponent : public RenderComponent {
   void Update() override;
   void Draw() override;
   SpriteComponent& SetImage(Mof::LPTexture img);
-  void SetClipRect(Mof::CRectangle rect) { clip_rect_ = rect; }
+  void SetClipRect(const Mof::CRectangle& rect) { clip_rect_ = rect; }
+  void FitClipRect();
   Mof::CRectangle GetClipRect() const { return clip_rect_; }
   SpriteComponent& SetColor(const COLOR& color) {
     color_ = color;

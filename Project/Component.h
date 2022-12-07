@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Actor.h"
 
 namespace base_engine {
 
@@ -17,6 +18,9 @@ class Component {
   virtual void OnCollision(const class SendManifold& manifold) {}
 
   [[nodiscard]] int GetUpdateOrder() const { return update_order_; }
+  [[nodiscard]] ActorWeakPtr GetOwner() const {
+    return owner_->GetGame()->GetActor(owner_->GetId());
+  }
 
  protected:
   // このComponentを所有するActor

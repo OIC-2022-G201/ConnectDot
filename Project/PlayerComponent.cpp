@@ -46,7 +46,7 @@ class PlayerComponent::PlayerListener final : public EventHandler<GoalEvent> {
   }
 };
 
-PlayerComponent::~PlayerComponent() { event_handler_->removeHandler(); }
+PlayerComponent::~PlayerComponent() { }
 
 PlayerComponent::PlayerComponent(base_engine::Actor* owner, int update_order)
     : Component(owner, update_order) {}

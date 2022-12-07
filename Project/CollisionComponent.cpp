@@ -8,6 +8,8 @@
 #include "IShape.h"
 #include "PhysicsBody2D.h"
 #include "PhysicsBodyComponent.h"
+#include "PhysicsFixture.h"
+
 namespace base_engine {
 CollisionComponent::CollisionComponent(Actor* owner, int update_order)
     : Component(owner, update_order),
@@ -37,6 +39,11 @@ physics::Manifold CollisionComponent::Collision(
 void CollisionComponent::SetTargetFilter(
     const std::bitset<kCollisionFilterSize>& layer) {
   target_layer_ = layer;
+  if (physics_body_) {
+    auto filter = physics_body_->GetFixtureList()->GetFilterData();
+    filter.maskObjectBits = object_layer_.to_ulong();
+    physics_body_->GetFixtureList()->SetFilterData(filter);
+  }
 }
 
 const std::bitset<kCollisionFilterSize>& CollisionComponent::GetTargetFilter()
@@ -47,6 +54,11 @@ const std::bitset<kCollisionFilterSize>& CollisionComponent::GetTargetFilter()
 void CollisionComponent::SetObjectFilter(
     const std::bitset<kCollisionFilterSize>& layer) {
   object_layer_ = layer;
+  if (physics_body_) {
+    auto filter = physics_body_->GetFixtureList()->GetFilterData();
+    filter.maskObjectBits = object_layer_.to_ulong();
+    physics_body_->GetFixtureList()->SetFilterData(filter);
+  }
 }
 
 const std::bitset<kCollisionFilterSize>& CollisionComponent::GetObjectFilter()

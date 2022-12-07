@@ -19,10 +19,14 @@ SpriteComponent::~SpriteComponent() {}
 SpriteComponent& SpriteComponent::SetImage(Mof::LPTexture img) {
   texture_ = img;
   if (clip_rect_ == Mof::CRectangle{}) {
-    clip_rect_ = Mof::CRectangle{0, 0, static_cast<float>(img->GetWidth()),
-                                 static_cast<float>(img->GetHeight())};
+    FitClipRect();
   }
   return *this;
+}
+
+void SpriteComponent::FitClipRect() {
+  clip_rect_ = Mof::CRectangle{0, 0, static_cast<float>(texture_->GetWidth()),
+                               static_cast<float>(texture_->GetHeight())};
 }
 
 void SpriteComponent::StartFlash(float time, const COLOR& color) {

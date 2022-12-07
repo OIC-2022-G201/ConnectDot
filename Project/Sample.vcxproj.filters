@@ -180,9 +180,6 @@
     <Filter Include="ソース ファイル\ConnectDot\AssetSystem">
       <UniqueIdentifier>{1ca490de-7538-43fb-aacc-21cfbc1e96bc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ConnectDot\AssetSystem\Stage">
-      <UniqueIdentifier>{8f9f2adb-4eb0-4e24-aeef-1e328fec7122}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utilities\ServiceLocator">
       <UniqueIdentifier>{f7539243-6c2d-4216-b606-0692bbc690e6}</UniqueIdentifier>
     </Filter>
@@ -400,7 +397,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent">
       <UniqueIdentifier>{6fe2ba8e-8c65-4855-87f1-6457b445e71b}</UniqueIdentifier>
     </Filter>
-
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Register\Resource">
+      <UniqueIdentifier>{9a33e48a-5b66-4d29-8846-eea21bc59e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Register\Resource\Loader">
+      <UniqueIdentifier>{78bee363-84e3-4445-b4a3-669b97e04c7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -783,6 +785,15 @@
     </ClCompile>
     <ClCompile Include="BaseBodyComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceContainer.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Register\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceLoader.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Register\Resource\Loader</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAnimationClipLoader.cpp">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1367,6 +1378,15 @@
     </ClInclude>
     <ClInclude Include="StubEvent.h">
       <Filter>ソース ファイル\ConnectDot\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceContainer.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Register\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceLoader.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Register\Resource\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnimationClipLoader.h">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

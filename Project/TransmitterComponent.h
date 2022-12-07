@@ -13,6 +13,7 @@
 #include "CollisionComponent.h"
 #include "Component.h"
 #include "ISendablePower.h"
+#include "ReceiverComponent.h"
 
 class TransmitterComponent : public base_engine::Component {
  public:
@@ -36,6 +37,8 @@ class TransmitterComponent : public base_engine::Component {
   [[nodiscard]] base_engine::Vector2 GetPosition() const;
 
  private:
+  static bool CoercionCondition(std::weak_ptr<ReceiverComponent> );
+
   std::deque<std::weak_ptr<class ReceiverComponent>> target_;
   std::unique_ptr<ISendablePower> transmitter_;
 };

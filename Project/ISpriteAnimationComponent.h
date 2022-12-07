@@ -37,6 +37,7 @@ struct ISpriteAnimationComponent
                               bool is_same = true) = 0;
     [[nodiscard]] bool virtual IsMotion(const std::string_view name) const = 0;
     bool virtual IsEndMotion() = 0;
+    bool virtual Release() = 0;
 };
 
 }  // namespace base_engine

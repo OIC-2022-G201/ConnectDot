@@ -2,6 +2,7 @@
 
 #include "CameraComponent.h"
 #include "DebugStage.h"
+#include "EnemyActor.h"
 #include "EventRegister.h"
 #include "InputActor.h"
 #include "InputManager.h"
@@ -31,9 +32,10 @@ void StageSceneFactory::Factory()
   auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
   player->SetMap(tilemap);
 
+  new enemy::EnemyActor(game_);
+
   ObjectLoader object_loader{game_};
   object_loader.Load("MapData/Stage1");
-
   const EventRegister event_register;
   event_register.Register();
 }

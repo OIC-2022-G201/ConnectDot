@@ -6,18 +6,23 @@
 #include "ReceiverComponent.h"
 #include "TransmitterComponent.h"
 
-int PowerSupplyUnitReceiver::Sequential() { return 100; }
+int PowerSupplyUnitReceiver::Sequential() { return sequential_; }
 
 bool PowerSupplyUnitReceiver::PowerJoinCondition() { return true; }
 
 void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
-  if (!target_)
-  {
+  if (!target_) {
     target_ = actor_->GetTarget();
   }
   if (!target_) return;
   receiver_ = target_->GetComponent<ReceiverComponent>();
-
+  if (transmitter) {
+    if (const auto receiver =
+            transmitter->GetOwner().lock()->GetComponent<ReceiverComponent>();
+        !receiver.expired()) {
+      sequential_ = receiver.lock()->Sequential();
+    }
+  }
   actor_->SetElectricPower(true);
   sender_->AddTarget(receiver_);
 }
@@ -30,6 +35,7 @@ void PowerSupplyUnitReceiver::OnPowerChanged(
 }
 
 void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter) {
+  sequential_ = -1;
   if (!target_) return;
 
   actor_->SetElectricPower(false);

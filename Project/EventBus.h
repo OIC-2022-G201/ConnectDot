@@ -8,6 +8,7 @@
 #pragma once
 #include <any>
 #include <list>
+#include <memory>
 #include <typeindex>
 #include <unordered_map>
 
@@ -28,8 +29,8 @@ class EventBus {
   }
 
   template <class T>
-  static HandlerRegistration* AddHandler(EventHandler<T>& handler,
-                                         std::any& sender) {
+  static std::shared_ptr<HandlerRegistration> AddHandler(
+      EventHandler<T>& handler, std::any& sender) {
     EventBus* instance = GetInstance();
 
     Registrations* registrations = instance->handlers_[typeid(T)];
@@ -39,16 +40,18 @@ class EventBus {
       instance->handlers_[typeid(T)] = registrations;
     }
 
-    const auto registration = new EventRegistration(
+    const auto registration = std::make_shared<EventRegistration>(
         static_cast<void*>(&handler), registrations, &sender);
 
-    registrations->push_back(registration);
+    registrations->push_front(registration);
+    registration->SetItr(registrations->cbegin());
 
     return registration;
   }
 
   template <class T>
-  static HandlerRegistration* AddHandler(EventHandler<T>& handler) {
+  static std::shared_ptr<HandlerRegistration> AddHandler(
+      EventHandler<T>& handler) {
     EventBus* instance = GetInstance();
 
     Registrations* registrations = instance->handlers_[typeid(T)];
@@ -58,10 +61,11 @@ class EventBus {
       instance->handlers_[typeid(T)] = registrations;
     }
 
-    const auto registration = new EventRegistration(
+    const auto registration = std::make_shared<EventRegistration>(
         static_cast<void*>(&handler), registrations, nullptr);
 
-    registrations->push_back(registration);
+    registrations->push_front(registration);
+    registration->SetItr(registrations->cbegin());
 
     return registration;
   }
@@ -74,8 +78,9 @@ class EventBus {
       return;
     }
 
-    for (auto& reg : *registrations) {
-      if ((reg->GetSender() == nullptr) ||
+    for (auto& reg_weak : *registrations) {
+      if (const auto reg = reg_weak.lock();
+          (reg->GetSender() == nullptr) ||
           (reg->GetSender() == &e.GetSender())) {
         static_cast<EventHandler<Event>*>(reg->GetHandler())->OnEvent(e);
       }
@@ -87,7 +92,7 @@ class EventBus {
 
   class EventRegistration final : public HandlerRegistration {
    public:
-    using Registrations = std::list<EventRegistration*>;
+    using Registrations = std::list<std::weak_ptr<EventRegistration>>;
 
     EventRegistration(void* const handler, Registrations* const registrations,
                       std::any* const sender)
@@ -96,7 +101,7 @@ class EventBus {
           sender_(sender),
           registered_(true) {}
 
-    ~EventRegistration() override = default;
+    ~EventRegistration() override { removeHandler(); }
 
     [[nodiscard]] void* GetHandler() const { return handler_; }
 
@@ -104,10 +109,11 @@ class EventBus {
 
     void removeHandler() override {
       if (registered_) {
-        registrations_->remove(this);
+        registrations_->erase(itr_);
         registered_ = false;
       }
     }
+    void SetItr(const Registrations::const_iterator& itr) { itr_ = itr; }
 
    private:
     void* const handler_;
@@ -115,10 +121,13 @@ class EventBus {
     std::any* const sender_;
 
     bool registered_;
+    Registrations::const_iterator itr_;
   };
 
-  using Registrations = std::list<EventRegistration*>;
-  using TypeMap = std::unordered_map<std::type_index, std::list<EventRegistration*>*>;
+  using WeakEventRegistration = std::weak_ptr<EventRegistration>;
+  using Registrations = std::list<WeakEventRegistration>;
+  using TypeMap =
+      std::unordered_map<std::type_index, std::list<WeakEventRegistration>*>;
 
   TypeMap handlers_;
 };

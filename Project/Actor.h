@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 
+#include "Game.h"
 #include "IBaseEngineCollider.h"
 #include "Vector.h"
 namespace base_engine {
@@ -14,18 +15,15 @@ using ComponentDerivedPtr = std::shared_ptr<T>;
 template <class T>
 using ComponentDerivedWeakPtr = std::weak_ptr<T>;
 
-struct ActorId
-{
+struct ActorId {
   uint64_t id;
 
-  friend bool operator==(const ActorId& lhs, const ActorId& rhs)
-  {
-      return lhs.id == rhs.id;
+  friend bool operator==(const ActorId& lhs, const ActorId& rhs) {
+    return lhs.id == rhs.id;
   }
 
-  friend bool operator!=(const ActorId& lhs, const ActorId& rhs)
-  {
-      return !(lhs == rhs);
+  friend bool operator!=(const ActorId& lhs, const ActorId& rhs) {
+    return !(lhs == rhs);
   }
 };
 
@@ -148,4 +146,6 @@ ComponentDerivedWeakPtr<T> Actor::GetComponent() const {
 
 template <class T>
 T* Actor::GetComponents() const {}
+
+
 }  // namespace base_engine

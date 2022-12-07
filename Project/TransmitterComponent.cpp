@@ -14,18 +14,22 @@ void TransmitterComponent::Start() {}
 
 void TransmitterComponent::Update() {
   const auto weak_ptr = owner_->GetComponent<TransmitterComponent>();
-  if (!target_.empty()) {
-    int n = 3;
-  }
 
-    
+  for (const auto& receiver_weak : target_) {
+    if (receiver_weak.expired()) continue;
+    if (CoercionCondition(receiver_weak)) {
+      receiver_weak.lock()->Connecting(weak_ptr);
+    }
+  }
   std::erase_if(target_, [](const std::weak_ptr<ReceiverComponent>& a) {
     return a.expired();
   });
-  std::erase_if(target_, [&weak_ptr](const std::weak_ptr<ReceiverComponent>& a)
-  {
-    return a.lock()->IsConect() == true && !a.lock()->EqualSender(weak_ptr);
-  });
+  std::erase_if(target_,
+                [&weak_ptr](const std::weak_ptr<ReceiverComponent>& a) {
+                  return (a.lock()->IsConnect() == true &&
+                          !a.lock()->EqualSender(weak_ptr)) ||
+                         CoercionCondition(a);
+                });
   const auto target = std::ranges::min_element(
       target_, [](const std::weak_ptr<ReceiverComponent>& a,
                   const std::weak_ptr<ReceiverComponent>& b) {
@@ -33,13 +37,6 @@ void TransmitterComponent::Update() {
       });
   if (target != target_.end()) {
     target->lock()->Connecting(weak_ptr);
-  }
-  
-  
-  for (const auto& target : target_) {
-    if (target.expired()) continue;
-
-    target.lock()->Connecting(weak_ptr);
   }
   target_.clear();
 }
@@ -65,4 +62,10 @@ bool TransmitterComponent::AddTarget(
 
 base_engine::Vector2 TransmitterComponent::GetPosition() const {
   return owner_->GetPosition() + transmitter_->GetPosition();
+}
+
+bool TransmitterComponent::CoercionCondition(
+    const std::weak_ptr<ReceiverComponent> receiver_weak) {
+  return !receiver_weak.lock()->IsWireless() ||
+         receiver_weak.lock()->Sequential() < 0;
 }

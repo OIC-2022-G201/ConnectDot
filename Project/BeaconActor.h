@@ -2,6 +2,7 @@
 #include <variant>
 
 #include "Actor.h"
+#include "ISpriteAnimationComponent.h"
 #include "ReactiveProperty.h"
 #include "ShapeRenderComponent.h"
 #include "TupleHasElement.h"
@@ -38,4 +39,7 @@ class BeaconActor final : public base_engine::Actor {
   observable::ReactiveProperty<bool> electric_power_ = false;
   int sequential_ = 0;
   BeaconPartTuple tuple_;
+  bool is_deployed_ = false;
+  base_engine::ISpriteAnimationComponent* animation_;
+  base_engine::SpriteComponent* sprite_;
 };

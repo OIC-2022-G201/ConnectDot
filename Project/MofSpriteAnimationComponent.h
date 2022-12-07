@@ -36,8 +36,8 @@ class MofSpriteAnimationComponent final : public Component,
   bool IsEndMotion() override;
 
   void Update() override;
-
- private:
+  bool Release() override;
+private:
   Mof::CSpriteMotionController motion_;
   std::unordered_map<std::string, MofU32> motion_map_;
   SpriteComponent* sprite_ = nullptr;

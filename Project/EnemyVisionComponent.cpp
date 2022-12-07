@@ -45,11 +45,13 @@ namespace enemy {
 			{
 				find_rect_->Left += reverse_width_; find_rect_->Right += reverse_width_;
                                 find_rect_->ChangeNotification();
+                                collision_->Sync();
 			}
 			else
 			{
 				find_rect_->Left -= reverse_width_; find_rect_->Right -= reverse_width_;
                                 find_rect_->ChangeNotification();
+                                collision_->Sync();
 			}
 		}
 		prev_direction = direction;

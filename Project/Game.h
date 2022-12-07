@@ -7,15 +7,15 @@
 #include "GameData.h"
 #include "GameManager.h"
 
+class ResourceContainer;
+
 namespace base_engine {
     struct ActorId;
     using ActorPtr = std::shared_ptr<class Actor>;
     using ActorWeakPtr = std::weak_ptr<class Actor>;
 class Game {
-  BaseEngineCore engine_;
-  GameData game_data_;
-  std::unique_ptr<GameManager> game_manager_;
  public:
+    ~Game();
   bool Initialize();
   void Update();
   void Render() const;
@@ -43,6 +43,11 @@ class Game {
 
   uint64_t actor_id_max_ = 0;
 
+    
+  BaseEngineCore engine_;
+  GameData game_data_;
+  std::unique_ptr<GameManager> game_manager_;
+  std::shared_ptr<ResourceContainer> resource_container_;
  public:
   std::vector<std::function<void()>> debug_render_;
 };

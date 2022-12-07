@@ -126,7 +126,10 @@
     <ClCompile Include="EnemyTurn.cpp" />
     <ClCompile Include="DummyActor.cpp" />
     <ClCompile Include="EnemyVisionComponent.cpp" />
+    <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="ResourceContainer.cpp" />
     <ClCompile Include="SecondEnemyComponent.cpp" />
+    <ClCompile Include="SpriteAnimationClipLoader.cpp" />
     <ClCompile Include="VisionCreateComponent.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Event.cpp" />
@@ -264,7 +267,10 @@
     <ClInclude Include="EnemyTurn.h" />
     <ClInclude Include="DummyActor.h" />
     <ClInclude Include="EnemyVisionComponent.h" />
+    <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="ResourceContainer.h" />
     <ClInclude Include="SecondEnemyComponent.h" />
+    <ClInclude Include="SpriteAnimationClipLoader.h" />
     <ClInclude Include="VisionCreateComponent.h" />
     <ClInclude Include="EnumExtension.h" />
     <ClInclude Include="EnumFlags.h" />

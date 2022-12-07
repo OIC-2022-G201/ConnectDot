@@ -29,4 +29,7 @@ class PowerSupplyUnitReceiver : public IReceivablePower {
   base_engine::Actor* target_ = nullptr;
   std::weak_ptr<class ReceiverComponent> receiver_;
   class TransmitterComponent* sender_ = nullptr;
+
+
+  int sequential_;
 };

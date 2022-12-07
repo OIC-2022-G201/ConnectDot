@@ -10,47 +10,30 @@
 #include <memory>
 
 #include "Component.h"
+#include "ElectricEffect.h"
 #include "IReceivablePower.h"
 #include "SpriteComponent.h"
-#include "ElectricEffect.h"
 class ReceiverComponent : public base_engine::Component {
  public:
-    ~ReceiverComponent() override;
-    void OnPowerExit();
+  ~ReceiverComponent() override;
+  void OnPowerExit();
   void OnPowerEnter();
 
-  void OnPowerChanged() { receiver_->OnPowerChanged(sender_.lock().get()); }
+  void OnPowerChanged() const {
+    receiver_->OnPowerChanged(sender_.lock().get());
+  }
 
   ReceiverComponent(base_engine::Actor* owner, int update_order);
-  
+
   void Start() override;
 
-  void Update() override {
-    if (current_state_ == PowerState::kConnecting &&
-        prev_state_ == PowerState::kDisconnect) {
-      prev_state_ = PowerState::kDisconnected;
-    }
-    switch (prev_state_) {
-      case PowerState::kDisconnected:
-        OnPowerExit();
-        break;
-      case PowerState::kConnect:
-        OnPowerEnter();
-        break;
-      case PowerState::kConnecting:
-        OnPowerChanged();
-        break;
-      case PowerState::kDisconnect:
-        return;
-        break;
-      default:;
-    }
-    prev_state_ = PowerState::kDisconnect;
-  }
+  void Update() override;
   void OnCollision(const base_engine::SendManifold& manifold) override {}
-
- public:
-  bool CanConnect() const { return receiver_->PowerJoinCondition(); }
+  
+  bool CanConnect() const;
+  bool IsWireless() const
+  { return receiver_->IsWireless();
+  }
   void Connecting(std::weak_ptr<class TransmitterComponent> sender_weak);
   [[nodiscard]] int Sequential() const { return receiver_->Sequential(); }
   template <
@@ -65,8 +48,9 @@ class ReceiverComponent : public base_engine::Component {
   [[nodiscard]] base_engine::Vector2 GetPosition() const {
     return owner_->GetPosition() + receiver_->GetPosition();
   }
-  bool IsConect() const {
-    if (current_state_ != PowerState::kDisconnect) return true;
+  bool IsConnect() const {
+    if (current_state_ != PowerState::kDisconnect || wait_frame_ != 0)
+      return true;
     return false;
   }
   bool EqualSender(
@@ -86,6 +70,6 @@ class ReceiverComponent : public base_engine::Component {
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
   std::weak_ptr<class TransmitterComponent> sender_;
-
+  size_t wait_frame_ = 0;
   std::weak_ptr<base_engine::Actor> effect_;
 };

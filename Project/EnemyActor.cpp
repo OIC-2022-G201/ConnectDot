@@ -44,7 +44,7 @@ namespace enemy {
 
         SetName("Enemy");
         SetTag("Enemy");
-        SetPosition(GridPosition::GridTo({ 10,6 }));
+        SetPosition(GridPosition::GridTo({ 56,6 }));
     }
 
     void EnemyActor::Update() {
