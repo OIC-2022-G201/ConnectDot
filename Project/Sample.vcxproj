@@ -102,6 +102,7 @@
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="UiPackage.cpp" />
     <ClCompile Include="ButtonSelecter.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="CanvasRender.cpp" />
@@ -130,6 +131,7 @@
     <ClCompile Include="ResourceContainer.cpp" />
     <ClCompile Include="SecondEnemyComponent.cpp" />
     <ClCompile Include="SpriteAnimationClipLoader.cpp" />
+    <ClCompile Include="TitleSceneFactory.cpp" />
     <ClCompile Include="VisionCreateComponent.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Event.cpp" />
@@ -239,6 +241,7 @@
     <ClInclude Include="BinaryArchive.h" />
     <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="UiPackage.h" />
     <ClInclude Include="ButtonSelecter.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="CanvasRender.h" />
@@ -271,6 +274,7 @@
     <ClInclude Include="ResourceContainer.h" />
     <ClInclude Include="SecondEnemyComponent.h" />
     <ClInclude Include="SpriteAnimationClipLoader.h" />
+    <ClInclude Include="TitleSceneFactory.h" />
     <ClInclude Include="VisionCreateComponent.h" />
     <ClInclude Include="EnumExtension.h" />
     <ClInclude Include="EnumFlags.h" />

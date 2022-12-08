@@ -8,6 +8,7 @@
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
 #include "StageSceneFactory.h"
+#include "TitleSceneFactory.h"
 base_engine::IBaseEngineCollider* b_collision;
 
 namespace base_engine {
@@ -18,7 +19,7 @@ bool Game::Initialize() {
   resource_container_->Register();
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-  StageSceneFactory stage(this);
+  TitleSceneFactory stage(this);
   stage.Factory();
   b_collision = BASE_ENGINE(Collider);
 

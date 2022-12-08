@@ -36,6 +36,6 @@ void StageSceneFactory::Factory()
 
   ObjectLoader object_loader{game_};
   object_loader.Load("MapData/Stage1");
-  const EventRegister event_register;
-  event_register.Register();
+  //const EventRegister event_register;
+  //event_register.Register();
 }

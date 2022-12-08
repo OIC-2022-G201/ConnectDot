@@ -11,6 +11,7 @@
 #include "IBaseEngineTexture.h"
 #include "ISpriteAnimationComponent.h"
 #include "ResourceManager.h"
+#include "UiPackage.h"
 
 namespace fs = std::filesystem;
 
@@ -24,8 +25,10 @@ class ResourceContainer {
       asset_system::ResourcePack<Sprite, AnimationClips>;
   using SpriteResourcePack =
       asset_system::ResourcePack<Sprite>;
+  using ButtonResourcePack = asset_system::ResourcePack<ButtonPackage>;
   using ResourceManagerMap =
-      asset_system::ResourceManager<AnimationResourcePack, SpriteResourcePack>;
+      asset_system::ResourceManager<AnimationResourcePack, SpriteResourcePack,
+                                    ButtonResourcePack>;
 
  public:
   explicit ResourceContainer();

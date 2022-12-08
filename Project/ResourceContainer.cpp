@@ -24,13 +24,19 @@ class ResourceContainer::Impl {
  private:
   template <class T, class Pack>
   bool Register(Pack pack, size_t key);
+  template <class T, class R>
+  bool RegisterResource(ResourceValue<R> pack, size_t key);
 
   template <class R, class T, class Pack>
   bool Register(Pack pack, size_t key, std::function<R(T)> converter);
+  template <class R, class T>
+  bool RegisterResource(ResourceValue<R> pack, size_t key,
+                        std::function<R(T)> converter);
 
   void LoadAnimationPack(const size_t hash,
                          ResourceManagerMap& resource_manager);
   void LoadSpritePack(const size_t hash, ResourceManagerMap& resource_manager);
+  void LoadButtonPack(const size_t hash, ResourceManagerMap& resource_manager);
   ResourceContainer* resource_register_;
   std::ifstream reader_;
   std::unordered_map<size_t, std::function<void(size_t)>> factory_;
@@ -56,6 +62,9 @@ ResourceContainer::Impl::Impl(ResourceContainer* resource_register)
   factory_[ToHash("Sprite")] = [this](const size_t hash) {
     LoadSpritePack(hash, resource_manager_);
   };
+  factory_[ToHash("Button")] = [this](const size_t hash) {
+    LoadButtonPack(hash, resource_manager_);
+  };
 }
 
 bool ResourceContainer::Impl::Load(const fs::path& root) {
@@ -79,6 +88,15 @@ bool ResourceContainer::Impl::Register(Pack pack, size_t key) {
   return true;
 }
 
+template <class T, class R>
+bool ResourceContainer::Impl::RegisterResource(ResourceValue<R> pack,
+                                               size_t key) {
+  T resource_value;
+  reader_ >> resource_value;
+  pack->Register(key, resource_value);
+  return true;
+}
+
 template <class R, class T, class Pack>
 bool ResourceContainer::Impl::Register(Pack pack, size_t key,
                                        std::function<R(T)> converter) {
@@ -87,6 +105,16 @@ bool ResourceContainer::Impl::Register(Pack pack, size_t key,
   const auto resource_ptr = std::make_shared<Resource<R>>();
   resource_ptr->Register(key, converter(read_value));
   pack->Register(resource_ptr);
+  return true;
+}
+
+template <class R, class T>
+bool ResourceContainer::Impl::RegisterResource(ResourceValue<R> pack,
+                                               size_t key,
+                                               std::function<R(T)> converter) {
+  T read_value;
+  reader_ >> read_value;
+  pack->Register(key, converter(read_value));
   return true;
 }
 
@@ -109,6 +137,22 @@ void ResourceContainer::Impl::LoadSpritePack(
   Register<TexturePtr, ImagePath>(pack, 0, [](const fs::path& path) {
     return BASE_ENGINE(Texture)->Get(path.generic_string());
   });
+}
+
+void ResourceContainer::Impl::LoadButtonPack(
+    const size_t hash, ResourceManagerMap& resource_manager) {
+  const auto pack = resource_manager.CreatePack<ButtonResourcePack>(hash);
+
+  Register<ButtonPackage, ImagePath>(pack, 0, [](const fs::path& path) {
+    ButtonPackage result;
+    result.sprites[0] = BASE_ENGINE(Texture)->Get(path.generic_string());
+    return result;
+  });
+  fs::path read_value;
+  reader_ >> read_value;
+  const auto resource = pack->Get<ButtonPackage>();
+  resource->Get(0)->sprites[1] = BASE_ENGINE(Texture)->Get(read_value.generic_string());
+
 }
 
 ResourceContainer::Impl::~Impl() {}
