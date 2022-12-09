@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <fstream>
 #include <functional>
+#include <Sound/XAudio/XAudioSoundBuffer.h>
 
 #include "BaseEngineCore.h"
 #include "ISpriteAnimationComponent.h"
@@ -37,6 +38,7 @@ class ResourceContainer::Impl {
                          ResourceManagerMap& resource_manager);
   void LoadSpritePack(const size_t hash, ResourceManagerMap& resource_manager);
   void LoadButtonPack(const size_t hash, ResourceManagerMap& resource_manager);
+  void LoadSoundPack(const size_t hash, ResourceManagerMap& resource_manager);
   ResourceContainer* resource_register_;
   std::ifstream reader_;
   std::unordered_map<size_t, std::function<void(size_t)>> factory_;
@@ -64,6 +66,9 @@ ResourceContainer::Impl::Impl(ResourceContainer* resource_register)
   };
   factory_[ToHash("Button")] = [this](const size_t hash) {
     LoadButtonPack(hash, resource_manager_);
+  };
+  factory_[ToHash("Sound")] = [this](const size_t hash) {
+    LoadSoundPack(hash, resource_manager_);
   };
 }
 
@@ -129,7 +134,16 @@ void ResourceContainer::Impl::LoadAnimationPack(
     return SpriteAnimationClipLoader::Load(path.generic_string().c_str());
   });
 }
-
+void ResourceContainer::Impl::LoadSoundPack(
+    const size_t hash, ResourceManagerMap& resource_manager)
+{
+  const auto pack = resource_manager.CreatePack<SoundResourcePack>(hash);
+  Register<Mof::CSoundBuffer*, ImagePath>(pack, 0, [](const fs::path& path) {
+    auto sound = new Mof::CSoundBuffer();
+    sound->Load(path.generic_string().c_str());
+    return sound;
+  });
+}
 void ResourceContainer::Impl::LoadSpritePack(
     const size_t hash, ResourceManagerMap& resource_manager) {
   const auto pack = resource_manager.CreatePack<SpriteResourcePack>(hash);
@@ -137,6 +151,8 @@ void ResourceContainer::Impl::LoadSpritePack(
   Register<TexturePtr, ImagePath>(pack, 0, [](const fs::path& path) {
     return BASE_ENGINE(Texture)->Get(path.generic_string());
   });
+
+
 }
 
 void ResourceContainer::Impl::LoadButtonPack(

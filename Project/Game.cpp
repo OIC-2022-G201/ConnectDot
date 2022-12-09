@@ -19,8 +19,6 @@ bool Game::Initialize() {
   resource_container_ = std::make_shared<ResourceContainer>();
   resource_container_->Register();
 
-  TitlePresenter title;
-  title.Load("Meta/Scene/Scene.bin");
 
   BASE_ENGINE(Collider)->SetCallBack(this);
   TitleSceneFactory stage(this);
@@ -39,6 +37,10 @@ void Game::Update() {
     Clear();
     StageSceneFactory stage(this);
     stage.Factory();
+  }
+  if (g_pInput->IsKeyPush(MOFKEY_T)) {
+    auto sound = ResourceContainer::GetResource<ResourceContainer::SoundResourcePack,
+                                   Mof::CSoundBuffer*>("Sound");
   }
 }
 
@@ -141,6 +143,7 @@ void Game::Clear() {
   actors_.clear();
   actors_next_frame_delete_.clear();
   debug_render_.clear();
+  ResourceContainer::Clear<ResourceContainer::SoundResourcePack>();
 }
 
 void Game::Render() const {

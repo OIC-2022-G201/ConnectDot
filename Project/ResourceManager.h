@@ -23,6 +23,7 @@ concept IsTupleResourcePack = requires(T t) {
   tuple_holds_v<Elements, std::unordered_map<ResourceKey, typename T::Ptr>>;
 };
 
+
 /**
  * \brief Resource管理クラス
  * \tparam _ResourcePackTypes リソースパック型毎のマップ タプルを作る
@@ -98,7 +99,13 @@ class ResourceManager {
     }
     return ResourceValue<ResourceType>();
   }
-
+  template <IsTupleResourcePack<Elements> PackType>
+  void Clear() {
+    auto& resources =
+        std::get<std::unordered_map<ResourceKey, typename PackType::Ptr>>(
+            elements_);
+    resources.clear();
+  }
  private:
   Elements elements_;
 };

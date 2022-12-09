@@ -13,7 +13,7 @@ class TextureMof final : public IBaseEngineTexture {
  public:
   TextureMof();
   ~TextureMof() override;
-
+  
   bool Load(std::string_view name) override;
 
   TexturePtr Get(std::string_view name) override;

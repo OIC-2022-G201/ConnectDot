@@ -8,15 +8,23 @@
 #pragma once
 #include <memory>
 #include <unordered_map>
+
+#include "IBaseEngineTexture.h"
+
 namespace asset_system {
 using ResourceKey = size_t;
-    template<class Type>
-  using ResourceValue = std::shared_ptr<Type>;
+template <class Type>
+using ResourceValue = std::shared_ptr<Type>;
+
+template <typename T>
+concept IsRelese = requires(T t) {
+  t->Release();
+};
 template <class Type>
 class Resource {
-    using ResourceValue = ResourceValue<Type>;
- public:
+  using ResourceValue = ResourceValue<Type>;
 
+ public:
   /**
    * \brief リソースを登録する
    * \tparam _Types リソースのコンストラクタに必要な引数型
@@ -47,6 +55,15 @@ class Resource {
   }
 
   [[nodiscard]] size_t GetSize() const { return resources_.size(); }
+  ~Resource() {
+    if constexpr (IsRelese<Type> &&
+                  !std::is_same_v<Type, base_engine::TexturePtr>) {
+      for (auto && resource : resources_)
+      {
+        (*resource.second)->Release();
+      } 
+    }
+  }
 
  private:
   std::unordered_map<ResourceKey, ResourceValue> resources_;

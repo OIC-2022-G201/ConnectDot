@@ -5,3 +5,4 @@ BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 TitleLogo Sprite UI/Title/TitleLogo/Titlelogo.png
 QuitGameButton Button UI/Title/QuitGameButton/Quitgame.png UI/Title/QuitGameButton/Quitgame2.png
 StartGameButton Button UI/Title/StartGameButton/Startgame.png UI/Title/StartGameButton/Startgame2.png
+Sound Sound Sound/tora01.mp3

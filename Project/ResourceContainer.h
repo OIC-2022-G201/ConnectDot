@@ -7,6 +7,8 @@
 
 #pragma once
 #include <filesystem>
+#include <Sound/XAudio/XAudioSoundBuffer.h>
+
 
 #include "IBaseEngineTexture.h"
 #include "ISpriteAnimationComponent.h"
@@ -21,6 +23,7 @@ class ResourceContainer {
   using Sprite = base_engine::TexturePtr;
   using AnimationClips = std::vector<base_engine::SpriteAnimationClip>;
 
+  using SoundResourcePack =asset_system::ResourcePack<Mof::CSoundBuffer*>;
   using AnimationResourcePack =
       asset_system::ResourcePack<Sprite, AnimationClips>;
   using SpriteResourcePack =
@@ -28,8 +31,8 @@ class ResourceContainer {
   using ButtonResourcePack = asset_system::ResourcePack<ButtonResourcePackage>;
   using ResourceManagerMap =
       asset_system::ResourceManager<AnimationResourcePack, SpriteResourcePack,
-                                    ButtonResourcePack>;
-
+                                    ButtonResourcePack,SoundResourcePack>;
+    
  public:
   explicit ResourceContainer();
   ~ResourceContainer();
@@ -39,6 +42,11 @@ class ResourceContainer {
   static std::shared_ptr<R> GetResource(const std::string& key);
   template <class Pack>
   static std::shared_ptr<Pack> GetPack(const std::string& key);;
+  template <class Pack>
+  static void Clear()
+  {
+    resource_manager_.Clear<Pack>();
+  }
 
  private:
   static ResourceManagerMap resource_manager_;
