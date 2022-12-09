@@ -15,10 +15,10 @@ namespace enemy {
 				physics_body_.lock()->GetForce().y);
 			});
 
-		physics_body_ = owner_->GetComponent<base_engine::PhysicsBodyComponent>();
-		collision_ = owner_->GetComponent<base_engine::CollisionComponent>();
-		GetVision()->SetFindRect(std::make_shared<base_engine::Rect>(-256, 0, 256, 256));
-		GetVision()->SetChaseRect(std::make_shared<base_engine::Rect>(-256, -256, 512, 512));
+		physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
+		collision_ = owner_->GetComponent<CollisionComponent>();
+		GetVision()->SetFindRect(std::make_shared<Rect>(-256, 0, 256, 256));
+		GetVision()->SetChaseRect(std::make_shared<Rect>(-256, -256, 512, 512));
 		GetVision()->SetReverseWidth(256);
 		machine_.TransitionTo<EnemyMove>();
 	}
@@ -32,7 +32,7 @@ namespace enemy {
 		machine_.Update();
 	}
 
-	void EnemyComponent::OnCollision(const base_engine::SendManifold& manifold) {
+	void EnemyComponent::OnCollision(const SendManifold& manifold) {
 		auto block_top = manifold.collision_b->AABB().Top;
 		auto e_bottom = collision_.lock()->AABB().Bottom;
 		auto diff = block_top - e_bottom;

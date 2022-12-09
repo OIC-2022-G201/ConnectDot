@@ -11,17 +11,20 @@ namespace enemy {
 		is_change_ = false;
 
 		if(parent_->GetComponent<EnemyComponent>().lock()==nullptr)
+		{
 			prev_direction = parent_->GetComponent<SecondEnemyComponent>().lock()->GetDirection();
+			owner_->SetPosition(parent_->GetPosition());
+		}
 		else
 			prev_direction = parent_->GetComponent<EnemyComponent>().lock()->GetDirection();
 
-		collision_ = new base_engine::CollisionComponent(owner_);
+		collision_ = new CollisionComponent(owner_);
 		collision_->SetShape(find_rect_);
 		collision_->SetObjectFilter(CollisionLayer::kNone);
 		collision_->SetTargetFilter(kPlayerObjectFilter);
 		collision_->SetTrigger(true);
 
-		debug_render_ = new base_engine::ShapeRenderComponent(owner_, 200);
+		debug_render_ = new ShapeRenderComponent(owner_, 200);
 		debug_render_->SetShape(find_rect_);
 		debug_render_->SetColor(MOF_COLOR_HRED);
 	}
@@ -33,23 +36,26 @@ namespace enemy {
 
 	void EnemyVisionComponent::Update()
 	{
-		owner_->SetPosition(parent_->GetPosition());
-
 		if (parent_->GetComponent<EnemyComponent>().lock() == nullptr)
 			direction = parent_->GetComponent<SecondEnemyComponent>().lock()->GetDirection();
 		else
+		{
+			owner_->SetPosition(parent_->GetPosition());
 			direction = parent_->GetComponent<EnemyComponent>().lock()->GetDirection();
+		}
 
 		if (direction != prev_direction) {
 			if (direction)
 			{
 				find_rect_->Left += reverse_width_; find_rect_->Right += reverse_width_;
                                 find_rect_->ChangeNotification();
+								collision_->Sync();
 			}
 			else
 			{
 				find_rect_->Left -= reverse_width_; find_rect_->Right -= reverse_width_;
                                 find_rect_->ChangeNotification();
+								collision_->Sync();
 			}
 		}
 		prev_direction = direction;
@@ -72,9 +78,12 @@ namespace enemy {
 		is_find_ = false;
 	}
 
-	void EnemyVisionComponent::OnCollision(const base_engine::SendManifold& manifold)
+	void EnemyVisionComponent::OnCollision(const SendManifold& manifold)
 	{
-		is_find_ = true;
-		player_center_ = manifold.collision_b->AABB().GetCenter();
+		if (manifold.collision_b->GetObjectFilter() == manifold.collision_a->GetTargetFilter())
+		{
+			is_find_ = true;
+			player_center_ = manifold.collision_b->AABB().GetCenter();
+		}
 	}
 }

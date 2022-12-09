@@ -4,31 +4,33 @@
 #include "Rect.h"
 #include  <memory>
 
+using namespace base_engine;
+
 namespace enemy
 {
-	class EnemyVisionComponent : public base_engine::Component
+	class EnemyVisionComponent : public Component
 	{
 		bool is_find_ = false, is_change_ = false, direction = false, prev_direction = false;
 		int reverse_width_;
-		base_engine::Actor* parent_;
+		Actor* parent_;
 
-		base_engine::CollisionComponent* collision_;
-		std::shared_ptr<base_engine::Rect> find_rect_, chase_rect_;
-		base_engine::ShapeRenderComponent* debug_render_;
-		base_engine::Vector2 player_center_ = {0, 0};
+		CollisionComponent* collision_;
+		std::shared_ptr<Rect> find_rect_, chase_rect_;
+		ShapeRenderComponent* debug_render_;
+		Vector2 player_center_ = {0, 0};
 
 	public:
-		explicit EnemyVisionComponent(base_engine::Actor* owner, int update_order) :Component(owner, update_order) {};
+		explicit EnemyVisionComponent(Actor* owner, int update_order) :Component(owner, update_order) {};
 		~EnemyVisionComponent() {};
 		void Start() override;
 		void ProcessInput() override;
 		void Update() override;
-		void SetParent(base_engine::Actor* parent) { parent_ = parent; }
-		void OnCollision(const base_engine::SendManifold& manifold) override;
+		void SetParent(Actor* parent) { parent_ = parent; }
+		void OnCollision(const SendManifold& manifold) override;
 		bool IsFindPlayer() { return is_find_; }
-		base_engine::Vector2 GetPlayerCenter() { return player_center_; }
-		void SetFindRect(std::shared_ptr<base_engine::Rect> rect) { find_rect_ = rect; }
-		void SetChaseRect(std::shared_ptr<base_engine::Rect> rect) { chase_rect_ = rect; }
+		Vector2 GetPlayerCenter() { return player_center_; }
+		void SetFindRect(std::shared_ptr<Rect> rect) { find_rect_ = rect; }
+		void SetChaseRect(std::shared_ptr<Rect> rect) { chase_rect_ = rect; }
 		void SetReverseWidth(int width) { reverse_width_ = width; }
 	};
 }

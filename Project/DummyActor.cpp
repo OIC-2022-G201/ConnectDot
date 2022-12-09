@@ -5,7 +5,7 @@ namespace enemy {
 	DummyActor::~DummyActor() {}
 
 	void DummyActor::Start() {
-		
+		SetTag("Dummy");
 	}
 
 	void DummyActor::Update() {

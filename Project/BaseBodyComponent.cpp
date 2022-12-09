@@ -8,8 +8,8 @@ namespace enemy
 {
 	void BaseBodyComponent::Start()
 	{
-		auto temp_render = new base_engine::ShapeRenderComponent(owner_, 200);
-		auto shape_ = std::make_shared<base_engine::Rect>(parent_->GetComponent<base_engine::CollisionComponent>().lock().get()->AABB());
+		auto temp_render = new ShapeRenderComponent(owner_, 200);
+		auto shape_ = std::make_shared<Rect>(parent_->GetComponent<CollisionComponent>().lock()->GetShape()->AABB());
 		temp_render->SetShape(shape_);
 		temp_render->SetColor(MOF_COLOR_HRED);
 	}
@@ -24,7 +24,7 @@ namespace enemy
 		
 	}
 
-	void BaseBodyComponent::OnCollision(const base_engine::SendManifold& manifold)
+	void BaseBodyComponent::OnCollision(const SendManifold& manifold)
 	{
 		
 	}

@@ -2,18 +2,21 @@
 
 #include "Component.h"
 #include "SendManifold.h"
+
+using namespace base_engine;
+
 namespace enemy
 {
-	class VisionCreateComponent final : public base_engine::Component
+	class VisionCreateComponent final : public Component
 	{
-		base_engine::Actor* parent_;
+		Actor* parent_;
 	public:
-		VisionCreateComponent(base_engine::Actor* owner_, int update_order_) :Component(owner_, update_order_) {};
+		VisionCreateComponent(Actor* owner_, int update_order_) :Component(owner_, update_order_) {};
 		~VisionCreateComponent() {};
 		void Start() override;
 		void ProcessInput() override;
 		void Update() override;
-		void OnCollision(const base_engine::SendManifold& manifold) override;
-		base_engine::Actor* GetParent() { return parent_; }
+		void OnCollision(const SendManifold& manifold) override;
+		Actor* GetParent() { return parent_; }
 	};
 }

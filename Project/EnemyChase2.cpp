@@ -18,8 +18,11 @@ namespace enemy
 
 		auto player_center_ = vision_->GetPlayerCenter();
 		auto center_ = enemy_->GetCollision().lock()->AABB().GetCenter();
+		auto chase_direction = player_center_ - center_;
+		auto distance = sqrt(chase_direction.x * chase_direction.x + chase_direction.y * chase_direction.y);
+		chase_direction /= distance;
 
-		body_.lock()->SetForceX(-1);
+		body_.lock()->SetForce(chase_direction);
 	}
 
 	void EnemyChase2::ProcessInput()
@@ -27,7 +30,7 @@ namespace enemy
 
 	}
 
-	void EnemyChase2::OnEvent(base_engine::CollisionComponent* collision)
+	void EnemyChase2::OnEvent(CollisionComponent* collision)
 	{
 
 	}

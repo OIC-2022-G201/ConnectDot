@@ -12,7 +12,7 @@ namespace enemy {
 		body_.lock().get()->SetForceX(enemy_->GetDirection() == Left ? -Speed : Speed);
 	}
 
-	void EnemyMove::Update() {
+ 	void EnemyMove::Update() {
 
 		if (vision_!=nullptr && vision_->IsFindPlayer())
 			is_find_ = true;
@@ -22,7 +22,7 @@ namespace enemy {
 	
 	}
 
-	void EnemyMove::OnEvent(base_engine::CollisionComponent* collision)
+	void EnemyMove::OnEvent(CollisionComponent* collision)
 	{
 		//float a;
 		//if(enemy_->GetDirection() == Left)
@@ -30,6 +30,7 @@ namespace enemy {
 		//else a = enemy_->GetCollision()->AABB().Right - collision->AABB().Left;
 
 		//if(a > 0)
+		if(collision->GetActor()->GetTag()!="Dummy")
 			is_turn_ = true;
 	}
 
