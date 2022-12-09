@@ -8,6 +8,7 @@
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
 #include "StageSceneFactory.h"
+#include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
 base_engine::IBaseEngineCollider* b_collision;
 
@@ -17,6 +18,9 @@ bool Game::Initialize() {
   game_data_.Register();
   resource_container_ = std::make_shared<ResourceContainer>();
   resource_container_->Register();
+
+  TitlePresenter title;
+  title.Load("Meta/Scene/Scene.bin");
 
   BASE_ENGINE(Collider)->SetCallBack(this);
   TitleSceneFactory stage(this);

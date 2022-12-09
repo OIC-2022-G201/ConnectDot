@@ -1,5 +1,7 @@
 ﻿#include "TitleSceneFactory.h"
 
+#include <fstream>
+
 #include "Actor.h"
 #include "Button.h"
 #include "ButtonSelecter.h"
@@ -9,6 +11,11 @@
 #include "InputManager.h"
 #include "ResourceContainer.h"
 #include "UiPackage.h"
+#include "BinaryArchive.h"
+#include "Frozen.h"
+#include "UiFrozen.h"
+#include "VariantFrozen.h"
+#include "VectorFrozen.h"
 using namespace base_engine;
 using RC = ResourceContainer;
 auto ImageCreate(Game* game, std::string_view key) {
@@ -26,7 +33,7 @@ auto ImageCreate(Game* game, std::string_view key) {
 auto ButtonCreate(Game* game, InputManager* input,
                   const std::string_view key1) {
   auto button_pack =
-      RC::GetResource<ResourceContainer::ButtonResourcePack, ButtonPackage>(
+      RC::GetResource<ResourceContainer::ButtonResourcePack, ButtonResourcePackage>(
           key1.data());
 
   const auto button = new Button(game);
@@ -45,7 +52,7 @@ auto ButtonCreate(Game* game, InputManager* input,
 auto ButtonCreate(Game* game, ButtonSelecter* selector,
                   const std::string_view key1) {
   auto button_pack =
-      RC::GetResource<ResourceContainer::ButtonResourcePack, ButtonPackage>(
+      RC::GetResource<ResourceContainer::ButtonResourcePack, ButtonResourcePackage>(
           key1.data());
   const auto button = new Button(game);
   button->SetButtonSprite(button_pack->sprites[0]);
@@ -65,6 +72,13 @@ void TitleSceneFactory::Factory() {
 
   const auto input_actor = new InputActor(game_);
   const auto input = new InputManager(input_actor);
+  std::vector<PackageVariant> packages;
+  {
+    std::ifstream stream("Meta/Scene/Scene.bin", std::ios::binary);
+    frozen::BinaryInputArchive archive(stream);
+    archive(packages);
+  }
+
   {
     const auto [owner, image] = ImageCreate(game_, "TitleLogo");
     owner->SetPosition({300, 300});

@@ -10,7 +10,7 @@
 
 #include "IBaseEngineTexture.h"
 using ButtonSprites = std::array<base_engine::TexturePtr,2>;
-struct ButtonPackage
+struct ButtonResourcePackage
 {
   ButtonSprites sprites = ButtonSprites{nullptr,nullptr};
 };

@@ -25,7 +25,7 @@ class ResourceContainer {
       asset_system::ResourcePack<Sprite, AnimationClips>;
   using SpriteResourcePack =
       asset_system::ResourcePack<Sprite>;
-  using ButtonResourcePack = asset_system::ResourcePack<ButtonPackage>;
+  using ButtonResourcePack = asset_system::ResourcePack<ButtonResourcePackage>;
   using ResourceManagerMap =
       asset_system::ResourceManager<AnimationResourcePack, SpriteResourcePack,
                                     ButtonResourcePack>;

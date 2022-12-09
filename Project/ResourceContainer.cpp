@@ -143,14 +143,14 @@ void ResourceContainer::Impl::LoadButtonPack(
     const size_t hash, ResourceManagerMap& resource_manager) {
   const auto pack = resource_manager.CreatePack<ButtonResourcePack>(hash);
 
-  Register<ButtonPackage, ImagePath>(pack, 0, [](const fs::path& path) {
-    ButtonPackage result;
+  Register<ButtonResourcePackage, ImagePath>(pack, 0, [](const fs::path& path) {
+    ButtonResourcePackage result;
     result.sprites[0] = BASE_ENGINE(Texture)->Get(path.generic_string());
     return result;
   });
   fs::path read_value;
   reader_ >> read_value;
-  const auto resource = pack->Get<ButtonPackage>();
+  const auto resource = pack->Get<ButtonResourcePackage>();
   resource->Get(0)->sprites[1] = BASE_ENGINE(Texture)->Get(read_value.generic_string());
 
 }
