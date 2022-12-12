@@ -421,6 +421,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\GoalUI">
       <UniqueIdentifier>{ef60ce43-3310-4e38-a149-2c0c01a131e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener">
+      <UniqueIdentifier>{ca4616a7-1c4a-4777-a539-4755580a9cc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener\Core">
+      <UniqueIdentifier>{e7c819b7-92ca-4df7-99da-1661501b0d19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -833,6 +839,15 @@
     </ClCompile>
     <ClCompile Include="GoalEffectActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\GoalUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Tween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Easer.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="EaseType.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1450,6 +1465,18 @@
     </ClInclude>
     <ClInclude Include="GoalEffectActor.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\GoalUI</Filter>
+    </ClInclude>
+    <ClInclude Include="ITween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Tween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Easer.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EaseType.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
