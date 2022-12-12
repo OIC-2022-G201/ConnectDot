@@ -4,6 +4,7 @@
 #include "DebugStage.h"
 #include "EnemyActor.h"
 #include "EventRegister.h"
+#include "FollowComponent.h"
 #include "InputActor.h"
 #include "InputManager.h"
 #include "ObjectLoader.h"
@@ -15,7 +16,7 @@ void StageSceneFactory::Factory()
 {
   auto camera = new Actor(game_);
   new CameraComponent(camera);
-
+  auto follow = new FollowComponent(camera);
   auto stageActor = new DebugStage(game_);
   {
     stageActor->SetName("Stage");
@@ -28,13 +29,12 @@ void StageSceneFactory::Factory()
   auto pylon = new PylonActor(game_);
   auto player = new player::PlayerActor(game_);
   player->SetInput(input);
-  auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
+  const auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
   player->SetMap(tilemap);
-
+  follow->BindTarget(game_->GetActor(player->GetId()));
   new enemy::EnemyActor(game_);
 
   ObjectLoader object_loader{game_};
   object_loader.Load("MapData/Stage1");
-  //const EventRegister event_register;
-  //event_register.Register();
+  
 }

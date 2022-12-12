@@ -103,7 +103,7 @@
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonPressEvent.cpp" />
-    <ClCompile Include="FollowCameraComponent.cpp" />
+    <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
     <ClCompile Include="UiPackage.cpp" />
@@ -246,7 +246,7 @@
     <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonPressEvent.h" />
-    <ClInclude Include="FollowCameraComponent.h" />
+    <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="UiFrozen.h" />

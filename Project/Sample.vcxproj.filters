@@ -825,7 +825,7 @@
     <ClCompile Include="TitleListener.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\TitleManager</Filter>
     </ClCompile>
-    <ClCompile Include="FollowCameraComponent.cpp">
+    <ClCompile Include="FollowComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Camera</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1439,7 +1439,7 @@
     <ClInclude Include="TitleListener.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\TitleManager</Filter>
     </ClInclude>
-    <ClInclude Include="FollowCameraComponent.h">
+    <ClInclude Include="FollowComponent.h">
       <Filter>ソース ファイル\ConnectDot\Camera</Filter>
     </ClInclude>
   </ItemGroup>
