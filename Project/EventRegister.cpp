@@ -2,11 +2,9 @@
 
 #include "EventBus.h"
 #include "GoalEvent.h"
-#include "PlayerListener.h"
 #include <any>
 class EventRegister::Impl {
-  PlayerListener player_listener_;
-
+  
  public:
   void Register()
   {

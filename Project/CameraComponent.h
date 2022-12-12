@@ -13,16 +13,16 @@
 #include "IBaseEngineRender.h"
 
 namespace base_engine {
-class CameraComponent : public Component {
- public:
-  CameraComponent(Actor* owner, int update_order = kCameraUpdateOrder)
-        : Component(owner, update_order)
-    {
-    }
+class CameraComponent final : public Component {
+  static std::weak_ptr<CameraComponent> main_camera_weak_;
 
-  void Update() override
-  {
-    BASE_ENGINE(Render)->SetCameraPosition(owner_->GetPosition());
-  }
+ public:
+  CameraComponent(Actor* owner, int update_order = kCameraUpdateOrder);
+
+  void Update() override;
+
+  void SetMainCamera() const;
+
+  static std::weak_ptr<CameraComponent> GetMainCamera();
 };
 }  // namespace base_engine

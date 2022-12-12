@@ -418,6 +418,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Camera">
       <UniqueIdentifier>{a821d963-67dd-45a6-9af1-37835cd34660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\GoalUI">
+      <UniqueIdentifier>{ef60ce43-3310-4e38-a149-2c0c01a131e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -753,9 +756,6 @@
     <ClCompile Include="EventRegister.cpp">
       <Filter>ソース ファイル\ConnectDot\Event</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerListener.cpp">
-      <Filter>ソース ファイル\ConnectDot\Event\Handler\Player</Filter>
-    </ClCompile>
     <ClCompile Include="StageSceneFactory.cpp">
       <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClCompile>
@@ -827,6 +827,12 @@
     </ClCompile>
     <ClCompile Include="FollowComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="StageEpilogueEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
+    </ClCompile>
+    <ClCompile Include="GoalEffectActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\GoalUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1400,9 +1406,6 @@
     <ClInclude Include="EventRegister.h">
       <Filter>ソース ファイル\ConnectDot\Event</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerListener.h">
-      <Filter>ソース ファイル\ConnectDot\Event\Handler\Player</Filter>
-    </ClInclude>
     <ClInclude Include="StageSceneFactory.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClInclude>
@@ -1441,6 +1444,12 @@
     </ClInclude>
     <ClInclude Include="FollowComponent.h">
       <Filter>ソース ファイル\ConnectDot\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="StageEpilogueEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalEffectActor.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\GoalUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

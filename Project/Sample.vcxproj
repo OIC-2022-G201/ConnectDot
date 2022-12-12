@@ -104,6 +104,8 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonPressEvent.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
+    <ClCompile Include="GoalEffectActor.cpp" />
+    <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
     <ClCompile Include="UiPackage.cpp" />
@@ -191,7 +193,6 @@
     <ClCompile Include="PlayerActor.cpp" />
     <ClCompile Include="PlayerComponent.cpp" />
     <ClCompile Include="PlayerFall.cpp" />
-    <ClCompile Include="PlayerListener.cpp" />
     <ClCompile Include="PlayerMove.cpp" />
     <ClCompile Include="PlayerSneak.cpp" />
     <ClCompile Include="PlayerSneakMove.cpp" />
@@ -247,6 +248,8 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonPressEvent.h" />
     <ClInclude Include="FollowComponent.h" />
+    <ClInclude Include="GoalEffectActor.h" />
+    <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="UiFrozen.h" />
@@ -379,7 +382,6 @@
     <ClInclude Include="PlayerActor.h" />
     <ClInclude Include="PlayerComponent.h" />
     <ClInclude Include="PlayerFall.h" />
-    <ClInclude Include="PlayerListener.h" />
     <ClInclude Include="PlayerMove.h" />
     <ClInclude Include="PlayerSneak.h" />
     <ClInclude Include="PlayerSneakMove.h" />

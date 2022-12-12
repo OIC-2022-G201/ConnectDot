@@ -43,56 +43,46 @@ class PlayerComponent final : public base_engine::Component {
   ~PlayerComponent() override;
   PlayerComponent(base_engine::Actor* owner, int update_order);
   void Start() override;
-  void ProcessInput() override { machine_.ProcessInput(); }
+  void ProcessInput() override;
   void Update() override;
   void OnCollision(const base_engine::SendManifold& manifold) override;
   void VentEnter(VentComponent* vent);
 
-  void SetInput(const InputManager* input_manager) {
-    input_manager_ = input_manager;
-  }
+  void SetInput(const InputManager* input_manager);
   bool CanPlace(const GridPosition& pos) const;
-  [[nodiscard]] bool IsJumpKey() const { return input_manager_->JumpFire(); }
-  [[nodiscard]] float GetHorizontal() const {
-    return input_manager_->MoveHorizontal();
-  }
-  [[nodiscard]] bool IsSneakKey() const { return input_manager_->SneakFire(); }
-  [[nodiscard]] bool IsPlaceBeaconKey() const {
-    return input_manager_->PlaceBeaconFire();
-  }
-  [[nodiscard]] bool IsCollectBeaconKey() const {
-    return input_manager_->CollectBeaconFire();
-  }
+  [[nodiscard]] bool IsJumpKey() const;
 
-  [[nodiscard]] bool IsActionKey() const {
-    return input_manager_->ActionFire();
-  }
-  [[nodiscard]] base_engine::CollisionComponent* GetCollision() const {
-    return collision_.lock().get();
-  }
-  [[nodiscard]] base_engine::ISpriteAnimationComponent* GetAnimator() const {
-    return animator_.lock().get();
-  }
-  [[nodiscard]] base_engine::PhysicsBodyComponent* PhysicsBody() const {
-    return physics_body_.lock().get();
-  }
+  [[nodiscard]] float GetHorizontal() const;
+  [[nodiscard]] bool IsSneakKey() const;
+
+  [[nodiscard]] bool IsPlaceBeaconKey() const;
+
+  [[nodiscard]] bool IsCollectBeaconKey() const;
+
+  [[nodiscard]] bool IsActionKey() const;
+
+  [[nodiscard]] base_engine::CollisionComponent* GetCollision() const;
+
+  [[nodiscard]] base_engine::ISpriteAnimationComponent* GetAnimator() const;
+
+  [[nodiscard]] base_engine::PhysicsBodyComponent* PhysicsBody() const;
   [[nodiscard]] int MaxBeacon() const;
-  [[nodiscard]] int GetBeacon() const { return have_beacon_count_; }
-  void SetBeacon(const int num) { have_beacon_count_ = num; }
+  [[nodiscard]] int GetBeacon() const;
+  void SetBeacon(const int num);
 
-  void LookAtRight() { dir_ = Dir::kRight; }
-  void LookAtLeft() { dir_ = Dir::kLeft; }
-  bool IsRight() const { return static_cast<Dir>(dir_) == Dir::kRight; }
+  void LookAtRight();
+  void LookAtLeft();
+  bool IsRight() const;
   void MovedLookAt();
 
-  bool IsGround() const { return is_ground_; }
-  void SetGround(const bool ground) { is_ground_ = ground; }
-  [[nodiscard]] base_engine::Game* GetGame() const { return owner_->GetGame(); }
-  [[nodiscard]] base_engine::Actor* GetOwner() const { return owner_; }
+  bool IsGround() const;
+  void SetGround(const bool ground);
+  [[nodiscard]] base_engine::Game* GetGame() const;
+  [[nodiscard]] base_engine::Actor* GetOwner() const;
 
-  void SetMap(const TileMapWeak& map) { map_ = map; }
+  void SetMap(const TileMapWeak& map);
 
- private:
+private:
   int have_beacon_count_ = MaxBeacon();
 
   const InputManager* input_manager_ = nullptr;
@@ -113,7 +103,8 @@ class PlayerComponent final : public base_engine::Component {
   std::shared_ptr<HandlerRegistration> event_handler_;
   observable::ReactiveProperty<Dir> dir_ = Dir::kRight;
   bool is_ground_ = false;
-
+  bool can_control_ = true;
+  bool goal_event_ = false;
  private:
   void CheckGround();
 };

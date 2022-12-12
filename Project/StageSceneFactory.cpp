@@ -15,7 +15,8 @@ using namespace base_engine;
 void StageSceneFactory::Factory()
 {
   auto camera = new Actor(game_);
-  new CameraComponent(camera);
+  auto camera_component = new CameraComponent(camera);
+  camera_component->SetMainCamera();
   auto follow = new FollowComponent(camera);
   auto stageActor = new DebugStage(game_);
   {

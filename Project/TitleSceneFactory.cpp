@@ -10,6 +10,7 @@
 #include "CameraComponent.h"
 #include "EventBus.h"
 #include "Frozen.h"
+#include "GoalEffectActor.h"
 #include "IBaseEngineTexture.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
@@ -97,6 +98,6 @@ void TitleSceneFactory::Factory() {
   }
 
   new TitleComponent(new Actor(game_));
-
+  new GoalEffectActor(game_);
   return;
 }

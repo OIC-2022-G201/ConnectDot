@@ -1,6 +1,7 @@
 ﻿#include "GoalComponent.h"
 
 #include "BaseEngineCore.h"
+#include "CameraComponent.h"
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
@@ -8,6 +9,7 @@
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "EventBus.h"
+#include "FollowComponent.h"
 #include "GoalEvent.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
@@ -62,5 +64,17 @@ void GoalComponent::GoalAction() {
 
   auto p = std::any(owner_);
   GoalEvent goal(p);
+  const auto camera = CameraComponent::GetMainCamera();
+
+  const auto dummy = new Actor(owner_->GetGame());
+  auto grid_pos = owner_->GetComponent<grid::GridSnapComponent>().lock()->GetSnapGridPosition();
+  grid_pos.x += 2;
+  dummy->SetPosition(GridPosition::GridTo(grid_pos));
+  camera.lock()
+      ->GetOwner()
+      .lock()
+      ->GetComponent<FollowComponent>()
+      .lock()
+      ->BindTarget(owner_->GetGame()->GetActor(dummy->GetId()));
   EventBus::FireEvent(goal);
 }
