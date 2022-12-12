@@ -21,13 +21,11 @@ class PlayerActor final : public base_engine::Actor {
   void Update() override;
   void Start() override;
   void SetInput(InputManager* input_manager);
-  void SetCamera(Actor* camera) { camera_ = camera; }
   void SetMap(const TileMapWeak& map) { map_ = map; }
 
  private:
   Mof::Vector2 move_vector_;
   class PlayerComponent* player_component_ = nullptr;
-  Actor* camera_ = nullptr;
   InputManager* input_manager_;
   TileMapWeak map_;
 };

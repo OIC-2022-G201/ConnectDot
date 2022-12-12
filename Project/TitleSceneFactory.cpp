@@ -3,17 +3,20 @@
 #include <fstream>
 
 #include "Actor.h"
+#include "BinaryArchive.h"
 #include "Button.h"
+#include "ButtonPressEvent.h"
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
+#include "EventBus.h"
+#include "Frozen.h"
 #include "IBaseEngineTexture.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
 #include "ResourceContainer.h"
-#include "UiPackage.h"
-#include "BinaryArchive.h"
-#include "Frozen.h"
+#include "TitleListener.h"
 #include "UiFrozen.h"
+#include "UiPackage.h"
 #include "VariantFrozen.h"
 #include "VectorFrozen.h"
 using namespace base_engine;
@@ -32,9 +35,8 @@ auto ImageCreate(Game* game, std::string_view key) {
 }
 auto ButtonCreate(Game* game, InputManager* input,
                   const std::string_view key1) {
-  auto button_pack =
-      RC::GetResource<ResourceContainer::ButtonResourcePack, ButtonResourcePackage>(
-          key1.data());
+  auto button_pack = RC::GetResource<ResourceContainer::ButtonResourcePack,
+                                     ButtonResourcePackage>(key1.data());
 
   const auto button = new Button(game);
   button->SetButtonSprite(button_pack->sprites[0]);
@@ -49,16 +51,14 @@ auto ButtonCreate(Game* game, InputManager* input,
   } result = {button, selector};
   return result;
 }
-auto ButtonCreate(Game* game, ButtonSelecter* selector,
-                  const std::string_view key1) {
-  auto button_pack =
-      RC::GetResource<ResourceContainer::ButtonResourcePack, ButtonResourcePackage>(
-          key1.data());
+auto ButtonCreate(Game* game, ButtonSelecter* selector, const ButtonFrozenPack& button_data) {
+  auto button_pack = RC::GetResource<ResourceContainer::ButtonResourcePack,
+                                     ButtonResourcePackage>(button_data.path);
   const auto button = new Button(game);
   button->SetButtonSprite(button_pack->sprites[0]);
   button->SetChangeButtonSprite(button_pack->sprites[1]);
-  button->SetPosition({0, 120});
-  selector->ButtonRegister(0, 1, button);
+  button->SetPosition({button_data.x, button_data.y});
+  selector->ButtonRegister(button_data.tx, button_data.ty, button);
   const struct {
     Button* button;
     ButtonSelecter* selector;
@@ -78,17 +78,25 @@ void TitleSceneFactory::Factory() {
     frozen::BinaryInputArchive archive(stream);
     archive(packages);
   }
-
-  {
-    const auto [owner, image] = ImageCreate(game_, "TitleLogo");
-    owner->SetPosition({300, 300});
+  const auto selector = new ButtonSelecter(game_);
+  selector->SetInput(input);
+  for (const auto& package : packages) {
+    if (std::holds_alternative<ImageFrozenPack>(package)) {
+      const auto& [x, y, path] = std::get<ImageFrozenPack>(package);
+      const auto [owner, image] = ImageCreate(game_, path);
+      owner->SetPosition({x, y});
+    } else {
+      const auto& button_pack = std::get<ButtonFrozenPack>(package);
+      const auto [button, selector] = ButtonCreate(game_, selector, button_pack);
+      button->SetEvent([button_pack, button]() {
+        auto any = std::any(button);
+        ButtonPressEvent e(any, button_pack.event_name);
+        EventBus::FireEvent(e);
+      });
+    }
   }
-  {
-    const auto [button, selector] =
-        ButtonCreate(game_, input, "StartGameButton");
-    button->SetPosition({725, 600});
-    const auto button2 = ButtonCreate(game_, selector, "QuitGameButton");
 
-    button2.button->SetPosition({725, 700});
-  }
+  new TitleComponent(new Actor(game_));
+
+  return;
 }

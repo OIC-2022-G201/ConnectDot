@@ -59,5 +59,5 @@ void PlayerActor::SetInput(InputManager* input_manager) {
 }
 
 void PlayerActor::Input() {}
-void PlayerActor::Update() { camera_->SetPosition(GetPosition()); }
+void PlayerActor::Update() {}
 }  // namespace player

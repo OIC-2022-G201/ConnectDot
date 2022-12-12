@@ -29,7 +29,7 @@ class EventBus {
   }
 
   template <class T>
-  static std::shared_ptr<HandlerRegistration> AddHandler(
+  [[nodiscard]] static std::shared_ptr<HandlerRegistration> AddHandler(
       EventHandler<T>& handler, std::any& sender) {
     EventBus* instance = GetInstance();
 
@@ -50,7 +50,7 @@ class EventBus {
   }
 
   template <class T>
-  static std::shared_ptr<HandlerRegistration> AddHandler(
+   [[nodiscard]] static std::shared_ptr<HandlerRegistration> AddHandler(
       EventHandler<T>& handler) {
     EventBus* instance = GetInstance();
 

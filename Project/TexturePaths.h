@@ -26,7 +26,7 @@ constexpr std::string_view kBeaconTextureKey = "gimmick/Objects/Beacon/Beacon.pn
 
 //! PowerSupplyUnitActor
 constexpr std::string_view kPowerSupplyUnitTextureKey =
-    "Objects/PowerSupplyUnit/Powersupply_Lv0.png"sv;
+    "gimmick/Objects/Powersupply/Powersupply_Lv0.png"sv;
 
 //! Signboard
 constexpr std::string_view kSignboardTextureKey =

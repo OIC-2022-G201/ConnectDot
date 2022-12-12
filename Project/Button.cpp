@@ -8,14 +8,16 @@
 #include "TexturePaths.h"
 using namespace base_engine;
 using namespace draw_order;
-Button::Button(base_engine::Game* game) : Actor(game) {}
+Button::Button(base_engine::Game* game) : Actor(game)
+{
+  {
+    button_sprite_ = new ImageComponent(this, kButtonDrawOrder);
+
+    if (button_texture_) button_sprite_->SetImage(button_texture_);
+  }
+}
 
 void Button::Start() {
-	{
-		button_sprite_ = new ImageComponent(this, kButtonDrawOrder);
-
-		if(button_texture_)button_sprite_->SetImage(button_texture_);
-	}
 }
 
 void Button::SetButtonSprite(base_engine::TexturePtr texture) {

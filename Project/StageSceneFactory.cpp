@@ -28,7 +28,6 @@ void StageSceneFactory::Factory()
   auto pylon = new PylonActor(game_);
   auto player = new player::PlayerActor(game_);
   player->SetInput(input);
-  player->SetCamera(camera);
   auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
   player->SetMap(tilemap);
 

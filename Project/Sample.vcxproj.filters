@@ -412,6 +412,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\TitleManager">
       <UniqueIdentifier>{1011ed00-96ac-4824-8946-a0ad2ca75c52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\Button">
+      <UniqueIdentifier>{c9963d41-3380-4525-98f2-804924317f0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Camera">
+      <UniqueIdentifier>{a821d963-67dd-45a6-9af1-37835cd34660}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -812,6 +818,15 @@
     </ClCompile>
     <ClCompile Include="TitlePresenter.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\TitleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonPressEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleListener.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\TitleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="FollowCameraComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1417,6 +1432,15 @@
     </ClInclude>
     <ClInclude Include="UiFrozen.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonPressEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleListener.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\TitleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="FollowCameraComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
