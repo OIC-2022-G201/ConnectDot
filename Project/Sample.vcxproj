@@ -103,10 +103,12 @@
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonPressEvent.cpp" />
+    <ClCompile Include="DummyTween.cpp" />
     <ClCompile Include="Easer.cpp" />
     <ClCompile Include="EaseType.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
+    <ClCompile Include="ImageAlphaTween.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
@@ -251,10 +253,12 @@
     <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonPressEvent.h" />
+    <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EaseType.h" />
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GoalEffectActor.h" />
+    <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ITween.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
