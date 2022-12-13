@@ -70,6 +70,6 @@ concept Enum = std::is_enum_v<T>;
 
 template <Enum E>
 consteval int ElementCount() {
-  return InternalElementCount<E>(std::make_integer_sequence<int, 20>());
+  return InternalElementCount<E>(std::make_integer_sequence<int, 40>());
 }
 }  // namespace ee
