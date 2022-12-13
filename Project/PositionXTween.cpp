@@ -13,7 +13,9 @@ class Driver : public Tween<float, base_engine::Actor> {
     component_weak_ = this->GetOwner();
     return true;
   }
-  float OnGetFrom() override { return localPosition.x; }
+  float OnGetFrom() override {
+    return this->component_weak_.lock()->GetPosition().x;
+  }
 
   void OnUpdate(const float eased_time) override {
     this->localPosition = this->component_weak_.lock()->GetPosition();
