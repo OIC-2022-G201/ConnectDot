@@ -107,6 +107,7 @@
     <ClCompile Include="EaseType.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
+    <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="ITween.h" />
+    <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />

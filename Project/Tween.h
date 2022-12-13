@@ -15,10 +15,11 @@
 
 namespace ma_tween {
 
-/**
- * \brief Base class for all Tweens with a value type for the driver.
- * \tparam DriverValueType
- */
+/// <summary>
+/// Base class for all Tweens with a value type for the driver.
+/// </summary>
+/// <typeparam name="DriverValueType">the class that can perform four arithmetic
+/// operations and find interpolations</typeparam>
 template <class DriverValueType>
 class TweenDriver : public base_engine::Component, public core::ITween {
   using Driver = TweenDriver<DriverValueType>;
@@ -27,8 +28,20 @@ class TweenDriver : public base_engine::Component, public core::ITween {
   explicit TweenDriver(base_engine::Actor* owner, const int update_order = 100)
       : Component(owner, update_order) {}
 
-  float GetTotalDuration(bool include_delay) {}
-  void Cancel() {}
+  void SetSequenceDelay(float delay) { delay_ = delay; }
+
+  float GetTotalDuration(const bool include_delay = false) override {
+    auto duration = this->duration_.value();
+
+    if (include_delay == true && this->delay_.has_value() == true)
+      duration += delay_.value();
+    return duration;
+  }
+
+  void Cancel() override {
+    if (this->on_cancel_) this->on_cancel_();
+    this->Decommission();
+  }
 
   DriverValueType value_from_{};
   DriverValueType value_to_{};
@@ -36,7 +49,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
 
   virtual bool OnInitialize() = 0;
   virtual DriverValueType OnGetFrom() = 0;
-  virtual void OnUpdate(float easedTime) = 0;
+  virtual void OnUpdate(float eased_time) = 0;
 
  private:
   bool is_paused_ = false;
@@ -90,7 +103,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
     if (this->is_paused_ == true) return;
     // When the delay is active, the tween will wait for the delay to pass by.
     if (this->delay_) {
-      this->delay_ -= 0.017f;
+      this->delay_.value() -= 0.017f;
       if (this->delay_ <= 0) {
         this->delay_.reset();
         // When the delay is over, the valueFrom is requested from the
@@ -103,7 +116,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
     // When the tween has no duration, the timing will not be done and the
     // animation will be set to its last frame, the Tween will be
     // decomissioned right away.
-    else if (this->duration_) {
+    else if (!this->duration_) {
       this->OnUpdate(Easer::Apply(this->ease_, 1));
       if (this->on_start_) this->on_start_();
       if (this->on_complete_) this->on_complete_();
@@ -119,7 +132,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
         did_trigger_on_start_ = true;
       }
       // Increase or decrease the time of the tween based on the direction.
-      auto time_delta = (0.017f) / this->duration_;
+      auto time_delta = (0.017f) / this->duration_.value();
       this->time_ += time_delta;
       // The time will be capped to 1, when pingpong is enabled the tween will
       // play backwards, otherwise when the tween is not infinite, didReachEnd
@@ -160,7 +173,8 @@ class TweenDriver : public base_engine::Component, public core::ITween {
 
   template <class DriverType>
   static DriverType& Add(base_engine::Actor* actor) {
-    return *(new DriverType(actor));
+    
+    return (*(new DriverType(actor)));
   }
 
   template <class DriverType>
@@ -168,7 +182,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
     return *(new DriverType(component->GetOwner().lock().get()));
   }
 
- protected:
+ public:
   float InterpolateValue(const float from, const float to, const float time) {
     return from * (1 - time) + to * time;
   }
@@ -181,15 +195,19 @@ class TweenDriver : public base_engine::Component, public core::ITween {
   }
 
  private:
-  void Decommission() const { owner_->RemoveComponent(this); }
+  void Decommission() { owner_->RemoveComponent(this); }
 };
 template <class DriverValueType, class ComponentType>
-class Tween final : public TweenDriver<DriverValueType> {
+class Tween : public TweenDriver<DriverValueType> {
  protected:
   std::weak_ptr<ComponentType> component_weak_;
+
  public:
+  explicit Tween(base_engine::Actor* owner)
+      : TweenDriver<DriverValueType>(owner) {}
+
   bool OnInitialize() override {
-    this.component_weak_ = this->owner_->template GetComponent<ComponentType>();
+    component_weak_ = this->owner_->template GetComponent<ComponentType>();
     return !component_weak_.expired();
   }
 };

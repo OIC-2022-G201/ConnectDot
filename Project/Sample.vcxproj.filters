@@ -427,6 +427,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Tweener\Core">
       <UniqueIdentifier>{e7c819b7-92ca-4df7-99da-1661501b0d19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween">
+      <UniqueIdentifier>{45ef6011-7187-4d1b-89ae-c4c296027662}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -848,6 +851,9 @@
     </ClCompile>
     <ClCompile Include="EaseType.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionXTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1477,6 +1483,9 @@
     </ClInclude>
     <ClInclude Include="EaseType.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionXTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
