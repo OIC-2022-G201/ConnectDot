@@ -101,24 +101,22 @@ _CONST_ float InOutElastic(const float x) {
              ? -(pow(2, 20 * x - 10) * sin((20 * x - 11.125) * c5)) / 2
              : (pow(2, -20 * x + 10) * sin((20 * x - 11.125) * c5)) / 2 + 1;
 }
-_CONST_ float OutBounce(const float x) {
-  const float n1 = 7.5625;
-  const float d1 = 2.75;
+_CONST_ float OutBounce(float x) {
+  constexpr float n1 = 7.5625;
 
-  if (x < 1 / d1) {
+  if (constexpr float d1 = 2.75; x < 1 / d1) {
     return n1 * x * x;
   } else if (x < 2 / d1) {
-    return n1 * (x - 1.5 / d1) * x + 0.75;
+    return n1 * (x -= 1.5f / d1) * x + 0.75f;
   } else if (x < 2.5 / d1) {
-    return n1 * (x - 2.25 / d1) * x + 0.9375;
+    return n1 * (x -= 2.25f / d1) * x + 0.9375f;
   } else {
-    return n1 * (x - 2.625 / d1) * x + 0.984375;
+    return n1 * (x -= 2.625f / d1) * x + 0.984375f;
   }
 }
 _CONST_ float InBounce(const float x) { return 1 - OutBounce(1 - x); }
 _CONST_ float InOutBounce(const float x) {
-  return x < 0.5 ? (1 - OutBounce(1 - 2 * x)) / 2
-                 : (1 + OutBounce(2 * x - 1)) / 2;
+  return (x < 0.5) ? ((1 - OutBounce(1 - 2 * x)) / 2) : ((1 + OutBounce(2 * x - 1)) / 2);
 }
 
 template <typename Key, typename Value, std::size_t Size>

@@ -11,7 +11,7 @@
 using namespace base_engine;
 using ::GoalEffectActor;
 class GoalEffectActor::GoalEffectComponent final : public Component {
-  std::pair<Actor*,ImageComponent*> top_;
+  std::pair<Actor*, ImageComponent*> top_;
   std::pair<Actor*, ImageComponent*> bottom_;
   std::pair<Actor*, ImageComponent*> popup_;
   std::pair<Actor*, ImageComponent*> next_logo_;
@@ -61,18 +61,19 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   next_logo_.second->SetEnabled(false);
   next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, 3);
+  ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, 3)
+      .SetEase(EaseType::kOutquart);
   ma_tween::PositionXTween::TweenLocalPositionX(top_.first, 0, 3)
-      .SetOnComplete(
-          [this]
-          {
+      .SetEase(EaseType::kOutquart)
+      .SetOnComplete([this] {
+        popup_.second->SetEnabled(true);
         ma_tween::ImageAlphaTween::TweenImageAlpha(popup_.first, 255, 3)
             .SetOnComplete([this] {
               next_logo_.second->SetEnabled(true);
               ma_tween::ImageAlphaTween::TweenImageAlpha(next_logo_.first, 255,
                                                          3);
             });
-          });
+      });
 }
 
 void GoalEffectActor::GoalEffectComponent::Update() {}
