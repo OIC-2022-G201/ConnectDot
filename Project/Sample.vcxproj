@@ -100,6 +100,7 @@
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonPackage.cpp" />
     <ClCompile Include="ButtonSelecter.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="CanvasRender.cpp" />
@@ -127,9 +128,6 @@
     <ClCompile Include="IBaseEngineEmpty.cpp" />
     <ClCompile Include="Geometry2D.ipp" />
     <ClCompile Include="ImageComponent.cpp" />
-    <ClCompile Include="MoveFloorStubActor.cpp" />
-    <ClCompile Include="LeverStubActor.cpp" />
-    <ClCompile Include="LeverStubReceiver.cpp" />
     <ClCompile Include="Manifold.cpp" />
     <ClCompile Include="MofSpriteAnimationComponent.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -205,6 +203,7 @@
     <ClInclude Include="BinaryArchive.h" />
     <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonPackage.h" />
     <ClInclude Include="ButtonSelecter.h" />
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="CanvasRender.h" />
@@ -227,10 +226,6 @@
     <ClInclude Include="GimmickInjection.h" />
     <ClInclude Include="IBaseEngineCanvasRender.h" />
     <ClInclude Include="ImageComponent.h" />
-    <ClInclude Include="MoveFloorStubActor.h" />
-    <ClInclude Include="LeverStubActor.h" />
-    <ClInclude Include="LeverStubReceiver.h" />
-    <ClInclude Include="LoadObjectParameter.h" />
     <ClInclude Include="MachineConst.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectDataBase.h" />
