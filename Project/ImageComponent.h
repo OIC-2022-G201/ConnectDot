@@ -33,6 +33,7 @@ class ImageComponent : public RenderComponent {
     color_ = color;
     return *this;
   }
+  COLOR GetColor() const { return color_; }
   ImageComponent& SetOffset(InVector2 offset) {
     offset_ = offset;
     return *this;

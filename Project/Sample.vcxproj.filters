@@ -430,6 +430,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween">
       <UniqueIdentifier>{45ef6011-7187-4d1b-89ae-c4c296027662}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener\Dummytween">
+      <UniqueIdentifier>{17e4085c-f3a0-423f-810f-096939e1f08a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -853,6 +856,12 @@
       <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
     </ClCompile>
     <ClCompile Include="PositionXTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
+    </ClCompile>
+    <ClCompile Include="DummyTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageAlphaTween.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1485,6 +1494,12 @@
       <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
     </ClInclude>
     <ClInclude Include="PositionXTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
+    </ClInclude>
+    <ClInclude Include="ImageAlphaTween.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
     </ClInclude>
   </ItemGroup>

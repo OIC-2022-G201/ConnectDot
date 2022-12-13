@@ -1,13 +1,12 @@
 ﻿#include "PositionXTween.h"
 namespace ma_tween {
+namespace {
 class Driver : public Tween<float, base_engine::Actor> {
  public:
-    explicit Driver(base_engine::Actor* owner)
-        : Tween<float, base_engine::Actor>(owner)
-    {
-    }
+  explicit Driver(base_engine::Actor* owner)
+      : Tween<float, base_engine::Actor>(owner) {}
 
-    base_engine::Vector2 localPosition;
+  base_engine::Vector2 localPosition;
 
   bool OnInitialize() override {
     component_weak_ = this->GetOwner();
@@ -25,7 +24,7 @@ class Driver : public Tween<float, base_engine::Actor> {
     this->component_weak_.lock()->SetPosition(this->localPosition);
   }
 };
-
+}  // namespace
 TweenDriver<float>& PositionXTween::TweenLocalPositionX(base_engine::Actor* actor,float to, float duration)
 {
   return TweenDriver<float>::Add<Driver>(actor).Finalize(to, duration);
