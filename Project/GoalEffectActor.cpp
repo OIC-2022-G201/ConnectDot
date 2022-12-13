@@ -5,15 +5,16 @@
 #include "BaseEngineCore.h"
 #include "GameWindow.h"
 #include "IBaseEngineTexture.h"
+#include "ImageAlphaTween.h"
 #include "ImageComponent.h"
 #include "PositionXTween.h"
 using namespace base_engine;
 using ::GoalEffectActor;
 class GoalEffectActor::GoalEffectComponent final : public Component {
-  ImageComponent* top_ = nullptr;
-  ImageComponent* bottom_ = nullptr;
-  ImageComponent* popup_ = nullptr;
-  ImageComponent* next_logo_ = nullptr;
+  std::pair<Actor*,ImageComponent*> top_;
+  std::pair<Actor*, ImageComponent*> bottom_;
+  std::pair<Actor*, ImageComponent*> popup_;
+  std::pair<Actor*, ImageComponent*> next_logo_;
 
  public:
   explicit GoalEffectComponent(Actor* owner);
@@ -28,36 +29,50 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   const auto img_letter =
       BASE_ENGINE(Texture)->Get("UI/Result/DiagonalLetterBox.png");
   const auto img_popup = BASE_ENGINE(Texture)->Get("UI/Popup/Result.png");
-  const auto img_next_logo = BASE_ENGINE(Texture)->Get("UI/Nextbutton/Result.png");
-  auto bottom_actor = new Actor(owner_->GetGame());
-  auto top_actor = new Actor(owner_->GetGame());
-  auto popup_actor = new Actor(owner_->GetGame());
+  const auto img_next_logo =
+      BASE_ENGINE(Texture)->Get("UI/Nextbutton/Nextlogo.png");
+  bottom_.first = new Actor(owner_->GetGame());
+  top_.first = new Actor(owner_->GetGame());
+  popup_.first = new Actor(owner_->GetGame());
 
-  top_actor->SetPosition({-1920, 0});
-  top_ = new ImageComponent(top_actor);
-  top_->SetImage(img_letter);
-  top_->SetAngle(std::numbers::pi_v<float>);
-  top_->SetAlignment(Mof::TEXALIGN_BOTTOMRIGHT);
+  top_.first->SetPosition({-1920, 0});
+  top_.second = new ImageComponent(top_.first);
+  top_.second->SetImage(img_letter);
+  top_.second->SetAngle(std::numbers::pi_v<float>);
+  top_.second->SetAlignment(Mof::TEXALIGN_BOTTOMRIGHT);
 
-  bottom_actor->SetPosition({1920, 0});
-  bottom_ = new ImageComponent(bottom_actor);
-  bottom_->SetImage(img_letter);
-  bottom_->SetOffset({0, window::kHeight});
-  bottom_->SetAlignment(Mof::TEXALIGN_BOTTOMLEFT);
+  bottom_.first->SetPosition({1920, 0});
+  bottom_.second = new ImageComponent(bottom_.first);
+  bottom_.second->SetImage(img_letter);
+  bottom_.second->SetOffset({0, window::kHeight});
+  bottom_.second->SetAlignment(Mof::TEXALIGN_BOTTOMLEFT);
 
-  popup_ = new ImageComponent(popup_actor);
-  popup_->SetImage(img_popup);
-  popup_->SetOffset({300, 300});
-  bottom_->SetEnabled(true);
-  top_->SetEnabled(true);
+  popup_.second = new ImageComponent(popup_.first);
+  popup_.second->SetImage(img_popup);
+  popup_.second->SetOffset({300, 300});
+  popup_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
+  popup_.second->SetEnabled(false);
 
-  auto next_logo_actor = new Actor(owner_->GetGame());
-  next_logo_ = new ImageComponent(next_logo_actor);
+  next_logo_.first = new Actor(owner_->GetGame());
+  next_logo_.first->SetPosition({1000, 700});
 
-  ma_tween::PositionXTween::TweenLocalPositionX(bottom_actor, 0, 3);
-  ma_tween::PositionXTween::TweenLocalPositionX(top_actor, 0, 3);
-  ma_tween::PositionXTween::TweenLocalPositionX(popup_actor, 300, 3)
-      .SetOnComplete([this]() {});
+  next_logo_.second = new ImageComponent(next_logo_.first);
+  next_logo_.second->SetImage(img_next_logo);
+  next_logo_.second->SetEnabled(false);
+  next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
+
+  ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, 3);
+  ma_tween::PositionXTween::TweenLocalPositionX(top_.first, 0, 3)
+      .SetOnComplete(
+          [this]
+          {
+        ma_tween::ImageAlphaTween::TweenImageAlpha(popup_.first, 255, 3)
+            .SetOnComplete([this] {
+              next_logo_.second->SetEnabled(true);
+              ma_tween::ImageAlphaTween::TweenImageAlpha(next_logo_.first, 255,
+                                                         3);
+            });
+          });
 }
 
 void GoalEffectActor::GoalEffectComponent::Update() {}

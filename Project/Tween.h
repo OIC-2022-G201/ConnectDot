@@ -98,7 +98,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
       this->OnUpdate(Easer::Apply(this->ease_, 0));
     }
   }
-  void Update() {
+  void Update() override {
     // When the tween is paused, we'll just wait.
     if (this->is_paused_ == true) return;
     // When the delay is active, the tween will wait for the delay to pass by.
@@ -170,10 +170,13 @@ class TweenDriver : public base_engine::Component, public core::ITween {
     this->on_cancel_ = on_cancel;
     return *this;
   }
+  Driver& SetEase(const EaseType type) {
+    ease_ = type;
+    return *this;
+  }
 
   template <class DriverType>
   static DriverType& Add(base_engine::Actor* actor) {
-    
     return (*(new DriverType(actor)));
   }
 
