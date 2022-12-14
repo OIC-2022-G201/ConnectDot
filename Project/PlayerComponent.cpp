@@ -10,6 +10,7 @@
 #include "CollisionLayer.h"
 #include "EventBus.h"
 #include "EventHandler.h"
+#include "GoalEffectActor.h"
 #include "GoalEvent.h"
 #include "IMachineActionable.h"
 #include "PhysicsFixture.h"
@@ -45,6 +46,7 @@ class PlayerComponent::PlayerListener final : public EventHandler<GoalEvent> {
   {
     player_.can_control_ = false;
     player_.goal_event_ = true;
+    new GoalEffectActor(player_.GetGame());
   }
 };
 

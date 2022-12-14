@@ -79,9 +79,7 @@ void TitleSceneFactory::Factory() {
     frozen::BinaryInputArchive archive(stream);
     archive(packages);
   }
-
-  if (false)
-  {
+  
       const auto selector = new ButtonSelecter(game_);
       selector->SetInput(input);
       for (const auto& package : packages) {
@@ -99,9 +97,8 @@ void TitleSceneFactory::Factory() {
               });
           }
       }
-  }
+  
 
   new TitleComponent(new Actor(game_));
-  new GoalEffectActor(game_);
   return;
 }

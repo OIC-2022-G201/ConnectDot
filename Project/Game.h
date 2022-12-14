@@ -10,12 +10,12 @@
 class ResourceContainer;
 
 namespace base_engine {
-    struct ActorId;
-    using ActorPtr = std::shared_ptr<class Actor>;
-    using ActorWeakPtr = std::weak_ptr<class Actor>;
+struct ActorId;
+using ActorPtr = std::shared_ptr<class Actor>;
+using ActorWeakPtr = std::weak_ptr<class Actor>;
 class Game {
  public:
-    ~Game();
+  ~Game();
   bool Initialize();
   void Update();
   void Render() const;
@@ -27,13 +27,13 @@ class Game {
   ActorWeakPtr GetActor(ActorId id);
   void AddSprite(class RenderComponent* render_component);
   void RemoveSprite(class RenderComponent* render_component);
+  void Clear();
 
  private:
   void CreateObjectRegister();
   void ProcessInput();
   void UpdateGame();
 
-    void Clear();
   std::vector<ActorPtr> actors_;
   std::vector<ActorPtr> actors_next_frame_delete_;
   std::vector<class RenderComponent*> sprites_;
@@ -43,11 +43,11 @@ class Game {
 
   uint64_t actor_id_max_ = 0;
 
-    
   BaseEngineCore engine_;
   GameData game_data_;
   std::unique_ptr<GameManager> game_manager_;
   std::shared_ptr<ResourceContainer> resource_container_;
+
  public:
   std::vector<std::function<void()>> debug_render_;
 };

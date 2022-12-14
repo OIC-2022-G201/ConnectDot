@@ -12,7 +12,9 @@ inline Mof::Vector2 GetMousePos() {
 };
 
 InputManager* InputManager::Instance()
-{ return instance_; }
+{
+    return instance_;
+}
 
 InputManager::InputManager(base_engine::InputActor* owner)
     : InputComponent(owner) {

@@ -28,7 +28,11 @@ class TweenDriver : public base_engine::Component, public core::ITween {
   explicit TweenDriver(base_engine::Actor* owner, const int update_order = 100)
       : Component(owner, update_order) {}
 
-  void SetSequenceDelay(float delay) { delay_ = delay; }
+  TweenDriver& SetSequenceDelay(float delay)
+  {
+    delay_ = delay;
+    return *this;
+  }
 
   float GetTotalDuration(const bool include_delay = false) override {
     auto duration = this->duration_.value();

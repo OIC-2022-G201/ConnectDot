@@ -25,6 +25,7 @@ void StageSceneFactory::Factory()
     new tile_map::TileMapComponent(stageActor, 100);
   }
 
+  new InputManager(new InputActor(game_));
 
   auto pylon = new PylonActor(game_);
   auto player = new player::PlayerActor(game_);

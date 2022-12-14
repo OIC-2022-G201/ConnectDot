@@ -8,6 +8,7 @@
 #include "InputManager.h"
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
+#include "SceneManager.h"
 #include "ServiceLocator.h"
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
@@ -18,6 +19,7 @@ namespace base_engine {
 
 bool Game::Initialize() {
   game_data_.Register();
+  scene::SceneManager::Instance().Register(this);
 
   auto inputActor = new base_engine::InputActor(this);
   auto input = new InputManager(inputActor);
@@ -29,8 +31,7 @@ bool Game::Initialize() {
   title.Load("Meta/Scene/Scene.bin");
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-  TitleSceneFactory stage(this);
-  stage.Factory();
+  scene::LoadScene(scene::kTitle);
   b_collision = BASE_ENGINE(Collider);
 
   return true;
@@ -42,9 +43,7 @@ void Game::Update() {
   UpdateGame();
   b_collision->Collide();
   if (g_pInput->IsKeyPush(MOFKEY_N)) {
-    Clear();
-    StageSceneFactory stage(this);
-    stage.Factory();
+    scene::LoadScene(scene::kGame);
   }
 }
 

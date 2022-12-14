@@ -12,6 +12,7 @@
 #include "ISpriteAnimationComponent.h"
 #include "ResourceManager.h"
 #include "UiPackage.h"
+#include "ISceneFactory.h"
 
 namespace fs = std::filesystem;
 

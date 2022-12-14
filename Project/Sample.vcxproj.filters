@@ -300,9 +300,6 @@
     <Filter Include="ソース ファイル\ConnectDot\Event\Handler">
       <UniqueIdentifier>{55f90d94-b7ad-48c2-a579-c4eebb942a1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ConnectDot\Event\Handler\Player">
-      <UniqueIdentifier>{486e197c-dcba-4d9b-a75a-b0174b6be8b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\ConnectDot\GameMain\Scene">
       <UniqueIdentifier>{81ae5be4-2e63-45c1-959b-adb0911c990f}</UniqueIdentifier>
     </Filter>
@@ -432,6 +429,18 @@
     </Filter>
     <Filter Include="ソース ファイル\ConnectDot\Tweener\Dummytween">
       <UniqueIdentifier>{17e4085c-f3a0-423f-810f-096939e1f08a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\Button\Private">
+      <UniqueIdentifier>{78fb69ed-4aed-41ad-9694-f1b6d3f63d34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\Button">
+      <UniqueIdentifier>{fda01426-b8a4-4c0e-a3b8-75191de6c252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\Button\Listener">
+      <UniqueIdentifier>{4bf99670-08cd-41d7-b701-756350a1d6d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Scene\SceneLoad">
+      <UniqueIdentifier>{262997c6-a025-4d69-87fe-a144253fa8fd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -693,12 +702,6 @@
     <ClCompile Include="TileMap.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap\detail</Filter>
     </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="ButtonSelecter.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectLoader.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClCompile>
@@ -863,6 +866,21 @@
     </ClCompile>
     <ClCompile Include="ImageAlphaTween.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonCommandEventContainer.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\Button\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonSelecter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonListener.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Button\Listener</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\SceneLoad</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1334,12 +1352,6 @@
     <ClInclude Include="VariantUtilities.h">
       <Filter>Utilities\Extensions\Variant</Filter>
     </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="ButtonSelecter.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectLoader.h">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClInclude>
@@ -1501,6 +1513,21 @@
     </ClInclude>
     <ClInclude Include="ImageAlphaTween.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonCommandEventContainer.h">
+      <Filter>ソース ファイル\ConnectDot\Event\Button\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonSelecter.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonListener.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Button\Listener</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\SceneLoad</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

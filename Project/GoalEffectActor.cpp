@@ -12,6 +12,8 @@
 #include "ImageComponent.h"
 #include "InputManager.h"
 #include "PositionXTween.h"
+#include "SceneManager.h"
+#include "TitleSceneFactory.h"
 using namespace base_engine;
 using ::GoalEffectActor;
 class ResultListener final : public EventHandler<ButtonPressEvent> {
@@ -52,18 +54,18 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   popup_.first = new Actor(owner_->GetGame());
 
   top_.first->SetPosition({-1920, 0});
-  top_.second = new ImageComponent(top_.first);
+  top_.second = new ImageComponent(top_.first, 2000);
   top_.second->SetImage(img_letter);
   top_.second->SetAngle(std::numbers::pi_v<float>);
   top_.second->SetAlignment(Mof::TEXALIGN_BOTTOMRIGHT);
 
   bottom_.first->SetPosition({1920, 0});
-  bottom_.second = new ImageComponent(bottom_.first);
+  bottom_.second = new ImageComponent(bottom_.first, 2000);
   bottom_.second->SetImage(img_letter);
   bottom_.second->SetOffset({0, window::kHeight});
   bottom_.second->SetAlignment(Mof::TEXALIGN_BOTTOMLEFT);
 
-  popup_.second = new ImageComponent(popup_.first);
+  popup_.second = new ImageComponent(popup_.first, 2000);
   popup_.second->SetImage(img_popup);
   popup_.second->SetOffset({300, 300});
   popup_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
@@ -72,16 +74,18 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   next_logo_.first = new Actor(owner_->GetGame());
   next_logo_.first->SetPosition({1000, 700});
 
-  next_logo_.second = new ImageComponent(next_logo_.first);
+  next_logo_.second = new ImageComponent(next_logo_.first, 2000);
   next_logo_.second->SetImage(img_next_logo);
   next_logo_.second->SetEnabled(false);
   next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
 
   constexpr float letter_time = 0.2f;
   ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, letter_time)
-      .SetEase(EaseType::kOutquart);
+      .SetEase(EaseType::kOutquart)
+      .SetSequenceDelay(5);
   ma_tween::PositionXTween::TweenLocalPositionX(top_.first, 0, letter_time)
       .SetEase(EaseType::kOutquart)
+      .SetSequenceDelay(5)
       .SetOnComplete([this] {
         popup_.second->SetEnabled(true);
         ma_tween::ImageAlphaTween::TweenImageAlpha(popup_.first, 255, 0.5)
@@ -97,10 +101,7 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 void GoalEffectActor::GoalEffectComponent::Update() {
   if (!end_animation_) return;
   if (InputManager::Instance()->ButtonDecision()) {
-    DeleteActor(&top_);
-    DeleteActor(&bottom_);
-    DeleteActor(&popup_);
-    DeleteActor(&next_logo_);
+    scene::LoadScene(scene::kTitle);
   }
 }
 
