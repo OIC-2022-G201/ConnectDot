@@ -10,6 +10,7 @@
 #include "ObjectLoader.h"
 #include "PlayerActor.h"
 #include "PylonActor.h"
+#include "ServiceLocator.h"
 #include "TileMapComponent.h"
 using namespace base_engine;
 void StageSceneFactory::Factory()
@@ -24,12 +25,10 @@ void StageSceneFactory::Factory()
     new tile_map::TileMapComponent(stageActor, 100);
   }
 
-  auto inputActor = new InputActor(game_);
-  auto input = new InputManager(inputActor);
 
   auto pylon = new PylonActor(game_);
   auto player = new player::PlayerActor(game_);
-  player->SetInput(input);
+  player->SetInput(InputManager::Instance());
   const auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
   player->SetMap(tilemap);
   follow->BindTarget(game_->GetActor(player->GetId()));

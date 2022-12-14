@@ -5,8 +5,10 @@
 
 #include "Actor.h"
 #include "IBaseEngineCollider.h"
+#include "InputManager.h"
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
+#include "ServiceLocator.h"
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
@@ -16,6 +18,10 @@ namespace base_engine {
 
 bool Game::Initialize() {
   game_data_.Register();
+
+  auto inputActor = new base_engine::InputActor(this);
+  auto input = new InputManager(inputActor);
+  
   resource_container_ = std::make_shared<ResourceContainer>();
   resource_container_->Register();
 

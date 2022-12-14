@@ -10,10 +10,17 @@ inline Mof::Vector2 GetMousePos() {
   g_pInput->GetMousePos(result);
   return result;
 };
-InputManager::InputManager(base_engine::InputActor* owner)
-    : InputComponent(owner) {}
 
-InputManager::~InputManager() {}
+InputManager* InputManager::Instance()
+{ return instance_; }
+
+InputManager::InputManager(base_engine::InputActor* owner)
+    : InputComponent(owner) {
+  instance_ = this;
+}
+
+InputManager::~InputManager()
+{ instance_ = nullptr; }
 
 void InputManager::ProcessInput() {
   move_horizontal_ = 0;

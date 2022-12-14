@@ -2,20 +2,22 @@
 #include "InputComponent.h"
 
 class InputManager final : public base_engine::InputComponent {
+  inline static InputManager* instance_ = nullptr;
   // InGame KeyValue
-  float move_horizontal_;
-  float button_horizontal_;
-  float button_vertical_;
-  bool button_decision_;
-  bool jump_fire_;
-  bool place_beacon_fire_;
-  bool collect_beacon_fire_;
-  bool action_fire_;
-  bool pause_fire_;
-  bool sneak_fire_;
+  float move_horizontal_{};
+  float button_horizontal_{};
+  float button_vertical_{};
+  bool button_decision_{};
+  bool jump_fire_{};
+  bool place_beacon_fire_{};
+  bool collect_beacon_fire_{};
+  bool action_fire_{};
+  bool pause_fire_{};
+  bool sneak_fire_{};
 
   Mof::Vector2 mouse_position_;
  public:
+  static InputManager* Instance();
   explicit InputManager(base_engine::InputActor* owner);
   ~InputManager() override;
   void ProcessInput() override;

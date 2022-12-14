@@ -3,24 +3,40 @@
 #include <numbers>
 
 #include "BaseEngineCore.h"
+#include "ButtonPressEvent.h"
+#include "EventHandler.h"
 #include "GameWindow.h"
+#include "HandlerRegistration.h"
 #include "IBaseEngineTexture.h"
 #include "ImageAlphaTween.h"
 #include "ImageComponent.h"
+#include "InputManager.h"
 #include "PositionXTween.h"
 using namespace base_engine;
 using ::GoalEffectActor;
+class ResultListener final : public EventHandler<ButtonPressEvent> {
+ public:
+  void OnEvent(ButtonPressEvent& press) override {}
+};
 class GoalEffectActor::GoalEffectComponent final : public Component {
   std::pair<Actor*, ImageComponent*> top_;
   std::pair<Actor*, ImageComponent*> bottom_;
   std::pair<Actor*, ImageComponent*> popup_;
   std::pair<Actor*, ImageComponent*> next_logo_;
 
+  std::unique_ptr<ResultListener> listener_;
+  std::shared_ptr<HandlerRegistration> handle_;
+  bool end_animation_ = false;
+
  public:
   explicit GoalEffectComponent(Actor* owner);
 
   void Start() override;
   void Update() override;
+
+  void DeleteActor(const std::pair<Actor*, ImageComponent*>* pair) const {
+    owner_->GetGame()->RemoveActor(pair->first);
+  }
 };
 GoalEffectActor::GoalEffectComponent::GoalEffectComponent(Actor* owner)
     : Component(owner) {}
@@ -61,22 +77,32 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   next_logo_.second->SetEnabled(false);
   next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, 3)
+  constexpr float letter_time = 0.2f;
+  ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, letter_time)
       .SetEase(EaseType::kOutquart);
-  ma_tween::PositionXTween::TweenLocalPositionX(top_.first, 0, 3)
+  ma_tween::PositionXTween::TweenLocalPositionX(top_.first, 0, letter_time)
       .SetEase(EaseType::kOutquart)
       .SetOnComplete([this] {
         popup_.second->SetEnabled(true);
-        ma_tween::ImageAlphaTween::TweenImageAlpha(popup_.first, 255, 3)
+        ma_tween::ImageAlphaTween::TweenImageAlpha(popup_.first, 255, 0.5)
             .SetOnComplete([this] {
               next_logo_.second->SetEnabled(true);
               ma_tween::ImageAlphaTween::TweenImageAlpha(next_logo_.first, 255,
-                                                         3);
+                                                         0.5);
+              end_animation_ = true;
             });
       });
 }
 
-void GoalEffectActor::GoalEffectComponent::Update() {}
+void GoalEffectActor::GoalEffectComponent::Update() {
+  if (!end_animation_) return;
+  if (InputManager::Instance()->ButtonDecision()) {
+    DeleteActor(&top_);
+    DeleteActor(&bottom_);
+    DeleteActor(&popup_);
+    DeleteActor(&next_logo_);
+  }
+}
 
 GoalEffectActor::GoalEffectActor(base_engine::Game* game) : Actor(game) {}
 
