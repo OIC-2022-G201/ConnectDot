@@ -43,14 +43,14 @@ class EventBus {
     const auto registration = std::make_shared<EventRegistration>(
         static_cast<void*>(&handler), registrations, &sender);
 
-    registrations->push_front(registration);
-    registration->SetItr(registrations->cbegin());
+    registrations->emplace_back(registration);
+    // registration->SetItr(registrations->cbegin());
 
     return registration;
   }
 
   template <class T>
-   [[nodiscard]] static std::shared_ptr<HandlerRegistration> AddHandler(
+  [[nodiscard]] static std::shared_ptr<HandlerRegistration> AddHandler(
       EventHandler<T>& handler) {
     EventBus* instance = GetInstance();
 
@@ -64,8 +64,7 @@ class EventBus {
     const auto registration = std::make_shared<EventRegistration>(
         static_cast<void*>(&handler), registrations, nullptr);
 
-    registrations->push_front(registration);
-    registration->SetItr(registrations->cbegin());
+    registrations->emplace_back(registration);
 
     return registration;
   }
@@ -77,8 +76,9 @@ class EventBus {
     if (registrations == nullptr) {
       return;
     }
-
+    if (registrations->empty()) return;
     for (auto& reg_weak : *registrations) {
+      if (reg_weak.expired()) continue;
       if (const auto reg = reg_weak.lock();
           (reg->GetSender() == nullptr) ||
           (reg->GetSender() == &e.GetSender())) {
@@ -92,7 +92,7 @@ class EventBus {
 
   class EventRegistration final : public HandlerRegistration {
    public:
-    using Registrations = std::list<std::weak_ptr<EventRegistration>>;
+    using Registrations = std::vector<std::weak_ptr<EventRegistration>>;
 
     EventRegistration(void* const handler, Registrations* const registrations,
                       std::any* const sender)
@@ -109,11 +109,18 @@ class EventBus {
 
     void removeHandler() override {
       if (registered_) {
-        registrations_->erase(itr_);
+        if (const auto iter = std::ranges::find_if(
+                (*registrations_),
+                [this](const std::weak_ptr<EventRegistration>& n) {
+                  return n.lock().get() == this;
+                });
+            iter != registrations_->end()) {
+          std::iter_swap(iter, registrations_->end() - 1);
+          registrations_->pop_back();
+        }
         registered_ = false;
       }
     }
-    void SetItr(const Registrations::const_iterator& itr) { itr_ = itr; }
 
    private:
     void* const handler_;
@@ -121,13 +128,12 @@ class EventBus {
     std::any* const sender_;
 
     bool registered_;
-    Registrations::const_iterator itr_;
   };
 
   using WeakEventRegistration = std::weak_ptr<EventRegistration>;
-  using Registrations = std::list<WeakEventRegistration>;
+  using Registrations = std::vector<WeakEventRegistration>;
   using TypeMap =
-      std::unordered_map<std::type_index, std::list<WeakEventRegistration>*>;
+      std::unordered_map<std::type_index, std::vector<WeakEventRegistration>*>;
 
   TypeMap handlers_;
 };

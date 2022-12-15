@@ -5,6 +5,7 @@
 #include "Actor.h"
 #include "BinaryArchive.h"
 #include "Button.h"
+#include "ButtonListener.h"
 #include "ButtonPressEvent.h"
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
@@ -52,9 +53,11 @@ auto ButtonCreate(Game* game, InputManager* input,
   } result = {button, selector};
   return result;
 }
-auto ButtonCreate(Game* game, ButtonSelecter* selector, const ButtonFrozenPack& button_data) {
-  auto button_pack = RC::GetResource<ResourceContainer::ButtonResourcePack,
-                                     ButtonResourcePackage>(button_data.path);
+auto ButtonCreate(Game* game, ButtonSelecter* selector,
+                  const ButtonFrozenPack& button_data) {
+  const auto button_pack =
+      RC::GetResource<ResourceContainer::ButtonResourcePack,
+                      ButtonResourcePackage>(button_data.path);
   const auto button = new Button(game);
   button->SetButtonSprite(button_pack->sprites[0]);
   button->SetChangeButtonSprite(button_pack->sprites[1]);
@@ -79,25 +82,24 @@ void TitleSceneFactory::Factory() {
     frozen::BinaryInputArchive archive(stream);
     archive(packages);
   }
-  
-      const auto selector = new ButtonSelecter(game_);
-      selector->SetInput(input);
-      for (const auto& package : packages) {
-          if (std::holds_alternative<ImageFrozenPack>(package)) {
-              const auto& [x, y, path] = std::get<ImageFrozenPack>(package);
-              const auto [owner, image] = ImageCreate(game_, path);
-              owner->SetPosition({x, y});
-          } else {
-              const auto& button_pack = std::get<ButtonFrozenPack>(package);
-              const auto [button, selector] = ButtonCreate(game_, selector, button_pack);
-              button->SetEvent([button_pack, button]() {
-                auto any = std::any(button);
-                ButtonPressEvent e(any, button_pack.event_name);
-                EventBus::FireEvent(e);
-              });
-          }
-      }
-  
+  new ButtonListener(new Actor(game_));
+  const auto selector = new ButtonSelecter(game_);
+  selector->SetInput(input);
+  for (const auto& package : packages) {
+    if (std::holds_alternative<ImageFrozenPack>(package)) {
+      const auto& [x, y, path] = std::get<ImageFrozenPack>(package);
+      const auto [owner, image] = ImageCreate(game_, path);
+      owner->SetPosition({x, y});
+    } else {
+      const auto& button_pack = std::get<ButtonFrozenPack>(package);
+      const auto [button, _] = ButtonCreate(game_, selector, button_pack);
+      button->SetEvent([button_pack, button]() {
+        auto any = std::any(button);
+        ButtonPressEvent e(any, button_pack.event_name);
+        EventBus::FireEvent(e);
+      });
+    }
+  }
 
   new TitleComponent(new Actor(game_));
   return;
