@@ -111,6 +111,7 @@
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
+    <ClCompile Include="InvaderSceneFactory.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -265,6 +266,7 @@
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="ImageAlphaTween.h" />
+    <ClInclude Include="InvaderSceneFactory.h" />
     <ClInclude Include="ITween.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="Scene.h" />
