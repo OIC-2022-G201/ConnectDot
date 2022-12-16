@@ -112,6 +112,7 @@
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ITween.h" />
     <ClInclude Include="PositionXTween.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TitleListener.h" />

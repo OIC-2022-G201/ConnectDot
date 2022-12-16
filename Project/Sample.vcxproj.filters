@@ -442,6 +442,9 @@
     <Filter Include="ソース ファイル\ConnectDot\GameMain\Scene\SceneLoad">
       <UniqueIdentifier>{262997c6-a025-4d69-87fe-a144253fa8fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Scene\Factory">
+      <UniqueIdentifier>{551dd59a-71b5-4385-89ea-87888ea78407}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -771,9 +774,6 @@
     <ClCompile Include="EventRegister.cpp">
       <Filter>ソース ファイル\ConnectDot\Event</Filter>
     </ClCompile>
-    <ClCompile Include="StageSceneFactory.cpp">
-      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyMove.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy\EnemyState</Filter>
     </ClCompile>
@@ -824,9 +824,6 @@
     </ClCompile>
     <ClCompile Include="SpriteAnimationClipLoader.cpp">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleSceneFactory.cpp">
-      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClCompile>
     <ClCompile Include="UiPackage.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\Loader</Filter>
@@ -881,6 +878,15 @@
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
       <Filter>ソース ファイル\ConnectDot\GameMain\Scene\SceneLoad</Filter>
+    </ClCompile>
+    <ClCompile Include="StageSceneFactory.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleSceneFactory.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1448,12 +1454,6 @@
     <ClInclude Include="EventRegister.h">
       <Filter>ソース ファイル\ConnectDot\Event</Filter>
     </ClInclude>
-    <ClInclude Include="StageSceneFactory.h">
-      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="ISceneFactory.h">
-      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="StubEvent.h">
       <Filter>ソース ファイル\ConnectDot\Event</Filter>
     </ClInclude>
@@ -1465,9 +1465,6 @@
     </ClInclude>
     <ClInclude Include="SpriteAnimationClipLoader.h">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleSceneFactory.h">
-      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClInclude>
     <ClInclude Include="UiPackage.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\Loader</Filter>
@@ -1528,6 +1525,18 @@
     </ClInclude>
     <ClInclude Include="SceneManager.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Scene\SceneLoad</Filter>
+    </ClInclude>
+    <ClInclude Include="ISceneFactory.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="StageSceneFactory.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleSceneFactory.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

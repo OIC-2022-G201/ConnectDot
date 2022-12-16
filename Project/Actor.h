@@ -124,6 +124,8 @@ class Actor {
   float rotation_;
   float scale_;
 
+  std::vector<std::weak_ptr<Actor>> children_;
+  std::weak_ptr<Actor> parent_;
  private:
   ActorId id_;
   class Game* game;
@@ -146,6 +148,5 @@ ComponentDerivedWeakPtr<T> Actor::GetComponent() const {
 
 template <class T>
 T* Actor::GetComponents() const {}
-
 
 }  // namespace base_engine
