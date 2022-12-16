@@ -23,6 +23,8 @@ constexpr int kSignboardDisplayDrawOrder = kSignboardDrawOrder+1;
 constexpr int kVentDrawOrder = 160;
 constexpr int kElectricEffectDrawOrder = 130;
 
+constexpr int kEnemyNeckDrawOrder = 147;
+constexpr int kEnemyBodyDrawOrder = 148;
 constexpr int kEnemyDrawOrder = 149;
 constexpr int kPlayerDrawOrder = 150;
 constexpr int kButtonDrawOrder = 151;

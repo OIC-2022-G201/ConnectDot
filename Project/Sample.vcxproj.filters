@@ -376,7 +376,6 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent">
       <UniqueIdentifier>{6fe2ba8e-8c65-4855-87f1-6457b445e71b}</UniqueIdentifier>
     </Filter>
-
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -722,6 +721,9 @@
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="BaseBodyComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyNeck.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1262,6 +1264,9 @@
     </ClInclude>
     <ClInclude Include="PlayerVentAction.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyNeck.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

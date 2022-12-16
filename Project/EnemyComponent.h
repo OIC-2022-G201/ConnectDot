@@ -8,6 +8,9 @@
 #include "EnemyChase.h"
 #include "Enemy.h"
 #include "VisionCreateComponent.h"
+#include "ISpriteAnimationComponent.h"
+#include "ReactiveProperty.h"
+#include "SpriteComponent.h"
 
 using namespace base_engine;
 
@@ -17,7 +20,9 @@ namespace enemy {
 		std::weak_ptr<CollisionComponent> collision_;
 		til::Machine<EnemyMove, EnemyTurn, EnemyFind, EnemyChase> machine_
 					= til::Machine{ EnemyMove{this}, EnemyTurn{this}, EnemyFind{this}, EnemyChase{this} };
-		bool direction = Left;
+		observable::ReactiveProperty<bool> direction = Left;
+		std::weak_ptr<ISpriteAnimationComponent> animator_;
+		std::weak_ptr<SpriteComponent> sprite_;
 
 	public:
 		EnemyComponent(Actor* owner, int update_order)
@@ -29,9 +34,10 @@ namespace enemy {
 		std::weak_ptr<PhysicsBodyComponent> PhysicsBody() { return physics_body_; }
 		CollisionComponent* GetCollision() { return collision_.lock().get(); }
 		//false == Left, true == Right
-		bool GetDirection() { return direction; }
+		bool GetDirection() { return (bool)direction; }
 		void SetDirection(bool dir) { direction = dir; }
 		void ReverseDirection() { direction = !direction; }
 		EnemyVisionComponent* GetVision() { return owner_->GetComponent<VisionCreateComponent>().lock()->GetParent()->GetComponent<EnemyVisionComponent>().lock().get(); }
+		ISpriteAnimationComponent* GetAnimator() { return animator_.lock().get(); }
 	};
 }

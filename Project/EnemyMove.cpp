@@ -9,11 +9,12 @@ namespace enemy {
 		vision_ = enemy_->GetVision();
 		is_find_ = false;
 		is_turn_ = false;
-		body_.lock().get()->SetForceX(enemy_->GetDirection() == Left ? -Speed : Speed);
+		enemy_->GetAnimator()->ChangeMotion("Move");
 	}
 
  	void EnemyMove::Update() {
 
+		body_.lock().get()->SetForceX(enemy_->GetDirection() == Left ? -Speed : Speed);
 		if (vision_!=nullptr && vision_->IsFindPlayer())
 			is_find_ = true;
 	}
@@ -24,13 +25,7 @@ namespace enemy {
 
 	void EnemyMove::OnEvent(CollisionComponent* collision)
 	{
-		//float a;
-		//if(enemy_->GetDirection() == Left)
-		//	a = collision->AABB().Right - enemy_->GetCollision()->AABB().Left;
-		//else a = enemy_->GetCollision()->AABB().Right - collision->AABB().Left;
-
-		//if(a > 0)
-		if(collision->GetActor()->GetTag()!="Dummy")
+		if (collision->GetActor()->GetTag() != "Dummy")
 			is_turn_ = true;
 	}
 

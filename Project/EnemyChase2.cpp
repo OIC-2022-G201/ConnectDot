@@ -8,6 +8,7 @@ namespace enemy
 	{
 		vision_ = enemy_->GetVision();
 		body_ = enemy_->GetPhysicsBody();
+		sprite_ = enemy_->GetSprite();
 		is_find_ = true;
 	}
 
@@ -23,6 +24,13 @@ namespace enemy
 		chase_direction /= distance;
 
 		body_.lock()->SetForce(chase_direction);
+
+		bool xflip = chase_direction.x > 0;
+		bool yflip = chase_direction.y > 0;
+		if (xflip && yflip) sprite_->SetFlip(Flip::kHorizontalAndVertical);
+		else if (xflip)		sprite_->SetFlip(Flip::kHorizontal);
+		else if (yflip)		sprite_->SetFlip(Flip::kVertical);
+		else				sprite_->SetFlip(Flip::kNone);
 	}
 
 	void EnemyChase2::ProcessInput()

@@ -8,6 +8,7 @@
 #include "EnemyBack.h"
 #include "VisionCreateComponent.h"
 #include "BaseBodyCreateComponent.h"
+#include "SpriteComponent.h"
 
 using namespace base_engine;
 
@@ -20,6 +21,7 @@ namespace enemy {
 					= til::Machine{ EnemyIdle{this}, EnemyChase2{this}, EnemyBack{this} };
 		bool direction_ = Left;
 		BaseBodyCreateComponent* base_body_;
+		std::weak_ptr<SpriteComponent> sprite_;
 
 	public:
 		SecondEnemyComponent(Actor* owner, int update_order)
@@ -36,5 +38,6 @@ namespace enemy {
 		void ReverseDirection() { direction_ = !direction_; }
 		EnemyVisionComponent* GetVision() { return owner_->GetComponent<VisionCreateComponent>().lock()->GetParent()->GetComponent<EnemyVisionComponent>().lock().get(); }
 		Actor* GetBodyActor() { return base_body_->GetParent(); }
+		SpriteComponent* GetSprite() { return sprite_.lock().get(); }
 	};
 }

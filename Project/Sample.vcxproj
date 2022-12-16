@@ -120,6 +120,7 @@
     <ClCompile Include="EnemyIdle.cpp" />
     <ClCompile Include="EnemyMove.cpp" />
     <ClCompile Include="EnemyChase.cpp" />
+    <ClCompile Include="EnemyNeck.cpp" />
     <ClCompile Include="EnemyTurn.cpp" />
     <ClCompile Include="DummyActor.cpp" />
     <ClCompile Include="EnemyVisionComponent.cpp" />
@@ -243,6 +244,7 @@
     <ClInclude Include="EnemyFind.h" />
     <ClInclude Include="EnemyIdle.h" />
     <ClInclude Include="EnemyMove.h" />
+    <ClInclude Include="EnemyNeck.h" />
     <ClInclude Include="EnemyPackage.h" />
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="EnemyChase.h" />

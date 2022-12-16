@@ -7,6 +7,7 @@ namespace enemy {
 	{
 		body_ = enemy_->PhysicsBody();
 		body_.lock().get()->SetForceX(0);
+		enemy_->GetAnimator()->ChangeMotion("Tati");
 	}
 
 	void EnemyFind::Update()
