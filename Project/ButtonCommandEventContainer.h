@@ -18,7 +18,7 @@ class ButtonCommandEventContainer {
 public:
   ButtonCommandEventContainer() { Register(); }
 
-  void Execute(const EventKey key) const {
+  void Execute(const EventKey& key) const {
     event_map_.at(EventHashType{}(key))();
   }
   static ButtonCommandEventContainer& Instance() {

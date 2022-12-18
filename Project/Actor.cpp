@@ -10,6 +10,13 @@ Actor::Actor(Game* game)
 
 Actor::~Actor() {
   components_.clear();
+  if (!parent_.expired()) {
+    RemoveChild(id_);
+  }
+  for (const auto& child : children_) {
+    if (child.expired()) continue;
+    game->RemoveActor(child.lock().get());
+  }
 }
 
 void Actor::StartActor() {
@@ -80,4 +87,53 @@ Actor& Actor::SetName(const std::string_view name) {
 }
 void Actor::SetTag(std::string_view tag) { tag_ = tag; }
 std::string_view Actor::GetTag() const { return tag_; }
+
+std::weak_ptr<Actor> Actor::GetChildByName(const std::string_view name) const {
+  for (const auto& child : children_) {
+    if (child.expired()) continue;
+    if (child.lock()->GetName() == name) {
+      return child;
+    }
+  }
+  return std::weak_ptr<Actor>{};
+}
+
+bool Actor::RemoveChild(const ActorId id) {
+  auto it = children_.begin();
+  while (it != children_.end()) {
+    if (it->expired() || it->lock()->id_ != id) {
+      ++it;
+      continue;
+    }
+    it->lock()->parent_.reset();
+    children_.erase(it);
+    break;
+  }
+  return false;
+}
+
+void Actor::AddChild(const std::weak_ptr<Actor>& actor) {
+  if (actor.expired()) return;
+  children_.push_back(actor);
+  actor.lock()->parent_ = game->GetActor(id_);
+}
+
+void Actor::AddChild(const ActorId& id) {
+  const std::weak_ptr<Actor> actor = game->GetActor(id);
+  if (actor.expired()) return;
+  children_.push_back(actor);
+  actor.lock()->parent_ = game->GetActor(id_);
+}
+
+std::weak_ptr<Actor> Actor::GetChildByTag(const std::string_view tag) const {
+  for (const auto& child : children_) {
+    if (child.expired()) continue;
+    if (child.lock()->GetTag() == tag) {
+      return child;
+    }
+  }
+  return std::weak_ptr<Actor>{};
+}
+
+std::weak_ptr<Actor> Actor::GetParent() const { return parent_; }
 }  // namespace base_engine

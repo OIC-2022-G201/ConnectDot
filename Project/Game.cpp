@@ -6,6 +6,7 @@
 #include "Actor.h"
 #include "IBaseEngineCollider.h"
 #include "InputManager.h"
+#include "ParentTest.h"
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
 #include "SceneManager.h"
@@ -31,7 +32,9 @@ bool Game::Initialize() {
   title.Load("Meta/Scene/Scene.bin");
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-  scene::LoadScene(scene::kTitle);
+  //scene::LoadScene(scene::kTitle);
+  ParentTest test(this);
+  test.Main();
   b_collision = BASE_ENGINE(Collider);
 
   return true;

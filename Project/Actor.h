@@ -1,6 +1,8 @@
 ﻿#pragma once
 
+#include <algorithm>
 #include <memory>
+#include <span>
 #include <string>
 #include <vector>
 
@@ -116,6 +118,22 @@ class Actor {
 
   [[nodiscard]] ActorId GetId() const { return id_; }
 
+  [[nodiscard]] const std::list<std::weak_ptr<Actor>>& GetChildren() const {
+    return children_;
+  }
+
+  [[nodiscard]] std::weak_ptr<Actor> GetChildByName(
+      const std::string_view name) const;
+  bool RemoveChild(const ActorId id);
+
+  void AddChild(const std::weak_ptr<Actor>& actor);
+
+  void AddChild(const ActorId& id);
+  [[nodiscard]] std::weak_ptr<Actor> GetChildByTag(
+      const std::string_view tag) const;
+
+  [[nodiscard]] std::weak_ptr<Actor> GetParent() const;
+
  protected:
   std::string name_ = "Actor";
   std::string tag_ = "Object";
@@ -124,13 +142,14 @@ class Actor {
   float rotation_;
   float scale_;
 
-  std::vector<std::weak_ptr<Actor>> children_;
-  std::weak_ptr<Actor> parent_;
  private:
-  ActorId id_;
+  ActorId id_{};
   class Game* game;
   std::vector<ComponentPtr> components_;
   std::vector<ComponentPtr> pending_components_;
+
+  std::list<std::weak_ptr<Actor>> children_;
+  std::weak_ptr<Actor> parent_;
 };
 
 template <class T>
