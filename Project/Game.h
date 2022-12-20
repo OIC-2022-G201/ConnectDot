@@ -10,7 +10,8 @@
 class ResourceContainer;
 
 namespace base_engine {
-struct ActorId;
+	class Scene;
+	struct ActorId;
 using ActorPtr = std::shared_ptr<class Actor>;
 using ActorWeakPtr = std::weak_ptr<class Actor>;
 class Game {
@@ -22,14 +23,19 @@ class Game {
   void Shutdown();
 
   void AddActor(Actor* actor);
+  void AddActor(Actor* actor, const std::weak_ptr<Scene> scene);
   void RemoveActor(Actor* actor);
+  void RemoveActor(Actor* actor, const std::weak_ptr<Scene> scene);
 
   ActorWeakPtr GetActor(ActorId id);
   void AddSprite(class RenderComponent* render_component);
   void RemoveSprite(class RenderComponent* render_component);
   void Clear();
+  void AddScene(std::string_view name);
+  void AddScene(std::string_view name,const size_t index);
 
- private:
+  void RemoveScene(Scene* scene);
+private:
   void CreateObjectRegister();
   void ProcessInput();
   void UpdateGame();
@@ -47,7 +53,7 @@ class Game {
   GameData game_data_;
   std::unique_ptr<GameManager> game_manager_;
   std::shared_ptr<ResourceContainer> resource_container_;
-
+  std::vector<std::shared_ptr<Scene>> scenes_;
  public:
   std::vector<std::function<void()>> debug_render_;
 };

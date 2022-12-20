@@ -20,16 +20,15 @@ constexpr std::string_view kGame = "Game";
 /**
  * \brief Used to load a Scene in a player.
  */
-enum class LoadSceneMode
-{
-	/**
-	 * \brief Clear all current loaded Scenes and loads a Scene.
-	 */
-	kSingle,
-	/**
-	 * \brief Adds the Scene to the current loaded Scenes.
-	 */
-	kAdditive
+enum class LoadSceneMode {
+  /**
+   * \brief Clear all current loaded Scenes and loads a Scene.
+   */
+  kSingle,
+  /**
+   * \brief Adds the Scene to the current loaded Scenes.
+   */
+  kAdditive
 };
 
 class SceneManager {
@@ -48,19 +47,24 @@ class SceneManager {
   bool LoadScene(const std::string_view name) {
     if (!game_) return false;
 
-    game_->Clear();
-    factory_map_[name]->Factory();
-    return true;
+    return SingleSceneLoad(name);
   }
 
-  bool LoadScene(const std::string_view name,LoadSceneMode mode)
-  {
+  bool LoadScene(const std::string_view name, const LoadSceneMode mode) {
     if (!game_) return false;
-
-    game_->Clear();
-    factory_map_[name]->Factory();
-    return true;
+    switch (mode) {
+      case LoadSceneMode::kSingle:
+        return SingleSceneLoad(name);
+      case LoadSceneMode::kAdditive:
+        return AdditiveSceneLoad(name);
+    }
+    return false;
   }
+
+ private:
+  bool SingleSceneLoad(const std::string_view name);
+
+  bool AdditiveSceneLoad(const std::string_view name);
 };
 
 inline bool LoadScene(const std::string_view name) {

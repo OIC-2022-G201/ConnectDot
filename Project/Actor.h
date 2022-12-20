@@ -36,6 +36,7 @@ class Actor {
   enum State { kStart, kActive, kPause, kDead };
 
   Actor(class Game* game);
+  Actor(class Game* game,std::weak_ptr<Scene> scene);
   virtual ~Actor();
 
   void StartActor();
@@ -133,6 +134,8 @@ class Actor {
       const std::string_view tag) const;
 
   [[nodiscard]] std::weak_ptr<Actor> GetParent() const;
+  [[nodiscard]] std::weak_ptr<Scene> GetScene() const { return scene_; }
+  void SetScene(const std::weak_ptr<Scene> scene) {scene_ =  scene; }
 
  protected:
   std::string name_ = "Actor";
@@ -150,6 +153,7 @@ class Actor {
 
   std::list<std::weak_ptr<Actor>> children_;
   std::weak_ptr<Actor> parent_;
+  std::weak_ptr<Scene> scene_;
 };
 
 template <class T>

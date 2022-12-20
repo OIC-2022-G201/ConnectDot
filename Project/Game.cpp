@@ -9,6 +9,7 @@
 #include "ParentTest.h"
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
+#include "Scene.h"
 #include "SceneManager.h"
 #include "ServiceLocator.h"
 #include "StageSceneFactory.h"
@@ -22,19 +23,16 @@ bool Game::Initialize() {
   game_data_.Register();
   scene::SceneManager::Instance().Register(this);
 
-  auto inputActor = new base_engine::InputActor(this);
-  auto input = new InputManager(inputActor);
-  
+  //  auto inputActor = new base_engine::InputActor(this);
+  //  auto input = new InputManager(inputActor);
+
   resource_container_ = std::make_shared<ResourceContainer>();
   resource_container_->Register();
 
-  TitlePresenter title;
-  title.Load("Meta/Scene/Scene.bin");
-
   BASE_ENGINE(Collider)->SetCallBack(this);
-  //scene::LoadScene(scene::kTitle);
-  ParentTest test(this);
-  test.Main();
+  scene::LoadScene(scene::kTitle);
+  // ParentTest test(this);
+  // test.Main();
   b_collision = BASE_ENGINE(Collider);
 
   return true;
@@ -52,21 +50,30 @@ void Game::Update() {
 
 void Game::Shutdown() { Clear(); }
 
-void Game::AddActor(Actor* actor) {
+void Game::AddActor(Actor* actor) { AddActor(actor, scenes_.front()); }
+
+void Game::AddActor(Actor* actor, const std::weak_ptr<Scene> scene) {
   actor_id_max_++;
   actor->id_.id = actor_id_max_;
-  pending_actors_.emplace_back(actor);
+  auto actor_ptr = ActorPtr{actor};
+  pending_actors_.emplace_back(actor_ptr);
+  scene.lock()->AddActor(actor_ptr);
+  actor_ptr->SetScene(scene);
 }
 
 void Game::RemoveActor(Actor* actor) {
   if (const auto iter = std::ranges::find_if(
           actors_, [actor](const ActorPtr& n) { return n.get() == actor; });
       iter != actors_.end()) {
+    const auto scene = actor->GetScene().lock();
     std::iter_swap(iter, actors_.end() - 1);
-    actors_next_frame_delete_.emplace_back(actors_.back());
     actors_.pop_back();
+    if (scene) scene->Sync();
   }
-  actors_next_frame_delete_.clear();
+}
+
+void Game::RemoveActor(Actor* actor, const std::weak_ptr<Scene> scene) {
+  if (scene.expired()) return;
 }
 
 ActorWeakPtr Game::GetActor(ActorId id) {
@@ -149,6 +156,23 @@ void Game::Clear() {
   actors_.clear();
   actors_next_frame_delete_.clear();
   debug_render_.clear();
+  scenes_.clear();
+}
+
+void Game::AddScene(std::string_view name) {
+  scenes_.emplace_back(std::make_shared<Scene>(this, 0, name));
+}
+void Game::AddScene(std::string_view name, const size_t index) {
+  scenes_.emplace_back(std::make_shared<Scene>(this, scenes_.size(), name));
+}
+
+void Game::RemoveScene(Scene* scene) {
+  if (const auto iter = std::ranges::find_if(
+          scenes_, [scene](auto& n) { return n.get() == scene; });
+      iter != scenes_.end()) {
+    std::iter_swap(iter, scenes_.end() - 1);
+    scenes_.pop_back();
+  }
 }
 
 void Game::Render() const {

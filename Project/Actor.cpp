@@ -8,6 +8,11 @@ Actor::Actor(Game* game)
   game->AddActor(this);
 }
 
+Actor::Actor(Game* game, const std::weak_ptr<Scene> scene)
+{
+  game->AddActor(this, scene);
+}
+
 Actor::~Actor() {
   components_.clear();
   if (!parent_.expired()) {
