@@ -8,13 +8,13 @@
 #include "InputActor.h"
 #include "InputManager.h"
 #include "ObjectLoader.h"
+#include "ObjectTileMapComponent.h"
 #include "PlayerActor.h"
 #include "PylonActor.h"
 #include "ServiceLocator.h"
 #include "TileMapComponent.h"
 using namespace base_engine;
-void StageSceneFactory::Factory()
-{
+void StageSceneFactory::Factory() {
   auto camera = new Actor(game_);
   auto camera_component = new CameraComponent(camera);
   camera_component->SetMainCamera();
@@ -23,6 +23,10 @@ void StageSceneFactory::Factory()
   {
     stageActor->SetName("Stage");
     new tile_map::TileMapComponent(stageActor, 100);
+    new tile_map::ObjectTileMapComponent(stageActor);
+    ServiceLocator::Instance().RegisterInstance(
+        stageActor->GetComponent<tile_map::ObjectTileMapComponent>()
+        );
   }
 
   new InputManager(new InputActor(game_));
@@ -37,5 +41,4 @@ void StageSceneFactory::Factory()
 
   ObjectLoader object_loader{game_};
   object_loader.Load("MapData/Stage1");
-  
 }

@@ -35,7 +35,6 @@ class Layer {
 
   size_t GetXCount() const { return x_; }
   size_t GetYCount() const { return y_; }
-  bool Load(const std::filesystem::path& path);
 
  private:
   size_t x_{};

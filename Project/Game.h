@@ -45,6 +45,7 @@ private:
   std::vector<class RenderComponent*> sprites_;
 
   bool updating_actors_;
+  bool clear_wait_actors_ = false;
   std::vector<ActorPtr> pending_actors_;
 
   uint64_t actor_id_max_ = 0;

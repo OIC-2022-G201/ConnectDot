@@ -138,6 +138,10 @@ void Game::UpdateGame() {
 
   for (const auto& actor : actors_) {
     actor->UpdateActor();
+    if (clear_wait_actors_) {
+      clear_wait_actors_ = false;
+      break;
+    }
   }
   updating_actors_ = false;
 
@@ -153,6 +157,7 @@ void Game::UpdateGame() {
 }
 
 void Game::Clear() {
+  clear_wait_actors_ = true;
   actors_.clear();
   actors_next_frame_delete_.clear();
   debug_render_.clear();

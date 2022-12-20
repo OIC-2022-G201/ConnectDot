@@ -111,6 +111,7 @@
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
+    <ClCompile Include="ObjectTileMapComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -233,7 +234,6 @@
     <ClCompile Include="TileMapCollisionComponent.cpp" />
     <ClCompile Include="TileMapComponent.cpp" />
     <ClCompile Include="TileMap.cpp" />
-    <ClCompile Include="TileMapShape.cpp" />
     <ClCompile Include="TransmitterComponent.cpp" />
     <ClCompile Include="Vector.cpp" />
     <ClCompile Include="VectorUtilities.cpp" />
@@ -267,6 +267,7 @@
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ITween.h" />
+    <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="ParentTest.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="Scene.h" />
@@ -448,7 +449,6 @@
     <ClInclude Include="TileMap.h" />
     <ClInclude Include="TileMapCollisionComponent.h" />
     <ClInclude Include="TileMapComponent.h" />
-    <ClInclude Include="TileMapShape.h" />
     <ClInclude Include="TransmitterComponent.h" />
     <ClInclude Include="TupleHasElement.h" />
     <ClInclude Include="VariantFrozen.h" />
