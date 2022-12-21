@@ -1,8 +1,8 @@
 ﻿// @file ServiceLocator.h
-// @brief 
+// @brief
 // @author ICE
 // @date 2022/09/25
-// 
+//
 // @details
 
 #pragma once
@@ -11,15 +11,14 @@
 #include <type_traits>
 #include <unordered_map>
 
-template<class T,class Tag>
-struct Warp
-{
+template <class T, class Tag>
+struct Warp {
   T value;
 };
 
 class ServiceLocator {
  public:
-  ServiceLocator() : instances_(), creators_(){}
+  ServiceLocator() : instances_(), creators_() {}
   ~ServiceLocator() { clear(); }
   static ServiceLocator& Instance();
 
@@ -31,14 +30,18 @@ class ServiceLocator {
   template <typename T>
   void RegisterInstance(std::shared_ptr<T> instance) {
     const size_t hash = typeid(T).hash_code();
-    if (!instances_.contains(hash))
-      instances_.emplace(hash, std::weak_ptr<void>(instance));
+
+    instances_.emplace(hash, std::weak_ptr<void>(instance));
   }
   template <typename T>
   void RegisterInstance(std::weak_ptr<T> instance) {
     const size_t hash = typeid(T).hash_code();
-    if (!instances_.contains(hash))
-      instances_.emplace(hash, instance);
+    if (instances_.contains(hash))
+    {
+      instances_[hash] = instance;
+	    return;
+    }
+    instances_.emplace(hash, instance);
   }
   template <typename T>
   void RegisterCreator(std::function<std::shared_ptr<T>()> creator) {
@@ -57,13 +60,13 @@ class ServiceLocator {
 
     return nullptr;
   }
+
  private:
   std::unordered_map<size_t, std::weak_ptr<void>> instances_;
   std::unordered_map<size_t, std::function<std::shared_ptr<void>()>> creators_;
 };
 
-inline ServiceLocator& ServiceLocator::Instance()
-{
+inline ServiceLocator& ServiceLocator::Instance() {
   static ServiceLocator instance_;
-	return instance_;
+  return instance_;
 }
