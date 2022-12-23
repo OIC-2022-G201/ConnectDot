@@ -3,12 +3,14 @@
 #include "EnemyState.h"
 #include "PhysicsBodyComponent.h"
 #include "EnemyVisionComponent.h"
+#include "SpriteComponent.h"
 namespace enemy {
 	class EnemyBack
 	{
 		class SecondEnemyComponent* enemy_;
 		std::weak_ptr<PhysicsBodyComponent> body_;
 		EnemyVisionComponent* vision_ = nullptr;
+		SpriteComponent* sprite_ = nullptr;
 		bool is_arrive_ = false, is_find_ = false;
 
 	public:

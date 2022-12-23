@@ -9,6 +9,7 @@
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
 #include "VentComponent.h"
+#include "EnemyActor.h"
 
 using namespace base_engine;
 using namespace std::string_view_literals;
@@ -20,6 +21,7 @@ constexpr std::string_view kLeverName = "Lever"sv;
 constexpr std::string_view kMoveFloorName = "Movefloor"sv;
 constexpr std::string_view kVentName = "Vent"sv;
 constexpr std::string_view kSignboardName = "Signboard"sv;
+constexpr std::string_view kEnemyName = "Enemy"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
 using FactoryRegisterMethod = void (*)(GimmickCreator*,
@@ -44,6 +46,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
   static Actor* SignboardCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
   static Actor* VentCreate(GimmickCreator* instance, Game* game,
+                                const LoadObject& object);
+  static Actor* EnemyCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
 
   void Register(const std::string_view name, CreatorMethod create_method);
@@ -84,6 +88,11 @@ constexpr std::array kGimmickMethodTable = {
         kSignboardName,                       // Name
         &SetupImpl::SignboardCreate,          // CreateMethod
         &Gc::FactoryRegister<SignboardActor>  // FactoryRegister
+    },
+    std::tuple{
+        kEnemyName,                       // Name
+        &SetupImpl::EnemyCreate,          // CreateMethod
+        &Gc::FactoryRegister<enemy::EnemyActor>  // FactoryRegister
     },
 };
 
@@ -163,6 +172,14 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::VentCreat
 
   return signboard;
 }
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::EnemyCreate(GimmickCreator* instance, Game* game, const LoadObject& object)
+{
+    const auto enemy = new enemy::EnemyActor(game);
+    enemy->Create(object);
+    return enemy;
+}
+
 
 void GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::Register(
     const std::string_view name, CreatorMethod create_method) {
