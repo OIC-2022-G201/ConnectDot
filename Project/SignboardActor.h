@@ -10,6 +10,7 @@
 
 #include "Actor.h"
 #include "IBaseEngineTexture.h"
+#include "MofSpriteAnimationComponent.h"
 #include "SpriteComponent.h"
 
 struct LoadObject;
@@ -29,4 +30,5 @@ public:
 private:
     base_engine::TexturePtr display_texture_ = nullptr;
     base_engine::SpriteComponent* display_ = nullptr;
+    base_engine::MofSpriteAnimationComponent* animation_ = nullptr;
 };

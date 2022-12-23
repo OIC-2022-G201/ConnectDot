@@ -30,8 +30,7 @@ void StageSceneFactory::Factory() {
   }
 
   new InputManager(new InputActor(game_));
-
-  auto pylon = new PylonActor(game_);
+  
   auto player = new player::PlayerActor(game_);
   player->SetInput(InputManager::Instance());
   const auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();

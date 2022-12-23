@@ -34,10 +34,17 @@ class MofSpriteAnimationComponent final : public Component,
 
   [[nodiscard]] bool IsMotion(const std::string_view name) const override;
   bool IsEndMotion() override;
+  void Play(std::string_view name = "", float speed = 1) override;
+
+  void Stop(bool reset = false) override;
 
   void Update() override;
   bool Release() override;
 private:
+  bool pause_ = false;
+  bool reset_ = false;
+  float speed_ = 1;
+  std::string current_name_;
   Mof::CSpriteMotionController motion_;
   std::unordered_map<std::string, MofU32> motion_map_;
   SpriteComponent* sprite_ = nullptr;

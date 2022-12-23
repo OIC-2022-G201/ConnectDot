@@ -8,6 +8,7 @@
 #include "LeverStubActor.h"
 #include "MoveFloorStubActor.h"
 #include "PowerSupplyUnitActor.h"
+#include "PylonActor.h"
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
 #include "VentComponent.h"
@@ -18,6 +19,7 @@ using namespace std::string_view_literals;
 #pragma region GimmickName
 constexpr std::string_view kDoorName = "Door"sv;
 constexpr std::string_view kPowerSupplyName = "Powersupply"sv;
+constexpr std::string_view kStartPowerSupplyName = "StartPowersupply"sv;
 constexpr std::string_view kLeverName = "Lever"sv;
 constexpr std::string_view kMoveFloorName = "Movefloor"sv;
 constexpr std::string_view kVentName = "Vent"sv;
@@ -43,7 +45,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                             const LoadObject& object);
   static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
-
+  static Actor* PylonCreate(GimmickCreator* instance, Game* game,
+                                  const LoadObject& object);
   static Actor* SignboardCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
   static Actor* GoalCreate(GimmickCreator* instance, Game* game,
@@ -71,6 +74,11 @@ constexpr std::array kGimmickMethodTable = {
         kPowerSupplyName,                           // Name
         &SetupImpl::PowerSupplyCreate,              // CreateMethod
         &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
+    },
+    std::tuple{
+        kStartPowerSupplyName,                           // Name
+        &SetupImpl::PylonCreate,              // CreateMethod
+        &Gc::FactoryRegister<PylonActor>  // FactoryRegister
     },
     std::tuple{
         kLeverName,                                // Name
@@ -158,6 +166,15 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     power_unit->SetTarget(actor);
   });
   return power_unit;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::PylonCreate(GimmickCreator* instance, Game* game,
+	const LoadObject& object)
+{
+  const auto pylon = new PylonActor(game);
+  pylon->Create(object);
+
+  return pylon;
 }
 
 Actor*

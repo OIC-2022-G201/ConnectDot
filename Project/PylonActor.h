@@ -7,6 +7,7 @@
 
 #pragma once
 #include "Actor.h"
+#include "LoadObjectParameter.h"
 
 class PylonActor : public base_engine::Actor {
 public:
@@ -15,4 +16,5 @@ public:
     ~PylonActor() override;
     void Start() override;
     void Update() override;
+    void Create(const LoadObject& object);
 };

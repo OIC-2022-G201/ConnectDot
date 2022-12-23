@@ -15,7 +15,9 @@ Mof::SpriteAnimationCreate MofSpriteAnimationComponent::Convert(
                                     data.height,
                                     data.is_loop,
                                     {}};
+
   for (MofU32 i = 0; i < data.pattern.size(); i++) {
+    if (i>29)break;
     result.Pattern[i].Wait = data.pattern[i].wait;
     result.Pattern[i].No = data.pattern[i].no;
     result.Pattern[i].Step = data.pattern[i].step;
@@ -58,6 +60,8 @@ bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
 
 bool MofSpriteAnimationComponent::ChangeMotion(const std::string_view name,
                                                const bool is_same) {
+  pause_ = false;
+  current_name_ = name;
   return motion_.ChangeMotion(motion_map_[name.data()], is_same);
 }
 
@@ -74,8 +78,36 @@ bool MofSpriteAnimationComponent::IsEndMotion() {
   return motion_.IsEndMotion();
 }
 
+void MofSpriteAnimationComponent::Play(std::string_view name,
+                                       const float speed) {
+  speed_ = speed;
+  if (name.empty()) {
+    name = current_name_;
+  }
+  bool reset = false;
+  if (IsMotion(name)) {
+    reset = reset_;
+  }
+  ChangeMotion(name, reset);
+  reset_ = false;
+}
+
+void MofSpriteAnimationComponent::Stop(bool reset) {
+  pause_ = true;
+  reset_ = reset;
+}
+
 void MofSpriteAnimationComponent::Update() {
-  motion_.AddTimer(animation_detail::kFrameTime);
+  if (motion_.IsEndMotion() && (speed_ > 0))
+  {
+    return;
+  }
+  if (motion_.GetTime() <= 0 && (speed_ < 0))
+  {
+	  return;
+  }
+  
+  if (!pause_) motion_.AddTimer(animation_detail::kFrameTime * speed_);
   if (!sprite_) return;
   sprite_->SetClipRect(motion_.GetSrcRect());
 }

@@ -221,9 +221,9 @@ void PlayerComponent::CheckGround() {
   const auto rect = sprite_.lock()->GetClipRect();
 
   physics::PVec2 p1 = {owner_->GetPosition().x + 80, owner_->GetPosition().y};
-  p1.y += rect.GetHeight() - 2;
+  p1.y += rect.GetHeight() - 4;
   physics::PVec2 p2 = p1;
-  p2.y += 2;
+  p2.y += 5;
   BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   if (!callback.ground_fixture_) {
     p1.x += 96;
@@ -231,9 +231,6 @@ void PlayerComponent::CheckGround() {
     BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   }
   if (callback.ground_fixture_) {
-    if (g_pInput->IsKeyHold(MOFKEY_Q)) {
-      int n = 3;
-    }
     SetGround(true);
   } else {
     SetGround(false);

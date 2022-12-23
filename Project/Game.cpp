@@ -67,7 +67,8 @@ void Game::RemoveActor(Actor* actor) {
       iter != actors_.end()) {
     const auto scene = actor->GetScene().lock();
     std::iter_swap(iter, actors_.end() - 1);
-    actors_.pop_back();
+    actors_next_frame_delete_.emplace_back(*iter);
+  	actors_.pop_back();
     if (scene) scene->Sync();
   }
 }
@@ -136,8 +137,11 @@ void Game::ProcessInput() {
 void Game::UpdateGame() {
   updating_actors_ = true;
 
-  for (const auto& actor : actors_) {
+  for (const auto& actor : actors_)
+  {
+  	if (actors_.empty()) break;
     actor->UpdateActor();
+    
     if (clear_wait_actors_) {
       clear_wait_actors_ = false;
       break;

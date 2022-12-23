@@ -1,5 +1,7 @@
 ﻿#include "DoorComponent.h"
 
+#include <filesystem>
+
 #include "BaseEngineCore.h"
 #include "Circle.h"
 #include "CollisionComponent.h"
@@ -35,10 +37,14 @@ void DoorActor::Create(const LoadObject& object) {
     collision->SetTrigger(false);
   }
   {
-    const auto sign = new SpriteComponent(this, kVentDrawOrder);
+    const auto sprite = new SpriteComponent(this, kVentDrawOrder);
     const auto& path =
         std::get<LoadObject::TexturePath>(object.parameters[0]).value;
-    sign->SetImage(BASE_ENGINE(Texture)->Get(path));
+    sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
+    std::filesystem::path file = path;
+    const auto animation = new MofSpriteAnimationComponent(this);
+    animation->Load(sprite, file.replace_extension(".aei").string());
+    animation->Stop();
   }
   {
     auto vent = new DoorComponent(this);
