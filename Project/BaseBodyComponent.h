@@ -1,21 +1,24 @@
 #pragma once
 #include "Component.h"
+#include "EnemyNeck.h"
+
+using namespace base_engine;
 
 namespace enemy
 {
-	class BaseBodyComponent:public base_engine::Component
+	class BaseBodyComponent:public Component
 	{
-		base_engine::Actor* parent_;
-
+		Actor* parent_;
+		EnemyNeck* neck_;
 
 	public:
-		BaseBodyComponent(base_engine::Actor* owner, int update_order)
+		BaseBodyComponent(Actor* owner, int update_order)
 			:Component(owner, update_order) {};
 		void Start() override;
 		void Update() override;
 		void ProcessInput() override;
-		void OnCollision(const base_engine::SendManifold& manifold) override;
-		void SetParent(base_engine::Actor* parent) { parent_ = parent; }
+		void OnCollision(const SendManifold& manifold) override;
+		void SetParent(Actor* parent) { parent_ = parent; }
 	};
 }
 

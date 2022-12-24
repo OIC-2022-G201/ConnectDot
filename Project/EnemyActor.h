@@ -7,6 +7,8 @@
 
 #pragma once
 #include "Actor.h"
+#include "LoadObjectParameter.h"
+
 class Strategy;
 namespace enemy {
     class EnemyActor : public base_engine::Actor
@@ -20,7 +22,7 @@ namespace enemy {
 
         void Update() override;
 
-        static void Create();
+        void Create(const LoadObject& object);
 
     private:
     };

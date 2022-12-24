@@ -24,7 +24,7 @@ namespace enemy
 
 	}
 
-	void VisionCreateComponent::OnCollision(const base_engine::SendManifold& manifold)
+	void VisionCreateComponent::OnCollision(const SendManifold& manifold)
 	{
 		
 	}

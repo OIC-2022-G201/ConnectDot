@@ -8,29 +8,36 @@
 #include "EnemyBack.h"
 #include "VisionCreateComponent.h"
 #include "BaseBodyCreateComponent.h"
+#include "SpriteComponent.h"
+
+using namespace base_engine;
 
 namespace enemy {
-	class SecondEnemyComponent:public base_engine::Component
+	class SecondEnemyComponent:public Component
 	{
-		std::weak_ptr<base_engine::PhysicsBodyComponent> physics_body_;
-		std::weak_ptr<base_engine::CollisionComponent> collision_;
+		std::weak_ptr<PhysicsBodyComponent> physics_body_;
+		std::weak_ptr<CollisionComponent> collision_;
 		til::Machine<EnemyIdle, EnemyChase2, EnemyBack> machine_
 					= til::Machine{ EnemyIdle{this}, EnemyChase2{this}, EnemyBack{this} };
 		bool direction_ = Left;
+		BaseBodyCreateComponent* base_body_;
+		std::weak_ptr<SpriteComponent> sprite_;
 
 	public:
-		SecondEnemyComponent(base_engine::Actor* owner, int update_order)
+		SecondEnemyComponent(Actor* owner, int update_order)
 			:Component(owner, update_order) {};
 		void Start() override;
 		void ProcessInput() override;
 		void Update() override;
-		void OnCollision(const base_engine::SendManifold& manifold) override;
-		std::weak_ptr<base_engine::PhysicsBodyComponent> GetPhysicsBody() { return physics_body_; }
-		std::weak_ptr<base_engine::CollisionComponent> GetCollision() { return collision_; }
+		void OnCollision(const SendManifold& manifold) override;
+		std::weak_ptr<PhysicsBodyComponent> GetPhysicsBody() { return physics_body_; }
+		std::weak_ptr<CollisionComponent> GetCollision() { return collision_; }
 		//false == Left, true == Right
 		bool GetDirection() { return direction_; }
 		void SetDirection(bool dir) { direction_ = dir; }
 		void ReverseDirection() { direction_ = !direction_; }
 		EnemyVisionComponent* GetVision() { return owner_->GetComponent<VisionCreateComponent>().lock()->GetParent()->GetComponent<EnemyVisionComponent>().lock().get(); }
+		Actor* GetBodyActor() { return base_body_->GetParent(); }
+		SpriteComponent* GetSprite() { return sprite_.lock().get(); }
 	};
 }

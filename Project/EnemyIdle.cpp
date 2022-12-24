@@ -24,7 +24,7 @@ namespace enemy
 		
 	}
 
-	void EnemyIdle::OnEvent(base_engine::CollisionComponent* collision)
+	void EnemyIdle::OnEvent(CollisionComponent* collision)
 	{
 		
 	}

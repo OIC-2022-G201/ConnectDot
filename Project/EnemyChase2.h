@@ -3,13 +3,15 @@
 #include "EnemyState.h"
 #include "PhysicsBodyComponent.h"
 #include "EnemyVisionComponent.h"
+#include "SpriteComponent.h"
 
 namespace enemy {
 	class EnemyChase2
 	{
 		class SecondEnemyComponent* enemy_;
+		std::weak_ptr<PhysicsBodyComponent> body_;
 		EnemyVisionComponent* vision_ = nullptr;
-		std::weak_ptr<base_engine::PhysicsBodyComponent> body_;
+		SpriteComponent* sprite_;
 		bool is_find_ = true;
 
 	public:
@@ -17,7 +19,7 @@ namespace enemy {
 		void Start();
 		void Update();
 		void ProcessInput();
-		void OnEvent(base_engine::CollisionComponent* collision);
+		void OnEvent(CollisionComponent* collision);
 		void End();
 
 		template<typename Machine>

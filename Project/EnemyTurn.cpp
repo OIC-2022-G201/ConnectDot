@@ -9,6 +9,7 @@ namespace enemy {
 		is_move_ = false;
 		enemy_->ReverseDirection();
 		body_.lock().get()->SetForceX(0);
+		enemy_->GetAnimator()->ChangeMotion("Tati");
 	}
 
 	void EnemyTurn::ProcessInput()

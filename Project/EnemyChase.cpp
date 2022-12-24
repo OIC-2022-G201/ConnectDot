@@ -8,6 +8,7 @@ namespace enemy {
 		body_ = enemy_->PhysicsBody();
 		vision_ = enemy_->GetVision();
 		is_find_ = true;
+		enemy_->GetAnimator()->ChangeMotion("Hunt");
 	}
 
 	void EnemyChase::Update()

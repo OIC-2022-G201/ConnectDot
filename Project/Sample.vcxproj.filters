@@ -819,6 +819,9 @@
     <ClCompile Include="BaseBodyComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyNeck.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
     <ClCompile Include="ResourceContainer.cpp">
       <Filter>ソース ファイル\ConnectDot\GameMain\Register\Resource</Filter>
     </ClCompile>
@@ -1426,6 +1429,9 @@
     </ClInclude>
     <ClInclude Include="PlayerVentAction.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyNeck.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="DoorComponent.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Door</Filter>
