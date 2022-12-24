@@ -1,6 +1,7 @@
 ﻿#include "TextureMof.h"
 
 #include <filesystem>
+#include <fstream>
 #include <ranges>
 #include <Utilities/Utilities.h>
 
@@ -37,10 +38,17 @@ bool TextureMof::Load(std::string_view name) {
   if (textures_.contains(hash)) return false;
 
   auto texture = new Mof::CTexture;
-  if (!texture->Load(texture_normal_path.data())) {
+  std::ifstream stream(texture_normal_path, std::ios::binary);
+  std::vector<uint8_t> data;
+
+  std::for_each(std::istreambuf_iterator<char>(stream),
+                std::istreambuf_iterator<char>(),
+                [&data](const char c) { data.push_back(c); });
+  if (!texture->Load(texture_normal_path.data(), data.data(), data.size())) {
     delete texture;
     return false;
   }
+  
   textures_.insert({hash, texture});
   return true;
 }

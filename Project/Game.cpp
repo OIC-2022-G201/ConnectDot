@@ -67,8 +67,11 @@ void Game::RemoveActor(Actor* actor) {
       iter != actors_.end()) {
     const auto scene = actor->GetScene().lock();
     std::iter_swap(iter, actors_.end() - 1);
-    actors_next_frame_delete_.emplace_back(*iter);
+
+  	actors_next_frame_delete_.emplace_back(actors_.back());
+    
   	actors_.pop_back();
+    auto t = actors_next_frame_delete_.back().use_count();
     if (scene) scene->Sync();
   }
 }
@@ -112,8 +115,11 @@ void Game::RemoveSprite(RenderComponent* render_component) {
 
 void Game::CreateObjectRegister() {
   updating_actors_ = true;
+  for (auto&& actor : actors_next_frame_delete_)
+  {
+    actor.reset();
+  }
   actors_next_frame_delete_.clear();
-
   for (int i = 0; i < pending_actors_.size(); ++i) {
     pending_actors_[i]->StartActor();
     actors_.emplace_back(pending_actors_[i]);
@@ -136,12 +142,12 @@ void Game::ProcessInput() {
 
 void Game::UpdateGame() {
   updating_actors_ = true;
-
-  for (const auto& actor : actors_)
+  for (int i = 0; i < actors_.size(); ++i)
   {
-  	if (actors_.empty()) break;
+    auto actor = actors_[i];
+    if (actors_.empty()) break;
     actor->UpdateActor();
-    
+
     if (clear_wait_actors_) {
       clear_wait_actors_ = false;
       break;
@@ -162,6 +168,7 @@ void Game::UpdateGame() {
 
 void Game::Clear() {
   clear_wait_actors_ = true;
+  pending_actors_.clear();
   actors_.clear();
   actors_next_frame_delete_.clear();
   debug_render_.clear();

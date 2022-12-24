@@ -36,7 +36,11 @@ void TransmitterComponent::Update() {
         return a.lock()->Sequential() < b.lock()->Sequential();
       });
   if (target != target_.end()) {
-    target->lock()->Connecting(weak_ptr);
+  }
+  for (const auto & value : target_)
+  {
+    value.lock()->Connecting(weak_ptr);
+	  
   }
   target_.clear();
 }

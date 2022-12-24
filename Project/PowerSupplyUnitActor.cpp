@@ -29,7 +29,7 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius);
+        cell_half.x, cell_half.y, kPowerRadius/4);
     const auto shape = new base_engine::ShapeRenderComponent(this, 110);
     shape->SetShape(circle);
     shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
