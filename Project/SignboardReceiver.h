@@ -7,28 +7,26 @@
 
 #pragma once
 #include "IReceivablePower.h"
+#include "MofSpriteAnimationComponent.h"
 #include "SpriteComponent.h"
 #undef max
 class SignboardReceiver : public IReceivablePower {
  public:
-  explicit SignboardReceiver(base_engine::SpriteComponent* display)
-      : display_(display) {}
+  explicit SignboardReceiver(base_engine::SpriteComponent* display,
+                             base_engine::MofSpriteAnimationComponent* animation);
 
-  int Sequential() override { return std::numeric_limits<int>::max(); }
-  bool PowerJoinCondition() override { return true; }
-  void OnPowerEnter(TransmitterComponent* transmitter) override {
-    display_->SetEnabled(true);
-  }
-  void OnPowerChanged(TransmitterComponent* transmitter) override {}
-  void OnPowerExit(TransmitterComponent* transmitter) override {
-    display_->SetEnabled(false);
-  }
-  bool IsWireless() override { return false; }
+  int Sequential() override;
+  bool PowerJoinCondition() override;
 
-  [[nodiscard]] base_engine::Vector2 GetPosition() const override {
-    return {64, 64};
-  }
+  void OnPowerEnter(TransmitterComponent* transmitter) override;
+  void OnPowerChanged(TransmitterComponent* transmitter) override;
 
- private:
+  void OnPowerExit(TransmitterComponent* transmitter) override;
+  bool IsWireless() override;
+
+  [[nodiscard]] base_engine::Vector2 GetPosition() const override;
+
+private:
   base_engine::SpriteComponent* display_ = nullptr;
+  base_engine::MofSpriteAnimationComponent* animation_ = nullptr;
 };

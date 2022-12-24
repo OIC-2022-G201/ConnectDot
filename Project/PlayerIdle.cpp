@@ -3,9 +3,11 @@
 #include "BeaconActor.h"
 #include "CollisionLayer.h"
 #include "GridSnapComponent.h"
+#include "ObjectTileMapComponent.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "PlayerComponent.h"
+#include "ServiceLocator.h"
 GridPosition g_position{0, 0};
 
 player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {
@@ -29,7 +31,12 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
 
     if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter &&
         actor->GetTag() == "Beacon") {
+      auto pos = GridPosition::VectorTo(actor->GetPosition());
+      ServiceLocator::Instance()
+          .Resolve<tile_map::ObjectTileMapComponent>()
+          ->SetCell(pos.x, pos.y, 0);
       actor->GetGame()->RemoveActor(actor);
+
       return false;
     }
     return true;
@@ -65,6 +72,9 @@ void player::PlayerIdle::PlaceBeacon() const {
   pos.y += 1;
   if (!player_->CanPlace(pos)) return;
   player_->SetBeacon(player_->GetBeacon() - 1);
+  ServiceLocator::Instance()
+      .Resolve<tile_map::ObjectTileMapComponent>()
+      ->SetCell(pos.x, pos.y, 1);
   const auto beacon = new BeaconActor(player_->GetGame());
   const auto grid = beacon->GetComponent<grid::GridSnapComponent>().lock();
   grid->SetSnapGridPosition(pos);

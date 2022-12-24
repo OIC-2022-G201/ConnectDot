@@ -13,10 +13,12 @@
 #include "GoalEffectActor.h"
 #include "GoalEvent.h"
 #include "IMachineActionable.h"
+#include "ObjectTileMapComponent.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "Player.h"
 #include "SendManifold.h"
+#include "ServiceLocator.h"
 #include "SpriteComponent.h"
 #include "TileMapComponent.h"
 using namespace std::string_view_literals;
@@ -199,7 +201,10 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const bool space = map->GetCell(pos) == tile_map::kEmptyCell;
   const bool ground =
       map->GetCell(pos + GridPosition{0, 1}) != tile_map::kEmptyCell;
-  return space && ground;
+  const auto is_empty = ServiceLocator::Instance()
+      .Resolve<tile_map::ObjectTileMapComponent>()
+      ->GetCell(pos.x, pos.y) == tile_map::kEmptyCell;
+	return space && ground && is_empty;
 }
 
 int PlayerComponent::MaxBeacon() const { return 90; }
@@ -216,9 +221,9 @@ void PlayerComponent::CheckGround() {
   const auto rect = sprite_.lock()->GetClipRect();
 
   physics::PVec2 p1 = {owner_->GetPosition().x + 80, owner_->GetPosition().y};
-  p1.y += rect.GetHeight() - 2;
+  p1.y += rect.GetHeight() - 4;
   physics::PVec2 p2 = p1;
-  p2.y += 2;
+  p2.y += 5;
   BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   if (!callback.ground_fixture_) {
     p1.x += 96;
@@ -226,9 +231,6 @@ void PlayerComponent::CheckGround() {
     BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   }
   if (callback.ground_fixture_) {
-    if (g_pInput->IsKeyHold(MOFKEY_Q)) {
-      int n = 3;
-    }
     SetGround(true);
   } else {
     SetGround(false);

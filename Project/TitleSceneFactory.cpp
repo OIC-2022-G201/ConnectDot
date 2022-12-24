@@ -15,6 +15,7 @@
 #include "IBaseEngineTexture.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
+#include "NinePatchImageComponent.h"
 #include "ResourceContainer.h"
 #include "TitleListener.h"
 #include "UiFrozen.h"

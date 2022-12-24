@@ -18,7 +18,7 @@
 #include "TileMap.h"
 
 namespace tile_map {
-
+//TODO TileMapという名前にすることでギミックなどの座標の配置などをまとめたものと、紛らわしくなっている
 class TileMapComponent : public base_engine::Component {
   class TileMapRenderComponent final : public base_engine::RenderComponent {
     TileMapComponent* tile_map_;

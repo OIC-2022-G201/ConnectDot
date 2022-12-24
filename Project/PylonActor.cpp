@@ -6,10 +6,14 @@
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
+#include "IBaseEngineTexture.h"
+#include "ObjectTileMapComponent.h"
 #include "PylonTransmitter.h"
 #include "Rect.h"
+#include "ServiceLocator.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
+#include "TexturePaths.h"
 #include "TransmitterComponent.h"
 
 using base_engine::Floating;
@@ -20,33 +24,32 @@ PylonActor::PylonActor(base_engine::Game* game) : Actor(game) {}
 
 PylonActor::~PylonActor() {}
 
-void PylonActor::Start() {
+void PylonActor::Start() {}
+
+void PylonActor::Update() {}
+
+void PylonActor::Create(const LoadObject& object) {
   {
-    const auto cell_half = stage::kStageCellSizeHalf<Floating>;
+    const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, electronics::kPowerRadius);
-    const auto shape = new base_engine::ShapeRenderComponent(
-        this, draw_order::kElectromagneticAreaDrawOrder);
+        cell_half.x, cell_half.y, kPowerRadius);
+    const auto shape = new base_engine::ShapeRenderComponent(this, 110);
     shape->SetShape(circle);
     shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
-
     const auto collision = new base_engine::CollisionComponent(this);
     collision->SetShape(circle);
-    collision->SetObjectFilter(kBeaconObjectFilter);
-    collision->SetTargetFilter(kBeaconTargetFilter);
+    collision->SetObjectFilter(kPowerSupplyUnitObjectFilter);
+    collision->SetTargetFilter(kPowerSupplyUnitTargetFilter);
     collision->SetTrigger(true);
   }
 
-  {
-    const auto rect = std::make_shared<base_engine::Rect>(
-        0, 0, stage::kStageCellSize<Floating>.x,
-        stage::kStageCellSize<Floating>.y);
 
-    const auto shape_rect = new base_engine::ShapeRenderComponent(
-        this, draw_order::kPylonDrawOrder);
-    shape_rect->SetShape(rect);
-    shape_rect->SetFillMode(base_engine::FillMode::Yes)
-        .SetColor(MOF_ARGB(255, 0, 0, 255));
+  {
+    const auto sign = new base_engine::SpriteComponent(
+        this, draw_order::kPowerSupplyUnitDrawOrder);
+    const auto img =
+        BASE_ENGINE(Texture)->Get(texture::kPowerSupplyUnitTextureKey);
+    sign->SetImage(img);
   }
 
   SetName("Pylon");
@@ -56,9 +59,11 @@ void PylonActor::Start() {
     transmitter->Create<PylonTransmitter>();
   }
   {
+    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({1, 5});
+    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    ServiceLocator::Instance()
+        .Resolve<tile_map::ObjectTileMapComponent>()
+        ->SetCell(pos.x, pos.y, 1);
   }
 }
-
-void PylonActor::Update() {}

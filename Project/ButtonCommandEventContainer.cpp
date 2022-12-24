@@ -1,9 +1,11 @@
 ﻿#include "ButtonCommandEventContainer.h"
 
+#include "EventBus.h"
 #include "SceneManager.h"
-
+#include <windows.h>
 void button::ButtonCommandEventContainer::Register() {
   RegisterKey("GameStartEvent", [] { scene::LoadScene(scene::kGame); });
+  RegisterKey("QuitGameEvent", [this] { PostQuitMessage(0); });
 }
 
 void button::ButtonCommandEventContainer::RegisterKey(

@@ -37,11 +37,17 @@ void SignboardActor::Create(const LoadObject& object) {
   {
     display_ = new SpriteComponent(this, kSignboardDisplayDrawOrder);
     display_->SetOffset(kDisplayOffset);
-    const auto img =
-        BASE_ENGINE(Texture)->Get(texture::kSignboardDisplayDemoTextureKey);
+    animation_ = new MofSpriteAnimationComponent(this);
+    const auto path = "gimmick/Objects/Signboard/" +
+                      std::get<std::string>(object.parameters[5]);
+    const auto img = BASE_ENGINE(Texture)->Get(path + ".png");
     display_texture_ = img;
     display_->SetImage(display_texture_);
     display_->SetEnabled(false);
+
+
+    animation_->Load(display_, path + ".aei");
+    animation_->Stop();
   }
   {
     const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
@@ -51,7 +57,7 @@ void SignboardActor::Create(const LoadObject& object) {
   }
   {
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<SignboardReceiver>(display_);
+    receiver->Create<SignboardReceiver>(display_,animation_);
   }
   {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;

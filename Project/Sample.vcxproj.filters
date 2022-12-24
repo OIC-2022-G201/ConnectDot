@@ -448,6 +448,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Test">
       <UniqueIdentifier>{7cb06bd0-3d30-4580-85d3-73b2c7187409}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent">
+      <UniqueIdentifier>{997ebe45-3f69-4ddb-884a-ac272d4e6b6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -678,9 +681,6 @@
     <ClCompile Include="PhysicsPolygonShape.cpp">
       <Filter>BaseEngine\physics\Shape</Filter>
     </ClCompile>
-    <ClCompile Include="TileMapShape.cpp">
-      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
-    </ClCompile>
     <ClCompile Include="TileMapCollisionComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
     </ClCompile>
@@ -896,6 +896,12 @@
     </ClCompile>
     <ClCompile Include="ParentTest.cpp">
       <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectTileMapComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="NinePatchImageComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1328,9 +1334,6 @@
     <ClInclude Include="PhysicsPolygonShape.h">
       <Filter>BaseEngine\physics\Shape</Filter>
     </ClInclude>
-    <ClInclude Include="TileMapShape.h">
-      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
-    </ClInclude>
     <ClInclude Include="TileMapCollisionComponent.h">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
     </ClInclude>
@@ -1552,6 +1555,12 @@
     </ClInclude>
     <ClInclude Include="ParentTest.h">
       <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectTileMapComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="NinePatchImageComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

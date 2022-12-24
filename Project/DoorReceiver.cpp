@@ -5,6 +5,7 @@
 #include "CollisionLayer.h"
 #include "ContactRayCastCallBack.h"
 #include "IBaseEngineCollider.h"
+#include "MofSpriteAnimationComponent.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "StageConstitution.h"
@@ -19,6 +20,7 @@ void DoorReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
 
   collision->SetObjectFilter(CollisionLayer::kNone);
   collision->SetTrigger(true);
+  owner_->GetComponent<MofSpriteAnimationComponent>().lock()->Play("Door");
 }
 
 void DoorReceiver::OnPowerChanged(TransmitterComponent* transmitter) {
@@ -29,4 +31,5 @@ void DoorReceiver::OnPowerExit(TransmitterComponent* transmitter) {
   auto collision = owner_->GetComponent<CollisionComponent>().lock();
   collision->SetObjectFilter(kFieldObjectFilter);
   collision->SetTrigger(false);
+  owner_->GetComponent<MofSpriteAnimationComponent>().lock()->Play("Door",-1);
 }

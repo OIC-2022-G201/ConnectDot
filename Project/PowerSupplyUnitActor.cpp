@@ -11,10 +11,12 @@
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
 #include "LoadObjectParameter.h"
+#include "ObjectTileMapComponent.h"
 #include "PowerSupplyUnitReceiver.h"
 #include "PowerSupplyUnitTransmitter.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
+#include "ServiceLocator.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
@@ -27,7 +29,7 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius);
+        cell_half.x, cell_half.y, kPowerRadius/4);
     const auto shape = new base_engine::ShapeRenderComponent(this, 110);
     shape->SetShape(circle);
     shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
@@ -58,5 +60,8 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    ServiceLocator::Instance()
+        .Resolve<tile_map::ObjectTileMapComponent>()
+        ->SetCell(pos.x, pos.y, 1);
   }
 }
