@@ -57,7 +57,7 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                                 const LoadObject& object);
   static Actor* EnemyCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
-                           const LoadObject& object);
+
   static Actor* DoorCreate(GimmickCreator* instance, Game* game,
                            const LoadObject& object);
 

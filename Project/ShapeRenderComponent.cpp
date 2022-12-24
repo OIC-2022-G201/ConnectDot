@@ -21,7 +21,10 @@ ShapeRenderComponent& ShapeRenderComponent::SetFillMode(const FillMode mode) {
   return *this;
 }
 
-void ShapeRenderComponent::Draw() { shape_->Draw(*this); }
+void ShapeRenderComponent::Draw()
+{
+	if(shape_)shape_->Draw(*this);
+}
 void ShapeRenderComponent::SetShape(const std::shared_ptr<IShape>& shape) {
   shape_ = shape;
 }
