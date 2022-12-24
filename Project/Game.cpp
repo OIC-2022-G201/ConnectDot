@@ -4,6 +4,7 @@
 #include <Utilities/GraphicsUtilities.h>
 
 #include "Actor.h"
+#include "ButtonCommandEventContainer.h"
 #include "IBaseEngineCollider.h"
 #include "InputManager.h"
 #include "ParentTest.h"
@@ -22,7 +23,7 @@ namespace base_engine {
 bool Game::Initialize() {
   game_data_.Register();
   scene::SceneManager::Instance().Register(this);
-
+  button::ButtonCommandEventContainer::Instance().SetGame(this);
   //  auto inputActor = new base_engine::InputActor(this);
   //  auto input = new InputManager(inputActor);
 

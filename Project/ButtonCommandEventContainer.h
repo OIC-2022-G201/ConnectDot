@@ -8,6 +8,9 @@
 #pragma once
 #include <functional>
 #include <unordered_map>
+
+#include "Game.h"
+
 namespace button {
 using EventKey = std::string;
 class ButtonCommandEventContainer {
@@ -15,7 +18,9 @@ class ButtonCommandEventContainer {
   std::unordered_map<size_t, std::function<void()>> event_map_;
   void Register();
   void RegisterKey(EventKey key, const std::function<void()>& action);
-public:
+  base_engine::Game* game_;
+
+ public:
   ButtonCommandEventContainer() { Register(); }
 
   void Execute(const EventKey& key) const {
@@ -25,6 +30,7 @@ public:
     static auto instance = new ButtonCommandEventContainer;
     return *instance;
   }
+  void SetGame(base_engine::Game* game) { game_ = game; }
 };
 using ButtonEvent = ButtonCommandEventContainer;
 }  // namespace button
