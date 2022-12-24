@@ -17,6 +17,7 @@
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "Player.h"
+#include "SceneManager.h"
 #include "SendManifold.h"
 #include "ServiceLocator.h"
 #include "SpriteComponent.h"
@@ -181,7 +182,13 @@ void PlayerComponent::Update() {
 }
 
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
-  machine_.OnEvent(manifold.collision_b);
+  const auto actor = manifold.collision_b->GetActor();
+  if (actor->GetTag() == "Enemy")
+  {
+    scene::LoadScene(scene::kTitle);
+    return;
+  }
+	machine_.OnEvent(manifold.collision_b);
   if (input_manager_->ActionFire()) {
     if (const auto actionable = manifold.collision_b->GetActor()
                                     ->GetComponent<IMachineActionable>();
@@ -189,6 +196,7 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
       actionable.lock()->Action(owner_);
     }
   }
+
 }
 
 void PlayerComponent::VentEnter(VentComponent* vent) {

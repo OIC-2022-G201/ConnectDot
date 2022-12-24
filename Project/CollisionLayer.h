@@ -52,7 +52,8 @@ constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter |
                                                 CollisionLayer::kActionable};
 
 constexpr BitCollisionLayer kEnemyObjectFilter{CollisionLayer::kEnemyFilter};
-constexpr BitCollisionLayer kEnemyTargetFilter{CollisionLayer::kFieldFilter};
+constexpr BitCollisionLayer kEnemyTargetFilter{CollisionLayer::kFieldFilter |
+                                               CollisionLayer::kPlayerFilter};
 
 //! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{
