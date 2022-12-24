@@ -448,6 +448,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Test">
       <UniqueIdentifier>{7cb06bd0-3d30-4580-85d3-73b2c7187409}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent">
+      <UniqueIdentifier>{997ebe45-3f69-4ddb-884a-ac272d4e6b6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -893,6 +896,9 @@
     </ClCompile>
     <ClCompile Include="ObjectTileMapComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="NinePatchImageComponent.cpp">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1546,6 +1552,9 @@
     </ClInclude>
     <ClInclude Include="ObjectTileMapComponent.h">
       <Filter>ソース ファイル\ConnectDot\Stage\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="NinePatchImageComponent.h">
+      <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

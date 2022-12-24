@@ -4,6 +4,7 @@
 
 void button::ButtonCommandEventContainer::Register() {
   RegisterKey("GameStartEvent", [] { scene::LoadScene(scene::kGame); });
+  RegisterKey("QuitEvent", [] { scene::LoadScene(scene::kGame); });
 }
 
 void button::ButtonCommandEventContainer::RegisterKey(

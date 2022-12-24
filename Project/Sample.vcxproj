@@ -111,6 +111,7 @@
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
+    <ClCompile Include="NinePatchImageComponent.cpp" />
     <ClCompile Include="ObjectTileMapComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
@@ -267,6 +268,7 @@
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ITween.h" />
+    <ClInclude Include="NinePatchImageComponent.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="ParentTest.h" />
     <ClInclude Include="PositionXTween.h" />

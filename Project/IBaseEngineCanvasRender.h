@@ -25,6 +25,10 @@ class IBaseEngineCanvasRender
                           const Vector& scale, float angle, const Rect& uv,
                           const Color& color,
                           Mof::TextureAlignment alignment) = 0;
+  virtual void AddTexture(const Mof::Matrix44& wMat, const Rect& srec,
+                          const Mof::Vector4& col, const Mof::Vector3& Pivot,
+                          const Mof::Vector3& Size, const Mof::Vector2& uvp,
+                          const Mof::Vector2& uvs, const MofFloat uva,ITexturePtr pTex) = 0;
   virtual void AddLine(const Vector& position1, const Vector& position2,
                        const Color& color) = 0;
   virtual void AddRect(const Rect& rect, const Color& color) = 0;
