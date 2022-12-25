@@ -98,6 +98,23 @@ ActorWeakPtr Game::GetActor(ActorId id) {
   return ActorPtr{};
 }
 
+ActorWeakPtr Game::FindTagActor(std::string_view tag)
+{
+  if (const auto iter = std::ranges::find_if(
+          actors_, [tag](const ActorPtr& n) { return n->GetTag() == tag; });
+      iter != actors_.end()) {
+    return *iter;
+  }
+
+  if (const auto iter = std::ranges::find_if(
+          pending_actors_,
+          [tag](const ActorPtr& n) { return n->GetTag() == tag; });
+      iter != pending_actors_.end()) {
+    return *iter;
+  }
+  return ActorPtr{};
+}
+
 void Game::AddSprite(RenderComponent* render_component) {
   const int my_draw_order = render_component->GetDrawOrder();
   auto iter = sprites_.begin();

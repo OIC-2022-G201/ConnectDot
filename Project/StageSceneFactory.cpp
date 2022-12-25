@@ -11,6 +11,7 @@
 #include "ObjectTileMapComponent.h"
 #include "PlayerActor.h"
 #include "PylonActor.h"
+#include "ResultScoreComponent.h"
 #include "ServiceLocator.h"
 #include "TileMapComponent.h"
 using namespace base_engine;
@@ -40,4 +41,6 @@ void StageSceneFactory::Factory() {
 
   ObjectLoader object_loader{game_};
   object_loader.Load("MapData/Stage1");
+
+  ResultScoreComponent::Create(game_);
 }

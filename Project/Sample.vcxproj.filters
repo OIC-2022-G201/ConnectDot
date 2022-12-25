@@ -355,9 +355,6 @@
     <Filter Include="Utilities\Extensions\Variant">
       <UniqueIdentifier>{7b5ca211-93ff-47be-bac6-2ef41f8ed522}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ConnectDot\UI">
-      <UniqueIdentifier>{2bfab8b5-9dda-44f2-9512-7eca53e32a88}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\ConnectDot\Stage\Loader">
       <UniqueIdentifier>{8669cd5d-c6bb-4069-bfd1-1f7b1343f524}</UniqueIdentifier>
     </Filter>
@@ -412,9 +409,6 @@
     <Filter Include="ソース ファイル\ConnectDot\Camera">
       <UniqueIdentifier>{a821d963-67dd-45a6-9af1-37835cd34660}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\GoalUI">
-      <UniqueIdentifier>{ef60ce43-3310-4e38-a149-2c0c01a131e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\ConnectDot\Tweener">
       <UniqueIdentifier>{ca4616a7-1c4a-4777-a539-4755580a9cc4}</UniqueIdentifier>
     </Filter>
@@ -462,6 +456,15 @@
     </Filter>
     <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\Utilities">
       <UniqueIdentifier>{8f6615e7-00a6-4a26-bb4f-ae32ffc8a91c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Result">
+      <UniqueIdentifier>{7dfd8473-ee70-4007-bd68-24e0a675ac87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Result\Model">
+      <UniqueIdentifier>{1c8178b6-c93c-4dbd-88e1-fea1eb1aaed7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Result\Controler">
+      <UniqueIdentifier>{ce0df4be-840c-48e8-a5b4-ccc6cb9c4b58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -858,9 +861,6 @@
     <ClCompile Include="StageEpilogueEvent.cpp">
       <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
     </ClCompile>
-    <ClCompile Include="GoalEffectActor.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI\GoalUI</Filter>
-    </ClCompile>
     <ClCompile Include="Tween.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
     </ClCompile>
@@ -923,6 +923,15 @@
     </ClCompile>
     <ClCompile Include="UiFactoryUtilities.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultModel.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Result\Model</Filter>
+    </ClCompile>
+    <ClCompile Include="GoalEffectActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Result\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScoreComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Result\Controler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1520,9 +1529,6 @@
     <ClInclude Include="StageEpilogueEvent.h">
       <Filter>ソース ファイル\ConnectDot\Event\Goal</Filter>
     </ClInclude>
-    <ClInclude Include="GoalEffectActor.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI\GoalUI</Filter>
-    </ClInclude>
     <ClInclude Include="ITween.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\Core</Filter>
     </ClInclude>
@@ -1591,6 +1597,15 @@
     </ClInclude>
     <ClInclude Include="UiFactoryUtilities.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultModel.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Result\Model</Filter>
+    </ClInclude>
+    <ClInclude Include="GoalEffectActor.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Result\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScoreComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Result\Controler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

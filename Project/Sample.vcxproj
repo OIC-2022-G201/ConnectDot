@@ -116,6 +116,8 @@
     <ClCompile Include="ObjectTileMapComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
+    <ClCompile Include="ResultModel.cpp" />
+    <ClCompile Include="ResultScoreComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SoundEffectActor.cpp" />
@@ -277,6 +279,8 @@
     <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="ParentTest.h" />
     <ClInclude Include="PositionXTween.h" />
+    <ClInclude Include="ResultModel.h" />
+    <ClInclude Include="ResultScoreComponent.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SoundEffectActor.h" />

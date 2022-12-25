@@ -79,6 +79,8 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   next_logo_.second->SetEnabled(false);
   next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
 
+  
+
   constexpr float letter_time = 0.2f;
   ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, letter_time)
       .SetEase(EaseType::kOutquart)

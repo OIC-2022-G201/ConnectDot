@@ -1,4 +1,3 @@
-Electro_purpleAnimation Animation  Effect/Electro_purple/Electro_purpleAnimation/Electro_purpleAnimation.aei
 SoundAnimation Animation Effect/Sound/SoundAnimation/Sound_MotionChip.png Effect/Sound/SoundAnimation/Sound.aei
 Beacon Animation gimmick/Objects/Beacon/Beacon.png gimmick/Objects/Beacon/Beacon_Animation.aei
 BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png

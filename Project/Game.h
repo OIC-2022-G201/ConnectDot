@@ -28,6 +28,9 @@ class Game {
   void RemoveActor(Actor* actor, const std::weak_ptr<Scene> scene);
 
   ActorWeakPtr GetActor(ActorId id);
+  ActorWeakPtr FindTagActor(std::string_view tag);
+
+
   void AddSprite(class RenderComponent* render_component);
   void RemoveSprite(class RenderComponent* render_component);
   void Clear();
