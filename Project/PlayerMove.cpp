@@ -12,6 +12,7 @@ void player::PlayerMove::Start() {
   is_fall_ = false;
   player_->GetAnimator()->ChangeMotion("Move");
   player_->MovedLookAt();
+  player_->PlaySoundEffect();
 }
 
 void player::PlayerMove::Update() {
@@ -26,4 +27,5 @@ void player::PlayerMove::ProcessInput() {
   is_jump_ = player_->IsJumpKey();
 }
 
-void player::PlayerMove::End() {}
+void player::PlayerMove::End()
+{ player_->StopSoundEffect(); }

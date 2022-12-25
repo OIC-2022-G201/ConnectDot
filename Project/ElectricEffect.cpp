@@ -3,6 +3,7 @@
 #include "BaseEngineCore.h"
 #include "DrawOrder.h"
 #include "IBaseEngineTexture.h"
+#include "MofSpriteAnimationComponent.h"
 #include "ReceiverComponent.h"
 using namespace base_engine;
 void ElectricEffect::Play(Vector2 pos1, Vector2 pos2) {

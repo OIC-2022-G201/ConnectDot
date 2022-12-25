@@ -23,8 +23,8 @@
 #include "PlayerSneakMove.h"
 #include "PlayerVentAction.h"
 #include "ReactiveProperty.h"
+#include "SoundEffectActor.h"
 #include "StateMachine.h"
-
 
 class VentComponent;
 
@@ -38,6 +38,7 @@ class PlayerComponent final : public base_engine::Component {
   using Vector2 = Mof::CVector2;
   using TileMapWeak =
       base_engine::ComponentDerivedWeakPtr<tile_map::TileMapComponent>;
+
  public:
   class PlayerListener;
   ~PlayerComponent() override;
@@ -81,6 +82,8 @@ class PlayerComponent final : public base_engine::Component {
   [[nodiscard]] base_engine::Actor* GetOwner() const;
 
   void SetMap(const TileMapWeak& map);
+  void PlaySoundEffect() const;
+  void StopSoundEffect() const;
 
 private:
   int have_beacon_count_ = MaxBeacon();
@@ -90,9 +93,9 @@ private:
 
   til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerSneakMove, PlayerJump,
                PlayerFall, PlayerVentAction>
-      machine_ = til::Machine{PlayerIdle{this},  PlayerMove{this},
-                              PlayerSneak{this}, PlayerSneakMove{this},
-                              PlayerJump{this},  PlayerFall{this},
+      machine_ = til::Machine{PlayerIdle{this},      PlayerMove{this},
+                              PlayerSneak{this},     PlayerSneakMove{this},
+                              PlayerJump{this},      PlayerFall{this},
                               PlayerVentAction{this}};
 
   std::weak_ptr<base_engine::CollisionComponent> collision_;
@@ -105,6 +108,9 @@ private:
   bool is_ground_ = false;
   bool can_control_ = true;
   bool goal_event_ = false;
+
+  SoundEffectActor* sound_effect_;
+
  private:
   void CheckGround();
 };

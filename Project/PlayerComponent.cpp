@@ -42,10 +42,10 @@ class HitGroundCallback final : public physics::PhysicsRayCastCallback {
 
 class PlayerComponent::PlayerListener final : public EventHandler<GoalEvent> {
   PlayerComponent& player_;
+
  public:
   explicit PlayerListener(PlayerComponent& player) : player_(player){};
-  void OnEvent(GoalEvent& e) override
-  {
+  void OnEvent(GoalEvent& e) override {
     player_.can_control_ = false;
     player_.goal_event_ = true;
     new GoalEffectActor(player_.GetGame());
@@ -80,98 +80,86 @@ void PlayerComponent::Start() {
         break;
     }
   });
+  sound_effect_ = new SoundEffectActor(owner_->GetGame());
+
   collision_ = owner_->GetComponent<CollisionComponent>();
   physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
   animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
   machine_.TransitionTo<PlayerIdle>();
 }
 
-void PlayerComponent::ProcessInput()
-{ machine_.ProcessInput(); }
+void PlayerComponent::ProcessInput() { machine_.ProcessInput(); }
 
-void PlayerComponent::SetInput(const InputManager* input_manager)
-{
-    input_manager_ = input_manager;
+void PlayerComponent::SetInput(const InputManager* input_manager) {
+  input_manager_ = input_manager;
 }
 
-bool PlayerComponent::IsJumpKey() const
-{ return input_manager_->JumpFire(); }
+bool PlayerComponent::IsJumpKey() const { return input_manager_->JumpFire(); }
 
-float PlayerComponent::GetHorizontal() const
-{
+float PlayerComponent::GetHorizontal() const {
   float result = 0;
   if (can_control_) {
     result = input_manager_->MoveHorizontal();
-  } else if (goal_event_)
-  {
+  } else if (goal_event_) {
     result = 1;
   }
 
-    return result;
+  return result;
 }
 
-bool PlayerComponent::IsSneakKey() const
-{ return input_manager_->SneakFire(); }
+bool PlayerComponent::IsSneakKey() const { return input_manager_->SneakFire(); }
 
-bool PlayerComponent::IsPlaceBeaconKey() const
-{
-    return input_manager_->PlaceBeaconFire();
+bool PlayerComponent::IsPlaceBeaconKey() const {
+  return input_manager_->PlaceBeaconFire();
 }
 
-bool PlayerComponent::IsCollectBeaconKey() const
-{
-    return input_manager_->CollectBeaconFire();
+bool PlayerComponent::IsCollectBeaconKey() const {
+  return input_manager_->CollectBeaconFire();
 }
 
-bool PlayerComponent::IsActionKey() const
-{
-    return input_manager_->ActionFire();
+bool PlayerComponent::IsActionKey() const {
+  return input_manager_->ActionFire();
 }
 
-base_engine::CollisionComponent* PlayerComponent::GetCollision() const
-{
-    return collision_.lock().get();
+base_engine::CollisionComponent* PlayerComponent::GetCollision() const {
+  return collision_.lock().get();
 }
 
-base_engine::ISpriteAnimationComponent* PlayerComponent::GetAnimator() const
-{
-    return animator_.lock().get();
+base_engine::ISpriteAnimationComponent* PlayerComponent::GetAnimator() const {
+  return animator_.lock().get();
 }
 
-base_engine::PhysicsBodyComponent* PlayerComponent::PhysicsBody() const
-{
-    return physics_body_.lock().get();
+base_engine::PhysicsBodyComponent* PlayerComponent::PhysicsBody() const {
+  return physics_body_.lock().get();
 }
 
-int PlayerComponent::GetBeacon() const
-{ return have_beacon_count_; }
+int PlayerComponent::GetBeacon() const { return have_beacon_count_; }
 
-void PlayerComponent::SetBeacon(const int num)
-{ have_beacon_count_ = num; }
+void PlayerComponent::SetBeacon(const int num) { have_beacon_count_ = num; }
 
-void PlayerComponent::LookAtRight()
-{ dir_ = Dir::kRight; }
+void PlayerComponent::LookAtRight() { dir_ = Dir::kRight; }
 
-void PlayerComponent::LookAtLeft()
-{ dir_ = Dir::kLeft; }
+void PlayerComponent::LookAtLeft() { dir_ = Dir::kLeft; }
 
-bool PlayerComponent::IsRight() const
-{ return static_cast<Dir>(dir_) == Dir::kRight; }
+bool PlayerComponent::IsRight() const {
+  return static_cast<Dir>(dir_) == Dir::kRight;
+}
 
-bool PlayerComponent::IsGround() const
-{ return is_ground_; }
+bool PlayerComponent::IsGround() const { return is_ground_; }
 
-void PlayerComponent::SetGround(const bool ground)
-{ is_ground_ = ground; }
+void PlayerComponent::SetGround(const bool ground) { is_ground_ = ground; }
 
-base_engine::Game* PlayerComponent::GetGame() const
-{ return owner_->GetGame(); }
+base_engine::Game* PlayerComponent::GetGame() const {
+  return owner_->GetGame();
+}
 
-base_engine::Actor* PlayerComponent::GetOwner() const
-{ return owner_; }
+base_engine::Actor* PlayerComponent::GetOwner() const { return owner_; }
 
-void PlayerComponent::SetMap(const TileMapWeak& map)
-{ map_ = map; }
+void PlayerComponent::SetMap(const TileMapWeak& map) { map_ = map; }
+
+void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(); }
+
+void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
 void PlayerComponent::Update() {
   physics_body_.lock()->AddForce({0, kGravity});
@@ -202,9 +190,9 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const bool ground =
       map->GetCell(pos + GridPosition{0, 1}) != tile_map::kEmptyCell;
   const auto is_empty = ServiceLocator::Instance()
-      .Resolve<tile_map::ObjectTileMapComponent>()
-      ->GetCell(pos.x, pos.y) == tile_map::kEmptyCell;
-	return space && ground && is_empty;
+                            .Resolve<tile_map::ObjectTileMapComponent>()
+                            ->GetCell(pos.x, pos.y) == tile_map::kEmptyCell;
+  return space && ground && is_empty;
 }
 
 int PlayerComponent::MaxBeacon() const { return 90; }

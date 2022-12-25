@@ -10,15 +10,15 @@
 #include <array>
 
 #include "Actor.h"
-#include "MofSpriteAnimationComponent.h"
-
+#include "ISpriteAnimationComponent.h"
+#include "SpriteComponent.h"
 #include "VectorUtilities.h"
 
 class ElectricEffect final : public base_engine::Actor {
   class ReceiverComponent* receiver_ = nullptr;
   class TransmitterComponent* transmitter_ = nullptr;
   base_engine::SpriteComponent* sprite_ = nullptr;
-  base_engine::MofSpriteAnimationComponent* motion_ = nullptr;
+  base_engine::ISpriteAnimationComponent* motion_ = nullptr;
 
  public:
   explicit ElectricEffect(base_engine::Game* game) : Actor(game) {}
@@ -29,11 +29,8 @@ class ElectricEffect final : public base_engine::Actor {
 
   void Start() override {}
   void Update() override {}
-  void Show() { sprite_->SetEnabled(true); }
-  void Hide() { sprite_->SetEnabled(false); }
+  void Show() const { sprite_->SetEnabled(true); }
+  void Hide() const { sprite_->SetEnabled(false); }
   // TODO テクスチャを取得するKEYをベタ書きしない
   void Play(base_engine::Vector2 pos1, base_engine::Vector2 pos2);
-  ~ElectricEffect() override
-  { int n = 3;
-  }
 };

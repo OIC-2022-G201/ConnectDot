@@ -117,6 +117,7 @@
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SoundEffectActor.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
@@ -275,6 +276,7 @@
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SoundEffectActor.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />

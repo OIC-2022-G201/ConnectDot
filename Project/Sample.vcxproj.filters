@@ -162,9 +162,6 @@
     <Filter Include="BaseEngine\Component\AnimationComponent\SpriteAnimationComponent">
       <UniqueIdentifier>{4d492883-255a-456b-9868-be7b788c855c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\ConnectDot\Electronics\Effect">
-      <UniqueIdentifier>{473c09f2-183f-4c77-881b-a80eb21dbaa4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Utilities\Extensions\Map">
       <UniqueIdentifier>{6cac71f4-648e-48e3-81fd-d89675c258ed}</UniqueIdentifier>
     </Filter>
@@ -451,6 +448,15 @@
     <Filter Include="BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent">
       <UniqueIdentifier>{997ebe45-3f69-4ddb-884a-ac272d4e6b6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Effect">
+      <UniqueIdentifier>{61189308-c984-4171-b40b-691de029063a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Effect\ElectricEffect">
+      <UniqueIdentifier>{bd927a52-8001-41df-bbb0-334b263ae62c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Effect\SoundEffect">
+      <UniqueIdentifier>{903b4e16-f1f3-4e95-9734-e05d39db6995}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -599,9 +605,6 @@
     </ClCompile>
     <ClCompile Include="MofSpriteAnimationComponent.cpp">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
-    </ClCompile>
-    <ClCompile Include="ElectricEffect.cpp">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
     </ClCompile>
     <ClCompile Include="SignboardActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Signboard</Filter>
@@ -903,6 +906,12 @@
     <ClCompile Include="NinePatchImageComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
     </ClCompile>
+    <ClCompile Include="ElectricEffect.cpp">
+      <Filter>ソース ファイル\ConnectDot\Effect\ElectricEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEffectActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Effect\SoundEffect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1135,9 +1144,6 @@
     </ClInclude>
     <ClInclude Include="ISpriteAnimationComponent.h">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
-    </ClInclude>
-    <ClInclude Include="ElectricEffect.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Effect</Filter>
     </ClInclude>
     <ClInclude Include="ParameterMap.h">
       <Filter>Utilities\Extensions\Map</Filter>
@@ -1561,6 +1567,12 @@
     </ClInclude>
     <ClInclude Include="NinePatchImageComponent.h">
       <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="ElectricEffect.h">
+      <Filter>ソース ファイル\ConnectDot\Effect\ElectricEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEffectActor.h">
+      <Filter>ソース ファイル\ConnectDot\Effect\SoundEffect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
