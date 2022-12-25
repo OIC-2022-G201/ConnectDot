@@ -466,6 +466,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\Result\Controler">
       <UniqueIdentifier>{ce0df4be-840c-48e8-a5b4-ccc6cb9c4b58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\Counter">
+      <UniqueIdentifier>{ace1367b-80b2-4f8d-bf6d-b933d6ccf572}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -932,6 +935,9 @@
     </ClCompile>
     <ClCompile Include="ResultScoreComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\Result\Controler</Filter>
+    </ClCompile>
+    <ClCompile Include="CounterComponent.cpp">
+      <Filter>BaseEngine\Component\Counter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1606,6 +1612,9 @@
     </ClInclude>
     <ClInclude Include="ResultScoreComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\Result\Controler</Filter>
+    </ClInclude>
+    <ClInclude Include="CounterComponent.h">
+      <Filter>BaseEngine\Component\Counter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -54,11 +54,52 @@ constexpr  std::string_view kChangeRestartButtonTextureKey =
 constexpr  std::string_view kChangeResumeButtonTextureKey =
 "Resume2.png";
 
+//! zero
+constexpr std::string_view kZeroTextureKey =
+"number/zero.png"sv;
+
+//! one
+constexpr std::string_view kOneTextureKey =
+"number/one.png"sv;
+
+//! two
+constexpr std::string_view kTwoTextureKey =
+"number/two.png"sv;
+
+//! three
+constexpr std::string_view kThreeTextureKey =
+"number/three.png"sv;
+
+//! four
+constexpr std::string_view kFourTextureKey =
+"number/four.png"sv;
+
+//! five
+constexpr std::string_view kFiveTextureKey =
+"number/five.png"sv;
+
+//!six
+constexpr std::string_view kSixTextureKey =
+"number/six.png"sv;
+
+//!seven
+constexpr std::string_view kSevenTextureKey =
+"number/seven.png"sv;
+
+//!eight
+constexpr std::string_view kEightTextureKey =
+"number/eight.png"sv;
+
+//!nine
+constexpr std::string_view kNineTextureKey =
+"number/nine.png"sv;
+
 namespace effect {
 
 //! ElectricEffect
 constexpr std::string_view kElectricEffectTextureKey =
     "Effect/Electric/ElectroCellMap.png"sv;
+
 }  // namespace effect
 
 }  // namespace texture

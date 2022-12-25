@@ -134,6 +134,7 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ContactRayCastCallBack.cpp" />
+    <ClCompile Include="CounterComponent.cpp" />
     <ClCompile Include="DebugStage.cpp" />
     <ClCompile Include="DIActorContainer.cpp" />
     <ClCompile Include="DoorComponent.cpp" />
@@ -306,6 +307,7 @@
     <ClInclude Include="DoorComponent.h" />
     <ClInclude Include="DoorReceiver.h" />
     <ClInclude Include="DoorStubActor.h" />
+    <ClInclude Include="CounterComponent.h" />
     <ClInclude Include="EnemyActor.h" />
     <ClInclude Include="EnemyBack.h" />
     <ClInclude Include="EnemyChase2.h" />

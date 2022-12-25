@@ -28,6 +28,7 @@ class ImageComponent : public RenderComponent {
     }
     return *this;
   }
+  Mof::CRectangle GetClipRect() const { return clip_rect_; }
   void SetClipRect(Mof::CRectangle rect) { clip_rect_ = rect; }
   ImageComponent& SetColor(const COLOR& color) {
     color_ = color;
