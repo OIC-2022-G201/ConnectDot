@@ -9,8 +9,8 @@ namespace enemy
 {
 	void VisionCreateComponent::Start()
 	{
-		parent_ = new DummyActor(this->owner_->GetGame());
-		auto vision_component = new EnemyVisionComponent(parent_, 510);
+		vision_parent_ = new DummyActor(this->owner_->GetGame());
+		auto vision_component = new EnemyVisionComponent(vision_parent_, 510);
 		vision_component->SetParent(this->owner_);
 	}
 

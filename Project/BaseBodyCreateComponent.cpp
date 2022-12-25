@@ -7,9 +7,9 @@ namespace enemy
 {
 	void BaseBodyCreateComponent::Start()
 	{
-		parent_ = new DummyActor(this->owner_->GetGame());
-		parent_->SetPosition(owner_->GetPosition());
-		auto base_body_ = new BaseBodyComponent(parent_, 520);
+		body_parent_ = new DummyActor(this->owner_->GetGame());
+		body_parent_->SetPosition(owner_->GetPosition());
+		auto base_body_ = new BaseBodyComponent(body_parent_, 520);
 		base_body_->SetParent(this->owner_);
 	}
 

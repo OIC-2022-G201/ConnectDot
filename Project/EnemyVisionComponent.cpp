@@ -10,13 +10,13 @@ namespace enemy {
 		is_find_ = false;
 		is_change_ = false;
 
-		if(parent_->GetComponent<EnemyComponent>().lock()==nullptr)
+		if(vision_parent_->GetComponent<EnemyComponent>().lock()==nullptr)
 		{
-			prev_direction = parent_->GetComponent<SecondEnemyComponent>().lock()->GetDirection();
-			owner_->SetPosition(parent_->GetPosition());
+			prev_direction = vision_parent_->GetComponent<SecondEnemyComponent>().lock()->GetDirection();
+			owner_->SetPosition(vision_parent_->GetPosition());
 		}
 		else
-			prev_direction = parent_->GetComponent<EnemyComponent>().lock()->GetDirection();
+			prev_direction = vision_parent_->GetComponent<EnemyComponent>().lock()->GetDirection();
 
 		collision_ = new CollisionComponent(owner_);
 		collision_->SetShape(find_rect_);
@@ -36,12 +36,12 @@ namespace enemy {
 
 	void EnemyVisionComponent::Update()
 	{
-		if (parent_->GetComponent<EnemyComponent>().lock() == nullptr)
-			direction = parent_->GetComponent<SecondEnemyComponent>().lock()->GetDirection();
+		if (vision_parent_->GetComponent<EnemyComponent>().lock() == nullptr)
+			direction = vision_parent_->GetComponent<SecondEnemyComponent>().lock()->GetDirection();
 		else
 		{
-			owner_->SetPosition(parent_->GetPosition());
-			direction = parent_->GetComponent<EnemyComponent>().lock()->GetDirection();
+			owner_->SetPosition(vision_parent_->GetPosition());
+			direction = vision_parent_->GetComponent<EnemyComponent>().lock()->GetDirection();
 		}
 
 		if (direction != prev_direction) {

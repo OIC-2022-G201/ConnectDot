@@ -22,6 +22,7 @@ namespace base_engine {
 
 bool Game::Initialize() {
   game_data_.Register();
+  actors_.reserve(1024);
   scene::SceneManager::Instance().Register(this);
   button::ButtonCommandEventContainer::Instance().SetGame(this);
   //  auto inputActor = new base_engine::InputActor(this);
@@ -173,7 +174,6 @@ void Game::UpdateGame() {
 }
 
 void Game::Clear() {
-  clear_wait_actors_ = true;
   pending_actors_.clear();
   actors_.clear();
   actors_next_frame_delete_.clear();

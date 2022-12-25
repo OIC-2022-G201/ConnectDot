@@ -25,7 +25,7 @@ class CollisionComponent : public Component {
   ~CollisionComponent() override;
 
   [[nodiscard]] IShape* GetShape() const;
-  void SetShape(const std::shared_ptr<IShape>& shape);
+  void SetShape(const std::shared_ptr<IShape> shape);
   void Sync();
   physics::Manifold Collision(const CollisionComponent* target) const;
   void SetTargetFilter(const std::bitset<kCollisionFilterSize>& layer);
@@ -52,13 +52,15 @@ class CollisionComponent : public Component {
   void SyncPosition();
 
  private:
-  std::shared_ptr<class IShape> shape_;
+  std::shared_ptr<class IShape> shape_{};
   std::bitset<kCollisionFilterSize> target_layer_;
   std::bitset<kCollisionFilterSize> object_layer_;
   class PhysicsBodyComponent* body_ = nullptr;
   bool is_trigger_ = false;
   physics::PhysicsBody* physics_body_ = nullptr;
   [[nodiscard]] Vector2 GetPosition() const { return owner_->GetPosition(); }
+
+  bool is_start_ = false;
 };
 inline bool CollisionComponent::IsMatch(CollisionComponent* target) const {
   return ((target_layer_ & target->object_layer_) != 0) ||
