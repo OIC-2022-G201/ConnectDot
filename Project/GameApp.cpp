@@ -59,8 +59,9 @@ struct Test3 {
 MofBool CGameApp::Initialize(void) {
   CUtilities::SetCurrentDirectory("Resource");
   // CGraphicsUtilities::SetCamera(&camera_);
-  // g_pGraphics->SetScreenMode(false);
+
   g_pGraphics->SetCullMode(CULLMODE_NONE);
+  ShowCursor(false);
   game_.Initialize();
   return TRUE;
 }
@@ -75,6 +76,11 @@ MofBool CGameApp::Update(void) {
   //キーの更新
   g_pInput->RefreshKey();
   game_.Update();
+  if (g_pInput->IsKeyPush(MOFKEY_0))
+  {
+    PostQuitMessage(0);
+  }
+
   return TRUE;
 }
 /*************************************************************************//*!
@@ -103,5 +109,6 @@ MofBool CGameApp::Render(void) {
 *//**************************************************************************/
 MofBool CGameApp::Release(void) {
   game_.Shutdown();
+  g_pGraphics->SetScreenMode(true);
   return TRUE;
 }

@@ -107,39 +107,7 @@ public:
 
   [[nodiscard]] const b2Filter& GetFilterData() const { return m_filter; }
 
-  void ReFilter() {
-
-    if (m_body == nullptr) {
-      return;
-    }
-    /*
-    // Flag associated contacts for filtering.
-    b2ContactEdge* edge = m_body->GetContactList();
-    while (edge) {
-      PhysicsContact* contact = edge->contact;
-      PhysicsFixture* fixtureA = contact->GetFixtureA();
-      PhysicsFixture* fixtureB = contact->GetFixtureB();
-      if (fixtureA == this || fixtureB == this) {
-        contact->FlagForFiltering();
-      }
-
-      edge = edge->next;
-    }
-
-    PhysicsWorld* world = m_body->GetWorld();
-    if (world == nullptr) {
-      return;
-    }
-
-    // Touch each proxy so that new pairs may be created
-    bp::BroadPhase* broadPhase = &world->m_contactManager.m_broadPhase;
-    for (int32_t i = 0; i < m_proxyCount; ++i) {
-      broadPhase->TouchProxy(m_proxies[i].proxyId);
-    }
-    */
-    
-
-  }
+  void ReFilter();
 
   PhysicsBody* GetBody() { return m_body; }
   [[nodiscard]] const PhysicsBody* GetBody() const { return m_body; }

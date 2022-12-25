@@ -3,6 +3,7 @@
 #include "BroadPhase.h"
 #include "PhysicsBlockAllocator.h"
 #include "PhysicsCircleShape.h"
+#include "PhysicsContact.h"
 #include "PhysicsPolygonShape.h"
 // @PhysicsFixture.cpp
 // @brief
@@ -10,9 +11,34 @@
 // @date 2022/10/17
 //
 // @details
+
+
 namespace base_engine::physics {
+	void PhysicsFixture::ReFilter()
+	{
+
+		if (m_body == nullptr) {
+			return;
+		}
+		
+    // Flag associated contacts for filtering.
+    b2ContactEdge* edge = m_body->GetContactList();
+    while (edge) {
+      PhysicsContact* contact = edge->contact;
+      PhysicsFixture* fixtureA = contact->GetFixtureA();
+      PhysicsFixture* fixtureB = contact->GetFixtureB();
+      if (fixtureA == this || fixtureB == this) {
+        contact->FlagForFiltering();
+      }
+
+      edge = edge->next;
+    }
+    
+
+	}
+
 void PhysicsFixture::Create(PhysicsBlockAllocator* allocator, PhysicsBody* body,
-                            const PhysicsFixtureDef* def) {
+	                            const PhysicsFixtureDef* def) {
   m_userData = def->userData;
   m_friction = def->friction;
   m_restitution = def->restitution;

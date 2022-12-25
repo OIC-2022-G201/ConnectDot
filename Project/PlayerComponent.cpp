@@ -159,11 +159,13 @@ base_engine::Actor* PlayerComponent::GetOwner() const { return owner_; }
 
 void PlayerComponent::SetMap(const TileMapWeak& map) { map_ = map; }
 
-void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(); }
+void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(300); }
 
 void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
 void PlayerComponent::Update() {
+  const auto aabb = collision_.lock()->AABB();
+  sound_effect_->SetPosition({aabb.GetCenter().x,aabb.Bottom});
   physics_body_.lock()->AddForce({0, kGravity});
   machine_.Update();
 

@@ -1,3 +1,4 @@
+Electro_purpleAnimation Animation  Effect/Electro_purple/Electro_purpleAnimation/Electro_purpleAnimation.aei
 SoundAnimation Animation Effect/Sound/SoundAnimation/Sound_MotionChip.png Effect/Sound/SoundAnimation/Sound.aei
 Beacon Animation gimmick/Objects/Beacon/Beacon.png gimmick/Objects/Beacon/Beacon_Animation.aei
 BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
@@ -16,6 +17,16 @@ mapchip Sprite mapchip/Stage1.png
 Gameover Sprite UI/Gameover/gameover.png
 ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
 RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png
+0 Sprite UI/Ingame/Number/0/0.png
+1 Sprite UI/Ingame/Number/1/1.png
+2 Sprite UI/Ingame/Number/2/2.png
+3 Sprite UI/Ingame/Number/3/3.png
+4 Sprite UI/Ingame/Number/4/4.png
+5 Sprite UI/Ingame/Number/5/5.png
+6 Sprite UI/Ingame/Number/6/6.png
+7 Sprite UI/Ingame/Number/7/7.png
+8 Sprite UI/Ingame/Number/8/8.png
+9 Sprite UI/Ingame/Number/9/9.png
 Nextbutton Sprite UI/Nextbutton/Nextlogo.png
 Panel Sprite UI/Panel/Panel.png
 Popup Sprite UI/Popup/Result.png

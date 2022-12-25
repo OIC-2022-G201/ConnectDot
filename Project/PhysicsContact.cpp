@@ -12,6 +12,9 @@ b2ContactRegister
 
 bool PhysicsContact::s_initialized = false;
 
+void PhysicsContact::FlagForFiltering()
+{ m_flags |= e_filterFlag; }
+
 void PhysicsContact::AddType(b2ContactCreateFcn* createFcn,
                              b2ContactDestroyFcn* destroyFcn,
                              b2Shape::Type typeA, b2Shape::Type typeB) {

@@ -15,6 +15,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   Info.pApplication = new CGameApp();
   Info.WindowCreateInfo.Width = window::kWidth;
   Info.WindowCreateInfo.Height = window::kHeight;
+  //Info.GraphicsCreateInfo.bWindowed = false;
   pFrame->Initialize(&Info);
   pFrame->Run();
   MOF_SAFE_DELETE(pFrame);

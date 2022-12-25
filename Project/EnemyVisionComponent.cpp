@@ -3,6 +3,7 @@
 #include "EnemyComponent.h"
 #include "SecondEnemyComponent.h"
 #include "CollisionLayer.h"
+#include "InputManager.h"
 #include "ShapeRenderComponent.h"
 namespace enemy {
 	void EnemyVisionComponent::Start()
@@ -21,7 +22,9 @@ namespace enemy {
 		collision_ = new CollisionComponent(owner_);
 		collision_->SetShape(find_rect_);
 		collision_->SetObjectFilter(CollisionLayer::kNone);
-		collision_->SetTargetFilter(kPlayerObjectFilter);
+                const auto filter =
+                    BitCollisionLayer{kPlayerObjectFilter};
+		collision_->SetTargetFilter(kEnemyVisionTargetFilter);
 		collision_->SetTrigger(true);
 
 		debug_render_ = new ShapeRenderComponent(owner_, 200);
@@ -80,10 +83,12 @@ namespace enemy {
 
 	void EnemyVisionComponent::OnCollision(const SendManifold& manifold)
 	{
-		if (manifold.collision_b->GetObjectFilter() == manifold.collision_a->GetTargetFilter())
-		{
+          if (InputManager::Instance()->ActionFire())
+          {
+            int n = 3;
+          }
 			is_find_ = true;
 			player_center_ = manifold.collision_b->AABB().GetCenter();
-		}
+		
 	}
 }

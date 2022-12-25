@@ -22,9 +22,10 @@ class CollisionLayer final {
     kMachineFilter = 1 << 4,
     kReceiverFilter = 1 << 5,
     kSenderFilter = 1 << 6,
+    kSoundFilter = 1 << 7,
     kElectricityAreaFilter = 1 << 8,
 
-    kActionable = 1 << 7,
+    kActionable = 1 << 9,
 
   };
 
@@ -54,6 +55,8 @@ constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter |
 constexpr BitCollisionLayer kEnemyObjectFilter{CollisionLayer::kEnemyFilter};
 constexpr BitCollisionLayer kEnemyTargetFilter{CollisionLayer::kFieldFilter |
                                                CollisionLayer::kPlayerFilter};
+constexpr BitCollisionLayer kEnemyVisionTargetFilter{CollisionLayer::kSoundFilter |
+                                               CollisionLayer::kPlayerFilter};
 
 //! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{
@@ -82,7 +85,14 @@ constexpr BitCollisionLayer kLeverObjectFilter{CollisionLayer::kActionable};
 
 constexpr BitCollisionLayer kLeverTargetFilter{CollisionLayer::kNone};
 
+//! Goal
 constexpr BitCollisionLayer kGoalTargetFilter{CollisionLayer::kPlayerFilter};
+
+//! SoundEffect
+constexpr BitCollisionLayer kSoundObjectFilter{CollisionLayer::kSoundFilter};
+
+constexpr BitCollisionLayer kSoundTargetFilter{CollisionLayer::kNone};
+
 
 //! MoveFloor
 constexpr BitCollisionLayer kMoveFloorObjectFilter{

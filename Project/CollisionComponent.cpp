@@ -44,7 +44,7 @@ void CollisionComponent::SetTargetFilter(
     if (!physics_body_->GetFixtureList()) return;
 
     auto filter = physics_body_->GetFixtureList()->GetFilterData();
-    filter.maskObjectBits = object_layer_.to_ulong();
+    filter.maskTargetBits = target_layer_.to_ulong();
     physics_body_->GetFixtureList()->SetFilterData(filter);
   }
 }
