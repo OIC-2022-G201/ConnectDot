@@ -109,6 +109,7 @@
     <ClCompile Include="Easer.cpp" />
     <ClCompile Include="EaseType.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
+    <ClCompile Include="GameOverSceneFactory.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
     <ClCompile Include="NinePatchImageComponent.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
     <ClCompile Include="Tween.cpp" />
+    <ClCompile Include="UiFactoryUtilities.cpp" />
     <ClCompile Include="UiPackage.cpp" />
     <ClCompile Include="ButtonSelecter.cpp" />
     <ClCompile Include="CameraComponent.cpp" />
@@ -267,6 +269,7 @@
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EaseType.h" />
     <ClInclude Include="FollowComponent.h" />
+    <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ITween.h" />
@@ -281,6 +284,7 @@
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="Tween.h" />
+    <ClInclude Include="UiFactoryUtilities.h" />
     <ClInclude Include="UiFrozen.h" />
     <ClInclude Include="UiPackage.h" />
     <ClInclude Include="ButtonSelecter.h" />

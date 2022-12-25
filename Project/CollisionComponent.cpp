@@ -18,9 +18,9 @@ CollisionComponent::CollisionComponent(Actor* owner, int update_order)
 
 IShape* CollisionComponent::GetShape() const { return shape_.get(); }
 
-void CollisionComponent::SetShape(const std::shared_ptr<IShape>& shape) {
+void CollisionComponent::SetShape(const std::shared_ptr<IShape> shape) {
   shape_ = shape;
-  if (owner_->GetState() == Actor::kActive) {
+  if (is_start_) {
     Sync();
   }
 }
@@ -32,6 +32,7 @@ void CollisionComponent::Sync() {
 
 physics::Manifold CollisionComponent::Collision(
     const CollisionComponent* target) const {
+  if (GetShape()==nullptr || target->GetShape() == nullptr) return physics::Manifold{};
   return physics::detector::Gjk::Detect(
       *GetShape(), GetPosition(), *target->GetShape(), target->GetPosition());
 }
@@ -40,6 +41,8 @@ void CollisionComponent::SetTargetFilter(
     const std::bitset<kCollisionFilterSize>& layer) {
   target_layer_ = layer;
   if (physics_body_) {
+    if (!physics_body_->GetFixtureList()) return;
+
     auto filter = physics_body_->GetFixtureList()->GetFilterData();
     filter.maskObjectBits = object_layer_.to_ulong();
     physics_body_->GetFixtureList()->SetFilterData(filter);
@@ -55,6 +58,7 @@ void CollisionComponent::SetObjectFilter(
     const std::bitset<kCollisionFilterSize>& layer) {
   object_layer_ = layer;
   if (physics_body_) {
+    if (!physics_body_->GetFixtureList()) return;
     auto filter = physics_body_->GetFixtureList()->GetFilterData();
     filter.maskObjectBits = object_layer_.to_ulong();
     physics_body_->GetFixtureList()->SetFilterData(filter);
@@ -76,7 +80,11 @@ CollisionComponent::~CollisionComponent() {
 
 void CollisionComponent::Update() {}
 
-void CollisionComponent::Start() { BASE_ENGINE(Collider)->Register(this); }
+void CollisionComponent::Start()
+{
+  is_start_ = true;
+	BASE_ENGINE(Collider)->Register(this);
+}
 
 PhysicsBodyComponent* CollisionComponent::GetPhysicsBody() {
   if (!body_) {

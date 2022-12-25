@@ -37,7 +37,7 @@ namespace enemy {
 		bool GetDirection() { return (bool)direction; }
 		void SetDirection(bool dir) { direction = dir; }
 		void ReverseDirection() { direction = !direction; }
-		EnemyVisionComponent* GetVision() { return owner_->GetComponent<VisionCreateComponent>().lock()->GetParent()->GetComponent<EnemyVisionComponent>().lock().get(); }
+		EnemyVisionComponent* GetVision() { return owner_->GetComponent<VisionCreateComponent>().lock()->GetVisionParent()->GetComponent<EnemyVisionComponent>().lock().get(); }
 		ISpriteAnimationComponent* GetAnimator() { return animator_.lock().get(); }
 	};
 }

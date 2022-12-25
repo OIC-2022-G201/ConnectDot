@@ -35,7 +35,7 @@ class SceneManager {
   base_engine::Game* game_ = nullptr;
   std::unordered_map<std::string_view, std::unique_ptr<ISceneFactory>>
       factory_map_;
-
+  std::vector<std::string> stack_;
  public:
   static SceneManager& Instance() {
     static SceneManager instance;
@@ -46,21 +46,32 @@ class SceneManager {
 
   bool LoadScene(const std::string_view name) {
     if (!game_) return false;
+    const std::string name_str = name.data();
 
-    return SingleSceneLoad(name);
+    game_->SetNextFrameEvent([name_str, this]() { SingleSceneLoad(name_str); });
+        
+    return false;
   }
 
   bool LoadScene(const std::string_view name, const LoadSceneMode mode) {
     if (!game_) return false;
+    const std::string name_str = name.data();
     switch (mode) {
       case LoadSceneMode::kSingle:
-        return SingleSceneLoad(name);
+        game_->SetNextFrameEvent(
+            [name_str, this]() { SingleSceneLoad(name_str); });
+        break;
       case LoadSceneMode::kAdditive:
-        return AdditiveSceneLoad(name);
+        game_->SetNextFrameEvent(
+            [name_str, this]() { AdditiveSceneLoad(name_str); });
+        break;
     }
-    return false;
+    return true;
   }
-
+  void Create(const std::string_view name)
+  {
+  	factory_map_[name]->Factory();
+  }
  private:
   bool SingleSceneLoad(const std::string_view name);
 

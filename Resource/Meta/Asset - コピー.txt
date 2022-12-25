@@ -1,0 +1,7 @@
+Beacon Animation gimmick/Objects/Beacon/Beacon.png gimmick/Objects/Beacon/Beacon_Animation.aei
+BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
+BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
+BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
+TitleLogo Sprite UI/Title/TitleLogo/Titlelogo.png
+QuitGameButton Button UI/Title/QuitGameButton/Quitgame.png UI/Title/QuitGameButton/Quitgame2.png
+StartGameButton Button UI/Title/StartGameButton/Startgame.png UI/Title/StartGameButton/Startgame2.png

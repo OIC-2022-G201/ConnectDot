@@ -22,6 +22,7 @@ namespace base_engine {
 
 bool Game::Initialize() {
   game_data_.Register();
+  actors_.reserve(1024);
   scene::SceneManager::Instance().Register(this);
   button::ButtonCommandEventContainer::Instance().SetGame(this);
   //  auto inputActor = new base_engine::InputActor(this);
@@ -115,6 +116,11 @@ void Game::RemoveSprite(RenderComponent* render_component) {
 }
 
 void Game::CreateObjectRegister() {
+  for (int i = 0; i < next_frame_event_.size(); ++i) {
+    next_frame_event_[i]();
+  }
+  next_frame_event_.clear();
+
   updating_actors_ = true;
   for (auto&& actor : actors_next_frame_delete_)
   {
@@ -168,7 +174,6 @@ void Game::UpdateGame() {
 }
 
 void Game::Clear() {
-  clear_wait_actors_ = true;
   pending_actors_.clear();
   actors_.clear();
   actors_next_frame_delete_.clear();
@@ -190,6 +195,11 @@ void Game::RemoveScene(Scene* scene) {
     std::iter_swap(iter, scenes_.end() - 1);
     scenes_.pop_back();
   }
+}
+
+void Game::SetNextFrameEvent(const std::function<void()>& event)
+{
+	next_frame_event_.emplace_back(event);
 }
 
 void Game::Render() const {

@@ -17,7 +17,7 @@ class ButtonCommandEventContainer {
   using EventHashType = std::hash<std::string>;
   std::unordered_map<size_t, std::function<void()>> event_map_;
   void Register();
-  void RegisterKey(EventKey key, const std::function<void()>& action);
+  void RegisterKey(const EventKey& key, const std::function<void()>& action);
   base_engine::Game* game_;
 
  public:

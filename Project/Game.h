@@ -35,6 +35,9 @@ class Game {
   void AddScene(std::string_view name,const size_t index);
 
   void RemoveScene(Scene* scene);
+
+  void SetNextFrameEvent(const std::function<void()>& event);
+
 private:
   void CreateObjectRegister();
   void ProcessInput();
@@ -55,6 +58,8 @@ private:
   std::unique_ptr<GameManager> game_manager_;
   std::shared_ptr<ResourceContainer> resource_container_;
   std::vector<std::shared_ptr<Scene>> scenes_;
+  std::vector<std::function<void()>> next_frame_event_;
+
  public:
   std::vector<std::function<void()>> debug_render_;
 };

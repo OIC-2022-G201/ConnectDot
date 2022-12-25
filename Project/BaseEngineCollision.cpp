@@ -99,33 +99,35 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
   PhysicsFixtureDef fixture_def;
   fixture_def.filter.maskTargetBits = component->GetTargetFilter().to_ulong();
   fixture_def.filter.maskObjectBits = component->GetObjectFilter().to_ulong();
-  switch (const auto collision_shape = component->GetShape();
-          collision_shape->GetType()) {
-    case ShapeType::kNone:
-      break;
-    case ShapeType::kRect: {
-      b2PolygonShape shape;
-      const auto rect = component->GetShape()->AABB();
-      shape.SetAsRect(rect.Left, rect.Top, rect.Right, rect.Bottom);
+  const auto collision_shape = component->GetShape();
+  if (collision_shape != nullptr) {
+    switch (collision_shape->GetType()) {
+      case ShapeType::kNone:
+        break;
+      case ShapeType::kRect: {
+        b2PolygonShape shape;
+        const auto rect = component->GetShape()->AABB();
+        shape.SetAsRect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 
-      fixture_def.shape = &shape;
-      fixture_def.collision = component;
-      body->CreateFixture(&fixture_def);
-    } break;
-    case ShapeType::kCircle: {
-      physics::b2CircleShape shape;
-      const auto circle = static_cast<Circle*>(component->GetShape());
-      shape.m_p.x = circle->Position.x;
-      shape.m_p.y = circle->Position.y;
-      shape.m_radius = static_cast<Circle*>(component->GetShape())->r;
+        fixture_def.shape = &shape;
+        fixture_def.collision = component;
+        body->CreateFixture(&fixture_def);
+      } break;
+      case ShapeType::kCircle: {
+        physics::b2CircleShape shape;
+        const auto circle = static_cast<Circle*>(component->GetShape());
+        shape.m_p.x = circle->Position.x;
+        shape.m_p.y = circle->Position.y;
+        shape.m_radius = static_cast<Circle*>(component->GetShape())->r;
 
-      fixture_def.shape = &shape;
-      fixture_def.collision = component;
-      body->CreateFixture(&fixture_def);
-    } break;
-    case ShapeType::kPoint:
-      break;
-    default:;
+        fixture_def.shape = &shape;
+        fixture_def.collision = component;
+        body->CreateFixture(&fixture_def);
+      } break;
+      case ShapeType::kPoint:
+        break;
+      default:;
+    }
   }
 
   float minX = -6.0f;
@@ -141,7 +143,9 @@ void BaseEngineCollision::Remove(CollisionComponent* component) {
                    body_list_.end());
 
   const auto body = component->GetEnginePhysicsBody();
-  if (!body)return;
+  if (!body) {
+    return;
+  }
   world_->DestroyBody(body);
 }
 

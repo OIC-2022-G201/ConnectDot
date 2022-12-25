@@ -12,7 +12,7 @@ namespace enemy
 	{
 		bool is_find_ = false, is_change_ = false, direction = false, prev_direction = false;
 		int reverse_width_;
-		Actor* parent_;
+		Actor* vision_parent_;
 
 		CollisionComponent* collision_;
 		std::shared_ptr<Rect> find_rect_, chase_rect_;
@@ -21,11 +21,11 @@ namespace enemy
 
 	public:
 		explicit EnemyVisionComponent(Actor* owner, int update_order) :Component(owner, update_order) {};
-		~EnemyVisionComponent() {};
+		~EnemyVisionComponent() override {};
 		void Start() override;
 		void ProcessInput() override;
 		void Update() override;
-		void SetParent(Actor* parent) { parent_ = parent; }
+		void SetParent(Actor* parent) { vision_parent_ = parent; }
 		void OnCollision(const SendManifold& manifold) override;
 		bool IsFindPlayer() { return is_find_; }
 		Vector2 GetPlayerCenter() { return player_center_; }

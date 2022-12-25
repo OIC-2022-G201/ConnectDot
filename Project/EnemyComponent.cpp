@@ -9,27 +9,23 @@
 namespace enemy {
 	void EnemyComponent::Start() {
 
-		owner_->GetGame()->debug_render_.emplace_back([this]() {
-			Mof::CGraphicsUtilities::RenderString(0, 180, "e_State:%d",
-				machine_.current_state());
-
-			Mof::CGraphicsUtilities::RenderString(0, 210, "e_force:x:%f,y:%f",
-				physics_body_.lock()->GetForce().x,
-				physics_body_.lock()->GetForce().y);
-			});
-
+          sprite_ = owner_->GetComponent<SpriteComponent>();
+          animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
+          animator_.lock()->Load(sprite_.lock().get(),
+                                 "LivingEntity/Enemy/Enemy2.aei");
+          sprite_.lock()->SetImage(
+              BASE_ENGINE(Texture)->Get(texture::kEnemyTextureKey));
+		  
 		const auto enemy_shape = std::make_shared<Rect>(0, 0, 256, 256);
 		physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
 		collision_ = owner_->GetComponent<CollisionComponent>();
 		collision_.lock()->SetShape(enemy_shape);
+
 		owner_->GetComponent<ShapeRenderComponent>().lock().get()->SetShape(enemy_shape);
 		GetVision()->SetFindRect(std::make_shared<Rect>(-256, 0, 256, 256));
 		GetVision()->SetChaseRect(std::make_shared<Rect>(-256, -256, 512, 512));
 		GetVision()->SetReverseWidth(256);
-		sprite_ = owner_->GetComponent<SpriteComponent>();
-		animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
-		animator_.lock()->Load(sprite_.lock().get(), "LivingEntity/Enemy/Enemy2.aei");
-		sprite_.lock()->SetImage(BASE_ENGINE(Texture)->Get(texture::kEnemyTextureKey));
+
 		machine_.TransitionTo<EnemyMove>();
 	}
 
