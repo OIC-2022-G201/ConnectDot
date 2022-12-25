@@ -451,6 +451,12 @@
     <Filter Include="BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent">
       <UniqueIdentifier>{997ebe45-3f69-4ddb-884a-ac272d4e6b6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Gameover">
+      <UniqueIdentifier>{316e0b43-6474-4e73-81fe-9c7f7c43897b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\Utilities">
+      <UniqueIdentifier>{8f6615e7-00a6-4a26-bb4f-ae32ffc8a91c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -902,6 +908,12 @@
     </ClCompile>
     <ClCompile Include="NinePatchImageComponent.cpp">
       <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverSceneFactory.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="UiFactoryUtilities.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1561,6 +1573,12 @@
     </ClInclude>
     <ClInclude Include="NinePatchImageComponent.h">
       <Filter>BaseEngine\Component\RenderComponent\Canvas\NinePatchRenderComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverSceneFactory.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Scene\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="UiFactoryUtilities.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

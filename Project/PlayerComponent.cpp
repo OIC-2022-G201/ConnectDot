@@ -10,6 +10,7 @@
 #include "CollisionLayer.h"
 #include "EventBus.h"
 #include "EventHandler.h"
+#include "GameOverSceneFactory.h"
 #include "GoalEffectActor.h"
 #include "GoalEvent.h"
 #include "IMachineActionable.h"
@@ -185,7 +186,7 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   const auto actor = manifold.collision_b->GetActor();
   if (actor->GetTag() == "Enemy")
   {
-    scene::LoadScene(scene::kTitle);
+    scene::LoadScene(kGameOver);
     return;
   }
 	machine_.OnEvent(manifold.collision_b);

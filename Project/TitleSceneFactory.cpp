@@ -36,24 +36,7 @@ auto ImageCreate(Game* game, std::string_view key) {
   } result = {actor, image};
   return result;
 }
-auto ButtonCreate(Game* game, InputManager* input,
-                  const std::string_view key1) {
-  auto button_pack = RC::GetResource<ResourceContainer::ButtonResourcePack,
-                                     ButtonResourcePackage>(key1.data());
 
-  const auto button = new Button(game);
-  button->SetButtonSprite(button_pack->sprites[0]);
-  button->SetChangeButtonSprite(button_pack->sprites[1]);
-  const auto selector = new ButtonSelecter(game);
-
-  selector->ButtonRegister(0, 0, button);
-  selector->SetInput(input);
-  const struct {
-    Button* button;
-    ButtonSelecter* selector;
-  } result = {button, selector};
-  return result;
-}
 auto ButtonCreate(Game* game, ButtonSelecter* selector,
                   const ButtonFrozenPack& button_data) {
   const auto button_pack =

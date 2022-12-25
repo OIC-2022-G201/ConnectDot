@@ -1,5 +1,6 @@
 ﻿#include "SceneManager.h"
 
+#include "GameOverSceneFactory.h"
 #include "Scene.h"
 #include "StageSceneFactory.h"
 #include "TitleSceneFactory.h"
@@ -10,6 +11,7 @@ bool SceneManager::Register(Game* game) {
   game_ = game;
   factory_map_[kGame] = std::make_unique<StageSceneFactory>(game_);
   factory_map_[kTitle] = std::make_unique<TitleSceneFactory>(game_);
+  factory_map_[kGameOver] = std::make_unique<GameOverSceneFactory>(game_);
 
   return true;
 }

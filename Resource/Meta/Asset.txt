@@ -1,7 +1,25 @@
+SoundAnimation Animation Effect/Sound/SoundAnimation/Sound_MotionChip.png Effect/Sound/SoundAnimation/Sound.aei
 Beacon Animation gimmick/Objects/Beacon/Beacon.png gimmick/Objects/Beacon/Beacon_Animation.aei
 BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
 BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
 BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
-TitleLogo Sprite UI/Title/TitleLogo/Titlelogo.png
+checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
+Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
+Elevator Sprite gimmick/Objects/Elevator/Elevator.png
+Lever Sprite gimmick/Objects/Lever/Lever.png
+Movefloor Sprite gimmick/Objects/Movefloor/Movefloor.png
+SingboardCrouching Animation gimmick/Objects/Signboard/SingboardCrouching/Signboard_crouching_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardCrouching/Signboard_crouching_Animation.aei
+SingboardEkey Animation gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation.aei
+SingboardJamp Animation gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation.aei
+SingboardSet Animation gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation.aei
+mapchip Sprite mapchip/Stage1.png
+Gameover Sprite UI/Gameover/gameover.png
+ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
+RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png
+Nextbutton Sprite UI/Nextbutton/Nextlogo.png
+Panel Sprite UI/Panel/Panel.png
+Popup Sprite UI/Popup/Result.png
+Result Sprite UI/Result/DiagonalLetterBox.png
 QuitGameButton Button UI/Title/QuitGameButton/Quitgame.png UI/Title/QuitGameButton/Quitgame2.png
 StartGameButton Button UI/Title/StartGameButton/Startgame.png UI/Title/StartGameButton/Startgame2.png
+TitleLogo Sprite UI/Title/TitleLogo/Titlelogo.png

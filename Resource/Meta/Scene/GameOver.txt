@@ -1,0 +1,3 @@
+ Image 300 300 Gameover 
+ Button 725 700 RetryButton 0 0 RetryButtonEvent 
+ Button 725 800 ExitButton 0 1 ExitButtonEvent 
