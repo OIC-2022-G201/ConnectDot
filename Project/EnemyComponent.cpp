@@ -34,7 +34,6 @@ namespace enemy {
 	}
 
 	void EnemyComponent::Update() {
-          return;
 		direction.Subscribe([this](const bool dir)
 			{
 				switch (dir)
@@ -48,7 +47,7 @@ namespace enemy {
 				}
 			});
 		physics_body_.lock()->AddForce({0, Gravity});
-		//machine_.Update();
+		machine_.Update();
 	}
 
 	void EnemyComponent::OnCollision(const SendManifold& manifold) {
