@@ -4,6 +4,7 @@ BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
 BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
 BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
+CollapsibleBlock Animation gimmick/Objects/CollapsibleBlock/SyutugenSuruYuka_MotionChip.png gimmick/Objects/CollapsibleBlock/SyutugenSuruYuka.aei
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
 Elevator Sprite gimmick/Objects/Elevator/Elevator.png
 Lever Sprite gimmick/Objects/Lever/Lever.png
