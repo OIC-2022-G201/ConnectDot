@@ -11,11 +11,12 @@ int PowerSupplyUnitReceiver::Sequential() { return sequential_; }
 bool PowerSupplyUnitReceiver::PowerJoinCondition() { return true; }
 
 void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
-  if (!target_) {
-    target_ = actor_->GetTarget();
+  if (targets_.empty()) {
+    targets_ = actor_->GetTarget();
   }
-  if (!target_) return;
-  receiver_ = target_->GetComponent<ReceiverComponent>();
+  if (targets_.empty()) return;
+  receivers_.clear();
+
   if (transmitter) {
     if (const auto receiver =
             transmitter->GetOwner().lock()->GetComponent<ReceiverComponent>();
@@ -24,22 +25,31 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
     }
   }
   actor_->SetElectricPower(true);
-  sender_->AddTarget(receiver_);
+  std::ranges::transform(targets_, std::back_inserter(receivers_),
+                         [](const base_engine::Actor* actor) {
+                           return actor->GetComponent<ReceiverComponent>();
+                         });
+
+  for (const auto& weak_ptr : receivers_) {
+    sender_->AddTarget(weak_ptr);
+  }
 }
 
 void PowerSupplyUnitReceiver::OnPowerChanged(
     TransmitterComponent* transmitter) {
-  if (!target_) return;
+  if (targets_.empty()) return;
 
-  sender_->AddTarget(receiver_);
+  for (const auto& weak_ptr : receivers_) {
+    sender_->AddTarget(weak_ptr);
+  }
 }
 
 void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter) {
   sequential_ = -1;
-  if (!target_) return;
+  if (targets_.empty()) return;
 
   actor_->SetElectricPower(false);
-  receiver_.reset();
+  receivers_.clear();
 }
 
 bool PowerSupplyUnitReceiver::IsWireless() { return true; }

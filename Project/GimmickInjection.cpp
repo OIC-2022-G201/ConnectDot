@@ -4,6 +4,7 @@
 
 #include "DIActorContainer.h"
 #include "DoorComponent.h"
+#include "EnemyActor.h"
 #include "GoalComponent.h"
 #include "LeverStubActor.h"
 #include "MoveFloorStubActor.h"
@@ -12,7 +13,6 @@
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
 #include "VentComponent.h"
-#include "EnemyActor.h"
 
 using namespace base_engine;
 using namespace std::string_view_literals;
@@ -20,6 +20,7 @@ using namespace std::string_view_literals;
 #pragma region GimmickName
 constexpr std::string_view kDoorName = "Door"sv;
 constexpr std::string_view kPowerSupplyName = "Powersupply"sv;
+constexpr std::string_view kMultiPowerSupplyName = "MultiPowersupply"sv;
 constexpr std::string_view kStartPowerSupplyName = "StartPowersupply"sv;
 constexpr std::string_view kLeverName = "Lever"sv;
 constexpr std::string_view kMoveFloorName = "Movefloor"sv;
@@ -44,19 +45,22 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                             const LoadObject& object);
 
   static Actor* MoveFloorCreate(GimmickCreator* instance, Game* game,
-                            const LoadObject& object);
+                                const LoadObject& object);
   static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
-  static Actor* PylonCreate(GimmickCreator* instance, Game* game,
+
+  static Actor* MultiPowerSupplyCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
+  static Actor* PylonCreate(GimmickCreator* instance, Game* game,
+                            const LoadObject& object);
   static Actor* SignboardCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
   static Actor* GoalCreate(GimmickCreator* instance, Game* game,
-                                const LoadObject& object);
+                           const LoadObject& object);
   static Actor* VentCreate(GimmickCreator* instance, Game* game,
-                                const LoadObject& object);
+                           const LoadObject& object);
   static Actor* EnemyCreate(GimmickCreator* instance, Game* game,
-                                const LoadObject& object);
+                            const LoadObject& object);
 
   static Actor* DoorCreate(GimmickCreator* instance, Game* game,
                            const LoadObject& object);
@@ -71,8 +75,8 @@ using SetupImpl =
 using Gc = GimmickCreator;
 constexpr std::array kGimmickMethodTable = {
     std::tuple{
-        kDoorName,                                 // Name
-        &SetupImpl::DoorCreate,                   // CreateMethod
+        kDoorName,                       // Name
+        &SetupImpl::DoorCreate,          // CreateMethod
         &Gc::FactoryRegister<DoorActor>  // FactoryRegister
     },
     std::tuple{
@@ -81,23 +85,28 @@ constexpr std::array kGimmickMethodTable = {
         &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
     },
     std::tuple{
-        kStartPowerSupplyName,                           // Name
-        &SetupImpl::PylonCreate,              // CreateMethod
+        kMultiPowerSupplyName,                           // Name
+        &SetupImpl::MultiPowerSupplyCreate,              // CreateMethod
+        &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
+    },
+    std::tuple{
+        kStartPowerSupplyName,            // Name
+        &SetupImpl::PylonCreate,          // CreateMethod
         &Gc::FactoryRegister<PylonActor>  // FactoryRegister
     },
     std::tuple{
-        kLeverName,                                // Name
-        &SetupImpl::LeverCreate,                   // CreateMethod
+        kLeverName,                           // Name
+        &SetupImpl::LeverCreate,              // CreateMethod
         &Gc::FactoryRegister<LeverStubActor>  // FactoryRegister
     },
     std::tuple{
-        kMoveFloorName,                            // Name
-        &SetupImpl::MoveFloorCreate,               // CreateMethod
+        kMoveFloorName,                           // Name
+        &SetupImpl::MoveFloorCreate,              // CreateMethod
         &Gc::FactoryRegister<MoveFloorStubActor>  // FactoryRegister
     },
     std::tuple{
-        kVentName,                                 // Name
-        &SetupImpl::VentCreate,                   // CreateMethod
+        kVentName,                       // Name
+        &SetupImpl::VentCreate,          // CreateMethod
         &Gc::FactoryRegister<VentActor>  // FactoryRegister
     },
     std::tuple{
@@ -106,8 +115,8 @@ constexpr std::array kGimmickMethodTable = {
         &Gc::FactoryRegister<SignboardActor>  // FactoryRegister
     },
     std::tuple{
-        kEnemyName,                       // Name
-        &SetupImpl::EnemyCreate,          // CreateMethod
+        kEnemyName,                              // Name
+        &SetupImpl::EnemyCreate,                 // CreateMethod
         &Gc::FactoryRegister<enemy::EnemyActor>  // FactoryRegister
     },
     std::tuple{
@@ -152,9 +161,7 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::LeverCreate(
 
 Actor*
 GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::MoveFloorCreate(
-    GimmickCreator* instance, Game* game,
-    const LoadObject& object)
-{
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
   const auto lever = new MoveFloorStubActor(game);
   lever->Create(object);
 
@@ -173,14 +180,30 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
 
     if (!instance->actor_map_.contains(key)) return;
     const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
-    power_unit->SetTarget(actor);
+    power_unit->AddTarget(actor);
   });
   return power_unit;
 }
 
-Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::PylonCreate(GimmickCreator* instance, Game* game,
-	const LoadObject& object)
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::MultiPowerSupplyCreate(GimmickCreator* instance,
+	Game* game, const LoadObject& object)
 {
+  const auto power_unit = new PowerSupplyUnitActor(game);
+  power_unit->Create(object);
+
+  instance->bind_event_.emplace_back([power_unit, object, instance, game]() {
+    const auto& key =
+        std::get<LoadObject::Prefab>(object.parameters[4]).value.uuid;
+    if (!instance->actor_map_.contains(key)) return;
+    const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
+    power_unit->AddTarget(actor);
+  });
+  return power_unit;
+}
+
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::PylonCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
   const auto pylon = new PylonActor(game);
   pylon->Create(object);
 
@@ -196,39 +219,40 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::SignboardCreate(
   return signboard;
 }
 
-Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::GoalCreate(GimmickCreator* instance, Game* game,
-    const LoadObject& object)
-{
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::GoalCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
   const auto goal = new GoalActor(game);
   goal->Create(object);
 
   return goal;
 }
 
-Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::VentCreate(GimmickCreator* instance, Game* game,
-                                                                                  const LoadObject& object) {
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::VentCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
   const auto vent = new VentActor(game);
   vent->Create(object);
 
   return vent;
 }
 
-Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::DoorCreate(GimmickCreator* instance, Game* game,
-    const LoadObject& object)
-{
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::DoorCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
   const auto door = new DoorActor(game);
   door->Create(object);
 
   return door;
 }
 
-Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::EnemyCreate(GimmickCreator* instance, Game* game, const LoadObject& object)
-{
-    const auto enemy = new enemy::EnemyActor(game);
-    enemy->Create(object);
-    return enemy;
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::EnemyCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object) {
+  const auto enemy = new enemy::EnemyActor(game);
+  enemy->Create(object);
+  return enemy;
 }
-
 
 void GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::Register(
     const std::string_view name, CreatorMethod create_method) {
@@ -261,7 +285,7 @@ void GimmickCreator::FactoryRegister(GimmickCreator* creator,
                                      const std::string_view& key) {
   creator->create_map_[key] = [key, creator]<typename T0>(T0&& PH1) {
     return DiActorContainer::Create<T>(key, creator->game_,
-                                                    std::forward<T0>(PH1));
+                                       std::forward<T0>(PH1));
   };
 }
 

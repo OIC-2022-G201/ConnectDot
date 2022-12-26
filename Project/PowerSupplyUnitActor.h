@@ -24,16 +24,18 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   }
   void SetSequential(const int sequential) { sequential_ = sequential; }
   int Sequential() const { return sequential_; }
-  void SetTarget(const base_engine::ActorWeakPtr& target) { target_ = target; }
-  Actor* GetTarget() const
-  {
-    if (target_.expired()) return nullptr;
-      return target_.lock().get();
+  void AddTarget(const base_engine::ActorWeakPtr& target) {
+    if (target.expired()) return;
+    targets_.emplace_back(target.lock().get());
+  }
+
+  [[nodiscard]] const std::vector<Actor*>& GetTarget() const {
+    return targets_;
   }
   void Create(const LoadObject& object);
 
  private:
+  std::vector<Actor*> targets_;
   observable::ReactiveProperty<bool> electric_power_ = false;
   int sequential_ = 15;
-  base_engine::ActorWeakPtr target_;
 };

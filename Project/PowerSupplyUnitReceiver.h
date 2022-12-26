@@ -14,7 +14,7 @@ class PowerSupplyUnitReceiver : public IReceivablePower {
   PowerSupplyUnitReceiver(class PowerSupplyUnitActor* actor,
                           base_engine::Actor* target,
                           class TransmitterComponent* sender)
-      : actor_(actor), target_(target), sender_(sender) {}
+      : actor_(actor), sender_(sender) {}
 
   int Sequential() override;
   bool PowerJoinCondition() override;
@@ -26,8 +26,8 @@ class PowerSupplyUnitReceiver : public IReceivablePower {
 
  private:
   class PowerSupplyUnitActor* actor_ = nullptr;
-  base_engine::Actor* target_ = nullptr;
-  std::weak_ptr<class ReceiverComponent> receiver_;
+  std::vector<base_engine::Actor*> targets_;
+  std::vector<std::weak_ptr<class ReceiverComponent>> receivers_;
   class TransmitterComponent* sender_ = nullptr;
 
 

@@ -35,7 +35,14 @@ void TileMapComponent::TileMapRenderComponent::Draw() {
     for (int x = 0; x < tile_map_->map_.GetXCount(); ++x) {
       const auto cell = tile_map_->map_.GetCell(x, y);
       if (cell == kEmptyCell) continue;
-      if (cell > tile_map_->s_rectangles_.size()) continue;
+      if (cell > 5)
+      {
+        int n = 3;
+      }
+      if (cell > tile_map_->s_rectangles_.size())
+      {
+	      continue;
+      }
       
       BASE_ENGINE(Render)->AddTexture(
           tile_map_->texture_, {x * 128.0f, y * 128.0f}, {1, 1}, 0,
@@ -73,8 +80,8 @@ void TileMapComponent::Load(std::string_view path)
             static_cast<unsigned>(cell_height_), map_data.tile_data};
     {
       texture_ = BASE_ENGINE(Texture)->Get(map_data.map_chip_path);
-      const auto tx = texture_->GetWidth() / cell_width_;
-      const auto ty = texture_->GetHeight() / cell_height_;
+      const auto tx = texture_->GetWidth() / cell_size_;
+      const auto ty = texture_->GetHeight() / cell_size_;
       for (int y = 0; y < ty; ++y) {
         for (int x = 0; x < tx; ++x) {
           s_rectangles_.emplace_back(x * cell_size_, y * cell_size_,
