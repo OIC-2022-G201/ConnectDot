@@ -28,7 +28,6 @@ void PlayerActor::Start() {
 
     player_component_->SetInput(input_manager_);
     player_component_->SetMap(map_);
-    SetPosition({300, window::kHeight - 330});
   }
   {
     const auto collision = new CollisionComponent(this);

@@ -35,6 +35,8 @@ void TileMapComponent::TileMapRenderComponent::Draw() {
     for (int x = 0; x < tile_map_->map_.GetXCount(); ++x) {
       const auto cell = tile_map_->map_.GetCell(x, y);
       if (cell == kEmptyCell) continue;
+      if (cell > tile_map_->s_rectangles_.size()) continue;
+      
       BASE_ENGINE(Render)->AddTexture(
           tile_map_->texture_, {x * 128.0f, y * 128.0f}, {1, 1}, 0,
           tile_map_->s_rectangles_[cell - 1], MOF_COLOR_WHITE,

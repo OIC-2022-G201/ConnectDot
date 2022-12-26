@@ -5,8 +5,10 @@
 #include <filesystem>
 
 #include "BaseEngineCore.h"
+#include "ComponentServiceLocator.h"
 #include "IBaseEngineRender.h"
 #include "IBaseEngineTexture.h"
+#include "StageContainer.h"
 #include "TexturePaths.h"
 
 /**
@@ -27,4 +29,8 @@ void GameData::Register() {
        Mof::CGraphicsUtilities::GetGraphics()->GetTargetHeight() / 2.0f});
 
   ResourceFolderTextureAllRegister();
+  const auto stage_container = std::make_shared<StageContainer>();
+  stage_container->Initialize();
+  ServiceLocator::Instance().RegisterInstance(stage_container);
+
 }

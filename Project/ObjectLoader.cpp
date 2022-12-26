@@ -13,7 +13,7 @@ ObjectLoader::ObjectLoader(base_engine::Game* game) : game_(game), creator_(game
 {
 }
 
-void ObjectLoader::Load(const std::filesystem::path folder) {
+void ObjectLoader::Load(const std::filesystem::path& folder) {
   GimmickDiActorContainerSetup a{&creator_};
   for (const std::filesystem::directory_entry& x :
        std::filesystem::recursive_directory_iterator(folder)) {

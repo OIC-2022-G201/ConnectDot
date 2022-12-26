@@ -939,6 +939,9 @@
     <ClCompile Include="CounterComponent.cpp">
       <Filter>BaseEngine\Component\Counter</Filter>
     </ClCompile>
+    <ClCompile Include="StageContainer.cpp">
+      <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1615,6 +1618,9 @@
     </ClInclude>
     <ClInclude Include="CounterComponent.h">
       <Filter>BaseEngine\Component\Counter</Filter>
+    </ClInclude>
+    <ClInclude Include="StageContainer.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

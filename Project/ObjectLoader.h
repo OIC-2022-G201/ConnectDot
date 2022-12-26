@@ -26,7 +26,7 @@ class ObjectLoader {
    * 指定されたフォルダーのパスを元にその中にあるオブジェクトファイルを探索して読み込みを行う
    * \param folder オブジェクトファイルの再帰全探索を行いたいルートフォルダ
    */
-  void Load(const std::filesystem::path folder);
+  void Load(const std::filesystem::path& folder);
 
  private:
   bool CreateObject(const std::filesystem::path& path);
