@@ -30,7 +30,7 @@ void SoundEffectActor::Play(const float range) {
     sprite_->SetAlignment(Mof::TEXALIGN_CENTERLEFT);
     motion_ = new MofSpriteAnimationComponent(this);
     motion_->Load(sprite_, *sprite_resource->Get<RC::AnimationClips>()->Get(0));
-
+    sprite_->SetOffset({30, 0});
     auto& [sprite2_, motion2_] = effects_[1];
     sprite2_ = new SpriteComponent(this, 130);
     sprite2_->SetImage(*sprite_resource->Get<RC::Sprite>()->Get(0));
@@ -39,6 +39,7 @@ void SoundEffectActor::Play(const float range) {
     motion2_ = new MofSpriteAnimationComponent(this);
     motion2_->Load(sprite2_,
                    *sprite_resource->Get<RC::AnimationClips>()->Get(0));
+    sprite2_->SetOffset({-30, 0});
   }
   const auto shape = std::make_shared<Rect>(-range_, -range_, range_, range);
   collision_->SetShape(shape);
