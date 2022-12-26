@@ -4,6 +4,7 @@
 
 #include "BaseEngineCore.h"
 #include "ButtonPressEvent.h"
+#include "CounterComponent.h"
 #include "EventHandler.h"
 #include "GameWindow.h"
 #include "HandlerRegistration.h"
@@ -12,7 +13,9 @@
 #include "ImageComponent.h"
 #include "InputManager.h"
 #include "PositionXTween.h"
+#include "ResultModel.h"
 #include "SceneManager.h"
+#include "ServiceLocator.h"
 #include "TitleSceneFactory.h"
 using namespace base_engine;
 using ::GoalEffectActor;
@@ -29,8 +32,11 @@ class GoalEffectActor::GoalEffectComponent final : public Component {
   std::unique_ptr<ResultListener> listener_;
   std::shared_ptr<HandlerRegistration> handle_;
   bool end_animation_ = false;
+  CounterComponent* time_counter;
+  CounterComponent* found_counter;
+  CounterComponent* beacon_counter;
 
- public:
+public:
   explicit GoalEffectComponent(Actor* owner);
 
   void Start() override;
@@ -79,7 +85,26 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   next_logo_.second->SetEnabled(false);
   next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  
+  const auto score = ServiceLocator::Instance().Resolve<ResultModel>();
+
+  const auto found_actor = new Actor(owner_->GetGame());
+	found_counter = new CounterComponent(found_actor);
+  found_counter->SetNumber(score->GetFoundCount());
+  found_actor->SetPosition({400, 440});
+
+  const auto beacon_counter_actor = new Actor(owner_->GetGame());
+  beacon_counter = new CounterComponent(beacon_counter_actor);
+  beacon_counter->SetNumber(score->GetBeaconUsedTimes());
+  beacon_counter_actor->SetPosition({400, 570});
+
+  const auto time_counter_actor = new Actor(owner_->GetGame());
+  time_counter = new CounterComponent(time_counter_actor);
+  time_counter->SetNumber(score->GetTime());
+  time_counter_actor->SetPosition({400, 700});
+
+  found_counter->SetEnable(false);
+  beacon_counter->SetEnable(false);
+  time_counter->SetEnable(false);
 
   constexpr float letter_time = 0.2f;
   ma_tween::PositionXTween::TweenLocalPositionX(bottom_.first, 0, letter_time)
@@ -90,6 +115,9 @@ void GoalEffectActor::GoalEffectComponent::Start() {
       .SetSequenceDelay(5)
       .SetOnComplete([this] {
         popup_.second->SetEnabled(true);
+        found_counter->SetEnable(true);
+        beacon_counter->SetEnable(true);
+        time_counter->SetEnable(true);
         ma_tween::ImageAlphaTween::TweenImageAlpha(popup_.first, 255, 0.5)
             .SetOnComplete([this] {
               next_logo_.second->SetEnabled(true);

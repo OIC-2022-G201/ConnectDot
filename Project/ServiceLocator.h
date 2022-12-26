@@ -30,7 +30,10 @@ class ServiceLocator {
   template <typename T>
   void RegisterInstance(std::shared_ptr<T> instance) {
     const size_t hash = typeid(T).hash_code();
-
+    if (instances_.contains(hash)) {
+      instances_[hash] = instance;
+      return;
+    }
     instances_.emplace(hash, std::weak_ptr<void>(instance));
   }
   template <typename T>

@@ -83,10 +83,6 @@ namespace enemy {
 
 	void EnemyVisionComponent::OnCollision(const SendManifold& manifold)
 	{
-          if (InputManager::Instance()->ActionFire())
-          {
-            int n = 3;
-          }
 			is_find_ = true;
 			player_center_ = manifold.collision_b->AABB().GetCenter();
 		

@@ -61,7 +61,7 @@ MofBool CGameApp::Initialize(void) {
   // CGraphicsUtilities::SetCamera(&camera_);
 
   g_pGraphics->SetCullMode(CULLMODE_NONE);
-  ShowCursor(false);
+  //ShowCursor(false);
   game_.Initialize();
   return TRUE;
 }

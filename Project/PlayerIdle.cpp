@@ -7,6 +7,7 @@
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "PlayerComponent.h"
+#include "ResultModel.h"
 #include "ServiceLocator.h"
 GridPosition g_position{0, 0};
 
@@ -75,6 +76,8 @@ void player::PlayerIdle::PlaceBeacon() const {
   ServiceLocator::Instance()
       .Resolve<tile_map::ObjectTileMapComponent>()
       ->SetCell(pos.x, pos.y, 1);
+  const auto score = ServiceLocator::Instance().Resolve<ResultModel>();
+  score->IncrementBeaconUsedTimes();
   const auto beacon = new BeaconActor(player_->GetGame());
   const auto grid = beacon->GetComponent<grid::GridSnapComponent>().lock();
   grid->SetSnapGridPosition(pos);

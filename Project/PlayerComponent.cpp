@@ -87,6 +87,9 @@ void PlayerComponent::Start() {
   collision_ = owner_->GetComponent<CollisionComponent>();
   physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
   animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
+
+
+
   machine_.TransitionTo<PlayerIdle>();
 }
 
@@ -170,6 +173,11 @@ void PlayerComponent::Update() {
   machine_.Update();
 
   CheckGround();
+  if (g_pInput->IsKeyPush(MOFKEY_L)) {
+    auto a = std::any{1};
+    GoalEvent goal{a};
+    EventBus::FireEvent(goal);
+  }
 }
 
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
