@@ -45,9 +45,14 @@ void TileMapComponent::TileMapRenderComponent::Draw() {
   }
 }
 
-void TileMapComponent::Start() { Load("MapData1.bin"); }
+void TileMapComponent::Start() { Load(stage_name_); }
 
 void TileMapComponent::Update() {}
+
+void TileMapComponent::SetStage(const std::string_view path)
+{
+	stage_name_ = path;
+}
 
 void TileMapComponent::Load(std::string_view path)
 {

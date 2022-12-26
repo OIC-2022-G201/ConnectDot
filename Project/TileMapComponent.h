@@ -32,12 +32,12 @@ class TileMapComponent : public base_engine::Component {
    private:
   };
 
+  void Load(std::string_view path);
  public:
   void Start() override;
   void Update() override;
+  void SetStage(const std::string_view path);
 
-  void Load(std::string_view path);
-  
   void CreateBody();
   TileMapComponent(base_engine::Actor* owner, int update_order);
 
@@ -59,5 +59,7 @@ class TileMapComponent : public base_engine::Component {
 
   Mof::LPTexture texture_ = nullptr;
   std::vector<Mof::Rectangle> s_rectangles_{};
+
+  std::string stage_name_;
 };
 }  // namespace tile_map

@@ -14,7 +14,7 @@ void ResultScoreComponent::Update() {
 
 void ResultScoreComponent::Start() {
   handler_ = EventBus::AddHandler(*this);
-  result_ = ServiceLocator::Instance().Resolve<ResultModel>();
+  result_ = ComponentServiceLocator::Instance().Resolve<ResultModel>();
   result_->Start();
 }
 
@@ -24,7 +24,7 @@ ResultScoreComponent* ResultScoreComponent::Create(base_engine::Game* game) {
   const auto component = new ResultScoreComponent(new base_engine::Actor(game));
 
   component->result_ = std::make_shared<ResultModel>();
-  ServiceLocator::Instance().RegisterInstance(component->result_);
+  ComponentServiceLocator::Instance().RegisterInstance(component->result_);
 
   return component;
 }

@@ -8,7 +8,7 @@
 #include "PhysicsWorldCallBack.h"
 #include "PlayerComponent.h"
 #include "ResultModel.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 GridPosition g_position{0, 0};
 
 player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {
@@ -33,7 +33,7 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
     if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter &&
         actor->GetTag() == "Beacon") {
       auto pos = GridPosition::VectorTo(actor->GetPosition());
-      ServiceLocator::Instance()
+      ComponentServiceLocator::Instance()
           .Resolve<tile_map::ObjectTileMapComponent>()
           ->SetCell(pos.x, pos.y, 0);
       actor->GetGame()->RemoveActor(actor);
@@ -73,10 +73,10 @@ void player::PlayerIdle::PlaceBeacon() const {
   pos.y += 1;
   if (!player_->CanPlace(pos)) return;
   player_->SetBeacon(player_->GetBeacon() - 1);
-  ServiceLocator::Instance()
+  ComponentServiceLocator::Instance()
       .Resolve<tile_map::ObjectTileMapComponent>()
       ->SetCell(pos.x, pos.y, 1);
-  const auto score = ServiceLocator::Instance().Resolve<ResultModel>();
+  const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
   score->IncrementBeaconUsedTimes();
   const auto beacon = new BeaconActor(player_->GetGame());
   const auto grid = beacon->GetComponent<grid::GridSnapComponent>().lock();

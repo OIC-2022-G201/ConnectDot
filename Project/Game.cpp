@@ -12,7 +12,7 @@
 #include "ResourceContainer.h"
 #include "Scene.h"
 #include "SceneManager.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"

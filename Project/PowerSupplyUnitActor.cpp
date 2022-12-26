@@ -16,7 +16,7 @@
 #include "PowerSupplyUnitTransmitter.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
@@ -60,7 +60,7 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
-    ServiceLocator::Instance()
+    ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
         ->SetCell(pos.x, pos.y, 1);
   }

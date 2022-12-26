@@ -447,7 +447,7 @@
     <ClInclude Include="ResourcePack.h" />
     <ClInclude Include="SendManifold.h" />
     <ClInclude Include="Frozen.h" />
-    <ClInclude Include="ServiceLocator.h" />
+    <ClInclude Include="ComponentServiceLocator.h" />
     <ClInclude Include="ShapeRenderComponent.h" />
     <ClInclude Include="SignboardActor.h" />
     <ClInclude Include="SignboardReceiver.h" />

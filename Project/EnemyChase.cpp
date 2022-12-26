@@ -2,12 +2,12 @@
 
 #include "EnemyComponent.h"
 #include "ResultModel.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 
 namespace enemy {
 	void EnemyChase::Start()
 	{
-	  const auto score = ServiceLocator::Instance().Resolve<ResultModel>();
+	  const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
 		score->IncrementFoundCount();
 		body_ = enemy_->PhysicsBody();
 		vision_ = enemy_->GetVision();

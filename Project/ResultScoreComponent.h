@@ -9,7 +9,7 @@
 #include "Component.h"
 #include "EventHandler.h"
 #include "ResultModel.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 #include "GoalEvent.h"
 #include "HandlerRegistration.h"
 

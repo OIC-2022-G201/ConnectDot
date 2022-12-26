@@ -15,7 +15,7 @@
 #include "PositionXTween.h"
 #include "ResultModel.h"
 #include "SceneManager.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 #include "TitleSceneFactory.h"
 using namespace base_engine;
 using ::GoalEffectActor;
@@ -85,7 +85,7 @@ void GoalEffectActor::GoalEffectComponent::Start() {
   next_logo_.second->SetEnabled(false);
   next_logo_.second->SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  const auto score = ServiceLocator::Instance().Resolve<ResultModel>();
+  const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
 
   const auto found_actor = new Actor(owner_->GetGame());
 	found_counter = new CounterComponent(found_actor);

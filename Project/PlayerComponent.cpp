@@ -20,7 +20,7 @@
 #include "Player.h"
 #include "SceneManager.h"
 #include "SendManifold.h"
-#include "ServiceLocator.h"
+#include "ComponentServiceLocator.h"
 #include "SpriteComponent.h"
 #include "TileMapComponent.h"
 using namespace std::string_view_literals;
@@ -208,7 +208,7 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const bool space = map->GetCell(pos) == tile_map::kEmptyCell;
   const bool ground =
       map->GetCell(pos + GridPosition{0, 1}) != tile_map::kEmptyCell;
-  const auto is_empty = ServiceLocator::Instance()
+  const auto is_empty = ComponentServiceLocator::Instance()
                             .Resolve<tile_map::ObjectTileMapComponent>()
                             ->GetCell(pos.x, pos.y) == tile_map::kEmptyCell;
   return space && ground && is_empty;
