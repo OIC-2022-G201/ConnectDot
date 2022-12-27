@@ -105,6 +105,8 @@
     <ClCompile Include="ButtonCommandEventContainer.cpp" />
     <ClCompile Include="ButtonListener.cpp" />
     <ClCompile Include="ButtonPressEvent.cpp" />
+    <ClCompile Include="CollapsibleBlockActor.cpp" />
+    <ClCompile Include="CollapsibleBlockReceiver.cpp" />
     <ClCompile Include="DummyTween.cpp" />
     <ClCompile Include="Easer.cpp" />
     <ClCompile Include="EaseType.cpp" />
@@ -269,6 +271,8 @@
     <ClInclude Include="ButtonCommandEventContainer.h" />
     <ClInclude Include="ButtonListener.h" />
     <ClInclude Include="ButtonPressEvent.h" />
+    <ClInclude Include="CollapsibleBlockActor.h" />
+    <ClInclude Include="CollapsibleBlockReceiver.h" />
     <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EaseType.h" />

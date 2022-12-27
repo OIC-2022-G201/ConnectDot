@@ -469,6 +469,9 @@
     <Filter Include="BaseEngine\Component\Counter">
       <UniqueIdentifier>{ace1367b-80b2-4f8d-bf6d-b933d6ccf572}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\CollapsibleBlock">
+      <UniqueIdentifier>{8c76933e-01a3-4052-8db5-a878214ac59e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -941,6 +944,12 @@
     </ClCompile>
     <ClCompile Include="StageContainer.cpp">
       <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CollapsibleBlockActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\CollapsibleBlock</Filter>
+    </ClCompile>
+    <ClCompile Include="CollapsibleBlockReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\CollapsibleBlock</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1621,6 +1630,12 @@
     </ClInclude>
     <ClInclude Include="StageContainer.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CollapsibleBlockActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\CollapsibleBlock</Filter>
+    </ClInclude>
+    <ClInclude Include="CollapsibleBlockReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\CollapsibleBlock</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

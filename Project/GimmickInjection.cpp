@@ -2,6 +2,7 @@
 
 #include <array>
 
+#include "CollapsibleBlockActor.h"
 #include "DIActorContainer.h"
 #include "DoorComponent.h"
 #include "EnemyActor.h"
@@ -28,6 +29,7 @@ constexpr std::string_view kVentName = "Vent"sv;
 constexpr std::string_view kSignboardName = "Signboard"sv;
 constexpr std::string_view kEnemyName = "Enemy"sv;
 constexpr std::string_view kGoalName = "Goal"sv;
+constexpr std::string_view kCollapsibleBlockName = "CollapsibleBlock"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
 using FactoryRegisterMethod = void (*)(GimmickCreator*,
@@ -50,7 +52,7 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                                   const LoadObject& object);
 
   static Actor* MultiPowerSupplyCreate(GimmickCreator* instance, Game* game,
-                                  const LoadObject& object);
+                                       const LoadObject& object);
   static Actor* PylonCreate(GimmickCreator* instance, Game* game,
                             const LoadObject& object);
   static Actor* SignboardCreate(GimmickCreator* instance, Game* game,
@@ -64,7 +66,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 
   static Actor* DoorCreate(GimmickCreator* instance, Game* game,
                            const LoadObject& object);
-
+  static Actor* CollapsibleBlockCreate(GimmickCreator* instance, Game* game,
+                                       const LoadObject& object);
   void Register(const std::string_view name, CreatorMethod create_method);
 
  private:
@@ -80,13 +83,18 @@ constexpr std::array kGimmickMethodTable = {
         &Gc::FactoryRegister<DoorActor>  // FactoryRegister
     },
     std::tuple{
+        kCollapsibleBlockName,                       // Name
+        &SetupImpl::CollapsibleBlockCreate,          // CreateMethod
+        &Gc::FactoryRegister<CollapsibleBlockActor>  // FactoryRegister
+    },
+    std::tuple{
         kPowerSupplyName,                           // Name
         &SetupImpl::PowerSupplyCreate,              // CreateMethod
         &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
     },
     std::tuple{
-        kMultiPowerSupplyName,                           // Name
-        &SetupImpl::MultiPowerSupplyCreate,              // CreateMethod
+        kMultiPowerSupplyName,                      // Name
+        &SetupImpl::MultiPowerSupplyCreate,         // CreateMethod
         &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
     },
     std::tuple{
@@ -185,18 +193,23 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
   return power_unit;
 }
 
-Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::MultiPowerSupplyCreate(GimmickCreator* instance,
-	Game* game, const LoadObject& object)
-{
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
+    MultiPowerSupplyCreate(GimmickCreator* instance, Game* game,
+                           const LoadObject& object) {
   const auto power_unit = new PowerSupplyUnitActor(game);
   power_unit->Create(object);
 
   instance->bind_event_.emplace_back([power_unit, object, instance, game]() {
-    const auto& key =
-        std::get<LoadObject::Prefab>(object.parameters[4]).value.uuid;
-    if (!instance->actor_map_.contains(key)) return;
-    const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
-    power_unit->AddTarget(actor);
+
+
+    for (int i = 4; i < 8; ++i)
+    {
+      const auto& key =
+          std::get<LoadObject::Prefab>(object.parameters[i]).value.uuid;
+      if (!instance->actor_map_.contains(key)) continue;;
+      const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
+      power_unit->AddTarget(actor); 
+    }
   });
   return power_unit;
 }
@@ -244,6 +257,15 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::DoorCreate(
   door->Create(object);
 
   return door;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
+    CollapsibleBlockCreate(GimmickCreator* instance, Game* game,
+                           const LoadObject& object) {
+  const auto block = new CollapsibleBlockActor(game);
+  block->Create(object);
+
+  return block;
 }
 
 Actor*

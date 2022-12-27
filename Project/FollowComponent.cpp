@@ -8,7 +8,7 @@ void FollowComponent::Update() {
   if (actor_weak_.expired()) return;
 
   const auto actor = actor_weak_.lock();
-  const auto actor_pos = actor->GetPosition() - base_engine::Vector2{0, 128};
+  const auto actor_pos = actor->GetPosition() - base_engine::Vector2{0, 64};
   base_engine::Vector2 current_pos = owner_->GetPosition();
   base_engine::Vector2 targetDirection = (actor_pos - current_pos);
 

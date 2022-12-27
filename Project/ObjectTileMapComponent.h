@@ -10,6 +10,8 @@
 #include "GridPosition.h"
 #include "TileMap.h"
 namespace tile_map {
+constexpr Layer::CellType kCanOnPlace = 10;
+
 class ObjectTileMapComponent : public base_engine::Component {
  public:
   explicit ObjectTileMapComponent(base_engine::Actor* owner)
@@ -42,6 +44,9 @@ class ObjectTileMapComponent : public base_engine::Component {
       return;
     }
     map_.SetCell(x, y, type);
+  }
+  void SetCell(const GridPosition& pos, const Layer::CellType type) {
+    SetCell(pos.x, pos.y, type);
   }
 
  private:

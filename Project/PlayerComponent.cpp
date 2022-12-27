@@ -205,13 +205,14 @@ void PlayerComponent::VentEnter(VentComponent* vent) {
 
 bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const auto map = map_.lock();
-  const bool space = map->GetCell(pos) == tile_map::kEmptyCell;
-  const bool ground =
-      map->GetCell(pos + GridPosition{0, 1}) != tile_map::kEmptyCell;
-  const auto is_empty = ComponentServiceLocator::Instance()
-                            .Resolve<tile_map::ObjectTileMapComponent>()
-                            ->GetCell(pos.x, pos.y) == tile_map::kEmptyCell;
-  return space && ground && is_empty;
+  const auto object_map = ComponentServiceLocator::Instance()
+                              .Resolve<tile_map::ObjectTileMapComponent>();
+  const bool space = map->GetCell(pos) == tile_map::kEmptyCell &&
+                     object_map->GetCell(pos) == tile_map::kEmptyCell;
+  const auto bottom_pos = pos + GridPosition{0, 1};
+  const bool ground = map->GetCell(bottom_pos) != tile_map::kEmptyCell ||
+                      object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace;
+  return space && ground;
 }
 
 int PlayerComponent::MaxBeacon() const { return 90; }

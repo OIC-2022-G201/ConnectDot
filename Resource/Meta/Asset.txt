@@ -4,7 +4,6 @@ BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
 BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
 BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
-CollapsibleBlock Animation gimmick/Objects/CollapsibleBlock/SyutugenSuruYuka_MotionChip.png gimmick/Objects/CollapsibleBlock/SyutugenSuruYuka.aei
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
 Elevator Sprite gimmick/Objects/Elevator/Elevator.png
 Lever Sprite gimmick/Objects/Lever/Lever.png
@@ -13,7 +12,7 @@ SingboardCrouching Animation gimmick/Objects/Signboard/SingboardCrouching/Signbo
 SingboardEkey Animation gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation.aei
 SingboardJamp Animation gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation.aei
 SingboardSet Animation gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation.aei
-mapchip Sprite mapchip/Stage1.png
+syutugenyuka Animation gimmick/Objects/syutugenyuka/syutugenyuka1.png gimmick/Objects/syutugenyuka/syutugenyuka1.aei
 Gameover Sprite UI/Gameover/gameover.png
 ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
 RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png
