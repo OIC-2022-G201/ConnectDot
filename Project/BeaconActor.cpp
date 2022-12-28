@@ -22,7 +22,21 @@ constexpr std::string_view kBeaconName = "Beacon";
 constexpr std::string_view kBeaconOffName = "BeaconOff";
 constexpr std::string_view kBeaconOnName = "BeaconOn";
 constexpr std::string_view kBeaconPowerup = "BeaconPowerup";
+class BeaconDummyComponent : public base_engine::Component,
+                             public IMachineActionable {
+ public:
+  BeaconDummyComponent(BeaconActor* owner, int update_order = 100)
+      : Component(owner, update_order) {}
 
+  void Action(base_engine::Actor* actor) override
+  {
+    owner_->GetComponent<TransmitterComponent>().lock()->SetLevel(2);
+    const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(kBeaconPowerup.data());
+    owner_->GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
+    
+  }
+
+};
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
@@ -37,11 +51,12 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
     collision->SetObjectFilter(kBeaconObjectFilter);
     collision->SetTargetFilter(kBeaconTargetFilter);
     collision->SetTrigger(true);
+    new BeaconDummyComponent(this);
+    const auto beacon_body = new base_engine::CollisionComponent(this);
     const auto cell = stage::kStageCellSize<base_engine::Floating>;
     const auto rect = std::make_shared<base_engine::Rect>(0, 0, cell.x, cell.y);
-    const auto beacon_body = new base_engine::CollisionComponent(this);
     beacon_body->SetShape(rect);
-    beacon_body->SetObjectFilter(kBeaconObjectFilter);
+    beacon_body->SetObjectFilter(kBeaconObjectFilter | kLeverObjectFilter);
     beacon_body->SetTargetFilter(kPlayerObjectFilter);
     beacon_body->SetTrigger(true);
   }
@@ -92,3 +107,4 @@ void BeaconActor::Update() {
     receiver->Create<BeaconReceiver>(this, kBeaconReceiverOffset);
   }
 }
+

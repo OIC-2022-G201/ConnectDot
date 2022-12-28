@@ -8,6 +8,7 @@
 #include "Actor.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
 #include "EventBus.h"
 #include "EventHandler.h"
 #include "GameOverSceneFactory.h"
@@ -20,7 +21,6 @@
 #include "Player.h"
 #include "SceneManager.h"
 #include "SendManifold.h"
-#include "ComponentServiceLocator.h"
 #include "SpriteComponent.h"
 #include "TileMapComponent.h"
 using namespace std::string_view_literals;
@@ -87,8 +87,6 @@ void PlayerComponent::Start() {
   collision_ = owner_->GetComponent<CollisionComponent>();
   physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
   animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
-
-
 
   machine_.TransitionTo<PlayerIdle>();
 }
@@ -168,7 +166,7 @@ void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
 void PlayerComponent::Update() {
   const auto aabb = collision_.lock()->AABB();
-  sound_effect_->SetPosition({aabb.GetCenter().x,aabb.Bottom});
+  sound_effect_->SetPosition({aabb.GetCenter().x, aabb.Bottom});
   physics_body_.lock()->AddForce({0, kGravity});
   machine_.Update();
 
@@ -182,20 +180,21 @@ void PlayerComponent::Update() {
 
 void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   const auto actor = manifold.collision_b->GetActor();
-  if (actor->GetTag() == "Enemy")
-  {
+  if (actor->GetTag() == "Enemy") {
     scene::LoadScene(kGameOver);
     return;
   }
-	machine_.OnEvent(manifold.collision_b);
+  machine_.OnEvent(manifold.collision_b);
   if (input_manager_->ActionFire()) {
-    if (const auto actionable = manifold.collision_b->GetActor()
-                                    ->GetComponent<IMachineActionable>();
-        !actionable.expired()) {
-      actionable.lock()->Action(owner_);
+    if ((manifold.collision_b->GetObjectFilter().to_ulong() &
+         CollisionLayer::Layer{CollisionLayer::kActionable}) != 0) {
+      if (const auto actionable = manifold.collision_b->GetActor()
+                                      ->GetComponent<IMachineActionable>();
+          !actionable.expired()) {
+        actionable.lock()->Action(owner_);
+      }
     }
   }
-
 }
 
 void PlayerComponent::VentEnter(VentComponent* vent) {

@@ -2,12 +2,13 @@
 #include <variant>
 
 #include "Actor.h"
+#include "IMachineActionable.h"
 #include "ISpriteAnimationComponent.h"
 #include "ReactiveProperty.h"
 #include "ShapeRenderComponent.h"
 #include "TupleHasElement.h"
 
-class BeaconActor final : public base_engine::Actor {
+class BeaconActor final : public base_engine::Actor{
  public:
   using BeaconPartTuple =
       std::tuple<class BeaconReceiver*, class BeaconTransmitter*,
@@ -22,10 +23,9 @@ class BeaconActor final : public base_engine::Actor {
   void Input() override;
   void Update() override;
 
- public:
   template <class BeaconPart,
             std::enable_if_t<tuple_holds_v<BeaconPartTuple, BeaconPart>, bool> =
-                false>
+	            false>
   void RegistryPart(BeaconPart part) {
     auto&& n = std::get<BeaconPart>(tuple_);
     std::get<BeaconPart>(tuple_) = part;

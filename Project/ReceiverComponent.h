@@ -54,12 +54,22 @@ class ReceiverComponent : public base_engine::Component {
     return false;
   }
   bool EqualSender(
-      std::weak_ptr<class TransmitterComponent> sender_weak) const {
+	  const std::weak_ptr<class TransmitterComponent>& sender_weak) const {
     if (sender_.expired() || sender_weak.expired()) return false;
     return sender_.lock().get() == sender_weak.lock().get();
   }
 
- private:
+  [[nodiscard]] int Level() const
+  {
+	  return level_;
+  }
+
+  void SetLevel(const int level)
+  {
+	  level_ = level;
+  }
+
+private:
   enum class PowerState {
     kDisconnect,    //接続が切れている
     kDisconnected,  //接続が切れた瞬間
@@ -72,4 +82,6 @@ class ReceiverComponent : public base_engine::Component {
   std::weak_ptr<class TransmitterComponent> sender_;
   size_t wait_frame_ = 0;
   std::weak_ptr<base_engine::Actor> effect_;
+
+  int level_ = 1;
 };

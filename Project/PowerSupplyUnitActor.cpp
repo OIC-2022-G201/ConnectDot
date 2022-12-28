@@ -41,11 +41,11 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
   }
 
   {
-    const auto sign = new base_engine::SpriteComponent(
+    const auto sprite = new base_engine::SpriteComponent(
         this, draw_order::kPowerSupplyUnitDrawOrder);
     const auto img =
         BASE_ENGINE(Texture)->Get(texture::kPowerSupplyUnitTextureKey);
-    sign->SetImage(img);
+    sprite->SetImage(img);
   }
 
   {
@@ -54,6 +54,12 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
 
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
+    int n = std::get<int>(object.parameters[object.parameters.size()-2]);
+    if (n>1)
+    {
+      int k = 3;
+    }
+    receiver->SetLevel(n);
   }
 
   {
