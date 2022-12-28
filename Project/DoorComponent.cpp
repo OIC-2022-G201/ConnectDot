@@ -3,17 +3,14 @@
 #include <filesystem>
 
 #include "BaseEngineCore.h"
-#include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "DoorReceiver.h"
 #include "DrawOrder.h"
-#include "ElectronicsPower.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
 #include "LoadObjectParameter.h"
-#include "MachineConst.h"
 #include "PlayerComponent.h"
 #include "ReceiverComponent.h"
 #include "SignboardReceiver.h"

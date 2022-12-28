@@ -27,7 +27,7 @@ using namespace draw_order;
 void CollapsibleBlockActor::Create(const LoadObject& object) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
-    const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y * 2);
+    const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y);
 
     const auto collision = new CollisionComponent(this);
     collision->SetShape(rect);

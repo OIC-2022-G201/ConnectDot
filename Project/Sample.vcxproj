@@ -110,6 +110,8 @@
     <ClCompile Include="DummyTween.cpp" />
     <ClCompile Include="Easer.cpp" />
     <ClCompile Include="EaseType.cpp" />
+    <ClCompile Include="ElevatorComponent.cpp" />
+    <ClCompile Include="ElevatorReceiver.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GameOverSceneFactory.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
@@ -118,6 +120,7 @@
     <ClCompile Include="ObjectTileMapComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
+    <ClCompile Include="PositionYTween.cpp" />
     <ClCompile Include="ResultModel.cpp" />
     <ClCompile Include="ResultScoreComponent.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -276,6 +279,8 @@
     <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EaseType.h" />
+    <ClInclude Include="ElevatorComponent.h" />
+    <ClInclude Include="ElevatorReceiver.h" />
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="GoalEffectActor.h" />
@@ -285,6 +290,7 @@
     <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="ParentTest.h" />
     <ClInclude Include="PositionXTween.h" />
+    <ClInclude Include="PositionYTween.h" />
     <ClInclude Include="ResultModel.h" />
     <ClInclude Include="ResultScoreComponent.h" />
     <ClInclude Include="Scene.h" />

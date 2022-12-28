@@ -48,7 +48,7 @@ void Actor::UpdateActor() {
   if (state_ == kActive) {
     Update();
     for (const auto& component : components_) {
-      component->Update();
+      if(component) component->Update();
     }
   }
 }

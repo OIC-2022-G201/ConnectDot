@@ -17,7 +17,7 @@ void player::PlayerMove::Start() {
 
 void player::PlayerMove::Update() {
   if (body_->GetForce().x == 0.0f) is_idle_ = true;
-  if (body_->GetForce().y > 1) is_fall_ = true;
+  if (body_->GetForce().y > 4) is_fall_ = true;
 }
 
 void player::PlayerMove::ProcessInput() {

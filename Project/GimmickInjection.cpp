@@ -5,6 +5,7 @@
 #include "CollapsibleBlockActor.h"
 #include "DIActorContainer.h"
 #include "DoorComponent.h"
+#include "ElevatorComponent.h"
 #include "EnemyActor.h"
 #include "GoalComponent.h"
 #include "LeverStubActor.h"
@@ -29,6 +30,7 @@ constexpr std::string_view kVentName = "Vent"sv;
 constexpr std::string_view kSignboardName = "Signboard"sv;
 constexpr std::string_view kEnemyName = "Enemy"sv;
 constexpr std::string_view kGoalName = "Goal"sv;
+constexpr std::string_view kElevatorName = "Elevator"sv;
 constexpr std::string_view kCollapsibleBlockName = "CollapsibleBlock"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
@@ -67,6 +69,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
   static Actor* DoorCreate(GimmickCreator* instance, Game* game,
                            const LoadObject& object);
   static Actor* CollapsibleBlockCreate(GimmickCreator* instance, Game* game,
+                                       const LoadObject& object);
+  static Actor* ElevatorCreate(GimmickCreator* instance, Game* game,
                                        const LoadObject& object);
   void Register(const std::string_view name, CreatorMethod create_method);
 
@@ -131,6 +135,11 @@ constexpr std::array kGimmickMethodTable = {
         kGoalName,                       // Name
         &SetupImpl::GoalCreate,          // CreateMethod
         &Gc::FactoryRegister<GoalActor>  // FactoryRegister
+    },
+    std::tuple{
+        kElevatorName,                       // Name
+        &SetupImpl::ElevatorCreate,      // CreateMethod
+        &Gc::FactoryRegister<ElevatorActor>  // FactoryRegister
     },
 };
 
@@ -266,6 +275,14 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
   block->Create(object);
 
   return block;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::ElevatorCreate(GimmickCreator* instance,
+	Game* game, const LoadObject& object)
+{
+  const auto elevator = new ElevatorActor(game);
+  elevator->Create(object);
+  return elevator;
 }
 
 Actor*
