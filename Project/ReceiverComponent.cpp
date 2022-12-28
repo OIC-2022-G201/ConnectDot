@@ -33,6 +33,7 @@ void ReceiverComponent::OnPowerEnter() {
     }
     const auto effect =
         std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+    effect->SetTransmitter(sender_);
     effect->Play(sender_.lock()->GetPosition(), GetPosition());
   }
   receiver_->OnPowerEnter(sender_.lock().get());

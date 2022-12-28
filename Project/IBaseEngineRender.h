@@ -8,7 +8,7 @@ class IBaseEngineRender {
   using ITexturePtr = Mof::ITexture*;
   using Rect = Mof::Rectangle;
   using Circle = Mof::Circle;
-  using Color = uint_fast32_t;
+  using Color = uint32_t;
   using Vector = Mof::Vector2Impl;
   static IBaseEngineRender* Create();
   virtual ~IBaseEngineRender();

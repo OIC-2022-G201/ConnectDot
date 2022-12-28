@@ -34,7 +34,7 @@ void SpriteComponent::StartFlash(float time, const COLOR& color) {
   color_ = color;
 }
 
-void SpriteComponent::Update() { color_ = MOF_ARGB(255, 255, 255, 255); }
+void SpriteComponent::Update() { }
 
 void SpriteComponent::Draw() {
   Vector2 p = owner_->GetPosition() + offset_;
