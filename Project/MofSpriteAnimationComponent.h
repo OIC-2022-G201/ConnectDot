@@ -25,10 +25,11 @@ class MofSpriteAnimationComponent final : public Component,
   MofSpriteAnimationComponent(Actor* owner,
                               int update_order = kAnimationUpdateOrder);
 
-  void SetSpriteComponent(SpriteComponent* component) override;
+  void SetSpriteComponent(ISpriteAnimatable* component) override;
 
-  bool Load(SpriteComponent* component, std::span<SpriteAnimationClip> clips) override;
-  bool Load(SpriteComponent* component, std::string_view file) override;
+  bool Load(ISpriteAnimatable* component,
+            std::span<SpriteAnimationClip> clips) override;
+  bool Load(ISpriteAnimatable* component, std::string_view file) override;
 
   bool ChangeMotion(const std::string_view name, const bool is_same) override;
 
@@ -47,6 +48,6 @@ private:
   std::string current_name_;
   Mof::CSpriteMotionController motion_;
   std::unordered_map<std::string, MofU32> motion_map_;
-  SpriteComponent* sprite_ = nullptr;
+  ISpriteAnimatable* sprite_ = nullptr;
 };
 }  // namespace base_engine

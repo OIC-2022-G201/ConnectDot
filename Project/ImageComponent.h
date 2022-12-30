@@ -6,10 +6,11 @@
 // @details
 
 #pragma once
+#include "ISpriteAnimatable.h"
 #include "RenderComponent.h"
 
 namespace base_engine {
-class ImageComponent : public RenderComponent {
+class ImageComponent : public RenderComponent, public ISpriteAnimatable {
  public:
   using COLOR = uint32_t;
 
@@ -28,8 +29,8 @@ class ImageComponent : public RenderComponent {
     }
     return *this;
   }
-  Mof::CRectangle GetClipRect() const { return clip_rect_; }
-  void SetClipRect(Mof::CRectangle rect) { clip_rect_ = rect; }
+  Mof::CRectangle GetClipRect() const override { return clip_rect_; }
+  void SetClipRect(const Mof::CRectangle& rect) override { clip_rect_ = rect; }
   ImageComponent& SetColor(const COLOR& color) {
     color_ = color;
     return *this;

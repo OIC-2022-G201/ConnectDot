@@ -105,6 +105,8 @@
     <ClCompile Include="ButtonCommandEventContainer.cpp" />
     <ClCompile Include="ButtonListener.cpp" />
     <ClCompile Include="ButtonPressEvent.cpp" />
+    <ClCompile Include="ClipSizeXTween.cpp" />
+    <ClCompile Include="ClipSizeYTween.cpp" />
     <ClCompile Include="CollapsibleBlockActor.cpp" />
     <ClCompile Include="CollapsibleBlockReceiver.cpp" />
     <ClCompile Include="DummyTween.cpp" />
@@ -274,6 +276,8 @@
     <ClInclude Include="ButtonCommandEventContainer.h" />
     <ClInclude Include="ButtonListener.h" />
     <ClInclude Include="ButtonPressEvent.h" />
+    <ClInclude Include="ClipSizeXTween.h" />
+    <ClInclude Include="ClipSizeYTween.h" />
     <ClInclude Include="CollapsibleBlockActor.h" />
     <ClInclude Include="CollapsibleBlockReceiver.h" />
     <ClInclude Include="DummyTween.h" />
@@ -285,6 +289,7 @@
     <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="ImageAlphaTween.h" />
+    <ClInclude Include="ISpriteAnimatable.h" />
     <ClInclude Include="ITween.h" />
     <ClInclude Include="NinePatchImageComponent.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />

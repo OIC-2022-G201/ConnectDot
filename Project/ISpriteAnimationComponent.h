@@ -11,7 +11,7 @@
 #include <vector>
 
 #include "YesNo.h"
-
+#include "ISpriteAnimatable.h"
 namespace base_engine {
 
 struct AnimationPattern {
@@ -31,10 +31,11 @@ struct SpriteAnimationClip {
 
 struct ISpriteAnimationComponent {
   virtual ~ISpriteAnimationComponent() = default;
-  void virtual SetSpriteComponent(class SpriteComponent* component) = 0;
-  bool virtual Load(SpriteComponent* component,
+  void virtual SetSpriteComponent(ISpriteAnimatable* component) = 0;
+  bool virtual Load(ISpriteAnimatable* component,
                     std::span<SpriteAnimationClip>) = 0;
-  bool virtual Load(SpriteComponent* component, std::string_view file) = 0;
+  bool virtual Load(ISpriteAnimatable* component,
+                    std::string_view file) = 0;
   
   /**
    * \brief This method will be removed in due time.

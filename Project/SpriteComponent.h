@@ -6,11 +6,12 @@
 
 #include "Actor.h"
 #include "EnumFlags.h"
+#include "ISpriteAnimatable.h"
 #include "RenderComponent.h"
 
 namespace base_engine {
 using COLOR = MofU32;
-enum class Flip : size_t{
+enum class Flip : size_t {
   kNone,
   kHorizontal,
   kVertical,
@@ -18,7 +19,7 @@ enum class Flip : size_t{
 };
 ENUM_CLASS_FLAGS(Flip);
 
-class SpriteComponent : public RenderComponent {
+class SpriteComponent : public RenderComponent, public ISpriteAnimatable {
  public:
   SpriteComponent(class Actor* owner, int draw_order = 100);
   ~SpriteComponent() override;
@@ -26,9 +27,9 @@ class SpriteComponent : public RenderComponent {
   void Update() override;
   void Draw() override;
   SpriteComponent& SetImage(Mof::LPTexture img);
-  void SetClipRect(const Mof::CRectangle& rect) { clip_rect_ = rect; }
+  void SetClipRect(const Mof::CRectangle& rect) override { clip_rect_ = rect; }
   void FitClipRect();
-  Mof::CRectangle GetClipRect() const { return clip_rect_; }
+  Mof::CRectangle GetClipRect() const override { return clip_rect_; }
   SpriteComponent& SetColor(const COLOR& color) {
     color_ = color;
     return *this;
@@ -62,6 +63,7 @@ class SpriteComponent : public RenderComponent {
   Mof::CRectangle clip_rect_{};
   Mof::TextureAlignment alignment_ = Mof::TextureAlignment::TEXALIGN_TOPLEFT;
   Flip flip_ = Flip::kNone;
+
  public:
   void StartFlash(float time, const COLOR& color);
 

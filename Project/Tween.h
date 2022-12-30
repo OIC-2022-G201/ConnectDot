@@ -184,9 +184,10 @@ class TweenDriver : public base_engine::Component, public core::ITween {
     return (*(new DriverType(actor)));
   }
 
-  template <class DriverType>
-  static DriverType& Add(base_engine::Component* component) {
-    return *(new DriverType(component->GetOwner().lock().get()));
+  template <class DriverType,class Component>
+  static DriverType& Add(
+      base_engine::Actor* actor,const std::weak_ptr<Component>& component) {
+    return *(new DriverType(actor,component));
   }
 
  public:
@@ -213,7 +214,10 @@ class Tween : public TweenDriver<DriverValueType> {
   explicit Tween(base_engine::Actor* owner)
       : TweenDriver<DriverValueType>(owner) {}
 
+  explicit Tween(base_engine::Actor* owner, std::weak_ptr<ComponentType> component)
+      : TweenDriver<DriverValueType>(owner), component_weak_(component) {}
   bool OnInitialize() override {
+    if (!component_weak_.expired()) return true;
     component_weak_ = this->owner_->template GetComponent<ComponentType>();
     return !component_weak_.expired();
   }

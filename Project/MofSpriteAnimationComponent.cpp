@@ -30,11 +30,11 @@ MofSpriteAnimationComponent::MofSpriteAnimationComponent(Actor* owner,
     : Component(owner, update_order) {}
 
 void MofSpriteAnimationComponent::SetSpriteComponent(
-    SpriteComponent* component) {
+    ISpriteAnimatable* component) {
   sprite_ = component;
 }
 
-bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
+bool MofSpriteAnimationComponent::Load(ISpriteAnimatable* component,
                                        std::span<SpriteAnimationClip> clips) {
   std::vector<Mof::SpriteAnimationCreate> pac(clips.size());
   for (MofU32 i = 0; i < clips.size(); i++) {
@@ -46,7 +46,7 @@ bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
   return motion_.Create(pac.data(), clips.size());
 }
 
-bool MofSpriteAnimationComponent::Load(SpriteComponent* component,
+bool MofSpriteAnimationComponent::Load(ISpriteAnimatable* component,
                                        const std::string_view file) {
   std::vector<SpriteAnimationClip> sprite_animation_clips;
 

@@ -36,7 +36,7 @@ class Actor {
   enum State { kStart, kActive, kPause, kDead };
 
   Actor(class Game* game);
-  Actor(class Game* game,std::weak_ptr<Scene> scene);
+  Actor(class Game* game, std::weak_ptr<Scene> scene);
   virtual ~Actor();
 
   void StartActor();
@@ -105,7 +105,7 @@ class Actor {
    * \return 成功:探索したコンポーネントのポインタ,失敗:nullptr
    */
   template <class T>
-  T* GetComponents() const;
+  std::vector<ComponentDerivedWeakPtr<T>> GetComponents() const;
   /**
    * \brief Componentのデストラクタから呼び出す
    * \param component
@@ -135,7 +135,13 @@ class Actor {
 
   [[nodiscard]] std::weak_ptr<Actor> GetParent() const;
   [[nodiscard]] std::weak_ptr<Scene> GetScene() const { return scene_; }
-  void SetScene(const std::weak_ptr<Scene> scene) {scene_ =  scene; }
+  void SetScene(const std::weak_ptr<Scene> scene) { scene_ = scene; }
+
+  [[nodiscard]] bool Enable() const { return b_enable_; }
+
+  void SetEnable(bool b_enable);
+  virtual void OnEnable() {}
+  virtual void OnDisable() {}
 
  protected:
   std::string name_ = "Actor";
@@ -144,6 +150,7 @@ class Actor {
   Vector2 position_;
   float rotation_;
   float scale_;
+  bool b_enable_ = true;
 
  private:
   ActorId id_{};
@@ -170,6 +177,18 @@ ComponentDerivedWeakPtr<T> Actor::GetComponent() const {
 }
 
 template <class T>
-T* Actor::GetComponents() const {}
+std::vector<ComponentDerivedWeakPtr<T>> Actor::GetComponents() const
+{
+  std::vector<ComponentDerivedWeakPtr<T>> result;
+  for (auto& elem : components_) {
+    if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem))
+      result.emplace_back(buff);
+  }
+  for (auto& elem : pending_components_) {
+    if (ComponentDerivedPtr<T> buff = std::dynamic_pointer_cast<T>(elem))
+      result.emplace_back(buff);
+  }
+  return result;
+}
 
 }  // namespace base_engine

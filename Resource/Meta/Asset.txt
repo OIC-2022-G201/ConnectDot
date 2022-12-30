@@ -1,3 +1,5 @@
+Electro_purple Sprite Effect/Electro_purple/ElectroCellMap.png
+Electro_purpleAnimation Sprite Effect/Electro_purple/Electro_purpleAnimation/ElectroCellMap.png
 SoundAnimation Animation Effect/Sound/SoundAnimation/Sound_MotionChip.png Effect/Sound/SoundAnimation/Sound.aei
 Beacon Animation gimmick/Objects/Beacon/Beacon.png gimmick/Objects/Beacon/Beacon_Animation.aei
 BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
@@ -30,6 +32,15 @@ Nextbutton Sprite UI/Nextbutton/Nextlogo.png
 Panel Sprite UI/Panel/Panel.png
 Popup Sprite UI/Popup/Result.png
 Result Sprite UI/Result/DiagonalLetterBox.png
-QuitGameButton Button UI/Title/QuitGameButton/Quitgame.png UI/Title/QuitGameButton/Quitgame2.png
-StartGameButton Button UI/Title/StartGameButton/Startgame.png UI/Title/StartGameButton/Startgame2.png
-TitleLogo Sprite UI/Title/TitleLogo/Titlelogo.png
+Arrow Sprite UI/TitleMenu-Programmer/Arrow/Arrow.png
+KeyGuide Sprite UI/TitleMenu-Programmer/KeyGuide/PopupKeyGuide.png
+KeyGuideButton Button UI/TitleMenu-Programmer/KeyGuideButton/KeyGuideButton.png UI/TitleMenu-Programmer/KeyGuideButton/KeyGuideButton2.png
+NewGameButton Button UI/TitleMenu-Programmer/NewGameButton/NewGameButton.png UI/TitleMenu-Programmer/NewGameButton/NewGameButton2.png
+Stage1Button Button UI/TitleMenu-Programmer/Stage1Button/Stage1Button.png UI/TitleMenu-Programmer/Stage1Button/Stage1Button2.png
+Stage2Button Button UI/TitleMenu-Programmer/Stage2Button/Stage2Button.png UI/TitleMenu-Programmer/Stage2Button/Stage2Button2.png
+Stage3Button Button UI/TitleMenu-Programmer/Stage3Button/Stage3Button.png UI/TitleMenu-Programmer/Stage3Button/Stage3Button2.png
+StageSelectButton Button UI/TitleMenu-Programmer/StageSelectButton/StageSelectButton.png UI/TitleMenu-Programmer/StageSelectButton/StageSelectButton2.png
+TitleLightAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLightAnimation/TitleLightEffect.png UI/TitleMenu-Programmer/TiTleAnimation/TitleLightAnimation/TitleLightEffect.aei
+TitleLogoAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.png UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.aei
+TitleExitButton Button UI/TitleMenu-Programmer/TitleExitButton/ExitButton.png UI/TitleMenu-Programmer/TitleExitButton/ExitButton2.png
+TitleHaikei Sprite UI/TitleMenu-Programmer/TitleHaikei/haikei.png

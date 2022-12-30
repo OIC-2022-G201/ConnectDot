@@ -170,7 +170,7 @@ void Game::UpdateGame() {
   {
     auto actor = actors_[i];
     if (actors_.empty()) break;
-    actor->UpdateActor();
+    if(actor->Enable())actor->UpdateActor();
 
     if (clear_wait_actors_) {
       clear_wait_actors_ = false;
@@ -221,6 +221,8 @@ void Game::SetNextFrameEvent(const std::function<void()>& event)
 
 void Game::Render() const {
   for (const auto sprite : sprites_) {
+    if (sprite->GetOwner().expired()) continue;
+    if (!sprite->GetOwner().lock()->Enable()) continue;
     if (sprite->GetEnabled()) sprite->Draw();
   }
   for (auto& func : debug_render_) {

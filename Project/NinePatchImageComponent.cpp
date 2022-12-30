@@ -69,7 +69,7 @@ base_engine::NinePatchImageComponent::SetImage(const Mof::LPTexture img,
 }
 
 void base_engine::NinePatchImageComponent::SetClipRect(
-    const Mof::CRectangle rect) {
+    const Mof::CRectangle& rect) {
   clip_rect_ = rect;
 }
 

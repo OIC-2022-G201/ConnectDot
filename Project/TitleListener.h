@@ -6,6 +6,7 @@
 // @details
 
 #pragma once
+#include "ButtonSelecter.h"
 #include "Component.h"
 #include "HandlerRegistration.h"
 
@@ -13,11 +14,33 @@ class TitleComponent final : base_engine::Component {
   class TitleListener;
 
  public:
+  friend class TitleSceneFactory;
+
   explicit TitleComponent(base_engine::Actor* owner);
 
   void Start() override;
+  void Update() override;
 
-private:
+  struct Popup {
+    base_engine::Actor* popup_actor = nullptr;
+    bool is_animation = false;
+    std::unordered_map<std::string, base_engine::Actor*> elements{};
+    base_engine::Vector2 size;
+    void Hide();
+    void Show();
+  };
+
+ private:
+  void OpenStageSelectPopup();
+  void CloseStageSelectPopup();
+
+  Popup main_popup_;
+  Popup stage_select_popup_;
+  Popup key_guide_popup_;
+  std::array<Popup*, 3> popups_ = {&main_popup_, &stage_select_popup_,
+                                   &key_guide_popup_};
+  int current_popup_ = 0;
+  bool can_;
   std::unique_ptr<TitleListener> listener_;
   std::shared_ptr<HandlerRegistration> handle_;
 };

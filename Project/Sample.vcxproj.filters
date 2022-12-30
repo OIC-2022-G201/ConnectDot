@@ -478,6 +478,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween\Position">
       <UniqueIdentifier>{a4607a77-f51d-4a85-95c3-47fdfe2d0789}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize">
+      <UniqueIdentifier>{d88486f4-f422-43f9-a6ec-cce9deca6350}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -965,6 +968,12 @@
     </ClCompile>
     <ClCompile Include="PositionYTween.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\Position</Filter>
+    </ClCompile>
+    <ClCompile Include="ClipSizeXTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize</Filter>
+    </ClCompile>
+    <ClCompile Include="ClipSizeYTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1660,6 +1669,15 @@
     </ClInclude>
     <ClInclude Include="PositionYTween.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="ISpriteAnimatable.h">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipSizeXTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize</Filter>
+    </ClInclude>
+    <ClInclude Include="ClipSizeYTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

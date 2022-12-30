@@ -6,6 +6,7 @@
 #include "ISpriteAnimationComponent.h"
 #include "ReactiveProperty.h"
 #include "ShapeRenderComponent.h"
+#include "SpriteComponent.h"
 #include "TupleHasElement.h"
 
 class BeaconActor final : public base_engine::Actor{

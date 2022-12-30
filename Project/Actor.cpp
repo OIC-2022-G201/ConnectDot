@@ -141,4 +141,15 @@ std::weak_ptr<Actor> Actor::GetChildByTag(const std::string_view tag) const {
 }
 
 std::weak_ptr<Actor> Actor::GetParent() const { return parent_; }
+
+void Actor::SetEnable(bool b_enable)
+{
+	if (b_enable == b_enable_) return;
+	b_enable_ = b_enable;
+	if (b_enable_) {
+		OnEnable();
+	} else {
+		OnDisable();
+	}
+}
 }  // namespace base_engine

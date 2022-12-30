@@ -24,7 +24,9 @@ class ButtonCommandEventContainer {
   ButtonCommandEventContainer() { Register(); }
 
   void Execute(const EventKey& key) const {
-    event_map_.at(EventHashType{}(key))();
+    const auto hash = EventHashType{}(key);
+    if (!event_map_.contains(hash)) return;
+    event_map_.at(hash)();
   }
   static ButtonCommandEventContainer& Instance() {
     static auto instance = new ButtonCommandEventContainer;

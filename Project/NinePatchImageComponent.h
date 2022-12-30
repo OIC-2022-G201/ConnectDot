@@ -8,11 +8,12 @@
 #pragma once
 #include <array>
 
+#include "ISpriteAnimatable.h"
 #include "RenderComponent.h"
 
 namespace base_engine {
 //TODO Imageなどに統合
-class NinePatchImageComponent : public RenderComponent {
+class NinePatchImageComponent : public RenderComponent,public ISpriteAnimatable {
  public:
   using COLOR = uint32_t;
 
@@ -24,9 +25,9 @@ class NinePatchImageComponent : public RenderComponent {
   NinePatchImageComponent& SetImage(const Mof::LPTexture img,
                                     const Vector2& left_top,
                                     const Vector2& right_bottom);
-  void SetClipRect(const Mof::CRectangle rect);
+  void SetClipRect(const Mof::CRectangle &rect) override;
 
-  [[nodiscard]] Mof::CRectangle ClipRect() const
+  [[nodiscard]] Mof::CRectangle GetClipRect() const override
   {
 	  return clip_rect_;
   }
