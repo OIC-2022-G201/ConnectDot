@@ -33,6 +33,7 @@ class TitleComponent final : base_engine::Component {
 
  private:
   void NewGameEvent();
+  void StageSelect(std::string_view name);
   void OpenStageSelectPopup();
   void OpenKeyGuidePopup();
   void CloseStageSelectPopup();

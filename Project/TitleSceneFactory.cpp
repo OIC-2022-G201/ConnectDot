@@ -136,9 +136,7 @@ void TitleSceneFactory::Factory() {
   {
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
         main_pack = {
-            {{212, 649},
-             "NewGameButton",
-             [title] { title->stage_select_popup_.Hide(); }},
+            {{212, 649}, "NewGameButton", [title] { title->NewGameEvent(); }},
             {{212, 737},
              "StageSelectButton",
              [title] { title->OpenStageSelectPopup(); }},
@@ -154,11 +152,17 @@ void TitleSceneFactory::Factory() {
   // StageSelect
   {
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
-        main_pack = {{{670, 737}, "Stage1Button", {[] {
-                        scene::LoadScene(scene::kGame);
-                      }}},
-                     {{670, 824}, "Stage2Button", {}},
-                     {{670, 913}, "Stage3Button", {}}};
+        main_pack = {
+            {{670, 737},
+             "Stage1Button",
+             [title] { title->StageSelect("Stage1"); }},
+            {{670, 824},
+             "Stage2Button",
+             [title] { title->StageSelect("Stage2"); }},
+            {{670, 913},
+             "Stage3Button",
+             [title] { title->StageSelect("Stage3"); }},
+        };
     const auto popup = &title->stage_select_popup_;
     CreatePopup(input, {583, 656, 891, 1011}, main_pack, popup, false);
   }

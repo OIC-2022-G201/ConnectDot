@@ -16,11 +16,12 @@ class StageContainer {
   using StageDef = std::pair<MapTilePath, ObjectsDirectory>;
 
   std::unordered_map<std::string, StageDef> stage_map_;
-
+  std::string select_stage_;
   bool Load();
 
-public:
+ public:
   bool Initialize();
-
+  bool SelectStage(const std::string_view str);
   std::optional<StageDef> GetStage(const std::string& key);
+  std::optional<StageDef> GetStage();
 };

@@ -17,6 +17,15 @@ bool StageContainer::Initialize() {
 	return true;
 }
 
+bool StageContainer::SelectStage(const std::string_view str)
+{
+    if (stage_map_.contains(str.data())) {
+        select_stage_ = str;
+        return true;
+    }
+    return false;
+}
+
 std::optional<StageContainer::StageDef> StageContainer::GetStage(const std::string& key)
 {
 	if (stage_map_.contains(key))
@@ -24,4 +33,9 @@ std::optional<StageContainer::StageDef> StageContainer::GetStage(const std::stri
 		return stage_map_[key];
 	}
 	return std::nullopt;
+}
+
+std::optional<StageContainer::StageDef> StageContainer::GetStage()
+{
+  return GetStage(select_stage_);
 }

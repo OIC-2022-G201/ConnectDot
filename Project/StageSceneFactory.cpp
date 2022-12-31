@@ -1,6 +1,7 @@
 ﻿#include "StageSceneFactory.h"
 
 #include "CameraComponent.h"
+#include "ComponentServiceLocator.h"
 #include "DebugStage.h"
 #include "EnemyActor.h"
 #include "EventRegister.h"
@@ -12,18 +13,15 @@
 #include "PlayerActor.h"
 #include "PylonActor.h"
 #include "ResultScoreComponent.h"
-#include "ComponentServiceLocator.h"
 #include "StageContainer.h"
 #include "TileMapComponent.h"
 using namespace base_engine;
 void StageSceneFactory::Factory() {
+  const auto stage_container =
+      ServiceLocator::Instance().Resolve<StageContainer>();
+  const auto stage_def = stage_container->GetStage();
 
-  const auto stage_container = ServiceLocator::Instance().Resolve<StageContainer>();
-  const auto stage_def = stage_container->GetStage("Stage2");
-
-
-
-	const auto camera = new Actor(game_);
+  const auto camera = new Actor(game_);
   const auto camera_component = new CameraComponent(camera);
   camera_component->SetMainCamera();
   const auto follow = new FollowComponent(camera);
@@ -32,17 +30,16 @@ void StageSceneFactory::Factory() {
     stageActor->SetName("Stage");
     const auto stage = new tile_map::TileMapComponent(stageActor, 100);
     stage->SetStage(stage_def->first.string());
-  	new tile_map::ObjectTileMapComponent(stageActor);
+    new tile_map::ObjectTileMapComponent(stageActor);
     ComponentServiceLocator::Instance().RegisterInstance(
-        stageActor->GetComponent<tile_map::ObjectTileMapComponent>()
-        );
+        stageActor->GetComponent<tile_map::ObjectTileMapComponent>());
   }
 
   new InputManager(new InputActor(game_));
 
-	const auto player = new player::PlayerActor(game_);
+  const auto player = new player::PlayerActor(game_);
 
-  player->SetPosition(GridPosition::GridTo({2,2}));
+  player->SetPosition(GridPosition::GridTo({2, 2}));
   player->SetInput(InputManager::Instance());
   const auto tilemap = stageActor->GetComponent<tile_map::TileMapComponent>();
   player->SetMap(tilemap);

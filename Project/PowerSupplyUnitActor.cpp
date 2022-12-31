@@ -54,6 +54,7 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
 
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
+
     int n = std::get<int>(object.parameters[object.parameters.size()-2]);
     if (n>1)
     {

@@ -5,6 +5,7 @@
 #include "ButtonPressEvent.h"
 #include "ClipSizeXTween.h"
 #include "ClipSizeYTween.h"
+#include "ComponentServiceLocator.h"
 #include "DummyTween.h"
 #include "EventBus.h"
 #include "EventHandler.h"
@@ -12,6 +13,8 @@
 #include "InputManager.h"
 #include "NinePatchImageComponent.h"
 #include "ResourceContainer.h"
+#include "SceneManager.h"
+#include "StageContainer.h"
 using namespace base_engine;
 constexpr float kAnimationElementTime = 0.15f;
 constexpr float kAnimationPopupTime = 0.3f;
@@ -135,9 +138,19 @@ void TitleComponent::Popup::Show() {
       });
 }
 
-void TitleComponent::NewGameEvent()
+void TitleComponent::NewGameEvent() {
+  const auto stage_container =
+      ServiceLocator::Instance().Resolve<StageContainer>();
+  stage_container->SelectStage("Stage1");
+  scene::LoadScene(scene::kGame);
+}
+
+void TitleComponent::StageSelect(std::string_view name)
 {
-    
+  const auto stage_container =
+      ServiceLocator::Instance().Resolve<StageContainer>();
+  stage_container->SelectStage(name);
+  scene::LoadScene(scene::kGame);
 }
 
 void TitleComponent::OpenStageSelectPopup() {
