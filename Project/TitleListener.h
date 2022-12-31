@@ -22,6 +22,7 @@ class TitleComponent final : base_engine::Component {
   void Update() override;
 
   struct Popup {
+    TitleComponent* title;
     base_engine::Actor* popup_actor = nullptr;
     bool is_animation = false;
     std::unordered_map<std::string, base_engine::Actor*> elements{};
@@ -31,12 +32,16 @@ class TitleComponent final : base_engine::Component {
   };
 
  private:
+  void NewGameEvent();
   void OpenStageSelectPopup();
+  void OpenKeyGuidePopup();
   void CloseStageSelectPopup();
 
   Popup main_popup_;
   Popup stage_select_popup_;
   Popup key_guide_popup_;
+  base_engine::Actor* line_actor_;
+  std::weak_ptr<base_engine::ImageComponent> line_;
   std::array<Popup*, 3> popups_ = {&main_popup_, &stage_select_popup_,
                                    &key_guide_popup_};
   int current_popup_ = 0;

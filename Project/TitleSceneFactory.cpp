@@ -19,6 +19,7 @@
 #include "NinePatchImageComponent.h"
 #include "Rect.h"
 #include "ResourceContainer.h"
+#include "SceneManager.h"
 #include "SpriteComponent.h"
 #include "TitleListener.h"
 #include "UiFrozen.h"
@@ -73,7 +74,20 @@ void TitleSceneFactory::CreatePopup(
     InputManager* const input, const Rect& rect,
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
         main_pack,
-    TitleComponent::Popup* const popup,bool enable) {
+    TitleComponent::Popup* const popup, bool enable) {
+  const auto [actor, panel] =
+      NinePatchCreate(game_, "Panel", {2, 2}, {126, 126}, 110);
+  const Vector2 lt = rect.GetTopLeft();
+  const Vector2 rb = rect.GetBottomRight();
+  actor->SetPosition(lt);
+  popup->size = {rb - lt};
+  panel->SetClipRect({{0, 0}, popup->size});
+  popup->popup_actor = actor;
+  panel->SetEnabled(enable);
+
+  if (main_pack.empty()) {
+    return;
+  }
   const auto selector = new ButtonSelecter(game_);
   selector->SetInput(input);
   selector->CreateCursor(
@@ -81,15 +95,7 @@ void TitleSceneFactory::CreatePopup(
       {-55, -2});
   selector->SetEnable(enable);
   popup->elements.emplace("selector", selector);
-  const auto [actor, panel] =
-      NinePatchCreate(game_, "Panel", {2, 2}, {126, 126}, 110);
-  const Vector2 lt = rect.GetTopLeft();
-  const Vector2 rb = rect.GetBottomRight();
-  actor->SetPosition(lt);
-  popup->size = {rb - lt};
-  panel->SetClipRect({{0, 0},popup->size });
-  popup->popup_actor = actor;
-  panel->SetEnabled(enable);
+
   for (int i = 0; i < main_pack.size(); ++i) {
     const auto& [pos, name, action] = main_pack[i];
     const auto [button, _] = ButtonCreate(
@@ -130,26 +136,46 @@ void TitleSceneFactory::Factory() {
   {
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
         main_pack = {
-            {{212, 649}, "NewGameButton", {[title] {
-               title->stage_select_popup_.Hide();
-             }}},
-            {{212, 737}, "StageSelectButton", {[title] {
-               title->OpenStageSelectPopup();
-             }}},
-            {{212, 824}, "KeyGuideButton", {}},
-            {{212, 913}, "TitleExitButton", {}},
+            {{212, 649},
+             "NewGameButton",
+             [title] { title->stage_select_popup_.Hide(); }},
+            {{212, 737},
+             "StageSelectButton",
+             [title] { title->OpenStageSelectPopup(); }},
+            {{212, 824},
+             "KeyGuideButton",
+             [title] { title->OpenKeyGuidePopup(); }},
+            {{212, 913}, "TitleExitButton", [] { PostQuitMessage(0); }},
         };
     const auto popup = &title->main_popup_;
     CreatePopup(input, {125, 570, 543, 1011}, main_pack, popup);
   }
 
+  // StageSelect
   {
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
-        main_pack = {{{670, 737}, "Stage1Button", {}},
+        main_pack = {{{670, 737}, "Stage1Button", {[] {
+                        scene::LoadScene(scene::kGame);
+                      }}},
                      {{670, 824}, "Stage2Button", {}},
                      {{670, 913}, "Stage3Button", {}}};
     const auto popup = &title->stage_select_popup_;
-    CreatePopup(input, {583, 656, 891, 1011}, main_pack, popup,false);
+    CreatePopup(input, {583, 656, 891, 1011}, main_pack, popup, false);
+  }
+
+  // KeyGuide
+  {
+    const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
+        main_pack = {};
+    const auto popup = &title->key_guide_popup_;
+    const auto guide = new Actor(game_);
+    guide->SetPosition({654, 620});
+    (new ImageComponent(guide, 120))
+        ->SetImage(
+            *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("KeyGuide"));
+    popup->elements.emplace("KeyGuide", guide);
+    guide->SetEnable(false);
+    CreatePopup(input, {583, 572, 1727, 1011}, main_pack, popup, false);
   }
   return;
 }
