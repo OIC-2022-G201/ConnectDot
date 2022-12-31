@@ -28,6 +28,7 @@ RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/ret
 7 Sprite UI/Ingame/Number/7/7.png
 8 Sprite UI/Ingame/Number/8/8.png
 9 Sprite UI/Ingame/Number/9/9.png
+PopupLine Sprite UI/Line/PopupLine/Line.png
 Nextbutton Sprite UI/Nextbutton/Nextlogo.png
 Panel Sprite UI/Panel/Panel.png
 Popup Sprite UI/Popup/Result.png
