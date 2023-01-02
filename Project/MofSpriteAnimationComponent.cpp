@@ -43,7 +43,7 @@ bool MofSpriteAnimationComponent::Load(ISpriteAnimatable* component,
   }
   SetSpriteComponent(component);
   sprite_->SetClipRect(motion_.GetSrcRect());
-  return motion_.Create(pac.data(), clips.size());
+  return motion_.Create(clips);
 }
 
 bool MofSpriteAnimationComponent::Load(ISpriteAnimatable* component,

@@ -42,10 +42,12 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
         cell_half.x, cell_half.y, kPowerRadius);
-    const auto shape = new base_engine::ShapeRenderComponent(this, 110);
-    shape->SetShape(circle);
-    shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
-    RegistryPart(shape);
+    if (false) {
+      const auto shape = new base_engine::ShapeRenderComponent(this, 110);
+      shape->SetShape(circle);
+      shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
+      RegistryPart(shape);
+    }
     const auto collision = new base_engine::CollisionComponent(this);
     collision->SetShape(circle);
     collision->SetObjectFilter(kBeaconObjectFilter);

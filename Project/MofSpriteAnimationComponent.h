@@ -11,6 +11,7 @@
 #include "Component.h"
 #include "ComponentParameter.h"
 #include "ISpriteAnimationComponent.h"
+#include "MofSpriteMotionController.h"
 #include "SpriteComponent.h"
 
 namespace base_engine {
@@ -46,7 +47,7 @@ private:
   bool reset_ = false;
   float speed_ = 1;
   std::string current_name_;
-  Mof::CSpriteMotionController motion_;
+  MofSpriteMotionController motion_;
   std::unordered_map<std::string, MofU32> motion_map_;
   ISpriteAnimatable* sprite_ = nullptr;
 };

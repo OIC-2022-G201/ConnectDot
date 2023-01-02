@@ -6,6 +6,7 @@
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
@@ -16,23 +17,23 @@
 #include "PowerSupplyUnitTransmitter.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
-#include "ComponentServiceLocator.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
 #include "TransmitterComponent.h"
 using namespace electronics;
-void PowerSupplyUnitActor::Start() {
-}
+void PowerSupplyUnitActor::Start() {}
 
 void PowerSupplyUnitActor::Create(const LoadObject& object) {
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius/4);
-    const auto shape = new base_engine::ShapeRenderComponent(this, 110);
-    shape->SetShape(circle);
-    shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
+        cell_half.x, cell_half.y, kPowerRadius / 4);
+    if (false) {
+      const auto shape = new base_engine::ShapeRenderComponent(this, 110);
+      shape->SetShape(circle);
+      shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
+    }
     const auto collision = new base_engine::CollisionComponent(this);
     collision->SetShape(circle);
     collision->SetObjectFilter(kPowerSupplyUnitObjectFilter);
@@ -55,9 +56,8 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
 
-    int n = std::get<int>(object.parameters[object.parameters.size()-2]);
-    if (n>1)
-    {
+    int n = std::get<int>(object.parameters[object.parameters.size() - 2]);
+    if (n > 1) {
       int k = 3;
     }
     receiver->SetLevel(n);

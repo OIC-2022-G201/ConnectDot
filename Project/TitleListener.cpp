@@ -145,8 +145,7 @@ void TitleComponent::NewGameEvent() {
   scene::LoadScene(scene::kGame);
 }
 
-void TitleComponent::StageSelect(std::string_view name)
-{
+void TitleComponent::StageSelect(std::string_view name) {
   const auto stage_container =
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage(name);
@@ -182,9 +181,8 @@ void TitleComponent::OpenKeyGuidePopup() {
                         ->GetComponent<base_engine::NinePatchImageComponent>()
                         .lock()
                         ->GetClipRect();
-  const Vector2 pos = {
-      main_popup_.popup_actor->GetPosition().x + rect.Right,
-      main_popup_.elements["StageSelectButton"]->GetPosition().y};
+  const Vector2 pos = {main_popup_.popup_actor->GetPosition().x + rect.Right,
+                       main_popup_.elements["KeyGuideButton"]->GetPosition().y};
   line_actor_->SetPosition(pos);
   line_.lock()->SetClipRect({0, 0, 0, 5});
   ma_tween::ClipSizeXTween::TweenClipSizeX(line_actor_, line_, 40,

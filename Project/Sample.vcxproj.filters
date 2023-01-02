@@ -975,6 +975,9 @@
     <ClCompile Include="ClipSizeYTween.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize</Filter>
     </ClCompile>
+    <ClCompile Include="MofSpriteMotionController.cpp">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1678,6 +1681,9 @@
     </ClInclude>
     <ClInclude Include="ClipSizeYTween.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize</Filter>
+    </ClInclude>
+    <ClInclude Include="MofSpriteMotionController.h">
+      <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

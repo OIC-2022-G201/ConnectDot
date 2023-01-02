@@ -118,6 +118,7 @@
     <ClCompile Include="GameOverSceneFactory.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
+    <ClCompile Include="MofSpriteMotionController.cpp" />
     <ClCompile Include="NinePatchImageComponent.cpp" />
     <ClCompile Include="ObjectTileMapComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ISpriteAnimatable.h" />
     <ClInclude Include="ITween.h" />
+    <ClInclude Include="MofSpriteMotionController.h" />
     <ClInclude Include="NinePatchImageComponent.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="ParentTest.h" />

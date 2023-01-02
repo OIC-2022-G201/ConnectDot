@@ -131,7 +131,21 @@ void TitleSceneFactory::Factory() {
 
     actor->SetPosition({1236, 258});
   }
+  {
+    const auto actor = new Actor(game_);
+    const auto sprite = new ImageComponent(actor, 110);
 
+    const auto pack =
+        RC::GetPack<RC::AnimationResourcePack>("TitleLogoAnimation");
+    const auto image = pack->Get<RC::Sprite>()->Get(0);
+    sprite->SetImage(*image);
+
+    const auto clip = pack->Get<RC::AnimationClips>()->Get(0);
+    const auto animation = new MofSpriteAnimationComponent(actor);
+    animation->Load(sprite, *clip);
+
+    actor->SetPosition({95, 310});
+  }
   // MainPopup
   {
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
