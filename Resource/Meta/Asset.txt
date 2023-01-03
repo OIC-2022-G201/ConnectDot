@@ -31,8 +31,10 @@ RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/ret
 PopupLine Sprite UI/Line/PopupLine/Line.png
 Nextbutton Sprite UI/Nextbutton/Nextlogo.png
 Panel Sprite UI/Panel/Panel.png
-Popup Sprite UI/Popup/Result.png
-Result Sprite UI/Result/DiagonalLetterBox.png
+LetterBox Sprite UI/Result/LetterBox/DiagonalLetterBox.png
+ResultCharacter Sprite UI/Result/ResultCharacter/ResultCharacter.png
+ResultLogo Sprite UI/Result/ResultLogo/StageclearLogo.png
+ResultPopup Sprite UI/Result/ResultPopup/PopupResults.png
 Arrow Sprite UI/TitleMenu-Programmer/Arrow/Arrow.png
 KeyGuide Sprite UI/TitleMenu-Programmer/KeyGuide/PopupKeyGuide.png
 KeyGuideButton Button UI/TitleMenu-Programmer/KeyGuideButton/KeyGuideButton.png UI/TitleMenu-Programmer/KeyGuideButton/KeyGuideButton2.png
