@@ -11,6 +11,7 @@
 #include "MofSpriteAnimationComponent.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
+#include "ReleaseInfo.h"
 #include "ResourceContainer.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
@@ -42,7 +43,7 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
         cell_half.x, cell_half.y, kPowerRadius);
-    if (false) {
+    if (kIsCollisionRenderMode) {
       const auto shape = new base_engine::ShapeRenderComponent(this, 110);
       shape->SetShape(circle);
       shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);

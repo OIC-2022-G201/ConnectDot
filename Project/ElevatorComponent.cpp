@@ -63,6 +63,7 @@ void ElevatorActor::Create(const LoadObject& object) {
     const auto& path =
         std::get<LoadObject::TexturePath>(object.parameters[0]).value;
     sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
+    sprite->SetOffset({0, 24});
   }
 
   {

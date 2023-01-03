@@ -298,6 +298,7 @@
     <ClInclude Include="ParentTest.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="PositionYTween.h" />
+    <ClInclude Include="ReleaseInfo.h" />
     <ClInclude Include="ResultModel.h" />
     <ClInclude Include="ResultScoreComponent.h" />
     <ClInclude Include="Scene.h" />

@@ -1685,6 +1685,9 @@
     <ClInclude Include="MofSpriteMotionController.h">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
     </ClInclude>
+    <ClInclude Include="ReleaseInfo.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE">

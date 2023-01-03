@@ -5,6 +5,7 @@
 #include "CollisionLayer.h"
 #include "DrawOrder.h"
 #include "MofSpriteAnimationComponent.h"
+#include "ReleaseInfo.h"
 #include "ResourceContainer.h"
 using namespace base_engine;
 using RC = ResourceContainer;
@@ -18,10 +19,11 @@ void SoundEffectActor::Play(const float range) {
     collision_->SetObjectFilter(kSoundObjectFilter);
     collision_->SetTargetFilter(kSoundTargetFilter);
     collision_->SetTrigger(true);
-
-    debug_shape_ = new ShapeRenderComponent(this, 100);
-    debug_shape_->SetColor(MOF_COLOR_GREEN);
-    debug_shape_->SetFillMode(FillMode::No);
+    if (kIsCollisionRenderMode) {
+      debug_shape_ = new ShapeRenderComponent(this, 100);
+      debug_shape_->SetColor(MOF_COLOR_GREEN);
+      debug_shape_->SetFillMode(FillMode::No);
+    }
     auto& [sprite_, motion_] = effects_[0];
     sprite_ = new base_engine::SpriteComponent(this, 130);
     const auto sprite_resource =

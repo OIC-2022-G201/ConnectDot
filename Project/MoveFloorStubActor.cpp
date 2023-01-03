@@ -13,6 +13,7 @@
 #include "LoadObjectParameter.h"
 #include "MachineConst.h"
 #include "ReceiverComponent.h"
+#include "ReleaseInfo.h"
 #include "SignboardReceiver.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
@@ -24,11 +25,12 @@ void MoveFloorStubActor::Create(const LoadObject& object) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
     const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y);
-    const auto shape = new ShapeRenderComponent(this, 110);
-    shape->SetShape(rect);
-    shape->SetFillMode(electronics::kElectricAreaFillMode)
-        .SetColor(electronics::kElectricAreaColor);
-
+    if (kIsCollisionRenderMode) {
+      const auto shape = new ShapeRenderComponent(this, 110);
+      shape->SetShape(rect);
+      shape->SetFillMode(electronics::kElectricAreaFillMode)
+          .SetColor(electronics::kElectricAreaColor);
+    }
     const auto collision = new CollisionComponent(this);
     collision->SetShape(rect);
     collision->SetObjectFilter(kMoveFloorObjectFilter);

@@ -18,6 +18,7 @@
 #include "MachineConst.h"
 #include "PlayerComponent.h"
 #include "ReceiverComponent.h"
+#include "ReleaseInfo.h"
 #include "SignboardReceiver.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
@@ -44,12 +45,12 @@ void GoalComponent::Create(base_engine::Actor* owner) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
     const auto rect = std::make_shared<Rect>(0, 0, cell.x * 2, cell.y * 2);
-
-    const auto shape = new ShapeRenderComponent(owner, 110);
-    shape->SetShape(rect);
-    shape->SetFillMode(static_cast<FillMode>(true))
-        .SetColor(electronics::kElectricAreaColor);
-
+    if (kIsCollisionRenderMode) {
+      const auto shape = new ShapeRenderComponent(owner, 110);
+      shape->SetShape(rect);
+      shape->SetFillMode(static_cast<FillMode>(true))
+          .SetColor(electronics::kElectricAreaColor);
+    }
     const auto collision = new CollisionComponent(owner);
     collision->SetShape(rect);
     collision->SetObjectFilter(CollisionLayer::kNone);

@@ -4,6 +4,7 @@
 #include "SecondEnemyComponent.h"
 #include "CollisionLayer.h"
 #include "InputManager.h"
+#include "ReleaseInfo.h"
 #include "ShapeRenderComponent.h"
 namespace enemy {
 	void EnemyVisionComponent::Start()
@@ -22,14 +23,14 @@ namespace enemy {
 		collision_ = new CollisionComponent(owner_);
 		collision_->SetShape(find_rect_);
 		collision_->SetObjectFilter(CollisionLayer::kNone);
-                const auto filter =
-                    BitCollisionLayer{kPlayerObjectFilter};
 		collision_->SetTargetFilter(kEnemyVisionTargetFilter);
 		collision_->SetTrigger(true);
 
-		debug_render_ = new ShapeRenderComponent(owner_, 200);
-		debug_render_->SetShape(find_rect_);
-		debug_render_->SetColor(MOF_COLOR_HRED);
+		if (kIsCollisionRenderMode) {
+                  debug_render_ = new ShapeRenderComponent(owner_, 200);
+                  debug_render_->SetShape(find_rect_);
+                  debug_render_->SetColor(MOF_COLOR_HRED);
+		}
 	}
 
 	void EnemyVisionComponent::ProcessInput()
