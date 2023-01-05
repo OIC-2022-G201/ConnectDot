@@ -15,6 +15,12 @@ SingboardEkey Animation gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation_M
 SingboardJamp Animation gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation.aei
 SingboardSet Animation gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation.aei
 syutugenyuka Animation gimmick/Objects/syutugenyuka/syutugenyuka1.png gimmick/Objects/syutugenyuka/syutugenyuka1.aei
+CriticalPointEffect Animation UI/EnhanceActionBar/CriticalPointEffect/CriticalPointEffect_MotionChip.png UI/EnhanceActionBar/CriticalPointEffect/CriticalPointEffect.aei
+FlowElectroEffect Animation UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect_MotionChip.png UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect.aei
+FrameBar Sprite UI/EnhanceActionBar/FrameBar/FrameBar.png
+MoveBar Sprite UI/EnhanceActionBar/MoveBar/MoveBar.png
+SparkEffect Animation UI/EnhanceActionBar/SparkEffect/SparkEffect_MotionChip.png UI/EnhanceActionBar/SparkEffect/SparkEffect.aei
+StopBar Sprite UI/EnhanceActionBar/StopBar/StopBar.png
 Gameover Sprite UI/Gameover/gameover.png
 ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
 RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png

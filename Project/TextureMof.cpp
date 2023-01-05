@@ -38,13 +38,7 @@ bool TextureMof::Load(std::string_view name) {
   if (textures_.contains(hash)) return false;
 
   auto texture = new Mof::CTexture;
-  std::ifstream stream(texture_normal_path, std::ios::binary);
-  std::vector<uint8_t> data;
-
-  std::for_each(std::istreambuf_iterator<char>(stream),
-                std::istreambuf_iterator<char>(),
-                [&data](const char c) { data.push_back(c); });
-  if (!texture->Load(texture_normal_path.data(), data.data(), data.size())) {
+  if (!texture->Load(texture_normal_path.data())) {
     delete texture;
     return false;
   }

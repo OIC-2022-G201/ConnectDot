@@ -481,6 +481,18 @@
     <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween\ClipSize">
       <UniqueIdentifier>{d88486f4-f422-43f9-a6ec-cce9deca6350}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\BeaconPowerUpAction">
+      <UniqueIdentifier>{1359990d-6338-41d2-a893-c3725a245099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween\Scale">
+      <UniqueIdentifier>{12086657-cd25-4ba3-bbad-28aaa8e8866a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Tweener\ComponentTween\SpriteAlpha">
+      <UniqueIdentifier>{9d9a3331-d6cb-4fd2-b0d4-d7982d4d2b25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Effect\SparkEffect">
+      <UniqueIdentifier>{853b3111-dc4b-4c95-9b66-400398e48c37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -977,6 +989,18 @@
     </ClCompile>
     <ClCompile Include="MofSpriteMotionController.cpp">
       <Filter>BaseEngine\Component\AnimationComponent\SpriteAnimationComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="BeaconPowerUpActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\BeaconPowerUpAction</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\Scale</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAlphaTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\SpriteAlpha</Filter>
+    </ClCompile>
+    <ClCompile Include="SparkEffectActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Effect\SparkEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1687,6 +1711,21 @@
     </ClInclude>
     <ClInclude Include="ReleaseInfo.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconPowerUpActionEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\BeaconPowerUpAction</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconPowerUpActor.h">
+      <Filter>ソース ファイル\ConnectDot\Event\BeaconPowerUpAction</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\Scale</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAlphaTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\SpriteAlpha</Filter>
+    </ClInclude>
+    <ClInclude Include="SparkEffectActor.h">
+      <Filter>ソース ファイル\ConnectDot\Effect\SparkEffect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

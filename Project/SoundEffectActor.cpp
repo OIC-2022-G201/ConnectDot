@@ -46,8 +46,11 @@ void SoundEffectActor::Play(const float range) {
   const auto shape = std::make_shared<Rect>(-range_, -range_, range_, range);
   collision_->SetShape(shape);
   collision_->SetObjectFilter(kSoundObjectFilter);
-  debug_shape_->SetShape(shape);
-  debug_shape_->SetEnabled(true);
+  if (kIsCollisionRenderMode)
+  {
+      debug_shape_->SetShape(shape);
+      debug_shape_->SetEnabled(true);
+  }
   for (const auto& [sprite, motion] : effects_) {
     motion->Play("Sound");
     sprite->SetEnabled(true);
@@ -57,7 +60,9 @@ void SoundEffectActor::Play(const float range) {
 
 void SoundEffectActor::Stop() {
   collision_->SetObjectFilter(CollisionLayer::kNone);
-  debug_shape_->SetEnabled(false);
+  if (kIsCollisionRenderMode) {
+    debug_shape_->SetEnabled(false);
+  }
   for (const auto& [sprite, motion] : effects_) {
     motion->Stop(true);
     sprite->SetEnabled(false);

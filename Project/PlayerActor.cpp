@@ -12,6 +12,7 @@
 #include "MofSpriteAnimationComponent.h"
 #include "PlayerComponent.h"
 #include "Rect.h"
+#include "ReleaseInfo.h"
 #include "ShapeRenderComponent.h"
 #include "SpriteComponent.h"
 #include "TexturePaths.h"
@@ -35,10 +36,12 @@ void PlayerActor::Start() {
     collision->SetShape(shape_player);
     collision->SetObjectFilter(kPlayerObjectFilter);
     collision->SetTargetFilter(kPlayerTargetFilter);
-
-    const auto debug_collision_render = new ShapeRenderComponent(this, 500);
-    debug_collision_render->SetShape(shape_player);
-    debug_collision_render->SetColor(MOF_COLOR_GREEN);
+    if (kIsCollisionRenderMode)
+    {
+        const auto debug_collision_render = new ShapeRenderComponent(this, 500);
+        debug_collision_render->SetShape(shape_player);
+        debug_collision_render->SetColor(MOF_COLOR_GREEN);
+    }
   }
   {
     const auto player_sprite =

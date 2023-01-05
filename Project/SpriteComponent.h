@@ -53,6 +53,7 @@ class SpriteComponent : public RenderComponent, public ISpriteAnimatable {
   }
 
   MofFloat GetAngle() const { return angle_; }
+  COLOR GetColor() const { return color_; }
 
  private:
   int draw_order_;

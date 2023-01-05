@@ -103,7 +103,7 @@ private:
   std::weak_ptr<base_engine::ISpriteAnimationComponent> animator_;
   std::weak_ptr<base_engine::SpriteComponent> sprite_;
   std::unique_ptr<PlayerListener> listener_;
-  std::shared_ptr<HandlerRegistration> event_handler_;
+  std::vector<std::shared_ptr<HandlerRegistration>> event_handlers_;
   observable::ReactiveProperty<Dir> dir_ = Dir::kRight;
   bool is_ground_ = false;
   bool can_control_ = true;

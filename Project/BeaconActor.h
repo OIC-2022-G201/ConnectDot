@@ -36,7 +36,9 @@ class BeaconActor final : public base_engine::Actor{
     return electric_power_.ToReadOnly();
   }
 
- private:
+  void LevelUp() const;
+
+private:
   observable::ReactiveProperty<bool> electric_power_ = false;
   int sequential_ = 0;
   BeaconPartTuple tuple_;

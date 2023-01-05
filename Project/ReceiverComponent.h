@@ -69,6 +69,9 @@ class ReceiverComponent : public base_engine::Component {
 	  level_ = level;
   }
 
+  [[nodiscard]] std::weak_ptr<base_engine::Actor> GetSenderActor() const;
+  void FlowSparkEffect() const;
+
 private:
   enum class PowerState {
     kDisconnect,    //接続が切れている
@@ -81,7 +84,7 @@ private:
   std::unique_ptr<IReceivablePower> receiver_;
   std::weak_ptr<class TransmitterComponent> sender_;
   size_t wait_frame_ = 0;
-  std::weak_ptr<base_engine::Actor> effect_;
-
+  std::weak_ptr<base_engine::Actor> effect_{};
+  base_engine::ISpriteAnimationComponent* flow_spark_animation_ = nullptr;
   int level_ = 1;
 };

@@ -1,11 +1,13 @@
 #include "BeaconActor.h"
 
+#include "BeaconPowerUpActionEvent.h"
 #include "BeaconReceiver.h"
 #include "BeaconTransmitter.h"
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "ElectronicsPower.h"
+#include "EventBus.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
 #include "MofSpriteAnimationComponent.h"
@@ -31,10 +33,10 @@ class BeaconDummyComponent : public base_engine::Component,
 
   void Action(base_engine::Actor* actor) override
   {
-    owner_->GetComponent<TransmitterComponent>().lock()->SetLevel(2);
-    const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(kBeaconPowerup.data());
-    owner_->GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
-    
+    std::any send = std::make_any<base_engine::Actor*>(owner_);
+
+    auto event = BeaconPowerUpActionEvent(send,false);
+    EventBus::FireEvent(event);
   }
 
 };
@@ -109,5 +111,13 @@ void BeaconActor::Update() {
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<BeaconReceiver>(this, kBeaconReceiverOffset);
   }
+}
+
+void BeaconActor::LevelUp() const
+{
+  GetComponent<TransmitterComponent>().lock()->SetLevel(2);
+  const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+      kBeaconPowerup.data());
+  GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
 }
 

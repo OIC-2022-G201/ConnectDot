@@ -6,6 +6,8 @@
 #include <type_traits>
 
 #include "Actor.h"
+#include "BeaconPowerUpActionEvent.h"
+#include "BeaconPowerUpActor.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "ComponentServiceLocator.h"
@@ -42,7 +44,9 @@ class HitGroundCallback final : public physics::PhysicsRayCastCallback {
   physics::PhysicsFixture* ground_fixture_ = nullptr;
 };
 
-class PlayerComponent::PlayerListener final : public EventHandler<GoalEvent> {
+class PlayerComponent::PlayerListener final
+    : public EventHandler<GoalEvent>,
+      public EventHandler<BeaconPowerUpActionEvent> {
   PlayerComponent& player_;
 
  public:
@@ -51,6 +55,17 @@ class PlayerComponent::PlayerListener final : public EventHandler<GoalEvent> {
     player_.can_control_ = false;
     player_.goal_event_ = true;
     new GoalEffectActor(player_.GetGame());
+  }
+
+  void OnEvent(BeaconPowerUpActionEvent& e) override {
+    if (e.IsEnd()) {
+      player_.can_control_ = true;
+    } else {
+      if (!player_.can_control_) return;
+      player_.can_control_ = false;
+      const auto actor = new BeaconPowerUpActor(player_.GetGame());
+      actor->Create(std::any_cast<Actor*>(e.GetSender()));
+    }
   }
 };
 
@@ -61,7 +76,9 @@ PlayerComponent::PlayerComponent(base_engine::Actor* owner, int update_order)
 
 void PlayerComponent::Start() {
   listener_ = std::make_unique<PlayerListener>(*this);
-  event_handler_ = EventBus::AddHandler(*listener_);
+  event_handlers_.emplace_back(EventBus::AddHandler<GoalEvent>(*listener_));
+  event_handlers_.emplace_back(
+      EventBus::AddHandler<BeaconPowerUpActionEvent>(*listener_));
 
   owner_->GetGame()->debug_render_.emplace_back([this]() {
     Mof::CGraphicsUtilities::RenderString(0, 60, "State:%d",
@@ -121,7 +138,7 @@ bool PlayerComponent::IsCollectBeaconKey() const {
 }
 
 bool PlayerComponent::IsActionKey() const {
-  return input_manager_->ActionFire();
+  return can_control_ && input_manager_->ActionFire();
 }
 
 base_engine::CollisionComponent* PlayerComponent::GetCollision() const {
@@ -165,6 +182,8 @@ void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(300); }
 void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
 void PlayerComponent::Update() {
+  if (!can_control_) return;
+
   const auto aabb = collision_.lock()->AABB();
   sound_effect_->SetPosition({aabb.GetCenter().x, aabb.Bottom});
   physics_body_.lock()->AddForce({0, kGravity});
@@ -184,8 +203,9 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
     scene::LoadScene(kGameOver);
     return;
   }
+  if (!can_control_) return;
   machine_.OnEvent(manifold.collision_b);
-  if (input_manager_->ActionFire()) {
+  if (IsActionKey()) {
     if ((manifold.collision_b->GetObjectFilter().to_ulong() &
          CollisionLayer::Layer{CollisionLayer::kActionable}) != 0) {
       if (const auto actionable = manifold.collision_b->GetActor()

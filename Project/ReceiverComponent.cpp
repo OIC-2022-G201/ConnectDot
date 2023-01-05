@@ -2,9 +2,11 @@
 
 #include "ElectricEffect.h"
 #include "Game.h"
+#include "ResourceContainer.h"
+#include "SparkEffectActor.h"
 #include "TransmitterComponent.h"
 constexpr size_t kMaxWaitFrame = 10;
-
+using RC = ResourceContainer;
 ReceiverComponent::~ReceiverComponent() {
   owner_->GetGame()->RemoveActor(effect_.lock().get());
 }
@@ -44,7 +46,9 @@ ReceiverComponent::ReceiverComponent(base_engine::Actor* owner,
                                      int update_order)
     : Component(owner, update_order) {}
 
-void ReceiverComponent::Start() {}
+void ReceiverComponent::Start() {
+//    flow_spark_animation_->Load();
+}
 
 void ReceiverComponent::Update() {
   if (current_state_ == PowerState::kConnecting &&
@@ -120,4 +124,20 @@ void ReceiverComponent::Connecting(
 void ReceiverComponent::ECreate() {
   auto actor = new ElectricEffect(owner_->GetGame());
   effect_ = owner_->GetGame()->GetActor(actor->GetId());
+}
+
+std::weak_ptr<base_engine::Actor> ReceiverComponent::GetSenderActor() const
+{
+    if (sender_.expired())
+    {
+        return {};
+    }
+    return sender_.lock()->GetOwner();
+}
+
+void ReceiverComponent::FlowSparkEffect() const
+{
+  const auto effect = new SparkEffectActor(owner_->GetGame());
+  effect->Create(GetPosition(), "SparkEffect");
+  effect->Play();
 }
