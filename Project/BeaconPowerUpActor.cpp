@@ -147,6 +147,7 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     }
 
     if ((current_iterator_ + 1) == chain_actor_.rend()) {
+      target_beacon_->LevelUp();
       EventEnd();
       return;
     }
@@ -265,6 +266,7 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
   Vector2 target_pos_;
   Actor* flow_actor_ = nullptr;
   SpriteComponent* flow_sprite_ = nullptr;
+  BeaconActor* target_beacon_ = nullptr;
 };
 
 BeaconPowerUpActor::BeaconPowerUpActor(Game* game) : Actor(game) {}

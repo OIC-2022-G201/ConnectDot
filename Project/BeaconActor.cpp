@@ -29,16 +29,21 @@ class BeaconDummyComponent : public base_engine::Component,
                              public IMachineActionable {
  public:
   BeaconDummyComponent(BeaconActor* owner, int update_order = 100)
-      : Component(owner, update_order) {}
+      : Component(owner, update_order), owner_as_beacon_(owner) {}
 
   void Action(base_engine::Actor* actor) override
   {
+    if(owner_->GetComponent<TransmitterComponent>().lock()->Level() != 1)
+    {
+      return;
+    }
     std::any send = std::make_any<base_engine::Actor*>(owner_);
 
     auto event = BeaconPowerUpActionEvent(send,false);
     EventBus::FireEvent(event);
   }
-
+private:
+  BeaconActor* owner_as_beacon_;
 };
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
   {
