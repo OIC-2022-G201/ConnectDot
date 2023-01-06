@@ -6,6 +6,7 @@
 #include "EventBus.h"
 #include "InputManager.h"
 #include "MofSpriteAnimationComponent.h"
+#include "OneTimeEffectActor.h"
 #include "PositionXTween.h"
 #include "PositionYTween.h"
 #include "ReceiverComponent.h"
@@ -96,6 +97,9 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
           .SetEase(EaseType::kInoutexpo)
           .SetOnComplete([this] {
             start_ = true;
+            space_key_effect_ = OneTimeEffectActor::Create(
+                owner_->GetGame(), owner_->GetPosition() + Vector2{0,-64}, "SpaceKeyUI",
+                150);
             NextBeacon();
           });
     }
@@ -136,12 +140,19 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
 
  private:
   void NextBeacon() {
+    if (const auto receiver =
+            current_iterator_->lock()->GetComponent<ReceiverComponent>();
+        !receiver.expired()) {
+      receiver.lock()->FlowSparkEffect();
+    }
+
     if ((current_iterator_ + 1) == chain_actor_.rend()) {
       EventEnd();
       return;
     }
     ++current_iterator_;
     NoteSpawn();
+
     start_pos_ = (current_iterator_ - 1)->lock()->GetPosition();
     target_pos_ = (current_iterator_)->lock()->GetPosition();
     target_pos_ -= VectorUtilities::Normalize(target_pos_ - start_pos_) * 64;
@@ -154,6 +165,9 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
 
   void ClickSuccess() {
     state_ = kSuccess;
+    OneTimeEffectActor::Create(owner_->GetGame(),
+        beat_point_actor_->GetPosition() + Vector2{width_ * beat_point_,0},
+                               "CriticalPointEffect", 230);
     speed_ *=
         (1.1f + (static_cast<float>(chain_actor_.size()) / 100.0f) * 2.0f);
   }
@@ -182,6 +196,7 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     EventBus::FireEvent(event);
     end_ = true;
     owner_->GetGame()->RemoveActor(flow_actor_);
+    owner_->GetGame()->RemoveActor(space_key_effect_);
     {
       constexpr float up = -kSpawnY;
       constexpr float t = kAnimationTime;
@@ -216,8 +231,9 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     return sprite;
   }
   float Speed() const {
-    return (std::min)(
-        (std::min)(speed_, 2.0f) * block_per_second_ * speed_scale_, 0.2f);
+    return (std::min)((std::min)(speed_, 2.0f) * block_per_second_ *
+                          speed_scale_,
+                      0.2f);
   }
   float width_ = 0;
 
@@ -243,7 +259,8 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
 
   std::vector<std::weak_ptr<Actor>> chain_actor_{};
   std::vector<std::weak_ptr<Actor>>::reverse_iterator current_iterator_{};
-
+  OneTimeEffectActor* space_key_effect_;
+  OneTimeEffectActor* critical_effect_;
   Vector2 start_pos_;
   Vector2 target_pos_;
   Actor* flow_actor_ = nullptr;

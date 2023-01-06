@@ -122,6 +122,7 @@
     <ClCompile Include="MofSpriteMotionController.cpp" />
     <ClCompile Include="NinePatchImageComponent.cpp" />
     <ClCompile Include="ObjectTileMapComponent.cpp" />
+    <ClCompile Include="OneTimeEffectActor.cpp" />
     <ClCompile Include="ParentTest.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="PositionYTween.cpp" />
@@ -301,6 +302,7 @@
     <ClInclude Include="MofSpriteMotionController.h" />
     <ClInclude Include="NinePatchImageComponent.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />
+    <ClInclude Include="OneTimeEffectActor.h" />
     <ClInclude Include="ParentTest.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="PositionYTween.h" />

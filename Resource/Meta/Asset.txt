@@ -19,6 +19,7 @@ CriticalPointEffect Animation UI/EnhanceActionBar/CriticalPointEffect/CriticalPo
 FlowElectroEffect Animation UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect_MotionChip.png UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect.aei
 FrameBar Sprite UI/EnhanceActionBar/FrameBar/FrameBar.png
 MoveBar Sprite UI/EnhanceActionBar/MoveBar/MoveBar.png
+SpaceKeyUI Animation UI/EnhanceActionBar/SpaceKeyUI/SpaceKeyUI_MotionChip.png UI/EnhanceActionBar/SpaceKeyUI/SpaceKeyUI.aei
 SparkEffect Animation UI/EnhanceActionBar/SparkEffect/SparkEffect_MotionChip.png UI/EnhanceActionBar/SparkEffect/SparkEffect.aei
 StopBar Sprite UI/EnhanceActionBar/StopBar/StopBar.png
 Gameover Sprite UI/Gameover/gameover.png
