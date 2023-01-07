@@ -3,9 +3,12 @@
 #include <Utilities/InputUtilities.h>
 
 #include "BeaconActor.h"
+#include "CameraComponent.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
+#include "FollowComponent.h"
 #include "GameWindow.h"
 #include "IBaseEngineTexture.h"
 #include "InputManager.h"
@@ -16,6 +19,7 @@
 #include "ShapeRenderComponent.h"
 #include "SpriteComponent.h"
 #include "TexturePaths.h"
+#include "TileMapComponent.h"
 using namespace base_engine;
 namespace player {
 PlayerActor::PlayerActor(base_engine::Game* game)
@@ -36,11 +40,10 @@ void PlayerActor::Start() {
     collision->SetShape(shape_player);
     collision->SetObjectFilter(kPlayerObjectFilter);
     collision->SetTargetFilter(kPlayerTargetFilter);
-    if (kIsCollisionRenderMode)
-    {
-        const auto debug_collision_render = new ShapeRenderComponent(this, 500);
-        debug_collision_render->SetShape(shape_player);
-        debug_collision_render->SetColor(MOF_COLOR_GREEN);
+    if (kIsCollisionRenderMode) {
+      const auto debug_collision_render = new ShapeRenderComponent(this, 500);
+      debug_collision_render->SetShape(shape_player);
+      debug_collision_render->SetColor(MOF_COLOR_GREEN);
     }
   }
   {
@@ -58,6 +61,23 @@ void PlayerActor::Start() {
 
 void PlayerActor::SetInput(InputManager* input_manager) {
   input_manager_ = input_manager;
+}
+
+void PlayerActor::Create(const LoadObject& object) {
+  {
+    auto pos = std::get<LoadObject::Transform>(object.parameters[1]).value;
+    SetPosition(GridPosition::GridTo({pos.x, pos.y}));
+  }
+  SetInput(InputManager::Instance());
+  SetMap(ComponentServiceLocator::Instance()
+             .Resolve<tile_map::TileMapComponent>());
+  CameraComponent::GetMainCamera()
+      .lock()
+      ->GetOwner()
+      .lock()
+      ->GetComponent<FollowComponent>()
+      .lock()
+      ->BindTarget(GetGame()->GetActor(GetId()));
 }
 
 void PlayerActor::Input() {}

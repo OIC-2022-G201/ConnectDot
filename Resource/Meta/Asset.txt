@@ -1,3 +1,7 @@
+BG Sprite BG/BackGraundColor.png
+Stage1Back Sprite BG/Stage1/Stage1Back/Stage1Back.png
+Stage1Front Sprite BG/Stage1/Stage1Front/Stage1Front.png
+Stage1Middle Sprite BG/Stage1/Stage1Middle/Stage1Middle.png
 Electro_purple Sprite Effect/Electro_purple/ElectroCellMap.png
 Electro_purpleAnimation Sprite Effect/Electro_purple/Electro_purpleAnimation/ElectroCellMap.png
 SoundAnimation Animation Effect/Sound/SoundAnimation/Sound_MotionChip.png Effect/Sound/SoundAnimation/Sound.aei

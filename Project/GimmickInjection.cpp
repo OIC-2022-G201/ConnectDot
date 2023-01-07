@@ -10,6 +10,7 @@
 #include "GoalComponent.h"
 #include "LeverStubActor.h"
 #include "MoveFloorStubActor.h"
+#include "PlayerActor.h"
 #include "PowerSupplyUnitActor.h"
 #include "PylonActor.h"
 #include "RenderableStubActor.h"
@@ -32,6 +33,7 @@ constexpr std::string_view kEnemyName = "Enemy"sv;
 constexpr std::string_view kGoalName = "Goal"sv;
 constexpr std::string_view kElevatorName = "Elevator"sv;
 constexpr std::string_view kCollapsibleBlockName = "CollapsibleBlock"sv;
+constexpr std::string_view kPlayerSpawn = "PlayerSpawnPosition"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
 using FactoryRegisterMethod = void (*)(GimmickCreator*,
@@ -72,6 +74,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                                        const LoadObject& object);
   static Actor* ElevatorCreate(GimmickCreator* instance, Game* game,
                                        const LoadObject& object);
+  static Actor* PlayerCreate(GimmickCreator* instance, Game* game,
+                               const LoadObject& object);
   void Register(const std::string_view name, CreatorMethod create_method);
 
  private:
@@ -140,6 +144,11 @@ constexpr std::array kGimmickMethodTable = {
         kElevatorName,                       // Name
         &SetupImpl::ElevatorCreate,      // CreateMethod
         &Gc::FactoryRegister<ElevatorActor>  // FactoryRegister
+    },
+    std::tuple{
+        kPlayerSpawn,                       // Name
+        &SetupImpl::PlayerCreate,          // CreateMethod
+        &Gc::FactoryRegister<player::PlayerActor>  // FactoryRegister
     },
 };
 
@@ -283,6 +292,14 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::ElevatorC
   const auto elevator = new ElevatorActor(game);
   elevator->Create(object);
   return elevator;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::PlayerCreate(GimmickCreator* instance,
+    Game* game, const LoadObject& object)
+{
+  const auto player = new player::PlayerActor(game);
+  player->Create(object);
+  return player;
 }
 
 Actor*

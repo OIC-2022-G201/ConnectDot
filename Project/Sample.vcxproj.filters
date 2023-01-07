@@ -496,6 +496,15 @@
     <Filter Include="ソース ファイル\ConnectDot\Effect\OneTimeEffect">
       <UniqueIdentifier>{b1443337-d01e-4b76-8aa1-c88e48f59da8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\BackGround">
+      <UniqueIdentifier>{66925dd7-c80f-4b5f-b5a8-5472d3980f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow">
+      <UniqueIdentifier>{41698cd6-f215-4ef3-a69c-0635348767ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow\private">
+      <UniqueIdentifier>{e74e094c-6b95-4217-8ed5-920c4aa552ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1007,6 +1016,12 @@
     </ClCompile>
     <ClCompile Include="OneTimeEffectActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Effect\OneTimeEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="ParallaxCameraFlowLayerComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow\private</Filter>
+    </ClCompile>
+    <ClCompile Include="ParallaxCameraFlowLayer.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1735,6 +1750,12 @@
     </ClInclude>
     <ClInclude Include="OneTimeEffectActor.h">
       <Filter>ソース ファイル\ConnectDot\Effect\OneTimeEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="ParallaxCameraFlowLayerComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow\private</Filter>
+    </ClInclude>
+    <ClInclude Include="ParallaxCameraFlowLayer.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

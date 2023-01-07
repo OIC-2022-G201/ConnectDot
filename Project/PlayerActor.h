@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Actor.h"
+#include "LoadObjectParameter.h"
 
 namespace tile_map {
 class TileMapComponent;
@@ -22,8 +23,9 @@ class PlayerActor final : public base_engine::Actor {
   void Start() override;
   void SetInput(InputManager* input_manager);
   void SetMap(const TileMapWeak& map) { map_ = map; }
+  void Create(const LoadObject& object);
 
- private:
+private:
   Mof::Vector2 move_vector_;
   class PlayerComponent* player_component_ = nullptr;
   InputManager* input_manager_;
