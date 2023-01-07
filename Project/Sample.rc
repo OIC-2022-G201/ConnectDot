@@ -49,10 +49,6 @@ END
 //
 // PNG
 //
-
-IDB_PNG1                PNG                     "G:\\SchoolProgram\\ConnectDot\\Resource\\icon.png"
-
-
 /////////////////////////////////////////////////////////////////////////////
 //
 // Icon
@@ -60,10 +56,7 @@ IDB_PNG1                PNG                     "G:\\SchoolProgram\\ConnectDot\\
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDI_ICON1               ICON                    "G:\\SchoolProgram\\ConnectDot\\Resource\\icon.ico"
-
-IDI_ICON2               ICON                    "g:\\schoolprogram\\connectdot\\resource\\icon2.ico"
-
+IDI_ICON1               ICON                    "..\\Resource\\icon.ico"
 #endif    // “ú–{Œê (“ú–{) resources
 /////////////////////////////////////////////////////////////////////////////
 
