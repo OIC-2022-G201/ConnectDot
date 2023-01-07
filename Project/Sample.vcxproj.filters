@@ -1775,19 +1775,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\Resource\icon.png">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="icon1.ico">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="icon2.ico">
-      <Filter>リソース ファイル</Filter>
-    </Image>
     <Image Include="..\Resource\icon.ico">
-      <Filter>リソース ファイル</Filter>
-    </Image>
-    <Image Include="..\resource\icon2.ico">
       <Filter>リソース ファイル</Filter>
     </Image>
   </ItemGroup>
