@@ -10,6 +10,7 @@
 #include "EventBus.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
+#include "IMachineActionable.h"
 #include "MofSpriteAnimationComponent.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
