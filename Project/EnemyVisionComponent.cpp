@@ -69,12 +69,14 @@ namespace enemy {
 			if (is_find_)
 			{
 				collision_->SetShape(chase_rect_);
-				debug_render_->SetShape(chase_rect_);
+                if (kIsCollisionRenderMode)
+                    debug_render_->SetShape(chase_rect_);
 			}
 			else
 			{
 				collision_->SetShape(find_rect_);
-				debug_render_->SetShape(find_rect_);
+                if (kIsCollisionRenderMode)
+                    debug_render_->SetShape(find_rect_);
 			}
 		}
 		is_change_ = is_find_;

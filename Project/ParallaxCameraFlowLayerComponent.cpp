@@ -8,26 +8,28 @@ ParallaxCameraFlowLayerComponent::ParallaxCameraFlowLayerComponent(Actor* owner)
     : Component(owner, 1) {}
 
 void ParallaxCameraFlowLayerComponent::Create(
-    const std::weak_ptr<Actor>& camera, const float follow_per) {
+    const std::weak_ptr<Actor>& camera, const float follow_per_x,
+    const float follow_per_y) {
   camera_actor_ = camera;
-  follow_factor_ = follow_per;
+  follow_factor_ = Vector2{follow_per_x, follow_per_y};
 }
 
 void ParallaxCameraFlowLayerComponent::Start() {
   auto initial_pos = camera_actor_.lock()->GetPosition();
   initial_pos = GridPosition::GridTo({0, 2});
-  initial_pos = GridPosition::GridTo({0, 1})*2.02f;
-  initial_pos -= Vector2{window::kWidth * 0.5f,0};
+  initial_pos = GridPosition::GridTo({0, 1}) * 2.02f;
+  initial_pos -= Vector2{window::kWidth * 0.5f, 0};
 
   owner_->SetPosition(initial_pos);
 }
 
 void ParallaxCameraFlowLayerComponent::Update() {
-  const auto current_pos = camera_actor_.lock()->GetPosition();
+  const auto current_pos = camera_actor_.lock()->GetPosition() +
+                           Vector2{0, -window::kHeight * 0.5f} -
+                           GridPosition::GridTo({0, 1}) * 2.02f;
   const auto delta_pos = current_pos - previous_camera_pos_;
   previous_camera_pos_ = current_pos;
   auto calced_pos = delta_pos * follow_factor_;
-  calced_pos.y = 0;
   owner_->SetPosition(owner_->GetPosition() + calced_pos +
                       owner_->GetParent().lock()->GetPosition());
   for (const auto& child_weak : owner_->GetChildren()) {

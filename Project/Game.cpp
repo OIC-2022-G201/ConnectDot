@@ -5,14 +5,15 @@
 
 #include "Actor.h"
 #include "ButtonCommandEventContainer.h"
+#include "ComponentServiceLocator.h"
 #include "IBaseEngineCollider.h"
 #include "InputManager.h"
 #include "ParentTest.h"
+#include "ReleaseInfo.h"
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
 #include "Scene.h"
 #include "SceneManager.h"
-#include "ComponentServiceLocator.h"
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
@@ -70,9 +71,9 @@ void Game::RemoveActor(Actor* actor) {
     const auto scene = actor->GetScene().lock();
     std::iter_swap(iter, actors_.end() - 1);
 
-  	actors_next_frame_delete_.emplace_back(actors_.back());
-    
-  	actors_.pop_back();
+    actors_next_frame_delete_.emplace_back(actors_.back());
+
+    actors_.pop_back();
     auto t = actors_next_frame_delete_.back().use_count();
     if (scene) scene->Sync();
   }
@@ -98,8 +99,7 @@ ActorWeakPtr Game::GetActor(ActorId id) {
   return ActorPtr{};
 }
 
-ActorWeakPtr Game::FindTagActor(std::string_view tag)
-{
+ActorWeakPtr Game::FindTagActor(std::string_view tag) {
   if (const auto iter = std::ranges::find_if(
           actors_, [tag](const ActorPtr& n) { return n->GetTag() == tag; });
       iter != actors_.end()) {
@@ -139,8 +139,7 @@ void Game::CreateObjectRegister() {
   next_frame_event_.clear();
 
   updating_actors_ = true;
-  for (auto&& actor : actors_next_frame_delete_)
-  {
+  for (auto&& actor : actors_next_frame_delete_) {
     actor.reset();
   }
   actors_next_frame_delete_.clear();
@@ -166,11 +165,10 @@ void Game::ProcessInput() {
 
 void Game::UpdateGame() {
   updating_actors_ = true;
-  for (int i = 0; i < actors_.size(); ++i)
-  {
+  for (int i = 0; i < actors_.size(); ++i) {
     auto actor = actors_[i];
     if (actors_.empty()) break;
-    if(actor->Enable())actor->UpdateActor();
+    if (actor->Enable()) actor->UpdateActor();
 
     if (clear_wait_actors_) {
       clear_wait_actors_ = false;
@@ -214,9 +212,8 @@ void Game::RemoveScene(Scene* scene) {
   }
 }
 
-void Game::SetNextFrameEvent(const std::function<void()>& event)
-{
-	next_frame_event_.emplace_back(event);
+void Game::SetNextFrameEvent(const std::function<void()>& event) {
+  next_frame_event_.emplace_back(event);
 }
 
 void Game::Render() const {
@@ -225,11 +222,13 @@ void Game::Render() const {
     if (!sprite->GetOwner().lock()->Enable()) continue;
     if (sprite->GetEnabled()) sprite->Draw();
   }
-  for (auto& func : debug_render_) {
-    func();
+  if (kStatusRenderMode) {
+    for (auto& func : debug_render_) {
+      func();
+    }
+    Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
+                                          Mof::CUtilities::GetFPS());
   }
-  Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
-                                        Mof::CUtilities::GetFPS());
 }
 Game::~Game() {}
 

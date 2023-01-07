@@ -1757,6 +1757,9 @@
     <ClInclude Include="ParallaxCameraFlowLayer.h">
       <Filter>ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE">
@@ -1765,5 +1768,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Sample.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Resource\icon.png">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="icon1.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="icon2.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="..\Resource\icon.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
+    <Image Include="..\resource\icon2.ico">
+      <Filter>リソース ファイル</Filter>
+    </Image>
   </ItemGroup>
 </Project>

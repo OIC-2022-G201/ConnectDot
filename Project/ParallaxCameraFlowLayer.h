@@ -18,7 +18,8 @@ class ParallaxCameraFlowLayer {
     /**
      * \brief 0から1のカメラ追従割合(0で完全停止 1でカメラと同じ座標)
      */
-    float follow_per;
+    float follow_per_x;
+    float follow_per_y;
 
     int draw_order;
   };

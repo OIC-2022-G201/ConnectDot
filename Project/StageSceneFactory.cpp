@@ -8,6 +8,7 @@
 #include "EnemyActor.h"
 #include "EventRegister.h"
 #include "FollowComponent.h"
+#include "ImageComponent.h"
 #include "InputActor.h"
 #include "InputManager.h"
 #include "ObjectLoader.h"
@@ -15,6 +16,7 @@
 #include "ParallaxCameraFlowLayer.h"
 #include "PlayerActor.h"
 #include "PylonActor.h"
+#include "ResourceContainer.h"
 #include "ResultScoreComponent.h"
 #include "StageContainer.h"
 #include "TileMapComponent.h"
@@ -43,12 +45,17 @@ void StageSceneFactory::Factory() {
 
   {
     using CreateInfo = ParallaxCameraFlowLayer::CreateInfo;
-    std::array create_def = {CreateInfo{"Back", 1, 10},
-                             CreateInfo{"Middle", 0.7, 20},
-                             CreateInfo{"Front", -0.2, 300}};
+    std::array create_def = {CreateInfo{"Back", 1, 0.2f, 10},
+                             CreateInfo{"Middle", 0.7, 0, 20},
+                             CreateInfo{"Front", -0.2, 0, 300}};
     ParallaxCameraFlowLayer::Create(game_, stage_def->first.stem().string(),
                                     create_def);
   }
+  const auto BG = new ImageComponent(new Actor(game_),1);
+
+  BG->SetImage(
+      *ResourceContainer::GetResource<ResourceContainer::SpriteResourcePack,
+                                      ResourceContainer::Sprite>("BG"));
   new InputManager(new InputActor(game_));
   ObjectLoader object_loader{game_};
   object_loader.Load(stage_def->second.string());

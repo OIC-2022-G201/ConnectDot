@@ -1,5 +1,6 @@
 #include "GameApp.h"
 #include "GameWindow.h"
+#include "resource1.h"
 
 #ifdef UNICODE
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
@@ -15,6 +16,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   Info.pApplication = new CGameApp();
   Info.WindowCreateInfo.Width = window::kWidth;
   Info.WindowCreateInfo.Height = window::kHeight;
+  Info.WindowCreateInfo.Title = "CONNECT DOT";
+  auto icon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
+  Info.WindowCreateInfo.hIcon = icon;
+  ;
   //Info.GraphicsCreateInfo.bWindowed = false;
   pFrame->Initialize(&Info);
   pFrame->Run();

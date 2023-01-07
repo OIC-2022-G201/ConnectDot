@@ -59,8 +59,8 @@ void base_engine::PhysicsBodyComponent::Solver(
     }
 
     if (0 < abs_v.x && 0 < froce.x && abs_v.y == 0) {
-//      v.x *= 1.1f;
-//      v.x = floor(v.x);
+      //      v.x *= 1.1f;
+      //      v.x = floor(v.x);
       owner_->Translation(v);
       manifold.normal.y = 0;
       return;
