@@ -199,10 +199,10 @@ void PlayerComponent::ActionKey(const CollisionComponent* collision) {
 }
 
 void PlayerComponent::Update() {
-  if (!can_control_) return;
-
   const auto aabb = collision_.lock()->AABB();
   sound_effect_->SetPosition({aabb.GetCenter().x, aabb.Bottom});
+  if (!can_control_) return;
+
   physics_body_.lock()->AddForce({0, kGravity});
   machine_.Update();
 
