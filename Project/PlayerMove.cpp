@@ -11,11 +11,12 @@ void player::PlayerMove::Start() {
   is_sneak_ = false;
   is_fall_ = false;
   player_->GetAnimator()->ChangeMotion("Move");
-  player_->MovedLookAt();
+  
   player_->PlaySoundEffect();
 }
 
 void player::PlayerMove::Update() {
+  player_->MovedLookAt();
   if (body_->GetForce().x == 0.0f) is_idle_ = true;
   if (body_->GetForce().y > 4) is_fall_ = true;
 }
