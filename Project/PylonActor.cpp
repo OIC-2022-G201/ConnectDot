@@ -3,6 +3,7 @@
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridSnapComponent.h"
@@ -10,8 +11,8 @@
 #include "ObjectTileMapComponent.h"
 #include "PylonTransmitter.h"
 #include "Rect.h"
-#include "ComponentServiceLocator.h"
 #include "ReleaseInfo.h"
+#include "ResourceContainer.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
@@ -36,8 +37,8 @@ void PylonActor::Create(const LoadObject& object) {
         cell_half.x, cell_half.y, kPowerRadius);
     if (kIsCollisionRenderMode) {
       const auto shape = new base_engine::ShapeRenderComponent(this, 110);
-        shape->SetShape(circle);
-        shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
+      shape->SetShape(circle);
+      shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
     }
     const auto collision = new base_engine::CollisionComponent(this);
     collision->SetShape(circle);
@@ -46,13 +47,13 @@ void PylonActor::Create(const LoadObject& object) {
     collision->SetTrigger(true);
   }
 
-
   {
-    const auto sign = new base_engine::SpriteComponent(
+    const auto sprite = new base_engine::SpriteComponent(
         this, draw_order::kPowerSupplyUnitDrawOrder);
+    using RC = ResourceContainer;
     const auto img =
-        BASE_ENGINE(Texture)->Get(texture::kPowerSupplyUnitTextureKey);
-    sign->SetImage(img);
+        *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("PowerSupplyOn");
+    sprite->SetImage(img);
   }
 
   SetName("Pylon");

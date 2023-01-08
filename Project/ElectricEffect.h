@@ -36,5 +36,9 @@ class ElectricEffect final : public base_engine::Actor {
 
 private:
   void OnChangeLevel();
+  base_engine::Vector2 start_pos_;
+  base_engine::Vector2 end_pos_;
+  bool is_play_ = false;
+  float current_frame_ = 0;
   int current_level_ = -1;
 };

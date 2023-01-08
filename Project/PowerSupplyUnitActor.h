@@ -33,9 +33,10 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
     return targets_;
   }
   void Create(const LoadObject& object);
-
+  bool IsFly() const { return is_fly_; }
  private:
   std::vector<Actor*> targets_;
   observable::ReactiveProperty<bool> electric_power_ = false;
+  bool is_fly_ = false;
   int sequential_ = 15;
 };

@@ -11,7 +11,12 @@ constexpr std::array<std::string_view, 2> kTexturePaths = {
     "Effect/Electric/ElectroCellMap.png",
     "Effect/Electro_purple/ElectroCellMap.png"};
 
-void ElectricEffect::Update() { OnChangeLevel(); }
+void ElectricEffect::Update() {
+  if (!is_play_) return;
+
+  ++current_frame_;
+  OnChangeLevel();
+}
 
 void ElectricEffect::Play(Vector2 pos1, Vector2 pos2) {
   {
@@ -20,13 +25,22 @@ void ElectricEffect::Play(Vector2 pos1, Vector2 pos2) {
       sprite_->SetColor(MOF_ARGB(255 / 3, 255, 255, 255));
       motion_ = new MofSpriteAnimationComponent(this, 500);
     }
+    current_frame_ = 0;
+    start_pos_ = pos1;
+    end_pos_ = pos2;
     OnChangeLevel();
 
     const Vector2 o_pos = pos2 - pos1;
 
     const float width = std::abs(VectorUtilities::Length(o_pos));
     std::array animations = {SpriteAnimationClip{
-        "", 0, 0, width, 128, true, {{5, 0, 0}, {5, 0, 1}, {5, 0, 2}}}};
+        "Animation",
+        0,
+        0,
+        width,
+        128,
+        true,
+        {{5, 0, 0}, {5, 0, 1}, {5, 0, 2}, {5, 0, 3}, {5, 0, 4}}}};
     sprite_->SetOffset(pos1);
     sprite_->SetAngle(std::atan2(o_pos.y, o_pos.x));
     sprite_->SetAlignment(Mof::TEXALIGN_CENTERLEFT);

@@ -10,8 +10,8 @@
 #include <memory>
 
 #include "Component.h"
-#include "ElectricEffect.h"
 #include "IReceivablePower.h"
+#include "ISpriteAnimationComponent.h"
 #include "SpriteComponent.h"
 class ReceiverComponent : public base_engine::Component {
  public:

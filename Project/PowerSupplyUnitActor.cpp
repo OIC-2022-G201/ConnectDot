@@ -16,8 +16,8 @@
 #include "PowerSupplyUnitReceiver.h"
 #include "PowerSupplyUnitTransmitter.h"
 #include "ReceiverComponent.h"
-
 #include "ReleaseInfo.h"
+#include "ResourceContainer.h"
 #include "ShapeRenderComponent.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
@@ -43,10 +43,14 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
   }
 
   {
+    is_fly_ = std::get<bool>(object.parameters[object.parameters.size() - 2]);
+
     const auto sprite = new base_engine::SpriteComponent(
         this, draw_order::kPowerSupplyUnitDrawOrder);
-    const auto img =
-        BASE_ENGINE(Texture)->Get(texture::kPowerSupplyUnitTextureKey);
+
+    using RC = ResourceContainer;
+    const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+        is_fly_ ? "AirPowerSupplyOff" : "PowerSupplyOff");
     sprite->SetImage(img);
   }
 
@@ -57,13 +61,12 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
 
-    int n = std::get<int>(object.parameters[object.parameters.size() - 2]);
-    if (n > 1) {
-      int k = 3;
+    {
+      const int level =
+          std::get<int>(object.parameters[object.parameters.size() - 3]);
+      receiver->SetLevel(level);
     }
-    receiver->SetLevel(n);
   }
-
   {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
