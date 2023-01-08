@@ -216,7 +216,7 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 
 void GoalEffectActor::GoalEffectComponent::Update() {
   if (!end_animation_) return;
-  if (InputManager::Instance()->ButtonDecision()) {
+  if (InputManager::Instance()->JumpFire()) {
     scene::LoadScene(scene::kTitle);
   }
 }
