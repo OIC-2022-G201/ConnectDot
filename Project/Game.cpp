@@ -139,6 +139,10 @@ void Game::CreateObjectRegister() {
   next_frame_event_.clear();
 
   updating_actors_ = true;
+  for (int i = 0; i < actors_next_frame_delete_.size(); ++i)
+  {
+      if (auto& actor = actors_next_frame_delete_[i]) actor.reset();
+  }
   for (auto&& actor : actors_next_frame_delete_) {
     if(actor)actor.reset();
   }

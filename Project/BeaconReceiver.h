@@ -8,6 +8,8 @@
 #pragma once
 
 #include "IReceivablePower.h"
+#include "OneTimeEffectActor.h"
+
 class BeaconReceiver final : public IReceivablePower {
  public:
   explicit BeaconReceiver(class BeaconActor* actor,
@@ -23,4 +25,5 @@ class BeaconReceiver final : public IReceivablePower {
 private:
   base_engine::Vector2 position_;
  class BeaconActor* actor_;
+ OneTimeEffectActor* effect_actor_;
 };

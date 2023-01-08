@@ -2,21 +2,37 @@
 
 #include "Actor.h"
 #include "ElectronicsPower.h"
+#include "OneTimeEffectActor.h"
 #include "PowerSupplyUnitActor.h"
 #include "ReceiverComponent.h"
 #include "ResourceContainer.h"
 #include "TransmitterComponent.h"
 using RC = ResourceContainer;
 using namespace base_engine;
+
+PowerSupplyUnitReceiver::PowerSupplyUnitReceiver(PowerSupplyUnitActor* actor,
+                                                 base_engine::Actor* target,
+                                                 TransmitterComponent* sender)
+    : actor_(actor), sender_(sender) {}
+
 int PowerSupplyUnitReceiver::Sequential() { return sequential_; }
 
 bool PowerSupplyUnitReceiver::PowerJoinCondition() { return true; }
 
 void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
+  if (!effect_actor_) {
+    effect_actor_ = OneTimeEffectActor::Create(
+        actor_->GetGame(),
+        actor_->GetPosition() + PowerSupplyUnitReceiver::GetPosition(),
+        "ConnectLightNormal", 130);
+    actor_->AddChild(effect_actor_->GetId());
+    effect_actor_->Hide();
+  }
   if (targets_.empty()) {
     targets_ = actor_->GetTarget();
   }
-
+  effect_actor_->Show();
+  effect_actor_->Play();
   actor_->SetOnImage(true);
   if (targets_.empty()) return;
   receivers_.clear();
@@ -37,6 +53,10 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
   for (const auto& weak_ptr : receivers_) {
     sender_->AddTarget(weak_ptr);
   }
+
+  OneTimeEffectActor::Create(actor_->GetGame(),
+                             actor_->GetPosition() + GetPosition(),
+                             "ConnectShock", 140);
 }
 
 void PowerSupplyUnitReceiver::OnPowerChanged(
@@ -49,7 +69,9 @@ void PowerSupplyUnitReceiver::OnPowerChanged(
 }
 
 void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter) {
-  sequential_ = -1;actor_->SetOnImage(false);
+  effect_actor_->Hide();
+  sequential_ = -1;
+  actor_->SetOnImage(false);
 
   if (targets_.empty()) return;
 

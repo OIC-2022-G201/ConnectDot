@@ -8,13 +8,13 @@
 #pragma once
 #include "Actor.h"
 #include "IReceivablePower.h"
+#include "OneTimeEffectActor.h"
 
 class PowerSupplyUnitReceiver : public IReceivablePower {
  public:
   PowerSupplyUnitReceiver(class PowerSupplyUnitActor* actor,
                           base_engine::Actor* target,
-                          class TransmitterComponent* sender)
-      : actor_(actor), sender_(sender) {}
+                          class TransmitterComponent* sender);
 
   int Sequential() override;
   bool PowerJoinCondition() override;
@@ -29,7 +29,7 @@ class PowerSupplyUnitReceiver : public IReceivablePower {
   std::vector<base_engine::Actor*> targets_;
   std::vector<std::weak_ptr<class ReceiverComponent>> receivers_;
   class TransmitterComponent* sender_ = nullptr;
-
+  OneTimeEffectActor* effect_actor_ = nullptr;
 
   int sequential_;
 };
