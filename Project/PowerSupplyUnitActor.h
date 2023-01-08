@@ -9,6 +9,7 @@
 #include "Actor.h"
 #include "Game.h"
 #include "ReactiveProperty.h"
+#include "SpriteComponent.h"
 
 struct LoadObject;
 
@@ -34,8 +35,16 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   }
   void Create(const LoadObject& object);
   bool IsFly() const { return is_fly_; }
- private:
+
+  void SetOutline(const bool flg) const;
+  bool IsOutline() const;
+  void SetOnImage(const bool flg) const;
+
+private:
   std::vector<Actor*> targets_;
+
+  base_engine::SpriteComponent* sprite_outline_;
+  base_engine::SpriteComponent* sprite_;
   observable::ReactiveProperty<bool> electric_power_ = false;
   bool is_fly_ = false;
   int sequential_ = 15;

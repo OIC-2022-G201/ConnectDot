@@ -1,5 +1,6 @@
 ﻿#include "TransmitterComponent.h"
 
+#include "ConnectBind.h"
 #include "Game.h"
 #include "ReceiverComponent.h"
 #include "SendManifold.h"
@@ -10,7 +11,12 @@ TransmitterComponent::TransmitterComponent(base_engine::Actor* owner,
 
 TransmitterComponent::~TransmitterComponent() = default;
 
-void TransmitterComponent::Start() {}
+void TransmitterComponent::Start()
+{
+  if (!connect_bindable_) {
+    CreateConnectBind<ConnectBind>();
+  }
+}
 
 void TransmitterComponent::Update() {
   const auto weak_ptr = owner_->GetComponent<TransmitterComponent>();
@@ -22,24 +28,16 @@ void TransmitterComponent::Update() {
       receiver_weak.lock()->Connecting(weak_ptr);
     }
   }
+  ConnectBind bind;
   std::erase_if(target_, [](const std::weak_ptr<ReceiverComponent>& a) {
     return a.expired();
   });
-  std::erase_if(target_,
-                [&weak_ptr, this](const std::weak_ptr<ReceiverComponent>& a) {
-                  return (a.lock()->IsConnect() == true &&
-                          !a.lock()->EqualSender(weak_ptr)) ||
-                         CoercionCondition(a) || a.lock()->Level() > Level();
+  std::erase_if(target_, [&weak_ptr, this](
+                             const std::weak_ptr<ReceiverComponent>& a) {
+                  return connect_bindable_->Constraints(a, weak_ptr);
                 });
-  const auto target = std::ranges::min_element(
-      target_, [](const std::weak_ptr<ReceiverComponent>& a,
-                  const std::weak_ptr<ReceiverComponent>& b) {
-        return a.lock()->Sequential() < b.lock()->Sequential();
-      });
-  if (target != target_.end()) {
-  }
   for (const auto& value : target_) {
-    value.lock()->Connecting(weak_ptr);
+    connect_bindable_->BindConnect(value.lock(), weak_ptr);
   }
   target_.clear();
 }

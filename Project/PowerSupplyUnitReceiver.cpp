@@ -16,9 +16,8 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
   if (targets_.empty()) {
     targets_ = actor_->GetTarget();
   }
-  const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
-      actor_->IsFly() ? "AirPowerSupplyOn" : "PowerSupplyOn");
-  actor_->GetComponent<SpriteComponent>().lock()->SetImage(img);
+
+  actor_->SetOnImage(true);
   if (targets_.empty()) return;
   receivers_.clear();
 
@@ -50,10 +49,8 @@ void PowerSupplyUnitReceiver::OnPowerChanged(
 }
 
 void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter) {
-  sequential_ = -1;
-  const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
-      actor_->IsFly() ? "AirPowerSupplyOff" : "PowerSupplyOff");
-  actor_->GetComponent<SpriteComponent>().lock()->SetImage(img);
+  sequential_ = -1;actor_->SetOnImage(false);
+
   if (targets_.empty()) return;
 
   actor_->SetElectricPower(false);

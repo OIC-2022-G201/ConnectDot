@@ -2,6 +2,7 @@ BG Sprite BG/BackGraundColor.png
 Stage1Back Sprite BG/Stage1/Stage1Back/Stage1Back.png
 Stage1Front Sprite BG/Stage1/Stage1Front/Stage1Front.png
 Stage1Middle Sprite BG/Stage1/Stage1Middle/Stage1Middle.png
+Electric Sprite Effect/Electric/ElectroCellMap.png
 ElectroBar Sprite Effect/Electric/ElectroBar/ElectroBar.png
 Electro_purple Sprite Effect/Electro_purple/ElectroCellMap.png
 Electro_purpleAnimation Sprite Effect/Electro_purple/Electro_purpleAnimation/ElectroCellMap.png
@@ -12,6 +13,7 @@ AirPowerSupplyOutline Sprite gimmick/Objects/AirPowerSupply/AirPowerSupplyOutlin
 Beacon Animation gimmick/Objects/Beacon/Beacon.png gimmick/Objects/Beacon/Beacon_Animation.aei
 BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
 BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
+BeaconOutline Sprite gimmick/Objects/Beacon/BeaconOutline/LightAround_Beacon_On.png
 BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei

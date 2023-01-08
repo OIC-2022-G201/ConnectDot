@@ -11,6 +11,7 @@
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "ComponentServiceLocator.h"
+#include "DummyEmptyBeaconActor.h"
 #include "EventBus.h"
 #include "EventHandler.h"
 #include "GameOverSceneFactory.h"
@@ -101,6 +102,8 @@ void PlayerComponent::Start() {
   });
   sound_effect_ = new SoundEffectActor(owner_->GetGame());
 
+  const auto beacon_dummy = new DummyEmptyBeaconActor(owner_->GetGame());
+  beacon_dummy->SetPlayer(this);
   collision_ = owner_->GetComponent<CollisionComponent>();
   physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
   animator_ = owner_->GetComponent<ISpriteAnimationComponent>();
@@ -232,6 +235,14 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const bool ground = map->GetCell(bottom_pos) != tile_map::kEmptyCell ||
                       object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace;
   return space && ground;
+}
+
+std::optional<GridPosition> PlayerComponent::SearchPlacePosition() const {
+  auto pos = GridPosition::VectorTo(owner_->GetPosition());
+  pos.x += IsRight() ? 1 : 0;
+  pos.y += 1;
+  if (!CanPlace(pos)) return std::nullopt;
+  return pos;
 }
 
 int PlayerComponent::MaxBeacon() const { return 90; }

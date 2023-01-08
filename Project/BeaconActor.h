@@ -36,6 +36,8 @@ class BeaconActor final : public base_engine::Actor{
   }
 
   void LevelUp() const;
+  void SetOutline(const bool flg) const;
+  bool IsOutline() const;;
 
 private:
   observable::ReactiveProperty<bool> electric_power_ = false;
@@ -44,4 +46,6 @@ private:
   bool is_deployed_ = false;
   base_engine::ISpriteAnimationComponent* animation_;
   base_engine::SpriteComponent* sprite_;
+
+  base_engine::SpriteComponent* sprite_outline_;
 };

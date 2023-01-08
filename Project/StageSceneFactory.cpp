@@ -48,7 +48,9 @@ void StageSceneFactory::Factory() {
     std::array create_def = {CreateInfo{"Back", 1, 0.2f, 10},
                              CreateInfo{"Middle", 0.7, 0, 20},
                              CreateInfo{"Front", -0.2, 0, 300}};
-    ParallaxCameraFlowLayer::Create(game_, stage_def->first.stem().string(),
+//    ParallaxCameraFlowLayer::Create(game_, stage_def->first.stem().string(),
+//                                    create_def);
+    ParallaxCameraFlowLayer::Create(game_, "Stage1",
                                     create_def);
   }
   const auto BG = new ImageComponent(new Actor(game_),1);

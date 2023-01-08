@@ -505,6 +505,18 @@
     <Filter Include="ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow\private">
       <UniqueIdentifier>{e74e094c-6b95-4217-8ed5-920c4aa552ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Transmitter">
+      <UniqueIdentifier>{6231b130-8e24-46de-8506-7ca75b76bec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\ReceiverComponent">
+      <UniqueIdentifier>{d5199fd8-9624-4ff1-9a86-b3fb9ed7058a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Transmitter\ConnectBind">
+      <UniqueIdentifier>{97202702-6452-4eb8-a53a-a17f9982544f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon">
+      <UniqueIdentifier>{d5ac32c5-1bd2-43b9-8fac-512d26fc137a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -602,12 +614,6 @@
     </ClCompile>
     <ClCompile Include="PlayerMove.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="TransmitterComponent.cpp">
-      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
-    </ClCompile>
-    <ClCompile Include="ReceiverComponent.cpp">
-      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
     </ClCompile>
     <ClCompile Include="BeaconActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
@@ -1023,6 +1029,18 @@
     <ClCompile Include="ParallaxCameraFlowLayer.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\BackGround\ParallaxCameraFollow</Filter>
     </ClCompile>
+    <ClCompile Include="TransmitterComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Transmitter</Filter>
+    </ClCompile>
+    <ClCompile Include="ReceiverComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\ReceiverComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectBind.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Transmitter\ConnectBind</Filter>
+    </ClCompile>
+    <ClCompile Include="DummyEmptyBeaconActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1147,12 +1165,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="TransmitterComponent.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
-    </ClInclude>
-    <ClInclude Include="ReceiverComponent.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics</Filter>
     </ClInclude>
     <ClInclude Include="BeaconActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Beacon</Filter>
@@ -1759,6 +1771,21 @@
     </ClInclude>
     <ClInclude Include="resource1.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="TransmitterComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Transmitter</Filter>
+    </ClInclude>
+    <ClInclude Include="ReceiverComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\ReceiverComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="IConnectBindable.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Transmitter\ConnectBind</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectBind.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Transmitter\ConnectBind</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyEmptyBeaconActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

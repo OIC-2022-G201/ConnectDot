@@ -51,6 +51,8 @@ class PlayerComponent final : public base_engine::Component {
 
   void SetInput(const InputManager* input_manager);
   bool CanPlace(const GridPosition& pos) const;
+
+    std::optional<GridPosition> SearchPlacePosition() const;
   [[nodiscard]] bool IsJumpKey() const;
 
   [[nodiscard]] float GetHorizontal() const;
@@ -108,7 +110,6 @@ private:
   bool is_ground_ = false;
   bool can_control_ = true;
   bool goal_event_ = false;
-
   SoundEffectActor* sound_effect_;
 
  private:

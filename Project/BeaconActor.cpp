@@ -26,6 +26,7 @@ constexpr std::string_view kBeaconName = "Beacon";
 constexpr std::string_view kBeaconOffName = "BeaconOff";
 constexpr std::string_view kBeaconOnName = "BeaconOn";
 constexpr std::string_view kBeaconPowerup = "BeaconPowerup";
+constexpr std::string_view kBeaconOutline = "BeaconOutline";
 class BeaconDummyComponent : public base_engine::Component,
                              public IMachineActionable {
  public:
@@ -73,6 +74,14 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
   }
 
   {
+    sprite_outline_ = new base_engine::SpriteComponent(this, 130);
+    const auto sprite_outline_resource =
+        RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+            kBeaconOutline.data());
+    sprite_outline_->SetImage(*sprite_outline_resource);
+    sprite_outline_->SetEnabled(false);
+      
+
     sprite_ = new base_engine::SpriteComponent(this, 130);
     const auto sprite_resource =
         RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
@@ -126,4 +135,11 @@ void BeaconActor::LevelUp() const
       kBeaconPowerup.data());
   GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
 }
+
+void BeaconActor::SetOutline(const bool flg) const
+{ sprite_outline_->SetEnabled(flg);
+}
+
+bool BeaconActor::IsOutline() const
+{ return sprite_outline_->GetEnabled(); }
 

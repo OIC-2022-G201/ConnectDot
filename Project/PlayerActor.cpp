@@ -8,6 +8,7 @@
 #include "CollisionLayer.h"
 #include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
+#include "DummyEmptyBeaconActor.h"
 #include "FollowComponent.h"
 #include "GameWindow.h"
 #include "IBaseEngineTexture.h"
@@ -54,7 +55,6 @@ void PlayerActor::Start() {
     player_sprite->SetImage(
         BASE_ENGINE(Texture)->Get(texture::kPlayerTextureKey));
   }
-
   auto body = new PhysicsBodyComponent(this);
   SetName("Player");
 }

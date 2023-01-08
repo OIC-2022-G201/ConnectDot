@@ -19,60 +19,48 @@ class ReceiverComponent : public base_engine::Component {
   void OnPowerExit();
   void OnPowerEnter();
 
-  void OnPowerChanged() const {
-    receiver_->OnPowerChanged(sender_.lock().get());
-  }
+  void OnPowerChanged() const;
 
   ReceiverComponent(base_engine::Actor* owner, int update_order);
 
   void Start() override;
 
   void Update() override;
-  void OnCollision(const base_engine::SendManifold& manifold) override {}
-  
+
   bool CanConnect() const;
-  bool IsWireless() const
-  { return receiver_->IsWireless();
-  }
-  void Connecting(std::weak_ptr<class TransmitterComponent> sender_weak);
-  [[nodiscard]] int Sequential() const { return receiver_->Sequential(); }
+  virtual bool CanConnectCheck(
+      const std::weak_ptr<class TransmitterComponent>& sender_weak) const;
+
+  bool IsWireless() const;
+
+  bool Disconnect();
+  virtual void Connecting(
+      std::weak_ptr<class TransmitterComponent> sender_weak);
+  [[nodiscard]] int Sequential() const;
+
   template <
       class T, class... Types,
       std::enable_if_t<std::is_constructible_v<T, Types...>, bool> = false>
   void Create(Types&&... args) {
     receiver_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
-
   void ECreate();
 
-  [[nodiscard]] base_engine::Vector2 GetPosition() const {
-    return owner_->GetPosition() + receiver_->GetPosition();
-  }
-  bool IsConnect() const {
-    if (current_state_ != PowerState::kDisconnect || wait_frame_ != 0)
-      return true;
-    return false;
-  }
+  [[nodiscard]] base_engine::Vector2 GetPosition() const;
+
+  bool IsConnect() const;
+
   bool EqualSender(
-	  const std::weak_ptr<class TransmitterComponent>& sender_weak) const {
-    if (sender_.expired() || sender_weak.expired()) return false;
-    return sender_.lock().get() == sender_weak.lock().get();
-  }
+      const std::weak_ptr<class TransmitterComponent>& sender_weak) const;
 
-  [[nodiscard]] int Level() const
-  {
-	  return level_;
-  }
+  [[nodiscard]] int Level() const;
 
-  void SetLevel(const int level)
-  {
-	  level_ = level;
-  }
+  void SetLevel(const int level);
 
   [[nodiscard]] std::weak_ptr<base_engine::Actor> GetSenderActor() const;
   void FlowSparkEffect() const;
 
-private:
+ protected:
   enum class PowerState {
     kDisconnect,    //接続が切れている
     kDisconnected,  //接続が切れた瞬間
@@ -83,8 +71,11 @@ private:
   PowerState prev_state_ = PowerState::kDisconnect;
   std::unique_ptr<IReceivablePower> receiver_;
   std::weak_ptr<class TransmitterComponent> sender_;
+  std::vector<std::weak_ptr<class TransmitterComponent>> senders_;
   size_t wait_frame_ = 0;
   std::weak_ptr<base_engine::Actor> effect_{};
   base_engine::ISpriteAnimationComponent* flow_spark_animation_ = nullptr;
   int level_ = 1;
+
+  bool next_frame_disconnect_ = false;
 };

@@ -68,10 +68,9 @@ void player::PlayerIdle::End() {}
 void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {}
 
 void player::PlayerIdle::PlaceBeacon() const {
-  auto pos = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
-  pos.x += player_->IsRight() ? 1 : 0;
-  pos.y += 1;
-  if (!player_->CanPlace(pos)) return;
+  const auto pos_opt = player_->SearchPlacePosition();
+  if (!pos_opt.has_value()) return;
+  const auto& pos = pos_opt.value();
   player_->SetBeacon(player_->GetBeacon() - 1);
   ComponentServiceLocator::Instance()
       .Resolve<tile_map::ObjectTileMapComponent>()
@@ -81,5 +80,6 @@ void player::PlayerIdle::PlaceBeacon() const {
   const auto beacon = new BeaconActor(player_->GetGame());
   const auto grid = beacon->GetComponent<grid::GridSnapComponent>().lock();
   grid->SetSnapGridPosition(pos);
-  beacon->SetSequential((player_->MaxBeacon() - player_->GetBeacon()) * 10);
+  const auto num = (player_->MaxBeacon() - player_->GetBeacon()) * 10;
+  beacon->SetSequential(num);
 }

@@ -23,6 +23,8 @@
 #include "TexturePaths.h"
 #include "TransmitterComponent.h"
 using namespace electronics;
+using RC = ResourceContainer;
+
 void PowerSupplyUnitActor::Start() {}
 
 void PowerSupplyUnitActor::Create(const LoadObject& object) {
@@ -44,14 +46,23 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
 
   {
     is_fly_ = std::get<bool>(object.parameters[object.parameters.size() - 2]);
+    {
+      sprite_outline_ = new base_engine::SpriteComponent(
+          this, draw_order::kPowerSupplyUnitDrawOrder + 1);
+      const auto sprite_outline_resource =
+          RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+              is_fly_ ? "AirPowerSupplyOutline" : "PowerSupplyOutline");
+      sprite_outline_->SetImage(*sprite_outline_resource);
+      sprite_outline_->SetEnabled(false);
+    }
+    {
+      sprite_ = new base_engine::SpriteComponent(
+          this, draw_order::kPowerSupplyUnitDrawOrder);
 
-    const auto sprite = new base_engine::SpriteComponent(
-        this, draw_order::kPowerSupplyUnitDrawOrder);
-
-    using RC = ResourceContainer;
-    const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
-        is_fly_ ? "AirPowerSupplyOff" : "PowerSupplyOff");
-    sprite->SetImage(img);
+      const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+          is_fly_ ? "AirPowerSupplyOff" : "PowerSupplyOff");
+      sprite_->SetImage(img);
+    }
   }
 
   {
@@ -74,5 +85,26 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
         ->SetCell(pos.x, pos.y, 1);
+  }
+}
+
+void PowerSupplyUnitActor::SetOutline(const bool flg) const {
+  sprite_outline_->SetEnabled(flg);
+}
+
+bool PowerSupplyUnitActor::IsOutline() const {
+  return sprite_outline_->GetEnabled();
+}
+
+void PowerSupplyUnitActor::SetOnImage(const bool flg) const {
+  if (flg) {
+    const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+        IsFly() ? "AirPowerSupplyOn" : "PowerSupplyOn");
+    sprite_->SetImage(img);
+
+  } else {
+    const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+        is_fly_ ? "AirPowerSupplyOff" : "PowerSupplyOff");
+    sprite_->SetImage(img);
   }
 }

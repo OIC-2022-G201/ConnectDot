@@ -111,6 +111,8 @@
     <ClCompile Include="ClipSizeYTween.cpp" />
     <ClCompile Include="CollapsibleBlockActor.cpp" />
     <ClCompile Include="CollapsibleBlockReceiver.cpp" />
+    <ClCompile Include="ConnectBind.cpp" />
+    <ClCompile Include="DummyEmptyBeaconActor.cpp" />
     <ClCompile Include="DummyTween.cpp" />
     <ClCompile Include="Easer.cpp" />
     <ClCompile Include="EaseType.cpp" />
@@ -291,6 +293,8 @@
     <ClInclude Include="ClipSizeYTween.h" />
     <ClInclude Include="CollapsibleBlockActor.h" />
     <ClInclude Include="CollapsibleBlockReceiver.h" />
+    <ClInclude Include="ConnectBind.h" />
+    <ClInclude Include="DummyEmptyBeaconActor.h" />
     <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EaseType.h" />
@@ -299,6 +303,7 @@
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="GoalEffectActor.h" />
+    <ClInclude Include="IConnectBindable.h" />
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ISpriteAnimatable.h" />
     <ClInclude Include="ITween.h" />
