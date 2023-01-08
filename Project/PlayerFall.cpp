@@ -1,5 +1,6 @@
 ﻿#include "PlayerFall.h"
 
+#include "OneTimeEffectActor.h"
 #include "Player.h"
 #include "PlayerComponent.h"
 #include "PlayerStateConst.h"
@@ -33,7 +34,27 @@ void player::PlayerFall::ProcessInput() {
   if (player_->IsSneakKey()) is_sneak_ = true;
 }
 
-void player::PlayerFall::End() {}
+void player::PlayerFall::End() {
+
+
+  if (player_->IsRight())
+  {
+    const auto effect =
+        OneTimeEffectActor::Create(player_->GetOwner()->GetGame(),
+                                   player_->GetOwner()->GetPosition() +
+                                       base_engine::Vector2{128-16, 256 - 32},
+                                   "Dust", 160);
+      effect->GetComponent<base_engine::SpriteComponent>().lock()->SetFlip(
+          base_engine::Flip::kHorizontal);
+  }else
+  {
+    const auto effect =
+        OneTimeEffectActor::Create(player_->GetOwner()->GetGame(),
+                                   player_->GetOwner()->GetPosition() +
+                                       base_engine::Vector2{128+16, 256 - 32},
+                                   "Dust", 160);
+  }
+}
 
 void player::PlayerFall::Acceleration() const {
   const float velocity =
