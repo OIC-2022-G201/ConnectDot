@@ -207,7 +207,8 @@ void GoalEffectActor::GoalEffectComponent::Start() {
     CharacterLogoAnimation().SetOnComplete([this] {
       OpenPopup().SetOnComplete([this] {
         ShowScore();
-        NextLogoAnimation();
+        NextLogoAnimation().SetOnComplete([this] { end_animation_ = true;
+        });
       });
     });
   });
