@@ -37,3 +37,8 @@ OneTimeEffectActor* OneTimeEffectActor::Create(base_engine::Game* game,
   actor->sprite_->SetAlignment(Mof::TEXALIGN_CENTERCENTER);
   return actor;
 }
+
+void OneTimeEffectActor::SetImage(const std::string_view name) {
+  const auto pack = RC::GetPack<RC::AnimationResourcePack>(name.data());
+  sprite_->SetImage(*pack->Get<RC::Sprite>()->Get(0));
+}

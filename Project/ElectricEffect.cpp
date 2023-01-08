@@ -9,7 +9,7 @@
 using namespace base_engine;
 constexpr std::array<std::string_view, 2> kTexturePaths = {
     "Effect/Electric/ElectroCellMap.png",
-    "Effect/Electro_purple/ElectroCellMap.png"};
+    "Effect/Electric/ElectroCellMap.png"};
 
 void ElectricEffect::Update() {
   if (!is_play_) return;

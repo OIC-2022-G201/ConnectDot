@@ -26,6 +26,8 @@ public:
                                     const base_engine::Vector2& pos,
                                     std::string_view name,int draw_order);
 
+  void SetImage(std::string_view name);
+
  private:
   base_engine::SpriteComponent* sprite_ = nullptr;
   base_engine::ISpriteAnimationComponent* motion_ = nullptr;

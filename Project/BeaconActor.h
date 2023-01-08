@@ -34,13 +34,15 @@ class BeaconActor final : public base_engine::Actor{
   [[nodiscard]] auto&& ElectricPowerTrigger() {
     return electric_power_.ToReadOnly();
   }
-
-  void LevelUp() const;
+  [[nodiscard]] auto&& LevelUpTrigger() { return level_.ToReadOnly();
+  }
+  void LevelUp();
   void SetOutline(const bool flg) const;
-  bool IsOutline() const;;
+  bool IsOutline() const;
 
 private:
   observable::ReactiveProperty<bool> electric_power_ = false;
+  observable::ReactiveProperty<int> level_ = 1;
   int sequential_ = 0;
   BeaconPartTuple tuple_;
   bool is_deployed_ = false;
@@ -48,4 +50,6 @@ private:
   base_engine::SpriteComponent* sprite_;
 
   base_engine::SpriteComponent* sprite_outline_;
+
+
 };

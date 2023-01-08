@@ -128,12 +128,15 @@ void BeaconActor::Update() {
   }
 }
 
-void BeaconActor::LevelUp() const
+void BeaconActor::LevelUp()
 {
   GetComponent<TransmitterComponent>().lock()->SetLevel(2);
+
+  level_ = 2;
   const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
       kBeaconPowerup.data());
   GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
+
 }
 
 void BeaconActor::SetOutline(const bool flg) const

@@ -14,6 +14,9 @@ BeaconReceiver::BeaconReceiver(BeaconActor* actor,
       game, actor_->GetPosition() + GetPosition(), "ConnectLightNormal", 130);
   actor_->AddChild(effect_actor_->GetId());
   effect_actor_->Hide();
+  actor_->LevelUpTrigger().Subscribe(
+      [this](bool _) { effect_actor_->SetImage("ConnectLightPowerup");
+  });
 }
 
 int BeaconReceiver::Sequential() { return actor_->Sequential(); }

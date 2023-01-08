@@ -24,7 +24,8 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     : public Component {
  public:
   explicit BeaconPowerUpActionComponent(Actor* owner) : Component(owner) {}
-  void Create(const BeaconActor* target) {
+  void Create(BeaconActor* target) {
+    target_beacon_ = target;
     back_bar_sprite_ = CreateImage("FrameBar");
     back_bar_actor_ = back_bar_sprite_->GetOwner().lock().get();
     back_bar_actor_->SetPosition(back_bar_actor_->GetPosition() -
@@ -147,6 +148,7 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     }
 
     if ((current_iterator_ + 1) == chain_actor_.rend()) {
+
       target_beacon_->LevelUp();
       EventEnd();
       return;
