@@ -5,6 +5,7 @@
 #include <string_view>
 #include <type_traits>
 
+#include "ActionToolTipComponent.h"
 #include "Actor.h"
 #include "BeaconPowerUpActionEvent.h"
 #include "BeaconPowerUpActor.h"
@@ -22,6 +23,7 @@
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "Player.h"
+#include "ResourceContainer.h"
 #include "SceneManager.h"
 #include "SendManifold.h"
 #include "SpriteComponent.h"
@@ -184,6 +186,18 @@ void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(300); }
 
 void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
+void PlayerComponent::ActionKey(const CollisionComponent* collision) {
+  if ((collision->GetObjectFilter().to_ulong() &
+       CollisionLayer::Layer{CollisionLayer::kActionable}) == 0)
+    return;
+  const auto machine_actor = collision->GetActor();
+  const auto actionable = machine_actor->GetComponent<IMachineActionable>();
+  if (actionable.expired()) return;
+  ActionToolTipComponent::Create(machine_actor, actionable).lock()->Show();
+  if (!IsActionKey()) return;
+  actionable.lock()->Action(owner_);
+}
+
 void PlayerComponent::Update() {
   if (!can_control_) return;
 
@@ -208,16 +222,7 @@ void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
   }
   if (!can_control_) return;
   machine_.OnEvent(manifold.collision_b);
-  if (IsActionKey()) {
-    if ((manifold.collision_b->GetObjectFilter().to_ulong() &
-         CollisionLayer::Layer{CollisionLayer::kActionable}) != 0) {
-      if (const auto actionable = manifold.collision_b->GetActor()
-                                      ->GetComponent<IMachineActionable>();
-          !actionable.expired()) {
-        actionable.lock()->Action(owner_);
-      }
-    }
-  }
+  ActionKey(manifold.collision_b);
 }
 
 void PlayerComponent::VentEnter(VentComponent* vent) {

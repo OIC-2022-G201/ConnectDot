@@ -30,6 +30,8 @@ class Layer {
     layer_[y][x] = type;
   }
   [[nodiscard]] Cell GetCell(const size_t x, const size_t y) const {
+    if (x_ <= x) return 0;
+    if (y_ <= y) return 0;
     return layer_[y][x];
   }
 

@@ -86,6 +86,7 @@ class PlayerComponent final : public base_engine::Component {
   void SetMap(const TileMapWeak& map);
   void PlaySoundEffect() const;
   void StopSoundEffect() const;
+  void ActionKey(const base_engine::CollisionComponent* collision);
 
 private:
   int have_beacon_count_ = MaxBeacon();

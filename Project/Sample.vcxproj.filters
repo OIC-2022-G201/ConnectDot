@@ -1041,6 +1041,9 @@
     <ClCompile Include="DummyEmptyBeaconActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon</Filter>
     </ClCompile>
+    <ClCompile Include="ActionToolTipComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1786,6 +1789,9 @@
     </ClInclude>
     <ClInclude Include="DummyEmptyBeaconActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionToolTipComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
