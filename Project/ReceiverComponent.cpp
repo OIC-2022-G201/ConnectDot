@@ -144,6 +144,21 @@ void ReceiverComponent::Connecting(
   }
 
   if (sender_.lock()->GetOwner().expired()) return;
+
+  if (const auto prev_receiver =
+          sender_.lock()->GetOwner().lock()->GetComponent<ReceiverComponent>();
+      !prev_receiver.expired()) {
+    const auto target_weak = sender_weak.lock()
+                                 ->GetOwner()
+                                 .lock()
+                                 ->GetComponent<ReceiverComponent>();
+    if (!target_weak.expired()) {
+      if (prev_receiver.lock()->Sequential() >
+          target_weak.lock()->Sequential()) {
+        sender_ = sender;
+      }
+    }
+  }
   if (prev_state_ != PowerState::kDisconnect) return;
 
   switch (current_state_) {

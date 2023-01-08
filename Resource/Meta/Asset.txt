@@ -1,12 +1,21 @@
 BG Sprite BG/BackGraundColor.png
-Stage1Back Sprite BG/Stage1/Stage1Back/Stage1Back.png
-Stage1Front Sprite BG/Stage1/Stage1Front/Stage1Front.png
-Stage1Middle Sprite BG/Stage1/Stage1Middle/Stage1Middle.png
+Stage1BG10 Sprite BG/Stage1/Stage1BG10/Stage1BG10.png
+Stage1BG20 Sprite BG/Stage1/Stage1BG20/Stage1BG20.png
+Stage1BG30 Sprite BG/Stage1/Stage1BG30/Stage1BG30.png
+Stage1BG40 Sprite BG/Stage1/Stage1BG40/Stage1BG40.png
+Stage1BG50 Sprite BG/Stage1/Stage1BG50/Stage1BG50.png
+Stage1BG60 Sprite BG/Stage1/Stage1BG60/Stage1BG60.png
+Stage1BG70 Sprite BG/Stage1/Stage1BG70/Stage1BG70.png
+ConnectLightNormal Animation Effect/ConnectLight/ConnectLightNormal/ConnectLightEffect_MotionChip.png Effect/ConnectLight/ConnectLightNormal/ConnectLightEffect.aei
+ConnectLightPowerup Animation Effect/ConnectLight/ConnectLightPowerup/ConnectLightEffect_Powerup_MotionChip.png Effect/ConnectLight/ConnectLightPowerup/ConnectLightEffect_Powerup.aei
+ConnectShock Animation Effect/ConnectShock/ConnectEffect_MotionChip.png Effect/ConnectShock/ConnectEffect.aei
+Dust Animation Effect/Dust/DustEffect_MotionChip.png Effect/Dust/DustEffect.aei
 Electric Sprite Effect/Electric/ElectroCellMap.png
 ElectroBar Sprite Effect/Electric/ElectroBar/ElectroBar.png
 Electro_purple Sprite Effect/Electro_purple/ElectroCellMap.png
 Electro_purpleAnimation Sprite Effect/Electro_purple/Electro_purpleAnimation/ElectroCellMap.png
 SoundAnimation Animation Effect/Sound/SoundAnimation/Sound_MotionChip.png Effect/Sound/SoundAnimation/Sound.aei
+Spark Animation Effect/Spark/Spark_MotionChip.png Effect/Spark/Spark.aei
 AirPowerSupplyOff Sprite gimmick/Objects/AirPowerSupply/AirPowerSupplyOff/AirPowerSupply.png
 AirPowerSupplyOn Sprite gimmick/Objects/AirPowerSupply/AirPowerSupplyOn/AirPowerSupply_On.png
 AirPowerSupplyOutline Sprite gimmick/Objects/AirPowerSupply/AirPowerSupplyOutline/LightAround_AirPowerSupply.png

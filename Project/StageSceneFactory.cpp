@@ -45,15 +45,17 @@ void StageSceneFactory::Factory() {
 
   {
     using CreateInfo = ParallaxCameraFlowLayer::CreateInfo;
-    std::array create_def = {CreateInfo{"Back", 1, 0.2f, 10},
-                             CreateInfo{"Middle", 0.7, 0, 20},
-                             CreateInfo{"Front", -0.2, 0, 300}};
-//    ParallaxCameraFlowLayer::Create(game_, stage_def->first.stem().string(),
-//                                    create_def);
-    ParallaxCameraFlowLayer::Create(game_, "Stage1",
-                                    create_def);
+    std::array create_def = {
+        CreateInfo{"BG70", 1, 0.2f, 10},    CreateInfo{"BG60", 0.7, 1, 11},
+        CreateInfo{"BG50", 0, 1, 12},   CreateInfo{"BG40", 0.5, 1, 13},
+        CreateInfo{"BG30", 0.4, 1, 14}, CreateInfo{"BG20", 0.3, 0, 15},
+        CreateInfo{"BG10", -0.2, 0, 200}};
+    //    ParallaxCameraFlowLayer::Create(game_,
+    //    stage_def->first.stem().string(),
+    //                                    create_def);
+    ParallaxCameraFlowLayer::Create(game_, "Stage1", create_def);
   }
-  const auto BG = new ImageComponent(new Actor(game_),1);
+  const auto BG = new ImageComponent(new Actor(game_), 1);
 
   BG->SetImage(
       *ResourceContainer::GetResource<ResourceContainer::SpriteResourcePack,
