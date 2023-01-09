@@ -27,7 +27,7 @@ BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
 Elevator Sprite gimmick/Objects/Elevator/Elevator.png
-Lever Sprite gimmick/Objects/Lever/Lever.png
+Lever Animation gimmick/Objects/Lever/LeverAnimation_MotionChip.png gimmick/Objects/Lever/LeverAnimation.aei
 Movefloor Sprite gimmick/Objects/Movefloor/Movefloor.png
 Powersupply Sprite gimmick/Objects/Powersupply/Powersupply3.png
 PowerSupplyOff Sprite gimmick/Objects/Powersupply/PowerSupplyOff/Powersupply_Lv0.png

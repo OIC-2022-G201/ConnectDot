@@ -35,15 +35,5 @@ class LeverStubComponent final : public base_engine::Component,
                               const int update_order = 100)
       : Component(owner, update_order) {}
 
-  void Action(base_engine::Actor*) override {
-    base_engine::Actor* target = nullptr;
-    if (auto lever = dynamic_cast<LeverStubActor*>(owner_); lever) {
-      if (!lever->GetElectric()) return;
-
-      target = lever->GetTarget();
-      const auto receiver = target->GetComponent<ReceiverComponent>();
-      const auto sender = owner_->GetComponent<TransmitterComponent>().lock();
-      sender->AddTarget(receiver);
-    }
-  }
+  void Action(base_engine::Actor*) override;
 };

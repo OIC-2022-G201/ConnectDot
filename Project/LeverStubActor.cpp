@@ -13,23 +13,20 @@
 #include "LoadObjectParameter.h"
 #include "MachineConst.h"
 #include "ReceiverComponent.h"
+#include "ResourceContainer.h"
 #include "SignboardReceiver.h"
 #include "StageConstitution.h"
 #include "TexturePaths.h"
 #include "TransmitterComponent.h"
 using namespace base_engine;
 using namespace draw_order;
-
+using RC = ResourceContainer;
 LeverStubActor::LeverStubActor(base_engine::Game* game) : Actor(game) {}
 
 void LeverStubActor::Create(const LoadObject& object) {
   {
     constexpr auto cell = stage::kStageCellSize<Floating>;
     const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y);
-    const auto shape = new ShapeRenderComponent(this, 110);
-    shape->SetShape(rect);
-    shape->SetFillMode(electronics::kElectricAreaFillMode)
-        .SetColor(electronics::kElectricAreaColor);
 
     const auto collision = new CollisionComponent(this);
     collision->SetShape(rect);
@@ -38,10 +35,14 @@ void LeverStubActor::Create(const LoadObject& object) {
     collision->SetTrigger(true);
   }
   {
-    const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
-    const auto& path =
-        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
-    sign->SetImage(BASE_ENGINE(Texture)->Get(path));
+    const auto sprite = new base_engine::SpriteComponent(this, 130);
+    const auto sprite_resource =
+        RC::GetResource<RC::AnimationResourcePack, RC::Sprite>("Lever");
+    sprite->SetImage(*sprite_resource);
+    const auto clips =
+        RC::GetResource<RC::AnimationResourcePack, RC::AnimationClips>("Lever");
+    const auto animation = new MofSpriteAnimationComponent(this);
+    animation->Load(sprite, *clips);
   }
   { auto lever = new LeverStubComponent(this); }
   {
@@ -54,7 +55,22 @@ void LeverStubActor::Create(const LoadObject& object) {
   {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
   }
   SetName("LeverStubActor");
+}
+
+void LeverStubComponent::Action(base_engine::Actor*) {
+  if (const auto lever = dynamic_cast<LeverStubActor*>(owner_); lever) {
+    if (!lever->GetElectric()) return;
+    const auto animation = owner_->GetComponent<MofSpriteAnimationComponent>();
+    if (animation.expired()) return;
+    if (!animation.lock()->IsEndMotion()) return;
+    const Actor* target = lever->GetTarget();
+    const auto receiver = target->GetComponent<ReceiverComponent>();
+    const auto sender = owner_->GetComponent<TransmitterComponent>().lock();
+    animation.lock()->Stop(true);
+    animation.lock()->Play("Lever");
+    sender->AddTarget(receiver);
+  }
 }
