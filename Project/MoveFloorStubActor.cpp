@@ -4,6 +4,7 @@
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridPosition.h"
@@ -12,6 +13,7 @@
 #include "LeverStubReceiver.h"
 #include "LoadObjectParameter.h"
 #include "MachineConst.h"
+#include "ObjectTileMapComponent.h"
 #include "ReceiverComponent.h"
 #include "ReleaseInfo.h"
 #include "SignboardReceiver.h"
@@ -56,6 +58,10 @@ void MoveFloorStubActor::Create(const LoadObject& object) {
     auto to_pos = std::get<Point2I>(object.parameters[4]);
     to_position_ = {to_pos.x, to_pos.y};
     SetTag("Field");
+
+    ComponentServiceLocator::Instance()
+        .Resolve<tile_map::ObjectTileMapComponent>()
+        ->SetCell(from_position_, tile_map::kCanOnPlace);
   }
 
   SetName("MoveFloor");
@@ -68,6 +74,9 @@ void MoveFloorStubActor::MoveFloorStubReceiver::OnPowerEnter(
   const auto from_pos = actor_->from_position_;
   const auto to_pos = from_pos + actor_->to_position_;
 
+  ComponentServiceLocator::Instance()
+      .Resolve<tile_map::ObjectTileMapComponent>()
+      ->SetCell(now_pos, tile_map::kEmptyCell);
   const auto v = to_pos - from_pos;
   const auto normal =
       (abs(v.x) > abs(v.y) ? GridPosition{1, 0} : GridPosition{0, 1});
@@ -76,6 +85,9 @@ void MoveFloorStubActor::MoveFloorStubReceiver::OnPowerEnter(
       actor_->is_front_ ? (now_pos + normal) : (now_pos - normal);
   grid->SetSnapGridPosition(move_pos);
 
+  ComponentServiceLocator::Instance()
+      .Resolve<tile_map::ObjectTileMapComponent>()
+      ->SetCell(move_pos, tile_map::kCanOnPlace);
   if (actor_->is_front_) {
     if ((to_pos - move_pos) == GridPosition{0, 0}) actor_->is_front_ = false;
   } else {
