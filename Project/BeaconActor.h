@@ -39,6 +39,7 @@ class BeaconActor final : public base_engine::Actor{
   void LevelUp();
   void SetOutline(const bool flg) const;
   bool IsOutline() const;
+  void Close();
 
 private:
   observable::ReactiveProperty<bool> electric_power_ = false;

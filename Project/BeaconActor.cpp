@@ -6,12 +6,15 @@
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
+#include "DummyTween.h"
 #include "ElectronicsPower.h"
 #include "EventBus.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
 #include "IMachineActionable.h"
 #include "MofSpriteAnimationComponent.h"
+#include "ObjectTileMapComponent.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
 #include "ReleaseInfo.h"
@@ -22,7 +25,7 @@
 using namespace electronics;
 using namespace beacon;
 using RC = ResourceContainer;
-constexpr std::string_view kBeaconName = "Beacon";
+constexpr std::string_view kBeaconName = "BeaconAnimation";
 constexpr std::string_view kBeaconOffName = "BeaconOff";
 constexpr std::string_view kBeaconOnName = "BeaconOn";
 constexpr std::string_view kBeaconPowerup = "BeaconPowerup";
@@ -33,18 +36,17 @@ class BeaconDummyComponent : public base_engine::Component,
   BeaconDummyComponent(BeaconActor* owner, int update_order = 100)
       : Component(owner, update_order), owner_as_beacon_(owner) {}
 
-  void Action(base_engine::Actor* actor) override
-  {
-    if(owner_->GetComponent<TransmitterComponent>().lock()->Level() != 1)
-    {
+  void Action(base_engine::Actor* actor) override {
+    if (owner_->GetComponent<TransmitterComponent>().lock()->Level() != 1) {
       return;
     }
     std::any send = std::make_any<base_engine::Actor*>(owner_);
 
-    auto event = BeaconPowerUpActionEvent(send,false);
+    auto event = BeaconPowerUpActionEvent(send, false);
     EventBus::FireEvent(event);
   }
-private:
+
+ private:
   BeaconActor* owner_as_beacon_;
 };
 BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
@@ -80,7 +82,6 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
             kBeaconOutline.data());
     sprite_outline_->SetImage(*sprite_outline_resource);
     sprite_outline_->SetEnabled(false);
-      
 
     sprite_ = new base_engine::SpriteComponent(this, 130);
     const auto sprite_resource =
@@ -128,21 +129,28 @@ void BeaconActor::Update() {
   }
 }
 
-void BeaconActor::LevelUp()
-{
+void BeaconActor::LevelUp() {
   GetComponent<TransmitterComponent>().lock()->SetLevel(2);
 
   level_ = 2;
   const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
       kBeaconPowerup.data());
   GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
-
 }
 
-void BeaconActor::SetOutline(const bool flg) const
-{ sprite_outline_->SetEnabled(flg);
+void BeaconActor::SetOutline(const bool flg) const {
+  sprite_outline_->SetEnabled(flg);
 }
 
-bool BeaconActor::IsOutline() const
-{ return sprite_outline_->GetEnabled(); }
+bool BeaconActor::IsOutline() const { return sprite_outline_->GetEnabled(); }
 
+void BeaconActor::Close() {
+  animation_->Play("Close");
+  ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this] {
+	  const auto pos = GridPosition::VectorTo(GetPosition());
+    ComponentServiceLocator::Instance()
+        .Resolve<tile_map::ObjectTileMapComponent>()
+        ->SetCell(pos.x, pos.y, 0);
+    //GetGame()->RemoveActor(this);
+  });
+}

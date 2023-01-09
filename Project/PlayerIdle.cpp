@@ -32,12 +32,10 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
 
     if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter &&
         actor->GetTag() == "Beacon") {
-      auto pos = GridPosition::VectorTo(actor->GetPosition());
-      ComponentServiceLocator::Instance()
-          .Resolve<tile_map::ObjectTileMapComponent>()
-          ->SetCell(pos.x, pos.y, 0);
-      actor->GetGame()->RemoveActor(actor);
-
+      if (const auto beacon = dynamic_cast<BeaconActor*>(actor))
+      {
+        beacon->Close();
+      }
       return false;
     }
     return true;
@@ -53,7 +51,9 @@ void player::PlayerIdle::Update() {
     auto pos = player_->GetOwner()->GetPosition();
     BeaconQueryCallBack call_back;
     BASE_ENGINE(Collider)->QueryAABB(
-        &call_back, {{pos.x, pos.y}, {pos.x + 128, pos.y + 256}});
+        &call_back, {{pos.x+40, pos.y+40}
+  , { pos.x + 128, pos.y + 256 }
+});
   }
 }
 
