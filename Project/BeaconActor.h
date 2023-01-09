@@ -51,6 +51,7 @@ private:
   base_engine::SpriteComponent* sprite_;
 
   base_engine::SpriteComponent* sprite_outline_;
+  base_engine::SpriteComponent* range_sprite_;
 
 
 };

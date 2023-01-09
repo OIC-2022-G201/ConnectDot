@@ -24,6 +24,7 @@ BeaconOff Sprite gimmick/Objects/Beacon/BeaconOff/Beacon_Off.png
 BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
 BeaconOutline Sprite gimmick/Objects/Beacon/BeaconOutline/LightAround_Beacon_On.png
 BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
+BeaconPowerUpRange Sprite gimmick/Objects/Beacon/BeaconPowerUpRange/PowerUpRing.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
 Elevator Sprite gimmick/Objects/Elevator/Elevator.png

@@ -24,23 +24,24 @@
 #include "TransmitterComponent.h"
 using namespace electronics;
 using namespace beacon;
+using namespace base_engine;
 using RC = ResourceContainer;
 constexpr std::string_view kBeaconName = "BeaconAnimation";
 constexpr std::string_view kBeaconOffName = "BeaconOff";
 constexpr std::string_view kBeaconOnName = "BeaconOn";
 constexpr std::string_view kBeaconPowerup = "BeaconPowerup";
 constexpr std::string_view kBeaconOutline = "BeaconOutline";
-class BeaconDummyComponent : public base_engine::Component,
-                             public IMachineActionable {
+constexpr std::string_view kBeaconPowerUpRange = "BeaconPowerUpRange";
+class BeaconDummyComponent : public Component, public IMachineActionable {
  public:
   BeaconDummyComponent(BeaconActor* owner, int update_order = 100)
       : Component(owner, update_order), owner_as_beacon_(owner) {}
 
-  void Action(base_engine::Actor* actor) override {
+  void Action(Actor* actor) override {
     if (owner_->GetComponent<TransmitterComponent>().lock()->Level() != 1) {
       return;
     }
-    std::any send = std::make_any<base_engine::Actor*>(owner_);
+    std::any send = std::make_any<Actor*>(owner_);
 
     auto event = BeaconPowerUpActionEvent(send, false);
     EventBus::FireEvent(event);
@@ -49,18 +50,18 @@ class BeaconDummyComponent : public base_engine::Component,
  private:
   BeaconActor* owner_as_beacon_;
 };
-BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
+BeaconActor::BeaconActor(Game* game) : Actor(game) {
+  const auto cell_half = stage::kStageCellSizeHalf<Floating>;
   {
-    const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
-    const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius);
+    const auto circle =
+        std::make_shared<Circle>(cell_half.x, cell_half.y, kPowerRadius);
     if (kIsCollisionRenderMode) {
       const auto shape = new base_engine::ShapeRenderComponent(this, 110);
       shape->SetShape(circle);
       shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
       RegistryPart(shape);
     }
-    const auto collision = new base_engine::CollisionComponent(this);
+    const auto collision = new CollisionComponent(this);
     collision->SetShape(circle);
     collision->SetObjectFilter(kBeaconObjectFilter);
     collision->SetTargetFilter(kBeaconTargetFilter);
@@ -76,14 +77,14 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
   }
 
   {
-    sprite_outline_ = new base_engine::SpriteComponent(this, 130);
+    sprite_outline_ = new SpriteComponent(this, 131);
     const auto sprite_outline_resource =
         RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
             kBeaconOutline.data());
     sprite_outline_->SetImage(*sprite_outline_resource);
     sprite_outline_->SetEnabled(false);
 
-    sprite_ = new base_engine::SpriteComponent(this, 130);
+    sprite_ = new SpriteComponent(this, 130);
     const auto sprite_resource =
         RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
             kBeaconName.data());
@@ -91,8 +92,19 @@ BeaconActor::BeaconActor(base_engine::Game* game) : Actor(game) {
     const auto clips =
         RC::GetResource<RC::AnimationResourcePack, RC::AnimationClips>(
             kBeaconName.data());
-    animation_ = new base_engine::MofSpriteAnimationComponent(this);
+    animation_ = new MofSpriteAnimationComponent(this);
     animation_->Load(sprite_, *clips);
+
+    const auto range_image =
+        RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+            kBeaconPowerUpRange.data());
+
+    range_sprite_ = new SpriteComponent(this, 130 + 2);
+    range_sprite_->SetAlignment(Mof::TEXALIGN_CENTERCENTER)
+        .SetColor(MOF_ARGB(0, 255, 255, 255))
+        .SetImage(*range_image)
+        .SetOffset({cell_half.x, cell_half.y})
+        .SetEnabled(false);
   }
 
   {
@@ -131,11 +143,22 @@ void BeaconActor::Update() {
 
 void BeaconActor::LevelUp() {
   GetComponent<TransmitterComponent>().lock()->SetLevel(2);
+  {
+    const auto cell_half = stage::kStageCellSizeHalf<Floating>;
 
+    const auto circle =
+        std::make_shared<Circle>(cell_half.x, cell_half.y, kPowerRadius + 128);
+    const auto collision = GetComponent<CollisionComponent>().lock();
+    collision->SetShape(circle);
+    collision->Sync();
+  }
   level_ = 2;
   const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
       kBeaconPowerup.data());
   GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
+
+  range_sprite_->SetEnabled(true);
+  range_sprite_->SetColor(MOF_ARGB(255, 255, 255, 255));
 }
 
 void BeaconActor::SetOutline(const bool flg) const {
@@ -145,13 +168,23 @@ void BeaconActor::SetOutline(const bool flg) const {
 bool BeaconActor::IsOutline() const { return sprite_outline_->GetEnabled(); }
 
 void BeaconActor::Close() {
+  if (!animation_->IsEndMotion()) return;
   const auto sprite_resource =
       RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
           kBeaconName.data());
   sprite_->SetImage(*sprite_resource);
+  sprite_outline_->SetEnabled(false);
+  RemoveComponent(GetComponent<TransmitterComponent>().lock().get());
+  RemoveComponent(GetComponent<ReceiverComponent>().lock().get());
   animation_->Play("Close");
+  const auto list = GetChildren();
+  for (const auto& child : list) {
+    if (child.expired()) continue;
+    RemoveChild(child.lock()->GetId());
+    GetGame()->RemoveActor(child.lock().get());
+  }
   ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this] {
-	  const auto pos = GridPosition::VectorTo(GetPosition());
+    const auto pos = GridPosition::VectorTo(GetPosition());
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
         ->SetCell(pos.x, pos.y, 0);
