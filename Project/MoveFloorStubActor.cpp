@@ -79,7 +79,8 @@ void MoveFloorStubActor::MoveFloorStubReceiver::OnPowerEnter(
       ->SetCell(now_pos, tile_map::kEmptyCell);
   const auto v = to_pos - from_pos;
   const auto normal =
-      (abs(v.x) > abs(v.y) ? GridPosition{1, 0} : GridPosition{0, 1});
+      (abs(v.x) > abs(v.y) ? GridPosition{1, 0} : GridPosition{0, 1}) *
+      ((v.x > 0) || (v.y > 0) ? 1 : -1);
 
   const auto move_pos =
       actor_->is_front_ ? (now_pos + normal) : (now_pos - normal);

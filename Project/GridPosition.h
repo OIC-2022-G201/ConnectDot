@@ -58,6 +58,8 @@ struct GridPosition
       return !(lhs == rhs);
   }
 
+  GridPosition operator*(int i) const;
+
   static GridPosition VectorTo(base_engine::InVector2 pos)
   {
     int x = floor(pos.x / stage::kStageCellWidth<float> + 0.5f);
