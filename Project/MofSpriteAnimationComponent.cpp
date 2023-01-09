@@ -88,7 +88,7 @@ void MofSpriteAnimationComponent::Play(std::string_view name,
   if (IsMotion(name)) {
     reset = reset_;
   }
-  ChangeMotion(name, reset);
+  bool change = ChangeMotion(name, reset);
   reset_ = false;
 }
 

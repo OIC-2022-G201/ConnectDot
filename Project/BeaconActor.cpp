@@ -145,12 +145,16 @@ void BeaconActor::SetOutline(const bool flg) const {
 bool BeaconActor::IsOutline() const { return sprite_outline_->GetEnabled(); }
 
 void BeaconActor::Close() {
+  const auto sprite_resource =
+      RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
+          kBeaconName.data());
+  sprite_->SetImage(*sprite_resource);
   animation_->Play("Close");
   ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this] {
 	  const auto pos = GridPosition::VectorTo(GetPosition());
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
         ->SetCell(pos.x, pos.y, 0);
-    //GetGame()->RemoveActor(this);
+    GetGame()->RemoveActor(this);
   });
 }
