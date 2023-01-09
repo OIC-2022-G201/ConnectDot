@@ -99,7 +99,8 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
           .SetOnComplete([this] {
             start_ = true;
             space_key_effect_ = OneTimeEffectActor::Create(
-                owner_->GetGame(), owner_->GetPosition() + Vector2{0,-64}, "SpaceKeyUI",
+                owner_->GetGame(),
+                back_bar_actor_->GetPosition() + Vector2{64, -32}, "SpaceKeyUI",
                 150);
             NextBeacon();
           });

@@ -41,6 +41,7 @@ class BeaconDummyComponent : public Component, public IMachineActionable {
     if (owner_->GetComponent<TransmitterComponent>().lock()->Level() != 1) {
       return;
     }
+    if (!static_cast<bool>(owner_as_beacon_->ElectricPowerTrigger())) return;
     std::any send = std::make_any<Actor*>(owner_);
 
     auto event = BeaconPowerUpActionEvent(send, false);
