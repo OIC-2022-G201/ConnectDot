@@ -45,7 +45,7 @@ private:
   void CreateObjectRegister();
   void ProcessInput();
   void UpdateGame();
-
+  std::vector<ActorWeakPtr> actor_id_cash_{1};
   std::vector<ActorPtr> actors_;
   std::vector<ActorPtr> actors_next_frame_delete_;
   std::vector<class RenderComponent*> sprites_;

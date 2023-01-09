@@ -59,6 +59,7 @@ void Game::AddActor(Actor* actor, const std::weak_ptr<Scene> scene) {
   actor_id_max_++;
   actor->id_.id = actor_id_max_;
   auto actor_ptr = ActorPtr{actor};
+  actor_id_cash_.emplace_back(actor_ptr);
   pending_actors_.emplace_back(actor_ptr);
   scene.lock()->AddActor(actor_ptr);
   actor_ptr->SetScene(scene);
@@ -84,18 +85,8 @@ void Game::RemoveActor(Actor* actor, const std::weak_ptr<Scene> scene) {
 }
 
 ActorWeakPtr Game::GetActor(ActorId id) {
-  if (const auto iter = std::ranges::find_if(
-          actors_, [id](const ActorPtr& n) { return n->GetId() == id; });
-      iter != actors_.end()) {
-    return *iter;
-  }
-
-  if (const auto iter = std::ranges::find_if(
-          pending_actors_,
-          [id](const ActorPtr& n) { return n->GetId() == id; });
-      iter != pending_actors_.end()) {
-    return *iter;
-  }
+  if (actor_id_max_ < id.id) return ActorPtr{};
+  return actor_id_cash_[id.id];
   return ActorPtr{};
 }
 
@@ -139,12 +130,11 @@ void Game::CreateObjectRegister() {
   next_frame_event_.clear();
 
   updating_actors_ = true;
-  for (int i = 0; i < actors_next_frame_delete_.size(); ++i)
-  {
-      if (auto& actor = actors_next_frame_delete_[i]) actor.reset();
+  for (int i = 0; i < actors_next_frame_delete_.size(); ++i) {
+    if (auto& actor = actors_next_frame_delete_[i]) actor.reset();
   }
   for (auto&& actor : actors_next_frame_delete_) {
-    if(actor)actor.reset();
+    if (actor) actor.reset();
   }
   actors_next_frame_delete_.clear();
   for (int i = 0; i < pending_actors_.size(); ++i) {
@@ -222,8 +212,10 @@ void Game::SetNextFrameEvent(const std::function<void()>& event) {
 
 void Game::Render() const {
   for (const auto sprite : sprites_) {
-    if (sprite->GetOwner().expired()) continue;
-    if (!sprite->GetOwner().lock()->Enable()) continue;
+    // if (sprite->GetOwner().expired()) continue
+    const auto owner = sprite->GetOwner();
+    ;
+    if (owner.expired() || !owner.lock()->Enable()) continue;
     if (sprite->GetEnabled()) sprite->Draw();
   }
   if (kStatusRenderMode) {
