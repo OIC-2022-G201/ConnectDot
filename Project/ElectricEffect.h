@@ -32,7 +32,7 @@ class ElectricEffect final : public base_engine::Actor {
   void Show() const { sprite_->SetEnabled(true); }
   void Hide() const { sprite_->SetEnabled(false); }
   // TODO テクスチャを取得するKEYをベタ書きしない
-  void Play(base_engine::Vector2 pos1, base_engine::Vector2 pos2);
+  void Play(const base_engine::Vector2& pos1, const base_engine::Vector2& pos2);
 
 private:
   void OnChangeLevel();

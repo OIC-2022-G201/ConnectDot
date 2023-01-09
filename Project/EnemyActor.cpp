@@ -15,6 +15,7 @@
 #include "ShapeRenderComponent.h"
 #include "VisionCreateComponent.h"
 #include "MofSpriteAnimationComponent.h"
+#include "ReleaseInfo.h"
 
 using namespace base_engine;
 using namespace draw_order;
@@ -75,8 +76,12 @@ namespace enemy {
         collision_->SetObjectFilter(kEnemyObjectFilter);
         collision_->SetTargetFilter(kEnemyTargetFilter);
         collision_->SetShape(std::make_shared<Rect>(0, 0, 256, 256));
-        const auto debugCollisionRender = new ShapeRenderComponent(this, 200);
-        debugCollisionRender->SetColor(MOF_COLOR_RED);
+
+        if (kIsCollisionRenderMode)
+        {
+            const auto debugCollisionRender = new ShapeRenderComponent(this, 200);
+            debugCollisionRender->SetColor(MOF_COLOR_RED);
+        }
         const auto body_ = new PhysicsBodyComponent(this);
 
         auto pos = std::get<LoadObject::Transform>(object.parameters[1]).value;

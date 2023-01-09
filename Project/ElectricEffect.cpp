@@ -18,7 +18,7 @@ void ElectricEffect::Update() {
   OnChangeLevel();
 }
 
-void ElectricEffect::Play(Vector2 pos1, Vector2 pos2) {
+void ElectricEffect::Play(const Vector2& pos1, const Vector2& pos2) {
   {
     if (!sprite_) {
       sprite_ = new SpriteComponent(this, draw_order::kElectricEffectDrawOrder);

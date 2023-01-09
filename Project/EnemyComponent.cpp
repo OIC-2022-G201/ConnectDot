@@ -4,6 +4,7 @@
 #include "TexturePaths.h"
 #include "Game.h"
 #include "Mof.h"
+#include "ReleaseInfo.h"
 #include "ShapeRenderComponent.h"
 
 namespace enemy {
@@ -21,7 +22,7 @@ namespace enemy {
 		collision_ = owner_->GetComponent<CollisionComponent>();
 		collision_.lock()->SetShape(enemy_shape);
 
-		owner_->GetComponent<ShapeRenderComponent>().lock().get()->SetShape(enemy_shape);
+		if(kIsCollisionRenderMode)owner_->GetComponent<ShapeRenderComponent>().lock()->SetShape(enemy_shape);
 		GetVision()->SetFindRect(std::make_shared<Rect>(-256, 0, 256, 256));
 		GetVision()->SetChaseRect(std::make_shared<Rect>(-256, -256, 512, 512));
 		GetVision()->SetReverseWidth(256);
