@@ -22,6 +22,8 @@ class ParallaxCameraFlowLayer {
     float follow_per_y;
 
     int draw_order;
+
+    base_engine::Vector2 initial_position;
   };
 
   static base_engine::Actor* Create(base_engine::Game* game,

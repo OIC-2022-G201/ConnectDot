@@ -8,19 +8,14 @@ ParallaxCameraFlowLayerComponent::ParallaxCameraFlowLayerComponent(Actor* owner)
     : Component(owner, 1) {}
 
 void ParallaxCameraFlowLayerComponent::Create(
-    const std::weak_ptr<Actor>& camera, const float follow_per_x,
-    const float follow_per_y) {
+	const std::weak_ptr<Actor>& camera, const float follow_per_x,
+	const float follow_per_y, const base_engine::Vector2& initial_position) {
   camera_actor_ = camera;
   follow_factor_ = Vector2{follow_per_x, follow_per_y};
+  owner_->SetPosition(initial_position - Vector2{window::kWidth * 0.5f, 0});
 }
 
 void ParallaxCameraFlowLayerComponent::Start() {
-  auto initial_pos = camera_actor_.lock()->GetPosition();
-  initial_pos = GridPosition::GridTo({0, 2});
-  initial_pos = GridPosition::GridTo({0, 1}) * 2.02f;
-  initial_pos -= Vector2{window::kWidth * 0.5f, 0};
-
-  owner_->SetPosition(initial_pos);
 }
 
 void ParallaxCameraFlowLayerComponent::Update() {

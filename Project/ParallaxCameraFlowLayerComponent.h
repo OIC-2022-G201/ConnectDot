@@ -13,7 +13,7 @@ class ParallaxCameraFlowLayerComponent final : base_engine::Component {
   explicit ParallaxCameraFlowLayerComponent(base_engine::Actor* owner);
 
   void Create(const std::weak_ptr<base_engine::Actor>& camera,
-              const float follow_per_x, const float follow_per_y);
+              const float follow_per_x, const float follow_per_y, const base_engine::Vector2& initial_position);
   void Start() override;
   void Update();
 

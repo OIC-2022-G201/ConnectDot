@@ -14,7 +14,7 @@ Actor* ParallaxCameraFlowLayer::Create(Game* game, std::string_view name,
   for (const auto& def : literals) {
     const auto layer = new Actor(game);
     const auto parallax = new ParallaxCameraFlowLayerComponent(layer);
-    parallax->Create(camera_actor, def.follow_per_x,def.follow_per_y);
+    parallax->Create(camera_actor, def.follow_per_x,def.follow_per_y,def.initial_position);
     parallax_actor->AddChild(layer->GetId());
     const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
         {std::string{name.data()} + std::string{def.literal_name.data()}});

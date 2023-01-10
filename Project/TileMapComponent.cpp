@@ -54,7 +54,10 @@ void TileMapComponent::TileMapRenderComponent::Draw() {
   }
 }
 
-void TileMapComponent::Start() { Load(stage_name_); }
+void TileMapComponent::Load()
+{ Load(stage_name_); }
+
+void TileMapComponent::Start() { }
 
 void TileMapComponent::Update() {}
 
