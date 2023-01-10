@@ -68,7 +68,8 @@ namespace enemy {
         int type_number_ = std::get<int>(object.parameters[2]);
 
         if (type_number_ == 1) {
-        }  // const auto enemy_component_ = new SecondEnemyComponent(this, 101);
+          const auto enemy_component_ = new SecondEnemyComponent(this, 101);
+        }  
         else
             const auto enemy_component_ = new EnemyComponent(this, 101);
         
