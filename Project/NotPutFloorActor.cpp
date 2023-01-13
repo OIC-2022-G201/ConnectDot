@@ -13,7 +13,7 @@ using namespace base_engine;
 void NotPutFloorActor::Create(const LoadObject& object)
 {
 
-    if(true/*kIsCollisionRenderMode*/)
+    if(kIsCollisionRenderMode)
     {
     	constexpr auto cell = stage::kStageCellSize<Floating>;
         const auto rect = std::make_shared<Rect>(0, 0, cell.x, cell.y);
