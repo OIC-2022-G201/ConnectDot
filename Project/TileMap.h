@@ -10,7 +10,16 @@
 #include <vector>
 namespace tile_map {
 using Cell = char;
-constexpr int kEmptyCell = 0;
+
+//constexpr int kEmptyCell = 0;
+//constexpr int kCanPlaceCell = 1;
+//constexpr int kNotPutCell = 2;
+enum Type {
+	kEmptyCell,
+	kCanPlaceCell,
+	kNotPutCell
+};
+
 class Layer {
   using Row = std::vector<Cell>;
   using Collection = std::vector<Row>;

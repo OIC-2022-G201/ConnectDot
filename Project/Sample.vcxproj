@@ -125,6 +125,7 @@
     <ClCompile Include="ImageAlphaTween.cpp" />
     <ClCompile Include="MofSpriteMotionController.cpp" />
     <ClCompile Include="NinePatchImageComponent.cpp" />
+    <ClCompile Include="NotPutFloorActor.cpp" />
     <ClCompile Include="ObjectTileMapComponent.cpp" />
     <ClCompile Include="OneTimeEffectActor.cpp" />
     <ClCompile Include="ParallaxCameraFlowLayer.cpp" />
@@ -311,6 +312,7 @@
     <ClInclude Include="ITween.h" />
     <ClInclude Include="MofSpriteMotionController.h" />
     <ClInclude Include="NinePatchImageComponent.h" />
+    <ClInclude Include="NotPutFloorActor.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="OneTimeEffectActor.h" />
     <ClInclude Include="ParallaxCameraFlowLayer.h" />

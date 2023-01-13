@@ -1044,6 +1044,9 @@
     <ClCompile Include="ActionToolTipComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
     </ClCompile>
+    <ClCompile Include="NotPutFloorActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1792,6 +1795,9 @@
     </ClInclude>
     <ClInclude Include="ActionToolTipComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="NotPutFloorActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

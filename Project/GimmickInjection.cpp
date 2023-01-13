@@ -16,6 +16,7 @@
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
 #include "VentComponent.h"
+#include "NotPutFloorActor.h"
 
 using namespace base_engine;
 using namespace std::string_view_literals;
@@ -34,6 +35,7 @@ constexpr std::string_view kGoalName = "Goal"sv;
 constexpr std::string_view kElevatorName = "Elevator"sv;
 constexpr std::string_view kCollapsibleBlockName = "CollapsibleBlock"sv;
 constexpr std::string_view kPlayerSpawn = "PlayerSpawnPosition"sv;
+constexpr std::string_view kNotPutFloorName = "NotPutFloor"sv;
 #pragma endregion
 using CreatorMethod = Actor* (*)(GimmickCreator*, Game*, const LoadObject&);
 using FactoryRegisterMethod = void (*)(GimmickCreator*,
@@ -53,6 +55,8 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
   static Actor* MoveFloorCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
   static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
+                                  const LoadObject& object);
+  static Actor* NotPutFloorCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
 
   static Actor* MultiPowerSupplyCreate(GimmickCreator* instance, Game* game,
@@ -150,6 +154,11 @@ constexpr std::array kGimmickMethodTable = {
         &SetupImpl::PlayerCreate,          // CreateMethod
         &Gc::FactoryRegister<player::PlayerActor>  // FactoryRegister
     },
+    std::tuple{
+        kNotPutFloorName,                       // Name
+        &SetupImpl::NotPutFloorCreate,          // CreateMethod
+        &Gc::FactoryRegister<NotPutFloorActor>  // FactoryRegister
+    },
 };
 
 GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
@@ -210,6 +219,15 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
   });
   return power_unit;
 }
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
+	NotPutFloorCreate(GimmickCreator* instance, Game* game, const LoadObject& object)
+{
+    const auto notput_floor = new NotPutFloorActor(game);
+    notput_floor->Create(object);
+    return notput_floor;
+}
+
 
 Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     MultiPowerSupplyCreate(GimmickCreator* instance, Game* game,
