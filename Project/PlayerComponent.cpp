@@ -187,6 +187,7 @@ void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(300); }
 void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
 void PlayerComponent::ActionKey(const CollisionComponent* collision) {
+  if (!IsGround())return;
   if ((collision->GetObjectFilter().to_ulong() &
        CollisionLayer::Layer{CollisionLayer::kActionable}) == 0)
     return;
@@ -201,7 +202,11 @@ void PlayerComponent::ActionKey(const CollisionComponent* collision) {
 void PlayerComponent::Update() {
   const auto aabb = collision_.lock()->AABB();
   sound_effect_->SetPosition({aabb.GetCenter().x, aabb.Bottom});
-  if (!can_control_) return;
+  if (!can_control_) {
+    physics_body_.lock()->SetForceY(0);
+    machine_.TransitionTo<PlayerIdle>();
+    return;
+  }
 
   physics_body_.lock()->AddForce({0, kGravity});
   machine_.Update();
