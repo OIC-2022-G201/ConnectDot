@@ -23,9 +23,9 @@ namespace enemy {
 		collision_.lock()->SetShape(enemy_shape);
 
 		if(kIsCollisionRenderMode)owner_->GetComponent<ShapeRenderComponent>().lock()->SetShape(enemy_shape);
-		GetVision()->SetFindRect(std::make_shared<Rect>(-256, 0, 256, 256));
+		GetVision()->SetFindRect(std::make_shared<Rect>(0, 0, 256, 256));
 		GetVision()->SetChaseRect(std::make_shared<Rect>(-256, -256, 512, 512));
-		GetVision()->SetReverseWidth(256);
+		GetVision()->SetReverseWidth(0);
 
 		machine_.TransitionTo<EnemyMove>();
 	}
