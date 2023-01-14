@@ -14,6 +14,7 @@
 #include "ResourceContainer.h"
 #include "Scene.h"
 #include "SceneManager.h"
+#include "ShaderTest01.h"
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
@@ -33,9 +34,9 @@ bool Game::Initialize() {
   resource_container_->Register();
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-  scene::LoadScene(scene::kTitle);
-  // ParentTest test(this);
-  // test.Main();
+	scene::LoadScene(scene::kTitle);
+  //ShaderTest01 test(this);
+  //test.Main();
   b_collision = BASE_ENGINE(Collider);
 
   return true;
@@ -53,7 +54,9 @@ void Game::Update() {
 
 void Game::Shutdown() { Clear(); }
 
-void Game::AddActor(Actor* actor) { AddActor(actor, scenes_.front()); }
+void Game::AddActor(Actor* actor) {
+  AddActor(actor, scenes_.empty() ? std::weak_ptr<Scene>{} : scenes_.front());
+}
 
 void Game::AddActor(Actor* actor, const std::weak_ptr<Scene> scene) {
   actor_id_max_++;
@@ -61,7 +64,7 @@ void Game::AddActor(Actor* actor, const std::weak_ptr<Scene> scene) {
   auto actor_ptr = ActorPtr{actor};
   actor_id_cash_.emplace_back(actor_ptr);
   pending_actors_.emplace_back(actor_ptr);
-  scene.lock()->AddActor(actor_ptr);
+  if (!scene.expired()) scene.lock()->AddActor(actor_ptr);
   actor_ptr->SetScene(scene);
 }
 

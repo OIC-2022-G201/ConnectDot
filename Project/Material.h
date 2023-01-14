@@ -30,6 +30,7 @@ class Material {
   bool SetParameter(const Property& property) {
     parameters_[property.name] = property;
     parameter_changed_ = true;
+    BindShaderParameter();
     return true;
   }
   bool CreateParameter(const PropertyInfo& property) {

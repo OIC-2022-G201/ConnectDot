@@ -1074,6 +1074,9 @@
     <ClCompile Include="EffectBase.cpp">
       <Filter>BaseEngine\Shader\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderTest01.cpp">
+      <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1837,6 +1840,9 @@
     </ClInclude>
     <ClInclude Include="EffectBase.h">
       <Filter>BaseEngine\Shader\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderTest01.h">
+      <Filter>ソース ファイル\ConnectDot\Test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -142,6 +142,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="ShaderBase.cpp" />
+    <ClCompile Include="ShaderTest01.cpp" />
     <ClCompile Include="SoundEffectActor.cpp" />
     <ClCompile Include="SparkEffectActor.cpp" />
     <ClCompile Include="SpriteAlphaTween.cpp" />
@@ -335,6 +336,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="ShaderBase.h" />
+    <ClInclude Include="ShaderTest01.h" />
     <ClInclude Include="SoundEffectActor.h" />
     <ClInclude Include="SparkEffectActor.h" />
     <ClInclude Include="SpriteAlphaTween.h" />

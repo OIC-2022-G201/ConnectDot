@@ -17,11 +17,13 @@ namespace base_engine {
 
 class MofShader : public ShaderBase {
 protected:
-  std::unique_ptr<class MofShaderImpl> impl_;
+  class MofShaderImpl;
+  std::unique_ptr<MofShaderImpl> impl_;
 
  public:
-  MofShader(std::string_view name);
 
+  MofShader(std::string_view file_path);
+  ~MofShader();
   bool SetResource(size_t index, Mof::LPTexture resource) const;
   bool SetBuffer(size_t index, void* buffer) const;
   bool SetParameter(const Property& parameter) override {

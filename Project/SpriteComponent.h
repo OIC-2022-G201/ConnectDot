@@ -7,10 +7,10 @@
 #include "Actor.h"
 #include "EnumFlags.h"
 #include "ISpriteAnimatable.h"
-#include "Material.h"
 #include "RenderComponent.h"
 
 namespace base_engine {
+class Material;
 using COLOR = MofU32;
 enum class Flip : size_t {
   kNone,

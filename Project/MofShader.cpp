@@ -1,9 +1,9 @@
 ﻿#include "MofShader.h"
 
 #include "MofShaderImpl.h"
-base_engine::MofShader::MofShader(const std::string_view name) {
+base_engine::MofShader::MofShader(const std::string_view file_path) {
   impl_ = std::make_unique<MofShaderImpl>();
-  impl_->Load(name);
+  impl_->Load(file_path);
 }
 
 bool base_engine::MofShader::SetResource(const size_t index,

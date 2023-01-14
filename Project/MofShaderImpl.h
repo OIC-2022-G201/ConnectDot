@@ -11,13 +11,14 @@
 #include <Mof.h>
 #include <Utilities/GraphicsUtilities.h>
 
+#include "MofShader.h"
 #include "ShaderBase.h"
 
 namespace base_engine {
 
-class MofShaderImpl {
+class MofShader::MofShaderImpl {
   Mof::CShader shader_;
-  Mof::CShaderBind_2DPrimitiveBase shader_bind_;
+  Mof::CShaderBind_SpriteBase shader_bind_;
 
  public:
   MofShaderImpl() = default;
@@ -66,4 +67,5 @@ class MofShaderImpl {
   Mof::IShader* GetShader() { return &shader_; }
   Mof::IShaderBind* GetShaderBind() { return &shader_bind_; }
 };
+
 }  // namespace base_engine
