@@ -8,6 +8,7 @@ Stage1BG60 Sprite BG/Stage1/Stage1BG60/Stage1BG60.png
 Stage1BG70 Sprite BG/Stage1/Stage1BG70/Stage1BG70.png
 ConnectLightNormal Animation Effect/ConnectLight/ConnectLightNormal/ConnectLightEffect_MotionChip.png Effect/ConnectLight/ConnectLightNormal/ConnectLightEffect.aei
 ConnectLightPowerup Animation Effect/ConnectLight/ConnectLightPowerup/ConnectLightEffect_Powerup_MotionChip.png Effect/ConnectLight/ConnectLightPowerup/ConnectLightEffect_Powerup.aei
+PowerSupplyConnectLightNormal Animation Effect/ConnectLight/PowerSupplyConnectLightNormal/ConnectLightEffect_MotionChip.png Effect/ConnectLight/PowerSupplyConnectLightNormal/ConnectLightEffect.aei
 ConnectShock Animation Effect/ConnectShock/ConnectEffect_MotionChip.png Effect/ConnectShock/ConnectEffect.aei
 Dust Animation Effect/Dust/DustEffect_MotionChip.png Effect/Dust/DustEffect.aei
 Electric Sprite Effect/Electric/ElectroCellMap.png
