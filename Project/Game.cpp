@@ -15,6 +15,7 @@
 #include "Scene.h"
 #include "SceneManager.h"
 #include "StageSceneFactory.h"
+#include "TestSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
 base_engine::IBaseEngineCollider* b_collision;
@@ -33,7 +34,7 @@ bool Game::Initialize() {
   resource_container_->Register();
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-  scene::LoadScene(scene::kTitle);
+  scene::LoadScene(kTest);
   // ParentTest test(this);
   // test.Main();
   b_collision = BASE_ENGINE(Collider);

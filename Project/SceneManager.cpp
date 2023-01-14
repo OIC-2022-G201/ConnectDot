@@ -3,6 +3,7 @@
 #include "GameOverSceneFactory.h"
 #include "Scene.h"
 #include "StageSceneFactory.h"
+#include "TestSceneFactory.h"
 #include "TitleSceneFactory.h"
 
 using namespace scene;
@@ -12,6 +13,7 @@ bool SceneManager::Register(Game* game) {
   factory_map_[kGame] = std::make_unique<StageSceneFactory>(game_);
   factory_map_[kTitle] = std::make_unique<TitleSceneFactory>(game_);
   factory_map_[kGameOver] = std::make_unique<GameOverSceneFactory>(game_);
+  factory_map_[kTest] = std::make_unique<TestSceneFactory>(game_);
 
   return true;
 }
