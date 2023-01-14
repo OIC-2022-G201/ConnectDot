@@ -34,7 +34,7 @@ void SpriteComponent::StartFlash(float time, const COLOR& color) {
   color_ = color;
 }
 
-void SpriteComponent::Update() { }
+void SpriteComponent::Update() {}
 
 void SpriteComponent::Draw() {
   Vector2 p = owner_->GetPosition() + offset_;
@@ -50,7 +50,12 @@ void SpriteComponent::Draw() {
   if (ee::has<Flip::kVertical>(flip_)) {
     std::swap(rect.Top, rect.Bottom);
   }
-  BASE_ENGINE(Render)->AddTexture(texture_, p, {s, s}, angle_, rect, color_,
-                                  alignment_);
+  if (material_) {
+    BASE_ENGINE(Render)->AddTexture(texture_, p, {s, s}, angle_, rect, color_,
+                                    alignment_, *material_);
+  } else {
+    BASE_ENGINE(Render)->AddTexture(texture_, p, {s, s}, angle_, rect, color_,
+                                    alignment_);
+  }
 }
 }  // namespace base_engine

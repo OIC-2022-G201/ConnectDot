@@ -1,11 +1,13 @@
 ﻿#include "RenderMof.h"
 
+#include <Mof.h>
 #include <Utilities/GraphicsUtilities.h>
+
+#include "Material.h"
+#include "MofShader.h"
 using Mof::CGraphicsUtilities;
 namespace base_engine {
-RenderMof::RenderMof()
-{
-}
+RenderMof::RenderMof() {}
 
 void RenderMof::AddTexture(const ITexturePtr texture, const Vector& position,
                            const Vector& scale, float angle, const Rect& uv,
@@ -13,8 +15,20 @@ void RenderMof::AddTexture(const ITexturePtr texture, const Vector& position,
                            Mof::TextureAlignment alignment) {
   CGraphicsUtilities::RenderScaleRotateTexture(
       roundf(position.x + camera_center_position_.x),
-      roundf(position.y + camera_center_position_.y), scale.x, scale.y, angle, uv,
-      color, alignment, texture);
+      roundf(position.y + camera_center_position_.y), scale.x, scale.y, angle,
+      uv, color, alignment, texture);
+}
+
+void RenderMof::AddTexture(ITexturePtr texture, const Vector& position,
+                           const Vector& scale, float angle, const Rect& uv,
+                           const Color& color, Mof::TextureAlignment alignment,
+                           const Material& material) {
+  const auto shader =
+      std::dynamic_pointer_cast<MofShader>(material.GetShader());
+  CGraphicsUtilities::RenderTexture(
+      roundf(position.x + camera_center_position_.x),
+      roundf(position.y + camera_center_position_.y), color, alignment, texture,
+      shader->GetShader(), shader->GetShaderBind());
 }
 
 void RenderMof::AddLine(const Vector& position1, const Vector& position2,
@@ -59,6 +73,6 @@ void RenderMof::SetCameraPosition(const Vector& position) {
   const auto& graphics = CGraphicsUtilities::GetGraphics();
   camera_center_position_ = {
       graphics->GetTargetWidth() / static_cast<float>(2) - camera_position_.x,
-      graphics->GetTargetHeight() / static_cast<float>(2) - camera_position_.y };
+      graphics->GetTargetHeight() / static_cast<float>(2) - camera_position_.y};
 }
 }  // namespace base_engine

@@ -17,6 +17,10 @@ class IBaseEngineRender {
                                          const Vector& scale, float angle,
                                          const Rect& uv, const Color& color,
                                          Mof::TextureAlignment alignment) = 0;
+  virtual void AddTexture(ITexturePtr texture, const Vector& position,
+                          const Vector& scale, float angle, const Rect& uv,
+                          const Color& color, Mof::TextureAlignment alignment,
+                          const class Material& material) = 0;
   virtual void AddLine(const Vector& position1, const Vector& position2,
                        const Color& color) = 0;
   virtual void AddRect(const Rect& rect, const Color& color) = 0;

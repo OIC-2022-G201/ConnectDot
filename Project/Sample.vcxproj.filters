@@ -517,6 +517,21 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon">
       <UniqueIdentifier>{d5ac32c5-1bd2-43b9-8fac-512d26fc137a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Material">
+      <UniqueIdentifier>{7795f23a-ca16-484a-bc46-afb4ee08b557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader">
+      <UniqueIdentifier>{a4a52628-2e8c-4e37-b661-eab1291985e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader\MofShader">
+      <UniqueIdentifier>{9b3393b0-1247-4344-98fb-ce2498b817d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader\MofShader\Private">
+      <UniqueIdentifier>{267f3c3c-c57b-470d-ad70-67681845b035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader\Effect">
+      <UniqueIdentifier>{f5f43ee2-980c-4dbf-b55c-b7f6dacc5d5d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1043,6 +1058,21 @@
     </ClCompile>
     <ClCompile Include="ActionToolTipComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>BaseEngine\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderBase.cpp">
+      <Filter>BaseEngine\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="MofShader.cpp">
+      <Filter>BaseEngine\Shader\MofShader</Filter>
+    </ClCompile>
+    <ClCompile Include="MofShaderImpl.cpp">
+      <Filter>BaseEngine\Shader\MofShader\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectBase.cpp">
+      <Filter>BaseEngine\Shader\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1792,6 +1822,21 @@
     </ClInclude>
     <ClInclude Include="ActionToolTipComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>BaseEngine\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderBase.h">
+      <Filter>BaseEngine\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="MofShader.h">
+      <Filter>BaseEngine\Shader\MofShader</Filter>
+    </ClInclude>
+    <ClInclude Include="MofShaderImpl.h">
+      <Filter>BaseEngine\Shader\MofShader\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBase.h">
+      <Filter>BaseEngine\Shader\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

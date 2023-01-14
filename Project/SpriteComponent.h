@@ -7,6 +7,7 @@
 #include "Actor.h"
 #include "EnumFlags.h"
 #include "ISpriteAnimatable.h"
+#include "Material.h"
 #include "RenderComponent.h"
 
 namespace base_engine {
@@ -51,7 +52,10 @@ class SpriteComponent : public RenderComponent, public ISpriteAnimatable {
     flip_ = flip;
     return *this;
   }
-
+  void SetMaterial(const std::shared_ptr<Material>& material) {
+    material_ = material;
+  }
+  std::shared_ptr<Material> GetMaterial() { return material_; }
   MofFloat GetAngle() const { return angle_; }
   COLOR GetColor() const { return color_; }
 
@@ -64,6 +68,7 @@ class SpriteComponent : public RenderComponent, public ISpriteAnimatable {
   Mof::CRectangle clip_rect_{};
   Mof::TextureAlignment alignment_ = Mof::TextureAlignment::TEXALIGN_TOPLEFT;
   Flip flip_ = Flip::kNone;
+  std::shared_ptr<Material> material_;
 
  public:
   void StartFlash(float time, const COLOR& color);

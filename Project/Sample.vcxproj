@@ -117,12 +117,16 @@
     <ClCompile Include="DummyTween.cpp" />
     <ClCompile Include="Easer.cpp" />
     <ClCompile Include="EaseType.cpp" />
+    <ClCompile Include="EffectBase.cpp" />
     <ClCompile Include="ElevatorComponent.cpp" />
     <ClCompile Include="ElevatorReceiver.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GameOverSceneFactory.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="MofShader.cpp" />
+    <ClCompile Include="MofShaderImpl.cpp" />
     <ClCompile Include="MofSpriteMotionController.cpp" />
     <ClCompile Include="NinePatchImageComponent.cpp" />
     <ClCompile Include="ObjectTileMapComponent.cpp" />
@@ -137,6 +141,7 @@
     <ClCompile Include="ScaleTween.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ShaderBase.cpp" />
     <ClCompile Include="SoundEffectActor.cpp" />
     <ClCompile Include="SparkEffectActor.cpp" />
     <ClCompile Include="SpriteAlphaTween.cpp" />
@@ -300,6 +305,7 @@
     <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
     <ClInclude Include="EaseType.h" />
+    <ClInclude Include="EffectBase.h" />
     <ClInclude Include="ElevatorComponent.h" />
     <ClInclude Include="ElevatorReceiver.h" />
     <ClInclude Include="FollowComponent.h" />
@@ -309,6 +315,9 @@
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ISpriteAnimatable.h" />
     <ClInclude Include="ITween.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="MofShader.h" />
+    <ClInclude Include="MofShaderImpl.h" />
     <ClInclude Include="MofSpriteMotionController.h" />
     <ClInclude Include="NinePatchImageComponent.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />
@@ -325,6 +334,7 @@
     <ClInclude Include="ScaleTween.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ShaderBase.h" />
     <ClInclude Include="SoundEffectActor.h" />
     <ClInclude Include="SparkEffectActor.h" />
     <ClInclude Include="SpriteAlphaTween.h" />
