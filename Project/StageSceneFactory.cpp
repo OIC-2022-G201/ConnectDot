@@ -43,14 +43,12 @@ void StageSceneFactory::Factory() {
         stageActor->GetComponent<tile_map::ObjectTileMapComponent>());
     ComponentServiceLocator::Instance().RegisterInstance(
         stageActor->GetComponent<tile_map::TileMapComponent>());
-    
+
     {
       std::unordered_map<std::string, float> offset = {
-          {"Stage1", 9},
-          {"Stage2", 22},
-          {"Stage3", 9}
-      };
-      const float height = stage->LeftBottom().y - offset[stage_def->second.filename().string()] + 0.02;
+          {"Stage1", 9}, {"Stage2", 22}, {"Stage3", 9}};
+      const float height = stage->LeftBottom().y -
+                           offset[stage_def->second.filename().string()] + 0.02;
       const auto pos = GridPosition::GridTo({0, 1}) * height;
       const auto camera_pos = CameraComponent::GetMainCamera()
                                   .lock()
@@ -59,13 +57,16 @@ void StageSceneFactory::Factory() {
                                   ->GetPosition() +
                               GridPosition::GridTo({0, 2});
       using CreateInfo = ParallaxCameraFlowLayer::CreateInfo;
-      std::array create_def = {CreateInfo{"BG70", 1, 0.2f, 10, camera_pos},
-                               CreateInfo{"BG60", 0.7, 1, 11, camera_pos},
-                               CreateInfo{"BG50", 0, 1, 12, camera_pos},
-                               CreateInfo{"BG40", 0.5, 1, 13, camera_pos},
-                               CreateInfo{"BG30", 0.4, 1, 14, camera_pos},
-                               CreateInfo{"BG20", 0.3, 0, 15, pos},
-                               CreateInfo{"BG10", -0.2, 0, 200, pos}};
+      std::array create_def = {
+          CreateInfo{"BG70", 1, 0.2f, 5, false, camera_pos},
+          CreateInfo{"BG65", 0.7, 1, 10, false, camera_pos},
+          CreateInfo{"BG60", 0.7, 0.7, 15, true, camera_pos},
+          CreateInfo{"BG50", 0, 1, 20, false, camera_pos},
+          CreateInfo{"BG40", 0.5, 0.5, 25, true, camera_pos},
+          CreateInfo{"BG30", 0.4, 1, 30, false, camera_pos},
+          CreateInfo{"BG20", 0.3, 0, 35, false, pos},
+          CreateInfo{"BG10", -0.2, 0, 200, false, pos}
+      };
       //    ParallaxCameraFlowLayer::Create(game_,
       //    stage_def->first.stem().string(),
       //                                    create_def);

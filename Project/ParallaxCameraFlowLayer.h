@@ -6,6 +6,8 @@
 // @details
 
 #pragma once
+#include <Graphics/Texture.h>
+
 #include "Actor.h"
 
 class ParallaxCameraFlowLayer {
@@ -22,7 +24,7 @@ class ParallaxCameraFlowLayer {
     float follow_per_y;
 
     int draw_order;
-
+    bool vertical_loop;
     base_engine::Vector2 initial_position;
   };
 
