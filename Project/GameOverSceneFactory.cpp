@@ -8,6 +8,7 @@
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
 #include "EventBus.h"
+#include "GameOverComponent.h"
 #include "ImageAlphaTween.h"
 #include "InputManager.h"
 #include "PositionYTween.h"
@@ -29,6 +30,7 @@ auto ButtonCreateA(Game* game, ButtonSelecter* selector,
         ButtonResourcePackage>(button_data.path);
     const auto button = new Button(game);
     button->SetButtonSprite(button_pack->sprites[0]);
+    button->GetComponent<ImageComponent>().lock()->SetColor(uint32_t(0x00ffffff));
     button->SetChangeButtonSprite(button_pack->sprites[1]);
     button->SetPosition({ button_data.x, button_data.y });
     selector->ButtonRegister(button_data.tx, button_data.ty, button);
@@ -45,15 +47,24 @@ void GameOverSceneFactory::Factory() {
 
   const auto input_actor = new InputActor(game_);
   const auto input = new InputManager(input_actor);
-
-  new ButtonListener(actor);
-  const auto selector = new ButtonSelecter(game_);
-  selector->SetInput(input);
   
   const auto image = new ImageComponent(actor);
   const auto sprite_resource =
       RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("Gameover");
   image->SetImage(*sprite_resource);
+
+  new ButtonListener(actor);
+  const auto selector = new ButtonSelecter(game_);
+  selector->SetInput(input);
+
+  const auto component = new GameOverComponent(actor);
+
+  const auto logo = new Actor(game_);
+  logo->SetPosition({ 356,0 });
+  const auto logo_image = new ImageComponent(logo);
+  const auto logo_resource = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("GameoverLogo");
+  logo_image->SetImage(*logo_resource);
+  component->SetLogo(logo);
 
   const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
       main_pack = {
@@ -65,12 +76,6 @@ void GameOverSceneFactory::Factory() {
       const auto [button, _] = ButtonCreateA(
           game_, selector, ButtonFrozenPack{ pos.x, pos.y, name, i, 0 });
       button->SetEvent(action);
+      component->SetButton(button);
   }
-
-  const auto logo = new Actor(game_);
-  logo->SetPosition({ 356,0 });
-  const auto logo_image = new ImageComponent(logo);
-  const auto logo_resource = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("GameoverLogo");
-  logo_image->SetImage(*logo_resource);
-  ma_tween::PositionYTween::TweenLocalPositionY(logo, 370, 0.5f);
 }
