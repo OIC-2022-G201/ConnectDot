@@ -19,5 +19,5 @@ void TestSceneFactory::Factory() {
   ma_tween::PositionXTween::TweenLocalPositionX(actor, 300, 3.0f)
       .SetOnComplete([actor] {
         ma_tween::PositionXTween::TweenLocalPositionX(actor, 0, 3.0f);
-      });
+      }).SetEase(EaseType::kInbounce);
 }
