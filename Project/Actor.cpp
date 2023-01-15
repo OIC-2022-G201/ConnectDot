@@ -74,7 +74,7 @@ void Actor::AddComponent() {
 
     if (state_ == kActive) pending_components_[i]->Start();
   }
-  pending_components_.clear();
+  if(!pending_components_.empty())pending_components_.clear();
 }
 void Actor::RemoveComponent(Component* component) {
   if (const auto iter = std::ranges::find_if(

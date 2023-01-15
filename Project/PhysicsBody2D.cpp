@@ -121,7 +121,9 @@ void PhysicsBody::SetTransform(const PVec2& position, float angle)
   if (m_world->IsLocked() == true) {
     return;
   }
-
+  if (m_xf.p == position) {
+    return;
+  }
   m_xf.q.Set(angle);
   m_xf.p = position;
 

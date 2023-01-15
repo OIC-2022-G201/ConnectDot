@@ -12,6 +12,8 @@ class IBaseEngineRender {
   using Vector = Mof::Vector2Impl;
   static IBaseEngineRender* Create();
   virtual ~IBaseEngineRender();
+  virtual void Initialize() = 0;
+
   virtual void AddTexture(ITexturePtr texture,
                                          const Vector& position,
                                          const Vector& scale, float angle,
@@ -28,6 +30,9 @@ class IBaseEngineRender {
   virtual void AddCircle(const Circle& circle, const Color& color) = 0;
   virtual void AddCircleFrame(const Circle& circle, const Color& color) = 0;
   virtual void SetCameraPosition(const Vector& position) = 0;
+  virtual void SetMaterial(const std::shared_ptr<Material>& material) = 0;
+  virtual void Begin() = 0;
+  virtual void End() = 0;
   virtual Vector GetCameraPosition() = 0;
 };
 }  // namespace base_engine

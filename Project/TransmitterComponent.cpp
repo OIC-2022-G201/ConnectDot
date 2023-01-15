@@ -19,6 +19,7 @@ void TransmitterComponent::Start()
 }
 
 void TransmitterComponent::Update() {
+  if (target_.empty()) return;
   const auto weak_ptr = owner_->GetComponent<TransmitterComponent>();
 
   for (const auto& receiver_weak : target_) {

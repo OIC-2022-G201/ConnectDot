@@ -21,18 +21,20 @@ constexpr Type Min(std::initializer_list<Type> ilist) {
 }
 
 template <typename T>
-constexpr T PhysicsMax(T a, T b) {
+constexpr T PhysicsMax(const T& a, const T& b) noexcept {
   return a > b ? a : b;
 }
-constexpr PVec2 PhysicsMax(const PVec2& a, const PVec2& b) noexcept {
+template <>
+constexpr PVec2 PhysicsMax<PVec2>(const PVec2& a, const PVec2& b) noexcept {
   return {PhysicsMax(a.x, b.x), PhysicsMax(a.y, b.y)};
 }
 
 template <typename T>
-constexpr T PhysicsMin(T a, T b) noexcept {
+constexpr T PhysicsMin(const T& a, const T& b) noexcept {
   return a < b ? a : b;
 }
-constexpr PVec2 PhysicsMin(const PVec2& a, const PVec2& b) noexcept {
+template <>
+constexpr PVec2 PhysicsMin<PVec2>(const PVec2& a, const PVec2& b) noexcept {
   return {PhysicsMin(a.x, b.x), PhysicsMin(a.y, b.y)};
 }
 

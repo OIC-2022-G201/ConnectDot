@@ -7,6 +7,7 @@
 #include "ButtonCommandEventContainer.h"
 #include "ComponentServiceLocator.h"
 #include "IBaseEngineCollider.h"
+#include "IBaseEngineRender.h"
 #include "InputManager.h"
 #include "ParentTest.h"
 #include "ReleaseInfo.h"
@@ -23,6 +24,8 @@ base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 
 bool Game::Initialize() {
+  BASE_ENGINE(Render)->Initialize();
+
   game_data_.Register();
   actors_.reserve(1024);
   scene::SceneManager::Instance().Register(this);
@@ -214,6 +217,7 @@ void Game::SetNextFrameEvent(const std::function<void()>& event) {
 }
 
 void Game::Render() const {
+  BASE_ENGINE(Render)->Begin();
   for (const auto sprite : sprites_) {
     // if (sprite->GetOwner().expired()) continue
     const auto owner = sprite->GetOwner();
@@ -221,13 +225,14 @@ void Game::Render() const {
     if (owner.expired() || !owner.lock()->Enable()) continue;
     if (sprite->GetEnabled()) sprite->Draw();
   }
-  if (kStatusRenderMode) {
+  if (!kStatusRenderMode) {
     for (auto& func : debug_render_) {
       func();
     }
     Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
                                           Mof::CUtilities::GetFPS());
   }
+  BASE_ENGINE(Render)->End();
 }
 Game::~Game() {}
 

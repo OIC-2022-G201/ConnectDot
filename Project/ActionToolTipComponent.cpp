@@ -34,24 +34,34 @@ constexpr float kFadeOutTime = 0.25f;
 void ActionToolTipComponent::Show() {
   open_ = true;
   if (play_animation_) return;
+  if (is_show_) return;
+
   play_animation_ = true;
   ma_tween::PositionYTween::TweenLocalPositionY(
       panel_, owner_->GetPosition().y - stage::kStageCellSize<float>.y * 0.5f,
       kFadeInTime)
       .SetEase(EaseType::kInsine);
   ma_tween::SpriteAlphaTween::Tween(panel_, 255, kFadeInTime)
-      .SetOnComplete([this] { play_animation_ = false; });
+      .SetOnComplete([this]
+      {
+        is_show_ = true;
+      	play_animation_ = false;
+      });
 }
 
 void ActionToolTipComponent::Hide() {
   if (play_animation_) return;
+  if (!is_show_) return;
   play_animation_ = true;
   ma_tween::PositionYTween::TweenLocalPositionY(
       panel_, owner_->GetPosition().y + 32,
       kFadeOutTime)
       .SetEase(EaseType::kInsine);
   ma_tween::SpriteAlphaTween::Tween(panel_, 0, kFadeOutTime)
-      .SetOnComplete([this] { play_animation_ = false; });
+      .SetOnComplete([this] {
+        is_show_ = false;
+	      play_animation_ = false;
+      });
 }
 
 void ActionToolTipComponent::Update() {
