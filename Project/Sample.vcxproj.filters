@@ -532,6 +532,9 @@
     <Filter Include="BaseEngine\Shader\Effect">
       <UniqueIdentifier>{f5f43ee2-980c-4dbf-b55c-b7f6dacc5d5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Transition">
+      <UniqueIdentifier>{b92577ca-e35a-4e47-94f6-34d8f29b917b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1076,6 +1079,9 @@
     </ClCompile>
     <ClCompile Include="ShaderTest01.cpp">
       <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionFadeComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1843,6 +1849,9 @@
     </ClInclude>
     <ClInclude Include="ShaderTest01.h">
       <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionFadeComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

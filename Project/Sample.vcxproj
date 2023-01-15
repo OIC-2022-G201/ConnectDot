@@ -150,6 +150,7 @@
     <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
+    <ClCompile Include="TransitionFadeComponent.cpp" />
     <ClCompile Include="Tween.cpp" />
     <ClCompile Include="UiFactoryUtilities.cpp" />
     <ClCompile Include="UiPackage.cpp" />
@@ -344,6 +345,7 @@
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
+    <ClInclude Include="TransitionFadeComponent.h" />
     <ClInclude Include="Tween.h" />
     <ClInclude Include="UiFactoryUtilities.h" />
     <ClInclude Include="UiFrozen.h" />

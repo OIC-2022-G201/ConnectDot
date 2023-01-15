@@ -2,7 +2,9 @@
 
 #include <Utilities/GraphicsUtilities.h>
 
+#include "MofShader.h"
 #include "Vector.h"
+#include "Material.h"
 using Mof::CGraphicsUtilities;
 using Mof::Vector3;
 using Mof::Vector4;
@@ -18,6 +20,17 @@ void CanvasRender::AddTexture(const ITexturePtr texture, const Vector& position,
                                                scale.y, angle, uv, color,
                                                alignment, texture);
 }
+
+void CanvasRender::AddTexture(ITexturePtr texture, const Vector& position, const Vector& scale, float angle,
+	const Rect& uv, const Color& color, Mof::TextureAlignment alignment, const std::shared_ptr<Material>& material)
+{
+  const auto shader =
+      std::dynamic_pointer_cast<MofShader>(material->GetShader());
+  CGraphicsUtilities::RenderTexture(
+      position.x,position.y, color, alignment, texture,
+      shader->GetShader(), shader->GetShaderBind());
+}
+
 
 void CanvasRender::AddLine(const Vector& position1, const Vector& position2,
                            const Color& color) {

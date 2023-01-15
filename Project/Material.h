@@ -16,35 +16,19 @@
 namespace base_engine {
 class Material {
  public:
-  void SetShader(const std::shared_ptr<ShaderBase>& shader) {
-    shader_ = shader;
-  }
+  void SetShader(const std::shared_ptr<ShaderBase>& shader);
 
-  [[nodiscard]] std::shared_ptr<ShaderBase> GetShader() const { return shader_; }
-  bool Begin() {
-    BindShaderParameter();
-    return shader_->Begin();
-  }
-  bool End() { return shader_->End(); }
+  [[nodiscard]] std::shared_ptr<ShaderBase> GetShader() const;
 
-  bool SetParameter(const Property& property) {
-    parameters_[property.name] = property;
-    parameter_changed_ = true;
-    BindShaderParameter();
-    return true;
-  }
-  bool CreateParameter(const PropertyInfo& property) {
-    return shader_->CreateParameter(property);
-  }
+  bool Begin();
+  bool End();
 
- private:
-  void BindShaderParameter() {
-    if (!parameter_changed_) return;
-    for (const auto& property : parameters_ | std::views::values) {
-      shader_->SetParameter(property);
-    }
-    parameter_changed_ = false;
-  }
+  bool SetParameter(const Property& property);
+
+  bool CreateParameter(const PropertyInfo& property);
+
+private:
+  void BindShaderParameter();
 
   std::shared_ptr<ShaderBase> shader_;
   std::unordered_map<std::string, Property> parameters_;

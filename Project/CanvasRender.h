@@ -15,6 +15,8 @@ class CanvasRender : public IBaseEngineCanvasRender {
   void AddTexture(ITexturePtr texture, const Vector& position,
                   const Vector& scale, float angle, const Rect& uv,
                   const Color& color, Mof::TextureAlignment alignment) override;
+  void AddTexture(ITexturePtr texture, const Vector& position, const Vector& scale, float angle, const Rect& uv,
+	  const Color& color, Mof::TextureAlignment alignment, const std::shared_ptr<Material>& material) override;
   void AddLine(const Vector& position1, const Vector& position2,
                const Color& color) override;
   void AddRect(const Rect& rect, const Color& color) override;

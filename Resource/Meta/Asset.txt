@@ -47,6 +47,7 @@ MoveBar Sprite UI/EnhanceActionBar/MoveBar/MoveBar.png
 SpaceKeyUI Animation UI/EnhanceActionBar/SpaceKeyUI/SpaceKeyUI_MotionChip.png UI/EnhanceActionBar/SpaceKeyUI/SpaceKeyUI.aei
 SparkEffect Animation UI/EnhanceActionBar/SparkEffect/SparkEffect_MotionChip.png UI/EnhanceActionBar/SparkEffect/SparkEffect.aei
 StopBar Sprite UI/EnhanceActionBar/StopBar/StopBar.png
+Fade Sprite UI/Fade/012.png
 Gameover Sprite UI/Gameover/gameover.png
 ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
 RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png

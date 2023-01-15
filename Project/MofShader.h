@@ -31,10 +31,10 @@ protected:
       case PropertyType::kNone:
         break;
       case PropertyType::kResource:
-        SetResource(parameter.id, static_cast<Mof::LPTexture>(parameter.data));
+        return SetResource(parameter.id, static_cast<Mof::LPTexture>(parameter.data));
         break;
       case PropertyType::kBuffer:
-        SetBuffer(parameter.id, parameter.data);
+        return SetBuffer(parameter.id, parameter.data);
         break;
       default:;
     }

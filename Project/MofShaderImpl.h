@@ -51,10 +51,10 @@ class MofShader::MofShaderImpl {
         return false;
         break;
       case PropertyType::kResource:
-        shader_bind_.CreateShaderResource(parameter.name.data());
+        return shader_bind_.CreateShaderResource(parameter.name.data());
         break;
       case PropertyType::kBuffer:
-        shader_bind_.CreateShaderBuffer(parameter.name.data(),
+        return shader_bind_.CreateShaderBuffer(parameter.name.data(),
                                         parameter.data_size);
         break;
       default:;

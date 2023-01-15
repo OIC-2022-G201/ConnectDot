@@ -25,6 +25,10 @@ class IBaseEngineCanvasRender
                           const Vector& scale, float angle, const Rect& uv,
                           const Color& color,
                           Mof::TextureAlignment alignment) = 0;
+  virtual void AddTexture(ITexturePtr texture, const Vector& position,
+                          const Vector& scale, float angle, const Rect& uv,
+                          const Color& color, Mof::TextureAlignment alignment,
+                          const std::shared_ptr<class Material>& material) = 0;
   virtual void AddTexture(const Mof::Matrix44& wMat, const Rect& srec,
                           const Mof::Vector4& col, const Mof::Vector3& Pivot,
                           const Mof::Vector3& Size, const Mof::Vector2& uvp,
