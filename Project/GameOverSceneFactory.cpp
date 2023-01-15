@@ -8,8 +8,9 @@
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
 #include "EventBus.h"
-#include "GameoverComponent.h"
+#include "ImageAlphaTween.h"
 #include "InputManager.h"
+#include "PositionYTween.h"
 #include "ResourceContainer.h"
 #include "SceneManager.h"
 #include "UiFactoryUtilities.h"
@@ -66,5 +67,10 @@ void GameOverSceneFactory::Factory() {
       button->SetEvent(action);
   }
 
-  const auto component = new GameoverComponent(new Actor(game_));
+  const auto logo = new Actor(game_);
+  logo->SetPosition({ 356,0 });
+  const auto logo_image = new ImageComponent(logo);
+  const auto logo_resource = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("GameoverLogo");
+  logo_image->SetImage(*logo_resource);
+  ma_tween::PositionYTween::TweenLocalPositionY(logo, 370, 0.5f);
 }

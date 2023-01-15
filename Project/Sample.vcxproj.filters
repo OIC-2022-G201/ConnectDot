@@ -1044,9 +1044,6 @@
     <ClCompile Include="ActionToolTipComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
     </ClCompile>
-    <ClCompile Include="GameoverComponent.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\Gameover</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1795,9 +1792,6 @@
     </ClInclude>
     <ClInclude Include="ActionToolTipComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="GameoverComponent.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\Gameover</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

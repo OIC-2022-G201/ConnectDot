@@ -120,7 +120,6 @@
     <ClCompile Include="ElevatorComponent.cpp" />
     <ClCompile Include="ElevatorReceiver.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
-    <ClCompile Include="GameoverComponent.cpp" />
     <ClCompile Include="GameOverSceneFactory.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
@@ -304,7 +303,6 @@
     <ClInclude Include="ElevatorComponent.h" />
     <ClInclude Include="ElevatorReceiver.h" />
     <ClInclude Include="FollowComponent.h" />
-    <ClInclude Include="GameoverComponent.h" />
     <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="IConnectBindable.h" />
