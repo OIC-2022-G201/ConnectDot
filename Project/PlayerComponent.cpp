@@ -84,7 +84,7 @@ void PlayerComponent::Start() {
   event_handlers_.emplace_back(
       EventBus::AddHandler<BeaconPowerUpActionEvent>(*listener_));
   ServiceLocator::Instance().Resolve<PauseManager>()->IsOpen().Subscribe(
-      [this](bool pause) { can_control_ = pause; });
+      [this](bool open) { can_control_ = !open; });
 
   owner_->GetGame()->debug_render_.emplace_back([this]() {
     Mof::CGraphicsUtilities::RenderString(0, 60, "State:%d",

@@ -11,6 +11,7 @@
 #include "PauseComponent.h"
 #include "PauseEvent.h"
 #include "ResourceContainer.h"
+#include "SceneManager.h"
 #include "UiFactoryUtilities.h"
 #include "UiFrozen.h"
 
@@ -32,9 +33,9 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
   void OnEvent(PauseEvent& e) override {
     pause_manager_->is_open_ = e.IsOpen();
     if (e.IsOpen()) {
-      HideView();
-    } else {
       ShowView();
+    } else {
+      HideView();
     }
   }
 
@@ -65,9 +66,17 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
   void CreateButtons() {
     constexpr bool enable = false;
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
-        main_pack = {{{796, 394}, "ResumeButton", [] { PostQuitMessage(0); }},
-                     {{781, 533}, "RestartButton", [] { PostQuitMessage(0); }},
-                     {{828, 671}, "GoTitleButton", [] { PostQuitMessage(0); }}};
+        main_pack = {{{796, 394},
+                      "ResumeButton",
+                      [this] {
+                        std::any sender = this;
+                        PauseEvent e{sender, true};
+                        EventBus::FireEvent(e);
+                      }},
+                     {{781, 533}, "RestartButton", [] { scene::LoadScene(scene::kGame); }},
+                     {{828, 671}, "GoTitleButton", [] {
+                        scene::LoadScene(scene::kTitle);
+                      }}};
 
     const auto selector = new ButtonSelecter(game_);
     selector->SetInput(InputManager::Instance());

@@ -6,12 +6,14 @@
 #include "PauseEvent.h"
 #include "PauseManager.h"
 
-void PauseComponent::Update()
-{
+void PauseComponent::Update() {
   if (InputManager::Instance()->PauseFire()) {
     std::any sender = this;
-    PauseEvent e{sender, is_pause_};
+
+    PauseEvent e{
+        sender,
+        !static_cast<bool>(
+            ServiceLocator::Instance().Resolve<PauseManager>()->IsOpen())};
     EventBus::FireEvent(e);
-    is_pause_ = !is_pause_;
   }
 }
