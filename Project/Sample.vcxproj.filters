@@ -538,6 +538,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Event\PauseEvent">
       <UniqueIdentifier>{9b80abea-3f58-41b7-bedf-10486d1e4156}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Pause">
+      <UniqueIdentifier>{f6e1ceb8-a87e-445b-bfb9-f798309ed57a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Pause\Private">
+      <UniqueIdentifier>{101cdf18-248c-4b0b-a161-92aba9e1ab2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1088,6 +1094,12 @@
     </ClCompile>
     <ClCompile Include="PauseEvent.cpp">
       <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1861,6 +1873,12 @@
     </ClInclude>
     <ClInclude Include="PauseEvent.h">
       <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseManager.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause\Private</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

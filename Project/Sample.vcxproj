@@ -134,6 +134,8 @@
     <ClCompile Include="ParallaxCameraFlowLayer.cpp" />
     <ClCompile Include="ParallaxCameraFlowLayerComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
+    <ClCompile Include="PauseComponent.cpp" />
+    <ClCompile Include="PauseManager.cpp" />
     <ClCompile Include="PauseEvent.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="PositionYTween.cpp" />
@@ -328,6 +330,8 @@
     <ClInclude Include="ParallaxCameraFlowLayer.h" />
     <ClInclude Include="ParallaxCameraFlowLayerComponent.h" />
     <ClInclude Include="ParentTest.h" />
+    <ClInclude Include="PauseComponent.h" />
+    <ClInclude Include="PauseManager.h" />
     <ClInclude Include="PauseEvent.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="PositionYTween.h" />

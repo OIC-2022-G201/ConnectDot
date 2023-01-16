@@ -21,5 +21,5 @@ class UiFactoryUtilities {
 
   static std::pair<Button*, ButtonSelecter*> ButtonCreate(
       base_engine::Game* game, ButtonSelecter* selector,
-      const ButtonFrozenPack& button_data);
+      const ButtonFrozenPack& button_data,int draw_order_ = 151);
 };

@@ -15,6 +15,7 @@
 #include "ObjectLoader.h"
 #include "ObjectTileMapComponent.h"
 #include "ParallaxCameraFlowLayer.h"
+#include "PauseManager.h"
 #include "PlayerActor.h"
 #include "PylonActor.h"
 #include "ResourceContainer.h"
@@ -65,8 +66,7 @@ void StageSceneFactory::Factory() {
           CreateInfo{"BG40", 0.5, 0.5, 25, true, camera_pos},
           CreateInfo{"BG30", 0.4, 1, 30, false, camera_pos},
           CreateInfo{"BG20", 0.3, 0, 35, false, pos},
-          CreateInfo{"BG10", -0.2, 0, 200, false, pos}
-      };
+          CreateInfo{"BG10", -0.2, 0, 200, false, pos}};
       //    ParallaxCameraFlowLayer::Create(game_,
       //    stage_def->first.stem().string(),
       //                                    create_def);
@@ -82,5 +82,7 @@ void StageSceneFactory::Factory() {
   ObjectLoader object_loader{game_};
   object_loader.Load(stage_def->second.string());
 
+  ServiceLocator::Instance().RegisterInstance(
+      std::make_shared<PauseManager>(game_));
   ResultScoreComponent::Create(game_);
 }

@@ -1,5 +1,7 @@
 ﻿#include "Rect.h"
 
+#include <array>
+
 #include "Geometry2D.h"
 #include "ShapeRenderComponent.h"
 
@@ -16,10 +18,11 @@ namespace base_engine {
 
     Vector2 Rect::GetFarthestPoint(InVector2 transform, Vector2 direction) const
     {
-
+      std::array rect = {GetTopLeft() + transform, GetTopRight() + transform,
+                         GetBottomRight() + transform,
+                         GetBottomLeft() + transform};
         return FindFurthestPoint(
-            {GetTopLeft() + transform, GetTopRight() + transform,
-                GetBottomRight() + transform, GetBottomLeft() + transform},
+            rect,
             direction);
     }
 

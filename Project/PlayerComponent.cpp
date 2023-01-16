@@ -20,6 +20,7 @@
 #include "GoalEvent.h"
 #include "IMachineActionable.h"
 #include "ObjectTileMapComponent.h"
+#include "PauseManager.h"
 #include "PhysicsFixture.h"
 #include "PhysicsWorldCallBack.h"
 #include "Player.h"
@@ -82,6 +83,8 @@ void PlayerComponent::Start() {
   event_handlers_.emplace_back(EventBus::AddHandler<GoalEvent>(*listener_));
   event_handlers_.emplace_back(
       EventBus::AddHandler<BeaconPowerUpActionEvent>(*listener_));
+  ServiceLocator::Instance().Resolve<PauseManager>()->IsOpen().Subscribe(
+      [this](bool pause) { can_control_ = pause; });
 
   owner_->GetGame()->debug_render_.emplace_back([this]() {
     Mof::CGraphicsUtilities::RenderString(0, 60, "State:%d",
@@ -187,7 +190,7 @@ void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(300); }
 void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
 
 void PlayerComponent::ActionKey(const CollisionComponent* collision) {
-  if (!IsGround())return;
+  if (!IsGround()) return;
   if ((collision->GetObjectFilter().to_ulong() &
        CollisionLayer::Layer{CollisionLayer::kActionable}) == 0)
     return;
@@ -202,13 +205,12 @@ void PlayerComponent::ActionKey(const CollisionComponent* collision) {
 void PlayerComponent::Update() {
   const auto aabb = collision_.lock()->AABB();
   sound_effect_->SetPosition({aabb.GetCenter().x, aabb.Bottom});
+  physics_body_.lock()->AddForce({0, kGravity});
+
   if (!can_control_) {
-    physics_body_.lock()->SetForceY(0);
     machine_.TransitionTo<PlayerIdle>();
     return;
   }
-
-  physics_body_.lock()->AddForce({0, kGravity});
   machine_.Update();
 
   CheckGround();

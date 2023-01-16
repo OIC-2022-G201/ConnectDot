@@ -31,7 +31,7 @@ void TransitionFadeComponent::Start() {}
 void TransitionFadeComponent::Update() {
   progress_ += 0.01f;
   if (progress_ > 1.5) {
-    progress_ = 0;
+    progress_ = 1.5;
   }
   Progress progress{progress_};
   material_->SetParameter({"progress", 0, PropertyType::kBuffer, &progress});
