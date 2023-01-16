@@ -535,6 +535,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\Transition">
       <UniqueIdentifier>{b92577ca-e35a-4e47-94f6-34d8f29b917b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\PauseEvent">
+      <UniqueIdentifier>{9b80abea-3f58-41b7-bedf-10486d1e4156}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1082,6 +1085,9 @@
     </ClCompile>
     <ClCompile Include="TransitionFadeComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1852,6 +1858,9 @@
     </ClInclude>
     <ClInclude Include="TransitionFadeComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
