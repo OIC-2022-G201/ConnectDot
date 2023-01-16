@@ -11,6 +11,7 @@
 #include "Component.h"
 #include "ComponentParameter.h"
 #include "IBaseEngineRender.h"
+#include "Material.h"
 
 namespace base_engine {
 class CameraComponent final : public Component {
@@ -22,7 +23,7 @@ class CameraComponent final : public Component {
   void Update() override;
 
   void SetMainCamera() const;
-
+  void SetMaterial(const std::shared_ptr<Material>& material) const;
   static std::weak_ptr<CameraComponent> GetMainCamera();
 };
 }  // namespace base_engine

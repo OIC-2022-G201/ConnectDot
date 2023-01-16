@@ -10,7 +10,9 @@
 #include "RenderComponent.h"
 
 namespace base_engine {
-class ImageComponent : public RenderComponent, public ISpriteAnimatable {
+	class Material;
+
+	class ImageComponent : public RenderComponent, public ISpriteAnimatable {
  public:
   using COLOR = uint32_t;
 
@@ -50,7 +52,10 @@ class ImageComponent : public RenderComponent, public ISpriteAnimatable {
     return *this;
   }
   MofFloat GetAngle() const { return angle_; }
-
+  void SetMaterial(const std::shared_ptr<Material>& material) {
+    material_ = material;
+  }
+  std::shared_ptr<Material> GetMaterial() { return material_; }
  private:
   int draw_order_;
   Mof::LPTexture texture_;
@@ -59,6 +64,7 @@ class ImageComponent : public RenderComponent, public ISpriteAnimatable {
   MofFloat angle_ = 0;
   Mof::CRectangle clip_rect_{};
   Mof::TextureAlignment alignment_ = Mof::TextureAlignment::TEXALIGN_TOPLEFT;
+  std::shared_ptr<Material> material_;
 
  public:
   void StartFlash(float time, const COLOR& color);

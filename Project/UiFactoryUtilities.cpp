@@ -17,12 +17,12 @@ UiFactoryUtilities::ImageCreate(base_engine::Game* game, std::string_view key) {
 
 std::pair<Button*, ButtonSelecter*> UiFactoryUtilities::ButtonCreate(
     base_engine::Game* game, ButtonSelecter* selector,
-    const ButtonFrozenPack& button_data)
+    const ButtonFrozenPack& button_data,int draw_order)
 {
   const auto button_pack =
       RC::GetResource<ResourceContainer::ButtonResourcePack,
                       ButtonResourcePackage>(button_data.path);
-  const auto button = new Button(game);
+  const auto button = new Button(game, draw_order);
   button->SetButtonSprite(button_pack->sprites[0]);
   button->SetChangeButtonSprite(button_pack->sprites[1]);
   button->SetPosition({button_data.x, button_data.y});

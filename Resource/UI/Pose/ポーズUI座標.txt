@@ -1,0 +1,8 @@
+ResumeButton 796 394 
+RestartButton 781 533
+GoTitleButton 828 671
+
+選択前、選択後の画像はそれぞれ同じサイズで書き出しています
+同じ座標に配置お願いします
+
+BGMの音量半分にする予定です

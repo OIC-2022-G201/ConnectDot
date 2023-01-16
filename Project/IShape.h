@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <span>
 #include <Collision/Rectangle.h>
 #include <Math/Vector2.h>
 
@@ -13,7 +14,7 @@ class Point;
 enum class ShapeType { kNone, kRect, kCircle, kPoint,kTileMap };
 class IShape {
  protected:
-    static Vector2 FindFurthestPoint(const std::vector<Vector2>& vertices,
+    static Vector2 FindFurthestPoint(const std::span<Vector2>& vertices,
                                      const Vector2& direction)
     {
     Vector2 maxPoint;

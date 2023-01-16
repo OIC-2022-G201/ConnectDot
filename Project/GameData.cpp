@@ -8,9 +8,13 @@
 #include "ComponentServiceLocator.h"
 #include "IBaseEngineRender.h"
 #include "IBaseEngineTexture.h"
+#include "Material.h"
+#include "MofShader.h"
+#include "ResourceContainer.h"
 #include "StageContainer.h"
 #include "TexturePaths.h"
-
+#include "TransitionFadeSystem.h"
+using namespace base_engine;
 /**
  * \brief Resourceフォルダ内にある画像ファイルを再帰的に探索し全てロードを行う
  */
@@ -23,6 +27,27 @@ void ResourceFolderTextureAllRegister() {
   }
   BASE_ENGINE(Texture)->Load("Default");
 }
+
+void MaterialCreate() {
+  using namespace base_engine;
+  {
+    const auto p =
+        ResourceContainer::CreatePack<ResourceContainer::MaterialResourcePack>(
+            "TestShader");
+
+    const asset_system::ResourcePtr<Material> material_ptr =
+        std::make_shared<asset_system::Resource<Material>>();
+    const auto shader = std::make_shared<MofShader>("Shader/TestShader.hlsl");
+    shader->CreateParameter({"cbGameParam", PropertyType::kBuffer, 16});
+    material_ptr->Register(0)->SetShader(shader);
+    p->Register<Material>(material_ptr);
+  }
+}
+void RegisterSystem(Game* game) {
+  ServiceLocator::Instance().RegisterInstance<ITransitionFadeSystem>(
+      std::make_shared<TransitionFadeSystem>(game));
+}
+
 void GameData::Register() {
   BASE_ENGINE(Render)->SetCameraPosition(
       {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
@@ -33,4 +58,6 @@ void GameData::Register() {
   stage_container->Initialize();
   ServiceLocator::Instance().RegisterInstance(stage_container);
 
+  MaterialCreate();
+  RegisterSystem(game_);
 }

@@ -18,7 +18,8 @@
 #include "TileMap.h"
 
 namespace tile_map {
-//TODO TileMapという名前にすることでギミックなどの座標の配置などをまとめたものと、紛らわしくなっている
+// TODO
+// TileMapという名前にすることでギミックなどの座標の配置などをまとめたものと、紛らわしくなっている
 class TileMapComponent : public base_engine::Component {
   class TileMapRenderComponent final : public base_engine::RenderComponent {
     TileMapComponent* tile_map_;
@@ -33,10 +34,12 @@ class TileMapComponent : public base_engine::Component {
   };
 
   void Load(std::string_view path);
+
  public:
   void Start() override;
   void Update() override;
   void SetStage(const std::string_view path);
+  void Load();
 
   void CreateBody();
   TileMapComponent(base_engine::Actor* owner, int update_order);
@@ -47,6 +50,10 @@ class TileMapComponent : public base_engine::Component {
 
   [[nodiscard]] Layer::CellType GetCell(const size_t x, const size_t y) const {
     return map_.GetCell(x, y);
+  }
+  GridPosition LeftBottom() const {
+    return {static_cast<int>(map_.GetXCount()),
+            static_cast<int>(map_.GetYCount())};
   }
 
  private:

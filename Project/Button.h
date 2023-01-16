@@ -7,7 +7,7 @@ class Button : public base_engine::Actor {
   base_engine::Vector2 camera_pos;
 
  public:
-  explicit Button(base_engine::Game* game);
+  explicit Button(base_engine::Game* game,int draw_order = 151);
 
   ~Button() override = default;
 

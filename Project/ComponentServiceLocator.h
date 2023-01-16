@@ -88,15 +88,7 @@ class ServiceLocator {
     }
     instances_.emplace(hash, instance);
   }
-  template <typename T>
-  void RegisterInstance(const std::weak_ptr<T>& instance) {
-    const size_t hash = typeid(T).hash_code();
-    if (instances_.contains(hash)) {
-      instances_[hash] = instance.lock();
-      return;
-    }
-    instances_.emplace(hash, instance.lock());
-  }
+  
   template <typename T>
   void RegisterCreator(std::function<std::shared_ptr<T>()> creator) {
     const size_t hash = typeid(T).hash_code();

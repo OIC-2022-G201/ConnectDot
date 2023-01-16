@@ -517,6 +517,33 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DummyEmptyBeacon">
       <UniqueIdentifier>{d5ac32c5-1bd2-43b9-8fac-512d26fc137a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Material">
+      <UniqueIdentifier>{7795f23a-ca16-484a-bc46-afb4ee08b557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader">
+      <UniqueIdentifier>{a4a52628-2e8c-4e37-b661-eab1291985e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader\MofShader">
+      <UniqueIdentifier>{9b3393b0-1247-4344-98fb-ce2498b817d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader\MofShader\Private">
+      <UniqueIdentifier>{267f3c3c-c57b-470d-ad70-67681845b035}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BaseEngine\Shader\Effect">
+      <UniqueIdentifier>{f5f43ee2-980c-4dbf-b55c-b7f6dacc5d5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Transition">
+      <UniqueIdentifier>{b92577ca-e35a-4e47-94f6-34d8f29b917b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\PauseEvent">
+      <UniqueIdentifier>{9b80abea-3f58-41b7-bedf-10486d1e4156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Pause">
+      <UniqueIdentifier>{f6e1ceb8-a87e-445b-bfb9-f798309ed57a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\Pause\Private">
+      <UniqueIdentifier>{101cdf18-248c-4b0b-a161-92aba9e1ab2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1046,6 +1073,39 @@
     </ClCompile>
     <ClCompile Include="GameOverComponent.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>BaseEngine\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderBase.cpp">
+      <Filter>BaseEngine\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="MofShader.cpp">
+      <Filter>BaseEngine\Shader\MofShader</Filter>
+    </ClCompile>
+    <ClCompile Include="MofShaderImpl.cpp">
+      <Filter>BaseEngine\Shader\MofShader\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectBase.cpp">
+      <Filter>BaseEngine\Shader\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderTest01.cpp">
+      <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseManager.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="TransitionFadeSystem.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualTweenFloat.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1798,6 +1858,42 @@
     </ClInclude>
     <ClInclude Include="GameOverComponent.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>BaseEngine\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderBase.h">
+      <Filter>BaseEngine\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="MofShader.h">
+      <Filter>BaseEngine\Shader\MofShader</Filter>
+    </ClInclude>
+    <ClInclude Include="MofShaderImpl.h">
+      <Filter>BaseEngine\Shader\MofShader\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBase.h">
+      <Filter>BaseEngine\Shader\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderTest01.h">
+      <Filter>ソース ファイル\ConnectDot\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseManager.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Pause\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionFadeSystem.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualTweenFloat.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
+    </ClInclude>
+    <ClInclude Include="ITransitionFadeSystem.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

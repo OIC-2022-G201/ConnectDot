@@ -29,5 +29,7 @@ private:
 
   bool play_animation_ = false;
   bool open_ = false;
+
+  bool is_show_ = false;
   float count_frame_ = 0;
 };

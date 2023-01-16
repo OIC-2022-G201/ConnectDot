@@ -54,6 +54,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
   virtual bool OnInitialize() = 0;
   virtual DriverValueType OnGetFrom() = 0;
   virtual void OnUpdate(float eased_time) = 0;
+  virtual void OnComplete() = 0;
 
  private:
   bool is_paused_ = false;
@@ -82,6 +83,10 @@ class TweenDriver : public base_engine::Component, public core::ITween {
    */
   std::function<void()> on_start_;
   /**
+   * \brief The update callback invoke when the tween update.
+   */
+  std::function<void(DriverValueType)> on_update_;
+  /**
    * \brief The complete callback invoke when the tween completes.
    */
   std::function<void()> on_complete_;
@@ -100,6 +105,7 @@ class TweenDriver : public base_engine::Component, public core::ITween {
       if (this->did_overwrite_from_ == false)
         this->value_from_ = this->OnGetFrom();
       this->OnUpdate(Easer::Apply(this->ease_, 0));
+      if (on_update_) on_update_(value_current_);
     }
   }
   void Update() override {
@@ -113,8 +119,12 @@ class TweenDriver : public base_engine::Component, public core::ITween {
         // When the delay is over, the valueFrom is requested from the
         // inheriter. Then the animation will be set to its first frame.
         if (this->did_overwrite_from_ == false)
-          this->value_from_ = this->OnGetFrom();
-        this->OnUpdate(Easer::Apply(this->ease_, 0));
+        {
+	        this->value_from_ = this->OnGetFrom();
+        }
+        const auto value = Easer::Apply(this->ease_, 0);
+        this->OnUpdate(value);
+        if (on_update_) on_update_(value_current_);
       }
     }
     // When the tween has no duration, the timing will not be done and the
@@ -122,8 +132,10 @@ class TweenDriver : public base_engine::Component, public core::ITween {
     // decomissioned right away.
     else if (!this->duration_) {
       this->OnUpdate(Easer::Apply(this->ease_, 1));
+      if (on_update_) on_update_(value_current_);
       if (this->on_start_) this->on_start_();
-      if (this->on_complete_) this->on_complete_();
+      OnComplete();
+    	if (this->on_complete_) this->on_complete_();
       this->Decommission();
       return;
     }
@@ -147,7 +159,9 @@ class TweenDriver : public base_engine::Component, public core::ITween {
       }
 
       this->OnUpdate(Easer::Apply(this->ease_, this->time_));
+      if (on_update_) on_update_(value_current_);
       if (this->did_time_reach_end_ == true) {
+        OnComplete();
         if (this->on_complete_) this->on_complete_();
 
         this->is_completed_ = true;
@@ -163,6 +177,11 @@ class TweenDriver : public base_engine::Component, public core::ITween {
 
   Driver& SetOnStart(std::function<void()> on_start) {
     this->on_start_ = on_start;
+    return *this;
+  }
+
+  Driver& SetOnUpdate(std::function<void(DriverValueType)> on_update) {
+    this->on_update_ = on_update;
     return *this;
   }
 
@@ -220,6 +239,11 @@ class Tween : public TweenDriver<DriverValueType> {
     if (!component_weak_.expired()) return true;
     component_weak_ = this->owner_->template GetComponent<ComponentType>();
     return !component_weak_.expired();
+  }
+
+  void OnComplete() override
+  {
+	  
   }
 };
 }  // namespace ma_tween

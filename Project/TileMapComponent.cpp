@@ -31,19 +31,26 @@ TileMapComponent::TileMapRenderComponent::TileMapRenderComponent(
 
 void TileMapComponent::TileMapRenderComponent::Draw() {
   Mof::CRectangle rect;
-  for (int y = 0; y < tile_map_->map_.GetYCount(); ++y) {
-    for (int x = 0; x < tile_map_->map_.GetXCount(); ++x) {
+  const auto pos = BASE_ENGINE(Render)->GetCameraPosition();
+  const auto camera_pos = GridPosition::VectorTo({pos.x, pos.y});
+
+  const size_t top = std::max(camera_pos.y - 7, 0);
+  const size_t bottom = std::min(top + 18, tile_map_->map_.GetYCount());
+
+  const size_t left = std::max(camera_pos.x - 10, 0);
+  const size_t right = std::min(left + 20, tile_map_->map_.GetXCount());
+
+  for (int y = top; y < bottom; ++y) {
+    for (int x = left; x < right; ++x) {
       const auto cell = tile_map_->map_.GetCell(x, y);
       if (cell == kEmptyCell) continue;
-      if (cell > 5)
-      {
+      if (cell > 5) {
         int n = 3;
       }
-      if (cell > tile_map_->s_rectangles_.size())
-      {
-	      continue;
+      if (cell > tile_map_->s_rectangles_.size()) {
+        continue;
       }
-      
+
       BASE_ENGINE(Render)->AddTexture(
           tile_map_->texture_, {x * 128.0f, y * 128.0f}, {1, 1}, 0,
           tile_map_->s_rectangles_[cell - 1], MOF_COLOR_WHITE,
@@ -54,17 +61,17 @@ void TileMapComponent::TileMapRenderComponent::Draw() {
   }
 }
 
-void TileMapComponent::Start() { Load(stage_name_); }
+void TileMapComponent::Load() { Load(stage_name_); }
+
+void TileMapComponent::Start() {}
 
 void TileMapComponent::Update() {}
 
-void TileMapComponent::SetStage(const std::string_view path)
-{
-	stage_name_ = path;
+void TileMapComponent::SetStage(const std::string_view path) {
+  stage_name_ = path;
 }
 
-void TileMapComponent::Load(std::string_view path)
-{
+void TileMapComponent::Load(std::string_view path) {
   {
     FrozenMapData map_data;
 
@@ -92,7 +99,6 @@ void TileMapComponent::Load(std::string_view path)
     }
   }
 
-    
   tile_shape_.emplace_back(new base_engine::Rect(0, 0, 128, 128));
 
   for (int x = 0; x < map_.GetXCount(); ++x) {

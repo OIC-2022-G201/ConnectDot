@@ -24,7 +24,7 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
     effect_actor_ = OneTimeEffectActor::Create(
         actor_->GetGame(),
         actor_->GetPosition() + PowerSupplyUnitReceiver::GetPosition(),
-        "ConnectLightNormal", 130);
+        "PowerSupplyConnectLightNormal", 130);
     actor_->AddChild(effect_actor_->GetId());
     effect_actor_->Hide();
   }

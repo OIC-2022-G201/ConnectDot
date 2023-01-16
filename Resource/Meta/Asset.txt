@@ -5,9 +5,11 @@ Stage1BG30 Sprite BG/Stage1/Stage1BG30/Stage1BG30.png
 Stage1BG40 Sprite BG/Stage1/Stage1BG40/Stage1BG40.png
 Stage1BG50 Sprite BG/Stage1/Stage1BG50/Stage1BG50.png
 Stage1BG60 Sprite BG/Stage1/Stage1BG60/Stage1BG60.png
+Stage1BG65 Sprite BG/Stage1/Stage1BG65/Stage1BG65.png
 Stage1BG70 Sprite BG/Stage1/Stage1BG70/Stage1BG70.png
 ConnectLightNormal Animation Effect/ConnectLight/ConnectLightNormal/ConnectLightEffect_MotionChip.png Effect/ConnectLight/ConnectLightNormal/ConnectLightEffect.aei
 ConnectLightPowerup Animation Effect/ConnectLight/ConnectLightPowerup/ConnectLightEffect_Powerup_MotionChip.png Effect/ConnectLight/ConnectLightPowerup/ConnectLightEffect_Powerup.aei
+PowerSupplyConnectLightNormal Animation Effect/ConnectLight/PowerSupplyConnectLightNormal/ConnectLightEffect_MotionChip.png Effect/ConnectLight/PowerSupplyConnectLightNormal/ConnectLightEffect.aei
 ConnectShock Animation Effect/ConnectShock/ConnectEffect_MotionChip.png Effect/ConnectShock/ConnectEffect.aei
 Dust Animation Effect/Dust/DustEffect_MotionChip.png Effect/Dust/DustEffect.aei
 Electric Sprite Effect/Electric/ElectroCellMap.png
@@ -50,6 +52,10 @@ Gameover Sprite UI/Gameover/Gameoverhaikei.png
 GiveupButton Button UI/Gameover/GiveupButton/GiveupButton.png UI/Gameover/GiveupButton/GiveupButton2.png
 RetryButton Button UI/Gameover/RetryButton/RetryButton.png UI/Gameover/RetryButton/RetryButton2.png
 GameoverLogo Sprite UI/Gameover/GameoverLogo.png
+Fade Sprite UI/Fade/012.png
+Gameover Sprite UI/Gameover/gameover.png
+ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
+RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png
 ActionTooltip Sprite UI/Ingame/ActionTooltip/Action.png
 0 Sprite UI/Ingame/Number/0/0.png
 1 Sprite UI/Ingame/Number/1/1.png
@@ -62,9 +68,13 @@ ActionTooltip Sprite UI/Ingame/ActionTooltip/Action.png
 8 Sprite UI/Ingame/Number/8/8.png
 9 Sprite UI/Ingame/Number/9/9.png
 PopupLine Sprite UI/Line/PopupLine/Line.png
-Nextbutton Sprite UI/Nextbutton/Nextlogo.png
 Panel Sprite UI/Panel/Panel.png
+GoTitleButton Button UI/Pose/GoTitleButton/GoTitleButton.png UI/Pose/GoTitleButton/GoTitleButton2.png
+PauseHaikei Sprite UI/Pose/PauseHaikei/Posehaikei.png
+RestartButton Button UI/Pose/RestartButton/RestartButton.png UI/Pose/RestartButton/RestartButton2.png
+ResumeButton Button UI/Pose/ResumeButton/ResumeButton.png UI/Pose/ResumeButton/ResumeButton2.png
 LetterBox Sprite UI/Result/LetterBox/DiagonalLetterBox.png
+NextLogo Sprite UI/Result/NextLogo/NextLogo.png
 ResultCharacter Sprite UI/Result/ResultCharacter/ResultCharacter.png
 ResultLogo Sprite UI/Result/ResultLogo/StageclearLogo.png
 ResultPopup Sprite UI/Result/ResultPopup/PopupResults.png

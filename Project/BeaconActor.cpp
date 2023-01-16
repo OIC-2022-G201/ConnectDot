@@ -38,7 +38,8 @@ class BeaconDummyComponent : public Component, public IMachineActionable {
       : Component(owner, update_order), owner_as_beacon_(owner) {}
 
   void Action(Actor* actor) override {
-    if (owner_->GetComponent<TransmitterComponent>().lock()->Level() != 1) {
+    if (const auto transmitter = owner_->GetComponent<TransmitterComponent>();
+        transmitter.expired() || transmitter.lock()->Level() != 1) {
       return;
     }
     if (!static_cast<bool>(owner_as_beacon_->ElectricPowerTrigger())) return;

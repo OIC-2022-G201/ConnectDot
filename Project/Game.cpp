@@ -6,14 +6,18 @@
 #include "Actor.h"
 #include "ButtonCommandEventContainer.h"
 #include "ComponentServiceLocator.h"
+#include "GameData.h"
 #include "IBaseEngineCollider.h"
+#include "IBaseEngineRender.h"
 #include "InputManager.h"
+#include "ITransitionFadeSystem.h"
 #include "ParentTest.h"
 #include "ReleaseInfo.h"
 #include "RenderComponent.h"
 #include "ResourceContainer.h"
 #include "Scene.h"
 #include "SceneManager.h"
+#include "ShaderTest01.h"
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
@@ -22,7 +26,13 @@ base_engine::IBaseEngineCollider* b_collision;
 namespace base_engine {
 
 bool Game::Initialize() {
-  game_data_.Register();
+  BASE_ENGINE(Render)->Initialize();
+	{
+		std::unique_ptr<GameData> game_data;
+
+  	game_data = std::make_unique<GameData>(this);
+  	game_data->Register();
+	}
   actors_.reserve(1024);
   scene::SceneManager::Instance().Register(this);
   button::ButtonCommandEventContainer::Instance().SetGame(this);
@@ -33,9 +43,9 @@ bool Game::Initialize() {
   resource_container_->Register();
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-  scene::LoadScene(scene::kTitle);
-  // ParentTest test(this);
-  // test.Main();
+	scene::LoadScene(scene::kTitle);
+  //ShaderTest01 test(this);
+  //test.Main();
   b_collision = BASE_ENGINE(Collider);
 
   return true;
@@ -53,7 +63,9 @@ void Game::Update() {
 
 void Game::Shutdown() { Clear(); }
 
-void Game::AddActor(Actor* actor) { AddActor(actor, scenes_.front()); }
+void Game::AddActor(Actor* actor) {
+  AddActor(actor, scenes_.empty() ? std::weak_ptr<Scene>{} : scenes_.front());
+}
 
 void Game::AddActor(Actor* actor, const std::weak_ptr<Scene> scene) {
   actor_id_max_++;
@@ -61,7 +73,7 @@ void Game::AddActor(Actor* actor, const std::weak_ptr<Scene> scene) {
   auto actor_ptr = ActorPtr{actor};
   actor_id_cash_.emplace_back(actor_ptr);
   pending_actors_.emplace_back(actor_ptr);
-  scene.lock()->AddActor(actor_ptr);
+  if (!scene.expired()) scene.lock()->AddActor(actor_ptr);
   actor_ptr->SetScene(scene);
 }
 
@@ -211,6 +223,7 @@ void Game::SetNextFrameEvent(const std::function<void()>& event) {
 }
 
 void Game::Render() const {
+  BASE_ENGINE(Render)->Begin();
   for (const auto sprite : sprites_) {
     // if (sprite->GetOwner().expired()) continue
     const auto owner = sprite->GetOwner();
@@ -225,6 +238,7 @@ void Game::Render() const {
     Mof::CGraphicsUtilities::RenderString(0, 0, MOF_COLOR_BLACK, "FPS:%d",
                                           Mof::CUtilities::GetFPS());
   }
+  BASE_ENGINE(Render)->End();
 }
 Game::~Game() {}
 

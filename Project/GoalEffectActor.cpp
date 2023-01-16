@@ -16,6 +16,7 @@
 #include "ImageAlphaTween.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
+#include "ITransitionFadeSystem.h"
 #include "NinePatchImageComponent.h"
 #include "PositionXTween.h"
 #include "ResourceContainer.h"
@@ -165,14 +166,14 @@ void GoalEffectActor::GoalEffectComponent::Start() {
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  clear_logo_.Create(game, 171, 92, "ResultLogo")
+  clear_logo_.Create(game, 176, 125, "ResultLogo")
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
   character_logo_.Create(game, 840, 0, "ResultCharacter")
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  next_logo_.Create(game, 1120, 983, "Nextbutton")
+  next_logo_.Create(game, 972, 948, "NextLogo")
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
 
@@ -217,7 +218,11 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 void GoalEffectActor::GoalEffectComponent::Update() {
   if (!end_animation_) return;
   if (InputManager::Instance()->JumpFire()) {
-    scene::LoadScene(scene::kTitle);
+
+    ServiceLocator::Instance()
+        .Resolve<ITransitionFadeSystem>()
+        ->SceneTransition(scene::kTitle, {0.15f, EaseType::kOutcirc},
+                          {0.15f, EaseType::kOutsine});
   }
 }
 

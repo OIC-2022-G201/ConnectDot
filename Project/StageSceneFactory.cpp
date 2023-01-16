@@ -8,12 +8,14 @@
 #include "EnemyActor.h"
 #include "EventRegister.h"
 #include "FollowComponent.h"
+#include "GameWindow.h"
 #include "ImageComponent.h"
 #include "InputActor.h"
 #include "InputManager.h"
 #include "ObjectLoader.h"
 #include "ObjectTileMapComponent.h"
 #include "ParallaxCameraFlowLayer.h"
+#include "PauseManager.h"
 #include "PlayerActor.h"
 #include "PylonActor.h"
 #include "ResourceContainer.h"
@@ -36,24 +38,40 @@ void StageSceneFactory::Factory() {
     stageActor->SetName("Stage");
     const auto stage = new tile_map::TileMapComponent(stageActor, 100);
     stage->SetStage(stage_def->first.string());
+    stage->Load();
     new tile_map::ObjectTileMapComponent(stageActor);
     ComponentServiceLocator::Instance().RegisterInstance(
         stageActor->GetComponent<tile_map::ObjectTileMapComponent>());
     ComponentServiceLocator::Instance().RegisterInstance(
         stageActor->GetComponent<tile_map::TileMapComponent>());
-  }
 
-  {
-    using CreateInfo = ParallaxCameraFlowLayer::CreateInfo;
-    std::array create_def = {
-        CreateInfo{"BG70", 1, 0.2f, 10},    CreateInfo{"BG60", 0.7, 1, 11},
-        CreateInfo{"BG50", 0, 1, 12},   CreateInfo{"BG40", 0.5, 1, 13},
-        CreateInfo{"BG30", 0.4, 1, 14}, CreateInfo{"BG20", 0.3, 0, 15},
-        CreateInfo{"BG10", -0.2, 0, 200}};
-    //    ParallaxCameraFlowLayer::Create(game_,
-    //    stage_def->first.stem().string(),
-    //                                    create_def);
-    ParallaxCameraFlowLayer::Create(game_, "Stage1", create_def);
+    {
+      std::unordered_map<std::string, float> offset = {
+          {"Stage1", 9}, {"Stage2", 22}, {"Stage3", 9}};
+      const float height = stage->LeftBottom().y -
+                           offset[stage_def->second.filename().string()] + 0.02;
+      const auto pos = GridPosition::GridTo({0, 1}) * height;
+      const auto camera_pos = CameraComponent::GetMainCamera()
+                                  .lock()
+                                  ->GetOwner()
+                                  .lock()
+                                  ->GetPosition() +
+                              GridPosition::GridTo({0, 2});
+      using CreateInfo = ParallaxCameraFlowLayer::CreateInfo;
+      std::array create_def = {
+          CreateInfo{"BG70", 1, 0.2f, 5, false, camera_pos},
+          CreateInfo{"BG65", 0.7, 1, 10, false, camera_pos},
+          CreateInfo{"BG60", 0.7, 0.7, 15, true, camera_pos},
+          CreateInfo{"BG50", 0, 1, 20, false, camera_pos},
+          CreateInfo{"BG40", 0.5, 0.5, 25, true, camera_pos},
+          CreateInfo{"BG30", 0.4, 1, 30, false, camera_pos},
+          CreateInfo{"BG20", 0.3, 0, 35, false, pos},
+          CreateInfo{"BG10", -0.2, 0, 200, false, pos}};
+      //    ParallaxCameraFlowLayer::Create(game_,
+      //    stage_def->first.stem().string(),
+      //                                    create_def);
+      ParallaxCameraFlowLayer::Create(game_, "Stage1", create_def);
+    }
   }
   const auto BG = new ImageComponent(new Actor(game_), 1);
 
@@ -64,5 +82,7 @@ void StageSceneFactory::Factory() {
   ObjectLoader object_loader{game_};
   object_loader.Load(stage_def->second.string());
 
+  ServiceLocator::Instance().RegisterInstance(
+      std::make_shared<PauseManager>(game_));
   ResultScoreComponent::Create(game_);
 }

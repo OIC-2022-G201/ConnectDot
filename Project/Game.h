@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "BaseEngineCore.h"
-#include "GameData.h"
+
 #include "GameManager.h"
 
 class ResourceContainer;
@@ -57,7 +57,6 @@ private:
   uint64_t actor_id_max_ = 0;
 
   BaseEngineCore engine_;
-  GameData game_data_;
   std::unique_ptr<GameManager> game_manager_;
   std::shared_ptr<ResourceContainer> resource_container_;
   std::vector<std::shared_ptr<Scene>> scenes_;
