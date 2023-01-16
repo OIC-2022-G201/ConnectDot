@@ -10,6 +10,7 @@
 #include "IBaseEngineCollider.h"
 #include "IBaseEngineRender.h"
 #include "InputManager.h"
+#include "ITransitionFadeSystem.h"
 #include "ParentTest.h"
 #include "ReleaseInfo.h"
 #include "RenderComponent.h"
@@ -20,7 +21,6 @@
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
-#include "TransitionFadeSystem.h"
 base_engine::IBaseEngineCollider* b_collision;
 
 namespace base_engine {
@@ -57,8 +57,7 @@ void Game::Update() {
   UpdateGame();
   b_collision->Collide();
   if (g_pInput->IsKeyPush(MOFKEY_N)) {
-    //scene::LoadScene(scene::kGame);
-    ServiceLocator::Instance().Resolve<TransitionFadeSystem>()->Fade();
+    scene::LoadScene(scene::kGame);
   }
 }
 
@@ -232,7 +231,7 @@ void Game::Render() const {
     if (owner.expired() || !owner.lock()->Enable()) continue;
     if (sprite->GetEnabled()) sprite->Draw();
   }
-  if (!kStatusRenderMode) {
+  if (kStatusRenderMode) {
     for (auto& func : debug_render_) {
       func();
     }

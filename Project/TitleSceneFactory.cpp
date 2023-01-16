@@ -22,7 +22,6 @@
 #include "SceneManager.h"
 #include "SpriteComponent.h"
 #include "TitleListener.h"
-#include "TransitionFadeComponent.h"
 #include "UiFrozen.h"
 #include "UiPackage.h"
 #include "VariantFrozen.h"

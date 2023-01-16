@@ -16,6 +16,7 @@
 #include "ImageAlphaTween.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
+#include "ITransitionFadeSystem.h"
 #include "NinePatchImageComponent.h"
 #include "PositionXTween.h"
 #include "ResourceContainer.h"
@@ -217,7 +218,11 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 void GoalEffectActor::GoalEffectComponent::Update() {
   if (!end_animation_) return;
   if (InputManager::Instance()->JumpFire()) {
-    scene::LoadScene(scene::kTitle);
+
+    ServiceLocator::Instance()
+        .Resolve<ITransitionFadeSystem>()
+        ->SceneTransition(scene::kTitle, {0.6f, EaseType::kOutcirc},
+                          {0.6f, EaseType::kIncirc});
   }
 }
 

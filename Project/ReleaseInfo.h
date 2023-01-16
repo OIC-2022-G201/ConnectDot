@@ -2,6 +2,6 @@
 #include "YesNo.h"
 
 using DebugMode = base_engine::YesNo<struct DebugModeTag>;
-constexpr DebugMode kIsCollisionRenderMode = DebugMode::Yes;
-constexpr DebugMode kStatusRenderMode = DebugMode::Yes;
+constexpr DebugMode kIsCollisionRenderMode = DebugMode::No;
+constexpr DebugMode kStatusRenderMode = DebugMode::No;
 //constexpr DebugMode kIsCollisionRenderMode = DebugMode::Yes;

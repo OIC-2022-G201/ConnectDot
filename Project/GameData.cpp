@@ -44,7 +44,7 @@ void MaterialCreate() {
   }
 }
 void RegisterSystem(Game* game) {
-  ServiceLocator::Instance().RegisterInstance(
+  ServiceLocator::Instance().RegisterInstance<ITransitionFadeSystem>(
       std::make_shared<TransitionFadeSystem>(game));
 }
 

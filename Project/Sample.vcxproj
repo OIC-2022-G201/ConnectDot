@@ -153,7 +153,6 @@
     <ClCompile Include="StageEpilogueEvent.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
-    <ClCompile Include="TransitionFadeComponent.cpp" />
     <ClCompile Include="TransitionFadeSystem.cpp" />
     <ClCompile Include="Tween.cpp" />
     <ClCompile Include="UiFactoryUtilities.cpp" />
@@ -321,6 +320,7 @@
     <ClInclude Include="IConnectBindable.h" />
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="ISpriteAnimatable.h" />
+    <ClInclude Include="ITransitionFadeSystem.h" />
     <ClInclude Include="ITween.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MofShader.h" />
@@ -353,7 +353,6 @@
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
-    <ClInclude Include="TransitionFadeComponent.h" />
     <ClInclude Include="TransitionFadeSystem.h" />
     <ClInclude Include="Tween.h" />
     <ClInclude Include="UiFactoryUtilities.h" />

@@ -9,6 +9,7 @@
 #include "DummyTween.h"
 #include "EventBus.h"
 #include "EventHandler.h"
+#include "ITransitionFadeSystem.h"
 #include "ImageAlphaTween.h"
 #include "InputManager.h"
 #include "NinePatchImageComponent.h"
@@ -142,14 +143,16 @@ void TitleComponent::NewGameEvent() {
   const auto stage_container =
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage("Stage1");
-  scene::LoadScene(scene::kGame);
+  ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
+      scene::kGame, {0.6f, EaseType::kOutcirc}, {2.5f, EaseType::kIncirc});
 }
 
 void TitleComponent::StageSelect(std::string_view name) {
   const auto stage_container =
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage(name);
-  scene::LoadScene(scene::kGame);
+  ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
+      scene::kGame, {0.6f, EaseType::kOutcirc}, {2.5f, EaseType::kIncirc});
 }
 
 void TitleComponent::OpenStageSelectPopup() {

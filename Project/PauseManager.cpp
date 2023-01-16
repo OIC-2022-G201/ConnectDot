@@ -4,10 +4,12 @@
 
 #include "Actor.h"
 #include "ButtonSelecter.h"
+#include "ComponentServiceLocator.h"
 #include "EventBus.h"
 #include "EventHandler.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
+#include "ITransitionFadeSystem.h"
 #include "PauseComponent.h"
 #include "PauseEvent.h"
 #include "ResourceContainer.h"
@@ -73,7 +75,13 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
                         PauseEvent e{sender, true};
                         EventBus::FireEvent(e);
                       }},
-                     {{781, 533}, "RestartButton", [] { scene::LoadScene(scene::kGame); }},
+                     {{781, 533},
+                      "RestartButton",
+                      [] {
+                        ServiceLocator::Instance()
+                            .Resolve<ITransitionFadeSystem>()
+                            ->SceneTransition(scene::kGame);
+                      }},
                      {{828, 671}, "GoTitleButton", [] {
                         scene::LoadScene(scene::kTitle);
                       }}};

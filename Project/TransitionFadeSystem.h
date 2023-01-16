@@ -7,16 +7,21 @@
 
 #pragma once
 #include "Game.h"
+#include "ITransitionFadeSystem.h"
 #include "Material.h"
 
-class TransitionFadeSystem {
+class TransitionFadeSystem final : public ITransitionFadeSystem {
   base_engine::Game* game_;
   std::shared_ptr<base_engine::Material> material_;
 
-public:
+ public:
   explicit TransitionFadeSystem(base_engine::Game* game);
 
-  void SceneTransition(const std::string& scene_name);
+  void SceneTransition(
+      std::string_view scene_name,
+      TransitionFadeInfo in_duration = kTransitionFadeDefault,
+      TransitionFadeInfo out_duration = kTransitionFadeDefault) override;
 
-  void Fade();
+  [[nodiscard]] ma_tween::TweenDriver<float>& FadeIn(float duration) override;
+  [[nodiscard]] ma_tween::TweenDriver<float>& FadeOut(float duration) override;
 };

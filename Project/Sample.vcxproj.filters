@@ -1089,9 +1089,6 @@
     <ClCompile Include="ShaderTest01.cpp">
       <Filter>ソース ファイル\ConnectDot\Test</Filter>
     </ClCompile>
-    <ClCompile Include="TransitionFadeComponent.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
-    </ClCompile>
     <ClCompile Include="PauseEvent.cpp">
       <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
     </ClCompile>
@@ -1874,9 +1871,6 @@
     <ClInclude Include="ShaderTest01.h">
       <Filter>ソース ファイル\ConnectDot\Test</Filter>
     </ClInclude>
-    <ClInclude Include="TransitionFadeComponent.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
-    </ClInclude>
     <ClInclude Include="PauseEvent.h">
       <Filter>ソース ファイル\ConnectDot\Event\PauseEvent</Filter>
     </ClInclude>
@@ -1891,6 +1885,9 @@
     </ClInclude>
     <ClInclude Include="VirtualTweenFloat.h">
       <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
+    </ClInclude>
+    <ClInclude Include="ITransitionFadeSystem.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
