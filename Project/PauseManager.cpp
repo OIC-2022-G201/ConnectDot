@@ -80,7 +80,9 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
                       [] {
                         ServiceLocator::Instance()
                             .Resolve<ITransitionFadeSystem>()
-                            ->SceneTransition(scene::kGame);
+                            ->SceneTransition(scene::kTitle,
+                                              {0.3f, EaseType::kOutcirc},
+                                              {0.3f, EaseType::kInsine});
                       }},
                      {{828, 671}, "GoTitleButton", [] {
                         scene::LoadScene(scene::kTitle);

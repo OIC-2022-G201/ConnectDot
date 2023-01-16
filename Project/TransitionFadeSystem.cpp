@@ -48,7 +48,7 @@ ma_tween::TweenDriver<float>& TransitionFadeSystem::FadeIn(float duration) {
     material_->SetParameter({"progress", 0, PropertyType::kBuffer, &progress});
   }
   return ma_tween::VirtualTweenFloat::Tween(
-      game_, 1.2, 0.0f, 3, [this](float b) {
+      game_, 1.2, 0.0f, duration, [this](float b) {
         Progress progress{b};
         material_->SetParameter(
             {"progress", 0, PropertyType::kBuffer, &progress});
@@ -65,7 +65,7 @@ ma_tween::TweenDriver<float>& TransitionFadeSystem::FadeOut(float duration) {
   Progress progress{0.0f};
   material_->SetParameter({"progress", 0, PropertyType::kBuffer, &progress});
   return ma_tween::VirtualTweenFloat::Tween(
-             game_, 0.0f, 1.2f, 3,
+             game_, 0.0f, 1.2f, duration,
              [this](float b) {
                Progress progress{b};
                material_->SetParameter(

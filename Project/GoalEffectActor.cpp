@@ -221,8 +221,8 @@ void GoalEffectActor::GoalEffectComponent::Update() {
 
     ServiceLocator::Instance()
         .Resolve<ITransitionFadeSystem>()
-        ->SceneTransition(scene::kTitle, {0.6f, EaseType::kOutcirc},
-                          {0.6f, EaseType::kIncirc});
+        ->SceneTransition(scene::kTitle, {0.15f, EaseType::kOutcirc},
+                          {0.15f, EaseType::kOutsine});
   }
 }
 

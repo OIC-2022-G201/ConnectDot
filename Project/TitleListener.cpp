@@ -144,7 +144,7 @@ void TitleComponent::NewGameEvent() {
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage("Stage1");
   ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
-      scene::kGame, {0.6f, EaseType::kOutcirc}, {2.5f, EaseType::kIncirc});
+      scene::kGame, {0.6f, EaseType::kOutcirc}, {1.65f, EaseType::kInquad});
 }
 
 void TitleComponent::StageSelect(std::string_view name) {
@@ -152,7 +152,7 @@ void TitleComponent::StageSelect(std::string_view name) {
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage(name);
   ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
-      scene::kGame, {0.6f, EaseType::kOutcirc}, {2.5f, EaseType::kIncirc});
+      scene::kGame, {0.6f, EaseType::kOutcirc}, {1.65f, EaseType::kInquad});
 }
 
 void TitleComponent::OpenStageSelectPopup() {
