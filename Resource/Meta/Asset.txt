@@ -64,13 +64,13 @@ ActionTooltip Sprite UI/Ingame/ActionTooltip/Action.png
 8 Sprite UI/Ingame/Number/8/8.png
 9 Sprite UI/Ingame/Number/9/9.png
 PopupLine Sprite UI/Line/PopupLine/Line.png
-Nextbutton Sprite UI/Nextbutton/Nextlogo.png
 Panel Sprite UI/Panel/Panel.png
 GoTitleButton Button UI/Pose/GoTitleButton/GoTitleButton.png UI/Pose/GoTitleButton/GoTitleButton2.png
 PauseHaikei Sprite UI/Pose/PauseHaikei/Posehaikei.png
 RestartButton Button UI/Pose/RestartButton/RestartButton.png UI/Pose/RestartButton/RestartButton2.png
 ResumeButton Button UI/Pose/ResumeButton/ResumeButton.png UI/Pose/ResumeButton/ResumeButton2.png
 LetterBox Sprite UI/Result/LetterBox/DiagonalLetterBox.png
+NextLogo Sprite UI/Result/NextLogo/NextLogo.png
 ResultCharacter Sprite UI/Result/ResultCharacter/ResultCharacter.png
 ResultLogo Sprite UI/Result/ResultLogo/StageclearLogo.png
 ResultPopup Sprite UI/Result/ResultPopup/PopupResults.png

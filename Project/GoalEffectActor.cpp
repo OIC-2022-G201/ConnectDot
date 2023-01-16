@@ -165,14 +165,14 @@ void GoalEffectActor::GoalEffectComponent::Start() {
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  clear_logo_.Create(game, 171, 92, "ResultLogo")
+  clear_logo_.Create(game, 176, 125, "ResultLogo")
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
   character_logo_.Create(game, 840, 0, "ResultCharacter")
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
 
-  next_logo_.Create(game, 1120, 983, "Nextbutton")
+  next_logo_.Create(game, 972, 948, "NextLogo")
       .Sprite()
       .SetColor(MOF_ARGB(0, 255, 255, 255));
 
