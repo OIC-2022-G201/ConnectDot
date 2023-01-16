@@ -40,6 +40,7 @@ void PlayerVentAction::Update() {
                                 .lock();
         sprite->SetEnabled(true);
         player_->GetAnimator()->ChangeMotion("Leave");
+        
       }
       break;
     case VentActionType::kNone:
@@ -51,6 +52,8 @@ void PlayerVentAction::Update() {
 void PlayerVentAction::ProcessInput() {}
 
 void PlayerVentAction::End() {
+  if (action_type_ != VentActionType::kOut) return;
+  
   collider_->SetObjectFilter(kPlayerObjectFilter);
   collider_->SetTrigger(false);
 }
