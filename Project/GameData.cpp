@@ -13,7 +13,8 @@
 #include "ResourceContainer.h"
 #include "StageContainer.h"
 #include "TexturePaths.h"
-
+#include "TransitionFadeSystem.h"
+using namespace base_engine;
 /**
  * \brief Resourceフォルダ内にある画像ファイルを再帰的に探索し全てロードを行う
  */
@@ -42,6 +43,11 @@ void MaterialCreate() {
     p->Register<Material>(material_ptr);
   }
 }
+void RegisterSystem(Game* game) {
+  ServiceLocator::Instance().RegisterInstance(
+      std::make_shared<TransitionFadeSystem>(game));
+}
+
 void GameData::Register() {
   BASE_ENGINE(Render)->SetCameraPosition(
       {Mof::CGraphicsUtilities::GetGraphics()->GetTargetWidth() / 2.0f,
@@ -53,4 +59,5 @@ void GameData::Register() {
   ServiceLocator::Instance().RegisterInstance(stage_container);
 
   MaterialCreate();
+  RegisterSystem(game_);
 }

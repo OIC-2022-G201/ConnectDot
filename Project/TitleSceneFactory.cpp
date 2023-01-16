@@ -196,15 +196,5 @@ void TitleSceneFactory::Factory() {
     guide->SetEnable(false);
     CreatePopup(input, {583, 572, 1727, 1011}, main_pack, popup, false);
   }
-
-  {
-    const auto actor = new Actor(game_);
-    const auto image = new ImageComponent(actor, 3000);
-
-    image->SetImage(
-        *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("Fade"));
-    const auto transition = new TransitionFadeComponent(actor);
-    transition->Bind(image);
-  }
   return;
 }

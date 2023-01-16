@@ -1,7 +1,9 @@
 ﻿#include "TransitionFadeComponent.h"
 
+#include "ComponentServiceLocator.h"
 #include "MofShader.h"
 #include "ResourceContainer.h"
+#include "TransitionFadeSystem.h"
 
 using namespace base_engine;
 
@@ -26,7 +28,10 @@ void TransitionFadeComponent::Bind(base_engine::ImageComponent* image) const {
   image->SetColor(MOF_ARGB(255, 29, 33, 45));
 }
 
-void TransitionFadeComponent::Start() {}
+void TransitionFadeComponent::Start() {
+  //ServiceLocator::Instance().Resolve<TransitionFadeSystem>()->Fade();
+
+}
 
 void TransitionFadeComponent::Update() {
   progress_ += 0.01f;

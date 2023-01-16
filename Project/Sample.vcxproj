@@ -154,6 +154,7 @@
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
     <ClCompile Include="TransitionFadeComponent.cpp" />
+    <ClCompile Include="TransitionFadeSystem.cpp" />
     <ClCompile Include="Tween.cpp" />
     <ClCompile Include="UiFactoryUtilities.cpp" />
     <ClCompile Include="UiPackage.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="SecondEnemyComponent.cpp" />
     <ClCompile Include="SpriteAnimationClipLoader.cpp" />
     <ClCompile Include="TitleSceneFactory.cpp" />
+    <ClCompile Include="VirtualTweenFloat.cpp" />
     <ClCompile Include="VisionCreateComponent.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
     <ClCompile Include="Event.cpp" />
@@ -352,6 +354,7 @@
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeComponent.h" />
+    <ClInclude Include="TransitionFadeSystem.h" />
     <ClInclude Include="Tween.h" />
     <ClInclude Include="UiFactoryUtilities.h" />
     <ClInclude Include="UiFrozen.h" />
@@ -391,6 +394,7 @@
     <ClInclude Include="SecondEnemyComponent.h" />
     <ClInclude Include="SpriteAnimationClipLoader.h" />
     <ClInclude Include="TitleSceneFactory.h" />
+    <ClInclude Include="VirtualTweenFloat.h" />
     <ClInclude Include="VisionCreateComponent.h" />
     <ClInclude Include="EnumExtension.h" />
     <ClInclude Include="EnumFlags.h" />

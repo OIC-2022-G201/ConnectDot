@@ -1101,6 +1101,12 @@
     <ClCompile Include="PauseComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\Pause\Private</Filter>
     </ClCompile>
+    <ClCompile Include="TransitionFadeSystem.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClCompile>
+    <ClCompile Include="VirtualTweenFloat.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1879,6 +1885,12 @@
     </ClInclude>
     <ClInclude Include="PauseComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\Pause\Private</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionFadeSystem.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualTweenFloat.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

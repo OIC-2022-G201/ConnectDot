@@ -6,6 +6,7 @@
 #include "Actor.h"
 #include "ButtonCommandEventContainer.h"
 #include "ComponentServiceLocator.h"
+#include "GameData.h"
 #include "IBaseEngineCollider.h"
 #include "IBaseEngineRender.h"
 #include "InputManager.h"
@@ -19,14 +20,19 @@
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
+#include "TransitionFadeSystem.h"
 base_engine::IBaseEngineCollider* b_collision;
 
 namespace base_engine {
 
 bool Game::Initialize() {
   BASE_ENGINE(Render)->Initialize();
+	{
+		std::unique_ptr<GameData> game_data;
 
-  game_data_.Register();
+  	game_data = std::make_unique<GameData>(this);
+  	game_data->Register();
+	}
   actors_.reserve(1024);
   scene::SceneManager::Instance().Register(this);
   button::ButtonCommandEventContainer::Instance().SetGame(this);
@@ -51,7 +57,8 @@ void Game::Update() {
   UpdateGame();
   b_collision->Collide();
   if (g_pInput->IsKeyPush(MOFKEY_N)) {
-    scene::LoadScene(scene::kGame);
+    //scene::LoadScene(scene::kGame);
+    ServiceLocator::Instance().Resolve<TransitionFadeSystem>()->Fade();
   }
 }
 
