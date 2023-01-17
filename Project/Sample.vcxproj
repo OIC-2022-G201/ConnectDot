@@ -138,6 +138,7 @@
     <ClCompile Include="PauseComponent.cpp" />
     <ClCompile Include="PauseManager.cpp" />
     <ClCompile Include="PauseEvent.cpp" />
+    <ClCompile Include="PlayerGoal.cpp" />
     <ClCompile Include="PositionXTween.cpp" />
     <ClCompile Include="PositionYTween.cpp" />
     <ClCompile Include="ResultModel.cpp" />
@@ -337,6 +338,7 @@
     <ClInclude Include="PauseComponent.h" />
     <ClInclude Include="PauseManager.h" />
     <ClInclude Include="PauseEvent.h" />
+    <ClInclude Include="PlayerGoal.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="PositionYTween.h" />
     <ClInclude Include="ReleaseInfo.h" />

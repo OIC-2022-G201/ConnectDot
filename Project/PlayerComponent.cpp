@@ -56,7 +56,8 @@ class PlayerComponent::PlayerListener final
  public:
   explicit PlayerListener(PlayerComponent& player) : player_(player){};
   void OnEvent(GoalEvent& e) override {
-    player_.can_control_ = false;
+
+    player_.machine_.TransitionTo<PlayerGoal>();
     player_.goal_event_ = true;
     new GoalEffectActor(player_.GetGame());
   }

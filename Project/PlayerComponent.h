@@ -16,6 +16,7 @@
 #include "InputManager.h"
 #include "PhysicsBodyComponent.h"
 #include "PlayerFall.h"
+#include "PlayerGoal.h"
 #include "PlayerIdle.h"
 #include "PlayerJump.h"
 #include "PlayerMove.h"
@@ -95,11 +96,11 @@ private:
   TileMapWeak map_;
 
   til::Machine<PlayerIdle, PlayerMove, PlayerSneak, PlayerSneakMove, PlayerJump,
-               PlayerFall, PlayerVentAction>
+               PlayerFall, PlayerVentAction, PlayerGoal>
       machine_ = til::Machine{PlayerIdle{this},      PlayerMove{this},
                               PlayerSneak{this},     PlayerSneakMove{this},
                               PlayerJump{this},      PlayerFall{this},
-                              PlayerVentAction{this}};
+                              PlayerVentAction{this},PlayerGoal{this}};
 
   std::weak_ptr<base_engine::CollisionComponent> collision_;
   std::weak_ptr<base_engine::PhysicsBodyComponent> physics_body_;

@@ -1107,6 +1107,9 @@
     <ClCompile Include="VirtualTweenFloat.cpp">
       <Filter>ソース ファイル\ConnectDot\Tweener\Dummytween</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerGoal.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1894,6 +1897,9 @@
     </ClInclude>
     <ClInclude Include="ITransitionFadeSystem.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\Transition</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerGoal.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
