@@ -61,9 +61,9 @@ void StageSceneFactory::Factory() {
       std::array create_def = {
           CreateInfo{"BG70", 1, 0.2f, 5, false, camera_pos},
           CreateInfo{"BG65", 0.7, 1, 10, false, camera_pos},
-          CreateInfo{"BG60", 0.7, 0.7, 15, true, camera_pos},
+          CreateInfo{"BG60", 0.7, 0.1, 15, true, camera_pos},
           CreateInfo{"BG50", 0, 1, 20, false, camera_pos},
-          CreateInfo{"BG40", 0.5, 0.5, 25, true, camera_pos},
+          CreateInfo{"BG40", 0.5, 0.1, 25, true, camera_pos},
           CreateInfo{"BG30", 0.4, 1, 30, false, camera_pos},
           CreateInfo{"BG20", 0.3, 0, 35, false, pos},
           CreateInfo{"BG10", -0.2, 0, 200, false, pos}};
