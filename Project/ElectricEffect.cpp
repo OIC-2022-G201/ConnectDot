@@ -22,7 +22,7 @@ void ElectricEffect::Play(const Vector2& pos1, const Vector2& pos2) {
   {
     if (!sprite_) {
       sprite_ = new SpriteComponent(this, draw_order::kElectricEffectDrawOrder);
-      sprite_->SetColor(MOF_ARGB(255 / 3, 255, 255, 255));
+      sprite_->SetColor(MOF_ARGB(static_cast<int>(255 *0.8), 255, 255, 255));
       motion_ = new MofSpriteAnimationComponent(this, 500);
     }
     current_frame_ = 0;
