@@ -80,12 +80,16 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
                       [] {
                         ServiceLocator::Instance()
                             .Resolve<ITransitionFadeSystem>()
-                            ->SceneTransition(scene::kTitle,
+                            ->SceneTransition(scene::kGame,
                                               {0.3f, EaseType::kOutcirc},
                                               {0.3f, EaseType::kInsine});
                       }},
                      {{828, 671}, "GoTitleButton", [] {
-                        scene::LoadScene(scene::kTitle);
+                        ServiceLocator::Instance()
+                            .Resolve<ITransitionFadeSystem>()
+                            ->SceneTransition(scene::kTitle,
+                                              {0.3f, EaseType::kOutcirc},
+                                              {0.3f, EaseType::kInsine});
                       }}};
 
     const auto selector = new ButtonSelecter(game_);
