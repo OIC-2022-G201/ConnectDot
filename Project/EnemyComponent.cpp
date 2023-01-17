@@ -28,6 +28,16 @@ namespace enemy {
 		GetVision()->SetReverseWidth(0);
 
 		machine_.TransitionTo<EnemyMove>();
+                direction.Subscribe([this](const bool dir) {
+                  switch (dir) {
+                    case Left:
+                      sprite_.lock()->SetFlip(Flip::kNone);
+                      break;
+                    case Right:
+                      sprite_.lock()->SetFlip(Flip::kHorizontal);
+                      break;
+                  }
+                });
 	}
 
 	void EnemyComponent::ProcessInput() {
@@ -35,18 +45,7 @@ namespace enemy {
 	}
 
 	void EnemyComponent::Update() {
-		direction.Subscribe([this](const bool dir)
-			{
-				switch (dir)
-				{
-				case Left:
-					sprite_.lock()->SetFlip(Flip::kNone);
-					break;
-				case Right:
-					sprite_.lock()->SetFlip(Flip::kHorizontal);
-					break;
-				}
-			});
+
 		physics_body_.lock()->AddForce({0, Gravity});
 		machine_.Update();
 	}
