@@ -47,11 +47,6 @@ void GameOverSceneFactory::Factory() {
 
   const auto input_actor = new InputActor(game_);
   const auto input = new InputManager(input_actor);
-  
-  const auto image = new ImageComponent(actor);
-  const auto sprite_resource =
-      RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("Gameover");
-  image->SetImage(*sprite_resource);
 
   new ButtonListener(actor);
   const auto selector = new ButtonSelecter(game_);
