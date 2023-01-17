@@ -59,6 +59,13 @@ void Game::Update() {
   if (g_pInput->IsKeyPush(MOFKEY_N)) {
     scene::LoadScene(scene::kGame);
   }
+  if (g_pInput->IsKeyPush(MOFKEY_B))
+  {
+    g_pGraphics->SetScreenMode(false);
+  }
+  if (g_pInput->IsKeyPush(MOFKEY_V)) {
+    g_pGraphics->SetScreenMode(true);
+  }
 }
 
 void Game::Shutdown() { Clear(); }
