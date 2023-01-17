@@ -6,7 +6,7 @@ constexpr TransitionFadeInfo kGoalToTitleFadeout = {0.15f, EaseType::kOutsine};
 
 constexpr TransitionFadeInfo kGoalToNextStageFadeIn = {0.5f,
                                                        EaseType::kOutcirc};
-constexpr TransitionFadeInfo kGoalToNextStageFadeout = {0.5f,
+constexpr TransitionFadeInfo kGoalToNextStageFadeout = {0.75f,
                                                         EaseType::kOutsine};
 
 constexpr TransitionFadeInfo kPauseToGameFadeIn = {0.3f, EaseType::kOutcirc};
@@ -23,7 +23,7 @@ constexpr TransitionFadeInfo kStageSelectToGameFadeIn = {0.6f,
 constexpr TransitionFadeInfo kStageSelectToGameFadeOut = {1.65f,
                                                           EaseType::kInquad};
 
-constexpr TransitionFadeInfo kGameToTitleFadeIn = {0.3f, EaseType::kOutcirc};
+constexpr TransitionFadeInfo kGameToTitleFadeIn = {0.01f, EaseType::kOutcirc};
 constexpr TransitionFadeInfo kGameToTitleFadeOut = {0.3f, EaseType::kInsine};
 
 constexpr TransitionFadeInfo kGameToGameFadeIn = {0.3f, EaseType::kOutcirc};
