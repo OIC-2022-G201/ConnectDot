@@ -17,7 +17,8 @@ std::weak_ptr<ActionToolTipComponent> ActionToolTipComponent::Create(
 
   const auto tooltip = new Actor(owner->GetGame());
   owner->AddChild(tooltip->GetId());
-  tooltip_component->panel_ = tooltip;
+  
+  tooltip_component->panel_ = owner->GetGame()->GetActor(tooltip->GetId());
   tooltip_component->sprite_ = new SpriteComponent(tooltip, 200);
   const auto img =
       *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("ActionTooltip");
@@ -35,13 +36,14 @@ void ActionToolTipComponent::Show() {
   open_ = true;
   if (play_animation_) return;
   if (is_show_) return;
+  if (panel_.expired()) return;
 
   play_animation_ = true;
   ma_tween::PositionYTween::TweenLocalPositionY(
-      panel_, owner_->GetPosition().y - stage::kStageCellSize<float>.y * 0.5f,
+      panel_.lock().get(), owner_->GetPosition().y - stage::kStageCellSize<float>.y * 0.5f,
       kFadeInTime)
       .SetEase(EaseType::kInsine);
-  ma_tween::SpriteAlphaTween::Tween(panel_, 255, kFadeInTime)
+  ma_tween::SpriteAlphaTween::Tween(panel_.lock().get(), 255, kFadeInTime)
       .SetOnComplete([this]
       {
         is_show_ = true;
@@ -52,12 +54,13 @@ void ActionToolTipComponent::Show() {
 void ActionToolTipComponent::Hide() {
   if (play_animation_) return;
   if (!is_show_) return;
+  if (panel_.expired())return;
   play_animation_ = true;
   ma_tween::PositionYTween::TweenLocalPositionY(
-      panel_, owner_->GetPosition().y + 32,
+      panel_.lock().get(), owner_->GetPosition().y + 32,
       kFadeOutTime)
       .SetEase(EaseType::kInsine);
-  ma_tween::SpriteAlphaTween::Tween(panel_, 0, kFadeOutTime)
+  ma_tween::SpriteAlphaTween::Tween(panel_.lock().get(), 0, kFadeOutTime)
       .SetOnComplete([this] {
         is_show_ = false;
 	      play_animation_ = false;

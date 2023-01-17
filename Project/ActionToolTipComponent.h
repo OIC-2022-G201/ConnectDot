@@ -25,7 +25,7 @@ class ActionToolTipComponent : public base_engine::Component {
 
 private:
   base_engine::SpriteComponent* sprite_ = nullptr;
-  base_engine::Actor* panel_ = nullptr;
+  std::weak_ptr<base_engine::Actor> panel_;
 
   bool play_animation_ = false;
   bool open_ = false;
