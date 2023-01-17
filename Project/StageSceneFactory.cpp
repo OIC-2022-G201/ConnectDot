@@ -47,7 +47,7 @@ void StageSceneFactory::Factory() {
 
     {
       std::unordered_map<std::string, float> offset = {
-          {"Stage1", 9}, {"Stage2", 22}, {"Stage3", 9}};
+          {"Stage1", 9}, {"Stage2", 19}, {"Stage3", 9}};
       const float height = stage->LeftBottom().y -
                            offset[stage_def->second.filename().string()] + 0.02;
       const auto pos = GridPosition::GridTo({0, 1}) * height;
