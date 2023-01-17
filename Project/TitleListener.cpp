@@ -16,6 +16,7 @@
 #include "ResourceContainer.h"
 #include "SceneManager.h"
 #include "StageContainer.h"
+#include "TransitionParameter.h"
 using namespace base_engine;
 constexpr float kAnimationElementTime = 0.15f;
 constexpr float kAnimationPopupTime = 0.3f;
@@ -144,7 +145,7 @@ void TitleComponent::NewGameEvent() {
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage("Stage1");
   ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
-      scene::kGame, {0.6f, EaseType::kOutcirc}, {1.65f, EaseType::kInquad});
+      scene::kGame, kNewGameToGameFadeIn, kNewGameToGameFadeOut);
 }
 
 void TitleComponent::StageSelect(std::string_view name) {
@@ -152,7 +153,7 @@ void TitleComponent::StageSelect(std::string_view name) {
       ServiceLocator::Instance().Resolve<StageContainer>();
   stage_container->SelectStage(name);
   ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
-      scene::kGame, {0.6f, EaseType::kOutcirc}, {1.65f, EaseType::kInquad});
+      scene::kGame, kStageSelectToGameFadeIn, kStageSelectToGameFadeOut);
 }
 
 void TitleComponent::OpenStageSelectPopup() {

@@ -21,6 +21,7 @@
 #include "StageSceneFactory.h"
 #include "TitlePresenter.h"
 #include "TitleSceneFactory.h"
+#include "TransitionParameter.h"
 base_engine::IBaseEngineCollider* b_collision;
 
 namespace base_engine {
@@ -43,7 +44,8 @@ bool Game::Initialize() {
   resource_container_->Register();
 
   BASE_ENGINE(Collider)->SetCallBack(this);
-	scene::LoadScene(scene::kTitle);
+  ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
+      scene::kTitle, kGameToTitleFadeIn, kGameToTitleFadeOut);
   //ShaderTest01 test(this);
   //test.Main();
   b_collision = BASE_ENGINE(Collider);
@@ -57,7 +59,9 @@ void Game::Update() {
   UpdateGame();
   b_collision->Collide();
   if (g_pInput->IsKeyPush(MOFKEY_N)) {
-    scene::LoadScene(scene::kGame);
+    ServiceLocator::Instance()
+        .Resolve<ITransitionFadeSystem>()
+        ->SceneTransition(scene::kGame, kGameToGameFadeIn, kGameToGameFadeOut);
   }
 }
 

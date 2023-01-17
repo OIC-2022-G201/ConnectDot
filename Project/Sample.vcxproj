@@ -360,6 +360,7 @@
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeSystem.h" />
+    <ClInclude Include="TransitionParameter.h" />
     <ClInclude Include="Tween.h" />
     <ClInclude Include="UiFactoryUtilities.h" />
     <ClInclude Include="UiFrozen.h" />

@@ -1907,6 +1907,9 @@
     <ClInclude Include="NotPutFloorActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
     </ClInclude>
+    <ClInclude Include="TransitionParameter.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Const</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="LICENSE">
