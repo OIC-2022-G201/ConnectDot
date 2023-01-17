@@ -100,10 +100,18 @@ void TileMapComponent::Load(std::string_view path) {
   }
 
   tile_shape_.emplace_back(new base_engine::Rect(0, 0, 128, 128));
-
+  int n = 0;
   for (int x = 0; x < map_.GetXCount(); ++x) {
     for (int y = 0; y < map_.GetYCount(); ++y) {
       if (map_.GetCell(x, y) == 0) continue;
+      if (x == 0) continue;
+      if (y == 0) continue;
+      if (x == map_.GetXCount()) continue;
+      if (y == map_.GetYCount()) continue;
+      if ((map_.GetCell(x + 1, y) != 0) && (map_.GetCell(x - 1, y) != 0) &&
+          (map_.GetCell(x, y + 1) != 0) && (map_.GetCell(x, y - 1) != 0))
+        continue;
+      n++;
       const auto cell = new base_engine::Actor(owner_->GetGame());
       cell->SetTag("Field");
       cell->SetPosition({static_cast<MofFloat>(x * 128), y * 128.0f});

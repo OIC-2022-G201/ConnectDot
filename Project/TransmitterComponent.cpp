@@ -29,15 +29,9 @@ void TransmitterComponent::Update() {
       receiver_weak.lock()->Connecting(weak_ptr);
     }
   }
-  ConnectBind bind;
-  std::erase_if(target_, [](const std::weak_ptr<ReceiverComponent>& a) {
-    return a.expired();
-  });
-  std::erase_if(target_, [&weak_ptr, this](
-                             const std::weak_ptr<ReceiverComponent>& a) {
-                  return connect_bindable_->Constraints(a, weak_ptr);
-                });
   for (const auto& value : target_) {
+    if (value.expired()) continue;
+    if (connect_bindable_->Constraints(value, weak_ptr)) continue;
     connect_bindable_->BindConnect(value.lock(), weak_ptr);
   }
   target_.clear();
