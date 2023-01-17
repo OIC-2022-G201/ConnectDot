@@ -24,4 +24,5 @@ class StageContainer {
   bool SelectStage(const std::string_view str);
   std::optional<StageDef> GetStage(const std::string& key);
   std::optional<StageDef> GetStage();
+  std::string GetStageName() { return select_stage_; }
 };

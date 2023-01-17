@@ -22,6 +22,7 @@
 #include "ResourceContainer.h"
 #include "ResultModel.h"
 #include "SceneManager.h"
+#include "StageContainer.h"
 #include "TitleSceneFactory.h"
 #include "TransitionParameter.h"
 using namespace base_engine;
@@ -98,6 +99,7 @@ class GoalEffectActor::GoalEffectComponent final : public Component {
   void Start() override;
   void Update() override;
   void Show() {}
+  void Transition();
 
  private:
   auto& OpenPopup() const {
@@ -220,13 +222,34 @@ void GoalEffectActor::GoalEffectComponent::Update() {
   if (!end_animation_) return;
   if (InputManager::Instance()->JumpFire()) {
 
-    ServiceLocator::Instance()
-        .Resolve<ITransitionFadeSystem>()
-        ->SceneTransition(scene::kTitle, kGoalToTitleFadeIn,
-                          kGoalToTitleFadeout);
+      Transition();
   }
 }
 
 GoalEffectActor::GoalEffectActor(base_engine::Game* game) : Actor(game) {}
 
 void GoalEffectActor::Start() { new GoalEffectComponent(this); }
+
+void GoalEffectActor::GoalEffectComponent::Transition()
+{
+	const auto stage_container=ServiceLocator::Instance().Resolve<StageContainer>();
+    auto stage = stage_container->GetStageName().back();
+    stage++;
+    if (stage > '3')
+    {                                           
+      ServiceLocator::Instance()
+          .Resolve<ITransitionFadeSystem>()
+          ->SceneTransition(scene::kTitle, kGoalToTitleFadeIn,
+                            kGoalToTitleFadeout);
+    }
+    else
+    {
+        std::string next = "Stage";
+        next.push_back(stage);
+	    stage_container->SelectStage(next);
+        ServiceLocator::Instance()
+            .Resolve<ITransitionFadeSystem>()
+                ->SceneTransition(scene::kGame, kGoalToNextStageFadeIn,
+                                  kGoalToNextStageFadeout);
+    }
+}
