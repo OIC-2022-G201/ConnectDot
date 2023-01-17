@@ -1110,6 +1110,9 @@
     <ClCompile Include="PlayerGoal.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClCompile>
+    <ClCompile Include="NotPutFloorActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1900,6 +1903,9 @@
     </ClInclude>
     <ClInclude Include="PlayerGoal.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="NotPutFloorActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DummyStub</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
