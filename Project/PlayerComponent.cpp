@@ -29,6 +29,7 @@
 #include "SendManifold.h"
 #include "SpriteComponent.h"
 #include "TileMapComponent.h"
+#include "TransitionParameter.h"
 using namespace std::string_view_literals;
 using namespace base_engine;
 namespace player {

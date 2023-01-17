@@ -14,6 +14,7 @@
 #include "PauseEvent.h"
 #include "ResourceContainer.h"
 #include "SceneManager.h"
+#include "TransitionParameter.h"
 #include "UiFactoryUtilities.h"
 #include "UiFrozen.h"
 
@@ -80,16 +81,14 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
                       [] {
                         ServiceLocator::Instance()
                             .Resolve<ITransitionFadeSystem>()
-                            ->SceneTransition(scene::kGame,
-                                              {0.3f, EaseType::kOutcirc},
-                                              {0.3f, EaseType::kInsine});
+                            ->SceneTransition(scene::kGame, kPauseToGameFadeIn,
+                                              kPauseToGameFadeOut);
                       }},
                      {{828, 671}, "GoTitleButton", [] {
                         ServiceLocator::Instance()
                             .Resolve<ITransitionFadeSystem>()
-                            ->SceneTransition(scene::kTitle,
-                                              {0.3f, EaseType::kOutcirc},
-                                              {0.3f, EaseType::kInsine});
+                            ->SceneTransition(scene::kTitle, kPauseToGameFadeIn,
+                                              kPauseToGameFadeOut);
                       }}};
 
     const auto selector = new ButtonSelecter(game_);

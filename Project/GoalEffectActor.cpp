@@ -23,6 +23,7 @@
 #include "ResultModel.h"
 #include "SceneManager.h"
 #include "TitleSceneFactory.h"
+#include "TransitionParameter.h"
 using namespace base_engine;
 using ::GoalEffectActor;
 using RC = ResourceContainer;
@@ -221,8 +222,8 @@ void GoalEffectActor::GoalEffectComponent::Update() {
 
     ServiceLocator::Instance()
         .Resolve<ITransitionFadeSystem>()
-        ->SceneTransition(scene::kTitle, {0.15f, EaseType::kOutcirc},
-                          {0.15f, EaseType::kOutsine});
+        ->SceneTransition(scene::kTitle, kGoalToTitleFadeIn,
+                          kGoalToTitleFadeout);
   }
 }
 

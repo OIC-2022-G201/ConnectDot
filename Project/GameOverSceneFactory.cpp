@@ -7,13 +7,16 @@
 #include "ButtonPressEvent.h"
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
+#include "ComponentServiceLocator.h"
 #include "EventBus.h"
 #include "GameOverComponent.h"
 #include "ImageAlphaTween.h"
 #include "InputManager.h"
+#include "ITransitionFadeSystem.h"
 #include "PositionYTween.h"
 #include "ResourceContainer.h"
 #include "SceneManager.h"
+#include "TransitionParameter.h"
 #include "UiFactoryUtilities.h"
 #include "UiFrozen.h"
 #include "UiPackage.h"
@@ -63,8 +66,21 @@ void GameOverSceneFactory::Factory() {
 
   const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
       main_pack = {
-        {{475, 732}, "RetryButton", [] {scene::LoadScene(scene::kGame); }},
-  	    {{1039, 732}, "GiveupButton", [] {scene::LoadScene(scene::kTitle); }},
+        {{475, 732}, "RetryButton", []
+        {
+             ServiceLocator::Instance()
+                 .Resolve<ITransitionFadeSystem>()
+                 ->SceneTransition(scene::kGame, kGameOverToGameFadeIn,
+                                   kGameOverToGameFadeOut);
+  
+        }},
+  	    {{1039, 732}, "GiveupButton", []
+  	    {
+             ServiceLocator::Instance()
+                 .Resolve<ITransitionFadeSystem>()
+                 ->SceneTransition(scene::kTitle, kGameOverToTitleFadeIn,
+                                   kGameOverToTitleFadeOut);
+  	    }},
       };
   for (int i = 0; i < main_pack.size(); ++i) {
       const auto& [pos, name, action] = main_pack[i];
