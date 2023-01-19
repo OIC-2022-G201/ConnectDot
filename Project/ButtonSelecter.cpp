@@ -70,6 +70,7 @@ void ButtonSelecter::SetSelect(size_t now_select_x, size_t now_select_y) {
 void ButtonSelecter::ChangeHover() {
   if (!buttongroupe_[now_select_y_][now_select_x_]) return;
   if (!buttongroupe_[prev_y_][prev_x_]) return;
+  if (now_select_x_ == prev_x_ && now_select_y_ == prev_y_) return;
   const auto& current_button = buttongroupe_[now_select_y_][now_select_x_];
   ArrowSync();
   current_button->OnHover();
