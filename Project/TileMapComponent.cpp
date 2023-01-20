@@ -98,8 +98,17 @@ void TileMapComponent::Load(std::string_view path) {
       }
     }
   }
-
-  tile_shape_.emplace_back(new base_engine::Rect(0, 0, 128, 128));
+  tile_shape_.clear();
+  {
+    Mof::CReadTextFile reader("mapchip/StageSetTile.txt");
+    
+    for (int i = 0; i < 50; ++i) {
+      Mof::Rectangle rect;
+      reader.ReadU16();
+      reader.ReadRectangle(rect);
+      tile_shape_.emplace_back(std::make_shared<base_engine::Rect>(rect));
+    }
+  }
   int n = 0;
   for (int x = 0; x < map_.GetXCount(); ++x) {
     for (int y = 0; y < map_.GetYCount(); ++y) {
@@ -118,7 +127,7 @@ void TileMapComponent::Load(std::string_view path) {
       const auto collision = new base_engine::CollisionComponent(cell);
       collision->SetObjectFilter(kFieldObjectFilter);
       collision->SetTargetFilter(kFieldTargetFilter);
-      collision->SetShape(tile_shape_[0]);
+      collision->SetShape(tile_shape_[map_.GetCell(x, y)-1]);
     }
   }
 }

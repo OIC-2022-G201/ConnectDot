@@ -40,7 +40,7 @@ void PlayerActor::Start() {
   }
   {
     const auto collision = new CollisionComponent(this);
-    const auto shape_player = std::make_shared<Rect>(70, 70, 256 - 70, 256);
+    const auto shape_player = std::make_shared<Rect>(90, 100, 256 -90, 256);
     collision->SetShape(shape_player);
     collision->SetObjectFilter(kPlayerObjectFilter);
     collision->SetTargetFilter(kPlayerTargetFilter);
