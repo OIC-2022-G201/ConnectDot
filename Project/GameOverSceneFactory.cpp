@@ -59,6 +59,10 @@ void GameOverSceneFactory::Factory() {
 
   const auto component = new GameOverComponent(actor);
 
+  const auto haikei = new ImageComponent(actor);
+  const auto haikei_resource = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("Gameover");
+  haikei->SetImage(*haikei_resource);
+
   const auto logo = new Actor(game_);
   logo->SetPosition({ 356,0 });
   const auto logo_image = new ImageComponent(logo);
