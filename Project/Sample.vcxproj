@@ -191,6 +191,7 @@
     <ClCompile Include="SecondEnemyComponent.cpp" />
     <ClCompile Include="SpriteAnimationClipLoader.cpp" />
     <ClCompile Include="TitleSceneFactory.cpp" />
+    <ClCompile Include="VentGroupLocator.cpp" />
     <ClCompile Include="VirtualTweenFloat.cpp" />
     <ClCompile Include="VisionCreateComponent.cpp" />
     <ClCompile Include="EpaSolver.cpp" />
@@ -400,6 +401,7 @@
     <ClInclude Include="SecondEnemyComponent.h" />
     <ClInclude Include="SpriteAnimationClipLoader.h" />
     <ClInclude Include="TitleSceneFactory.h" />
+    <ClInclude Include="VentGroupLocator.h" />
     <ClInclude Include="VirtualTweenFloat.h" />
     <ClInclude Include="VisionCreateComponent.h" />
     <ClInclude Include="EnumExtension.h" />

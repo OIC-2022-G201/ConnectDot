@@ -544,6 +544,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\Pause\Private">
       <UniqueIdentifier>{101cdf18-248c-4b0b-a161-92aba9e1ab2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentContainerGroup">
+      <UniqueIdentifier>{4783c221-7a53-4cb3-a945-5cb4184221f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent">
+      <UniqueIdentifier>{5ca8ba14-642e-4235-b9a3-3a2f57cb7605}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -821,12 +827,6 @@
     </ClCompile>
     <ClCompile Include="PlayerFall.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
-    </ClCompile>
-    <ClCompile Include="VentComponent.cpp">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
-    </ClCompile>
-    <ClCompile Include="VentReceiver.cpp">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
     </ClCompile>
     <ClCompile Include="PlayerVentAction.cpp">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
@@ -1112,6 +1112,15 @@
     </ClCompile>
     <ClCompile Include="GameOverComponent.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\Gameover</Filter>
+    </ClCompile>
+    <ClCompile Include="VentGroupLocator.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentContainerGroup</Filter>
+    </ClCompile>
+    <ClCompile Include="VentComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="VentReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1625,12 +1634,6 @@
     <ClInclude Include="IMachineActionable.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Interface</Filter>
     </ClInclude>
-    <ClInclude Include="VentComponent.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
-    </ClInclude>
-    <ClInclude Include="VentReceiver.h">
-      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerVentAction.h">
       <Filter>ソース ファイル\ConnectDot\LivingEntity\Player\State</Filter>
     </ClInclude>
@@ -1909,6 +1912,15 @@
     </ClInclude>
     <ClInclude Include="GameOverComponent.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\Gameover</Filter>
+    </ClInclude>
+    <ClInclude Include="VentGroupLocator.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentContainerGroup</Filter>
+    </ClInclude>
+    <ClInclude Include="VentComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="VentReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

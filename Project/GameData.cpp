@@ -14,6 +14,7 @@
 #include "StageContainer.h"
 #include "TexturePaths.h"
 #include "TransitionFadeSystem.h"
+#include "VentGroupLocator.h"
 using namespace base_engine;
 /**
  * \brief Resourceフォルダ内にある画像ファイルを再帰的に探索し全てロードを行う
@@ -57,6 +58,8 @@ void GameData::Register() {
   const auto stage_container = std::make_shared<StageContainer>();
   stage_container->Initialize();
   ServiceLocator::Instance().RegisterInstance(stage_container);
+
+  ServiceLocator::Instance().RegisterInstance(std::make_shared<VentGroupLocator>());
 
   MaterialCreate();
   RegisterSystem(game_);
