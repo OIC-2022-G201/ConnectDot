@@ -124,6 +124,9 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
 
   SetName("Beacon");
   SetTag("Beacon");
+
+    map_=ComponentServiceLocator::Instance().Resolve<tile_map::TileMapComponent>();
+    object_map_ = ComponentServiceLocator::Instance().Resolve<tile_map::ObjectTileMapComponent>();
 }
 
 BeaconActor::~BeaconActor() = default;
@@ -141,6 +144,13 @@ void BeaconActor::Update() {
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<BeaconReceiver>(this, kBeaconReceiverOffset);
   }
+
+  auto bottom_pos = GridPosition::VectorTo(GetPosition()) + GridPosition{ 0,1 };
+  if (map_->GetCell(bottom_pos) == tile_map::kEmptyCell &&
+      object_map_->GetCell(bottom_pos) != tile_map::kCanOnPlace)
+    {
+        Close();
+    }
 }
 
 void BeaconActor::LevelUp() {
