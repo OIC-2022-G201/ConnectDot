@@ -29,6 +29,8 @@ class TransmitterComponent : public base_engine::Component {
   [[nodiscard]] int Level() const { return level_; }
 
   void SetLevel(const int level) { level_ = level; }
+  void SetCanRemote(bool remote) { can_remote_ = remote; }
+  bool CanRemote() const { return can_remote_; }
 
  public:
   template <
@@ -52,9 +54,10 @@ class TransmitterComponent : public base_engine::Component {
   void CreateConnectBind(Types&&... args) {
     connect_bindable_ = std::make_unique<T>(std::forward<Types>(args)...);
   }
-  
+
   std::unique_ptr<IConnectBindable> connect_bindable_;
   std::deque<std::weak_ptr<class ReceiverComponent>> target_;
   std::unique_ptr<ISendablePower> transmitter_;
   int level_ = 1;
+  bool can_remote_ = false;
 };

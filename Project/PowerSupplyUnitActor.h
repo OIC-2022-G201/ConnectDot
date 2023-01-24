@@ -40,12 +40,15 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   bool IsOutline() const;
   void SetOnImage(const bool flg) const;
 
-private:
+  void SetCanRemote(const bool remote) { can_remote_ = remote; }
+
+ private:
   std::vector<Actor*> targets_;
 
   base_engine::SpriteComponent* sprite_outline_;
   base_engine::SpriteComponent* sprite_;
   observable::ReactiveProperty<bool> electric_power_ = false;
   bool is_fly_ = false;
+  bool can_remote_ = false;
   int sequential_ = 15;
 };

@@ -60,6 +60,8 @@ class ReceiverComponent : public base_engine::Component {
   [[nodiscard]] std::weak_ptr<base_engine::Actor> GetSenderActor() const;
   void FlowSparkEffect() const;
 
+    void SetCanRemote(const bool remote) { can_remote_ = remote; }
+  bool CanRemote() const { return can_remote_; }
  protected:
   enum class PowerState {
     kDisconnect,    //接続が切れている
@@ -77,5 +79,6 @@ class ReceiverComponent : public base_engine::Component {
   base_engine::ISpriteAnimationComponent* flow_spark_animation_ = nullptr;
   int level_ = 1;
 
+  bool can_remote_ = false;
   bool next_frame_disconnect_ = false;
 };

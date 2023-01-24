@@ -25,6 +25,7 @@ using namespace std::string_view_literals;
 constexpr std::string_view kDoorName = "Door"sv;
 constexpr std::string_view kPowerSupplyName = "Powersupply"sv;
 constexpr std::string_view kMultiPowerSupplyName = "MultiPowersupply"sv;
+constexpr std::string_view kMultiRemotePowerSupplyName = "MultiRemotePowersupply"sv;
 constexpr std::string_view kStartPowerSupplyName = "StartPowersupply"sv;
 constexpr std::string_view kLeverName = "Lever"sv;
 constexpr std::string_view kMoveFloorName = "Movefloor"sv;
@@ -54,12 +55,14 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
 
   static Actor* MoveFloorCreate(GimmickCreator* instance, Game* game,
                                 const LoadObject& object);
-  static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
-                                  const LoadObject& object);
   static Actor* NotPutFloorCreate(GimmickCreator* instance, Game* game,
                                   const LoadObject& object);
 
+  static Actor* PowerSupplyCreate(GimmickCreator* instance, Game* game,
+                                  const LoadObject& object);
   static Actor* MultiPowerSupplyCreate(GimmickCreator* instance, Game* game,
+                                       const LoadObject& object);
+  static Actor* MultiRemotePowerSupplyCreate(GimmickCreator* instance, Game* game,
                                        const LoadObject& object);
   static Actor* PylonCreate(GimmickCreator* instance, Game* game,
                             const LoadObject& object);
@@ -107,6 +110,12 @@ constexpr std::array kGimmickMethodTable = {
     std::tuple{
         kMultiPowerSupplyName,                      // Name
         &SetupImpl::MultiPowerSupplyCreate,         // CreateMethod
+        &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
+    },
+
+    std::tuple{
+        kMultiRemotePowerSupplyName,                      // Name
+        &SetupImpl::MultiRemotePowerSupplyCreate,         // CreateMethod
         &Gc::FactoryRegister<PowerSupplyUnitActor>  // FactoryRegister
     },
     std::tuple{
@@ -245,6 +254,26 @@ Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
       if (!instance->actor_map_.contains(key)) continue;;
       const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
       power_unit->AddTarget(actor); 
+    }
+  });
+  return power_unit;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::MultiRemotePowerSupplyCreate(
+	GimmickCreator* instance, Game* game, const LoadObject& object)
+{
+  const auto power_unit = new PowerSupplyUnitActor(game);
+  power_unit->SetCanRemote(true);
+  power_unit->Create(object);
+
+  instance->bind_event_.emplace_back([power_unit, object, instance, game]() {
+    for (int i = 4; i < 12; ++i) {
+      const auto& key =
+          std::get<LoadObject::Prefab>(object.parameters[i]).value.uuid;
+      if (!instance->actor_map_.contains(key)) continue;
+      ;
+      const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
+      power_unit->AddTarget(actor);
     }
   });
   return power_unit;

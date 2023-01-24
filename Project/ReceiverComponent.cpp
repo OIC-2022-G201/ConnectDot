@@ -24,18 +24,22 @@ void ReceiverComponent::OnPowerExit() {
 
 void ReceiverComponent::OnPowerEnter() {
   if (receiver_->IsWireless()) {
-    if (effect_.expired()) {
-      ECreate();
-    } else {
-      const auto effect =
-          std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
-      effect->Show();
+    if (!CanRemote() || !sender_.lock()->CanRemote())
+    {
+	    if (effect_.expired()) {
+	    	ECreate();
+	    } else {
+	    	const auto effect =
+						std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+	    	effect->Show();
+	    }
+    	const auto effect =
+					std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+    	effect->SetTransmitter(sender_);
+    	effect->Play(sender_.lock()->GetPosition(), GetPosition());
     }
-    const auto effect =
-        std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
-    effect->SetTransmitter(sender_);
-    effect->Play(sender_.lock()->GetPosition(), GetPosition());
   }
+
   receiver_->OnPowerEnter(sender_.lock().get());
   current_state_ = PowerState::kConnecting;
 }
@@ -137,6 +141,7 @@ bool ReceiverComponent::Disconnect() {
 
 void ReceiverComponent::Connecting(
     const std::weak_ptr<TransmitterComponent> sender_weak) {
+  if (wait_frame_ != 0) return;
   if (sender_weak.expired()) return;
   const auto sender = sender_weak.lock();
   if (sender_.expired()) {

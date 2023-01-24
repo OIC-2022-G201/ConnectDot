@@ -68,9 +68,10 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
   {
     const auto transmitter = new TransmitterComponent(this, 100);
     transmitter->Create<PowerSupplyUnitTransmitter>(this);
-
+    transmitter->SetCanRemote(can_remote_);
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<PowerSupplyUnitReceiver>(this, nullptr, transmitter);
+    receiver->SetCanRemote(can_remote_);
 
     {
       const int level =
