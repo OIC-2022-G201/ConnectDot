@@ -31,5 +31,5 @@ class PowerSupplyUnitReceiver : public IReceivablePower {
   class TransmitterComponent* sender_ = nullptr;
   OneTimeEffectActor* effect_actor_ = nullptr;
 
-  int sequential_;
+  int sequential_ = -1;
 };

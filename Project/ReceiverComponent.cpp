@@ -158,8 +158,10 @@ void ReceiverComponent::Connecting(
                                  .lock()
                                  ->GetComponent<ReceiverComponent>();
     if (!target_weak.expired()) {
-      if (prev_receiver.lock()->Sequential() >
-          target_weak.lock()->Sequential()) {
+      const auto pre = prev_receiver.lock()->Sequential();
+      const auto current = target_weak.lock()->Sequential();
+      if (pre >
+          current) {
         sender_ = sender;
       }
     }

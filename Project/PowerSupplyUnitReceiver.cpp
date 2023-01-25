@@ -41,7 +41,7 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
     if (const auto receiver =
             transmitter->GetOwner().lock()->GetComponent<ReceiverComponent>();
         !receiver.expired()) {
-      sequential_ = receiver.lock()->Sequential();
+      sequential_ = receiver.lock()->Sequential() + 1;
     }
   }
   actor_->SetElectricPower(true);

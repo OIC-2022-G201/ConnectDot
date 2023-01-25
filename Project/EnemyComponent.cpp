@@ -17,7 +17,8 @@ namespace enemy {
           sprite_.lock()->SetImage(
               BASE_ENGINE(Texture)->Get(texture::kEnemyTextureKey));
 		  
-		const auto enemy_shape = std::make_shared<Rect>(0, 0, 256, 256);
+		const auto enemy_shape =
+              std::make_shared<Rect>(32, 256 * 0.75f, 256 - 32, 256);
 		physics_body_ = owner_->GetComponent<PhysicsBodyComponent>();
 		collision_ = owner_->GetComponent<CollisionComponent>();
 		collision_.lock()->SetShape(enemy_shape);

@@ -50,5 +50,5 @@ class PowerSupplyUnitActor final : public base_engine::Actor {
   observable::ReactiveProperty<bool> electric_power_ = false;
   bool is_fly_ = false;
   bool can_remote_ = false;
-  int sequential_ = 15;
+  int sequential_ = -1;
 };

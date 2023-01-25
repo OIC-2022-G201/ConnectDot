@@ -12,8 +12,7 @@ bool ConnectBind::BindConnect(
 bool ConnectBind::Constraints(
     const std::weak_ptr<ReceiverComponent>& receiver,
     const std::weak_ptr<TransmitterComponent>& transmitter) {
-  return (receiver.lock()->IsConnect() == true &&
-          !receiver.lock()->EqualSender(transmitter)) ||
+  return 
          TransmitterComponent::CoercionCondition(receiver) ||
          receiver.lock()->Level() > transmitter.lock()->Level();
 }
