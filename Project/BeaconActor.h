@@ -2,7 +2,10 @@
 #include <variant>
 
 #include "Actor.h"
+#include "GridPosition.h"
 #include "ISpriteAnimationComponent.h"
+#include "ObjectTileMapComponent.h"
+#include "TileMapComponent.h"
 #include "ReactiveProperty.h"
 #include "ShapeRenderComponent.h"
 #include "SpriteComponent.h"
@@ -53,5 +56,6 @@ private:
   base_engine::SpriteComponent* sprite_outline_;
   base_engine::SpriteComponent* range_sprite_;
 
-
+  std::shared_ptr<tile_map::TileMapComponent> map_;
+  std::shared_ptr<tile_map::ObjectTileMapComponent> object_map_;
 };
