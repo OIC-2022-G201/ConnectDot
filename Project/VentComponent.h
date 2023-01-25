@@ -37,6 +37,10 @@ class VentComponent final : public base_engine::Component,
 
   void SetElectric(const bool flg) { electric_power_ = flg; }
   [[nodiscard]] bool GetElectric() const { return electric_power_; }
-private:
+  void SetGroupTag(const int tag) { group_mask_ = tag; }
+  int GroupMask() const { return group_mask_; }
+
+ private:
+  int group_mask_;
   bool electric_power_ = false;
 };

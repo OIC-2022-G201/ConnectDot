@@ -10,8 +10,10 @@
 #include <memory>
 #include <vector>
 
+#include "Actor.h"
+
 class VentGroupLocator {
-  using WeakVent = std::weak_ptr<class VentActor>;
+  using WeakVent = std::weak_ptr<base_engine::Actor>;
   using VentContainer = std::map<int, WeakVent>;
 
  public:

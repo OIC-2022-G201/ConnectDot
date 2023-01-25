@@ -21,6 +21,7 @@
 #include "StageConstitution.h"
 #include "TexturePaths.h"
 #include "TransmitterComponent.h"
+#include "VentGroupLocator.h"
 #include "VentReceiver.h"
 
 using namespace base_engine;
@@ -50,9 +51,9 @@ void VentActor::Create(const LoadObject& object) {
         std::get<LoadObject::TexturePath>(object.parameters[0]).value;
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
-  {
-    auto vent = new VentComponent(this);
 
+  auto vent = new VentComponent(this);
+  {
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<VentReceiver>(vent);
   }
@@ -63,6 +64,12 @@ void VentActor::Create(const LoadObject& object) {
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
         ->SetCell(pos.x, pos.y, 1);
+  }
+  {
+    const int tag = std::get<int>(*std::prev(object.parameters.end(), 2));
+    ServiceLocator::Instance().Resolve<VentGroupLocator>()->RegisterVent(
+        tag, GetGame()->GetActor(GetId()));
+    vent->SetGroupTag(tag);
   }
   SetName("VentActor");
 }
