@@ -40,6 +40,10 @@ class HitGroundCallback final : public physics::PhysicsRayCastCallback {
   float ReportFixture(physics::PhysicsFixture* fixture,
                       const physics::PVec2& point, const physics::PVec2& normal,
                       float fraction) override {
+    if (fixture->collision_->GetTrigger())
+    {
+      return fraction;
+    }
     if (fixture->collision_->GetObjectFilter() == kFieldObjectFilter) {
       ground_fixture_ = fixture;
       return 0;
