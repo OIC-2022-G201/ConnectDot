@@ -8,9 +8,8 @@
 using namespace player;
 constexpr size_t kMaxFrame = 38;
 
-class VentCalcUtilities
-{
-public:
+class VentCalcUtilities {
+ public:
   static PlayerVentAction::VentDir CalcVentDir(const float horizontal) {
     if (horizontal == 0) return PlayerVentAction::VentDir::kNone;
     if (std::signbit(horizontal)) {
@@ -18,8 +17,8 @@ public:
     }
     return PlayerVentAction::VentDir::kNext;
   }
-  static base_engine::Vector2 CalcVentTargetPos(const VentComponent* vent,Mof::CRectangle clip)
-  {
+  static base_engine::Vector2 CalcVentTargetPos(const VentComponent* vent,
+                                                Mof::CRectangle clip) {
     return vent->GetGoInPosition() -
            base_engine::Vector2{clip.GetWidth() / 2, clip.GetHeight() / 2};
   }
@@ -131,12 +130,6 @@ void PlayerVentAction::OutActionUpdate() {
     action_type_ = VentActionType::kNone;
     end_ = true;
   }
-
-  const float t1 = static_cast<float>(current_frame_) / kMaxFrame;
-  const float t2 = -(t1 * t1) + 2 * t1;
-
-  // player_->GetOwner()->SetPosition(Mof::CVector2Utilities::Lerp(
-  //    target_pos_, target_pos_ + Mof::Vector2{100, 0}, t2));
 }
 
 std::weak_ptr<VentComponent> PlayerVentAction::GetVentMoveTo(
@@ -165,8 +158,7 @@ std::weak_ptr<VentComponent> PlayerVentAction::GetVentMoveTo(
   return move_to.lock()->GetComponent<VentComponent>();
 }
 
-void PlayerVentAction::VentMove(const std::weak_ptr<VentComponent> vent)
-{
+void PlayerVentAction::VentMove(const std::weak_ptr<VentComponent>& vent) {
   vent_ = vent.lock().get();
   const auto pre_pos = target_pos_;
 
