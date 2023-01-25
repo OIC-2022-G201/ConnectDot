@@ -73,7 +73,7 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
                       "ResumeButton",
                       [this] {
                         std::any sender = this;
-                        PauseEvent e{sender, true};
+                        PauseEvent e{sender, false};
                         EventBus::FireEvent(e);
                       }},
                      {{781, 533},
