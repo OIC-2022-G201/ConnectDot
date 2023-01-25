@@ -21,9 +21,9 @@ class VentGroupLocator {
   };
 
   bool RegisterVent(int tag, const WeakVent& vent);
-  VentData GetVentData(int tag) const;
-  WeakVent GetNextVent(int tag) const;
-  WeakVent GetPrevVent(int tag) const;
+  [[nodiscard]] VentData GetVentData(int tag) const;
+  [[nodiscard]] WeakVent GetNextVent(int tag) const;
+  [[nodiscard]] WeakVent GetPrevVent(int tag) const;
 
  private:
   struct VentMask {
