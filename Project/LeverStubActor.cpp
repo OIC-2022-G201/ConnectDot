@@ -4,6 +4,7 @@
 #include "Circle.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
+#include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
 #include "GridPosition.h"
@@ -12,6 +13,7 @@
 #include "LeverStubReceiver.h"
 #include "LoadObjectParameter.h"
 #include "MachineConst.h"
+#include "ObjectTileMapComponent.h"
 #include "ReceiverComponent.h"
 #include "ResourceContainer.h"
 #include "SignboardReceiver.h"
@@ -56,6 +58,9 @@ void LeverStubActor::Create(const LoadObject& object) {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    ComponentServiceLocator::Instance()
+        .Resolve<tile_map::ObjectTileMapComponent>()
+        ->SetCell(pos.x, pos.y, 1);
   }
   SetName("LeverStubActor");
 }
