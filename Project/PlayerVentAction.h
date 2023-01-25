@@ -31,13 +31,17 @@ class PlayerVentAction {
     if (end_) machine.template TransitionTo<PlayerIdle>();
   }
 
+  enum class VentDir { kNone, kPrev, kNext };
  private:
   void InActionUpdate();
   void OutActionUpdate();
+  [[nodiscard]] std::weak_ptr<VentComponent> GetVentMoveTo(VentDir dir) const;
+  void VentMove(std::weak_ptr<VentComponent> vent);
+
   class PlayerComponent* player_;
   base_engine::CollisionComponent* collider_ = nullptr;
   base_engine::PhysicsBodyComponent* physics_body_ = nullptr;
-
+  const VentComponent* vent_;
   base_engine::Vector2 target_pos_;
   base_engine::Vector2 start_pos_;
   size_t current_frame_;
