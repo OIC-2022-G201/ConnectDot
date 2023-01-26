@@ -277,7 +277,7 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
 }
 
 std::optional<GridPosition> PlayerComponent::SearchPlacePosition() const {
-  std::optional<GridPosition> result = std::nullopt;
+  std::optional<GridPosition> result;
 
   auto pos = GridPosition::VectorTo(owner_->GetPosition());
   pos.x += IsRight() ? 1 : 0;
@@ -293,10 +293,10 @@ std::optional<GridPosition> PlayerComponent::SearchPlacePosition() const {
     return result;
   }
 
-  return pos;
+  return std::nullopt;
 }
 
-int PlayerComponent::MaxBeacon() const { return 90; }
+int PlayerComponent::MaxBeacon() const { return 900; }
 
 void PlayerComponent::MovedLookAt() {
   if (GetHorizontal() > 0)

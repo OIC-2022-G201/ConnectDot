@@ -125,8 +125,10 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
   SetName("Beacon");
   SetTag("Beacon");
 
-    map_=ComponentServiceLocator::Instance().Resolve<tile_map::TileMapComponent>();
-    object_map_ = ComponentServiceLocator::Instance().Resolve<tile_map::ObjectTileMapComponent>();
+  map_ =
+      ComponentServiceLocator::Instance().Resolve<tile_map::TileMapComponent>();
+  object_map_ = ComponentServiceLocator::Instance()
+                    .Resolve<tile_map::ObjectTileMapComponent>();
 }
 
 BeaconActor::~BeaconActor() = default;
@@ -145,12 +147,11 @@ void BeaconActor::Update() {
     receiver->Create<BeaconReceiver>(this, kBeaconReceiverOffset);
   }
 
-  auto bottom_pos = GridPosition::VectorTo(GetPosition()) + GridPosition{ 0,1 };
+  auto bottom_pos = GridPosition::VectorTo(GetPosition()) + GridPosition{0, 1};
   if (map_->GetCell(bottom_pos) == tile_map::kEmptyCell &&
-      object_map_->GetCell(bottom_pos) != tile_map::kCanOnPlace)
-    {
-        Close();
-    }
+      object_map_->GetCell(bottom_pos) != tile_map::kCanOnPlace) {
+    Break();
+  }
 }
 
 void BeaconActor::LevelUp() {
@@ -189,6 +190,31 @@ void BeaconActor::Close() {
   RemoveComponent(GetComponent<TransmitterComponent>().lock().get());
   RemoveComponent(GetComponent<ReceiverComponent>().lock().get());
   animation_->Play("Close");
+  const auto list = GetChildren();
+  for (const auto& child : list) {
+    if (child.expired()) continue;
+    RemoveChild(child.lock()->GetId());
+    GetGame()->RemoveActor(child.lock().get());
+  }
+  ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this] {
+    const auto pos = GridPosition::VectorTo(GetPosition());
+    ComponentServiceLocator::Instance()
+        .Resolve<tile_map::ObjectTileMapComponent>()
+        ->SetCell(pos.x, pos.y, 0);
+    GetGame()->RemoveActor(this);
+  });
+}
+
+void BeaconActor::Break() {
+  if (!animation_->IsEndMotion()) return;
+  const auto sprite_resource =
+      RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
+          kBeaconName.data());
+  sprite_->SetImage(*sprite_resource);
+  sprite_outline_->SetEnabled(false);
+  RemoveComponent(GetComponent<TransmitterComponent>().lock().get());
+  RemoveComponent(GetComponent<ReceiverComponent>().lock().get());
+  animation_->Play("Break");
   const auto list = GetChildren();
   for (const auto& child : list) {
     if (child.expired()) continue;
