@@ -125,6 +125,7 @@
     <ClCompile Include="GameOverSceneFactory.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
+    <ClCompile Include="InvaderSceneFactory.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MofShader.cpp" />
     <ClCompile Include="MofShaderImpl.cpp" />
@@ -324,6 +325,7 @@
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="IConnectBindable.h" />
     <ClInclude Include="ImageAlphaTween.h" />
+    <ClInclude Include="InvaderSceneFactory.h" />
     <ClInclude Include="ISpriteAnimatable.h" />
     <ClInclude Include="ITransitionFadeSystem.h" />
     <ClInclude Include="ITween.h" />

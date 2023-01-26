@@ -550,6 +550,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent">
       <UniqueIdentifier>{5ca8ba14-642e-4235-b9a3-3a2f57cb7605}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\InvaderGame">
+      <UniqueIdentifier>{69d8eac8-bd4b-45cc-973b-80b9156a17c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\InvaderGame\Scene">
+      <UniqueIdentifier>{5f904bed-f07a-49e7-bc87-9871b4f42226}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1121,6 +1127,9 @@
     </ClCompile>
     <ClCompile Include="VentReceiver.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="InvaderSceneFactory.cpp">
+      <Filter>ソース ファイル\InvaderGame\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1921,6 +1930,9 @@
     </ClInclude>
     <ClInclude Include="VentReceiver.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Vent\VentComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="InvaderSceneFactory.h">
+      <Filter>ソース ファイル\InvaderGame\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

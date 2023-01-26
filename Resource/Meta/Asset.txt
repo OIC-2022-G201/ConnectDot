@@ -41,6 +41,9 @@ SingboardEkey Animation gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation_M
 SingboardJamp Animation gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation.aei
 SingboardSet Animation gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation.aei
 syutugenyuka Animation gimmick/Objects/syutugenyuka/syutugenyuka1.png gimmick/Objects/syutugenyuka/syutugenyuka1.aei
+InvaderBullet Sprite InvaderGame/InvaderBullet/SpaceInvaders_Bullet.png
+InvaderEnemy Sprite InvaderGame/InvaderEnemy/SpaceInvaders_Teki.png
+InvaderPlayer Sprite InvaderGame/InvaderPlayer/SpaceInvaders_Player.png
 CriticalPointEffect Animation UI/EnhanceActionBar/CriticalPointEffect/CriticalPointEffect_MotionChip.png UI/EnhanceActionBar/CriticalPointEffect/CriticalPointEffect.aei
 FlowElectroEffect Animation UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect_MotionChip.png UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect.aei
 FrameBar Sprite UI/EnhanceActionBar/FrameBar/FrameBar.png
@@ -48,14 +51,12 @@ MoveBar Sprite UI/EnhanceActionBar/MoveBar/MoveBar.png
 SpaceKeyUI Animation UI/EnhanceActionBar/SpaceKeyUI/SpaceKeyUI_MotionChip.png UI/EnhanceActionBar/SpaceKeyUI/SpaceKeyUI.aei
 SparkEffect Animation UI/EnhanceActionBar/SparkEffect/SparkEffect_MotionChip.png UI/EnhanceActionBar/SparkEffect/SparkEffect.aei
 StopBar Sprite UI/EnhanceActionBar/StopBar/StopBar.png
-Gameover Sprite UI/Gameover/Gameoverhaikei.png
+Fade Sprite UI/Fade/012.png
+Gameover Sprite UI/Gameover/Gameover/gameover.png
+GameoverHaikei Sprite UI/Gameover/GameoverHaikei/Gameoverhaikei.png
+GameoverLogo Sprite UI/Gameover/GameoverLogo/GameoverLogo.png
 GiveupButton Button UI/Gameover/GiveupButton/GiveupButton.png UI/Gameover/GiveupButton/GiveupButton2.png
 RetryButton Button UI/Gameover/RetryButton/RetryButton.png UI/Gameover/RetryButton/RetryButton2.png
-GameoverLogo Sprite UI/Gameover/GameoverLogo.png
-Fade Sprite UI/Fade/012.png
-Gameover Sprite UI/Gameover/gameover.png
-ExitButton Button UI/Gameover/ExitButton/exit.png UI/Gameover/ExitButton/exit2.png
-RetryButton Button UI/Gameover/RetryButton/retry.png UI/Gameover/RetryButton/retry2.png
 ActionTooltip Sprite UI/Ingame/ActionTooltip/Action.png
 0 Sprite UI/Ingame/Number/0/0.png
 1 Sprite UI/Ingame/Number/1/1.png
