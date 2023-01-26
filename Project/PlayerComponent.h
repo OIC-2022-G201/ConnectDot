@@ -88,6 +88,7 @@ class PlayerComponent final : public base_engine::Component {
   void PlaySoundEffect() const;
   void StopSoundEffect() const;
   void ActionKey(const base_engine::CollisionComponent* collision);
+  void MachineActionExecute();
 
 private:
   int have_beacon_count_ = MaxBeacon();
@@ -113,7 +114,7 @@ private:
   bool can_control_ = true;
   bool goal_event_ = false;
   SoundEffectActor* sound_effect_;
-
+  std::vector<base_engine::Actor*> action_machine_buffer_{};
  private:
   void CheckGround();
 };

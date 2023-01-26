@@ -40,8 +40,7 @@ class HitGroundCallback final : public physics::PhysicsRayCastCallback {
   float ReportFixture(physics::PhysicsFixture* fixture,
                       const physics::PVec2& point, const physics::PVec2& normal,
                       float fraction) override {
-    if (fixture->collision_->GetTrigger())
-    {
+    if (fixture->collision_->GetTrigger()) {
       return fraction;
     }
     if (fixture->collision_->GetObjectFilter() == kFieldObjectFilter) {
@@ -61,7 +60,6 @@ class PlayerComponent::PlayerListener final
  public:
   explicit PlayerListener(PlayerComponent& player) : player_(player){};
   void OnEvent(GoalEvent& e) override {
-
     player_.machine_.TransitionTo<PlayerGoal>();
     player_.goal_event_ = true;
     new GoalEffectActor(player_.GetGame());
@@ -201,11 +199,30 @@ void PlayerComponent::ActionKey(const CollisionComponent* collision) {
        CollisionLayer::Layer{CollisionLayer::kActionable}) == 0)
     return;
   const auto machine_actor = collision->GetActor();
-  const auto actionable = machine_actor->GetComponent<IMachineActionable>();
-  if (actionable.expired()) return;
-  ActionToolTipComponent::Create(machine_actor, actionable).lock()->Show();
-  if (!IsActionKey()) return;
-  actionable.lock()->Action(owner_);
+  action_machine_buffer_.emplace_back(machine_actor);
+}
+
+void PlayerComponent::MachineActionExecute() {
+  if (action_machine_buffer_.empty()) return;
+
+  const auto pos = owner_->GetPosition() + Vector2{64,0};
+
+  std::ranges::sort(
+      action_machine_buffer_, [&pos](const Actor* rth, const Actor* lth) {
+        return VectorUtilities::Length(
+                   VectorUtilities::Abs(rth->GetPosition() - pos)) <
+               VectorUtilities::Length(
+                   VectorUtilities::Abs(lth->GetPosition() - pos));
+      });
+  for (const auto& machine : action_machine_buffer_) {
+    const auto actionable = machine->GetComponent<IMachineActionable>();
+    if (actionable.expired()) continue;
+    ActionToolTipComponent::Create(machine, actionable).lock()->Show();
+    if (!IsActionKey()) break;
+    actionable.lock()->Action(owner_);
+    break;
+  }
+  action_machine_buffer_.clear();
 }
 
 void PlayerComponent::Update() {
@@ -220,6 +237,8 @@ void PlayerComponent::Update() {
   machine_.Update();
 
   CheckGround();
+  MachineActionExecute();
+
   if (g_pInput->IsKeyPush(MOFKEY_L)) {
     auto a = std::any{1};
     GoalEvent goal{a};
@@ -250,16 +269,30 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const bool space = map->GetCell(pos) == tile_map::kEmptyCell &&
                      object_map->GetCell(pos) == tile_map::kEmptyCell;
   const auto bottom_pos = pos + GridPosition{0, 1};
-  const bool ground = (map->GetCell(bottom_pos) != tile_map::kEmptyCell ||
-      object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace) && object_map->GetCell(bottom_pos) != tile_map::kNotPutCell;
+  const bool ground =
+      (map->GetCell(bottom_pos) != tile_map::kEmptyCell ||
+       object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace) &&
+      object_map->GetCell(bottom_pos) != tile_map::kNotPutCell;
   return space && ground;
 }
 
 std::optional<GridPosition> PlayerComponent::SearchPlacePosition() const {
+  std::optional<GridPosition> result = std::nullopt;
+
   auto pos = GridPosition::VectorTo(owner_->GetPosition());
   pos.x += IsRight() ? 1 : 0;
   pos.y += 1;
-  if (!CanPlace(pos)) return std::nullopt;
+
+  if (CanPlace(pos)) {
+    result = pos;
+    return result;
+  }
+  pos.x -= IsRight() ? 1 : -1;
+  if (CanPlace(pos)) {
+    result = pos;
+    return result;
+  }
+
   return pos;
 }
 
