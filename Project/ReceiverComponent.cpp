@@ -24,19 +24,18 @@ void ReceiverComponent::OnPowerExit() {
 
 void ReceiverComponent::OnPowerEnter() {
   if (receiver_->IsWireless()) {
-    if (!CanRemote() || !sender_.lock()->CanRemote())
-    {
-	    if (effect_.expired()) {
-	    	ECreate();
-	    } else {
-	    	const auto effect =
-						std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
-	    	effect->Show();
-	    }
-    	const auto effect =
-					std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
-    	effect->SetTransmitter(sender_);
-    	effect->Play(sender_.lock()->GetPosition(), GetPosition());
+    if (!CanRemote() || !sender_.lock()->CanRemote()) {
+      if (effect_.expired()) {
+        ECreate();
+      } else {
+        const auto effect =
+            std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+        effect->Show();
+      }
+      const auto effect =
+          std::dynamic_pointer_cast<ElectricEffect>(effect_.lock());
+      effect->SetTransmitter(sender_);
+      effect->Play(sender_.lock()->GetPosition(), GetPosition());
     }
   }
 
@@ -146,6 +145,10 @@ void ReceiverComponent::Connecting(
   const auto sender = sender_weak.lock();
   if (sender_.expired()) {
     sender_ = sender;
+    if (prev_state_ == PowerState::kConnecting) {
+      prev_state_ = PowerState::kDisconnect;
+      return;
+    }
   }
 
   if (sender_.lock()->GetOwner().expired()) return;
@@ -160,8 +163,7 @@ void ReceiverComponent::Connecting(
     if (!target_weak.expired()) {
       const auto pre = prev_receiver.lock()->Sequential();
       const auto current = target_weak.lock()->Sequential();
-      if (pre >
-          current) {
+      if (pre > current) {
         sender_ = sender;
       }
     }

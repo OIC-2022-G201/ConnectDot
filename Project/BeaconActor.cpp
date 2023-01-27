@@ -15,6 +15,7 @@
 #include "IMachineActionable.h"
 #include "MofSpriteAnimationComponent.h"
 #include "ObjectTileMapComponent.h"
+#include "PositionYTween.h"
 #include "ReceiverComponent.h"
 #include "Rect.h"
 #include "ReleaseInfo.h"
@@ -138,7 +139,8 @@ void BeaconActor::Start() {}
 void BeaconActor::Input() {}
 
 void BeaconActor::Update() {
-  if (!is_deployed_ && animation_->IsEndMotion()) {
+  if (!is_deployed_ && animation_->IsEndMotion() &&
+      animation_->IsMotion("Open")) {
     is_deployed_ = true;
     const auto transmitter = new TransmitterComponent(this, 100);
     transmitter->Create<BeaconTransmitter>(this, kBeaconTransmitterOffset);
@@ -181,7 +183,7 @@ void BeaconActor::SetOutline(const bool flg) const {
 bool BeaconActor::IsOutline() const { return sprite_outline_->GetEnabled(); }
 
 void BeaconActor::Close() {
-  if (!animation_->IsEndMotion()) return;
+  if (!animation_->IsEndMotion() && animation_->IsMotion("Close")) return;
   const auto sprite_resource =
       RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
           kBeaconName.data());
@@ -205,8 +207,8 @@ void BeaconActor::Close() {
   });
 }
 
-void BeaconActor::Break() {
-  if (!animation_->IsEndMotion()) return;
+void BeaconActor::Break(bool fall) {
+  if (!animation_->IsEndMotion() && animation_->IsMotion("Break")) return;
   const auto sprite_resource =
       RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
           kBeaconName.data());
@@ -221,11 +223,14 @@ void BeaconActor::Break() {
     RemoveChild(child.lock()->GetId());
     GetGame()->RemoveActor(child.lock().get());
   }
-  ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this] {
-    const auto pos = GridPosition::VectorTo(GetPosition());
-    ComponentServiceLocator::Instance()
-        .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 0);
-    GetGame()->RemoveActor(this);
-  });
+  const auto pos = GridPosition::VectorTo(GetPosition());
+  ma_tween::PositionYTween::TweenLocalPositionY(this, GetPosition().y + 128,
+                                                0.5)
+      .SetOnComplete([this, pos] {
+        ComponentServiceLocator::Instance()
+            .Resolve<tile_map::ObjectTileMapComponent>()
+            ->SetCell(pos.x, pos.y, 0);
+        GetGame()->RemoveActor(this);
+      });
+  ;
 }
