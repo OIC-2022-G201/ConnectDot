@@ -27,6 +27,7 @@ class ResourceContainer {
   using ImagePath = std::filesystem::path;
   using SoundPath = std::filesystem::path;
   using Sprite = base_engine::TexturePtr;
+  using Sound = std::shared_ptr<Mof::ISoundBuffer>;
   using AnimationClips = std::vector<base_engine::SpriteAnimationClip>;
 
   using AnimationResourcePack =

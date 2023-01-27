@@ -42,6 +42,7 @@ Actor* ParallaxCameraFlowLayer::Create(Game* game, std::string_view name,
       CreateRow(0, game, camera_actor, def, layer, image);
       CreateRow(1, game, camera_actor, def, layer, image);
       CreateRow(2, game, camera_actor, def, layer, image);
+      CreateRow(3, game, camera_actor, def, layer, image);
 
     } else {
       CreateRow(1, game, camera_actor, def, layer, image);

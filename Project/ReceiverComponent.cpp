@@ -87,6 +87,11 @@ void ReceiverComponent::Start() {
 }
 
 void ReceiverComponent::Update() {
+  if (sender_.expired()) {
+    if (prev_state_ == PowerState::kConnecting) {
+      prev_state_ = PowerState::kDisconnected;
+    }
+  }
   if (current_state_ == PowerState::kConnecting &&
       prev_state_ == PowerState::kDisconnect) {
     prev_state_ = PowerState::kDisconnected;
@@ -145,7 +150,7 @@ void ReceiverComponent::Connecting(
   const auto sender = sender_weak.lock();
   if (sender_.expired()) {
     sender_ = sender;
-    if (prev_state_ == PowerState::kConnecting) {
+    if (current_state_ == PowerState::kConnecting) {
       prev_state_ = PowerState::kDisconnect;
       return;
     }

@@ -111,6 +111,16 @@ void TitleSceneFactory::Factory() {
   const auto camera = new Actor(game_);
   new CameraComponent(camera);
 
+  {
+    if (const auto pack = RC::GetPack<RC::SoundResourcePack>("TitleBGM")) {
+      if (const auto titleBGM = *pack->Get<RC::Sound>()->Get(0)) {
+        titleBGM->SetLoop(true);
+        titleBGM->Update();
+        titleBGM->Play();
+      }
+    }
+  }
+
   const auto title = new TitleComponent(new Actor(game_));
   const auto input_actor = new InputActor(game_);
   const auto input = new InputManager(input_actor);
