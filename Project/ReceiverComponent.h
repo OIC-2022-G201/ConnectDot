@@ -81,4 +81,5 @@ class ReceiverComponent : public base_engine::Component {
 
   bool can_remote_ = false;
   bool next_frame_disconnect_ = false;
+  int connect_count_ = 0;
 };

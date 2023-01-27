@@ -121,6 +121,12 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
             x ? kBeaconOnName.data() : kBeaconOffName.data());
     sprite_->SetImage(*sprite_resource);
     sprite_->FitClipRect();
+
+    if (!x) {
+      if (static_cast<int>(level_) == 2) {
+        LevelDown();
+      }
+    }
   });
 
   SetName("Beacon");
@@ -174,6 +180,26 @@ void BeaconActor::LevelUp() {
 
   range_sprite_->SetEnabled(true);
   range_sprite_->SetColor(MOF_ARGB(255, 255, 255, 255));
+}
+
+void BeaconActor::LevelDown() {
+  GetComponent<TransmitterComponent>().lock()->SetLevel(1);
+  {
+    const auto cell_half = stage::kStageCellSizeHalf<Floating>;
+
+    const auto circle =
+        std::make_shared<Circle>(cell_half.x, cell_half.y, kPowerRadius);
+    const auto collision = GetComponent<CollisionComponent>().lock();
+    collision->SetShape(circle);
+    collision->Sync();
+  }
+  level_ = 1;
+  const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
+      kBeaconOffName.data());
+  GetComponent<SpriteComponent>().lock()->SetImage(*image);
+
+  range_sprite_->SetEnabled(false);
+  range_sprite_->SetColor(MOF_ARGB(0, 255, 255, 255));
 }
 
 void BeaconActor::SetOutline(const bool flg) const {

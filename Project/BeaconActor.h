@@ -40,6 +40,7 @@ class BeaconActor final : public base_engine::Actor{
   [[nodiscard]] auto&& LevelUpTrigger() { return level_.ToReadOnly();
   }
   void LevelUp();
+  void LevelDown();
   void SetOutline(const bool flg) const;
   bool IsOutline() const;
   void Close();
