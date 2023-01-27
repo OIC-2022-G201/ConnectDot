@@ -6,6 +6,8 @@
 // @details
 
 #pragma once
+#include <Sound/SoundBufferBase.h>
+
 #include <filesystem>
 
 #include "IBaseEngineTexture.h"
@@ -23,18 +25,21 @@ namespace fs = std::filesystem;
 class ResourceContainer {
  public:
   using ImagePath = std::filesystem::path;
+  using SoundPath = std::filesystem::path;
   using Sprite = base_engine::TexturePtr;
   using AnimationClips = std::vector<base_engine::SpriteAnimationClip>;
 
   using AnimationResourcePack =
       asset_system::ResourcePack<Sprite, AnimationClips>;
+  using SoundResourcePack = asset_system::ResourcePack<std::shared_ptr<Mof::ISoundBuffer>>;
   using SpriteResourcePack = asset_system::ResourcePack<Sprite>;
   using ButtonResourcePack = asset_system::ResourcePack<ButtonResourcePackage>;
   using MaterialResourcePack =
       asset_system::ResourcePack<base_engine::Material>;
   using ResourceManagerMap =
       asset_system::ResourceManager<AnimationResourcePack, SpriteResourcePack,
-                                    ButtonResourcePack,MaterialResourcePack>;
+                                    ButtonResourcePack, MaterialResourcePack,
+                                    SoundResourcePack>;
 
  public:
   explicit ResourceContainer();
@@ -48,7 +53,7 @@ class ResourceContainer {
   template <class Pack>
   static typename Pack::Ptr CreatePack(const std::string& key);
 
-private:
+ private:
   static ResourceManagerMap resource_manager_;
   class Impl;
   std::unique_ptr<Impl> impl_;

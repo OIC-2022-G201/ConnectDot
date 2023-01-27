@@ -1,6 +1,8 @@
 ﻿#include "ResourceContainer.h"
 
 #include <Common/ReadFile.h>
+#include <Sound/SoundBuffer.h>
+#include <Sound/XAudio/XAudioSoundBuffer.h>
 
 #include <filesystem>
 #include <fstream>
@@ -37,6 +39,7 @@ class ResourceContainer::Impl {
                          ResourceManagerMap& resource_manager);
   void LoadSpritePack(const size_t hash, ResourceManagerMap& resource_manager);
   void LoadButtonPack(const size_t hash, ResourceManagerMap& resource_manager);
+  void LoadSoundPack(const size_t hash, ResourceManagerMap& resource_manager);
   ResourceContainer* resource_register_;
   std::ifstream reader_;
   std::unordered_map<size_t, std::function<void(size_t)>> factory_;
@@ -64,6 +67,9 @@ ResourceContainer::Impl::Impl(ResourceContainer* resource_register)
   };
   factory_[ToHash("Button")] = [this](const size_t hash) {
     LoadButtonPack(hash, resource_manager_);
+  };
+  factory_[ToHash("Sound")] = [this](const size_t hash) {
+    LoadSoundPack(hash, resource_manager_);
   };
 }
 
@@ -151,8 +157,20 @@ void ResourceContainer::Impl::LoadButtonPack(
   fs::path read_value;
   reader_ >> read_value;
   const auto resource = pack->Get<ButtonResourcePackage>();
-  resource->Get(0)->sprites[1] = BASE_ENGINE(Texture)->Get(read_value.generic_string());
+  resource->Get(0)->sprites[1] =
+      BASE_ENGINE(Texture)->Get(read_value.generic_string());
+}
 
+void ResourceContainer::Impl::LoadSoundPack(
+    const size_t hash, ResourceManagerMap& resource_manager) {
+  const auto pack = resource_manager.CreatePack<SoundResourcePack>(hash);
+
+  Register<std::shared_ptr<Mof::ISoundBuffer>, SoundPath>(
+      pack, 0, [](const fs::path& path) {
+        const auto sound = std::make_shared<Mof::CSoundBuffer>();
+        sound->Load(path.generic_string().data());
+        return sound;
+      });
 }
 
 ResourceContainer::Impl::~Impl() {}
