@@ -88,7 +88,7 @@ void MoveFloorStubActor::MoveFloorStubReceiver::OnPowerEnter(
 
   ComponentServiceLocator::Instance()
       .Resolve<tile_map::ObjectTileMapComponent>()
-      ->SetCell(move_pos, tile_map::kCanOnPlace);
+      ->SetCell(move_pos, tile_map::kCanOnPlace + 1);
   if (actor_->is_front_) {
     if ((to_pos - move_pos) == GridPosition{0, 0}) actor_->is_front_ = false;
   } else {

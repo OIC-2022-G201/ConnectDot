@@ -271,7 +271,8 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
   const auto bottom_pos = pos + GridPosition{0, 1};
   const bool ground =
       (map->GetCell(bottom_pos) != tile_map::kEmptyCell ||
-       object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace) &&
+       object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace ||
+       object_map->GetCell(bottom_pos) == tile_map::kCanOnPlace+1) &&
       object_map->GetCell(bottom_pos) != tile_map::kNotPutCell;
   return space && ground;
 }

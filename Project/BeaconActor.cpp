@@ -157,7 +157,7 @@ void BeaconActor::Update() {
 
   auto bottom_pos = GridPosition::VectorTo(GetPosition()) + GridPosition{0, 1};
   if (map_->GetCell(bottom_pos) == tile_map::kEmptyCell &&
-      object_map_->GetCell(bottom_pos) != tile_map::kCanOnPlace) {
+      object_map_->GetCell(bottom_pos) < tile_map::kCanOnPlace) {
     Break();
   }
 }
@@ -224,11 +224,12 @@ void BeaconActor::Close() {
     RemoveChild(child.lock()->GetId());
     GetGame()->RemoveActor(child.lock().get());
   }
-  ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this] {
-    const auto pos = GridPosition::VectorTo(GetPosition());
-    ComponentServiceLocator::Instance()
-        .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 0);
+  const auto pos = GridPosition::VectorTo(GetPosition());
+  
+  ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this, pos] {
+    auto cell = object_map_->GetCell(pos);
+    if ((cell == 10)) cell = 0;
+    object_map_->SetCell(pos.x, pos.y, cell);
     GetGame()->RemoveActor(this);
   });
 }
@@ -250,12 +251,13 @@ void BeaconActor::Break(bool fall) {
     GetGame()->RemoveActor(child.lock().get());
   }
   const auto pos = GridPosition::VectorTo(GetPosition());
+  
   ma_tween::PositionYTween::TweenLocalPositionY(this, GetPosition().y + 128,
                                                 0.5)
       .SetOnComplete([this, pos] {
-        ComponentServiceLocator::Instance()
-            .Resolve<tile_map::ObjectTileMapComponent>()
-            ->SetCell(pos.x, pos.y, 0);
+        auto cell  = object_map_->GetCell(pos);
+        if ((cell == 10)) cell = 0;
+        object_map_->SetCell(pos.x, pos.y, cell);
         GetGame()->RemoveActor(this);
       });
   ;
