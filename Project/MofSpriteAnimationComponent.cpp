@@ -98,6 +98,7 @@ void MofSpriteAnimationComponent::Stop(bool reset) {
 }
 
 void MofSpriteAnimationComponent::Update() {
+  if (motion_map_.empty()) return;
   if (motion_.IsEndMotion() && (speed_ > 0))
   {
     return;
