@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "AudioStreamComponent.h"
 #include "IReceivablePower.h"
 #include "OneTimeEffectActor.h"
 
@@ -22,8 +23,9 @@ class BeaconReceiver final : public IReceivablePower {
   bool IsWireless() override { return true; }
   [[nodiscard]] base_engine::Vector2 GetPosition() const override;
 
-private:
+ private:
   base_engine::Vector2 position_;
- class BeaconActor* actor_;
- OneTimeEffectActor* effect_actor_;
+  std::weak_ptr<base_engine::AudioStreamComponent> connect_se_{};
+  class BeaconActor* actor_;
+  OneTimeEffectActor* effect_actor_;
 };

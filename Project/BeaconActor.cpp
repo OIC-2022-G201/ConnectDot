@@ -78,7 +78,11 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
     beacon_body->SetTargetFilter(kPlayerObjectFilter);
     beacon_body->SetTrigger(true);
   }
-
+  {
+    const auto audio_stream = new AudioStreamComponent(this);
+    audio_stream->AssetLoad("BeaconConnectSE");
+    audio_stream->SetVolume(0.5f);
+  }
   {
     sprite_outline_ = new SpriteComponent(this, 131);
     const auto sprite_outline_resource =

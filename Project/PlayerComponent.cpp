@@ -112,7 +112,7 @@ void PlayerComponent::Start() {
   audio_stream_ = new AudioStreamComponent(owner_);
   audio_stream_->AssetLoad("PlayerRundingSE");
   audio_stream_->SetLoop(true);
-  audio_stream_->SetVolume(0.3f);
+  audio_stream_->SetVolume(0.5f);
   sound_effect_ = new SoundEffectActor(owner_->GetGame());
 
   const auto beacon_dummy = new DummyEmptyBeaconActor(owner_->GetGame());
