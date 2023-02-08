@@ -18,7 +18,7 @@ class AudioStreamComponent final : public Component {
   ~AudioStreamComponent() override;
   void SetAudioBuffer(const MofSoundBufferPtr audio);
   bool AssetLoad(const std::string& name);
-
+  void Update() override;
   void Play() const;
   void Stop() const;
   void Resume() const;

@@ -18,6 +18,8 @@ bool base_engine::AudioStreamComponent::AssetLoad(const std::string& name) {
   return audio_buffer_ != nullptr;
 }
 
+void base_engine::AudioStreamComponent::Update() { audio_buffer_->Update(); }
+
 void base_engine::AudioStreamComponent::Play() const { audio_buffer_->Play(); }
 
 void base_engine::AudioStreamComponent::Stop() const { audio_buffer_->Stop(); }
