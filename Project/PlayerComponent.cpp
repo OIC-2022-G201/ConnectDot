@@ -109,6 +109,10 @@ void PlayerComponent::Start() {
         break;
     }
   });
+  audio_stream_ = new AudioStreamComponent(owner_);
+  audio_stream_->AssetLoad("PlayerRundingSE");
+  audio_stream_->SetLoop(true);
+  audio_stream_->SetVolume(0.3f);
   sound_effect_ = new SoundEffectActor(owner_->GetGame());
 
   const auto beacon_dummy = new DummyEmptyBeaconActor(owner_->GetGame());
@@ -192,6 +196,18 @@ void PlayerComponent::SetMap(const TileMapWeak& map) { map_ = map; }
 void PlayerComponent::PlaySoundEffect() const { sound_effect_->Play(300); }
 
 void PlayerComponent::StopSoundEffect() const { sound_effect_->Stop(); }
+
+void PlayerComponent::PlayRunAudio() const
+{
+	audio_stream_->SetLoop(false);
+  if (audio_stream_->IsPlay()) return;
+	audio_stream_->Play();
+}
+
+void PlayerComponent::StopRunAudio() const
+{
+	audio_stream_->SetLoop(false);
+}
 
 void PlayerComponent::ActionKey(const CollisionComponent* collision) {
   if (!IsGround()) return;

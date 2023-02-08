@@ -8,6 +8,7 @@
 #include <Math/Vector2.h>
 #include <Utilities/GraphicsUtilities.h>
 
+#include "AudioStreamComponent.h"
 #include "Component.h"
 #include "Game.h"
 #include "GridPosition.h"
@@ -87,6 +88,8 @@ class PlayerComponent final : public base_engine::Component {
   void SetMap(const TileMapWeak& map);
   void PlaySoundEffect() const;
   void StopSoundEffect() const;
+  void PlayRunAudio() const;
+  void StopRunAudio() const;
   void ActionKey(const base_engine::CollisionComponent* collision);
   void MachineActionExecute();
 
@@ -114,6 +117,7 @@ private:
   bool can_control_ = true;
   bool goal_event_ = false;
   SoundEffectActor* sound_effect_;
+  base_engine::AudioStreamComponent* audio_stream_ = nullptr;
   std::vector<base_engine::Actor*> action_machine_buffer_{};
  private:
   void CheckGround();

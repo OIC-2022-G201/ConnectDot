@@ -115,6 +115,7 @@ void TitleSceneFactory::Factory() {
   {
     const auto audioBGM = new AudioStreamComponent(new Actor(game_));
     audioBGM->AssetLoad("TitleBGM");
+    audioBGM->SetLoop(true);
     audioBGM->Play();
   }
 

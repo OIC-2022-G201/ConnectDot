@@ -2,6 +2,7 @@
 
 #include <array>
 
+#include "AudioStreamComponent.h"
 #include "CameraComponent.h"
 #include "ComponentServiceLocator.h"
 #include "DebugStage.h"
@@ -81,6 +82,13 @@ void StageSceneFactory::Factory() {
   new InputManager(new InputActor(game_));
   ObjectLoader object_loader{game_};
   object_loader.Load(stage_def->second.string());
+
+  {
+    const auto audioBGM = new AudioStreamComponent(new Actor(game_));
+    audioBGM->AssetLoad("InGameBGM");
+    audioBGM->SetLoop(true);
+    audioBGM->Play();
+  }
 
   ServiceLocator::Instance().RegisterInstance(
       std::make_shared<PauseManager>(game_));

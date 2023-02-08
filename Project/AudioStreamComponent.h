@@ -22,6 +22,9 @@ class AudioStreamComponent final : public Component {
   void Play() const;
   void Stop() const;
   void Resume() const;
-  void SetVolume(const float volume);
+  void SetVolume(float volume) const;
+  void SetLoop(bool loop) const;
+
+  bool IsPlay() const;
 };
 }  // namespace base_engine

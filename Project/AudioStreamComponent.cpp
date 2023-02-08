@@ -19,7 +19,9 @@ bool base_engine::AudioStreamComponent::AssetLoad(const std::string& name)
 }
 
 void base_engine::AudioStreamComponent::Play() const
-{ audio_buffer_->Play(); }
+{
+	audio_buffer_->Play();
+}
 
 void base_engine::AudioStreamComponent::Stop() const
 { audio_buffer_->Stop(); }
@@ -27,5 +29,17 @@ void base_engine::AudioStreamComponent::Stop() const
 void base_engine::AudioStreamComponent::Resume() const
 { audio_buffer_->Resume(); }
 
-void base_engine::AudioStreamComponent::SetVolume(const float volume)
-{ audio_buffer_->SetVolume(volume); }
+void base_engine::AudioStreamComponent::SetVolume(const float volume) const
+{
+	audio_buffer_->SetVolume(volume);
+  audio_buffer_->Update();
+}
+
+void base_engine::AudioStreamComponent::SetLoop(const bool loop) const
+{
+	audio_buffer_->SetLoop(loop);
+  audio_buffer_->Update();
+}
+
+bool base_engine::AudioStreamComponent::IsPlay() const
+{ return audio_buffer_->IsPlay(); }
