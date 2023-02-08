@@ -56,7 +56,6 @@ void Button::OnHover() {
 
 void Button::OutHover() {
   if (!button_texture_) return;
-  ;
   button_sprite_->SetImage((button_texture_));
 }
 
