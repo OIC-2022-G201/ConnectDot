@@ -8,7 +8,7 @@
 #pragma once
 #include "Resource.h"
 #include "ResourcePack.h"
-;
+#include "ApplyTuple.h"
 #include <algorithm>
 
 namespace asset_system {
@@ -99,6 +99,17 @@ class ResourceManager {
     return ResourceValue<ResourceType>();
   }
 
+  bool ClearAll()
+  {
+    constexpr std::size_t n = std::tuple_size_v<Elements>;
+    auto f1 = [](auto&& t)
+    {
+	    t.clear();
+    };
+
+    ApplyTuple(f1, &elements_, std::make_index_sequence<n>());
+    return true;
+  }
  private:
   Elements elements_;
 };

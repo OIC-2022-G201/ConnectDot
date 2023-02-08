@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "Actor.h"
+#include "AudioStreamComponent.h"
 #include "BinaryArchive.h"
 #include "Button.h"
 #include "ButtonListener.h"
@@ -112,13 +113,9 @@ void TitleSceneFactory::Factory() {
   new CameraComponent(camera);
 
   {
-    if (const auto pack = RC::GetPack<RC::SoundResourcePack>("TitleBGM")) {
-      if (const auto titleBGM = *pack->Get<RC::Sound>()->Get(0)) {
-        titleBGM->SetLoop(true);
-        titleBGM->Update();
-        titleBGM->Play();
-      }
-    }
+    const auto audioBGM = new AudioStreamComponent(new Actor(game_));
+    audioBGM->AssetLoad("TitleBGM");
+    audioBGM->Play();
   }
 
   const auto title = new TitleComponent(new Actor(game_));

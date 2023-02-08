@@ -72,7 +72,14 @@ void Game::Update() {
   }
 }
 
-void Game::Shutdown() { Clear(); }
+void Game::Shutdown()
+{
+	Clear();
+  
+  ResourceContainer::ClearAll();
+
+  int n = 3;
+}
 
 void Game::AddActor(Actor* actor) {
   AddActor(actor, scenes_.empty() ? std::weak_ptr<Scene>{} : scenes_.front());

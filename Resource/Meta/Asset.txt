@@ -44,6 +44,7 @@ syutugenyuka Animation gimmick/Objects/syutugenyuka/syutugenyuka1.png gimmick/Ob
 InvaderBullet Sprite InvaderGame/InvaderBullet/SpaceInvaders_Bullet.png
 InvaderEnemy Sprite InvaderGame/InvaderEnemy/SpaceInvaders_Teki.png
 InvaderPlayer Sprite InvaderGame/InvaderPlayer/SpaceInvaders_Player.png
+TitleBGM Sound Sound/BGM/TitleBGM/titleBGM.mp3
 CriticalPointEffect Animation UI/EnhanceActionBar/CriticalPointEffect/CriticalPointEffect_MotionChip.png UI/EnhanceActionBar/CriticalPointEffect/CriticalPointEffect.aei
 FlowElectroEffect Animation UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect_MotionChip.png UI/EnhanceActionBar/FlowElectroEffect/FlowElectroEffect.aei
 FrameBar Sprite UI/EnhanceActionBar/FrameBar/FrameBar.png

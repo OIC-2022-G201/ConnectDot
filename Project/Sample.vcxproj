@@ -96,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="ActionToolTipComponent.cpp" />
     <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="AudioStreamComponent.cpp" />
     <ClCompile Include="BaseBodyComponent.cpp" />
     <ClCompile Include="BaseBodyCreateComponent.cpp" />
     <ClCompile Include="BaseEngineCollision.cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="ActionToolTipComponent.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Adapter.h" />
+    <ClInclude Include="AudioStreamComponent.h" />
     <ClInclude Include="BaseBodyComponent.h" />
     <ClInclude Include="BaseBodyCreateComponent.h" />
     <ClInclude Include="BaseEngineCollision.h" />
@@ -364,6 +366,7 @@
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeSystem.h" />
     <ClInclude Include="TransitionParameter.h" />
+    <ClInclude Include="ApplyTuple.h" />
     <ClInclude Include="Tween.h" />
     <ClInclude Include="UiFactoryUtilities.h" />
     <ClInclude Include="UiFrozen.h" />

@@ -11,7 +11,6 @@
 #include <filesystem>
 
 #include "IBaseEngineTexture.h"
-#include "ISceneFactory.h"
 #include "ISpriteAnimationComponent.h"
 #include "ResourceManager.h"
 #include "UiPackage.h"
@@ -27,12 +26,12 @@ class ResourceContainer {
   using ImagePath = std::filesystem::path;
   using SoundPath = std::filesystem::path;
   using Sprite = base_engine::TexturePtr;
-  using Sound = std::shared_ptr<Mof::ISoundBuffer>;
+  using Sound = Mof::ISoundBuffer;
   using AnimationClips = std::vector<base_engine::SpriteAnimationClip>;
 
   using AnimationResourcePack =
       asset_system::ResourcePack<Sprite, AnimationClips>;
-  using SoundResourcePack = asset_system::ResourcePack<std::shared_ptr<Mof::ISoundBuffer>>;
+  using SoundResourcePack = asset_system::ResourcePack<Sound>;
   using SpriteResourcePack = asset_system::ResourcePack<Sprite>;
   using ButtonResourcePack = asset_system::ResourcePack<ButtonResourcePackage>;
   using MaterialResourcePack =
@@ -53,7 +52,7 @@ class ResourceContainer {
   static std::shared_ptr<Pack> GetPack(const std::string& key);
   template <class Pack>
   static typename Pack::Ptr CreatePack(const std::string& key);
-
+	static bool ClearAll();
  private:
   static ResourceManagerMap resource_manager_;
   class Impl;
@@ -64,6 +63,10 @@ template <class Pack, class R>
 std::shared_ptr<R> ResourceContainer::GetResource(const std::string& key) {
   const auto pack =
       resource_manager_.FindPack<Pack>(std::hash<std::string>{}(key));
+  if(pack == nullptr)
+  {
+    return nullptr;
+  }
   return pack->template Get<R>()->Get(0);
 }
 

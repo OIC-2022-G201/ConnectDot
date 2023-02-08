@@ -15,6 +15,18 @@
 
 using namespace asset_system;
 using namespace base_engine;
+
+struct SoundDeleter {
+  constexpr SoundDeleter() noexcept = default;
+
+  void operator()(ResourceContainer::Sound* _Ptr) const noexcept {
+    static_assert(0 < sizeof(Mof::ISoundBuffer),
+                  "can't delete an incomplete type");
+    _Ptr->Release();
+    delete _Ptr;
+  }
+};
+
 ResourceContainer::ResourceManagerMap ResourceContainer::resource_manager_{};
 class ResourceContainer::Impl {
  public:
@@ -22,7 +34,9 @@ class ResourceContainer::Impl {
   ~Impl();
 
   bool Load(const fs::path& root);
-
+  bool ClearAll() const
+  { resource_manager_.ClearAll();
+  }
  private:
   template <class T, class Pack>
   bool Register(Pack pack, size_t key);
@@ -31,6 +45,9 @@ class ResourceContainer::Impl {
 
   template <class R, class T, class Pack>
   bool Register(Pack pack, size_t key, std::function<R(T)> converter);
+
+  template <class R, class T, class Pack,class D>
+  bool Register(Pack pack, size_t key, std::function<R*(T)> converter);
   template <class R, class T>
   bool RegisterResource(ResourceValue<R> pack, size_t key,
                         std::function<R(T)> converter);
@@ -55,6 +72,8 @@ bool ResourceContainer::Register() const {
 
   return true;
 }
+
+bool ResourceContainer::ClearAll() { return resource_manager_.ClearAll(); }
 
 ResourceContainer::Impl::Impl(ResourceContainer* resource_register)
     : resource_register_(resource_register) {
@@ -113,6 +132,21 @@ bool ResourceContainer::Impl::Register(Pack pack, size_t key,
   pack->Register(resource_ptr);
   return true;
 }
+template <class R, class T, class Pack,class D>
+bool ResourceContainer::Impl::Register(Pack pack, size_t key,
+                                       std::function<R*(T)> converter) {
+  T read_value;
+  reader_ >> read_value;
+  const auto resource_ptr = std::make_shared<Resource<R>>();
+  std::apply(
+      [resource_ptr,key](auto&&... Args)
+      {
+	      resource_ptr->Register(key,Args...);
+      },
+             std::make_tuple(converter(read_value), D()));
+  pack->Register(resource_ptr);
+  return true;
+}
 
 template <class R, class T>
 bool ResourceContainer::Impl::RegisterResource(ResourceValue<R> pack,
@@ -164,12 +198,13 @@ void ResourceContainer::Impl::LoadButtonPack(
 void ResourceContainer::Impl::LoadSoundPack(
     const size_t hash, ResourceManagerMap& resource_manager) {
   const auto pack = resource_manager.CreatePack<SoundResourcePack>(hash);
+  SoundPath read_value;
 
-  Register<std::shared_ptr<Mof::ISoundBuffer>, SoundPath>(
+  Register<Sound, SoundPath, decltype(pack),SoundDeleter>(
       pack, 0, [](const fs::path& path) {
-        const auto sound = std::make_shared<Mof::CSoundBuffer>();
+        const auto sound = new Mof::CSoundBuffer();
         sound->Load(path.generic_string().data());
-        return sound;
+        return  sound;
       });
 }
 
