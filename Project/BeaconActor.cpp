@@ -233,6 +233,7 @@ void BeaconActor::Close() {
   ma_tween::DummyTween::TweenDummy(this, 0.5f).SetOnComplete([this, pos] {
     auto cell = object_map_->GetCell(pos);
     if ((cell == 10)) cell = 0;
+    if ((cell == 1)) cell = 0;
     object_map_->SetCell(pos.x, pos.y, cell);
     GetGame()->RemoveActor(this);
   });
