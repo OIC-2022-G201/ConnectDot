@@ -6,10 +6,17 @@
 #include "PauseEvent.h"
 #include "PauseManager.h"
 
+void PauseComponent::Start()
+{
+  open_se_ = new base_engine::AudioStreamComponent(owner_);
+  open_se_->AssetLoad("PauseSE");
+  open_se_->SetVolume(0.5f);
+}
+
 void PauseComponent::Update() {
   if (InputManager::Instance()->PauseFire()) {
     std::any sender = this;
-
+    open_se_->Play(); 
     PauseEvent e{
         sender,
         !static_cast<bool>(
