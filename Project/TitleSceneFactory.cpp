@@ -64,6 +64,16 @@ auto ButtonCreate(Game* game, ButtonSelecter* selector,
   button->SetChangeButtonSprite(button_pack->sprites[1]);
   button->SetPosition({button_data.x, button_data.y});
   selector->ButtonRegister(button_data.tx, button_data.ty, button);
+  {
+    const auto audio = new AudioStreamComponent(button);
+    audio->AssetLoad("DeterministicSE");
+    button->SetEvent([audio] { audio->Play(); });
+  }
+  {
+    const auto audio = new AudioStreamComponent(button);
+    audio->AssetLoad("CursorMoveSE");
+    button->SetHoverEvent([audio] { audio->Play(); });
+  }
   const struct {
     Button* button;
     ButtonSelecter* selector;

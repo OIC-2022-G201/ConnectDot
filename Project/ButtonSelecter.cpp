@@ -50,7 +50,7 @@ void ButtonSelecter::OnDisable()
 }
 
 void ButtonSelecter::Start() {
-  buttongroupe_[now_select_y_][now_select_x_]->OnHover();
+  buttongroupe_[now_select_y_][now_select_x_]->SetHover(true);
   ArrowSync();
 }
 

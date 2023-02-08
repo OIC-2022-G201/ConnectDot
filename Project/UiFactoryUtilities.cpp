@@ -1,5 +1,6 @@
 ﻿#include "UiFactoryUtilities.h"
 
+#include "AudioStreamComponent.h"
 #include "ResourceContainer.h"
 
 using namespace base_engine;
@@ -27,6 +28,16 @@ std::pair<Button*, ButtonSelecter*> UiFactoryUtilities::ButtonCreate(
   button->SetChangeButtonSprite(button_pack->sprites[1]);
   button->SetPosition({button_data.x, button_data.y});
   selector->ButtonRegister(button_data.tx, button_data.ty, button);
+  {
+    const auto audio = new AudioStreamComponent(button);
+    audio->AssetLoad("DeterministicSE");
+    button->SetEvent([audio] { audio->Play(); });
+  }
+  {
+    const auto audio = new AudioStreamComponent(button);
+    audio->AssetLoad("CursorMoveSE");
+    button->SetHoverEvent([audio] { audio->Play(); });
+  }
   return {button, selector};
 }
 

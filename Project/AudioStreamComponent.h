@@ -24,7 +24,9 @@ class AudioStreamComponent final : public Component {
   void Resume() const;
   void SetVolume(float volume) const;
   void SetLoop(bool loop) const;
+  void SetPitch(float pitch) const;
 
+  float GetPitch() const;
   bool IsPlay() const;
 };
 }  // namespace base_engine

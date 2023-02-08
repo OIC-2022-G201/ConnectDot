@@ -2,6 +2,7 @@
 
 #include <fstream>
 
+#include "AudioStreamComponent.h"
 #include "BinaryArchive.h"
 #include "ButtonListener.h"
 #include "ButtonPressEvent.h"
@@ -37,6 +38,18 @@ auto ButtonCreateA(Game* game, ButtonSelecter* selector,
   button->SetChangeButtonSprite(button_pack->sprites[1]);
   button->SetPosition({button_data.x, button_data.y});
   selector->ButtonRegister(button_data.tx, button_data.ty, button);
+
+  {
+    const auto audio = new AudioStreamComponent(button);
+    audio->AssetLoad("DeterministicSE");
+    button->SetEvent([audio] { audio->Play(); });
+  }
+  {
+    const auto audio = new AudioStreamComponent(button);
+    audio->AssetLoad("CursorMoveSE");
+    button->SetHoverEvent([audio] { audio->Play(); });
+  }
+
   const struct {
     Button* button;
     ButtonSelecter* selector;
@@ -66,7 +79,7 @@ void GameOverSceneFactory::Factory() {
   component->SetLogo(logo);
 
   {
-    const auto haikei = new ImageComponent(new Actor(game_),10);
+    const auto haikei = new ImageComponent(new Actor(game_), 10);
     const auto haike_imgi =
         RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("GameoverHaikei");
     haikei->SetImage(*haike_imgi);
