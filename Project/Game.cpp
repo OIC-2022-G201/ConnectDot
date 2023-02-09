@@ -4,13 +4,14 @@
 #include <Utilities/GraphicsUtilities.h>
 
 #include "Actor.h"
+#include "AudioVolume.h"
 #include "ButtonCommandEventContainer.h"
 #include "ComponentServiceLocator.h"
 #include "GameData.h"
 #include "IBaseEngineCollider.h"
 #include "IBaseEngineRender.h"
-#include "InputManager.h"
 #include "ITransitionFadeSystem.h"
+#include "InputManager.h"
 #include "ParentTest.h"
 #include "ReleaseInfo.h"
 #include "RenderComponent.h"
@@ -28,12 +29,12 @@ namespace base_engine {
 
 bool Game::Initialize() {
   BASE_ENGINE(Render)->Initialize();
-	{
-		std::unique_ptr<GameData> game_data;
+  {
+    std::unique_ptr<GameData> game_data;
 
-  	game_data = std::make_unique<GameData>(this);
-  	game_data->Register();
-	}
+    game_data = std::make_unique<GameData>(this);
+    game_data->Register();
+  }
   actors_.reserve(1024);
   scene::SceneManager::Instance().Register(this);
   button::ButtonCommandEventContainer::Instance().SetGame(this);
@@ -46,8 +47,8 @@ bool Game::Initialize() {
   BASE_ENGINE(Collider)->SetCallBack(this);
   ServiceLocator::Instance().Resolve<ITransitionFadeSystem>()->SceneTransition(
       scene::kTitle, kGameToTitleFadeIn, kGameToTitleFadeOut);
-  //ShaderTest01 test(this);
-  //test.Main();
+  // ShaderTest01 test(this);
+  // test.Main();
   b_collision = BASE_ENGINE(Collider);
 
   return true;
@@ -63,19 +64,31 @@ void Game::Update() {
         .Resolve<ITransitionFadeSystem>()
         ->SceneTransition(scene::kGame, kGameToGameFadeIn, kGameToGameFadeOut);
   }
-  if (g_pInput->IsKeyPush(MOFKEY_B))
-  {
+  if (g_pInput->IsKeyPush(MOFKEY_B)) {
     g_pGraphics->SetScreenMode(false);
   }
   if (g_pInput->IsKeyPush(MOFKEY_V)) {
     g_pGraphics->SetScreenMode(true);
   }
+  const auto audio_volume = ServiceLocator::Instance().Resolve<AudioVolume>();
+  if (g_pInput->IsKeyPush(MOFKEY_O)) {
+    audio_volume->SetSEVolume(audio_volume->SEVolume() + 0.1f);
+  }
+  if (g_pInput->IsKeyPush(MOFKEY_L)) {
+    audio_volume->SetSEVolume(audio_volume->SEVolume() - 0.1f);
+  }
+
+  if (g_pInput->IsKeyPush(MOFKEY_I)) {
+    audio_volume->SetBGMVolume(audio_volume->BGMVolume() + 0.1f);
+  }
+  if (g_pInput->IsKeyPush(MOFKEY_K)) {
+    audio_volume->SetBGMVolume(audio_volume->BGMVolume() - 0.1f);
+  }
 }
 
-void Game::Shutdown()
-{
-	Clear();
-  
+void Game::Shutdown() {
+  Clear();
+
   ResourceContainer::ClearAll();
 
   int n = 3;

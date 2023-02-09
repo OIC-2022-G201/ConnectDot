@@ -1,5 +1,6 @@
 #include "BeaconActor.h"
 
+#include "AudioVolume.h"
 #include "BeaconPowerUpActionEvent.h"
 #include "BeaconReceiver.h"
 #include "BeaconTransmitter.h"
@@ -81,7 +82,7 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
   {
     const auto audio_stream = new AudioStreamComponent(this);
     audio_stream->AssetLoad("BeaconConnectSE");
-    audio_stream->SetVolume(0.5f);
+    audio_stream->SetVolume(ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
   }
   {
     sprite_outline_ = new SpriteComponent(this, 131);

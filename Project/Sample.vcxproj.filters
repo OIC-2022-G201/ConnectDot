@@ -559,6 +559,9 @@
     <Filter Include="BaseEngine\Component\AudioStreamComponent">
       <UniqueIdentifier>{adcc958f-25cd-45a5-a5a8-247372f5c5bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\GameMain\Data">
+      <UniqueIdentifier>{15092692-946c-404d-9c44-01dbcc0af076}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1945,6 +1948,9 @@
     </ClInclude>
     <ClInclude Include="ApplyTuple.h">
       <Filter>Utilities\Extensions\Tuple</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioVolume.h">
+      <Filter>ソース ファイル\ConnectDot\GameMain\Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "AudioStreamComponent.h"
+#include "AudioVolume.h"
 #include "BinaryArchive.h"
 #include "ButtonListener.h"
 #include "ButtonPressEvent.h"
@@ -42,11 +43,15 @@ auto ButtonCreateA(Game* game, ButtonSelecter* selector,
   {
     const auto audio = new AudioStreamComponent(button);
     audio->AssetLoad("DeterministicSE");
+    audio->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
     button->SetEvent([audio] { audio->Play(); });
   }
   {
     const auto audio = new AudioStreamComponent(button);
     audio->AssetLoad("CursorMoveSE");
+    audio->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
     button->SetHoverEvent([audio] { audio->Play(); });
   }
 

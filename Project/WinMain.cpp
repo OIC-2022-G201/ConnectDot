@@ -17,10 +17,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
   Info.WindowCreateInfo.Width = window::kWidth;
   Info.WindowCreateInfo.Height = window::kHeight;
   Info.WindowCreateInfo.Title = "CONNECT DOT";
+  ShowCursor(false);
   auto icon = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_ICON1));
   Info.WindowCreateInfo.hIcon = icon;
   ;
-  Info.GraphicsCreateInfo.bWindowed = true;
+  Info.GraphicsCreateInfo.bWindowed = false;
   pFrame->Initialize(&Info);
   pFrame->Run();
   MOF_SAFE_DELETE(pFrame);

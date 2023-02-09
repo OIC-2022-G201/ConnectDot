@@ -1,6 +1,8 @@
 ﻿#include "UiFactoryUtilities.h"
 
 #include "AudioStreamComponent.h"
+#include "AudioVolume.h"
+#include "ComponentServiceLocator.h"
 #include "ResourceContainer.h"
 
 using namespace base_engine;
@@ -18,8 +20,7 @@ UiFactoryUtilities::ImageCreate(base_engine::Game* game, std::string_view key) {
 
 std::pair<Button*, ButtonSelecter*> UiFactoryUtilities::ButtonCreate(
     base_engine::Game* game, ButtonSelecter* selector,
-    const ButtonFrozenPack& button_data,int draw_order)
-{
+    const ButtonFrozenPack& button_data, int draw_order) {
   const auto button_pack =
       RC::GetResource<ResourceContainer::ButtonResourcePack,
                       ButtonResourcePackage>(button_data.path);
@@ -31,14 +32,17 @@ std::pair<Button*, ButtonSelecter*> UiFactoryUtilities::ButtonCreate(
   {
     const auto audio = new AudioStreamComponent(button);
     audio->AssetLoad("DeterministicSE");
+    audio->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
+
     button->SetEvent([audio] { audio->Play(); });
   }
   {
     const auto audio = new AudioStreamComponent(button);
     audio->AssetLoad("CursorMoveSE");
+    audio->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
     button->SetHoverEvent([audio] { audio->Play(); });
   }
   return {button, selector};
 }
-
-

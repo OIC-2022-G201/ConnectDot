@@ -292,6 +292,7 @@
     <ClInclude Include="ActionToolTipComponent.h" />
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Adapter.h" />
+    <ClInclude Include="AudioVolume.h" />
     <ClInclude Include="AudioStreamComponent.h" />
     <ClInclude Include="BaseBodyComponent.h" />
     <ClInclude Include="BaseBodyCreateComponent.h" />

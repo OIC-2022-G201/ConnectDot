@@ -4,12 +4,14 @@
 
 #include "Actor.h"
 #include "AudioStreamComponent.h"
+#include "AudioVolume.h"
 #include "BinaryArchive.h"
 #include "Button.h"
 #include "ButtonListener.h"
 #include "ButtonPressEvent.h"
 #include "ButtonSelecter.h"
 #include "CameraComponent.h"
+#include "ComponentServiceLocator.h"
 #include "EventBus.h"
 #include "Frozen.h"
 #include "GoalEffectActor.h"
@@ -67,11 +69,15 @@ auto ButtonCreate(Game* game, ButtonSelecter* selector,
   {
     const auto audio = new AudioStreamComponent(button);
     audio->AssetLoad("DeterministicSE");
+    audio->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
     button->SetEvent([audio] { audio->Play(); });
   }
   {
     const auto audio = new AudioStreamComponent(button);
     audio->AssetLoad("CursorMoveSE");
+    audio->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->SEVolume());
     button->SetHoverEvent([audio] { audio->Play(); });
   }
   const struct {
@@ -126,6 +132,8 @@ void TitleSceneFactory::Factory() {
     const auto audioBGM = new AudioStreamComponent(new Actor(game_));
     audioBGM->AssetLoad("TitleBGM");
     audioBGM->SetLoop(true);
+    audioBGM->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->BGMVolume());
     audioBGM->Play();
   }
 

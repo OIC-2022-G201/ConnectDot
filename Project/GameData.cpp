@@ -4,6 +4,7 @@
 
 #include <filesystem>
 
+#include "AudioVolume.h"
 #include "BaseEngineCore.h"
 #include "ComponentServiceLocator.h"
 #include "IBaseEngineRender.h"
@@ -60,6 +61,7 @@ void GameData::Register() {
   ServiceLocator::Instance().RegisterInstance(stage_container);
 
   ServiceLocator::Instance().RegisterInstance(std::make_shared<VentGroupLocator>());
+  ServiceLocator::Instance().RegisterInstance(std::make_shared<AudioVolume>());
 
   MaterialCreate();
   RegisterSystem(game_);

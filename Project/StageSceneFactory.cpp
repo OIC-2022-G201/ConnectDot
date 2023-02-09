@@ -3,6 +3,7 @@
 #include <array>
 
 #include "AudioStreamComponent.h"
+#include "AudioVolume.h"
 #include "CameraComponent.h"
 #include "ComponentServiceLocator.h"
 #include "DebugStage.h"
@@ -87,6 +88,8 @@ void StageSceneFactory::Factory() {
     const auto audioBGM = new AudioStreamComponent(new Actor(game_));
     audioBGM->AssetLoad("InGameBGM");
     audioBGM->SetLoop(true);
+    audioBGM->SetVolume(
+        ServiceLocator::Instance().Resolve<AudioVolume>()->BGMVolume());
     audioBGM->Play();
   }
 
