@@ -36,7 +36,8 @@ void RenderMof::AddTexture(ITexturePtr texture, const Vector& position,
       std::dynamic_pointer_cast<MofShader>(material.GetShader());
   CGraphicsUtilities::RenderTexture(
       roundf(position.x + camera_center_position_.x),
-      roundf(position.y + camera_center_position_.y), color, alignment, texture,
+      roundf(position.y + camera_center_position_.y), uv, color, alignment,
+      texture,
       shader->GetShader(), shader->GetShaderBind());
 }
 
