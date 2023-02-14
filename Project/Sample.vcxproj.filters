@@ -562,6 +562,9 @@
     <Filter Include="ソース ファイル\ConnectDot\GameMain\Data">
       <UniqueIdentifier>{15092692-946c-404d-9c44-01dbcc0af076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\CameraCustomCmponent">
+      <UniqueIdentifier>{959af30e-aebc-4ef7-b9f9-cdb013320d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1139,6 +1142,9 @@
     </ClCompile>
     <ClCompile Include="AudioStreamComponent.cpp">
       <Filter>BaseEngine\Component\AudioStreamComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraCustomComponent.cpp">
+      <Filter>BaseEngine\Component\CameraCustomCmponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1951,6 +1957,9 @@
     </ClInclude>
     <ClInclude Include="AudioVolume.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCustomComponent.h">
+      <Filter>BaseEngine\Component\CameraCustomCmponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
