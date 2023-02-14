@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "PlayerComponent.h"
 #include "PlayerStateConst.h"
+#include "PlayerStateUtility.h"
 
 using namespace player::jump;
 player::PlayerJump::PlayerJump(PlayerComponent* player) : player_(player) {}
@@ -43,8 +44,8 @@ void player::PlayerJump::End() {}
 
 void player::PlayerJump::Acceleration() const {
   const float velocity =
-      kJumpCoefficient<float> * sin(frame_ * jump::kTimeCoefficient<float>);
-  if (frame_ == kMaxFrame) {
+      CalculationJumpAcceleration(player_->GetJumpHeight(),player_->GetJumpTime(),frame_);
+    if (frame_ == kMaxFrame) {
     if (body_->GetForce().v < 3) return;
   }
   body_->AddForce({0, -kGravity - velocity});
