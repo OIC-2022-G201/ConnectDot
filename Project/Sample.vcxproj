@@ -108,6 +108,7 @@
     <ClCompile Include="ButtonCommandEventContainer.cpp" />
     <ClCompile Include="ButtonListener.cpp" />
     <ClCompile Include="ButtonPressEvent.cpp" />
+    <ClCompile Include="CameraCustomComponent.cpp" />
     <ClCompile Include="ClipSizeXTween.cpp" />
     <ClCompile Include="ClipSizeYTween.cpp" />
     <ClCompile Include="CollapsibleBlockActor.cpp" />
@@ -307,6 +308,7 @@
     <ClInclude Include="ButtonCommandEventContainer.h" />
     <ClInclude Include="ButtonListener.h" />
     <ClInclude Include="ButtonPressEvent.h" />
+    <ClInclude Include="CameraCustomComponent.h" />
     <ClInclude Include="ClipSizeXTween.h" />
     <ClInclude Include="ClipSizeYTween.h" />
     <ClInclude Include="CollapsibleBlockActor.h" />

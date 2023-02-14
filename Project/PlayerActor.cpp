@@ -4,12 +4,13 @@
 
 #include "BeaconActor.h"
 #include "CameraComponent.h"
+#include "CameraCustomComponent.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "DummyEmptyBeaconActor.h"
-#include "FollowComponent.h"
+//#include "FollowComponent.h"
 #include "GameWindow.h"
 #include "IBaseEngineTexture.h"
 #include "InputManager.h"
@@ -89,7 +90,7 @@ void PlayerActor::Create(const LoadObject& object) {
       .lock()
       ->GetOwner()
       .lock()
-      ->GetComponent<FollowComponent>()
+      ->GetComponent<CameraCustomComponent>()
       .lock()
       ->BindTarget(GetGame()->GetActor(GetId()));
 }

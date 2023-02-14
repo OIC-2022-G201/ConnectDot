@@ -556,6 +556,9 @@
     <Filter Include="ソース ファイル\InvaderGame\Scene">
       <UniqueIdentifier>{5f904bed-f07a-49e7-bc87-9871b4f42226}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BaseEngine\Component\CameraCustomCmponent">
+      <UniqueIdentifier>{959af30e-aebc-4ef7-b9f9-cdb013320d70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1130,6 +1133,9 @@
     </ClCompile>
     <ClCompile Include="InvaderSceneFactory.cpp">
       <Filter>ソース ファイル\InvaderGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraCustomComponent.cpp">
+      <Filter>BaseEngine\Component\CameraCustomCmponent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1933,6 +1939,9 @@
     </ClInclude>
     <ClInclude Include="InvaderSceneFactory.h">
       <Filter>ソース ファイル\InvaderGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraCustomComponent.h">
+      <Filter>BaseEngine\Component\CameraCustomCmponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
