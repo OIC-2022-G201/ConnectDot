@@ -340,6 +340,7 @@
     <ClInclude Include="NotPutFloorActor.h" />
     <ClInclude Include="ObjectTileMapComponent.h" />
     <ClInclude Include="OneTimeEffectActor.h" />
+    <ClInclude Include="PairFrozen.h" />
     <ClInclude Include="ParallaxCameraFlowLayer.h" />
     <ClInclude Include="ParallaxCameraFlowLayerComponent.h" />
     <ClInclude Include="ParentTest.h" />
@@ -364,6 +365,7 @@
     <ClInclude Include="SpriteAlphaTween.h" />
     <ClInclude Include="StageContainer.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
+    <ClInclude Include="TextArchive.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeSystem.h" />
