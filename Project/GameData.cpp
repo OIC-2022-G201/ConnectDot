@@ -47,13 +47,14 @@ void MaterialCreate() {
 
     {
       const auto p = ResourceContainer::CreatePack<
-          ResourceContainer::MaterialResourcePack>("TestShader");
+          ResourceContainer::MaterialResourcePack>("CasterMap");
 
       const asset_system::ResourcePtr<Material> material_ptr =
           std::make_shared<asset_system::Resource<Material>>();
-      const auto shader = std::make_shared<MofShader>("Shader/TestShader.hlsl");
+      const auto shader = std::make_shared<MofShader>("Shader/Shadow/CasterMap.hlsl");
       shader->CreateParameter({"cbGameParam", PropertyType::kBuffer, 16});
-      material_ptr->Register(0)->SetShader(shader);
+      auto material = material_ptr->Register(0);
+      material->SetShader(shader);
       p->Register<Material>(material_ptr);
     }
   }
