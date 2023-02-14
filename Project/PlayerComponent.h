@@ -92,7 +92,8 @@ class PlayerComponent final : public base_engine::Component {
   void StopRunAudio() const;
   void ActionKey(const base_engine::CollisionComponent* collision);
   void MachineActionExecute();
-
+  [[nodiscard]] float GetJumpHeight()const { return jump_height_; }
+  [[nodiscard]] float GetJumpTime()const { return jump_time_; }
 private:
   int have_beacon_count_ = MaxBeacon();
 
@@ -119,6 +120,9 @@ private:
   SoundEffectActor* sound_effect_;
   base_engine::AudioStreamComponent* audio_stream_ = nullptr;
   std::vector<base_engine::Actor*> action_machine_buffer_{};
+
+  float jump_height_;
+  float jump_time_;
  private:
   void CheckGround();
 };

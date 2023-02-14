@@ -111,7 +111,7 @@ namespace player {
 			JumpParameter jump_parameter;
 			{
 				if (fs::exists(PlayerJumpParameter)) {
-					std::fstream stream;
+					std::ifstream stream;
 					stream.open(PlayerJumpParameter, std::ios::binary);
 					{
 						frozen::BinaryInputArchive archive{ stream };
@@ -128,6 +128,8 @@ namespace player {
 						archive(jump_parameter);
 					}
 				}
+				jump_height_ = jump_parameter.height;
+				jump_time_ = jump_parameter.time;
 			}
 
 		}
