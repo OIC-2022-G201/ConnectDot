@@ -13,10 +13,10 @@ public:
 
 	void BindTarget(const base_engine::ActorWeakPtr& weak_ptr) { actor_weak_ = weak_ptr; }
 private:
-	base_engine::Rect camera_window_ = base_engine::Rect(-50, -50, 4000, 2000);
-	base_engine::Rect camera_room_ = base_engine::Rect(2000, -50, 3000, 2000);
-	bool inside_camera_room_;
-	base_engine::Vector2 target_actor_pos_;
+	base_engine::Rect camera_room_ = base_engine::Rect(1000,0, 2000, 2000);
+	base_engine::Rect camera_window_ = base_engine::Rect(-200, -300, 200, 10);
+	base_engine::Vector2 targetDirection;
 
-	void MoveCamera(base_engine::Vector2 target_pos);
+	void MoveCamera();
+	base_engine::Vector2 CalcuDirection(bool inside_x,bool inside_y);
 };
