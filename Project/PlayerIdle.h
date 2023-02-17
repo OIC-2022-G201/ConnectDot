@@ -40,7 +40,7 @@ class PlayerIdle {
 
 private:
   void PlaceBeacon() const;
-  int flame = 0;
+  int flame_ = 0;
 };
 
 }  // namespace player

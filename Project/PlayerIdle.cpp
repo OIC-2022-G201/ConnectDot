@@ -10,6 +10,7 @@
 #include "ResultModel.h"
 #include "ComponentServiceLocator.h"
 GridPosition g_position{0, 0};
+constexpr auto kLimitFlame = 30;
 
 player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {
   player_->GetGame()->debug_render_.emplace_back([] {
@@ -41,6 +42,7 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
     return true;
   }
 };
+
 void player::PlayerIdle::Update() {
   g_position = GridPosition::VectorTo(player_->GetOwner()->GetPosition());
 
@@ -48,18 +50,18 @@ void player::PlayerIdle::Update() {
     PlaceBeacon();
   }
   if (player_->IsCollectBeaconKey()) {
-    flame++;
-    if (flame < 30)return;
+    flame_++;
+    if (flame_ < kLimitFlame)return;
     auto pos = player_->GetOwner()->GetPosition();
     BeaconQueryCallBack call_back;
     BASE_ENGINE(Collider)->QueryAABB(
         &call_back, {{pos.x+40, pos.y+40}
   , { pos.x + 128, pos.y + 256 }
 });
-    flame = 0;
+    flame_ = 0;
   }
   else {
-    flame = 0;
+    flame_ = 0;
   }
 }
 
