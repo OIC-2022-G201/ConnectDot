@@ -48,7 +48,7 @@ void TitleComponent::Start() {
 
 void TitleComponent::Update() {
   if (current_popup_ > 0) {
-    if (InputManager::Instance()->ButtonHorizontal() < 0 &&
+    if (InputManager::Instance()->ButtonBack() &&
         !popups_[current_popup_]->is_animation) {
       popups_[current_popup_]->Hide();
       ma_tween::ClipSizeXTween::TweenClipSizeX(line_actor_, line_, 0,
