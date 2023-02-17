@@ -62,11 +62,6 @@ void TitleComponent::Update() {
           });
     }
   }
-  if (current_popup_ == 0 && InputManager::Instance()->ButtonHorizontal() > 0 &&
-      !popups_[current_popup_]->is_animation) {
-    dynamic_cast<ButtonSelecter*>(main_popup_.elements["selector"])
-        ->ButtonSelect();
-  }
 }
 
 void TitleComponent::Popup::Hide() {
