@@ -51,6 +51,7 @@ void InputManager::ProcessInput() {
   }
 
   button_decision_ = IsKeyPush(MOFKEY_SPACE);
+  button_back_ = IsKeyPush(MOFKEY_ESCAPE);
   jump_fire_ = IsKeyPush(MOFKEY_SPACE);
   place_beacon_fire_ = IsKeyPush(MOFKEY_S);
   collect_beacon_fire_ = IsKeyHold(MOFKEY_W);
