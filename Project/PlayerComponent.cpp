@@ -70,14 +70,9 @@ namespace player {
 		}
 
 		void OnEvent(BeaconPowerUpActionEvent& e) override {
-			if (e.IsEnd()) {
-				player_.can_control_ = true;
-			}
-			else {
-				if (!player_.can_control_) return;
-				player_.can_control_ = false;
-				const auto actor = new BeaconPowerUpActor(player_.GetGame());
-				actor->Create(std::any_cast<Actor*>(e.GetSender()));
+			if(player_.GetCurrentBeaconPowerUp() < player_.GetLimitBeaconPowerUp()){
+				dynamic_cast<std::remove_cv_t<BeaconActor*>>(std::any_cast<Actor*>(e.GetSender()))->LevelUp();
+				player_.IncrementCurrentBeaconPowerUp();
 			}
 		}
 	};
@@ -131,7 +126,6 @@ namespace player {
 				jump_height_ = jump_parameter.height;
 				jump_time_ = jump_parameter.time;
 			}
-
 		}
 
 		owner_->GetGame()->debug_render_.emplace_back([this]() {
