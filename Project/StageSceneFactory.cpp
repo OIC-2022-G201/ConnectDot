@@ -34,8 +34,8 @@ void StageSceneFactory::Factory() {
     const auto camera = new Actor(game_);
     const auto camera_component = new CameraComponent(camera);
     camera_component->SetMainCamera();
-    //const auto follow = new FollowComponent(camera);
-    const auto camera_cutuom = new CameraCustomComponent(camera);
+    const auto follow = new FollowComponent(camera);
+//    const auto camera_cutuom = new CameraCustomComponent(camera);
   }
   const auto stageActor = new DebugStage(game_);
   {

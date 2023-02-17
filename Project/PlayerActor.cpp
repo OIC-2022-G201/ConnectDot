@@ -11,6 +11,7 @@
 #include "DrawOrder.h"
 #include "DummyEmptyBeaconActor.h"
 //#include "FollowComponent.h"
+#include "FollowComponent.h"
 #include "GameWindow.h"
 #include "IBaseEngineTexture.h"
 #include "InputManager.h"
@@ -58,17 +59,6 @@ void PlayerActor::Start() {
     player_animation->Load(player_sprite, "Player_Animation.aei");
     player_sprite->SetImage(
         BASE_ENGINE(Texture)->Get(texture::kPlayerTextureKey));
-    using RC = ResourceContainer;
-    const auto material = RC::GetResource<RC::MaterialResourcePack, Material>("TestShader");
-    struct {
-      Vector2 Screen;
-      int nCount;
-    } sb;
-    sb.Screen.x = 1920;
-    sb.Screen.y = 1080;
-    sb.nCount = 5;
-    material->SetParameter({"cb",0,PropertyType::kBuffer,&sb});
-//    player_sprite->SetMaterial(material);
   }
   auto body = new PhysicsBodyComponent(this);
   SetName("Player");
@@ -90,7 +80,7 @@ void PlayerActor::Create(const LoadObject& object) {
       .lock()
       ->GetOwner()
       .lock()
-      ->GetComponent<CameraCustomComponent>()
+      ->GetComponent<FollowComponent>()
       .lock()
       ->BindTarget(GetGame()->GetActor(GetId()));
 }
