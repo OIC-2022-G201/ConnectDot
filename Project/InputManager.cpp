@@ -3,8 +3,8 @@
 #include <Mof.h>
 
 inline bool IsKeyPush(const int key) { return g_pInput->IsKeyPush(key); }
-
 inline bool IsKeyHold(const int key) { return g_pInput->IsKeyHold(key); }
+
 inline Mof::Vector2 GetMousePos() {
   Vector2 result;
   g_pInput->GetMousePos(result);
@@ -13,48 +13,50 @@ inline Mof::Vector2 GetMousePos() {
 
 InputManager* InputManager::Instance()
 {
-    return instance_;
+  return instance_;
 }
 
 InputManager::InputManager(base_engine::InputActor* owner)
-    : InputComponent(owner) {
+  : InputComponent(owner) {
   instance_ = this;
 }
 
 InputManager::~InputManager()
-{ instance_ = nullptr; }
+{
+  instance_ = nullptr;
+}
 
 void InputManager::ProcessInput() {
   move_horizontal_ = 0;
   button_horizontal_ = 0;
   button_vertical_ = 0;
-  if (IsKeyHold(MOFKEY_A) || IsKeyHold(MOFKEY_LEFT)) {
+  if (IsKeyHold(MOFKEY_A)) {
     move_horizontal_ += -1;
   }
-  if (IsKeyHold(MOFKEY_D) || IsKeyHold(MOFKEY_RIGHT)) {
+  if (IsKeyHold(MOFKEY_D)) {
     move_horizontal_ += 1;
   }
 
-  if (IsKeyPush(MOFKEY_A) || IsKeyPush(MOFKEY_LEFT)) {
-      button_horizontal_ += -1;
+  if (IsKeyPush(MOFKEY_A)) {
+    button_horizontal_ += -1;
   }
-  if (IsKeyPush(MOFKEY_D) || IsKeyPush(MOFKEY_RIGHT)) {
-      button_horizontal_ += 1;
+  if (IsKeyPush(MOFKEY_D)) {
+    button_horizontal_ += 1;
   }
-  if (IsKeyPush(MOFKEY_W) || IsKeyPush(MOFKEY_UP)) {
-      button_vertical_ += -1;
+  if (IsKeyPush(MOFKEY_W)) {
+    button_vertical_ += -1;
   }
-  if (IsKeyPush(MOFKEY_S) || IsKeyPush(MOFKEY_DOWN)) {
-      button_vertical_ += 1;
+  if (IsKeyPush(MOFKEY_S)) {
+    button_vertical_ += 1;
   }
 
-  button_decision_ = IsKeyPush(MOFKEY_RETURN);
+  button_decision_ = IsKeyPush(MOFKEY_SPACE);
   jump_fire_ = IsKeyPush(MOFKEY_SPACE);
-  place_beacon_fire_ = IsKeyPush(MOFKEY_DOWN) || IsKeyPush(MOFKEY_S);
-  collect_beacon_fire_ = IsKeyPush(MOFKEY_UP) || IsKeyPush(MOFKEY_W);
+  place_beacon_fire_ = IsKeyPush(MOFKEY_S);
+  collect_beacon_fire_ = IsKeyHold(MOFKEY_W);
   action_fire_ = IsKeyPush(MOFKEY_E);
   pause_fire_ = IsKeyPush(MOFKEY_ESCAPE);
-  sneak_fire_ = IsKeyHold(MOFKEY_LSHIFT) || IsKeyHold(MOFKEY_RSHIFT);
+  sneak_fire_ = IsKeyHold(MOFKEY_LSHIFT);
   mouse_position_ = GetMousePos();
 }
 
