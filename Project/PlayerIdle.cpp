@@ -48,12 +48,18 @@ void player::PlayerIdle::Update() {
     PlaceBeacon();
   }
   if (player_->IsCollectBeaconKey()) {
+    flame++;
+    if (flame < 30)return;
     auto pos = player_->GetOwner()->GetPosition();
     BeaconQueryCallBack call_back;
     BASE_ENGINE(Collider)->QueryAABB(
         &call_back, {{pos.x+40, pos.y+40}
   , { pos.x + 128, pos.y + 256 }
 });
+    flame = 0;
+  }
+  else {
+    flame = 0;
   }
 }
 
