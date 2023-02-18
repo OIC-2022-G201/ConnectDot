@@ -52,7 +52,7 @@ void player::PlayerIdle::Update() {
 
   if (player_->IsPlaceBeaconKey() && player_->GetBeacon() > 0) {
     PlaceBeacon();
-    beacon_counter_model_->DecrementBeaconCount();
+    
   }
   if (player_->IsCollectBeaconKey()) {
     flame_++;
@@ -63,7 +63,6 @@ void player::PlayerIdle::Update() {
         &call_back, {{pos.x+40, pos.y+40}
   , { pos.x + 128, pos.y + 256 }
 });
-    beacon_counter_model_->IncrementBeaconCount();
     flame_ = 0;
   }
   else {
@@ -96,4 +95,5 @@ void player::PlayerIdle::PlaceBeacon() const {
   grid->SetSnapGridPosition(pos);
   const auto num = (player_->MaxBeacon() - player_->GetBeacon()) * 10;
   beacon->SetSequential(num);
+  beacon_counter_model_->DecrementBeaconCount();
 }

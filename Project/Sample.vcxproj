@@ -104,6 +104,7 @@
     <ClCompile Include="BeaconActor.cpp" />
     <ClCompile Include="BeaconCounterView.cpp" />
     <ClCompile Include="BeaconPowerUpActor.cpp" />
+    <ClCompile Include="BeaconPowerUpCounterView.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -307,6 +308,7 @@
     <ClInclude Include="BeaconCounterView.h" />
     <ClInclude Include="BeaconPowerUpActionEvent.h" />
     <ClInclude Include="BeaconPowerUpActor.h" />
+    <ClInclude Include="BeaconPowerUpCounterView.h" />
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="BinaryArchive.h" />

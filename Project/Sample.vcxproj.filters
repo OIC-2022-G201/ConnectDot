@@ -1158,6 +1158,9 @@
     <ClCompile Include="BeaconCounterView.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
     </ClCompile>
+    <ClCompile Include="BeaconPowerUpCounterView.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -1995,6 +1998,9 @@
       <Filter>ソース ファイル\ConnectDot\Outgame\TimeCounter</Filter>
     </ClInclude>
     <ClInclude Include="BeaconCounterView.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconPowerUpCounterView.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
     </ClInclude>
   </ItemGroup>
