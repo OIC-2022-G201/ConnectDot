@@ -99,7 +99,9 @@ void StageSceneFactory::Factory() {
     ServiceLocator::Instance().RegisterInstance(
       std::make_shared<BeaconCounterPresenter>());
     const auto beaconCounterView = new BeaconCounterView(game_);
-      ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterView(beaconCounterView);
+    ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterView(beaconCounterView);
+    const auto beaconPowerUpCounterView = new BeaconPowerUpCounterView(game_);
+    ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconPowerUpCounterView(beaconPowerUpCounterView);
   }
   ServiceLocator::Instance().RegisterInstance(
       std::make_shared<PauseManager>(game_));
