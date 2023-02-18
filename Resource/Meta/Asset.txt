@@ -47,6 +47,10 @@ InvaderPlayer Sprite InvaderGame/InvaderPlayer/SpaceInvaders_Player.png
 InGameBGM Sound Sound/BGM/InGameBGM/gameBGM.mp3
 TitleBGM Sound Sound/BGM/TitleBGM/titleBGM.mp3
 BeaconConnectSE Sound Sound/SE/Beacon/BeaconConnectSE/Connect.mp3
+syutugenyukaopenSE Sound Sound/SE/Collaspsble/syutugenyukaopenSE/syutugenyukaopenSE.mp3
+DoorCloseSE Sound Sound/SE/Door/DoorCloseSE/doorcloseSE.mp3
+DoorOpenSE Sound Sound/SE/Door/DoorOpenSE/dooropenSE.mp3
+MoveFloorSE Sound Sound/SE/MoveFloorSE/movefloorSE.mp3
 CancelSE Sound Sound/SE/OutGame/CancelSE/Cancel.mp3
 CursorMoveSE Sound Sound/SE/OutGame/CursorMoveSE/Select.mp3
 DeterministicSE Sound Sound/SE/OutGame/DeterministicSE/Decide.mp3
@@ -67,6 +71,10 @@ GameoverLogo Sprite UI/Gameover/GameoverLogo/GameoverLogo.png
 GiveupButton Button UI/Gameover/GiveupButton/GiveupButton.png UI/Gameover/GiveupButton/GiveupButton2.png
 RetryButton Button UI/Gameover/RetryButton/RetryButton.png UI/Gameover/RetryButton/RetryButton2.png
 ActionTooltip Sprite UI/Ingame/ActionTooltip/Action.png
+BeaconQuantity Sprite UI/Ingame/BeaconQuantity/UI_BeaconQuantity.png
+UI_GetDataChip Sprite UI/Ingame/DataChip/UI_GetDataChip/UI_GetDataChip.png
+UI_GetDataChip2 Sprite UI/Ingame/DataChip/UI_GetDataChip2/UI_GetDataChip2.png
+NotPutFloor Sprite UI/Ingame/NotPutFloor/UI_NotPutFloor.png
 0 Sprite UI/Ingame/Number/0/0.png
 1 Sprite UI/Ingame/Number/1/1.png
 2 Sprite UI/Ingame/Number/2/2.png
@@ -77,7 +85,48 @@ ActionTooltip Sprite UI/Ingame/ActionTooltip/Action.png
 7 Sprite UI/Ingame/Number/7/7.png
 8 Sprite UI/Ingame/Number/8/8.png
 9 Sprite UI/Ingame/Number/9/9.png
+BeaconQuantity_Number0 Sprite UI/Ingame/Number/BeaconQuantity_Number0/BeaconQuantity_Number0.png
+BeaconQuantity_Number1 Sprite UI/Ingame/Number/BeaconQuantity_Number1/BeaconQuantity_Number1.png
+BeaconQuantity_Number2 Sprite UI/Ingame/Number/BeaconQuantity_Number2/BeaconQuantity_Number2.png
+BeaconQuantity_Number3 Sprite UI/Ingame/Number/BeaconQuantity_Number3/BeaconQuantity_Number3.png
+BeaconQuantity_Number4 Sprite UI/Ingame/Number/BeaconQuantity_Number4/BeaconQuantity_Number4.png
+BeaconQuantity_Number5 Sprite UI/Ingame/Number/BeaconQuantity_Number5/BeaconQuantity_Number5.png
+BeaconQuantity_Number6 Sprite UI/Ingame/Number/BeaconQuantity_Number6/BeaconQuantity_Number6.png
+BeaconQuantity_Number7 Sprite UI/Ingame/Number/BeaconQuantity_Number7/BeaconQuantity_Number7.png
+BeaconQuantity_Number8 Sprite UI/Ingame/Number/BeaconQuantity_Number8/BeaconQuantity_Number8.png
+BeaconQuantity_Number9 Sprite UI/Ingame/Number/BeaconQuantity_Number9/BeaconQuantity_Number9.png
+Timer_Number0 Sprite UI/Ingame/Number/Timer_Number0/Timer_Number0.png
+Timer_Number1 Sprite UI/Ingame/Number/Timer_Number1/Timer_Number1.png
+Timer_Number2 Sprite UI/Ingame/Number/Timer_Number2/Timer_Number2.png
+Timer_Number3 Sprite UI/Ingame/Number/Timer_Number3/Timer_Number3.png
+Timer_Number4 Sprite UI/Ingame/Number/Timer_Number4/Timer_Number4.png
+Timer_Number5 Sprite UI/Ingame/Number/Timer_Number5/Timer_Number5.png
+Timer_Number6 Sprite UI/Ingame/Number/Timer_Number6/Timer_Number6.png
+Timer_Number7 Sprite UI/Ingame/Number/Timer_Number7/Timer_Number7.png
+Timer_Number8 Sprite UI/Ingame/Number/Timer_Number8/Timer_Number8.png
+Timer_Number9 Sprite UI/Ingame/Number/Timer_Number9/Timer_Number9.png
+ShortCutkey Sprite UI/Ingame/ShortCutkey/UI_ShortCutkey.png
 PopupLine Sprite UI/Line/PopupLine/Line.png
+BeaconQuantity_Number0 Sprite UI/Number/BeaconQuantity_Number0/BeaconQuantity_Number0.png
+BeaconQuantity_Number1 Sprite UI/Number/BeaconQuantity_Number1/BeaconQuantity_Number1.png
+BeaconQuantity_Number2 Sprite UI/Number/BeaconQuantity_Number2/BeaconQuantity_Number2.png
+BeaconQuantity_Number3 Sprite UI/Number/BeaconQuantity_Number3/BeaconQuantity_Number3.png
+BeaconQuantity_Number4 Sprite UI/Number/BeaconQuantity_Number4/BeaconQuantity_Number4.png
+BeaconQuantity_Number5 Sprite UI/Number/BeaconQuantity_Number5/BeaconQuantity_Number5.png
+BeaconQuantity_Number6 Sprite UI/Number/BeaconQuantity_Number6/BeaconQuantity_Number6.png
+BeaconQuantity_Number7 Sprite UI/Number/BeaconQuantity_Number7/BeaconQuantity_Number7.png
+BeaconQuantity_Number8 Sprite UI/Number/BeaconQuantity_Number8/BeaconQuantity_Number8.png
+BeaconQuantity_Number9 Sprite UI/Number/BeaconQuantity_Number9/BeaconQuantity_Number9.png
+Timer_Number0 Sprite UI/Number/Timer_Number0/Timer_Number0.png
+Timer_Number1 Sprite UI/Number/Timer_Number1/Timer_Number1.png
+Timer_Number2 Sprite UI/Number/Timer_Number2/Timer_Number2.png
+Timer_Number3 Sprite UI/Number/Timer_Number3/Timer_Number3.png
+Timer_Number4 Sprite UI/Number/Timer_Number4/Timer_Number4.png
+Timer_Number5 Sprite UI/Number/Timer_Number5/Timer_Number5.png
+Timer_Number6 Sprite UI/Number/Timer_Number6/Timer_Number6.png
+Timer_Number7 Sprite UI/Number/Timer_Number7/Timer_Number7.png
+Timer_Number8 Sprite UI/Number/Timer_Number8/Timer_Number8.png
+Timer_Number9 Sprite UI/Number/Timer_Number9/Timer_Number9.png
 Panel Sprite UI/Panel/Panel.png
 GoTitleButton Button UI/Pose/GoTitleButton/GoTitleButton.png UI/Pose/GoTitleButton/GoTitleButton2.png
 PauseHaikei Sprite UI/Pose/PauseHaikei/Posehaikei.png
@@ -100,3 +149,5 @@ TitleLightAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLightA
 TitleLogoAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.png UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.aei
 TitleExitButton Button UI/TitleMenu-Programmer/TitleExitButton/ExitButton.png UI/TitleMenu-Programmer/TitleExitButton/ExitButton2.png
 TitleHaikei Sprite UI/TitleMenu-Programmer/TitleHaikei/haikei.png
+
+プロセスは終了コード 0 で終了しました
