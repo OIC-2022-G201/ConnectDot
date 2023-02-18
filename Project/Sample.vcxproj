@@ -102,6 +102,7 @@
     <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
     <ClCompile Include="BeaconActor.cpp" />
+    <ClCompile Include="BeaconCounterView.cpp" />
     <ClCompile Include="BeaconPowerUpActor.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
@@ -301,6 +302,9 @@
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
     <ClInclude Include="BeaconActor.h" />
+    <ClInclude Include="BeaconCounterModel.h" />
+    <ClInclude Include="BeaconCounterPresenter.h" />
+    <ClInclude Include="BeaconCounterView.h" />
     <ClInclude Include="BeaconPowerUpActionEvent.h" />
     <ClInclude Include="BeaconPowerUpActor.h" />
     <ClInclude Include="BeaconReceiver.h" />
@@ -368,6 +372,8 @@
     <ClInclude Include="StageContainer.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TextArchive.h" />
+    <ClInclude Include="TimeCounterModel.h" />
+    <ClInclude Include="TimeCounterPresenter.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeSystem.h" />
