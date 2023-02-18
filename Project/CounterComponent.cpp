@@ -36,41 +36,35 @@ void base_engine::CounterComponent::SetNumber(int number) {
   b = (number_ - (100 * a)) / 10;
   c = number_ - ((100 * a) + (10 * b));
 
-  if (a <= 0) m_bThirdShow = true;
-  if (a <= 0 && b <= 0) {
-    m_bThirdShow = false;
-    m_bSecondShow = true;
-  }
+  a > 0 ? m_bThirdShow = true : m_bThirdShow = false;
+  a <= 0 && b > 0 ? m_bSecondShow = true : m_bSecondShow = false;
 
   if (m_bThirdShow) {
+    third_digit->SetImage(numbers[a]);
     second_digit->SetImage(numbers[b]);
     first_digit->SetImage(numbers[c]);
-    if (is_right_) {
-      SetPosition();
-      return;
-    }
-    SetPositionLeft();
+    third_digit->SetEnabled(true);
+    is_right_ ? SetPosition(): SetPositionLeft();
     return;
   }
   if (m_bSecondShow) {
+    third_digit->SetEnabled(false);
+    second_digit->SetImage(numbers[b]);
     first_digit->SetImage(numbers[c]);
-    if (is_right_) {
-      SetPosition();
-      return;
-    }
-    SetPositionLeft();
+    is_right_ ? SetPosition() : SetPositionLeft();
     return;
   }
-  third_digit->SetImage(numbers[a]);
-  second_digit->SetImage(numbers[b]);
-  first_digit->SetImage(numbers[c]);
+  if (!m_bSecondShow) {
+    second_digit->SetImage(numbers[b]);
+    first_digit->SetImage(numbers[c]);
+  }
   SetPosition();
 }
 
 
 void base_engine::CounterComponent::SetPosition() {
   second_digit->SetOffset({second_digit->GetClipRect().GetWidth(), 0});
-  first_digit->SetOffset({first_digit->GetClipRect().GetWidth() * 2, 0});
+  first_digit->SetOffset({ first_digit->GetClipRect().GetWidth() * 2 + space_, 0 });
 }
 
 void base_engine::CounterComponent::SetPositionLeft() {
