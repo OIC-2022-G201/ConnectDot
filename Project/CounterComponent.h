@@ -19,7 +19,7 @@ public:
 	//TODO 外部に公開する必要のないメソッドはprivateにする
 	void SetPosition();
 	void SetPositionLeft();
-
+	void SetSpace(const float space) { space_ = space; }
 	void SetIsRight(bool is_right)
 	{
 		is_right_ = is_right;
@@ -32,11 +32,12 @@ private:
 	base_engine::ImageComponent* first_digit;
 	base_engine::TexturePtr numbers[10];
 	int number_;
+	float space_ = 0;
 
   bool enable_ = true;
 	bool m_bThirdShow = false;
 	bool m_bSecondShow = false;
-
+	
 	bool is_right_ = true;
 };
 }
