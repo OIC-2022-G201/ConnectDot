@@ -1,6 +1,7 @@
 #include "PlayerIdle.h"
 
 #include "BeaconActor.h"
+#include "BeaconCounterPresenter.h"
 #include "CollisionLayer.h"
 #include "GridSnapComponent.h"
 #include "ObjectTileMapComponent.h"
@@ -17,6 +18,9 @@ player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {
     Mof::CGraphicsUtilities::RenderString(0, 600, "%d,%d", g_position.x,
                                           g_position.y);
   });
+  beacon_counter_model_ = std::make_shared<BeaconCounterModel>();
+  ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterModel(beacon_counter_model_);
+  ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->Bind();
 }
 
 void player::PlayerIdle::Start() {
@@ -48,6 +52,7 @@ void player::PlayerIdle::Update() {
 
   if (player_->IsPlaceBeaconKey() && player_->GetBeacon() > 0) {
     PlaceBeacon();
+    beacon_counter_model_->DecrementBeaconCount();
   }
   if (player_->IsCollectBeaconKey()) {
     flame_++;
@@ -58,6 +63,7 @@ void player::PlayerIdle::Update() {
         &call_back, {{pos.x+40, pos.y+40}
   , { pos.x + 128, pos.y + 256 }
 });
+    beacon_counter_model_->IncrementBeaconCount();
     flame_ = 0;
   }
   else {
