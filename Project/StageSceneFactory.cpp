@@ -4,6 +4,7 @@
 
 #include "AudioStreamComponent.h"
 #include "AudioVolume.h"
+#include "BeaconCounterPresenter.h"
 #include "CameraComponent.h"
 #include "CameraCustomComponent.h"
 #include "ComponentServiceLocator.h"
@@ -94,7 +95,12 @@ void StageSceneFactory::Factory() {
         ServiceLocator::Instance().Resolve<AudioVolume>()->BGMVolume());
     audioBGM->Play();
   }
-
+  {
+    ServiceLocator::Instance().RegisterInstance(
+      std::make_shared<BeaconCounterPresenter>());
+    const auto beaconCounterView = new BeaconCounterView(game_);
+      ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterView(beaconCounterView);
+  }
   ServiceLocator::Instance().RegisterInstance(
       std::make_shared<PauseManager>(game_));
   ResultScoreComponent::Create(game_);
