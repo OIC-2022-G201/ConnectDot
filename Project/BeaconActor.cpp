@@ -1,6 +1,7 @@
 #include "BeaconActor.h"
 
 #include "AudioVolume.h"
+#include "BeaconCounterPresenter.h"
 #include "BeaconPowerUpActionEvent.h"
 #include "BeaconReceiver.h"
 #include "BeaconTransmitter.h"
@@ -141,6 +142,7 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
       ComponentServiceLocator::Instance().Resolve<tile_map::TileMapComponent>();
   object_map_ = ComponentServiceLocator::Instance()
                     .Resolve<tile_map::ObjectTileMapComponent>();
+  beacon_counter_model_ = ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->GetBeaconCounterModel();
 }
 
 BeaconActor::~BeaconActor() = default;
@@ -182,7 +184,7 @@ void BeaconActor::LevelUp() {
   const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
       kBeaconPowerup.data());
   GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
-
+  beacon_counter_model_->DecrementBeaconPowerUpCount();
   range_sprite_->SetEnabled(true);
   range_sprite_->SetColor(MOF_ARGB(255, 255, 255, 255));
 }
@@ -215,6 +217,7 @@ bool BeaconActor::IsOutline() const { return sprite_outline_->GetEnabled(); }
 
 void BeaconActor::Close() {
   if (!animation_->IsEndMotion() && animation_->IsMotion("Close")) return;
+  beacon_counter_model_->IncrementBeaconCount();
   const auto sprite_resource =
       RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
           kBeaconName.data());
