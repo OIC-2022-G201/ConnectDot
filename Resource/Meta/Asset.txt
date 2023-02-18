@@ -149,5 +149,3 @@ TitleLightAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLightA
 TitleLogoAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.png UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.aei
 TitleExitButton Button UI/TitleMenu-Programmer/TitleExitButton/ExitButton.png UI/TitleMenu-Programmer/TitleExitButton/ExitButton2.png
 TitleHaikei Sprite UI/TitleMenu-Programmer/TitleHaikei/haikei.png
-
-プロセスは終了コード 0 で終了しました
