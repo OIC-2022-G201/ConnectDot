@@ -16,6 +16,17 @@ base_engine::CounterComponent::CounterComponent(Actor* owner)
   first_digit = new ImageComponent(owner_, 2200);
 }
 
+base_engine::CounterComponent::CounterComponent(Actor* owner, const std::string& prefix): Component(owner) {
+  for (int i = 0; i < 10;++i) {
+    auto p =
+      RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(prefix+ std::to_string(i));
+    numbers[i] = *p;
+  }
+  third_digit = new ImageComponent(owner_, 2200);
+  second_digit = new ImageComponent(owner_, 2200);
+  first_digit = new ImageComponent(owner_, 2200);
+}
+
 void base_engine::CounterComponent::Update() {}
 
 void base_engine::CounterComponent::SetNumber(int number) {

@@ -11,7 +11,7 @@ namespace base_engine{
 class CounterComponent:public Component{
 public:
 	explicit CounterComponent(class Actor* owner);
-
+	explicit CounterComponent(Actor* owner, const std::string& prefix);
 	void Update() override;
 	void Start() override{}
 	void SetNumber(int number);
