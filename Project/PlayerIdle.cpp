@@ -39,7 +39,12 @@ class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
         actor->GetTag() == "Beacon") {
       if (const auto beacon = dynamic_cast<BeaconActor*>(actor))
       {
-        beacon->Close();
+        if(static_cast<int>(beacon->LevelUpTrigger()) == 1){
+          beacon->Close();
+        }
+        else{
+          beacon->Break(false);
+        }
       }
       return false;
     }
