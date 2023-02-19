@@ -10,7 +10,7 @@ class TimeCounterPresenter{
 	TimeCounterView* time_counter_view_ = nullptr;
 	std::vector<std::shared_ptr<HandlerRegistration>> event_handlers_;
 public:
-	void Bind() const{
+	void Bind(){
 		//model->view
 		time_counter_view_->SetElapsedMinutes(time_counter_model_->GetElapsedMinutes());
 		time_counter_model_->GetElapsedTime().Subscribe([this](int elapsed_time) {
