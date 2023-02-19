@@ -562,6 +562,9 @@
     <Filter Include="ソース ファイル\ConnectDot\GameMain\Data">
       <UniqueIdentifier>{15092692-946c-404d-9c44-01dbcc0af076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\TileMap\private">
+      <UniqueIdentifier>{ef88f452-3ec7-4812-b017-587b0f887ea1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1139,6 +1142,15 @@
     </ClCompile>
     <ClCompile Include="AudioStreamComponent.cpp">
       <Filter>BaseEngine\Component\AudioStreamComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="StageDrawer.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
+    </ClCompile>
+    <ClCompile Include="FrozenMapData.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniMapDrawer.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1951,6 +1963,18 @@
     </ClInclude>
     <ClInclude Include="AudioVolume.h">
       <Filter>ソース ファイル\ConnectDot\GameMain\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="IMapDrawer.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
+    </ClInclude>
+    <ClInclude Include="StageDrawer.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
+    </ClInclude>
+    <ClInclude Include="FrozenMapData.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniMapDrawer.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\TileMap\private</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,7 @@
 
 #include "BaseEngineCore.h"
 #include "Component.h"
+
 #include "GridPosition.h"
 #include "IBaseEngineRender.h"
 #include "IShape.h"
@@ -28,9 +29,11 @@ class TileMapComponent : public base_engine::Component {
     TileMapRenderComponent(base_engine::Actor* owner, int draw_order,
                            TileMapComponent* tile_map);
 
+    void Load(class FrozenMapData map_data);
     void Draw() override;
 
    private:
+       std::vector<std::shared_ptr<class IMapDrawer>> drawers_;
   };
 
   void Load(std::string_view path);
@@ -63,9 +66,6 @@ class TileMapComponent : public base_engine::Component {
   Layer map_{};
   std::vector<std::shared_ptr<base_engine::Rect>> tile_shape_;
   TileMapRenderComponent* render_ = nullptr;
-
-  Mof::LPTexture texture_ = nullptr;
-  std::vector<Mof::Rectangle> s_rectangles_{};
 
   std::string stage_name_;
 };
