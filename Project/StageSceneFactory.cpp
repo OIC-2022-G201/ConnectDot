@@ -26,6 +26,8 @@
 #include "ResultScoreComponent.h"
 #include "StageContainer.h"
 #include "TileMapComponent.h"
+#include "TimeCounterPresenter.h"
+#include "TimeCounterView.h"
 using namespace base_engine;
 void StageSceneFactory::Factory() {
   const auto stage_container =
@@ -102,6 +104,15 @@ void StageSceneFactory::Factory() {
     ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterView(beaconCounterView);
     const auto beaconPowerUpCounterView = new BeaconPowerUpCounterView(game_);
     ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconPowerUpCounterView(beaconPowerUpCounterView);
+  }
+  {
+    ServiceLocator::Instance().RegisterInstance(
+      std::make_shared<TimeCounterPresenter>());
+    const auto timeCounterModel = std::make_shared<TimeCounterModel>();
+    ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->SetTimeCounterModel(timeCounterModel);
+    const auto timeCounterView = new TimeCounterView(game_);
+    ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->SetTimeCounterView(timeCounterView);
+    ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->Bind();
   }
   ServiceLocator::Instance().RegisterInstance(
       std::make_shared<PauseManager>(game_));
