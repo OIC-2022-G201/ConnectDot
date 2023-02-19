@@ -159,6 +159,8 @@
     <ClCompile Include="SpriteAlphaTween.cpp" />
     <ClCompile Include="StageContainer.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
+    <ClCompile Include="TimeCounter.cpp" />
+    <ClCompile Include="TimeCounterView.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
     <ClCompile Include="TransitionFadeSystem.cpp" />
@@ -374,8 +376,10 @@
     <ClInclude Include="StageContainer.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TextArchive.h" />
+    <ClInclude Include="TimeCounter.h" />
     <ClInclude Include="TimeCounterModel.h" />
     <ClInclude Include="TimeCounterPresenter.h" />
+    <ClInclude Include="TimeCounterView.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeSystem.h" />

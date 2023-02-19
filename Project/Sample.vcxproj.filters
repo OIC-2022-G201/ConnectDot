@@ -574,6 +574,12 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\InGame">
       <UniqueIdentifier>{c4df3e77-0a19-44fa-a92f-533e6db0703d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\InGame\BeaconCounter">
+      <UniqueIdentifier>{b12d3033-7c12-462b-9a2d-c6009f897833}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\InGame\TimeCounter">
+      <UniqueIdentifier>{67256f5c-dfe9-4b98-9bfa-b4757778facc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1155,11 +1161,17 @@
     <ClCompile Include="CameraCustomComponent.cpp">
       <Filter>BaseEngine\Component\CameraCustomCmponent</Filter>
     </ClCompile>
+    <ClCompile Include="TimeCounter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\TimeCounter</Filter>
+    </ClCompile>
     <ClCompile Include="BeaconCounterView.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\BeaconCounter</Filter>
     </ClCompile>
     <ClCompile Include="BeaconPowerUpCounterView.cpp">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\BeaconCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeCounterView.cpp">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\TimeCounter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1997,11 +2009,17 @@
     <ClInclude Include="TimeCounterPresenter.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\TimeCounter</Filter>
     </ClInclude>
+    <ClInclude Include="TimeCounter.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\TimeCounter</Filter>
+    </ClInclude>
     <ClInclude Include="BeaconCounterView.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\BeaconCounter</Filter>
     </ClInclude>
     <ClInclude Include="BeaconPowerUpCounterView.h">
-      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame</Filter>
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\BeaconCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeCounterView.h">
+      <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\TimeCounter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
