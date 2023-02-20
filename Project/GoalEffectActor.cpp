@@ -132,9 +132,6 @@ class GoalEffectActor::GoalEffectComponent final : public Component {
 	std::unique_ptr<ResultListener> listener_;
 	std::shared_ptr<HandlerRegistration> handle_;
 	bool end_animation_ = false;
-	CounterComponent* time_counter;
-	CounterComponent* found_counter;
-	CounterComponent* beacon_counter;
 	std::unordered_map<std::string, base_engine::Actor*> elements_{};
 public:
 	explicit GoalEffectComponent(Actor* owner);
@@ -165,9 +162,6 @@ private:
 		return ma_tween::DummyTween::TweenDummy(panel_.Owner(), 0.01)
 			.SetOnComplete([this] {
 			popup_text_.Sprite().SetColor(MOF_ARGB(255, 255, 255, 255));
-		time_counter->SetEnable(true);
-		found_counter->SetEnable(true);
-		beacon_counter->SetEnable(true);
 		});
 	}
 	auto& NextStageLogoAnimation() const {
@@ -239,27 +233,6 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 		const auto animation = new MofSpriteAnimationComponent(owner_);
 		animation->Load(sprite,*clips);
 	}
-
-	const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
-
-	const auto found_actor = new Actor(owner_->GetGame());
-	found_counter = new CounterComponent(found_actor);
-	found_counter->SetNumber(score->GetFoundCount());
-	found_actor->SetPosition({ 703, 476 });
-
-	const auto beacon_counter_actor = new Actor(owner_->GetGame());
-	beacon_counter = new CounterComponent(beacon_counter_actor);
-	beacon_counter->SetNumber(score->GetBeaconUsedTimes());
-	beacon_counter_actor->SetPosition({ 703, 606 });
-
-	const auto time_counter_actor = new Actor(owner_->GetGame());
-	time_counter = new CounterComponent(time_counter_actor);
-	time_counter->SetNumber(score->GetTime());
-	time_counter_actor->SetPosition({ 703, 736 });
-
-	found_counter->SetEnable(false);
-	beacon_counter->SetEnable(false);
-	time_counter->SetEnable(false);
 
 	LetterBoxAnimation().SetOnComplete([this] {
 		ClearLogoAnimation();
