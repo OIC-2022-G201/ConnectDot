@@ -54,7 +54,7 @@ void TimeCounterView::OnEvent(QuitEvent& e) {
 
 void TimeCounterView::SetElapsedMinutes(int elapsed_minutes) {
 	SetPosition({ 1730 ,51 });
-	//minutes_counter_component_->SetNumber(elapsed_minutes);
+	minutes_counter_component_->SetNumber(elapsed_minutes);
 }
 
 void TimeCounterView::SetElapsedSeconds(int elapsed_seconds) {
@@ -64,5 +64,5 @@ void TimeCounterView::SetElapsedSeconds(int elapsed_seconds) {
 
 void TimeCounterView::SetElapsedMilliseconds(int elapsed_milliseconds) {
 	SetPosition({ 1790 ,51 });
-	//milliseconds_counter_component_->SetNumber(elapsed_milliseconds);
+	milliseconds_counter_component_->SetNumber(elapsed_milliseconds);
 }
