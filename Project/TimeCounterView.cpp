@@ -4,7 +4,7 @@ TimeCounterView::TimeCounterView(base_engine::Game* game) : Actor(game) {
 	minutes_counter_component_ = new base_engine::CounterComponent(this, "Timer_Number");
 	seconds_counter_component_ = new base_engine::CounterComponent(this, "Timer_Number");
 	milliseconds_counter_component_ = new base_engine::CounterComponent(this, "Timer_Number");
-	SetPosition({ 1730 ,51 });
+	
 	SetEnable(true);
 	minutes_counter_component_->SetEnable(true);
 	seconds_counter_component_->SetEnable(true);
@@ -53,13 +53,16 @@ void TimeCounterView::OnEvent(QuitEvent& e) {
 }
 
 void TimeCounterView::SetElapsedMinutes(int elapsed_minutes) {
-	minutes_counter_component_->SetNumber(elapsed_minutes);
+	SetPosition({ 1730 ,51 });
+	//minutes_counter_component_->SetNumber(elapsed_minutes);
 }
 
 void TimeCounterView::SetElapsedSeconds(int elapsed_seconds) {
+	SetPosition({ 1760 ,51 });
 	seconds_counter_component_->SetNumber(elapsed_seconds);
 }
 
 void TimeCounterView::SetElapsedMilliseconds(int elapsed_milliseconds) {
-	milliseconds_counter_component_->SetNumber(elapsed_milliseconds);
+	SetPosition({ 1790 ,51 });
+	//milliseconds_counter_component_->SetNumber(elapsed_milliseconds);
 }

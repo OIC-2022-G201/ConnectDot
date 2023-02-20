@@ -12,6 +12,7 @@ class TimeCounterPresenter{
 public:
 	void Bind(){
 		//model->view
+		time_counter_model_->SetElapsedTime();
 		time_counter_view_->SetElapsedMinutes(time_counter_model_->GetElapsedMinutes());
 		time_counter_model_->GetElapsedTime().Subscribe([this](int elapsed_time) {
 			time_counter_view_->SetElapsedMinutes(time_counter_model_->GetElapsedMinutes());
