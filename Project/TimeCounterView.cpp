@@ -6,6 +6,7 @@ TimeCounterView::TimeCounterView(base_engine::Game* game) : Actor(game) {
 	milliseconds_counter_component_ = new base_engine::CounterComponent(this, "Timer_Number");
 	
 	SetEnable(true);
+  SetPosition({1730, 51});
 	minutes_counter_component_->SetEnable(true);
 	seconds_counter_component_->SetEnable(true);
 	milliseconds_counter_component_->SetEnable(true);
@@ -19,7 +20,7 @@ TimeCounterView::~TimeCounterView() {
 
 void TimeCounterView::OnEvent(StageEpilogueEvent&e) {
 	auto event = observable::Unit();
-	start_event_.OnNext(event);
+  stage_epilogue_event_.OnNext(event);
 }
 
 void TimeCounterView::OnEvent(GoalEvent& e) {
@@ -53,16 +54,22 @@ void TimeCounterView::OnEvent(QuitEvent& e) {
 }
 
 void TimeCounterView::SetElapsedMinutes(int elapsed_minutes) {
-	SetPosition({ 1730 ,51 });
+  minutes_counter_component_->SetOffset({0, 0});
 	minutes_counter_component_->SetNumber(elapsed_minutes);
 }
 
 void TimeCounterView::SetElapsedSeconds(int elapsed_seconds) {
-	SetPosition({ 1760 ,51 });
+  seconds_counter_component_->SetOffset({44, 0});
 	seconds_counter_component_->SetNumber(elapsed_seconds);
 }
 
 void TimeCounterView::SetElapsedMilliseconds(int elapsed_milliseconds) {
-	SetPosition({ 1790 ,51 });
+  milliseconds_counter_component_->SetOffset({88, 0});
 	milliseconds_counter_component_->SetNumber(elapsed_milliseconds);
+}
+
+void TimeCounterView::Update()
+{
+  observable::Unit event;
+  update_event_.OnNext(event);
 }

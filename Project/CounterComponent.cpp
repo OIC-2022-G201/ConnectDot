@@ -63,13 +63,14 @@ void base_engine::CounterComponent::SetNumber(int number) {
 
 
 void base_engine::CounterComponent::SetPosition() {
-  second_digit->SetOffset({second_digit->GetClipRect().GetWidth(), 0});
-  first_digit->SetOffset({ first_digit->GetClipRect().GetWidth() * 2 + space_, 0 });
+  second_digit->SetOffset(Vector2{second_digit->GetClipRect().GetWidth(), 0} + offset_);
+  first_digit->SetOffset(
+      Vector2{first_digit->GetClipRect().GetWidth() * 2 + space_, 0} + offset_);
 }
 
 void base_engine::CounterComponent::SetPositionLeft() {
   if (!m_bSecondShow && m_bThirdShow) {
-    first_digit->SetOffset({first_digit->GetClipRect().GetWidth(), 0});
+    first_digit->SetOffset(Vector2{first_digit->GetClipRect().GetWidth(), 0} + offset_);
   }
 }
 
@@ -79,4 +80,8 @@ void base_engine::CounterComponent::SetEnable(const bool enable)
   first_digit->SetEnabled(enable_);
   second_digit->SetEnabled(enable_);
   third_digit->SetEnabled(enable_);
+}
+
+void base_engine::CounterComponent::SetOffset(const Vector2 offset) {
+  offset_ = offset;
 }

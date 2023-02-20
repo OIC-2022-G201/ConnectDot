@@ -25,6 +25,7 @@ public:
 		is_right_ = is_right;
 	}
   void SetEnable(bool enable);
+  void SetOffset(Vector2 offset);
 
 private:
 	base_engine::ImageComponent* third_digit;
@@ -39,5 +40,7 @@ private:
 	bool m_bSecondShow = false;
 	
 	bool is_right_ = true;
+
+  Vector2 offset_ = {0,0};
 };
 }

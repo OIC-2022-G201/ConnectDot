@@ -15,13 +15,13 @@ public:
 		time_counter_->Stop();*/
 		elapsed_time_  = time_counter_->GetElapsedSeconds();
 	}
-	[[nodiscard]] auto&& GetElapsedMinutes() {
+	[[nodiscard]] auto GetElapsedMinutes() {
 		return static_cast<int>(static_cast<double>(elapsed_time_.ToReadOnly()) / 60);
 	}
 	[[nodiscard]] int GetElapsedSeconds() {
 		return static_cast<int>(static_cast<double>(elapsed_time_)) % 60;
 	}
-	[[nodiscard]] auto&& GetElapsedMilliseconds() {
+	[[nodiscard]] auto GetElapsedMilliseconds() {
 		return static_cast<int>(fmod(static_cast<double>(elapsed_time_.ToReadOnly()) * 100, 100));
 	}
 	void TimeCounterStart()  { time_counter_->Start(); }

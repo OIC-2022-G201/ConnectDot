@@ -48,6 +48,8 @@ public:
 		time_counter_view_->GetQuitEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterReset();});
 		event_handlers_.emplace_back(EventBus::AddHandler<QuitEvent>(*time_counter_view_));
 
+		time_counter_view_->GetUpdateEvent().Subscribe([this](auto) { time_counter_model_->SetElapsedTime(); });
+
 	}
 	void SetTimeCounterView(TimeCounterView* time_counter_view) { time_counter_view_ = time_counter_view; }
 	void SetTimeCounterModel(const std::shared_ptr<TimeCounterModel>& time_counter_model) { time_counter_model_ = time_counter_model; }
