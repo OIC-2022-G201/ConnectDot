@@ -19,13 +19,13 @@ void Stopwatch::TimeCounter::Stop() {
 }
 
 void Stopwatch::TimeCounter::ReStart() {
-	elapsed_ = std::chrono::nanoseconds(0);
-	begin_ = end_ = std::chrono::system_clock::now();
+  Reset();
+  Start();
 }
 
 void Stopwatch::TimeCounter::Reset() {
-  Reset();
-  Start();
+  elapsed_ = std::chrono::nanoseconds(0);
+  begin_ = end_ = std::chrono::system_clock::now();
 }
 
 template <typename T, class Unit>

@@ -580,6 +580,15 @@
     <Filter Include="ソース ファイル\ConnectDot\Outgame\UI\InGame\TimeCounter">
       <UniqueIdentifier>{67256f5c-dfe9-4b98-9bfa-b4757778facc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\GameOver">
+      <UniqueIdentifier>{6c097efa-8f21-411f-a5aa-d997ca26b5d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\QuitEvent">
+      <UniqueIdentifier>{549f328d-650e-45db-b28c-e29c70f9603d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Event\ReStart">
+      <UniqueIdentifier>{ad6877fa-f403-40f1-a827-eaa770f9dff1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1172,6 +1181,15 @@
     </ClCompile>
     <ClCompile Include="TimeCounterView.cpp">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\TimeCounter</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\GameOver</Filter>
+    </ClCompile>
+    <ClCompile Include="ReStartEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\ReStart</Filter>
+    </ClCompile>
+    <ClCompile Include="QuitEvent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Event\QuitEvent</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2020,6 +2038,15 @@
     </ClInclude>
     <ClInclude Include="TimeCounterView.h">
       <Filter>ソース ファイル\ConnectDot\Outgame\UI\InGame\TimeCounter</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\GameOver</Filter>
+    </ClInclude>
+    <ClInclude Include="ReStartEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\ReStart</Filter>
+    </ClInclude>
+    <ClInclude Include="QuitEvent.h">
+      <Filter>ソース ファイル\ConnectDot\Event\QuitEvent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

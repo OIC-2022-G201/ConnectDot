@@ -113,6 +113,10 @@ void StageSceneFactory::Factory() {
     const auto timeCounterView = new TimeCounterView(game_);
     ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->SetTimeCounterView(timeCounterView);
     ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->Bind();
+
+    std::any sender = this;
+    StageEpilogueEvent stage_epilogue{ sender };
+    EventBus::FireEvent(stage_epilogue);
   }
   ServiceLocator::Instance().RegisterInstance(
       std::make_shared<PauseManager>(game_));
