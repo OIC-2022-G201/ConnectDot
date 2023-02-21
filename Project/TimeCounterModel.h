@@ -11,8 +11,6 @@ public:
 		return elapsed_time_.ToReadOnly();
 	}
 	void SetElapsedTime() {
-		/*time_counter_->Start();
-		time_counter_->Stop();*/
 		elapsed_time_  = time_counter_->GetElapsedSeconds();
 	}
 	[[nodiscard]] auto GetElapsedMinutes() {
@@ -28,4 +26,5 @@ public:
 	void TimeCounterStop() { time_counter_->Stop();}
 	void TimeCounterReset() { time_counter_->Reset(); }
 	void TimeCounterReStart() { time_counter_->ReStart(); }
+	void TimeCounterResume() { time_counter_->Resume(); }
 };

@@ -2,7 +2,7 @@
 
 BeaconPowerUpCounterView::BeaconPowerUpCounterView(base_engine::Game* game):Actor(game) {
 	counter_component_ = new base_engine::CounterComponent(this, "BeaconQuantity_Number");
-	SetPosition({ 1066,94 });
+	SetPosition({ 1036,94 });
 	SetEnable(true);
 	counter_component_->SetEnable(true);
 	counter_component_->SetSpace(5);

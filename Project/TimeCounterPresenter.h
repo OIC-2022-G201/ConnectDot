@@ -13,15 +13,12 @@ public:
 	void Bind(){
 		//model->view
 		time_counter_model_->SetElapsedTime();
-		time_counter_view_->SetElapsedMinutes(time_counter_model_->GetElapsedMinutes());
 		time_counter_model_->GetElapsedTime().Subscribe([this](int elapsed_time) {
 			time_counter_view_->SetElapsedMinutes(time_counter_model_->GetElapsedMinutes());
 		});
-		time_counter_view_->SetElapsedSeconds(time_counter_model_->GetElapsedSeconds());
 		time_counter_model_->GetElapsedTime().Subscribe([this](int elapsed_time) {
 			time_counter_view_->SetElapsedSeconds(time_counter_model_->GetElapsedSeconds());
 		});
-		time_counter_view_->SetElapsedMilliseconds(time_counter_model_->GetElapsedMilliseconds());
 		time_counter_model_->GetElapsedTime().Subscribe([this](int elapsed_time) {
 			time_counter_view_->SetElapsedMilliseconds(time_counter_model_->GetElapsedMilliseconds());
 		});
@@ -33,7 +30,7 @@ public:
 		time_counter_view_->GetGoalEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterStop();});
 		event_handlers_.emplace_back(EventBus::AddHandler<GoalEvent>(*time_counter_view_));
 
-		time_counter_view_->GetStartEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterStart(); });
+		time_counter_view_->GetStartEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterResume(); });
 		event_handlers_.emplace_back(EventBus::AddHandler<PauseEvent>(*time_counter_view_));
 
 		time_counter_view_->GetStopEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterStop(); });

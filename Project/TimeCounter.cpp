@@ -15,7 +15,12 @@ void Stopwatch::TimeCounter::Stop() {
   if (!is_running_) return;
   is_running_ = false;
   end_ = std::chrono::system_clock::now();
-  elapsed_ = elapsed_ + std::chrono::duration_cast<std::chrono::nanoseconds>(end_ - begin_);
+  elapsed_ = std::chrono::duration_cast<std::chrono::nanoseconds>(end_ - begin_);
+}
+
+void Stopwatch::TimeCounter::Resume() {
+  if (is_running_) return;
+  is_running_ = true;
 }
 
 void Stopwatch::TimeCounter::ReStart() {
@@ -32,9 +37,9 @@ template <typename T, class Unit>
 T Stopwatch::TimeCounter::GetElapsed() const {
   if (is_running_){
     return std::chrono::duration_cast<std::chrono::duration<T, Unit>>
-  	(std::chrono::system_clock::now() - this->begin_).count();
+  	(std::chrono::system_clock::now() - begin_).count();
   }
-  return std::chrono::duration_cast<std::chrono::duration<T, Unit>>(this->elapsed_).count();
+  return std::chrono::duration_cast<std::chrono::duration<T, Unit>>(elapsed_).count();
 }
 
 double Stopwatch::TimeCounter::GetElapsedSeconds() const {

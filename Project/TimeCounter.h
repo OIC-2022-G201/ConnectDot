@@ -5,9 +5,9 @@ namespace Stopwatch {
   class TimeCounter
   {
     bool is_running_ = false;
-    std::chrono::system_clock::time_point begin_;// 開始時間
-    std::chrono::system_clock::time_point end_;// 開始時間
-    std::chrono::nanoseconds elapsed_;// 合計時間
+    std::chrono::system_clock::time_point begin_;
+    std::chrono::system_clock::time_point end_;
+    std::chrono::nanoseconds elapsed_;
     TimeCounter() = default;
   public:
     ~TimeCounter() = default;
@@ -17,6 +17,7 @@ namespace Stopwatch {
     void Stop();
     void ReStart();
     void Reset();
+    void Resume();
   private:
     template <typename T, class Unit>
     [[nodiscard]] T GetElapsed()const;
