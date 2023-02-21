@@ -85,7 +85,7 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 1);
+        ->SetCell(pos.x, pos.y, tile_map::kPowerSupplyCell);
   }
 }
 

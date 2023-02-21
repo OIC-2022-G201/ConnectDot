@@ -12,4 +12,8 @@ private:
 	std::vector<Mof::Rectangle> s_rectangles_{};
 
 	const float scale_ = 0.1f;
+
+	bool IsDrawCell(tile_map::Layer::CellType type);
+	void DrawMap();
+	void DrawGimmick();
 };

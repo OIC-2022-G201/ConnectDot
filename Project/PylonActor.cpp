@@ -22,7 +22,9 @@ using base_engine::Floating;
 using base_engine::Vector2;
 using namespace electronics;
 using namespace pylon;
-PylonActor::PylonActor(base_engine::Game* game) : Actor(game) {}
+PylonActor::PylonActor(base_engine::Game* game) : Actor(game) {
+    
+}
 
 PylonActor::~PylonActor() {}
 
@@ -68,6 +70,6 @@ void PylonActor::Create(const LoadObject& object) {
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 1);
+        ->SetCell(pos.x, pos.y, tile_map::kStartCell);
   }
 }

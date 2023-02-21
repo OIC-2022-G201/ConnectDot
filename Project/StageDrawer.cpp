@@ -31,7 +31,7 @@ void StageDrawer::Draw(tile_map::TileMapComponent* tile_map) {
             if (cell > s_rectangles_.size()) {
                 continue;
             }
-
+            
             BASE_ENGINE(Render)->AddTexture(
                 texture_, { x * 128.0f, y * 128.0f }, { 1, 1 }, 0,
                 s_rectangles_[cell - 1], MOF_COLOR_WHITE,

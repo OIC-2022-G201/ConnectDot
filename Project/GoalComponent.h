@@ -12,7 +12,7 @@
 
 class GoalActor final : public base_engine::Actor {
  public:
-  explicit GoalActor(base_engine::Game* game) : Actor(game) {}
+  explicit GoalActor(base_engine::Game* game);
 
   void Create(const LoadObject& object);
 };

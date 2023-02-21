@@ -2,13 +2,16 @@
 
 #include <algorithm>
 #include "BaseEngineCore.h"
+#include "CollisionComponent.h"
+#include "ComponentServiceLocator.h"
+#include "GoalComponent.h"
 #include "GridPosition.h"
 #include "IBaseEngineRender.h"
 #include "IBaseEngineTexture.h"
+#include "IBaseEngineCanvasRender.h"
+#include "ObjectTileMapComponent.h"
 #include "Rect.h"
 #include "TileMap.h"
-
-#include "CollisionComponent.h"
 
 void MiniMapDrawer::Draw(tile_map::TileMapComponent* tile_map) {
     Mof::CRectangle rect;
@@ -21,27 +24,55 @@ void MiniMapDrawer::Draw(tile_map::TileMapComponent* tile_map) {
     const auto left = std::max(camera_pos.x - 20, 0);
     const size_t right = std::min(left + 40, tile_map->LeftBottom().x);
 
+    const auto object_map = ComponentServiceLocator::Instance().
+        Resolve<tile_map::ObjectTileMapComponent>();
+    
     for (int y = top; y < bottom; ++y) {
         for (int x = left; x < right; ++x) {
             const auto cell = tile_map->GetCell(x, y);
-            if (cell == tile_map::kEmptyCell) continue;
-            if (cell > 5) {
-                int n = 3;
-            }
-            if (cell > s_rectangles_.size()) {
-                continue;
-            }
+            const auto object_cell = object_map->GetCell(x, y);
+            int color = 0;
+            int goal_bottom = 0;
 
-            base_engine::Vector2 mini_map_pos = { pos.x - 800,pos.y - 400 };
 
-            BASE_ENGINE(Render)->AddTexture(
-                texture_, { mini_map_pos.x + (x - left) * 128.0f * scale_,mini_map_pos.y + (y - top) * 128.0f * scale_ }, { scale_,scale_ }, 0,
-                s_rectangles_[cell - 1], MOF_COLOR_WHITE,
-                Mof::TextureAlignment::TEXALIGN_TOPLEFT);
+            if (IsDrawCell(cell)) {
+                color = MOF_COLOR_WHITE;
+            }
+            else if (IsDrawCell(object_cell)) {
+                switch (object_cell) {
+                case tile_map::kPowerSupplyCell:
+                    color = MOF_COLOR_YELLOW;
+                    break;
+                case tile_map::kStartCell:
+                    color = MOF_COLOR_HBLUE;
+                    break;
+                case tile_map::kGoalCell:
+                    color = MOF_COLOR_RED;
+                    goal_bottom = 1;
+                    break;
+                }
+            }
+            //else if (render_rect.CollisionPoint(goal_pos))color = HBLUE;
+
+            if (color == 0) continue;
+
+            base_engine::Vector2 map_pos = { 50,50 };
+            base_engine::Rect render_rect = {
+                map_pos.x + (x - left) * 128 * scale_,map_pos.y + (y - top) * 128 * scale_,
+                map_pos.x + (x - left + 1) * 128 * scale_,map_pos.y + (y - top + 1 + goal_bottom) * 128 * scale_
+            };
+
+            BASE_ENGINE(CanvasRender)->AddRect(render_rect, color);
             rect.Translation({ 128, 0 });
         }
         rect.Translation({ 0, 128 });
     }
+}
+
+bool MiniMapDrawer::IsDrawCell(tile_map::Layer::CellType type) {
+    if (type > s_rectangles_.size()) return false;
+    if (type == tile_map::kEmptyCell) return false;
+    return true;
 }
 
 void MiniMapDrawer::Load(tile_map::FrozenMapData map_data) {

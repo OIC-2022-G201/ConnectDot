@@ -302,6 +302,7 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::GoalCreate(
     GimmickCreator* instance, Game* game, const LoadObject& object) {
   const auto goal = new GoalActor(game);
   goal->Create(object);
+ 
 
   return goal;
 }
@@ -373,7 +374,7 @@ GimmickCreator::GimmickCreator(Game* game) : game_(game) {
 
 Actor* GimmickCreator::ActorCreate(const LoadObject& object) {
   if (!create_map_.contains(object.name)) return nullptr;
-
+  
   return create_map_[object.name](object);
 }
 

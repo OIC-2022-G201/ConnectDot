@@ -23,8 +23,14 @@
 #include "StageConstitution.h"
 #include "TexturePaths.h"
 #include "TransmitterComponent.h"
+
+#include "ComponentServiceLocator.h"
+#include "ObjectTileMapComponent.h"
+
 using namespace base_engine;
 using namespace draw_order;
+
+GoalActor::GoalActor(base_engine::Game* game) : Actor(game) {}
 
 void GoalActor::Create(const LoadObject& object) {
   GoalComponent::Create(this);
@@ -33,6 +39,10 @@ void GoalActor::Create(const LoadObject& object) {
     auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
     grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+
+    ComponentServiceLocator::Instance().
+        Resolve<tile_map::ObjectTileMapComponent>()->
+        SetCell(pos.x, pos.y, tile_map::kGoalCell);
   }
 }
 

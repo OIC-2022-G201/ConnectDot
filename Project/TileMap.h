@@ -14,10 +14,17 @@ using Cell = char;
 //constexpr int kEmptyCell = 0;
 //constexpr int kCanPlaceCell = 1;
 //constexpr int kNotPutCell = 2;
+//constexpr int kPowerSupplyCell = 3
+//constexpr int kStartCell = 4
+//constexpr int kGoalCell = 5
+
 enum Type {
 	kEmptyCell,
 	kCanPlaceCell,
-	kNotPutCell
+	kNotPutCell,
+    kPowerSupplyCell,
+    kStartCell,
+    kGoalCell,
 };
 
 class Layer {
