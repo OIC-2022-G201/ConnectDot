@@ -589,6 +589,24 @@
     <Filter Include="ソース ファイル\ConnectDot\Event\ReStart">
       <UniqueIdentifier>{ad6877fa-f403-40f1-a827-eaa770f9dff1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Box">
+      <UniqueIdentifier>{8ab1ccb2-b45d-4a1c-82bb-11a7b0a7f074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Conveyor">
+      <UniqueIdentifier>{39554268-4910-4a0e-9183-548758b9a80f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DataChip">
+      <UniqueIdentifier>{94a1d67d-0eae-494d-8599-4af03bb48bc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal">
+      <UniqueIdentifier>{35e56e4b-601d-4516-b920-1a83e78192f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick">
+      <UniqueIdentifier>{13e7fcea-6f24-4c1a-b7ff-758a451fec26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Switch">
+      <UniqueIdentifier>{4565d235-30ba-43ce-a334-094959dfd987}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1190,6 +1208,36 @@
     </ClCompile>
     <ClCompile Include="QuitEvent.cpp">
       <Filter>ソース ファイル\ConnectDot\Event\QuitEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Box</Filter>
+    </ClCompile>
+    <ClCompile Include="ConveyorActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Conveyor</Filter>
+    </ClCompile>
+    <ClCompile Include="DataChipActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DataChip</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorGoalActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal</Filter>
+    </ClCompile>
+    <ClCompile Include="StartPointGimmickActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorGoalComponent.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal</Filter>
+    </ClCompile>
+    <ClCompile Include="StartPointGimmickReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorGoalReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal</Filter>
+    </ClCompile>
+    <ClCompile Include="StartPointGimmickTransmitter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchActor.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Switch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2047,6 +2095,36 @@
     </ClInclude>
     <ClInclude Include="QuitEvent.h">
       <Filter>ソース ファイル\ConnectDot\Event\QuitEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Box</Filter>
+    </ClInclude>
+    <ClInclude Include="ConveyorActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Conveyor</Filter>
+    </ClInclude>
+    <ClInclude Include="DataChipActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DataChip</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorGoalActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal</Filter>
+    </ClInclude>
+    <ClInclude Include="StartPointGimmickActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorGoalComponent.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal</Filter>
+    </ClInclude>
+    <ClInclude Include="StartPointGimmickReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorGoalReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\DoorGoal</Filter>
+    </ClInclude>
+    <ClInclude Include="StartPointGimmickTransmitter.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\StartPointGimmick</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchActor.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Switch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

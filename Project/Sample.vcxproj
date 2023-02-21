@@ -107,6 +107,7 @@
     <ClCompile Include="BeaconPowerUpCounterView.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
+    <ClCompile Include="BoxActor.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="ButtonCommandEventContainer.cpp" />
     <ClCompile Include="ButtonListener.cpp" />
@@ -117,6 +118,11 @@
     <ClCompile Include="CollapsibleBlockActor.cpp" />
     <ClCompile Include="CollapsibleBlockReceiver.cpp" />
     <ClCompile Include="ConnectBind.cpp" />
+    <ClCompile Include="ConveyorActor.cpp" />
+    <ClCompile Include="DataChipActor.cpp" />
+    <ClCompile Include="DoorGoalActor.cpp" />
+    <ClCompile Include="DoorGoalComponent.cpp" />
+    <ClCompile Include="DoorGoalReceiver.cpp" />
     <ClCompile Include="DummyEmptyBeaconActor.cpp" />
     <ClCompile Include="DummyTween.cpp" />
     <ClCompile Include="Easer.cpp" />
@@ -162,6 +168,10 @@
     <ClCompile Include="SpriteAlphaTween.cpp" />
     <ClCompile Include="StageContainer.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
+    <ClCompile Include="StartPointGimmickActor.cpp" />
+    <ClCompile Include="StartPointGimmickReceiver.cpp" />
+    <ClCompile Include="StartPointGimmickTransmitter.cpp" />
+    <ClCompile Include="SwitchActor.cpp" />
     <ClCompile Include="TimeCounter.cpp" />
     <ClCompile Include="TimeCounterView.cpp" />
     <ClCompile Include="TitleListener.cpp" />
@@ -317,6 +327,7 @@
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="BinaryArchive.h" />
+    <ClInclude Include="BoxActor.h" />
     <ClInclude Include="BroadPhase.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="ButtonCommandEventContainer.h" />
@@ -328,6 +339,11 @@
     <ClInclude Include="CollapsibleBlockActor.h" />
     <ClInclude Include="CollapsibleBlockReceiver.h" />
     <ClInclude Include="ConnectBind.h" />
+    <ClInclude Include="ConveyorActor.h" />
+    <ClInclude Include="DataChipActor.h" />
+    <ClInclude Include="DoorGoalActor.h" />
+    <ClInclude Include="DoorGoalComponent.h" />
+    <ClInclude Include="DoorGoalReceiver.h" />
     <ClInclude Include="DummyEmptyBeaconActor.h" />
     <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
@@ -381,6 +397,10 @@
     <ClInclude Include="SpriteAlphaTween.h" />
     <ClInclude Include="StageContainer.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
+    <ClInclude Include="StartPointGimmickActor.h" />
+    <ClInclude Include="StartPointGimmickReceiver.h" />
+    <ClInclude Include="StartPointGimmickTransmitter.h" />
+    <ClInclude Include="SwitchActor.h" />
     <ClInclude Include="TextArchive.h" />
     <ClInclude Include="TimeCounter.h" />
     <ClInclude Include="TimeCounterModel.h" />
