@@ -11,9 +11,9 @@ base_engine::CounterComponent::CounterComponent(Actor* owner)
         RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(std::to_string(i));
     numbers[i] = *p;
   }
-  third_digit = new ImageComponent(owner_,2200);
-  second_digit = new ImageComponent(owner_, 2200);
-  first_digit = new ImageComponent(owner_, 2200);
+  third_digit = new ImageComponent(owner_, 1200);
+  second_digit = new ImageComponent(owner_, 1200);
+  first_digit = new ImageComponent(owner_, 1200);
 }
 
 base_engine::CounterComponent::CounterComponent(Actor* owner, const std::string& prefix): Component(owner) {
@@ -22,9 +22,9 @@ base_engine::CounterComponent::CounterComponent(Actor* owner, const std::string&
       RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(prefix+ std::to_string(i));
     numbers[i] = *p;
   }
-  third_digit = new ImageComponent(owner_, 2200);
-  second_digit = new ImageComponent(owner_, 2200);
-  first_digit = new ImageComponent(owner_, 2200);
+  third_digit = new ImageComponent(owner_, 1200);
+  second_digit = new ImageComponent(owner_, 1200);
+  first_digit = new ImageComponent(owner_, 1200);
 }
 
 void base_engine::CounterComponent::Update() {}

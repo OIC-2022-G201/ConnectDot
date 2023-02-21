@@ -15,10 +15,7 @@ public:
 	void Update() override;
 	void Start() override{}
 	void SetNumber(int number);
-
-	//TODO 外部に公開する必要のないメソッドはprivateにする
-	void SetPosition();
-	void SetPositionLeft();
+	
 	void SetSpace(const float space) { space_ = space; }
 	void SetIsRight(bool is_right)
 	{
@@ -42,5 +39,8 @@ private:
 	bool is_right_ = true;
 
   Vector2 offset_ = {0,0};
+
+	void SetPosition();
+	void SetPositionLeft();
 };
 }
