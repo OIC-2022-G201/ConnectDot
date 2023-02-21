@@ -1,0 +1,4 @@
+PowerSupply 29 13 3 5
+GimmickTarget 1 Lever(2)x10y1
+ElectricArea 1 20
+IsAir 1 1

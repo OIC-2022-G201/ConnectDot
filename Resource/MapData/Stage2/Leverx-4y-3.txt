@@ -1,0 +1,2 @@
+Lever 15 18 1 5
+GimmickTarget 1 MoveFloorx-8y0

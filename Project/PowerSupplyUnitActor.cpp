@@ -29,19 +29,27 @@ void PowerSupplyUnitActor::Start() {}
 
 void PowerSupplyUnitActor::Create(const LoadObject& object) {
   {
-    const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
-    const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius / 4);
-    if (kIsCollisionRenderMode) {
-      const auto shape = new base_engine::ShapeRenderComponent(this, 110);
-      shape->SetShape(circle);
-      shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
+    for (auto& part : object.object.parts) {
+      auto t = std::get_if<stage::part::ElectricAreaPart>(&part);
+      if (t) {
+        const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
+        const auto circle = std::make_shared<base_engine::Circle>(
+            cell_half.x, cell_half.y, t->GetRadius());
+        if (kIsCollisionRenderMode) {
+          const auto shape = new base_engine::ShapeRenderComponent(this, 110);
+          shape->SetShape(circle);
+          shape->SetFillMode(kElectricAreaFillMode)
+              .SetColor(kElectricAreaColor);
+        }
+        const auto collision = new base_engine::CollisionComponent(this);
+        collision->SetShape(circle);
+        collision->SetObjectFilter(kPowerSupplyUnitObjectFilter);
+        collision->SetTargetFilter(kPowerSupplyUnitTargetFilter);
+        collision->SetTrigger(true);
+        break;
+      }
     }
-    const auto collision = new base_engine::CollisionComponent(this);
-    collision->SetShape(circle);
-    collision->SetObjectFilter(kPowerSupplyUnitObjectFilter);
-    collision->SetTargetFilter(kPowerSupplyUnitTargetFilter);
-    collision->SetTrigger(true);
+
   }
 
   {

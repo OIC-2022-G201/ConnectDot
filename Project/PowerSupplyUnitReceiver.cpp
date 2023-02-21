@@ -34,7 +34,6 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
   effect_actor_->Show();
   effect_actor_->Play();
   actor_->SetOnImage(true);
-  if (targets_.empty()) return;
   receivers_.clear();
 
   if (transmitter) {
@@ -45,10 +44,13 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
     }
   }
   actor_->SetElectricPower(true);
-  std::ranges::transform(targets_, std::back_inserter(receivers_),
-                         [](const base_engine::Actor* actor) {
-                           return actor->GetComponent<ReceiverComponent>();
-                         });
+  if (!targets_.empty())
+  {
+	  std::ranges::transform(targets_, std::back_inserter(receivers_),
+													 [](const base_engine::Actor* actor) {
+														 return actor->GetComponent<ReceiverComponent>();
+													 });
+  }
 
   for (const auto& weak_ptr : receivers_) {
     sender_->AddTarget(weak_ptr);

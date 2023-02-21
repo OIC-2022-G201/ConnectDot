@@ -29,7 +29,7 @@ constexpr std::string_view kMultiRemotePowerSupplyName =
     "MultiRemotePowersupply"sv;
 constexpr std::string_view kStartPowerSupplyName = "Pylon"sv;
 constexpr std::string_view kLeverName = "Lever"sv;
-constexpr std::string_view kMoveFloorName = "Movefloor"sv;
+constexpr std::string_view kMoveFloorName = "MoveFloor"sv;
 constexpr std::string_view kVentName = "Vent"sv;
 constexpr std::string_view kSignboardName = "Signboard"sv;
 constexpr std::string_view kEnemyName = "Enemy"sv;

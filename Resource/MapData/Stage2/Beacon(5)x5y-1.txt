@@ -1,0 +1,3 @@
+Beacon 24 16 2 0
+GimmickTarget 1 None
+ElectricArea 1 320

@@ -1,0 +1,2 @@
+Lever 37 13 1 5
+GimmickTarget 1 MoveFloorx19y3

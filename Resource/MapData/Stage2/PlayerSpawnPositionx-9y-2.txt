@@ -1,0 +1,2 @@
+PlayerSpawnPosition 10 17 1 0
+BeaconStack 2 19 2

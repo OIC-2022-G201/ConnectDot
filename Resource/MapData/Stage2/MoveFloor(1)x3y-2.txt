@@ -1,0 +1,2 @@
+MoveFloor 22 17 1 5
+TransitionPoint 2 2 0

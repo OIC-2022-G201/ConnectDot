@@ -1,0 +1,4 @@
+PowerSupply 37 12 3 5
+GimmickTarget 1 Leverx16y4
+ElectricArea 1 20
+IsAir 1 1

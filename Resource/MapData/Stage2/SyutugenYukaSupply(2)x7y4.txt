@@ -1,0 +1,4 @@
+PowerSupply 26 11 3 1
+GimmickTarget 1 SyutugenYuka(2)x7y3
+ElectricArea 1 20
+IsAir 1 1
