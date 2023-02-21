@@ -2,7 +2,6 @@
 
 #include <fstream>
 
-#include "BinaryArchive.h"
 #include "CollisionComponent.h"
 #include "CollisionLayer.h"
 #include "Frozen.h"
@@ -10,6 +9,7 @@
 #include "Rect.h"
 #include "StringFrozen.h"
 #include "VectorFrozen.h"
+#include "TextArchive.h"
 namespace tile_map {
 struct FrozenMapData {
   std::string back_ground_path{};
@@ -75,9 +75,9 @@ void TileMapComponent::Load(std::string_view path) {
   {
     FrozenMapData map_data;
 
-    std::ifstream os(path, std::ios::binary);
+    std::ifstream os(path);
     {
-      frozen::BinaryInputArchive archive(os);
+      frozen::TextInputArchive archive(os);
       archive(map_data);
     }
     cell_width_ = map_data.map_max_x;

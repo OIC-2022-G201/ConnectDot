@@ -6,6 +6,8 @@
 // @details
 
 #pragma once
+#include "GimmickObjectLoadForUnity.h"
+#include "Part.h"
 #include "Point2dFrozen.h"
 #include "StringFrozen.h"
 #include "VariantFrozen.h"
@@ -37,6 +39,7 @@ struct LoadObject {
   using VariantT = std::variant<bool, int, float, Point2I, Point2F, std::string, AssetID,
                    Transform, ObjectSize, Prefab, TexturePath>;
   std::vector<VariantT> parameters;
+  GimmickObjectParameter object;
   std::string name;
   std::string id;
 
