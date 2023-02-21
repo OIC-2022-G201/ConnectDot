@@ -7,5 +7,7 @@
 
 #pragma once
 #include "Actor.h"
-__interface IMachineActionable
-{ void Action(base_engine::Actor* actor); };
+__interface IMachineActionable {
+	void Action(base_engine::Actor* actor);
+	bool CanInteractive(base_engine::Actor* actor);
+};

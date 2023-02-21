@@ -252,6 +252,8 @@ namespace player {
 			CollisionLayer::Layer{ CollisionLayer::kActionable }) == 0)
 			return;
 		const auto machine_actor = collision->GetActor();
+		const auto machine_component = machine_actor->GetComponent<IMachineActionable>();
+		if(machine_component.expired()||!machine_component.lock()->CanInteractive(owner_))return;
 		action_machine_buffer_.emplace_back(machine_actor);
 	}
 

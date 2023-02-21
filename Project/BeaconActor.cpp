@@ -42,9 +42,8 @@ class BeaconDummyComponent : public Component, public IMachineActionable {
 
   void Action(Actor* actor) override {
     if (const auto transmitter = owner_->GetComponent<TransmitterComponent>();
-        transmitter.expired() || transmitter.lock()->Level() != 1) {
-      return;
-    }
+        transmitter.expired() || transmitter.lock()->Level() != 1) return;
+    
     if (!static_cast<bool>(owner_as_beacon_->ElectricPowerTrigger())) return;
     std::any send = std::make_any<Actor*>(owner_);
 
@@ -52,7 +51,13 @@ class BeaconDummyComponent : public Component, public IMachineActionable {
     EventBus::FireEvent(event);
   }
 
- private:
+  bool CanInteractive(base_engine::Actor* actor) {
+    if (const auto transmitter = owner_->GetComponent<TransmitterComponent>();
+      transmitter.expired() || transmitter.lock()->Level() != 1) return false;
+    if (!static_cast<bool>(owner_as_beacon_->ElectricPowerTrigger())) return false;
+    return true;
+  }
+private:
   BeaconActor* owner_as_beacon_;
 };
 BeaconActor::BeaconActor(Game* game) : Actor(game) {
