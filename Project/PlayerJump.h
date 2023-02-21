@@ -15,7 +15,7 @@ class PlayerJump {
   base_engine::PhysicsBodyComponent* body_ = nullptr;
   bool is_ground_ = false;
   bool is_sneak_ = false;
-
+  bool is_fall_ = false;
  public:
   explicit PlayerJump(PlayerComponent* player);
   void Start();
@@ -31,7 +31,7 @@ class PlayerJump {
       machine.template TransitionTo<PlayerSneak>();
     } else if (is_ground_) {
       machine.template TransitionTo<PlayerIdle>();
-    } else if (frame_ > 30)
+    } else if (is_fall_)
       machine.template TransitionTo<PlayerFall>();
   }
   

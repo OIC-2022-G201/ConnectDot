@@ -24,13 +24,14 @@ void player::PlayerJump::Start() {
 void player::PlayerJump::Update() {
   frame_++;
 
-  if (frame_ > kMaxFrame) {
-    frame_ = kMaxFrame;
+  if (frame_ > player_->GetJumpTime()) {
+    frame_ = player_->GetJumpTime();
   }
   if (frame_>3)
   {
     is_ground_ = player_->IsGround();
   }
+  is_fall_ = frame_ > player_->GetJumpTime() / 2;
   Acceleration();
   player_->MovedLookAt();
 }
@@ -45,7 +46,7 @@ void player::PlayerJump::End() {}
 void player::PlayerJump::Acceleration() const {
   const float velocity =
       CalculationJumpAcceleration(player_->GetJumpHeight(),player_->GetJumpTime(),frame_);
-    if (frame_ == kMaxFrame) {
+  if (frame_ == player_->GetJumpTime()) {
     if (body_->GetForce().v < 3) return;
   }
   body_->AddForce({0, -kGravity - velocity});

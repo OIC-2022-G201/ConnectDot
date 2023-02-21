@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "PlayerComponent.h"
 #include "PlayerStateConst.h"
+#include "PlayerStateUtility.h"
 
 using namespace player::jump;
 player::PlayerFall::PlayerFall(PlayerComponent* player) : player_(player) {}
@@ -14,15 +15,15 @@ void player::PlayerFall::Start() {
   is_sneak_ = false;
 
   // 加速度計算式で使用するがジャンプの中間時点から再生するため最大値を２で割る
-  frame_ = kMaxFrame / 2;
+  frame_ = player_->GetJumpTime() / 2;
   player_->GetAnimator()->ChangeMotion("Jump", false);
 }
 
 void player::PlayerFall::Update() {
   frame_++;
 
-  if (frame_ > kMaxFrame) {
-    frame_ = kMaxFrame;
+  if (frame_ > player_->GetJumpTime()) {
+    frame_ = player_->GetJumpTime();
   }
   Acceleration();
   player_->MovedLookAt();
@@ -57,8 +58,8 @@ void player::PlayerFall::End() {
 }
 
 void player::PlayerFall::Acceleration() const {
-  const float velocity =
-      kJumpCoefficient<float> * sin(frame_ * jump::kTimeCoefficient<float>);
+  const float velocity = CalculationJumpAcceleration(
+      player_->GetJumpHeight(), player_->GetJumpTime(), frame_);
   if (frame_ == kMaxFrame) {
     if (body_->GetForce().v < 15) return;
   }
