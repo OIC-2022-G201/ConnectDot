@@ -55,12 +55,12 @@ void LeverStubActor::Create(const LoadObject& object) {
     receiver->Create<LeverStubReceiver>(this);
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 1);
+        ->SetCell(object.object.x, object.object.y, 1);
   }
   SetName("LeverStubActor");
 }
@@ -82,7 +82,7 @@ void LeverStubComponent::Action(base_engine::Actor*) {
 
 bool LeverStubComponent::CanInteractive(base_engine::Actor* actor) {
   const auto lever = dynamic_cast<LeverStubActor*>(owner_);
-  if (!lever)return false;
+  if (!lever) return false;
   if (!lever->GetElectric()) return false;
   const auto animation = owner_->GetComponent<MofSpriteAnimationComponent>();
   if (animation.expired()) return false;

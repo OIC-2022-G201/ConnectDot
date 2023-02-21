@@ -41,8 +41,7 @@ void MoveFloorStubActor::Create(const LoadObject& object) {
   }
   {
     const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
-    const auto& path =
-        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
+    const auto path = "gimmick/Objects/Movefloor/Movefloor.png";
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
   {
@@ -50,21 +49,24 @@ void MoveFloorStubActor::Create(const LoadObject& object) {
     receiver->Create<MoveFloorStubReceiver>(this);
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
-    from_position_ = {pos.x, pos.y};
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
+    from_position_ = {object.object.x, object.object.y};
 
-    auto to_pos = std::get<Point2I>(object.parameters[4]);
-    to_position_ = {to_pos.x, to_pos.y};
+    for (auto& part : object.object.parts) {
+      auto t = std::get_if<stage::part::TransitionPointPart>(&part);
+      if (t) {
+        to_position_ = t->GetPos();
+        break;
+      }
+    }
     SetTag("Field");
-
-    ComponentServiceLocator::Instance()
-        .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(from_position_, tile_map::kCanOnPlace);
+    SetName("MoveFloor");
   }
-
-  SetName("MoveFloor");
+  ComponentServiceLocator::Instance()
+      .Resolve<tile_map::ObjectTileMapComponent>()
+      ->SetCell(from_position_, tile_map::kCanOnPlace);
 }
 
 void MoveFloorStubActor::MoveFloorStubReceiver::OnPowerEnter(

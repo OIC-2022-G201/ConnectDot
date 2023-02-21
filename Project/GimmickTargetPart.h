@@ -14,6 +14,9 @@ namespace stage::part {
 class GimmickTargetPart {
   std::vector<std::string> targets_;
  public:
+  std::vector<std::string> GetTargetsGuid() const
+  { return targets_;
+  }
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
     archive(targets_);

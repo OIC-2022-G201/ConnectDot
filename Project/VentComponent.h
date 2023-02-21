@@ -39,10 +39,18 @@ class VentComponent final : public base_engine::Component,
 
   void SetElectric(const bool flg) { electric_power_ = flg; }
   [[nodiscard]] bool GetElectric() const { return electric_power_; }
-  void SetGroupTag(const int tag) { group_mask_ = tag; }
-  int GroupMask() const { return group_mask_; }
+
+  void SetTransitionTarget(std::string right,std::string left)
+  {
+    right_ = right;
+    left_ = left;
+  }
+  std::weak_ptr<base_engine::Actor> GetRight() const;
+  std::weak_ptr<base_engine::Actor> GetLeft() const;
 
  private:
+  std::string right_;
+  std::string left_;
   int group_mask_;
   bool electric_power_ = false;
 };

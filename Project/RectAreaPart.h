@@ -18,7 +18,8 @@ class RectAreaPart {
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(x_,y_,width_,height_);
+    int k = 4;
+    archive(k,x_,y_,width_,height_);
   }
 };
 }  // namespace stage::part

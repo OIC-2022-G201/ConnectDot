@@ -13,10 +13,14 @@ namespace stage::part {
 class TransitionTargetPart {
   std::string right_;
   std::string left_;
+
  public:
+  std::string GetRight() const { return right_; }
+  std::string GetLeft() const { return left_; }
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(right_, left_);
+    int k = 2;
+    archive(k, right_, left_);
   }
 };
 }  // namespace stage::part

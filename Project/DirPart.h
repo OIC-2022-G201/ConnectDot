@@ -16,7 +16,8 @@ class DirPart {
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(dir_int_);
+    int k = 1;
+    archive(k,dir_int_);
   }
 
   Dir GetDir() { return static_cast<Dir>(dir_int_); }

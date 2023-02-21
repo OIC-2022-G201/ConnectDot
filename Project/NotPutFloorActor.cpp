@@ -24,12 +24,13 @@ void NotPutFloorActor::Create(const LoadObject& object)
 
     }
 
-    auto pos = std::get<LoadObject::Transform>(object.parameters[1]).value;
+
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({ pos.x, pos.y });
+    grid->SetAutoSnap(grid::AutoSnap::Yes)
+        .SetSnapGridPosition({object.object.x, object.object.y});
 
     auto map = ComponentServiceLocator::Instance().Resolve<tile_map::ObjectTileMapComponent>();
-    map->SetCell(pos.x, pos.y, tile_map::kNotPutCell);
+    map->SetCell(object.object.x, object.object.y, tile_map::kNotPutCell);
 
     SetName("NotPutFloorActor");
 }

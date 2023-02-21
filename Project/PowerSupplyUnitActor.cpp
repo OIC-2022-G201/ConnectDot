@@ -45,7 +45,13 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
   }
 
   {
-    is_fly_ = std::get<bool>(object.parameters[object.parameters.size() - 2]);
+    is_fly_ = false;
+    for (auto& part : object.object.parts) {
+      auto t = std::get_if<stage::part::IsAirPart>(&part);
+      if (t) {
+        is_fly_ = true;
+      }
+    }
     {
       sprite_outline_ = new base_engine::SpriteComponent(
           this, draw_order::kPowerSupplyUnitDrawOrder + 1);
@@ -74,18 +80,17 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
     receiver->SetCanRemote(can_remote_);
 
     {
-      const int level =
-          std::get<int>(object.parameters[object.parameters.size() - 3]);
+      const int level = 1;
       receiver->SetLevel(level);
     }
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 1);
+        ->SetCell(object.object.x, object.object.y, 1);
   }
 }
 

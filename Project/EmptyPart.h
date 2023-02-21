@@ -13,7 +13,8 @@ class EmptyPart {
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(empty);
+    int k = 1;
+    archive(k,empty);
   }
 };
 }  // namespace stage

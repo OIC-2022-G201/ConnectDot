@@ -38,8 +38,7 @@ void SignboardActor::Create(const LoadObject& object) {
     display_ = new SpriteComponent(this, kSignboardDisplayDrawOrder);
     display_->SetOffset(kDisplayOffset);
     animation_ = new MofSpriteAnimationComponent(this);
-    const auto path = "gimmick/Objects/Signboard/" +
-                      std::get<std::string>(object.parameters[5]);
+    const std::string path = "gimmick/Objects/Signboard/set";
     const auto img = BASE_ENGINE(Texture)->Get(path + ".png");
     display_texture_ = img;
     display_->SetImage(display_texture_);
@@ -51,8 +50,7 @@ void SignboardActor::Create(const LoadObject& object) {
   }
   {
     const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
-    const auto path =
-        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
+    const auto path = "gimmick/Objects/Signboard/Signboard_off.png";
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
   {
@@ -60,9 +58,9 @@ void SignboardActor::Create(const LoadObject& object) {
     receiver->Create<SignboardReceiver>(display_,animation_);
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::Yes)
+        .SetSnapGridPosition({object.object.x, object.object.y});
   }
   SetName("Signboard");
 }

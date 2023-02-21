@@ -22,7 +22,8 @@ class RoutePart {
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(routes_, type_int_);
+    archive(routes_);
+    type_int_ = routes_.back();
   }
 };
 }  // namespace stage::part

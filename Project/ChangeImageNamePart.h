@@ -16,7 +16,8 @@ class ChangeImageNamePart {
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(image_);
+    int k = 1;
+    archive(k,image_);
   }
 };
 }  // namespace stage::part

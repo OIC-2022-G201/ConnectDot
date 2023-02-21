@@ -35,8 +35,7 @@ void DoorActor::Create(const LoadObject& object) {
   }
   {
     const auto sprite = new SpriteComponent(this, kVentDrawOrder);
-    const auto& path =
-        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
+    const auto path = "gimmick/Objects/Door/Door.png";
     sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
     std::filesystem::path file = path;
     const auto animation = new MofSpriteAnimationComponent(this);
@@ -50,9 +49,9 @@ void DoorActor::Create(const LoadObject& object) {
     receiver->Create<DoorReceiver>(vent, this);
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
   }
   SetName("DoorActor");
   SetTag("Field");

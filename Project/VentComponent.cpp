@@ -47,29 +47,37 @@ void VentActor::Create(const LoadObject& object) {
   }
   {
     const auto sign = new SpriteComponent(this, kVentDrawOrder);
-    const auto& path =
-        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
+    const auto& path = "gimmick/Objects/Vent/vent_green.png";
+
     sign->SetImage(BASE_ENGINE(Texture)->Get(path));
   }
 
   auto vent = new VentComponent(this);
   {
+    for (auto& part : object.object.parts) {
+      auto t = std::get_if<stage::part::TransitionTargetPart>(&part);
+      if (t) {
+        vent->SetTransitionTarget(t->GetRight(), t->GetLeft());
+      }
+    }
+  }
+  {
     const auto receiver = new ReceiverComponent(this, 100);
     receiver->Create<VentReceiver>(vent);
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
     ComponentServiceLocator::Instance()
         .Resolve<tile_map::ObjectTileMapComponent>()
-        ->SetCell(pos.x, pos.y, 1);
+        ->SetCell(object.object.x, object.object.y, 1);
   }
   {
-    const int tag = std::get<int>(*std::prev(object.parameters.end(), 2));
+    const int tag = 1;
+    // std::get<int>(*std::prev(object.parameters.end(), 2));
     ServiceLocator::Instance().Resolve<VentGroupLocator>()->RegisterVent(
-        tag, GetGame()->GetActor(GetId()));
-    vent->SetGroupTag(tag);
+        object.id, GetGame()->GetActor(GetId()));
   }
   SetName("VentActor");
 }
@@ -81,13 +89,19 @@ void VentComponent::Start() {}
 void VentComponent::Update() {}
 
 void VentComponent::Action(base_engine::Actor* machine_operator) {
-  if (!GetElectric()) return;
   const auto player =
       machine_operator->GetComponent<player::PlayerComponent>().lock();
   player->VentEnter(this);
 }
 
-bool VentComponent::CanInteractive(base_engine::Actor* actor) {
-  if (!GetElectric()) return false;
-  return true;
+bool VentComponent::CanInteractive(base_engine::Actor* actor) { return true; }
+
+std::weak_ptr<base_engine::Actor> VentComponent::GetRight() const {
+  return ServiceLocator::Instance().Resolve<VentGroupLocator>()->GetVentData(
+      right_);
+}
+
+std::weak_ptr<base_engine::Actor> VentComponent::GetLeft() const {
+  return ServiceLocator::Instance().Resolve<VentGroupLocator>()->GetVentData(
+      left_);
 }

@@ -19,7 +19,14 @@ class LeverStubActor final : public base_engine::Actor {
 
   void Create(const LoadObject& object);
 
-  void SetTarget(Actor* target) { target_ = target; }
+  void SetTarget(Actor* target)
+  {
+    if (target_)
+    {
+      int k = 3;
+    }
+  	target_ = target;
+  }
   [[nodiscard]] Actor* GetTarget() const { return target_; }
   void SetElectric(bool flg) { electric_power_ = flg; }
   bool GetElectric() const { return electric_power_; }

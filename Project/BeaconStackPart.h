@@ -16,7 +16,8 @@ class BeaconStackPart {
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(max_beacon_, strengthen_count_);
+    int k = 2;
+    archive(k,max_beacon_, strengthen_count_);
   }
 };
 }  // namespace stage::part

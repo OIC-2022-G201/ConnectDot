@@ -141,15 +141,10 @@ std::weak_ptr<VentComponent> PlayerVentAction::GetVentMoveTo(
       break;
       return {};
     case VentDir::kPrev:
-
-      move_to =
-          ServiceLocator::Instance().Resolve<VentGroupLocator>()->GetPrevVent(
-              vent_->GroupMask());
+      move_to = vent_->GetLeft();
       break;
     case VentDir::kNext:
-      move_to =
-          ServiceLocator::Instance().Resolve<VentGroupLocator>()->GetNextVent(
-              vent_->GroupMask());
+      move_to = vent_->GetRight();
       break;
     default:;
   }

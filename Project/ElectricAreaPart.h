@@ -14,6 +14,7 @@ class ElectricAreaPart
  public:
   template <class Archive>
   void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
-    archive(radius_);
+    int k = 1;
+    archive(k,radius_);
   }
 };

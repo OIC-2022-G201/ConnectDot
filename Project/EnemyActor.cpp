@@ -59,10 +59,10 @@ namespace enemy {
             debugCollisionRender->SetColor(MOF_COLOR_RED);
         }
         const auto body_ = new PhysicsBodyComponent(this);
-
-        auto pos = std::get<LoadObject::Transform>(object.parameters[1]).value;
+        
         const auto grid = new grid::GridSnapComponent(this);
-        grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({ pos.x, pos.y });
+        grid->SetAutoSnap(grid::AutoSnap::No)
+            .SetSnapGridPosition({object.object.x, object.object.y});
 
         SetName("Enemy");
         SetTag("Enemy");

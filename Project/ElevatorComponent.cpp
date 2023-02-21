@@ -60,24 +60,29 @@ void ElevatorActor::Create(const LoadObject& object) {
   }
   {
     const auto sprite = new SpriteComponent(this, kSignboardDrawOrder);
-    const auto& path =
-        std::get<LoadObject::TexturePath>(object.parameters[0]).value;
+    const auto path = "gimmick/Objects/Elevator/Elevator.png";
     sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
     sprite->SetOffset({0, 24});
   }
 
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
-    SetPosition(GridPosition::GridTo({pos.x, pos.y}));
+    SetPosition(GridPosition::GridTo({object.object.x, object.object.y}));
   }
   {
     auto elevator = new ElevatorComponent(this);
-
-    auto pos = std::get<Point2I>(object.parameters[4]);
-    elevator->AddFloor(GridPosition::VectorTo(GetPosition()));
-    elevator->AddFloor({pos.x, pos.y});
-    const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<ElevatorReceiver>(elevator, this);
+    for (auto & part : object.object.parts)
+    {
+      auto t = std::get_if<stage::part::TransitionPointPart>(&part);
+      if (t)
+      {
+        elevator->AddFloor(GridPosition::VectorTo(GetPosition()));
+        elevator->AddFloor(t->GetPos() +
+                           GridPosition::VectorTo(GetPosition()));
+        const auto receiver = new ReceiverComponent(this, 100);
+        receiver->Create<ElevatorReceiver>(elevator, this);
+        break;
+      }
+    }
   }
   SetName("ElevatorActor");
   SetTag("Field");

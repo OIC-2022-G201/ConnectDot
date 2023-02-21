@@ -49,9 +49,10 @@ void DoorStubActor::Create(const LoadObject& object)
     //receiver->Create<SignboardReceiver>(display_);
   }
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
+    
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::Yes).SetSnapGridPosition({object.object.x, object.object.y});
+
   }
   SetName("DoorStubActor");
 }

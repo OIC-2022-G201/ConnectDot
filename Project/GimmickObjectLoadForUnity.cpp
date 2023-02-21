@@ -25,8 +25,9 @@ void GimmickObjectLoadForUnity::SetPart(base_engine::Actor* actor,
 GimmickObjectParameter GimmickObjectLoadForUnity::GenerateObject(
     std::filesystem::path path) {
   constexpr std::array kPartTable = {
-      "BeaconStack",     "ChangeImageName", "Dir",      "ElectricArea",
-      "GimmickTarget",   "IsAir",           "RectArea", "Route",
+      "BeaconStack",     "ChangeImageName", "Dir",
+      "ElectricArea",    "Empty",           "GimmickTarget",
+      "IsAir",           "RectArea",        "Route",
       "TransitionPoint", "TransitionTarget"};
   std::ifstream os(path);
   {
@@ -35,7 +36,7 @@ GimmickObjectParameter GimmickObjectLoadForUnity::GenerateObject(
     for (int i = 0; i < object_.part_count; ++i) {
       std::string part_name;
       int k;
-      archive(part_name, k);
+      archive(part_name);
       PartVariant part;
       for (int part_type = 0; part_type < kPartTable.size(); ++part_type) {
         if (part_name == kPartTable[part_type]) {

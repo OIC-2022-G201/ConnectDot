@@ -33,7 +33,7 @@ bool ObjectLoader::CreateObject(const std::filesystem::path& path) {
   object.object = part_object;
   object.id = path.stem().string();
   object.name = part_object.name;
-
+  if (object.name == "Beacon") return false;
   creator_.ActorCreate(object);
 
 

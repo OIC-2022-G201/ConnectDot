@@ -30,9 +30,9 @@ void GoalActor::Create(const LoadObject& object) {
   GoalComponent::Create(this);
   SetName("GoalActor");
   {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[2]).value;
     const auto grid = new grid::GridSnapComponent(this);
-    grid->SetAutoSnap(grid::AutoSnap::No).SetSnapGridPosition({pos.x, pos.y});
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
   }
 }
 
