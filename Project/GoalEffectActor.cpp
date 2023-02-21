@@ -43,6 +43,7 @@ public:
 	void OnEvent(ButtonPressEvent& press) override {}
 };
 constexpr std::string_view kSRankAnimation = "Result_SRankAnimation";
+constexpr std::string_view kCheckBoxAnimation= "CheckBoxAnimation";
 namespace {
 	auto ButtonCreate(Game* game, ButtonSelecter* selector, const ButtonFrozenPack& button_data) {
 		const auto button_pack =
@@ -73,6 +74,19 @@ namespace {
 		} result = { button, selector };
 		return result;
 	}
+	auto AnimationCreate(Game* game,std::string_view animation_view,int draw_order,Vector2 pos) {
+		const auto actor = new Actor(game);
+		const auto sprite = new ImageComponent(actor, draw_order);
+		const auto pack =
+			RC::GetPack<RC::AnimationResourcePack>(animation_view.data());
+		const auto image = pack->Get<RC::Sprite>()->Get(0);
+		sprite->SetImage(*image);
+		const auto clip = pack->Get<RC::AnimationClips>()->Get(0);
+		const auto animation = new MofSpriteAnimationComponent(actor);
+		animation->Load(sprite, *clip);
+		actor->SetPosition(pos);
+	}
+	
 }
 
 class Image {
@@ -223,17 +237,8 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 		.Panel()
 		.SetColor(MOF_ARGB(0, 255, 255, 255))
 		.SetEnabled(false);
-	{
-		const auto sprite = new base_engine::SpriteComponent(owner_, 130);
-		const auto sprite_resource =
-			RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(kSRankAnimation.data());
-		sprite->SetImage(*sprite_resource);
-		const auto clips =
-			RC::GetResource<RC::AnimationResourcePack, RC::AnimationClips>(kSRankAnimation.data());
-		const auto animation = new MofSpriteAnimationComponent(owner_);
-		animation->Load(sprite,*clips);
-	}
 
+	
 	LetterBoxAnimation().SetOnComplete([this] {
 		ClearLogoAnimation();
 	OpenPopup().SetOnComplete([this]
@@ -244,9 +249,14 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 	; NextStageLogoAnimation().SetOnComplete([this] {
 		end_animation_ = true;
 	static_cast<ButtonSelecter*>(elements_.at("selector"))->SetEnable(true);
-
-	const auto animation = owner_->GetComponent<MofSpriteAnimationComponent>();
-	animation.lock()->Play(kSRankAnimation.data());
+	
+		AnimationCreate(owner_->GetGame(), kSRankAnimation.data(), 1000, { 1000, 310 });
+	//CheckBox（上）
+		AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,432 });
+		//CheckBox（中央）
+		AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,552 });
+		//CheckBox（下）
+		AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,672 });
 		});
 		});
 		});
@@ -258,6 +268,7 @@ void GoalEffectActor::GoalEffectComponent::Update() {
 }
 
 void  GoalEffectActor::GoalEffectComponent::CreateButtons() {
+
 	constexpr bool enable = false;
 	const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
 		main_pack = {
