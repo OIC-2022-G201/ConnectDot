@@ -150,6 +150,7 @@
     <ClCompile Include="ParallaxCameraFlowLayer.cpp" />
     <ClCompile Include="ParallaxCameraFlowLayerComponent.cpp" />
     <ClCompile Include="ParentTest.cpp" />
+    <ClCompile Include="GimmickObjectLoadForUnity.cpp" />
     <ClCompile Include="PauseComponent.cpp" />
     <ClCompile Include="PauseManager.cpp" />
     <ClCompile Include="PauseEvent.cpp" />
@@ -325,6 +326,7 @@
     <ClInclude Include="BeaconPowerUpActor.h" />
     <ClInclude Include="BeaconPowerUpCounterView.h" />
     <ClInclude Include="BeaconReceiver.h" />
+    <ClInclude Include="BeaconStackPart.h" />
     <ClInclude Include="BeaconTransmitter.h" />
     <ClInclude Include="BinaryArchive.h" />
     <ClInclude Include="BoxActor.h" />
@@ -334,6 +336,7 @@
     <ClInclude Include="ButtonListener.h" />
     <ClInclude Include="ButtonPressEvent.h" />
     <ClInclude Include="CameraCustomComponent.h" />
+    <ClInclude Include="ChangeImageNamePart.h" />
     <ClInclude Include="ClipSizeXTween.h" />
     <ClInclude Include="ClipSizeYTween.h" />
     <ClInclude Include="CollapsibleBlockActor.h" />
@@ -344,6 +347,7 @@
     <ClInclude Include="DoorGoalActor.h" />
     <ClInclude Include="DoorGoalComponent.h" />
     <ClInclude Include="DoorGoalReceiver.h" />
+    <ClInclude Include="DirPart.h" />
     <ClInclude Include="DummyEmptyBeaconActor.h" />
     <ClInclude Include="DummyTween.h" />
     <ClInclude Include="Easer.h" />
@@ -351,16 +355,20 @@
     <ClInclude Include="EffectBase.h" />
     <ClInclude Include="ElevatorComponent.h" />
     <ClInclude Include="ElevatorReceiver.h" />
+    <ClInclude Include="EmptyPart.h" />
+    <ClInclude Include="ElectricAreaPart.h" />
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GameOverComponent.h" />
     <ClInclude Include="GameOverEvent.h" />
     <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="QuitEvent.h" />
     <ClInclude Include="ReStartEvent.h" />
+    <ClInclude Include="GimmickTargetPart.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="IConnectBindable.h" />
     <ClInclude Include="ImageAlphaTween.h" />
     <ClInclude Include="InvaderSceneFactory.h" />
+    <ClInclude Include="IsAirPart.h" />
     <ClInclude Include="ISpriteAnimatable.h" />
     <ClInclude Include="ITransitionFadeSystem.h" />
     <ClInclude Include="ITween.h" />
@@ -376,6 +384,8 @@
     <ClInclude Include="ParallaxCameraFlowLayer.h" />
     <ClInclude Include="ParallaxCameraFlowLayerComponent.h" />
     <ClInclude Include="ParentTest.h" />
+    <ClInclude Include="GimmickObjectLoadForUnity.h" />
+    <ClInclude Include="Part.h" />
     <ClInclude Include="PauseComponent.h" />
     <ClInclude Include="PauseManager.h" />
     <ClInclude Include="PauseEvent.h" />
@@ -383,10 +393,12 @@
     <ClInclude Include="PlayerStateUtility.h" />
     <ClInclude Include="PositionXTween.h" />
     <ClInclude Include="PositionYTween.h" />
+    <ClInclude Include="RectAreaPart.h" />
     <ClInclude Include="ReleaseInfo.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="ResultModel.h" />
     <ClInclude Include="ResultScoreComponent.h" />
+    <ClInclude Include="RoutePart.h" />
     <ClInclude Include="ScaleTween.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
@@ -411,6 +423,8 @@
     <ClInclude Include="TransitionFadeSystem.h" />
     <ClInclude Include="TransitionParameter.h" />
     <ClInclude Include="ApplyTuple.h" />
+    <ClInclude Include="TransitionPointPart.h" />
+    <ClInclude Include="TransitionTargetPart.h" />
     <ClInclude Include="Tween.h" />
     <ClInclude Include="UiFactoryUtilities.h" />
     <ClInclude Include="UiFrozen.h" />

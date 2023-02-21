@@ -69,9 +69,7 @@ void PlayerActor::SetInput(InputManager* input_manager) {
 }
 
 void PlayerActor::Create(const LoadObject& object) {
-  {
-    auto pos = std::get<LoadObject::Transform>(object.parameters[1]).value;
-    SetPosition(GridPosition::GridTo({pos.x, pos.y}));
+  { SetPosition(GridPosition::GridTo({object.object.x, object.object.y}));
   }
   SetInput(InputManager::Instance());
   SetMap(ComponentServiceLocator::Instance()

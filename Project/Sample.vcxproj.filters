@@ -607,6 +607,9 @@
     <Filter Include="ソース ファイル\ConnectDot\Electronics\Machine\Switch">
       <UniqueIdentifier>{4565d235-30ba-43ce-a334-094959dfd987}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ConnectDot\Stage\Loader\ImportPart">
+      <UniqueIdentifier>{b60f74ce-fee7-4949-ac73-771d9a6ee1e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -1238,6 +1241,9 @@
     </ClCompile>
     <ClCompile Include="SwitchActor.cpp">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Switch</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickObjectLoadForUnity.cpp">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2125,6 +2131,54 @@
     </ClInclude>
     <ClInclude Include="SwitchActor.h">
       <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Switch</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStateUtility.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="TextArchive.h">
+      <Filter>Utilities\Frozen\Archive</Filter>
+    </ClInclude>
+    <ClInclude Include="PairFrozen.h">
+      <Filter>Utilities\Frozen\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="BeaconStackPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeImageNamePart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="DirPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="ElectricAreaPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickTargetPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="IsAirPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="RectAreaPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="RoutePart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionPointPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionTargetPart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickObjectLoadForUnity.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
