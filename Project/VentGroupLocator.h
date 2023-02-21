@@ -19,6 +19,7 @@ class VentGroupLocator {
 
 public:
   bool RegisterVent(VentKey tag, const WeakVent& vent);
+  void Clear();;
   [[nodiscard]] WeakVent GetVentData(VentKey tag) const;
 
  private:

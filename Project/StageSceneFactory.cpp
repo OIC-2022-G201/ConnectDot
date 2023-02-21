@@ -28,8 +28,10 @@
 #include "TileMapComponent.h"
 #include "TimeCounterPresenter.h"
 #include "TimeCounterView.h"
+#include "VentGroupLocator.h"
 using namespace base_engine;
 void StageSceneFactory::Factory() {
+  ServiceLocator::Instance().Resolve<VentGroupLocator>()->Clear();
   const auto stage_container =
       ServiceLocator::Instance().Resolve<StageContainer>();
   const auto stage_def = stage_container->GetStage();

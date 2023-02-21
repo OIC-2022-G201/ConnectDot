@@ -5,11 +5,12 @@ bool VentGroupLocator::RegisterVent(const VentKey tag, const WeakVent& vent) {
   return true;
 }
 
+void VentGroupLocator::Clear() { vent_container_.clear(); }
+
 VentGroupLocator::WeakVent VentGroupLocator::GetVentData(
     const VentKey tag) const {
   const auto result = vent_container_.find(tag);
-  if (result==vent_container_.end())
-  {
+  if (result == vent_container_.end()) {
     return WeakVent{};
   }
   return result->second;
