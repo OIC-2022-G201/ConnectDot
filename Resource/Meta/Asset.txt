@@ -27,8 +27,12 @@ BeaconOn Sprite gimmick/Objects/Beacon/BeaconOn/Beacon_On.png
 BeaconOutline Sprite gimmick/Objects/Beacon/BeaconOutline/LightAround_Beacon_On.png
 BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 BeaconPowerUpRange Sprite gimmick/Objects/Beacon/BeaconPowerUpRange/PowerUpRing.png
+Box Sprite gimmick/Objects/Box/Box.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
+Conveyor Animation gimmick/Objects/Conveyor/Conveyor_MotionChip.png gimmick/Objects/Conveyor/Conveyor.aei
+DataChip Sprite gimmick/Objects/DataChip/Item_DataChip.png
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
+Door_Goal Animation gimmick/Objects/Door_Goal/Door_Goal_MotionChip.png gimmick/Objects/Door_Goal/Door_Goal.aei
 Elevator Sprite gimmick/Objects/Elevator/Elevator.png
 Lever Animation gimmick/Objects/Lever/LeverAnimation_MotionChip.png gimmick/Objects/Lever/LeverAnimation.aei
 Movefloor Sprite gimmick/Objects/Movefloor/Movefloor.png
