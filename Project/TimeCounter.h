@@ -4,22 +4,16 @@
 namespace Stopwatch {
   class TimeCounter
   {
-    bool is_running_ = false;
-    std::chrono::system_clock::time_point begin_;
-    std::chrono::system_clock::time_point end_;
-    std::chrono::nanoseconds elapsed_;
+    bool pause_ = true;
+    float time_ = 0;
     TimeCounter() = default;
   public:
     ~TimeCounter() = default;
-    double GetElapsedSeconds()const;
-    static std::unique_ptr<TimeCounter> CreateNew();
+    static std::unique_ptr<Stopwatch::TimeCounter> CreateNew();
+    [[nodiscard]] float GetElapsedSeconds()const;
+    void Update(const float add_time);
     void Start();
     void Stop();
-    void ReStart();
     void Reset();
-    void Resume();
-  private:
-    template <typename T, class Unit>
-    [[nodiscard]] T GetElapsed()const;
   };
 }

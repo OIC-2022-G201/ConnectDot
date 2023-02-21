@@ -30,16 +30,21 @@ public:
 		time_counter_view_->GetGoalEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterStop();});
 		event_handlers_.emplace_back(EventBus::AddHandler<GoalEvent>(*time_counter_view_));
 
-		time_counter_view_->GetStartEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterResume(); });
+		time_counter_view_->GetStartEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterStart(); });
 		event_handlers_.emplace_back(EventBus::AddHandler<PauseEvent>(*time_counter_view_));
 
 		time_counter_view_->GetStopEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterStop(); });
 		event_handlers_.emplace_back(EventBus::AddHandler<PauseEvent>(*time_counter_view_));
 
-		time_counter_view_->GetReStartEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterReStart(); });
+		time_counter_view_->GetReStartEvent().Subscribe([this](auto) {
+			event_handlers_.clear();
+		});
 		event_handlers_.emplace_back(EventBus::AddHandler<ReStartEvent>(*time_counter_view_));
-		//ゲームオーバーいらないかも quitと同じ
-		time_counter_view_->GetGameOverEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterReset();});
+		
+		time_counter_view_->GetGameOverEvent().Subscribe([this](auto) {
+			time_counter_model_->TimeCounterReset();
+		event_handlers_.clear();
+		});
 		event_handlers_.emplace_back(EventBus::AddHandler<GameOverEvent>(*time_counter_view_));
 
 		time_counter_view_->GetQuitEvent().Subscribe([this](auto) {time_counter_model_->TimeCounterReset();});

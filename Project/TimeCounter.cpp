@@ -5,43 +5,23 @@ std::unique_ptr<Stopwatch::TimeCounter> Stopwatch::TimeCounter::CreateNew() {
   return time_counter;
 }
 
+void Stopwatch::TimeCounter::Update(const float add_time) {
+  if(time_ >(99*60+59))return;
+  if (!pause_) time_ += add_time;
+}
+
+float Stopwatch::TimeCounter::GetElapsedSeconds() const {
+  return time_;
+}
+
 void Stopwatch::TimeCounter::Start() {
-  if (is_running_) return;
-	is_running_ = true;
-	begin_ = end_ = std::chrono::system_clock::now();
+  pause_ = false;
 }
 
 void Stopwatch::TimeCounter::Stop() {
-  if (!is_running_) return;
-  is_running_ = false;
-  end_ = std::chrono::system_clock::now();
-  elapsed_ = std::chrono::duration_cast<std::chrono::nanoseconds>(end_ - begin_);
-}
-
-void Stopwatch::TimeCounter::Resume() {
-  if (is_running_) return;
-  is_running_ = true;
-}
-
-void Stopwatch::TimeCounter::ReStart() {
-  Reset();
-  Start();
+  pause_ = true;
 }
 
 void Stopwatch::TimeCounter::Reset() {
-  elapsed_ = std::chrono::nanoseconds(0);
-  begin_ = end_ = std::chrono::system_clock::now();
-}
-
-template <typename T, class Unit>
-T Stopwatch::TimeCounter::GetElapsed() const {
-  if (is_running_){
-    return std::chrono::duration_cast<std::chrono::duration<T, Unit>>
-  	(std::chrono::system_clock::now() - begin_).count();
-  }
-  return std::chrono::duration_cast<std::chrono::duration<T, Unit>>(elapsed_).count();
-}
-
-double Stopwatch::TimeCounter::GetElapsedSeconds() const {
-  return GetElapsed<double, std::ratio<1>>();
+  time_ = 0;
 }

@@ -18,6 +18,7 @@
 #include "DummyEmptyBeaconActor.h"
 #include "EventBus.h"
 #include "EventHandler.h"
+#include "GameOverEvent.h"
 #include "GameOverSceneFactory.h"
 #include "GoalEffectActor.h"
 #include "GoalEvent.h"
@@ -301,6 +302,9 @@ namespace player {
 	void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
 		const auto actor = manifold.collision_b->GetActor();
 		if (actor->GetTag() == "Enemy") {
+			std::any sender = this;
+			GameOverEvent game_over_event{ sender };
+			EventBus::FireEvent(game_over_event);
 			scene::LoadScene(kGameOver);
 			return;
 		}
