@@ -11,11 +11,13 @@
 class ResultModel {
   uint16_t found_count_ = 0;
   uint16_t beacon_used_times_ = 0;
+  uint16_t beacon_limit_ = 20;
+  uint16_t goal_beacon_ = 7;
 
   bool pause_ = true;
-
   float time_ = 0;
-
+  float goal_time_ = 60;
+  bool is_pick_data_chip = false;
  public:
   
   // Control
@@ -24,14 +26,18 @@ class ResultModel {
   void Pause();
   void Start();
 
-  void IncrementFoundCount();
-
   void IncrementBeaconUsedTimes();
+
+  // Set
+
+  void SetBeaconLimit(uint16_t beacon_limit);
+  void SetGoalTime(const float goal_time);
+  void SetPicUpDataChip(bool is_pick);
 
   // Get
 
-  [[nodiscard]] uint16_t GetFoundCount() const;
-
-  [[nodiscard]] uint16_t GetBeaconUsedTimes() const;
+  [[nodiscard]] bool IsClearBeaconUsedTimes() const;
+  [[nodiscard]] bool IsClearGoalTimes() const;
+  [[nodiscard]] bool IsClearDataChip() const;
   [[nodiscard]] float GetTime() const;
 };

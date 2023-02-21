@@ -7,8 +7,6 @@
 namespace enemy {
 	void EnemyChase::Start()
 	{
-	  const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
-		score->IncrementFoundCount();
 		body_ = enemy_->PhysicsBody();
 		vision_ = enemy_->GetVision();
 		is_find_ = true;

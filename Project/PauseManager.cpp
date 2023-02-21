@@ -89,7 +89,7 @@ private:
                           .Resolve<ITransitionFadeSystem>()
                           ->SceneTransition(scene::kGame, kPauseToGameFadeIn,
                                             kPauseToGameFadeOut);
-                    }},
+                   }},
                    {{828, 671}, "GoTitleButton", [this] {
                       std::any sender = this;
                       QuitEvent quit{sender};
@@ -98,7 +98,8 @@ private:
                           .Resolve<ITransitionFadeSystem>()
                           ->SceneTransition(scene::kTitle, kPauseToGameFadeIn,
                                             kPauseToGameFadeOut);
-                    }} };
+                   }}
+      };
 
     const auto selector = new ButtonSelecter(game_);
     selector->SetInput(InputManager::Instance());

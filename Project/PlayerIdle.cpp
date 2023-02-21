@@ -10,14 +10,14 @@
 #include "PlayerComponent.h"
 #include "ResultModel.h"
 #include "ComponentServiceLocator.h"
-GridPosition g_position{0, 0};
+GridPosition g_position{ 0, 0 };
 constexpr auto kLimitFlame = 30;
 
 player::PlayerIdle::PlayerIdle(PlayerComponent* player) : player_(player) {
   player_->GetGame()->debug_render_.emplace_back([] {
     Mof::CGraphicsUtilities::RenderString(0, 600, "%d,%d", g_position.x,
-                                          g_position.y);
-  });
+    g_position.y);
+    });
   beacon_counter_model_ = std::make_shared<BeaconCounterModel>();
   ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterModel(beacon_counter_model_);
   ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->Bind();
@@ -31,18 +31,18 @@ void player::PlayerIdle::Start() {
   player_->GetAnimator()->ChangeMotion("Tati");
 }
 class BeaconQueryCallBack : public base_engine::physics::PhysicsQueryCallback {
- public:
+public:
   bool ReportFixture(base_engine::physics::PhysicsFixture* fixture) override {
     const auto actor = fixture->collision_->GetActor();
 
     if (fixture->collision_->GetTargetFilter() == kPlayerObjectFilter &&
-        actor->GetTag() == "Beacon") {
+      actor->GetTag() == "Beacon") {
       if (const auto beacon = dynamic_cast<BeaconActor*>(actor))
       {
-        if(static_cast<int>(beacon->LevelUpTrigger()) == 1){
+        if (static_cast<int>(beacon->LevelUpTrigger()) == 1) {
           beacon->Close();
         }
-        else{
+        else {
           beacon->Break(false);
         }
       }
@@ -57,7 +57,7 @@ void player::PlayerIdle::Update() {
 
   if (player_->IsPlaceBeaconKey() && player_->GetBeacon() > 0) {
     PlaceBeacon();
-    
+
   }
   if (player_->IsCollectBeaconKey()) {
     flame_++;
@@ -65,9 +65,9 @@ void player::PlayerIdle::Update() {
     auto pos = player_->GetOwner()->GetPosition();
     BeaconQueryCallBack call_back;
     BASE_ENGINE(Collider)->QueryAABB(
-        &call_back, {{pos.x+40, pos.y+40}
-  , { pos.x + 128, pos.y + 256 }
-});
+      &call_back, { {pos.x + 40, pos.y + 40}
+, { pos.x + 128, pos.y + 256 }
+      });
     flame_ = 0;
   }
   else {
@@ -86,13 +86,14 @@ void player::PlayerIdle::End() {}
 void player::PlayerIdle::OnEvent(base_engine::CollisionComponent* collision) {}
 
 void player::PlayerIdle::PlaceBeacon() const {
+  if (static_cast<int>(beacon_counter_model_->GetBeaconCount()) <= 0) return;
   const auto pos_opt = player_->SearchPlacePosition();
   if (!pos_opt.has_value()) return;
   const auto& pos = pos_opt.value();
   player_->SetBeacon(player_->GetBeacon() - 1);
   ComponentServiceLocator::Instance()
-      .Resolve<tile_map::ObjectTileMapComponent>()
-      ->SetCell(pos.x, pos.y, 1);
+    .Resolve<tile_map::ObjectTileMapComponent>()
+    ->SetCell(pos.x, pos.y, 1);
   const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
   score->IncrementBeaconUsedTimes();
   const auto beacon = new BeaconActor(player_->GetGame());

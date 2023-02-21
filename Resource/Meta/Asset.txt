@@ -113,11 +113,18 @@ GoTitleButton Button UI/Pose/GoTitleButton/GoTitleButton.png UI/Pose/GoTitleButt
 PauseHaikei Sprite UI/Pose/PauseHaikei/Posehaikei.png
 RestartButton Button UI/Pose/RestartButton/RestartButton.png UI/Pose/RestartButton/RestartButton2.png
 ResumeButton Button UI/Pose/ResumeButton/ResumeButton.png UI/Pose/ResumeButton/ResumeButton2.png
+CheckBoxAnimation Animation UI/Result/CheckBoxAnimation/CheckBoxAnimation.png UI/Result/CheckBoxAnimation/CheckBoxAnimation.aei
 LetterBox Sprite UI/Result/LetterBox/DiagonalLetterBox.png
-NextLogo Sprite UI/Result/NextLogo/NextLogo.png
-ResultCharacter Sprite UI/Result/ResultCharacter/ResultCharacter.png
 ResultLogo Sprite UI/Result/ResultLogo/StageclearLogo.png
 ResultPopup Sprite UI/Result/ResultPopup/PopupResults.png
+Result_ARank Sprite UI/Result/Result_ARank/Result_ARank.png
+Result_BRank Sprite UI/Result/Result_BRank/Result_BRank.png
+Result_CRank Sprite UI/Result/Result_CRank/Result_CRank.png
+Result_NextStageButton Button UI/Result/Result_NextStageButton/Result_NextStageButton.png UI/Result/Result_NextStageButton/Result_NextStageButton2.png
+Result_RankBar Sprite UI/Result/Result_RankBar/Result_RankBar.png
+Result_RetryButton Button UI/Result/Result_RetryButton/Result_RetryButton.png UI/Result/Result_RetryButton/Result_RetryButton2.png
+Result_SRankAnimation Animation UI/Result/Result_SRankAnimation/Result_SRankAnimation.png UI/Result/Result_SRankAnimation/Result_SRankAnimation.aei
+StageSelect_BackButton Button UI/Result/StageSelect_BackButton/StageSelect_BackButton.png UI/Result/StageSelect_BackButton/StageSelect_BackButton2.png
 Arrow Sprite UI/TitleMenu-Programmer/Arrow/Arrow.png
 KeyGuide Sprite UI/TitleMenu-Programmer/KeyGuide/PopupKeyGuide.png
 KeyGuideButton Button UI/TitleMenu-Programmer/KeyGuideButton/KeyGuideButton.png UI/TitleMenu-Programmer/KeyGuideButton/KeyGuideButton2.png
