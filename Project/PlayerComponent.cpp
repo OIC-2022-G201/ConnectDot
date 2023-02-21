@@ -100,32 +100,29 @@ namespace player {
 		ServiceLocator::Instance().Resolve<PauseManager>()->IsOpen().Subscribe(
 			[this](bool open) { can_control_ = !open; });
 
+		JumpParameter jump_parameter;
 		{
 			constexpr std::string_view PlayerJumpParameter = "Meta/Player/PlayerJumpParameter.bin";
-
-			JumpParameter jump_parameter;
-			{
-				if (fs::exists(PlayerJumpParameter)) {
-					std::ifstream stream;
-					stream.open(PlayerJumpParameter, std::ios::binary);
-					{
-						frozen::BinaryInputArchive archive{ stream };
-						archive(jump_parameter);
-					}
+			if (fs::exists(PlayerJumpParameter)) {
+				std::ifstream stream;
+				stream.open(PlayerJumpParameter, std::ios::binary);
+				{
+					frozen::BinaryInputArchive archive{ stream };
+					archive(jump_parameter);
 				}
-				else {
-					std::ofstream stream;
-					stream.open(PlayerJumpParameter, std::ios::binary);
-					{
-						jump_parameter.height = 300;
-						jump_parameter.time = 60;
-						frozen::BinaryOutputArchive archive{ stream };
-						archive(jump_parameter);
-					}
-				}
-				jump_height_ = jump_parameter.height;
-				jump_time_ = jump_parameter.time;
 			}
+			else {
+				std::ofstream stream;
+				stream.open(PlayerJumpParameter, std::ios::binary);
+				{
+					jump_parameter.height = 300;
+					jump_parameter.time = 60;
+					frozen::BinaryOutputArchive archive{ stream };
+					archive(jump_parameter);
+				}
+			}
+			jump_height_ = jump_parameter.height;
+			jump_time_ = jump_parameter.time;
 		}
 
 		owner_->GetGame()->debug_render_.emplace_back([this]() {

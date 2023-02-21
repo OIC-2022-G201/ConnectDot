@@ -8,8 +8,6 @@ namespace enemy
 {
 	void EnemyChase2::Start()
 	{
-	  const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
-		score->IncrementFoundCount();
 		vision_ = enemy_->GetVision();
 		body_ = enemy_->GetPhysicsBody();
 		sprite_ = enemy_->GetSprite();

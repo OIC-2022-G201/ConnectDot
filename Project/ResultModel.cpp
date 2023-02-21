@@ -9,24 +9,32 @@ void ResultModel::Pause(){ pause_ = true; }
 
 void ResultModel::Start(){ pause_ = false; }
 
-void ResultModel::IncrementFoundCount()
-{
-	found_count_++;
-	found_count_ %= 999;
+bool ResultModel::IsClearGoalTimes() const {
+	return  goal_time_ >= time_;
 }
 
-void ResultModel::IncrementBeaconUsedTimes()
-{
+void ResultModel::SetBeaconLimit(const uint16_t beacon_limit) {
+	beacon_limit_ = beacon_limit;
+}
+
+void ResultModel::SetGoalTime(const float goal_time) {
+	goal_time_ = goal_time;
+}
+
+void ResultModel::SetPicUpDataChip(bool is_pick) {
+	is_pick_data_chip = is_pick;
+}
+
+bool ResultModel::IsClearDataChip() const {
+	return is_pick_data_chip;
+}
+
+void ResultModel::IncrementBeaconUsedTimes(){
 	beacon_used_times_++;
-	beacon_used_times_ %= 999;
 }
 
-uint16_t ResultModel::GetFoundCount() const
-{ return found_count_; }
-
-uint16_t ResultModel::GetBeaconUsedTimes() const
-{
-	return beacon_used_times_;
+bool ResultModel::IsClearBeaconUsedTimes() const{
+	return goal_beacon_ <= beacon_limit_ - beacon_used_times_;
 }
 
 float ResultModel::GetTime() const

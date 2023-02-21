@@ -1,10 +1,12 @@
 ﻿#include "GoalEffectActor.h"
 
+#include <fstream>
 #include <numbers>
 
 #include "AudioStreamComponent.h"
 #include "AudioVolume.h"
 #include "BaseEngineCore.h"
+#include "BinaryArchive.h"
 #include "ButtonPressEvent.h"
 #include "ClipSizeXTween.h"
 #include "ClipSizeYTween.h"
@@ -31,6 +33,7 @@
 #include "SceneManager.h"
 #include "SpriteComponent.h"
 #include "StageContainer.h"
+#include "TextArchive.h"
 #include "TitleSceneFactory.h"
 #include "TransitionParameter.h"
 #include "UiFactoryUtilities.h"
@@ -42,8 +45,7 @@ class ResultListener final : public EventHandler<ButtonPressEvent> {
 public:
 	void OnEvent(ButtonPressEvent& press) override {}
 };
-constexpr std::string_view kSRankAnimation = "Result_SRankAnimation";
-constexpr std::string_view kCheckBoxAnimation= "CheckBoxAnimation";
+
 namespace {
 	auto ButtonCreate(Game* game, ButtonSelecter* selector, const ButtonFrozenPack& button_data) {
 		const auto button_pack =
@@ -74,7 +76,8 @@ namespace {
 		} result = { button, selector };
 		return result;
 	}
-	auto AnimationCreate(Game* game,std::string_view animation_view,int draw_order,Vector2 pos) {
+
+	auto AnimationCreate(Game* game, std::string_view animation_view, int draw_order, Vector2 pos) {
 		const auto actor = new Actor(game);
 		const auto sprite = new ImageComponent(actor, draw_order);
 		const auto pack =
@@ -85,8 +88,12 @@ namespace {
 		const auto animation = new MofSpriteAnimationComponent(actor);
 		animation->Load(sprite, *clip);
 		actor->SetPosition(pos);
+		const struct {
+			MofSpriteAnimationComponent* sprite_animation_component;
+		} result = { animation };
+		return result;
 	}
-	
+
 }
 
 class Image {
@@ -111,7 +118,7 @@ private:
 class PopupPanel {
 public:
 	PopupPanel& Create(Game* game, const Rect& rect, const std::string_view name,
-		const int order = 2000) {
+		const int order = 1000) {
 		actor = new Actor(game);
 		panel = new NinePatchImageComponent(actor, order);
 		const auto sprite_resource =
@@ -138,10 +145,14 @@ class GoalEffectActor::GoalEffectComponent final : public Component {
 	Image top_;
 	Image bottom_;
 	Image popup_text_;
+	Image clear_logo_;
+	Image rank_a_logo_;
+	Image rank_b_logo_;
+	Image rank_c_logo_;
+	Image rank_bar_;
 	Button* next_stage_logo_;
 	Button* stage_select_logo_;
 	Button* retry_logo_;
-	Image clear_logo_;
 	PopupPanel panel_;
 	std::unique_ptr<ResultListener> listener_;
 	std::shared_ptr<HandlerRegistration> handle_;
@@ -155,7 +166,8 @@ public:
 	void Show() {}
 	void Transition();
 	void CreateButtons();
-
+	void CalculationRank();
+	void ExportScore(int rank_point);
 private:
 	auto& OpenPopup() const {
 		panel_.Panel()
@@ -176,7 +188,7 @@ private:
 		return ma_tween::DummyTween::TweenDummy(panel_.Owner(), 0.01)
 			.SetOnComplete([this] {
 			popup_text_.Sprite().SetColor(MOF_ARGB(255, 255, 255, 255));
-		});
+				});
 	}
 	auto& NextStageLogoAnimation() const {
 		next_stage_logo_->SetEnable(true);
@@ -197,7 +209,22 @@ private:
 		return ma_tween::ImageAlphaTween::TweenImageAlpha(clear_logo_.Owner(), 255,
 			0.17f);
 	}
-
+	auto& ARankAnimation() const {
+		return ma_tween::ImageAlphaTween::TweenImageAlpha(rank_a_logo_.Owner(), 255,
+			0.17f);
+	}
+	auto& BRankAnimation() const {
+		return ma_tween::ImageAlphaTween::TweenImageAlpha(rank_b_logo_.Owner(), 255,
+			0.17f);
+	}
+	auto& CRankAnimation() const {
+		return ma_tween::ImageAlphaTween::TweenImageAlpha(rank_c_logo_.Owner(), 255,
+			0.17f);
+	}
+	auto& RankBarAnimation() const {
+		return ma_tween::ImageAlphaTween::TweenImageAlpha(rank_bar_.Owner(), 255,
+			0.17f);
+	}
 	auto& LetterBoxAnimation() const {
 		constexpr float letter_time = 0.2f;
 		ma_tween::PositionXTween::TweenLocalPositionX(bottom_.Owner(), 0,
@@ -233,38 +260,100 @@ void GoalEffectActor::GoalEffectComponent::Start() {
 		.Sprite()
 		.SetColor(MOF_ARGB(0, 255, 255, 255));
 
+	rank_a_logo_.Create(game, 1000, 310, "Result_ARank")
+		.Sprite()
+		.SetColor(MOF_ARGB(0, 255, 255, 255));
+
+	rank_b_logo_.Create(game, 1000, 310, "Result_BRank")
+		.Sprite()
+		.SetColor(MOF_ARGB(0, 255, 255, 255));
+
+	rank_c_logo_.Create(game, 1000, 310, "Result_CRank")
+		.Sprite()
+		.SetColor(MOF_ARGB(0, 255, 255, 255));
+
+	rank_bar_.Create(game, 1130, 710, "Result_RankBar")
+		.Sprite()
+		.SetColor(MOF_ARGB(0, 255, 255, 255));
+
 	panel_.Create(game, { 252 ,291, 926 ,828 }, "Panel")
 		.Panel()
 		.SetColor(MOF_ARGB(0, 255, 255, 255))
 		.SetEnabled(false);
 
-	
 	LetterBoxAnimation().SetOnComplete([this] {
 		ClearLogoAnimation();
 	OpenPopup().SetOnComplete([this]
 		{
 			ShowScore();
-		StageSelectLogoAnimation();
-		RetryLogoAnimation();
+	StageSelectLogoAnimation();
+	RetryLogoAnimation();
 	; NextStageLogoAnimation().SetOnComplete([this] {
 		end_animation_ = true;
 	static_cast<ButtonSelecter*>(elements_.at("selector"))->SetEnable(true);
-	
-		AnimationCreate(owner_->GetGame(), kSRankAnimation.data(), 1000, { 1000, 310 });
-	//CheckBox（上）
-		AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,432 });
-		//CheckBox（中央）
-		AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,552 });
-		//CheckBox（下）
-		AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,672 });
-		});
-		});
+	CalculationRank();
+
+		}); });
 		});
 	CreateButtons();
 }
 
 void GoalEffectActor::GoalEffectComponent::Update() {
-	
+
+}
+
+struct Highscore
+{
+	int high_rank_point;
+	template <class Archive>
+	void FROZEN_SERIALIZE_FUNCTION_NAME(Archive& archive) {
+		archive(high_rank_point);
+	}
+};
+
+void GoalEffectActor::GoalEffectComponent::CalculationRank() {
+	auto rank_point = 0;
+	{
+		constexpr std::string_view kCheckBoxAnimation = "CheckBoxAnimation";
+		auto checkBoxTop = AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,432 });
+		auto checkBoxmiddle = AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,552 });
+		auto checkBoxbuttom = AnimationCreate(owner_->GetGame(), kCheckBoxAnimation.data(), 1000, { 363 ,672 });
+		const auto score = ComponentServiceLocator::Instance().Resolve<ResultModel>();
+		checkBoxTop.sprite_animation_component->Stop();
+		checkBoxmiddle.sprite_animation_component->Stop();
+		checkBoxbuttom.sprite_animation_component->Stop();
+		//CheckBox（上）
+		if (score->IsClearGoalTimes()) {
+			rank_point++;
+			checkBoxTop.sprite_animation_component->Play();
+		}
+		//CheckBox（中央）
+		if (score->IsClearDataChip()) {
+			rank_point++;
+			checkBoxmiddle.sprite_animation_component->Play();
+		}
+		//CheckBox（下）
+		if (score->IsClearBeaconUsedTimes()) {
+			rank_point++;
+			checkBoxbuttom.sprite_animation_component->Play();
+		}
+	}
+	{
+		RankBarAnimation();
+		if (rank_point >= 3) {
+			constexpr std::string_view kSRankAnimation = "Result_SRankAnimation";
+			AnimationCreate(owner_->GetGame(), kSRankAnimation.data(), 1000, { 1000, 310 });
+		}
+		else if (rank_point >= 2)
+			ARankAnimation();
+
+		else if (rank_point >= 1)
+			BRankAnimation();
+		else
+			CRankAnimation();
+
+		ExportScore(rank_point);
+	}
 }
 
 void  GoalEffectActor::GoalEffectComponent::CreateButtons() {
@@ -308,7 +397,7 @@ void  GoalEffectActor::GoalEffectComponent::CreateButtons() {
 	elements_.emplace("selector", selector);
 
 	for (int i = 0; i < main_pack.size(); ++i) {
-		const auto &[pos, name, action] = main_pack[i];
+		const auto& [pos, name, action] = main_pack[i];
 		const auto [button, _] = ButtonCreate(
 			owner_->GetGame(), selector, ButtonFrozenPack{ pos.x, pos.y, name, i, 0 });
 		elements_.emplace(name, button);
@@ -318,7 +407,7 @@ void  GoalEffectActor::GoalEffectComponent::CreateButtons() {
 	next_stage_logo_ = static_cast<Button*>(elements_.at("Result_NextStageButton"));
 	stage_select_logo_ = static_cast<Button*>(elements_.at("StageSelect_BackButton"));
 	retry_logo_ = static_cast<Button*>(elements_.at("Result_RetryButton"));
-	
+
 };
 
 GoalEffectActor::GoalEffectActor(base_engine::Game* game) : Actor(game) {}
@@ -345,5 +434,38 @@ void GoalEffectActor::GoalEffectComponent::Transition()
 			.Resolve<ITransitionFadeSystem>()
 			->SceneTransition(scene::kGame, kGoalToNextStageFadeIn,
 				kGoalToNextStageFadeout);
+	}
+}
+
+void GoalEffectActor::GoalEffectComponent::ExportScore(int rank_point) {
+	Highscore highscore;
+	const auto stage_container = ServiceLocator::Instance().Resolve<StageContainer>();
+	auto stage = stage_container->GetStageName().back();
+	stage++;
+	const std::string high_score_file = "Meta/Player/HighScoreStage" + std::to_string(stage - 49) + ".bin";
+	if (fs::exists(high_score_file)) {
+		std::ifstream istream;
+		istream.open(high_score_file, std::ios::binary);
+		{
+			frozen::BinaryInputArchive archive{ istream };
+			archive(highscore);
+		}
+	}
+	else {
+		std::ofstream ostream;
+		ostream.open(high_score_file, std::ios::binary);
+		highscore.high_rank_point = rank_point;
+		frozen::BinaryOutputArchive archive{ ostream };
+		archive(rank_point);
+	}
+
+	if (highscore.high_rank_point < rank_point) {
+		highscore.high_rank_point = rank_point;
+		std::ofstream ostream;
+		ostream.open(high_score_file, std::ios::binary);
+		{
+			frozen::BinaryOutputArchive archive{ ostream };
+			archive(rank_point);
+		}
 	}
 }

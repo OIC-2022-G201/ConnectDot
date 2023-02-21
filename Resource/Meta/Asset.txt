@@ -1,4 +1,3 @@
-
 BG Sprite BG/BackGraundColor.png
 Stage1BG10 Sprite BG/Stage1/Stage1BG10/Stage1BG10.png
 Stage1BG20 Sprite BG/Stage1/Stage1BG20/Stage1BG20.png
@@ -118,6 +117,9 @@ CheckBoxAnimation Animation UI/Result/CheckBoxAnimation/CheckBoxAnimation.png UI
 LetterBox Sprite UI/Result/LetterBox/DiagonalLetterBox.png
 ResultLogo Sprite UI/Result/ResultLogo/StageclearLogo.png
 ResultPopup Sprite UI/Result/ResultPopup/PopupResults.png
+Result_ARank Sprite UI/Result/Result_ARank/Result_ARank.png
+Result_BRank Sprite UI/Result/Result_BRank/Result_BRank.png
+Result_CRank Sprite UI/Result/Result_CRank/Result_CRank.png
 Result_NextStageButton Button UI/Result/Result_NextStageButton/Result_NextStageButton.png UI/Result/Result_NextStageButton/Result_NextStageButton2.png
 Result_RankBar Sprite UI/Result/Result_RankBar/Result_RankBar.png
 Result_RetryButton Button UI/Result/Result_RetryButton/Result_RetryButton.png UI/Result/Result_RetryButton/Result_RetryButton2.png
