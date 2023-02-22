@@ -369,14 +369,14 @@ void PlayerComponent::CheckGround() {
   HitGroundCallback callback;
   const auto rect = sprite_.lock()->GetClipRect();
 
-  physics::PVec2 p1 = {owner_->GetPosition().x + 80, owner_->GetPosition().y};
+  physics::PVec2 p1 = {owner_->GetPosition().x + 100, owner_->GetPosition().y};
   p1.y += rect.GetHeight() - 4;
   physics::PVec2 p2 = p1;
   p2.y += 5;
   BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   if (!callback.ground_fixture_) {
-    p1.x += 96;
-    p2.x += 96;
+    p1.x += 40;
+    p2.x += 40;
     BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   }
   if (callback.ground_fixture_) {

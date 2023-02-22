@@ -46,5 +46,6 @@ class DummyEmptyBeaconActor final : public base_engine::Actor {
   BeaconPartTuple tuple_;
   ReceiverComponent* receiver_;
   TransmitterComponent* transmitter_;
+  base_engine::CollisionComponent* collision_;
   std::optional<GridPosition> prev_pos_ = std::nullopt;
 };

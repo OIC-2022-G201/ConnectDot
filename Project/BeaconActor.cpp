@@ -180,7 +180,7 @@ void BeaconActor::LevelUp() {
     const auto cell_half = stage::kStageCellSizeHalf<Floating>;
 
     const auto circle =
-        std::make_shared<Circle>(cell_half.x, cell_half.y, kPowerRadius + 128);
+        std::make_shared<Circle>(cell_half.x, cell_half.y, kPowerRadius + 128*1.5);
     const auto collision = GetComponent<CollisionComponent>().lock();
     collision->SetShape(circle);
     collision->Sync();

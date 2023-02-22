@@ -11,7 +11,7 @@
 namespace electronics {
 namespace electricity {
 
-constexpr uint32_t kPowerRadius = 385;
+constexpr uint32_t kPowerRadius = 320;
 constexpr uint32_t kEnhancementPowerRadius = kPowerRadius / 2;
 
 constexpr base_engine::FillMode kElectricAreaFillMode =

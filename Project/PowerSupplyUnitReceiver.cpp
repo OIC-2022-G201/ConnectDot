@@ -63,7 +63,6 @@ void PowerSupplyUnitReceiver::OnPowerEnter(TransmitterComponent* transmitter) {
 
 void PowerSupplyUnitReceiver::OnPowerChanged(
     TransmitterComponent* transmitter) {
-  if (targets_.empty()) return;
 
   for (const auto& weak_ptr : receivers_) {
     sender_->AddTarget(weak_ptr);
@@ -74,8 +73,6 @@ void PowerSupplyUnitReceiver::OnPowerExit(TransmitterComponent* transmitter) {
   effect_actor_->Hide();
   sequential_ = -1;
   actor_->SetOnImage(false);
-
-  if (targets_.empty()) return;
 
   actor_->SetElectricPower(false);
   receivers_.clear();

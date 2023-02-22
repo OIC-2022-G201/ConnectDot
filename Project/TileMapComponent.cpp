@@ -8,8 +8,8 @@
 #include "IBaseEngineTexture.h"
 #include "Rect.h"
 #include "StringFrozen.h"
-#include "VectorFrozen.h"
 #include "TextArchive.h"
+#include "VectorFrozen.h"
 namespace tile_map {
 struct FrozenMapData {
   std::string back_ground_path{};
@@ -101,7 +101,7 @@ void TileMapComponent::Load(std::string_view path) {
   tile_shape_.clear();
   {
     Mof::CReadTextFile reader("mapchip/StageSetTile.txt");
-    
+
     for (int i = 0; i < 50; ++i) {
       Mof::Rectangle rect;
       reader.ReadU16();
@@ -117,9 +117,13 @@ void TileMapComponent::Load(std::string_view path) {
       if (y == 0) continue;
       if (x == map_.GetXCount()) continue;
       if (y == map_.GetYCount()) continue;
-      if ((map_.GetCell(x + 1, y) != 0) && (map_.GetCell(x - 1, y) != 0) &&
-          (map_.GetCell(x, y + 1) != 0) && (map_.GetCell(x, y - 1) != 0))
+      if (((map_.GetCell(x + 1, y) != 0) && (map_.GetCell(x - 1, y) != 0) &&
+           (map_.GetCell(x, y + 1) != 0) && (map_.GetCell(x, y - 1) != 0)) &&
+          ((map_.GetCell(x + 1, y) < 29) && (map_.GetCell(x - 1, y) < 29) &&
+           (map_.GetCell(x, y + 1) < 29) && (map_.GetCell(x, y - 1) < 29)))
         continue;
+      const auto shape = tile_shape_[map_.GetCell(x, y) - 1];
+      if (shape->GetHeight() == 0) continue;
       n++;
       const auto cell = new base_engine::Actor(owner_->GetGame());
       cell->SetTag("Field");
@@ -127,7 +131,8 @@ void TileMapComponent::Load(std::string_view path) {
       const auto collision = new base_engine::CollisionComponent(cell);
       collision->SetObjectFilter(kFieldObjectFilter);
       collision->SetTargetFilter(kFieldTargetFilter);
-      collision->SetShape(tile_shape_[map_.GetCell(x, y)-1]);
+
+      collision->SetShape(shape);
     }
   }
 }

@@ -60,7 +60,7 @@ void player::PlayerFall::End() {
 void player::PlayerFall::Acceleration() const {
   const float velocity = CalculationJumpAcceleration(
       player_->GetJumpHeight(), player_->GetJumpTime(), frame_);
-  if (frame_ == kMaxFrame) {
+  if (frame_ == kMaxFrame && body_->GetForce().y > 10) {
     if (body_->GetForce().v < 15) return;
   }
   body_->AddForce({0, -kGravity - velocity});

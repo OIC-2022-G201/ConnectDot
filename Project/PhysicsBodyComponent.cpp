@@ -24,13 +24,22 @@ void base_engine::PhysicsBodyComponent::OnCollision(
   auto collision_depth = manifold.manifold;
   const auto target_body = target_collision->GetPhysicsBody();
   // Solver(collision_depth, target_body);
+
   Vector2 normal = collision_depth.normal;
+  if (normal.y > 0.1 && g_pInput->IsKeyHold(MOFKEY_1)) {
+    int n = 3;
+  }
   normal.x = std::abs(normal.x);
   normal.y = std::abs(normal.y);
   auto power = -GetForce() * normal;
+  if (collision_depth.normal.y > 0 && power.y < 0)
+  {
+    power.y = 0;
+  }
   if (power.y < -10) {
     int n = 3;
   }
+
   auto power_abs = VectorUtilities::Abs(power);
   if (collision_depth.depth < 1.1f &&
       abs((GetForce() + power).y) < std::numeric_limits<float>::epsilon() &&

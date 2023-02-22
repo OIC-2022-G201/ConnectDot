@@ -321,18 +321,18 @@ DummyEmptyBeaconActor::DummyEmptyBeaconActor(base_engine::Game* game)
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius);
+        cell_half.x, cell_half.y, kPowerRadius-20);
     if (kIsCollisionRenderMode) {
       const auto shape = new base_engine::ShapeRenderComponent(this, 110);
       shape->SetShape(circle);
       shape->SetFillMode(kElectricAreaFillMode).SetColor(kElectricAreaColor);
       RegistryPart(shape);
     }
-    const auto collision = new base_engine::CollisionComponent(this);
-    collision->SetShape(circle);
-    collision->SetObjectFilter(kBeaconObjectFilter);
-    collision->SetTargetFilter(kBeaconTargetFilter);
-    collision->SetTrigger(true);
+    collision_ = new base_engine::CollisionComponent(this);
+    collision_->SetShape(circle);
+    collision_->SetObjectFilter(kBeaconObjectFilter);
+    collision_->SetTargetFilter(kBeaconTargetFilter);
+    collision_->SetTrigger(true);
   }
   {
     transmitter_ = new TransmitterDummyComponent(this, 100);
@@ -360,11 +360,16 @@ void DummyEmptyBeaconActor::Input() {}
 
 void DummyEmptyBeaconActor::Update() {
   const auto pos_opt = player_->SearchPlacePosition();
-  if (pos_opt.has_value()) {
-    // receiver_->Disconnect();
+  if (!pos_opt.has_value()) {
+    SetElectric(false);
+    collision_->SetObjectFilter(CollisionLayer::kNone);
+    collision_->SetTargetFilter(CollisionLayer::kNone);
   }
   if (prev_pos_ != pos_opt) {
     if (pos_opt.has_value()) {
+      collision_->SetObjectFilter(kBeaconObjectFilter);
+      collision_->SetTargetFilter(kBeaconTargetFilter);
+      SetElectric(true);
       SetPosition(GridPosition::GridTo(pos_opt.value()));
       const auto num = (player_->MaxBeacon() - player_->GetBeacon() + 1) * 10;
       SetSequential(num);
