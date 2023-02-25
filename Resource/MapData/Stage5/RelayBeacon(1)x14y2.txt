@@ -1,0 +1,4 @@
+PowerSupply 38 30 3 0
+GimmickTarget 1 None
+ElectricArea 1 320
+IsAir 1 1

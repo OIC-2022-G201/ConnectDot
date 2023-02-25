@@ -50,8 +50,8 @@ class CollisionComponent : public Component {
   }
   physics::PhysicsBody* GetEnginePhysicsBody() const { return physics_body_; }
   void SyncPosition();
-
- private:
+  void SetEnabled(bool enable) const;
+private:
   std::shared_ptr<class IShape> shape_{};
   std::bitset<kCollisionFilterSize> target_layer_;
   std::bitset<kCollisionFilterSize> object_layer_;

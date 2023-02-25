@@ -49,7 +49,8 @@ class HitGroundCallback final : public physics::PhysicsRayCastCallback {
     if (fixture->collision_->GetTrigger()) {
       return fraction;
     }
-    if (fixture->collision_->GetObjectFilter() == kFieldObjectFilter) {
+    if ((fixture->collision_->GetObjectFilter() & kFieldObjectFilter) ==
+        kFieldObjectFilter) {
       ground_fixture_ = fixture;
       return 0;
     }
@@ -338,7 +339,7 @@ bool PlayerComponent::CanPlace(const GridPosition& pos) const {
 
 std::optional<GridPosition> PlayerComponent::SearchPlacePosition() const {
   std::optional<GridPosition> result;
-
+  if (this->machine_.current_state() > 3) return std::nullopt;
   auto pos = GridPosition::VectorTo(owner_->GetPosition());
   pos.x += IsRight() ? 1 : 0;
   pos.y += 1;
@@ -369,14 +370,14 @@ void PlayerComponent::CheckGround() {
   HitGroundCallback callback;
   const auto rect = sprite_.lock()->GetClipRect();
 
-  physics::PVec2 p1 = {owner_->GetPosition().x + 100, owner_->GetPosition().y};
+  physics::PVec2 p1 = {owner_->GetPosition().x + 90, owner_->GetPosition().y};
   p1.y += rect.GetHeight() - 4;
   physics::PVec2 p2 = p1;
   p2.y += 5;
   BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   if (!callback.ground_fixture_) {
-    p1.x += 40;
-    p2.x += 40;
+    p1.x += 60;
+    p2.x += 60;
     BASE_ENGINE(Collider)->RayCast(&callback, p1, p2);
   }
   if (callback.ground_fixture_) {

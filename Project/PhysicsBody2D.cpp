@@ -142,6 +142,17 @@ void PhysicsBody::SetTransform(const PVec2& position, float angle)
   m_world->m_newContacts = true;
 }
 
+void PhysicsBody::SetEnabled(const bool flag) {
+  if (flag) {
+    m_flags |= e_enabledFlag;
+  } else {
+    m_flags &= ~e_enabledFlag;
+  }
+}
+
+bool PhysicsBody::IsEnabled() const
+{ return (m_flags & e_enabledFlag) == e_enabledFlag; }
+
 bool PhysicsBody::ShouldCollide(const PhysicsBody* other) const
 {
   if (m_type != PhysicsBodyType::kDynamicBody &&

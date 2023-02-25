@@ -202,9 +202,15 @@ void TitleSceneFactory::Factory() {
             {{670, 913},
              "Stage3Button",
              [title] { title->StageSelect("Stage3"); }},
+            {{670, 990},
+             "Stage4Button",
+             [title] { title->StageSelect("Stage4"); }},
+            {{670, 990+90},
+             "Stage5Button",
+             [title] { title->StageSelect("Stage5"); }},
         };
     const auto popup = &title->stage_select_popup_;
-    CreatePopup(input, {583, 656, 891, 1011}, main_pack, popup, false);
+    CreatePopup(input, {583, 656, 891, 1095}, main_pack, popup, false);
   }
 
   // KeyGuide

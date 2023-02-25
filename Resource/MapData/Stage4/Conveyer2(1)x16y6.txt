@@ -1,0 +1,3 @@
+Conveyer 30 14 2 6
+Dir 1 1
+VariableSize 1 1

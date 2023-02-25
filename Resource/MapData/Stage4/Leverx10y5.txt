@@ -1,0 +1,2 @@
+Lever 24 15 1 5
+GimmickTarget 1 MoveFloorx12y5

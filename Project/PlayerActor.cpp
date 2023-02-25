@@ -62,6 +62,7 @@ void PlayerActor::Start() {
   }
   auto body = new PhysicsBodyComponent(this);
   SetName("Player");
+  SetTag("Player");
 }
 
 void PlayerActor::SetInput(InputManager* input_manager) {

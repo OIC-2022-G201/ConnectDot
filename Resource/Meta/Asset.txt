@@ -29,7 +29,7 @@ BeaconPowerup Sprite gimmick/Objects/Beacon/BeaconPowerup/Beacon_On_Powerup.png
 BeaconPowerUpRange Sprite gimmick/Objects/Beacon/BeaconPowerUpRange/PowerUpRing.png
 Box Sprite gimmick/Objects/Box/Box.png
 checkpoint Sprite gimmick/Objects/checkpoint/checkpoint.png
-Conveyor Animation gimmick/Objects/Conveyor/Conveyor_MotionChip.png gimmick/Objects/Conveyor/Conveyor.aei
+Conveyer Animation gimmick/Objects/Conveyer/Conveyor_MotionChip.png gimmick/Objects/Conveyer/Conveyor_animation.aei
 DataChip Sprite gimmick/Objects/DataChip/Item_DataChip.png
 Door Animation gimmick/Objects/Door/Door.png gimmick/Objects/Door/Door.aei
 Door_Goal Animation gimmick/Objects/Door_Goal/Door_Goal_MotionChip.png gimmick/Objects/Door_Goal/Door_Goal.aei
@@ -44,10 +44,13 @@ SingboardCrouching Animation gimmick/Objects/Signboard/SingboardCrouching/Signbo
 SingboardEkey Animation gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardEkey/Ekey_Animation.aei
 SingboardJamp Animation gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardJamp/Signboard_jamp_Animation.aei
 SingboardSet Animation gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation_MotionChip.png gimmick/Objects/Signboard/SingboardSet/Signboard_set_Animation.aei
+SwitchOff Sprite gimmick/Objects/Switch/SwitchOff/Switch_Off.png
+SwitchOn Sprite gimmick/Objects/Switch/SwitchOn/Switch_On.png
 syutugenyuka Animation gimmick/Objects/syutugenyuka/syutugenyuka1.png gimmick/Objects/syutugenyuka/syutugenyuka1.aei
 InvaderBullet Sprite InvaderGame/InvaderBullet/SpaceInvaders_Bullet.png
 InvaderEnemy Sprite InvaderGame/InvaderEnemy/SpaceInvaders_Teki.png
 InvaderPlayer Sprite InvaderGame/InvaderPlayer/SpaceInvaders_Player.png
+Enemy Sprite LivingEntity/Enemy/Enemy.png
 InGameBGM Sound Sound/BGM/InGameBGM/gameBGM.mp3
 TitleBGM Sound Sound/BGM/TitleBGM/titleBGM.mp3
 BeaconConnectSE Sound Sound/SE/Beacon/BeaconConnectSE/Connect.mp3
@@ -136,6 +139,8 @@ NewGameButton Button UI/TitleMenu-Programmer/NewGameButton/NewGameButton.png UI/
 Stage1Button Button UI/TitleMenu-Programmer/Stage1Button/Stage1Button.png UI/TitleMenu-Programmer/Stage1Button/Stage1Button2.png
 Stage2Button Button UI/TitleMenu-Programmer/Stage2Button/Stage2Button.png UI/TitleMenu-Programmer/Stage2Button/Stage2Button2.png
 Stage3Button Button UI/TitleMenu-Programmer/Stage3Button/Stage3Button.png UI/TitleMenu-Programmer/Stage3Button/Stage3Button2.png
+Stage4Button Button UI/TitleMenu-Programmer/Stage4Button/Stage3Button.png UI/TitleMenu-Programmer/Stage4Button/Stage3Button2.png
+Stage5Button Button UI/TitleMenu-Programmer/Stage5Button/Stage3Button.png UI/TitleMenu-Programmer/Stage5Button/Stage3Button2.png
 StageSelectButton Button UI/TitleMenu-Programmer/StageSelectButton/StageSelectButton.png UI/TitleMenu-Programmer/StageSelectButton/StageSelectButton2.png
 TitleLightAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLightAnimation/TitleLightEffect.png UI/TitleMenu-Programmer/TiTleAnimation/TitleLightAnimation/TitleLightEffect.aei
 TitleLogoAnimation Animation UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.png UI/TitleMenu-Programmer/TiTleAnimation/TitleLogoAnimation/TitleNoiseEffect.aei

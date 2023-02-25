@@ -1,0 +1,2 @@
+NotPutFloor 24 25 1 0
+Empty 1 1

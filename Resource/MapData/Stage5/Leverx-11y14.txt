@@ -1,0 +1,2 @@
+Lever 13 18 1 5
+GimmickTarget 1 MoveFloorx-6y13

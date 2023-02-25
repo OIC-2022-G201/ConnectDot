@@ -1,5 +1,7 @@
 ﻿#include "PlayerFall.h"
 
+#include <Mof.h>
+
 #include "OneTimeEffectActor.h"
 #include "Player.h"
 #include "PlayerComponent.h"
@@ -58,10 +60,14 @@ void player::PlayerFall::End() {
 }
 
 void player::PlayerFall::Acceleration() const {
-  const float velocity = CalculationJumpAcceleration(
+  float velocity = CalculationJumpAcceleration(
       player_->GetJumpHeight(), player_->GetJumpTime(), frame_);
   if (frame_ == kMaxFrame && body_->GetForce().y > 10) {
     if (body_->GetForce().v < 15) return;
+  }
+  if (frame_ >= player_->GetJumpTime() && velocity > -0.1)
+  {
+    velocity = -0.2f;
   }
   body_->AddForce({0, -kGravity - velocity});
 }

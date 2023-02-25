@@ -7,6 +7,7 @@
 #include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "GimmickCreateHelper.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -40,9 +41,10 @@ void MoveFloorStubActor::Create(const LoadObject& object) {
     collision->SetTrigger(false);
   }
   {
-    const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
     const auto path = "gimmick/Objects/Movefloor/Movefloor.png";
-    sign->SetImage(BASE_ENGINE(Texture)->Get(path));
+
+    GimmickCreateHelper::SpriteCreatePath(this, path, object.object.color_type,
+                                          kSignboardDrawOrder);
   }
   {
     const auto receiver = new ReceiverComponent(this, 100);

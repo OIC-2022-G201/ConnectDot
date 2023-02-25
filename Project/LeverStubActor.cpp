@@ -7,6 +7,7 @@
 #include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "GimmickCreateHelper.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -37,14 +38,8 @@ void LeverStubActor::Create(const LoadObject& object) {
     collision->SetTrigger(true);
   }
   {
-    const auto sprite = new base_engine::SpriteComponent(this, 130);
-    const auto sprite_resource =
-        RC::GetResource<RC::AnimationResourcePack, RC::Sprite>("Lever");
-    sprite->SetImage(*sprite_resource);
-    const auto clips =
-        RC::GetResource<RC::AnimationResourcePack, RC::AnimationClips>("Lever");
-    const auto animation = new MofSpriteAnimationComponent(this);
-    animation->Load(sprite, *clips);
+    GimmickCreateHelper::AnimationCreateKey(
+        this, "Lever", object.object.color_type, true, 130);
   }
   { auto lever = new LeverStubComponent(this); }
   {

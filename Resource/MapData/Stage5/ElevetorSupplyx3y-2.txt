@@ -1,0 +1,4 @@
+PowerSupply 27 34 3 4
+GimmickTarget 1 Elevatorx4y-2
+ElectricArea 1 20
+IsAir 1 1

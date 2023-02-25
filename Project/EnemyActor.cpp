@@ -1,70 +1,71 @@
 ﻿#include "EnemyActor.h"
 
 #include "BaseEngineCore.h"
+#include "CollisionComponent.h"
+#include "CollisionLayer.h"
 #include "DrawOrder.h"
+#include "EnemyComponent.h"
+#include "EnemyMoveRail.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
+#include "MofSpriteAnimationComponent.h"
+#include "PhysicsBodyComponent.h"
+#include "ReleaseInfo.h"
+#include "ResourceContainer.h"
+#include "SecondEnemyComponent.h"
+#include "ShapeRenderComponent.h"
 #include "SpriteComponent.h"
 #include "TexturePaths.h"
-#include "EnemyComponent.h"
-#include "SecondEnemyComponent.h"
-#include "PhysicsBodyComponent.h"
-#include "CollisionComponent.h"
-#include "CollisionLayer.h"
-#include "ShapeRenderComponent.h"
 #include "VisionCreateComponent.h"
-#include "MofSpriteAnimationComponent.h"
-#include "ReleaseInfo.h"
 
 using namespace base_engine;
 using namespace draw_order;
 
 namespace enemy {
-    EnemyActor::EnemyActor(Game* game) : Actor(game) {}
+EnemyActor::EnemyActor(Game* game) : Actor(game) {}
 
-    EnemyActor::~EnemyActor() {
+EnemyActor::~EnemyActor() {}
 
+void EnemyActor::Start() {}
+
+void EnemyActor::Update() {}
+
+void EnemyActor::Create(const LoadObject& object) {
+  {
+    const auto grid = new grid::GridSnapComponent(this);
+    grid->SetAutoSnap(grid::AutoSnap::No)
+        .SetSnapGridPosition({object.object.x, object.object.y});
+  }
+
+  {
+    using RC = ResourceContainer;
+    const auto image =
+        *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("Enemy");
+    const auto sprite = new SpriteComponent(this);
+    sprite->SetImage(image);
+  }
+  for (auto& part : object.object.parts) {
+    if (const auto route_part = std::get_if<stage::part::RoutePart>(&part)) {
+      const auto move = new EnemyMoveRail(this);
+      move->SetRoute(route_part->Route());
+      move->SetType(route_part->RouteType());
     }
-
-    void EnemyActor::Start() {
-
+  }
+  {
+    const auto collision = new CollisionComponent(this);
+    const auto shape_enemy = std::make_shared<Rect>(0,0,128,128);
+    collision->SetShape(shape_enemy);
+    collision->SetObjectFilter(kEnemyObjectFilter);
+    collision->SetTargetFilter(kEnemyTargetFilter);
+    collision->SetTrigger(true);
+    if (kIsCollisionRenderMode) {
+      const auto debug_collision_render = new ShapeRenderComponent(this, 500);
+      debug_collision_render->SetShape(shape_enemy);
+      debug_collision_render->SetColor(MOF_COLOR_GREEN);
     }
-
-    void EnemyActor::Update() {
-
-    }
-
-    void EnemyActor::Create(const LoadObject& object)
-    {
-        const auto sprite = new SpriteComponent(this, kEnemyDrawOrder);
-        const auto animation = new MofSpriteAnimationComponent(this);
-        const auto enemy_vision_ = new VisionCreateComponent(this, 102);
-
-        int type_number_ = std::get<int>(object.parameters[2]);
-
-        if (type_number_ == 1) 
-            const auto enemy_component_ = new SecondEnemyComponent(this, 101);
-        else
-            const auto enemy_component_ = new EnemyComponent(this, 101);
-        
-        const auto collision_ = new CollisionComponent(this);
-        collision_->SetObjectFilter(kEnemyObjectFilter);
-        collision_->SetTargetFilter(kEnemyTargetFilter);
-        collision_->SetShape(std::make_shared<Rect>(0, 0, 256, 256));
-
-        if (kIsCollisionRenderMode)
-        {
-            const auto debugCollisionRender = new ShapeRenderComponent(this, 200);
-            debugCollisionRender->SetColor(MOF_COLOR_RED);
-        }
-        const auto body_ = new PhysicsBodyComponent(this);
-        
-        const auto grid = new grid::GridSnapComponent(this);
-        grid->SetAutoSnap(grid::AutoSnap::No)
-            .SetSnapGridPosition({object.object.x, object.object.y});
-
-        SetName("Enemy");
-        SetTag("Enemy");
-    }
+  }
+  SetName("Enemy");
+  SetTag("Enemy");
 }
+}  // namespace enemy

@@ -2,7 +2,10 @@
 
 #include <array>
 
+#include "BoxActor.h"
 #include "CollapsibleBlockActor.h"
+#include "ConveyorActor.h"
+#include "DataChipActor.h"
 #include "DIActorContainer.h"
 #include "DoorComponent.h"
 #include "ElevatorComponent.h"
@@ -16,6 +19,7 @@
 #include "PylonActor.h"
 #include "RenderableStubActor.h"
 #include "SignboardActor.h"
+#include "SwitchActor.h"
 #include "VentComponent.h"
 
 using namespace base_engine;
@@ -23,11 +27,15 @@ using namespace std::string_view_literals;
 
 #pragma region GimmickName
 constexpr std::string_view kDoorName = "Door"sv;
+constexpr std::string_view kBoxName = "Box"sv;
 constexpr std::string_view kPowerSupplyName = "PowerSupply"sv;
+constexpr std::string_view kConveyerName = "Conveyer"sv;
+constexpr std::string_view kSwitchName = "Button"sv;
 constexpr std::string_view kMultiPowerSupplyName = "MultiPowersupply"sv;
 constexpr std::string_view kMultiRemotePowerSupplyName =
     "MultiRemotePowersupply"sv;
 constexpr std::string_view kStartPowerSupplyName = "Pylon"sv;
+constexpr std::string_view kDataChipName = "DataChip"sv;
 constexpr std::string_view kLeverName = "Lever"sv;
 constexpr std::string_view kMoveFloorName = "MoveFloor"sv;
 constexpr std::string_view kVentName = "Vent"sv;
@@ -85,11 +93,22 @@ class GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl {
                                const LoadObject& object);
   static Actor* PlayerCreate(GimmickCreator* instance, Game* game,
                              const LoadObject& object);
+  static Actor* ChipCreate(GimmickCreator* instance, Game* game,
+                             const LoadObject& object);
+  static Actor* ConveyerCreate(GimmickCreator* instance, Game* game,
+                               const LoadObject& object);
+  static Actor* SwitchCreate(GimmickCreator* instance, Game* game,
+                             const LoadObject& object);
+  static Actor* BoxCreate(GimmickCreator* instance, Game* game,
+                             const LoadObject& object);
   void Register(const std::string_view name, CreatorMethod create_method);
 
  private:
   GimmickCreator* creator_;
 };
+
+
+
 using SetupImpl =
     GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl;
 using Gc = GimmickCreator;
@@ -170,6 +189,26 @@ constexpr std::array kGimmickMethodTable = {
         &SetupImpl::NotPutFloorCreate,          // CreateMethod
         &Gc::FactoryRegister<NotPutFloorActor>  // FactoryRegister
     },
+    std::tuple{
+        kDataChipName,                       // Name
+        &SetupImpl::ChipCreate,              // CreateMethod
+        &Gc::FactoryRegister<DataChipActor>  // FactoryRegister
+    },
+    std::tuple{
+        kConveyerName,                       // Name
+        &SetupImpl::ConveyerCreate,              // CreateMethod
+        &Gc::FactoryRegister<ConveyorActor>  // FactoryRegister
+    },
+    std::tuple{
+        kSwitchName,                       // Name
+        &SetupImpl::SwitchCreate,              // CreateMethod
+        &Gc::FactoryRegister<SwitchActor>  // FactoryRegister
+    },
+    std::tuple{
+        kBoxName,                       // Name
+        &SetupImpl::BoxCreate,          // CreateMethod
+        &Gc::FactoryRegister<BoxActor>  // FactoryRegister
+    },
 };
 
 GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
@@ -219,7 +258,15 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::MoveFloorCreate(
 
   return lever;
 }
+Actor*
+GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::BoxCreate(
+    GimmickCreator* instance, Game* game, const LoadObject& object)
+{
+  const auto box = new BoxActor(game);
+  box->Create(object);
 
+  return box;
+}
 Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::
     PowerSupplyCreate(GimmickCreator* instance, Game* game,
                       const LoadObject& object) {
@@ -368,6 +415,45 @@ GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::PlayerCreate(
   const auto player = new player::PlayerActor(game);
   player->Create(object);
   return player;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::ChipCreate(GimmickCreator* instance, Game* game,
+	const LoadObject& object)
+{
+  const auto chip = new DataChipActor(game);
+  chip->Create(object);
+  return chip;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::ConveyerCreate(GimmickCreator* instance,
+	Game* game, const LoadObject& object)
+{
+  const auto conveyor = new ConveyorActor(game);
+  conveyor->Create(object);
+  return conveyor;
+}
+
+Actor* GimmickDiActorContainerSetup::GimmickDiActorContainerSetupImpl::SwitchCreate(GimmickCreator* instance,
+	Game* game, const LoadObject& object)
+{
+  const auto switch_actor = new SwitchActor(game);
+  switch_actor->Create(object);
+  instance->bind_event_.emplace_back([switch_actor, object, instance, game]() {
+    for (auto& part : object.object.parts) {
+      auto t = std::get_if<stage::part::GimmickTargetPart>(&part);
+      if (t) {
+        for (auto targets_guid : t->GetTargetsGuid()) {
+          const auto& key = targets_guid;
+          // 登録
+          if (!instance->actor_map_.contains(key)) continue;
+          ;
+          const auto actor = game->GetActor(instance->actor_map_[key]->GetId());
+          switch_actor->AddTarget(actor);
+        }
+      }
+    }
+  });
+  return switch_actor;
 }
 
 Actor*

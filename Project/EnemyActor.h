@@ -1,8 +1,8 @@
 ﻿// @file EnemyActor.h
-// @brief 
+// @brief
 // @author ICE
 // @date 2022/09/27
-// 
+//
 // @details
 
 #pragma once
@@ -11,19 +11,18 @@
 
 class Strategy;
 namespace enemy {
-    class EnemyActor : public base_engine::Actor
-    {
-    public:
-        explicit EnemyActor(base_engine::Game* game);
+class EnemyActor : public base_engine::Actor {
+ public:
+  explicit EnemyActor(base_engine::Game* game);
 
-        ~EnemyActor() override;
+  ~EnemyActor() override;
 
-        void Start() override;
+  void Start() override;
 
-        void Update() override;
+  void Update() override;
 
-        void Create(const LoadObject& object);
+  void Create(const LoadObject& object);
 
-    private:
-    };
-}
+ private:
+};
+}  // namespace enemy

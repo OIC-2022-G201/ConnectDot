@@ -20,6 +20,6 @@ class DirPart {
     archive(k,dir_int_);
   }
 
-  Dir GetDir() { return static_cast<Dir>(dir_int_); }
+  Dir GetDir() const { return static_cast<Dir>(dir_int_); }
 };
 }  // namespace stage::part

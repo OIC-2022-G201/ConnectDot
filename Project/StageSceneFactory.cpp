@@ -9,10 +9,7 @@
 #include "CameraCustomComponent.h"
 #include "ComponentServiceLocator.h"
 #include "DebugStage.h"
-#include "EnemyActor.h"
-#include "EventRegister.h"
 #include "FollowComponent.h"
-#include "GameWindow.h"
 #include "ImageComponent.h"
 #include "InputActor.h"
 #include "InputManager.h"
@@ -20,8 +17,6 @@
 #include "ObjectTileMapComponent.h"
 #include "ParallaxCameraFlowLayer.h"
 #include "PauseManager.h"
-#include "PlayerActor.h"
-#include "PylonActor.h"
 #include "ResourceContainer.h"
 #include "ResultScoreComponent.h"
 #include "StageContainer.h"
@@ -40,7 +35,7 @@ void StageSceneFactory::Factory() {
     const auto camera_component = new CameraComponent(camera);
     camera_component->SetMainCamera();
     const auto follow = new FollowComponent(camera);
-//    const auto camera_cutuom = new CameraCustomComponent(camera);
+    //    const auto camera_cutuom = new CameraCustomComponent(camera);
   }
   const auto stageActor = new DebugStage(game_);
   {
@@ -55,8 +50,11 @@ void StageSceneFactory::Factory() {
         stageActor->GetComponent<tile_map::TileMapComponent>());
 
     {
-      std::unordered_map<std::string, float> offset = {
-          {"Stage1", 9}, {"Stage2", 19}, {"Stage3", 9}};
+      std::unordered_map<std::string, float> offset = {{"Stage1", 9},
+                                                       {"Stage2", 19},
+                                                       {"Stage3", 9},
+                                                       {"Stage4", 9},
+                                                       {"Stage5", 9}};
       const float height = stage->LeftBottom().y -
                            offset[stage_def->second.filename().string()] + 0.02;
       const auto pos = GridPosition::GridTo({0, 1}) * height;
@@ -100,23 +98,31 @@ void StageSceneFactory::Factory() {
   }
   {
     ServiceLocator::Instance().RegisterInstance(
-      std::make_shared<BeaconCounterPresenter>());
+        std::make_shared<BeaconCounterPresenter>());
     const auto beaconCounterView = new BeaconCounterView(game_);
-    ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconCounterView(beaconCounterView);
+    ServiceLocator::Instance()
+        .Resolve<BeaconCounterPresenter>()
+        ->SetBeaconCounterView(beaconCounterView);
     const auto beaconPowerUpCounterView = new BeaconPowerUpCounterView(game_);
-    ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->SetBeaconPowerUpCounterView(beaconPowerUpCounterView);
+    ServiceLocator::Instance()
+        .Resolve<BeaconCounterPresenter>()
+        ->SetBeaconPowerUpCounterView(beaconPowerUpCounterView);
   }
   {
     ServiceLocator::Instance().RegisterInstance(
-      std::make_shared<TimeCounterPresenter>());
+        std::make_shared<TimeCounterPresenter>());
     const auto timeCounterModel = std::make_shared<TimeCounterModel>();
-    ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->SetTimeCounterModel(timeCounterModel);
+    ServiceLocator::Instance()
+        .Resolve<TimeCounterPresenter>()
+        ->SetTimeCounterModel(timeCounterModel);
     const auto timeCounterView = new TimeCounterView(game_);
-    ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->SetTimeCounterView(timeCounterView);
+    ServiceLocator::Instance()
+        .Resolve<TimeCounterPresenter>()
+        ->SetTimeCounterView(timeCounterView);
     ServiceLocator::Instance().Resolve<TimeCounterPresenter>()->Bind();
 
     std::any sender = this;
-    StageEpilogueEvent stage_epilogue{ sender };
+    StageEpilogueEvent stage_epilogue{sender};
     EventBus::FireEvent(stage_epilogue);
   }
   ServiceLocator::Instance().RegisterInstance(

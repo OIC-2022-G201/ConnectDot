@@ -49,6 +49,9 @@ class PhysicsBodyComponent final : public Component {
       owner_->Translation(liner_velocity_);
   }
   physics::BodyMotionType GetType() const { return motion_type_; }
+  void SetType(const physics::BodyMotionType type) {
+    motion_type_ = type;
+  }
   
   void Solver(physics::Manifold& manifold, const PhysicsBodyComponent* target_body);
 };

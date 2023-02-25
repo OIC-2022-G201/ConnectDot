@@ -1245,6 +1245,21 @@
     <ClCompile Include="GimmickObjectLoadForUnity.cpp">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyMoveRail.cpp">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionTween.cpp">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\Position</Filter>
+    </ClCompile>
+    <ClCompile Include="GimmickCreateHelper.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="ConveyorReceiver.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Conveyor</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchTransmitter.cpp">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Switch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -2179,6 +2194,24 @@
     </ClInclude>
     <ClInclude Include="Part.h">
       <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyMoveRail.h">
+      <Filter>ソース ファイル\ConnectDot\LivingEntity\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionTween.h">
+      <Filter>ソース ファイル\ConnectDot\Tweener\ComponentTween\Position</Filter>
+    </ClInclude>
+    <ClInclude Include="GimmickCreateHelper.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="VariableSizePart.h">
+      <Filter>ソース ファイル\ConnectDot\Stage\Loader\ImportPart</Filter>
+    </ClInclude>
+    <ClInclude Include="ConveyorReceiver.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Conveyor</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchTransmitter.h">
+      <Filter>ソース ファイル\ConnectDot\Electronics\Machine\Switch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

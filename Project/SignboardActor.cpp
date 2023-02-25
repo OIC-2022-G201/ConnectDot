@@ -6,6 +6,7 @@
 #include "CollisionLayer.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "GimmickCreateHelper.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -44,18 +45,17 @@ void SignboardActor::Create(const LoadObject& object) {
     display_->SetImage(display_texture_);
     display_->SetEnabled(false);
 
-
     animation_->Load(display_, path + ".aei");
     animation_->Stop();
   }
   {
-    const auto sign = new SpriteComponent(this, kSignboardDrawOrder);
     const auto path = "gimmick/Objects/Signboard/Signboard_off.png";
-    sign->SetImage(BASE_ENGINE(Texture)->Get(path));
+    GimmickCreateHelper::SpriteCreatePath(this, path, object.object.color_type,
+                                          draw_order::kSignboardDrawOrder);
   }
   {
     const auto receiver = new ReceiverComponent(this, 100);
-    receiver->Create<SignboardReceiver>(display_,animation_);
+    receiver->Create<SignboardReceiver>(display_, animation_);
   }
   {
     const auto grid = new grid::GridSnapComponent(this);

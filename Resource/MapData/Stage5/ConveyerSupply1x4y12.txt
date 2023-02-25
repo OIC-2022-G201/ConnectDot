@@ -1,0 +1,4 @@
+PowerSupply 28 20 3 6
+GimmickTarget 3 Conveyer1x7y11 Conveyer1(1)x6y11 Conveyer1(2)x5y11
+ElectricArea 1 20
+IsAir 1 1

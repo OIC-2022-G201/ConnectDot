@@ -206,7 +206,7 @@ class TransmitterDummyComponent : public TransmitterComponent {
       }
     }
     const auto weak_ptr = owner_->GetComponent<TransmitterComponent>();
-
+    if (!weak_ptr.lock()->transmitter_->CanSending()) return;
     for (const auto& receiver_weak : target_) {
       if (receiver_weak.expired()) continue;
       if (receiver_weak.lock()->Level() > Level()) continue;
@@ -278,7 +278,10 @@ class BeaconDummyTransmitter : public ISendablePower {
   const ISendablePower* GetPrevious() override { return previous_; }
   void SetPrevious(ISendablePower* previous) override { previous_ = previous; }
 
-  bool CanSending() override { return actor_->IsElectric(); }
+  bool CanSending() override
+  {
+	  return actor_->IsElectric();
+  }
   [[nodiscard]] base_engine::Vector2 GetPosition() const override { return {}; }
 
  private:
@@ -321,7 +324,7 @@ DummyEmptyBeaconActor::DummyEmptyBeaconActor(base_engine::Game* game)
   {
     const auto cell_half = stage::kStageCellSizeHalf<base_engine::Floating>;
     const auto circle = std::make_shared<base_engine::Circle>(
-        cell_half.x, cell_half.y, kPowerRadius-20);
+        cell_half.x, cell_half.y, kPowerRadius);
     if (kIsCollisionRenderMode) {
       const auto shape = new base_engine::ShapeRenderComponent(this, 110);
       shape->SetShape(circle);
@@ -361,18 +364,23 @@ void DummyEmptyBeaconActor::Input() {}
 void DummyEmptyBeaconActor::Update() {
   const auto pos_opt = player_->SearchPlacePosition();
   if (!pos_opt.has_value()) {
+    if (prev_pos_ == pos_opt)return;
     SetElectric(false);
     collision_->SetObjectFilter(CollisionLayer::kNone);
     collision_->SetTargetFilter(CollisionLayer::kNone);
+    collision_->SetEnabled(false);
+    SetPosition(GridPosition::GridTo({-100,-100}));
+    prev_pos_ = std::nullopt;
   }
   if (prev_pos_ != pos_opt) {
     if (pos_opt.has_value()) {
+      collision_->SetEnabled(true);
       collision_->SetObjectFilter(kBeaconObjectFilter);
       collision_->SetTargetFilter(kBeaconTargetFilter);
-      SetElectric(true);
       SetPosition(GridPosition::GridTo(pos_opt.value()));
       const auto num = (player_->MaxBeacon() - player_->GetBeacon() + 1) * 10;
       SetSequential(num);
+
     }
     prev_pos_ = pos_opt;
   }

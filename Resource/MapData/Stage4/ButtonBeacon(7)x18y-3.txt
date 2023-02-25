@@ -1,0 +1,4 @@
+PowerSupply 32 23 3 3
+GimmickTarget 1 Door(2)x17y-3
+ElectricArea 1 20
+IsAir 1 1

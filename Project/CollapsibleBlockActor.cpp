@@ -10,6 +10,7 @@
 #include "DoorReceiver.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "GimmickCreateHelper.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -36,13 +37,9 @@ void CollapsibleBlockActor::Create(const LoadObject& object) {
     collision->SetTrigger(true);
   }
   {
-    const auto sprite = new SpriteComponent(this, kVentDrawOrder);
     const auto path = "gimmick/Objects/syutugenyuka/syutugenyuka1.png";
-    sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
-    std::filesystem::path file = path;
-    const auto animation = new MofSpriteAnimationComponent(this);
-    animation->Load(sprite, file.replace_extension(".aei").string());
-    animation->Stop();
+    GimmickCreateHelper::AnimationCreatePath(
+        this, path, object.object.color_type, false, kVentDrawOrder);
   }
   {
     auto block = new CollapsibleBlockComponent(this);

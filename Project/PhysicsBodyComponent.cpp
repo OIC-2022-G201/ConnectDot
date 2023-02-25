@@ -32,7 +32,9 @@ void base_engine::PhysicsBodyComponent::OnCollision(
   normal.x = std::abs(normal.x);
   normal.y = std::abs(normal.y);
   auto power = -GetForce() * normal;
-  if (collision_depth.normal.y > 0 && power.y < 0)
+  if (((collision_depth.depth < 0 && collision_depth.normal.y > 0) ||
+       (collision_depth.depth > 0 && collision_depth.normal.y < 0)) &&
+      power.y < 0)
   {
     power.y = 0;
   }

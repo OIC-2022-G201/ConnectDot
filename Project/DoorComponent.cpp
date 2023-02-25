@@ -7,6 +7,7 @@
 #include "CollisionLayer.h"
 #include "DoorReceiver.h"
 #include "DrawOrder.h"
+#include "GimmickCreateHelper.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -34,13 +35,9 @@ void DoorActor::Create(const LoadObject& object) {
     collision->SetTrigger(false);
   }
   {
-    const auto sprite = new SpriteComponent(this, kVentDrawOrder);
     const auto path = "gimmick/Objects/Door/Door.png";
-    sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
-    std::filesystem::path file = path;
-    const auto animation = new MofSpriteAnimationComponent(this);
-    animation->Load(sprite, file.replace_extension(".aei").string());
-    animation->Stop();
+    GimmickCreateHelper::AnimationCreatePath(
+        this, path, object.object.color_type, false, kVentDrawOrder);
   }
   {
     auto vent = new DoorComponent(this);

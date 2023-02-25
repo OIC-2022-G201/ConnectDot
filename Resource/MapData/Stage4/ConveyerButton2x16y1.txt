@@ -1,0 +1,2 @@
+Button 30 19 1 6
+GimmickTarget 1 ConveyerBeacon4x14y-1

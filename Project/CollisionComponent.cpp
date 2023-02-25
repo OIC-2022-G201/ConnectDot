@@ -98,4 +98,8 @@ void CollisionComponent::SyncPosition() {
 
   physics_body_->SetTransform({p.x, p.y}, 0);
 }
+
+void CollisionComponent::SetEnabled(const bool enable) const
+{ physics_body_->SetEnabled(enable);
+}
 }  // namespace base_engine

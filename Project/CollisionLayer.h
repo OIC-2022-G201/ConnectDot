@@ -14,7 +14,7 @@ constexpr unsigned long long Shift(size_t val) { return 1ull << val; }
 class CollisionLayer final {
  public:
   // kBeaconTargetFilter = kSenderFilter
-  enum Layer : unsigned long long{
+  enum Layer : unsigned long long {
     kNone = 0,
     kFieldFilter = 1 << 1,
     kPlayerFilter = 1 << 2,
@@ -26,6 +26,8 @@ class CollisionLayer final {
     kElectricityAreaFilter = 1 << 8,
 
     kActionable = 1 << 9,
+    kItem = 1 << 10,
+    kCanMove = 1 << 11,
 
   };
 
@@ -48,15 +50,27 @@ constexpr BitCollisionLayer kActionableMask{CollisionLayer::kActionable};
 constexpr BitCollisionLayer kFieldObjectFilter{CollisionLayer::kFieldFilter};
 constexpr BitCollisionLayer kFieldTargetFilter{CollisionLayer::kPlayerFilter};
 
-constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter};
+constexpr BitCollisionLayer kConveyorObjectFilter{CollisionLayer::kFieldFilter};
+constexpr BitCollisionLayer kConveyorTargetFilter{CollisionLayer::kCanMove};
+
+constexpr BitCollisionLayer kBoxObjectFilter{CollisionLayer::kCanMove |
+                                             CollisionLayer::kFieldFilter};
+constexpr BitCollisionLayer kBoxTargetFilter{CollisionLayer::kFieldFilter |
+                                             CollisionLayer::kCanMove};
+
+constexpr BitCollisionLayer kChipObjectFilter{CollisionLayer::kItem};
+constexpr BitCollisionLayer kChipTargetFilter{CollisionLayer::kPlayerFilter};
+
+constexpr BitCollisionLayer kPlayerObjectFilter{CollisionLayer::kPlayerFilter |
+                                                CollisionLayer::kCanMove};
 constexpr BitCollisionLayer kPlayerTargetFilter{CollisionLayer::kFieldFilter |
                                                 CollisionLayer::kActionable};
 
 constexpr BitCollisionLayer kEnemyObjectFilter{CollisionLayer::kEnemyFilter};
 constexpr BitCollisionLayer kEnemyTargetFilter{CollisionLayer::kFieldFilter |
                                                CollisionLayer::kPlayerFilter};
-constexpr BitCollisionLayer kEnemyVisionTargetFilter{CollisionLayer::kSoundFilter |
-                                               CollisionLayer::kPlayerFilter};
+constexpr BitCollisionLayer kEnemyVisionTargetFilter{
+    CollisionLayer::kSoundFilter | CollisionLayer::kPlayerFilter};
 
 //! Beacon
 constexpr BitCollisionLayer kBeaconObjectFilter{
@@ -92,7 +106,6 @@ constexpr BitCollisionLayer kGoalTargetFilter{CollisionLayer::kPlayerFilter};
 constexpr BitCollisionLayer kSoundObjectFilter{CollisionLayer::kSoundFilter};
 
 constexpr BitCollisionLayer kSoundTargetFilter{CollisionLayer::kNone};
-
 
 //! MoveFloor
 constexpr BitCollisionLayer kMoveFloorObjectFilter{

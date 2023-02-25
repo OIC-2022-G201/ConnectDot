@@ -9,6 +9,7 @@
 #include "ComponentServiceLocator.h"
 #include "DrawOrder.h"
 #include "ElectronicsPower.h"
+#include "GimmickCreateHelper.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
 #include "LoadObjectParameter.h"
@@ -49,7 +50,6 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
         break;
       }
     }
-
   }
 
   {
@@ -70,12 +70,9 @@ void PowerSupplyUnitActor::Create(const LoadObject& object) {
       sprite_outline_->SetEnabled(false);
     }
     {
-      sprite_ = new base_engine::SpriteComponent(
-          this, draw_order::kPowerSupplyUnitDrawOrder);
-
-      const auto img = *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
-          is_fly_ ? "AirPowerSupplyOff" : "PowerSupplyOff");
-      sprite_->SetImage(img);
+      sprite_ = GimmickCreateHelper::SpriteCreateKey(
+          this, is_fly_ ? "AirPowerSupplyOff" : "PowerSupplyOff",
+          object.object.color_type, draw_order::kPowerSupplyUnitDrawOrder);
     }
   }
 

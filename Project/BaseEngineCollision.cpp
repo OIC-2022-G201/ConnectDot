@@ -83,8 +83,11 @@ void BaseEngineCollision::Collide() {
     auto body_a = contact.collision_a;
     auto body_b = contact.collision_b;
 
-    body_a->CollisionSender({body_a, body_b, contact.manifold});
-    body_b->CollisionSender({body_b, body_a, contact.manifold});
+    auto manifold = contact.manifold;
+    body_a->CollisionSender({body_a, body_b, manifold});
+    manifold.depth *= -1;
+
+    body_b->CollisionSender({body_b, body_a, manifold});
   }
   connectCount = n;
   for (int i = 0; i < body_size; ++i) {

@@ -24,11 +24,18 @@ void GimmickObjectLoadForUnity::SetPart(base_engine::Actor* actor,
 
 GimmickObjectParameter GimmickObjectLoadForUnity::GenerateObject(
     std::filesystem::path path) {
-  constexpr std::array kPartTable = {
-      "BeaconStack",     "ChangeImageName", "Dir",
-      "ElectricArea",    "Empty",           "GimmickTarget",
-      "IsAir",           "RectArea",        "Route",
-      "TransitionPoint", "TransitionTarget"};
+  constexpr std::array kPartTable = {"BeaconStack",
+                                     "ChangeImageName",
+                                     "Dir",
+                                     "ElectricArea",
+                                     "Empty",
+                                     "GimmickTarget",
+                                     "IsAir",
+                                     "RectArea",
+                                     "Route",
+                                     "TransitionPoint",
+                                     "TransitionTarget",
+                                     "VariableSize"};
   std::ifstream os(path);
   {
     frozen::TextInputArchive archive(os);

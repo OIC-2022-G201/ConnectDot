@@ -7,6 +7,7 @@
 #include "CollisionLayer.h"
 #include "DrawOrder.h"
 #include "ElevatorReceiver.h"
+#include "GimmickCreateHelper.h"
 #include "GridPosition.h"
 #include "GridSnapComponent.h"
 #include "IBaseEngineTexture.h"
@@ -59,25 +60,20 @@ void ElevatorActor::Create(const LoadObject& object) {
     collision->SetTrigger(true);
   }
   {
-    const auto sprite = new SpriteComponent(this, kSignboardDrawOrder);
     const auto path = "gimmick/Objects/Elevator/Elevator.png";
-    sprite->SetImage(BASE_ENGINE(Texture)->Get(path));
-    sprite->SetOffset({0, 24});
+    GimmickCreateHelper::SpriteCreatePath(this, path, object.object.color_type,
+                                          kSignboardDrawOrder)
+        ->SetOffset({0, 24});
   }
 
-  {
-    SetPosition(GridPosition::GridTo({object.object.x, object.object.y}));
-  }
+  { SetPosition(GridPosition::GridTo({object.object.x, object.object.y})); }
   {
     auto elevator = new ElevatorComponent(this);
-    for (auto & part : object.object.parts)
-    {
+    for (auto& part : object.object.parts) {
       auto t = std::get_if<stage::part::TransitionPointPart>(&part);
-      if (t)
-      {
+      if (t) {
         elevator->AddFloor(GridPosition::VectorTo(GetPosition()));
-        elevator->AddFloor(t->GetPos() +
-                           GridPosition::VectorTo(GetPosition()));
+        elevator->AddFloor(t->GetPos() + GridPosition::VectorTo(GetPosition()));
         const auto receiver = new ReceiverComponent(this, 100);
         receiver->Create<ElevatorReceiver>(elevator, this);
         break;
@@ -110,6 +106,6 @@ void ElevatorComponent::Action(base_engine::Actor* actor) {
 
 bool ElevatorComponent::CanInteractive(base_engine::Actor* actor) {
   if (!electric_power_) return false;
-  if (busy_)return false;
+  if (busy_) return false;
   return true;
 }

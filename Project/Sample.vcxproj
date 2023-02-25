@@ -121,6 +121,7 @@
     <ClCompile Include="CollapsibleBlockReceiver.cpp" />
     <ClCompile Include="ConnectBind.cpp" />
     <ClCompile Include="ConveyorActor.cpp" />
+    <ClCompile Include="ConveyorReceiver.cpp" />
     <ClCompile Include="DataChipActor.cpp" />
     <ClCompile Include="DoorGoalActor.cpp" />
     <ClCompile Include="DoorGoalComponent.cpp" />
@@ -132,10 +133,13 @@
     <ClCompile Include="EffectBase.cpp" />
     <ClCompile Include="ElevatorComponent.cpp" />
     <ClCompile Include="ElevatorReceiver.cpp" />
+    <ClCompile Include="EnemyMoveRail.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GameOverComponent.cpp" />
     <ClCompile Include="GameOverEvent.cpp" />
     <ClCompile Include="GameOverSceneFactory.cpp" />
+    <ClCompile Include="GimmickCreateHelper.cpp" />
+    <ClCompile Include="PositionTween.cpp" />
     <ClCompile Include="QuitEvent.cpp" />
     <ClCompile Include="ReStartEvent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
@@ -175,6 +179,7 @@
     <ClCompile Include="StartPointGimmickReceiver.cpp" />
     <ClCompile Include="StartPointGimmickTransmitter.cpp" />
     <ClCompile Include="SwitchActor.cpp" />
+    <ClCompile Include="SwitchTransmitter.cpp" />
     <ClCompile Include="TimeCounter.cpp" />
     <ClCompile Include="TimeCounterView.cpp" />
     <ClCompile Include="TitleListener.cpp" />
@@ -345,6 +350,7 @@
     <ClInclude Include="CollapsibleBlockReceiver.h" />
     <ClInclude Include="ConnectBind.h" />
     <ClInclude Include="ConveyorActor.h" />
+    <ClInclude Include="ConveyorReceiver.h" />
     <ClInclude Include="DataChipActor.h" />
     <ClInclude Include="DoorGoalActor.h" />
     <ClInclude Include="DoorGoalComponent.h" />
@@ -359,10 +365,13 @@
     <ClInclude Include="ElevatorReceiver.h" />
     <ClInclude Include="EmptyPart.h" />
     <ClInclude Include="ElectricAreaPart.h" />
+    <ClInclude Include="EnemyMoveRail.h" />
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GameOverComponent.h" />
     <ClInclude Include="GameOverEvent.h" />
     <ClInclude Include="GameOverSceneFactory.h" />
+    <ClInclude Include="GimmickCreateHelper.h" />
+    <ClInclude Include="PositionTween.h" />
     <ClInclude Include="QuitEvent.h" />
     <ClInclude Include="ReStartEvent.h" />
     <ClInclude Include="GimmickTargetPart.h" />
@@ -415,6 +424,7 @@
     <ClInclude Include="StartPointGimmickReceiver.h" />
     <ClInclude Include="StartPointGimmickTransmitter.h" />
     <ClInclude Include="SwitchActor.h" />
+    <ClInclude Include="SwitchTransmitter.h" />
     <ClInclude Include="TextArchive.h" />
     <ClInclude Include="TimeCounter.h" />
     <ClInclude Include="TimeCounterModel.h" />
@@ -466,6 +476,7 @@
     <ClInclude Include="SecondEnemyComponent.h" />
     <ClInclude Include="SpriteAnimationClipLoader.h" />
     <ClInclude Include="TitleSceneFactory.h" />
+    <ClInclude Include="VariableSizePart.h" />
     <ClInclude Include="VentGroupLocator.h" />
     <ClInclude Include="VirtualTweenFloat.h" />
     <ClInclude Include="VisionCreateComponent.h" />

@@ -1,2 +1,2 @@
 Elevator 34 19 1 4
-TransitionPoint 2 0 6
+TransitionPoint 2 0 -7
