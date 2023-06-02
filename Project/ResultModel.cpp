@@ -22,11 +22,11 @@ void ResultModel::SetGoalTime(const float goal_time) {
 }
 
 void ResultModel::SetPicUpDataChip(bool is_pick) {
-	is_pick_data_chip = is_pick;
+	is_pick_data_chip_ = is_pick;
 }
 
 bool ResultModel::IsClearDataChip() const {
-	return is_pick_data_chip;
+	return is_pick_data_chip_;
 }
 
 void ResultModel::IncrementBeaconUsedTimes(){

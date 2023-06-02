@@ -17,7 +17,7 @@ class ResultModel {
   bool pause_ = true;
   float time_ = 0;
   float goal_time_ = 60;
-  bool is_pick_data_chip = false;
+  bool is_pick_data_chip_ = false;
  public:
   
   // Control
