@@ -13,7 +13,7 @@
 #include "PhysicsDynamicTree.h"
 
 namespace base_engine::physics::bp {
-using b2Pair = std::pair<int32_t, int32_t>;
+using PhysicsPair = std::pair<int32_t, int32_t>;
 constexpr int32_t kNullProxy = -1;
 using int32 = int32_t;
 template <class T>
@@ -28,7 +28,7 @@ class BroadPhase {
     m_pairCapacity = 16;
     m_pairCount = 0;
     m_pairBuffer =
-        static_cast<b2Pair*>(malloc(m_pairCapacity * sizeof(b2Pair)));
+        static_cast<PhysicsPair*>(malloc(m_pairCapacity * sizeof(PhysicsPair)));
 
     m_moveCapacity = 16;
     m_moveCount = 0;
@@ -83,7 +83,7 @@ class BroadPhase {
 
   /// Test overlap of fat AABBs.
   [[nodiscard]] bool TestOverlap(int32_t proxyIdA, int32_t proxyIdB) const {
-    return b2TestOverlap(m_tree.GetFatAABB(proxyIdA),
+    return PhysicsTestOverlap(m_tree.GetFatAABB(proxyIdA),
                          m_tree.GetFatAABB(proxyIdB));
   }
 
@@ -113,7 +113,7 @@ class BroadPhase {
 
     // Send pairs to caller
     for (int32 i = 0; i < m_pairCount; ++i) {
-      const b2Pair* primaryPair = m_pairBuffer + i;
+      const PhysicsPair* primaryPair = m_pairBuffer + i;
       void* userDataA = m_tree.GetUserData(primaryPair->first);
       void* userDataB = m_tree.GetUserData(primaryPair->second);
 
@@ -183,11 +183,11 @@ class BroadPhase {
 
     // Grow the pair buffer as needed.
     if (m_pairCount == m_pairCapacity) {
-      b2Pair* oldBuffer = m_pairBuffer;
+      PhysicsPair* oldBuffer = m_pairBuffer;
       m_pairCapacity = m_pairCapacity + (m_pairCapacity >> 1);
       m_pairBuffer =
-          static_cast<b2Pair*>(malloc(m_pairCapacity * sizeof(b2Pair)));
-      memcpy(m_pairBuffer, oldBuffer, m_pairCount * sizeof(b2Pair));
+          static_cast<PhysicsPair*>(malloc(m_pairCapacity * sizeof(PhysicsPair)));
+      memcpy(m_pairBuffer, oldBuffer, m_pairCount * sizeof(PhysicsPair));
       free(oldBuffer);
     }
 
@@ -199,7 +199,7 @@ class BroadPhase {
   }
 
  private:
-  friend class b2DynamicTree;
+  friend class PhysicsDynamicTree;
 
   void BufferMove(int32_t proxyId) {
     if (m_moveCount == m_moveCapacity) {
@@ -222,7 +222,7 @@ class BroadPhase {
     }
   }
 
-  b2DynamicTree m_tree;
+  PhysicsDynamicTree m_tree;
 
   int32_t m_proxyCount;
 
@@ -230,7 +230,7 @@ class BroadPhase {
   int32_t m_moveCapacity;
   int32_t m_moveCount;
 
-  b2Pair* m_pairBuffer;
+  PhysicsPair* m_pairBuffer;
   int32_t m_pairCapacity;
   int32_t m_pairCount;
 

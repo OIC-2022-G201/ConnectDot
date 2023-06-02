@@ -99,7 +99,7 @@ void ElevatorComponent::Action(base_engine::Actor* actor) {
     current_floor_ = 1;
   }
   busy_ = true;
-  ma_tween::PositionYTween::TweenLocalPositionY(
+  ma_tween::PositionYTween::Tween(
       owner_, GridPosition::GridTo(positions_[current_floor_ - 1]).y, 10)
       .SetOnComplete([this] { busy_ = false; });
 }

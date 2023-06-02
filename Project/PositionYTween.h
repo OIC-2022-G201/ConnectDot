@@ -12,7 +12,7 @@ namespace ma_tween {
 
 class PositionYTween {
  public:
-  static TweenDriver<float>& TweenLocalPositionY(base_engine::Actor* actor,
+  static TweenDriver<float>& Tween(base_engine::Actor* actor,
                                                  float to, float duration);
 };
 }  // namespace ma_tween

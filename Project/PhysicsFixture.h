@@ -13,11 +13,11 @@
 #include "PhysicsShapes.h"
 
 namespace base_engine::physics {
-class b2Shape;
-class b2ContactEdge;
+class PhysicsShape;
+class PhysicsContactEdge;
 using int32 = int32_t;
-struct b2Filter {
-  b2Filter() {
+struct PhysicsFilter {
+  PhysicsFilter() {
     categoryBits = 0x0001u;
     maskTargetBits = 0xFFFFu;
     maskObjectBits = 0xFFFFu;
@@ -50,7 +50,7 @@ struct PhysicsFixtureDef {
 
   /// The shape, this must be set. The shape will be cloned, so you
   /// can create the shape on the stack.
-  const b2Shape* shape;
+  const PhysicsShape* shape;
 
   //TODO CollisionComponentへの依存をなくす
   class CollisionComponent* collision = nullptr;
@@ -75,7 +75,7 @@ struct PhysicsFixtureDef {
   bool isSensor;
 
   /// Contact filtering data.
-  b2Filter filter;
+  PhysicsFilter filter;
 };
 
 class PhysicsFixture;
@@ -88,24 +88,24 @@ struct PhysicsFixtureProxy {
 class PhysicsFixture {
 
 public:
-  [[nodiscard]] b2Shape::Type GetType() const noexcept {
+  [[nodiscard]] PhysicsShape::Type GetType() const noexcept {
     return m_shape->GetType();
   }
 
-  b2Shape* GetShape() { return m_shape; }
-  [[nodiscard]] const b2Shape* GetShape() const noexcept { return m_shape; }
+  PhysicsShape* GetShape() { return m_shape; }
+  [[nodiscard]] const PhysicsShape* GetShape() const noexcept { return m_shape; }
 
   void SetSensor(bool sensor) noexcept { m_isSensor = sensor; }
 
   [[nodiscard]] bool IsSensor() const noexcept { return m_isSensor; }
 
-  void SetFilterData(const b2Filter& filter) {
+  void SetFilterData(const PhysicsFilter& filter) {
     m_filter = filter;
 
     ReFilter();
   }
 
-  [[nodiscard]] const b2Filter& GetFilterData() const { return m_filter; }
+  [[nodiscard]] const PhysicsFilter& GetFilterData() const { return m_filter; }
 
   void ReFilter();
 
@@ -160,18 +160,18 @@ public:
   void Destroy(PhysicsBlockAllocator* allocator);
 
   // These support body activation/deactivation.
-  void CreateProxies(bp::BroadPhase* broadPhase, const b2Transform& xf);
+  void CreateProxies(bp::BroadPhase* broadPhase, const PhysicsTransform& xf);
   void DestroyProxies(bp::BroadPhase* broadPhase);
 
-  void Synchronize(bp::BroadPhase* broadPhase, const b2Transform& xf1,
-                   const b2Transform& xf2) const;
+  void Synchronize(bp::BroadPhase* broadPhase, const PhysicsTransform& xf1,
+                   const PhysicsTransform& xf2) const;
 
   float m_density;
 
   PhysicsFixture* m_next;
   PhysicsBody* m_body;
 
-  b2Shape* m_shape;
+  PhysicsShape* m_shape;
 
   float m_friction;
   float m_restitution;
@@ -180,7 +180,7 @@ public:
   PhysicsFixtureProxy* m_proxies;
   int32_t m_proxyCount;
 
-  b2Filter m_filter;
+  PhysicsFilter m_filter;
 
   bool m_isSensor;
 

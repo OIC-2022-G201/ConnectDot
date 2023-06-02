@@ -25,7 +25,7 @@ class Driver : public Tween<float, base_engine::Actor> {
   }
 };
 }  // namespace
-TweenDriver<float>& PositionYTween::TweenLocalPositionY(
+TweenDriver<float>& PositionYTween::Tween(
     base_engine::Actor* actor, float to, float duration) {
   return TweenDriver<float>::Add<Driver>(actor).Finalize(to, duration);
 }

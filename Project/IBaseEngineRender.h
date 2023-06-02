@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include <Graphics/Texture.h>
 
 namespace base_engine {

@@ -46,7 +46,7 @@ PhysicsFixture* PhysicsBody::CreateFixture(const PhysicsFixtureDef* def) {
   return fixture;
 }
 
-PhysicsFixture* PhysicsBody::CreateFixture(const b2Shape* shape,
+PhysicsFixture* PhysicsBody::CreateFixture(const PhysicsShape* shape,
                                            float density) {
   PhysicsFixtureDef def;
   def.shape = shape;
@@ -80,7 +80,7 @@ void PhysicsBody::DestroyFixture(PhysicsFixture* fixture) {
   const float density = fixture->m_density;
 
   // Destroy any contacts associated with the fixture.
-  b2ContactEdge* edge = m_contactList;
+  PhysicsContactEdge* edge = m_contactList;
   while (edge) {
     PhysicsContact* c = edge->contact;
     edge = edge->next;

@@ -22,9 +22,9 @@ concept HasRayCastCallback = requires(T& x, int32_t id,
                                       PhysicsRayCastInput input) {
   x.RayCastCallback(input, id);
 };
-constexpr int32_t b2_nullNode = -1;
-struct b2TreeNode {
-  [[nodiscard]] bool IsLeaf() const noexcept { return child1 == b2_nullNode; }
+constexpr int32_t Physics_nullNode = -1;
+struct PhysicsTreeNode {
+  [[nodiscard]] bool IsLeaf() const noexcept { return child1 == Physics_nullNode; }
 
   /// Enlarged AABB
   PhysicsAABB aabb;
@@ -44,24 +44,24 @@ struct b2TreeNode {
 
   bool moved;
 };
-class b2DynamicTree {
+class PhysicsDynamicTree {
  public:
   /// Constructing the tree initializes the node pool.
-  b2DynamicTree() {
-    m_root = b2_nullNode;
+  PhysicsDynamicTree() {
+    m_root = Physics_nullNode;
 
     m_nodeCapacity = 16;
     m_nodeCount = 0;
     m_nodes =
-        static_cast<b2TreeNode*>(malloc(m_nodeCapacity * sizeof(b2TreeNode)));
-    memset(m_nodes, 0, m_nodeCapacity * sizeof(b2TreeNode));
+        static_cast<PhysicsTreeNode*>(malloc(m_nodeCapacity * sizeof(PhysicsTreeNode)));
+    memset(m_nodes, 0, m_nodeCapacity * sizeof(PhysicsTreeNode));
 
     // Build a linked list for the free list.
     for (int32_t i = 0; i < m_nodeCapacity - 1; ++i) {
       m_nodes[i].next = i + 1;
       m_nodes[i].height = -1;
     }
-    m_nodes[m_nodeCapacity - 1].next = b2_nullNode;
+    m_nodes[m_nodeCapacity - 1].next = Physics_nullNode;
     m_nodes[m_nodeCapacity - 1].height = -1;
     m_freeList = 0;
 
@@ -69,7 +69,7 @@ class b2DynamicTree {
   }
 
   /// Destroy the tree, freeing the node pool.
-  ~b2DynamicTree() { free(m_nodes); }
+  ~PhysicsDynamicTree() { free(m_nodes); }
 
   /// Create a proxy. Provide a tight fitting AABB and a userData pointer.
   int32_t CreateProxy(const PhysicsAABB& aabb, void* userData) {
@@ -178,13 +178,13 @@ class b2DynamicTree {
     while (!stack.empty()) {
       int32_t node_id = stack.top();
       stack.pop();
-      if (node_id == b2_nullNode) {
+      if (node_id == Physics_nullNode) {
         continue;
       }
 
-      const b2TreeNode* node = m_nodes + node_id;
+      const PhysicsTreeNode* node = m_nodes + node_id;
 
-      if (!b2TestOverlap(node->aabb, aabb)) continue;
+      if (!PhysicsTestOverlap(node->aabb, aabb)) continue;
       if (node->IsLeaf()) {
         if (const bool proceed = callback->QueryCallback(node_id);
             proceed == false) {
@@ -236,13 +236,13 @@ class b2DynamicTree {
     while (!stack.empty()) {
       int32_t nodeId = stack.top();
       stack.pop();
-      if (nodeId == b2_nullNode) {
+      if (nodeId == Physics_nullNode) {
         continue;
       }
 
-      const b2TreeNode* node = m_nodes + nodeId;
+      const PhysicsTreeNode* node = m_nodes + nodeId;
 
-      if (b2TestOverlap(node->aabb, segmentAABB) == false) {
+      if (PhysicsTestOverlap(node->aabb, segmentAABB) == false) {
         continue;
       }
 
@@ -286,7 +286,7 @@ class b2DynamicTree {
   /// Compute the height of the binary tree in O(N) time. Should not be
   /// called often.
   int32_t GetHeight() const {
-    if (m_root == b2_nullNode) {
+    if (m_root == Physics_nullNode) {
       return 0;
     }
 
@@ -298,7 +298,7 @@ class b2DynamicTree {
   int32_t GetMaxBalance() const {
     int32_t maxBalance = 0;
     for (int32_t i = 0; i < m_nodeCapacity; ++i) {
-      const b2TreeNode* node = m_nodes + i;
+      const PhysicsTreeNode* node = m_nodes + i;
       if (node->height <= 1) {
         continue;
       }
@@ -315,16 +315,16 @@ class b2DynamicTree {
 
   /// Get the ratio of the sum of the node areas to the root area.
   [[nodiscard]] float GetAreaRatio() const {
-    if (m_root == b2_nullNode) {
+    if (m_root == Physics_nullNode) {
       return 0.0f;
     }
 
-    const b2TreeNode* root = m_nodes + m_root;
+    const PhysicsTreeNode* root = m_nodes + m_root;
     float rootArea = root->aabb.GetPerimeter();
 
     float totalArea = 0.0f;
     for (int32_t i = 0; i < m_nodeCapacity; ++i) {
-      const b2TreeNode* node = m_nodes + i;
+      const PhysicsTreeNode* node = m_nodes + i;
       if (node->height < 0) {
         // Free node in pool
         continue;
@@ -348,7 +348,7 @@ class b2DynamicTree {
       }
 
       if (m_nodes[i].IsLeaf()) {
-        m_nodes[i].parent = b2_nullNode;
+        m_nodes[i].parent = Physics_nullNode;
         nodes[count] = i;
         ++count;
       } else {
@@ -377,16 +377,16 @@ class b2DynamicTree {
 
       int32_t index1 = nodes[iMin];
       int32_t index2 = nodes[jMin];
-      b2TreeNode* child1 = m_nodes + index1;
-      b2TreeNode* child2 = m_nodes + index2;
+      PhysicsTreeNode* child1 = m_nodes + index1;
+      PhysicsTreeNode* child2 = m_nodes + index2;
 
       int32_t parentIndex = AllocateNode();
-      b2TreeNode* parent = m_nodes + parentIndex;
+      PhysicsTreeNode* parent = m_nodes + parentIndex;
       parent->child1 = index1;
       parent->child2 = index2;
       parent->height = 1 + PhysicsMax(child1->height, child2->height);
       parent->aabb.Combine(child1->aabb, child2->aabb);
-      parent->parent = b2_nullNode;
+      parent->parent = Physics_nullNode;
 
       child1->parent = parentIndex;
       child2->parent = parentIndex;
@@ -407,7 +407,7 @@ class b2DynamicTree {
 
     int32_t freeCount = 0;
     int32_t freeIndex = m_freeList;
-    while (freeIndex != b2_nullNode) {
+    while (freeIndex != Physics_nullNode) {
       freeIndex = m_nodes[freeIndex].next;
       ++freeCount;
     }
@@ -426,13 +426,13 @@ class b2DynamicTree {
  private:
   int32_t AllocateNode() {
     // Expand the node pool as needed.
-    if (m_freeList == b2_nullNode) {
+    if (m_freeList == Physics_nullNode) {
       // The free list is empty. Rebuild a bigger pool.
-      b2TreeNode* oldNodes = m_nodes;
+      PhysicsTreeNode* oldNodes = m_nodes;
       m_nodeCapacity *= 2;
       m_nodes =
-          static_cast<b2TreeNode*>(malloc(m_nodeCapacity * sizeof(b2TreeNode)));
-      memcpy(m_nodes, oldNodes, m_nodeCount * sizeof(b2TreeNode));
+          static_cast<PhysicsTreeNode*>(malloc(m_nodeCapacity * sizeof(PhysicsTreeNode)));
+      memcpy(m_nodes, oldNodes, m_nodeCount * sizeof(PhysicsTreeNode));
       free(oldNodes);
 
       // Build a linked list for the free list. The parent
@@ -441,7 +441,7 @@ class b2DynamicTree {
         m_nodes[i].next = i + 1;
         m_nodes[i].height = -1;
       }
-      m_nodes[m_nodeCapacity - 1].next = b2_nullNode;
+      m_nodes[m_nodeCapacity - 1].next = Physics_nullNode;
       m_nodes[m_nodeCapacity - 1].height = -1;
       m_freeList = m_nodeCount;
     }
@@ -449,9 +449,9 @@ class b2DynamicTree {
     // Peel a node off the free list.
     const int32_t nodeId = m_freeList;
     m_freeList = m_nodes[nodeId].next;
-    m_nodes[nodeId].parent = b2_nullNode;
-    m_nodes[nodeId].child1 = b2_nullNode;
-    m_nodes[nodeId].child2 = b2_nullNode;
+    m_nodes[nodeId].parent = Physics_nullNode;
+    m_nodes[nodeId].child1 = Physics_nullNode;
+    m_nodes[nodeId].child2 = Physics_nullNode;
     m_nodes[nodeId].height = 0;
     m_nodes[nodeId].userData = nullptr;
     m_nodes[nodeId].moved = false;
@@ -468,9 +468,9 @@ class b2DynamicTree {
   void InsertLeaf(int32_t leaf) {
     ++m_insertionCount;
 
-    if (m_root == b2_nullNode) {
+    if (m_root == Physics_nullNode) {
       m_root = leaf;
-      m_nodes[m_root].parent = b2_nullNode;
+      m_nodes[m_root].parent = Physics_nullNode;
       return;
     }
 
@@ -544,7 +544,7 @@ class b2DynamicTree {
     m_nodes[newParent].aabb.Combine(leafAABB, m_nodes[sibling].aabb);
     m_nodes[newParent].height = m_nodes[sibling].height + 1;
 
-    if (oldParent != b2_nullNode) {
+    if (oldParent != Physics_nullNode) {
       // The sibling was not the root.
       if (m_nodes[oldParent].child1 == sibling) {
         m_nodes[oldParent].child1 = newParent;
@@ -567,7 +567,7 @@ class b2DynamicTree {
 
     // Walk back up the tree fixing heights and AABBs
     index = m_nodes[leaf].parent;
-    while (index != b2_nullNode) {
+    while (index != Physics_nullNode) {
       index = Balance(index);
 
       int32_t child1 = m_nodes[index].child1;
@@ -582,7 +582,7 @@ class b2DynamicTree {
   }
   void RemoveLeaf(int32_t leaf) {
     if (leaf == m_root) {
-      m_root = b2_nullNode;
+      m_root = Physics_nullNode;
       return;
     }
 
@@ -595,7 +595,7 @@ class b2DynamicTree {
       sibling = m_nodes[parent].child1;
     }
 
-    if (grandParent != b2_nullNode) {
+    if (grandParent != Physics_nullNode) {
       // Destroy parent and connect sibling to grandParent.
       if (m_nodes[grandParent].child1 == parent) {
         m_nodes[grandParent].child1 = sibling;
@@ -607,7 +607,7 @@ class b2DynamicTree {
 
       // Adjust ancestor bounds.
       int32_t index = grandParent;
-      while (index != b2_nullNode) {
+      while (index != Physics_nullNode) {
         index = Balance(index);
 
         int32_t child1 = m_nodes[index].child1;
@@ -621,13 +621,13 @@ class b2DynamicTree {
       }
     } else {
       m_root = sibling;
-      m_nodes[sibling].parent = b2_nullNode;
+      m_nodes[sibling].parent = Physics_nullNode;
       FreeNode(parent);
     }
   }
 
   int32_t Balance(int32_t iA) {
-    b2TreeNode* A = m_nodes + iA;
+    PhysicsTreeNode* A = m_nodes + iA;
     if (A->IsLeaf() || A->height < 2) {
       return iA;
     }
@@ -635,8 +635,8 @@ class b2DynamicTree {
     int32_t iB = A->child1;
     int32_t iC = A->child2;
 
-    b2TreeNode* B = m_nodes + iB;
-    b2TreeNode* C = m_nodes + iC;
+    PhysicsTreeNode* B = m_nodes + iB;
+    PhysicsTreeNode* C = m_nodes + iC;
 
     int32_t balance = C->height - B->height;
 
@@ -644,8 +644,8 @@ class b2DynamicTree {
     if (balance > 1) {
       int32_t iF = C->child1;
       int32_t iG = C->child2;
-      b2TreeNode* F = m_nodes + iF;
-      b2TreeNode* G = m_nodes + iG;
+      PhysicsTreeNode* F = m_nodes + iF;
+      PhysicsTreeNode* G = m_nodes + iG;
 
       // Swap A and C
       C->child1 = iA;
@@ -653,7 +653,7 @@ class b2DynamicTree {
       A->parent = iC;
 
       // A's old parent should point to C
-      if (C->parent != b2_nullNode) {
+      if (C->parent != Physics_nullNode) {
         if (m_nodes[C->parent].child1 == iA) {
           m_nodes[C->parent].child1 = iC;
         } else {
@@ -691,8 +691,8 @@ class b2DynamicTree {
     if (balance < -1) {
       int32_t iD = B->child1;
       int32_t iE = B->child2;
-      b2TreeNode* D = m_nodes + iD;
-      b2TreeNode* E = m_nodes + iE;
+      PhysicsTreeNode* D = m_nodes + iD;
+      PhysicsTreeNode* E = m_nodes + iE;
 
       // Swap A and B
       B->child1 = iA;
@@ -700,7 +700,7 @@ class b2DynamicTree {
       A->parent = iB;
 
       // A's old parent should point to B
-      if (B->parent != b2_nullNode) {
+      if (B->parent != Physics_nullNode) {
         if (m_nodes[B->parent].child1 == iA) {
           m_nodes[B->parent].child1 = iB;
         } else {
@@ -742,7 +742,7 @@ class b2DynamicTree {
     return height;
   }
   int32_t ComputeHeight(int32_t nodeId) const {
-    b2TreeNode* node = m_nodes + nodeId;
+    PhysicsTreeNode* node = m_nodes + nodeId;
 
     if (node->IsLeaf()) {
       return 0;
@@ -758,7 +758,7 @@ class b2DynamicTree {
 
   int32_t m_root;
 
-  b2TreeNode* m_nodes;
+  PhysicsTreeNode* m_nodes;
   int32_t m_nodeCount;
   int32_t m_nodeCapacity;
 

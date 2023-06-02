@@ -39,7 +39,7 @@ static PVec2 ComputeCentroid(const PVec2* vs, int32_t count) {
   return c;
 }
 
-b2PolygonShape::b2PolygonShape()
+PhysicsPolygonShape::PhysicsPolygonShape()
 {
     m_type = Type::kPolygon;
     m_radius = 0.001f;
@@ -47,16 +47,16 @@ b2PolygonShape::b2PolygonShape()
     m_centroid.SetZero();
 }
 
-b2Shape* b2PolygonShape::Clone(PhysicsBlockAllocator* allocator) const {
-  void* mem = allocator->Allocate(sizeof(b2PolygonShape));
-  const auto clone = new (mem) b2PolygonShape;
+PhysicsShape* PhysicsPolygonShape::Clone(PhysicsBlockAllocator* allocator) const {
+  void* mem = allocator->Allocate(sizeof(PhysicsPolygonShape));
+  const auto clone = new (mem) PhysicsPolygonShape;
   *clone = *this;
   return clone;
 }
 
-int32_t b2PolygonShape::GetChildCount() const { return 1; }
+int32_t PhysicsPolygonShape::GetChildCount() const { return 1; }
 using int32 = int32_t;
-void b2PolygonShape::Set(const PVec2* points, uint8_t count) {
+void PhysicsPolygonShape::Set(const PVec2* points, uint8_t count) {
   if (count < 3) {
     SetAsBox(1.0f, 1.0f);
     return;
@@ -160,7 +160,7 @@ void b2PolygonShape::Set(const PVec2* points, uint8_t count) {
   m_centroid = ComputeCentroid(m_vertices, m);
 }
 
-bool b2PolygonShape::TestPoint(const b2Transform& transform,
+bool PhysicsPolygonShape::TestPoint(const PhysicsTransform& transform,
                                const PVec2& p) const {
   const PVec2 pLocal = PhysicsMulT(transform.q, p - transform.p);
 
@@ -174,9 +174,9 @@ bool b2PolygonShape::TestPoint(const b2Transform& transform,
   return true;
 }
 
-bool b2PolygonShape::RayCast(PhysicsRayCastOutput* output,
+bool PhysicsPolygonShape::RayCast(PhysicsRayCastOutput* output,
                              const PhysicsRayCastInput& input,
-                             const b2Transform& transform,
+                             const PhysicsTransform& transform,
                              int32_t childIndex) const {
   // Put the ray into the polygon's frame of reference.
   PVec2 p1 = PhysicsMulT(transform.q, input.p1 - transform.p);
@@ -218,7 +218,7 @@ bool b2PolygonShape::RayCast(PhysicsRayCastOutput* output,
     // The use of epsilon here causes the assert on lower to trip
     // in some cases. Apparently the use of epsilon was to make edge
     // shapes work, but now those are handled separately.
-    // if (upper < lower - b2_epsilon)
+    // if (upper < lower - Physics_epsilon)
     if (upper < lower) {
       return false;
     }
@@ -233,8 +233,8 @@ bool b2PolygonShape::RayCast(PhysicsRayCastOutput* output,
   return false;
 }
 
-void b2PolygonShape::ComputeAABB(PhysicsAABB* aabb,
-                                 const b2Transform& transform,
+void PhysicsPolygonShape::ComputeAABB(PhysicsAABB* aabb,
+                                 const PhysicsTransform& transform,
                                  int32_t childIndex) const {
   PVec2 lower = PhysicsMul(transform, m_vertices[0]);
   PVec2 upper = lower;
@@ -250,7 +250,7 @@ void b2PolygonShape::ComputeAABB(PhysicsAABB* aabb,
   aabb->upperBound = upper + r;
 }
 
-bool b2PolygonShape::Validate() const {
+bool PhysicsPolygonShape::Validate() const {
   for (int32_t i = 0; i < m_count; ++i) {
     int32_t i1 = i;
     int32_t i2 = i < m_count - 1 ? i1 + 1 : 0;

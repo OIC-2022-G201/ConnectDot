@@ -34,7 +34,7 @@ void PhysicsContactManager::AddPair(void* proxyUserDataA, void* proxyUserDataB)
   // TODO_ERIN use a hash table to remove a potential bottleneck when both
   // bodies have a lot of contacts.
   // Does a contact already exist?
-  b2ContactEdge* edge = bodyB->GetContactList();
+  PhysicsContactEdge* edge = bodyB->GetContactList();
   while (edge) {
     if (edge->other == bodyA) {
       PhysicsFixture* fA = edge->contact->GetFixtureA();

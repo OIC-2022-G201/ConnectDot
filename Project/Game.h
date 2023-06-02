@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include <functional>
 #include <memory>
+#include <string_view>
 #include <vector>
 
 #include "BaseEngineCore.h"

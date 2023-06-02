@@ -80,13 +80,13 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     {
       constexpr float up = kSpawnY;
       constexpr float t = kAnimationTime;
-      ma_tween::PositionYTween::TweenLocalPositionY(
+      ma_tween::PositionYTween::Tween(
           note_actor_, note_actor_->GetPosition().y + up, t)
           .SetEase(EaseType::kOutquad);
-      ma_tween::PositionYTween::TweenLocalPositionY(
+      ma_tween::PositionYTween::Tween(
           back_bar_actor_, back_bar_actor_->GetPosition().y + up, t)
           .SetEase(EaseType::kOutquad);
-      ma_tween::PositionYTween::TweenLocalPositionY(
+      ma_tween::PositionYTween::Tween(
           beat_point_actor_, beat_point_actor_->GetPosition().y + up, t)
           .SetEase(EaseType::kOutquad);
 
@@ -204,13 +204,13 @@ class BeaconPowerUpActor::BeaconPowerUpActionComponent final
     {
       constexpr float up = -kSpawnY;
       constexpr float t = kAnimationTime;
-      ma_tween::PositionYTween::TweenLocalPositionY(
+      ma_tween::PositionYTween::Tween(
           note_actor_, note_actor_->GetPosition().y + up, t)
           .SetEase(EaseType::kInquad);
-      ma_tween::PositionYTween::TweenLocalPositionY(
+      ma_tween::PositionYTween::Tween(
           back_bar_actor_, back_bar_actor_->GetPosition().y + up, t)
           .SetEase(EaseType::kInquad);
-      ma_tween::PositionYTween::TweenLocalPositionY(
+      ma_tween::PositionYTween::Tween(
           beat_point_actor_, beat_point_actor_->GetPosition().y + up, t)
           .SetEase(EaseType::kInquad);
 

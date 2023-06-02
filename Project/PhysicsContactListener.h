@@ -11,8 +11,8 @@
 namespace base_engine::physics {
 class PhysicsContact;
 struct PhysicsContactImpulse {
-  float normalImpulses[b2_maxManifoldPoints];
-  float tangentImpulses[b2_maxManifoldPoints];
+  float normalImpulses[Physics_maxManifoldPoints];
+  float tangentImpulses[Physics_maxManifoldPoints];
   int32_t count;
 };
 
@@ -35,7 +35,7 @@ class IPhysicsContactListener {
   /// of contact points to zero, you will not get an EndContact callback.
   /// However, you may get a BeginContact callback the next step.
   virtual void PreSolve(PhysicsContact* contact,
-                        const b2Manifold* oldManifold) {}
+                        const PhysicsManifold* oldManifold) {}
 
   /// This lets you inspect a contact after the solver is finished. This is
   /// useful for inspecting impulses. Note: the contact manifold does not
@@ -53,7 +53,7 @@ class PhysicsContactListener : public IPhysicsContactListener {
   void BeginContact(PhysicsContact* contact) override {}
   void EndContact(PhysicsContact* contact) override {}
   void PreSolve(PhysicsContact* contact,
-                const b2Manifold* oldManifold) override {}
+                const PhysicsManifold* oldManifold) override {}
   void PostSolve(PhysicsContact* contact,
                  const PhysicsContactImpulse* impulse) override {}
 };

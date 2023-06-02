@@ -18,8 +18,8 @@ class ResultModel {
   float time_ = 0;
   float goal_time_ = 60;
   bool is_pick_data_chip = false;
+
  public:
-  
   // Control
 
   void Update(const float add_time);

@@ -6,18 +6,18 @@
 
 namespace base_engine::physics {
 
-b2ContactRegister
-    PhysicsContact::s_registers[ee::ElementCount<b2Shape::Type>()]
-                               [ee::ElementCount<b2Shape::Type>()];
+PhysicsContactRegister
+    PhysicsContact::s_registers[ee::ElementCount<PhysicsShape::Type>()]
+                               [ee::ElementCount<PhysicsShape::Type>()];
 
 bool PhysicsContact::s_initialized = false;
 
 void PhysicsContact::FlagForFiltering()
 { m_flags |= e_filterFlag; }
 
-void PhysicsContact::AddType(b2ContactCreateFcn* createFcn,
-                             b2ContactDestroyFcn* destroyFcn,
-                             b2Shape::Type typeA, b2Shape::Type typeB) {
+void PhysicsContact::AddType(PhysicsContactCreateFcn* createFcn,
+                             PhysicsContactDestroyFcn* destroyFcn,
+                             PhysicsShape::Type typeA, PhysicsShape::Type typeB) {
   int type1 = static_cast<int>(typeA);
   int type2 = static_cast<int>(typeB);
   s_registers[type1][type2].createFcn = createFcn;
@@ -33,10 +33,10 @@ void PhysicsContact::AddType(b2ContactCreateFcn* createFcn,
 
 void PhysicsContact::InitializeRegisters() {
   AddType(PhysicsPolygonContact::Create, PhysicsPolygonContact::Destroy,
-          b2Shape::Type::kPolygon, b2Shape::Type::kPolygon);
+          PhysicsShape::Type::kPolygon, PhysicsShape::Type::kPolygon);
 
       AddType(PhysicsCircleContact::Create, PhysicsCircleContact::Destroy,
-          b2Shape::Type::kCircle, b2Shape::Type::kCircle);
+          PhysicsShape::Type::kCircle, PhysicsShape::Type::kCircle);
 }
 
 PhysicsContact* PhysicsContact::Create(PhysicsFixture* fixtureA, int32_t indexA,
@@ -47,10 +47,10 @@ PhysicsContact* PhysicsContact::Create(PhysicsFixture* fixtureA, int32_t indexA,
     s_initialized = true;
   }
 
-  b2Shape::Type type1 = fixtureA->GetType();
-  b2Shape::Type type2 = fixtureB->GetType();
+  PhysicsShape::Type type1 = fixtureA->GetType();
+  PhysicsShape::Type type2 = fixtureB->GetType();
 
-  b2ContactCreateFcn* createFcn =
+  PhysicsContactCreateFcn* createFcn =
       s_registers[static_cast<int>(type1)][static_cast<int>(type2)].createFcn;
   if (createFcn) {
     if (s_registers[static_cast<int>(type1)][static_cast<int>(type2)].primary) {
@@ -77,7 +77,7 @@ void PhysicsContact::Destroy(PhysicsContact* contact, PhysicsBlockAllocator* all
     const size_t typeA = static_cast<size_t>(fixtureA->GetType());
     const size_t typeB = static_cast<size_t>(fixtureB->GetType());
 
-    b2ContactDestroyFcn* destroyFcn = s_registers[typeA][typeB].destroyFcn;
+    PhysicsContactDestroyFcn* destroyFcn = s_registers[typeA][typeB].destroyFcn;
     destroyFcn(contact, allocator);
 }
 

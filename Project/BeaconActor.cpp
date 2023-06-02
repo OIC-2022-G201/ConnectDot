@@ -274,7 +274,7 @@ void BeaconActor::Break(bool fall) {
   };
 
   if(fall){
-    ma_tween::PositionYTween::TweenLocalPositionY(this, GetPosition().y + 128,
+    ma_tween::PositionYTween::Tween(this, GetPosition().y + 128,
       0.5).SetOnComplete(breakCallBack);
   }
   else{

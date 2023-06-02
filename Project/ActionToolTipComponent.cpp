@@ -39,7 +39,7 @@ void ActionToolTipComponent::Show() {
   if (panel_.expired()) return;
 
   play_animation_ = true;
-  ma_tween::PositionYTween::TweenLocalPositionY(
+  ma_tween::PositionYTween::Tween(
       panel_.lock().get(), owner_->GetPosition().y - stage::kStageCellSize<float>.y * 0.5f,
       kFadeInTime)
       .SetEase(EaseType::kInsine);
@@ -56,7 +56,7 @@ void ActionToolTipComponent::Hide() {
   if (!is_show_) return;
   if (panel_.expired())return;
   play_animation_ = true;
-  ma_tween::PositionYTween::TweenLocalPositionY(
+  ma_tween::PositionYTween::Tween(
       panel_.lock().get(), owner_->GetPosition().y + 32,
       kFadeOutTime)
       .SetEase(EaseType::kInsine);

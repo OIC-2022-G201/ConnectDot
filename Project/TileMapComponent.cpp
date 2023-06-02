@@ -75,7 +75,7 @@ void TileMapComponent::Load(std::string_view path) {
   {
     FrozenMapData map_data;
 
-    std::ifstream os(path);
+    std::ifstream os((path.data()));
     {
       frozen::TextInputArchive archive(os);
       archive(map_data);

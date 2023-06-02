@@ -19,7 +19,7 @@ struct PhysicsRayCastInput {
 };
 
 /// Ray-cast output data. The ray hits at p1 + fraction * (p2 - p1), where p1
-/// and p2 come from b2RayCastInput.
+/// and p2 come from PhysicsRayCastInput.
 struct PhysicsRayCastOutput {
   PVec2 normal;
   float fraction;
@@ -57,9 +57,9 @@ struct PhysicsAABB {
   }
 
   /// Combine two AABBs into this one.
-  void Combine(const PhysicsAABB& aabb1, const PhysicsAABB& aabb2) {
-    lowerBound = PhysicsMin(aabb1.lowerBound, aabb2.lowerBound);
-    upperBound = PhysicsMax(aabb1.upperBound, aabb2.upperBound);
+  void Combine(const PhysicsAABB& aabb1, const PhysicsAABB& aabPhysics) {
+    lowerBound = PhysicsMin(aabb1.lowerBound, aabPhysics.lowerBound);
+    upperBound = PhysicsMax(aabb1.upperBound, aabPhysics.upperBound);
   }
 
   /// Does this aabb contain the provided AABB.
@@ -134,7 +134,7 @@ struct PhysicsAABB {
   PVec2 upperBound;  ///< the upper vertex
 };
 
-constexpr bool b2TestOverlap(const PhysicsAABB& a, const PhysicsAABB& b) {
+constexpr bool PhysicsTestOverlap(const PhysicsAABB& a, const PhysicsAABB& b) {
   const PVec2 d1 = b.lowerBound - a.upperBound;
   const PVec2 d2 = a.lowerBound - b.upperBound;
 

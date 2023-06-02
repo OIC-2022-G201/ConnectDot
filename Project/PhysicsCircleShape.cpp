@@ -1,32 +1,32 @@
 ﻿#include "PhysicsCircleShape.h"
 
-base_engine::physics::b2CircleShape::b2CircleShape()
+base_engine::physics::PhysicsCircleShape::PhysicsCircleShape()
 {
     m_type = Type::kCircle;
     m_radius = 0.0f;
     m_p.SetZero();
 }
 
-base_engine::physics::b2Shape* base_engine::physics::b2CircleShape::Clone(PhysicsBlockAllocator* allocator) const
+base_engine::physics::PhysicsShape* base_engine::physics::PhysicsCircleShape::Clone(PhysicsBlockAllocator* allocator) const
 {
-    void* mem = allocator->Allocate(sizeof(b2CircleShape));
-    const auto clone = new (mem) b2CircleShape;
+    void* mem = allocator->Allocate(sizeof(PhysicsCircleShape));
+    const auto clone = new (mem) PhysicsCircleShape;
     *clone = *this;
     return clone;
 }
 
-base_engine::physics::int32 base_engine::physics::b2CircleShape::GetChildCount() const
+base_engine::physics::int32 base_engine::physics::PhysicsCircleShape::GetChildCount() const
 { return 1; }
 
-bool base_engine::physics::b2CircleShape::TestPoint(const b2Transform& transform, const PVec2& p) const
+bool base_engine::physics::PhysicsCircleShape::TestPoint(const PhysicsTransform& transform, const PVec2& p) const
 {
     PVec2 center = transform.p + PhysicsMul(transform.q, m_p);
     PVec2 d = p - center;
     return PhysicsDot(d, d) <= m_radius * m_radius;
 }
 
-bool base_engine::physics::b2CircleShape::RayCast(PhysicsRayCastOutput* output, const PhysicsRayCastInput& input,
-    const b2Transform& transform, int32 childIndex) const
+bool base_engine::physics::PhysicsCircleShape::RayCast(PhysicsRayCastOutput* output, const PhysicsRayCastInput& input,
+    const PhysicsTransform& transform, int32 childIndex) const
 {
     PVec2 position = transform.p + PhysicsMul(transform.q, m_p);
     PVec2 s = input.p1 - position;
@@ -58,7 +58,7 @@ bool base_engine::physics::b2CircleShape::RayCast(PhysicsRayCastOutput* output, 
     return false;
 }
 
-void base_engine::physics::b2CircleShape::ComputeAABB(PhysicsAABB* aabb, const b2Transform& transform,
+void base_engine::physics::PhysicsCircleShape::ComputeAABB(PhysicsAABB* aabb, const PhysicsTransform& transform,
     int32 childIndex) const
 {
     PVec2 p = transform.p + PhysicsMul(transform.q, m_p);
@@ -66,7 +66,7 @@ void base_engine::physics::b2CircleShape::ComputeAABB(PhysicsAABB* aabb, const b
     aabb->upperBound.Set(p.x + m_radius, p.y + m_radius);
 }
 
-void base_engine::physics::b2CircleShape::ComputeMass(PhysicsMassData* massData, float density) const
+void base_engine::physics::PhysicsCircleShape::ComputeMass(PhysicsMassData* massData, float density) const
 {
     massData->mass = density * std::numbers::pi_v<float> * m_radius * m_radius;
     massData->center = m_p;
