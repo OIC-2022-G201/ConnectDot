@@ -1,1 +1,0 @@
-CMakeLists.txt not found in D:\SchoolProgram\CONECTDOT-SAMPLE02 Select CMakeLists.txt
