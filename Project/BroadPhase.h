@@ -1,6 +1,6 @@
 ﻿// @BroadPhase.h
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/11
 //
 // @details

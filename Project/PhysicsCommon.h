@@ -1,6 +1,6 @@
 ﻿// @PhysicsCommon.h
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/17
 // 
 // @details

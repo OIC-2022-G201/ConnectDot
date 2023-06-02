@@ -7,7 +7,7 @@
 #include "PhysicsPolygonShape.h"
 // @PhysicsFixture.cpp
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/17
 //
 // @details
