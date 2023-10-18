@@ -79,3 +79,13 @@ void LeverStubComponent::Action(base_engine::Actor*) {
     sender->AddTarget(receiver);
   }
 }
+
+bool LeverStubComponent::CanInteractive(base_engine::Actor* actor) {
+  const auto lever = dynamic_cast<LeverStubActor*>(owner_);
+  if (!lever)return false;
+  if (!lever->GetElectric()) return false;
+  const auto animation = owner_->GetComponent<MofSpriteAnimationComponent>();
+  if (animation.expired()) return false;
+  if (!animation.lock()->IsEndMotion()) return false;
+  return true;
+}

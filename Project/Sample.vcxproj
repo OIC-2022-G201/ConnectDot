@@ -102,7 +102,9 @@
     <ClCompile Include="BaseEngineCollision.cpp" />
     <ClCompile Include="BaseEngineCore.cpp" />
     <ClCompile Include="BeaconActor.cpp" />
+    <ClCompile Include="BeaconCounterView.cpp" />
     <ClCompile Include="BeaconPowerUpActor.cpp" />
+    <ClCompile Include="BeaconPowerUpCounterView.cpp" />
     <ClCompile Include="BeaconReceiver.cpp" />
     <ClCompile Include="BeaconTransmitter.cpp" />
     <ClCompile Include="Button.cpp" />
@@ -124,7 +126,10 @@
     <ClCompile Include="ElevatorReceiver.cpp" />
     <ClCompile Include="FollowComponent.cpp" />
     <ClCompile Include="GameOverComponent.cpp" />
+    <ClCompile Include="GameOverEvent.cpp" />
     <ClCompile Include="GameOverSceneFactory.cpp" />
+    <ClCompile Include="QuitEvent.cpp" />
+    <ClCompile Include="ReStartEvent.cpp" />
     <ClCompile Include="GoalEffectActor.cpp" />
     <ClCompile Include="ImageAlphaTween.cpp" />
     <ClCompile Include="InvaderSceneFactory.cpp" />
@@ -158,6 +163,8 @@
     <ClCompile Include="SpriteAlphaTween.cpp" />
     <ClCompile Include="StageContainer.cpp" />
     <ClCompile Include="StageEpilogueEvent.cpp" />
+    <ClCompile Include="TimeCounter.cpp" />
+    <ClCompile Include="TimeCounterView.cpp" />
     <ClCompile Include="TitleListener.cpp" />
     <ClCompile Include="TitlePresenter.cpp" />
     <ClCompile Include="TransitionFadeSystem.cpp" />
@@ -302,8 +309,12 @@
     <ClInclude Include="BaseEngineCore.h" />
     <ClInclude Include="BaseEngineEmpty.h" />
     <ClInclude Include="BeaconActor.h" />
+    <ClInclude Include="BeaconCounterModel.h" />
+    <ClInclude Include="BeaconCounterPresenter.h" />
+    <ClInclude Include="BeaconCounterView.h" />
     <ClInclude Include="BeaconPowerUpActionEvent.h" />
     <ClInclude Include="BeaconPowerUpActor.h" />
+    <ClInclude Include="BeaconPowerUpCounterView.h" />
     <ClInclude Include="BeaconReceiver.h" />
     <ClInclude Include="BeaconStackPart.h" />
     <ClInclude Include="BeaconTransmitter.h" />
@@ -332,8 +343,11 @@
     <ClInclude Include="ElectricAreaPart.h" />
     <ClInclude Include="FollowComponent.h" />
     <ClInclude Include="GameOverComponent.h" />
+    <ClInclude Include="GameOverEvent.h" />
     <ClInclude Include="GameOverSceneFactory.h" />
     <ClInclude Include="GimmickTargetPart.h" />
+    <ClInclude Include="QuitEvent.h" />
+    <ClInclude Include="ReStartEvent.h" />
     <ClInclude Include="GoalEffectActor.h" />
     <ClInclude Include="IConnectBindable.h" />
     <ClInclude Include="ImageAlphaTween.h" />
@@ -380,6 +394,10 @@
     <ClInclude Include="StageContainer.h" />
     <ClInclude Include="StageEpilogueEvent.h" />
     <ClInclude Include="TextArchive.h" />
+    <ClInclude Include="TimeCounter.h" />
+    <ClInclude Include="TimeCounterModel.h" />
+    <ClInclude Include="TimeCounterPresenter.h" />
+    <ClInclude Include="TimeCounterView.h" />
     <ClInclude Include="TitleListener.h" />
     <ClInclude Include="TitlePresenter.h" />
     <ClInclude Include="TransitionFadeSystem.h" />

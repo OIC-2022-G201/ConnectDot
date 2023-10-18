@@ -19,7 +19,7 @@ class PhysicsCircleContact : PhysicsContact {
   PhysicsCircleContact(PhysicsFixture* fixtureA, PhysicsFixture* fixtureB);
   ~PhysicsCircleContact();
 
-  void Evaluate(b2Manifold* manifold, const b2Transform& xfA,
-                const b2Transform& xfB) override;
+  void Evaluate(PhysicsManifold* manifold, const PhysicsTransform& xfA,
+                const PhysicsTransform& xfB) override;
 };
 }  // namespace base_engine::physics

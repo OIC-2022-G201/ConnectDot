@@ -20,5 +20,5 @@ PhysicsPolygonContact::PhysicsPolygonContact(PhysicsFixture* fixtureA,
     : PhysicsContact(fixtureA, 0, fixtureB, 0) {}
 
 void PhysicsPolygonContact::Evaluate(
-    b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB) {}
+    PhysicsManifold* manifold, const PhysicsTransform& xfA, const PhysicsTransform& xfB) {}
 }  // namespace base_engine::physics

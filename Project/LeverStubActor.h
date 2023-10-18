@@ -36,4 +36,5 @@ class LeverStubComponent final : public base_engine::Component,
       : Component(owner, update_order) {}
 
   void Action(base_engine::Actor*) override;
+  bool CanInteractive(base_engine::Actor* actor) override;
 };

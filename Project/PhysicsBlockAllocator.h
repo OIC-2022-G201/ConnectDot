@@ -1,6 +1,6 @@
 ﻿// @PhysicsBlockAllocator.h
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/16
 //
 // @details
@@ -9,7 +9,7 @@
 #include <cstdint>
 
 namespace base_engine::physics {
-constexpr int32_t b2_blockSizeCount = 14;
+constexpr int32_t Physics_blockSizeCount = 14;
 
 struct PhysicsBlock;
 struct PhysicsChunk;
@@ -19,12 +19,12 @@ class PhysicsBlockAllocator {
   PhysicsBlockAllocator();
   ~PhysicsBlockAllocator();
 
-  /// Allocate memory. This will use b2Alloc if the size is larger than
-  /// b2_maxBlockSize.
+  /// Allocate memory. This will use PhysicsAlloc if the size is larger than
+  /// Physics_maxBlockSize.
   void* Allocate(int32_t size);
 
-  /// Free memory. This will use b2Free if the size is larger than
-  /// b2_maxBlockSize.
+  /// Free memory. This will use PhysicsFree if the size is larger than
+  /// Physics_maxBlockSize.
   void Free(void* p, int32_t size);
 
   void Clear();
@@ -34,6 +34,6 @@ private:
   int32_t m_chunkCount;
   int32_t m_chunkSpace;
 
-  PhysicsBlock* m_freeLists[b2_blockSizeCount];
+  PhysicsBlock* m_freeLists[Physics_blockSizeCount];
 };
 }  // namespace base_engine::physics

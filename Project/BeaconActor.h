@@ -2,6 +2,7 @@
 #include <variant>
 
 #include "Actor.h"
+#include "BeaconCounterModel.h"
 #include "GridPosition.h"
 #include "ISpriteAnimationComponent.h"
 #include "ObjectTileMapComponent.h"
@@ -37,8 +38,7 @@ class BeaconActor final : public base_engine::Actor{
   [[nodiscard]] auto&& ElectricPowerTrigger() {
     return electric_power_.ToReadOnly();
   }
-  [[nodiscard]] auto&& LevelUpTrigger() { return level_.ToReadOnly();
-  }
+  [[nodiscard]] auto&& LevelUpTrigger() { return level_.ToReadOnly();}
   void LevelUp();
   void LevelDown();
   void SetOutline(const bool flg) const;
@@ -60,4 +60,5 @@ private:
 
   std::shared_ptr<tile_map::TileMapComponent> map_;
   std::shared_ptr<tile_map::ObjectTileMapComponent> object_map_;
+  std::shared_ptr<BeaconCounterModel>beacon_counter_model_;
 };

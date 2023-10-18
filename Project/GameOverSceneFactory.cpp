@@ -16,7 +16,9 @@
 #include "ImageAlphaTween.h"
 #include "InputManager.h"
 #include "PositionYTween.h"
+#include "QuitEvent.h"
 #include "ResourceContainer.h"
+#include "ReStartEvent.h"
 #include "SceneManager.h"
 #include "TransitionParameter.h"
 #include "UiFactoryUtilities.h"
@@ -94,7 +96,10 @@ void GameOverSceneFactory::Factory() {
       main_pack = {
           {{475, 732},
            "RetryButton",
-           [] {
+           [this] {
+            std::any sender = this;
+           	ReStartEvent retry{sender};
+           	EventBus::FireEvent(retry);
              ServiceLocator::Instance()
                  .Resolve<ITransitionFadeSystem>()
                  ->SceneTransition(scene::kGame, kGameOverToGameFadeIn,
@@ -102,7 +107,10 @@ void GameOverSceneFactory::Factory() {
            }},
           {{1039, 732},
            "GiveupButton",
-           [] {
+           [this] {
+           	std::any sender = this;
+           	QuitEvent quit{sender};
+           	EventBus::FireEvent(quit);
              ServiceLocator::Instance()
                  .Resolve<ITransitionFadeSystem>()
                  ->SceneTransition(scene::kTitle, kGameOverToTitleFadeIn,

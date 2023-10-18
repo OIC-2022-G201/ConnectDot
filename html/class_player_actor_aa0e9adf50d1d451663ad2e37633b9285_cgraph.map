@@ -1,5 +1,0 @@
-<map id="PlayerActor::Input" name="PlayerActor::Input">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,132,57"/>
-<area shape="rect" id="node2" href="$class_input_manager.html#a38c6ce45633d58bef66e40c79663ef73" title=" " alt="" coords="181,5,375,32"/>
-<area shape="rect" id="node3" href="$class_input_manager.html#a12fe6d48728a3d53cb10abf8d42af4df" title=" " alt="" coords="180,56,376,83"/>
-</map>

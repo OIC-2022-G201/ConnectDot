@@ -1,7 +1,0 @@
-<map id="base_engine::IShape::Collision" name="base_engine::IShape::Collision">
-<area shape="rect" id="node1" title=" " alt="" coords="272,104,415,145"/>
-<area shape="rect" id="node2" href="$classbase__engine_1_1_collision_component.html#a06a222e0f8be348b82da960e2eae7b97" title=" " alt="" coords="5,5,224,47"/>
-<area shape="rect" id="node3" href="$classbase__engine_1_1_circle.html#a9276cac8e1c671b74326d9a6100650bc" title=" " alt="" coords="47,71,183,112"/>
-<area shape="rect" id="node4" href="$classbase__engine_1_1_point.html#af993814599d845f73a3a79e3fbfaa61e" title=" " alt="" coords="48,136,181,177"/>
-<area shape="rect" id="node5" href="$classbase__engine_1_1_rect.html#a49b4a255c1eb4992845b9711f41bd964" title=" " alt="" coords="45,201,184,243"/>
-</map>

@@ -18,6 +18,7 @@
 #include "DummyEmptyBeaconActor.h"
 #include "EventBus.h"
 #include "EventHandler.h"
+#include "GameOverEvent.h"
 #include "GameOverSceneFactory.h"
 #include "GoalEffectActor.h"
 #include "GoalEvent.h"
@@ -100,32 +101,29 @@ namespace player {
 		ServiceLocator::Instance().Resolve<PauseManager>()->IsOpen().Subscribe(
 			[this](bool open) { can_control_ = !open; });
 
+		JumpParameter jump_parameter;
 		{
 			constexpr std::string_view PlayerJumpParameter = "Meta/Player/PlayerJumpParameter.bin";
-
-			JumpParameter jump_parameter;
-			{
-				if (fs::exists(PlayerJumpParameter)) {
-					std::ifstream stream;
-					stream.open(PlayerJumpParameter, std::ios::binary);
-					{
-						frozen::BinaryInputArchive archive{ stream };
-						archive(jump_parameter);
-					}
+			if (fs::exists(PlayerJumpParameter)) {
+				std::ifstream stream;
+				stream.open(PlayerJumpParameter, std::ios::binary);
+				{
+					frozen::BinaryInputArchive archive{ stream };
+					archive(jump_parameter);
 				}
-				else {
-					std::ofstream stream;
-					stream.open(PlayerJumpParameter, std::ios::binary);
-					{
-						jump_parameter.height = 300;
-						jump_parameter.time = 60;
-						frozen::BinaryOutputArchive archive{ stream };
-						archive(jump_parameter);
-					}
-				}
-				jump_height_ = jump_parameter.height;
-				jump_time_ = jump_parameter.time;
 			}
+			else {
+				std::ofstream stream;
+				stream.open(PlayerJumpParameter, std::ios::binary);
+				{
+					jump_parameter.height = 300;
+					jump_parameter.time = 60;
+					frozen::BinaryOutputArchive archive{ stream };
+					archive(jump_parameter);
+				}
+			}
+			jump_height_ = jump_parameter.height;
+			jump_time_ = jump_parameter.time;
 		}
 
 		owner_->GetGame()->debug_render_.emplace_back([this]() {
@@ -251,6 +249,8 @@ namespace player {
 			CollisionLayer::Layer{ CollisionLayer::kActionable }) == 0)
 			return;
 		const auto machine_actor = collision->GetActor();
+		const auto machine_component = machine_actor->GetComponent<IMachineActionable>();
+		if(machine_component.expired()||!machine_component.lock()->CanInteractive(owner_))return;
 		action_machine_buffer_.emplace_back(machine_actor);
 	}
 
@@ -301,6 +301,9 @@ namespace player {
 	void PlayerComponent::OnCollision(const base_engine::SendManifold& manifold) {
 		const auto actor = manifold.collision_b->GetActor();
 		if (actor->GetTag() == "Enemy") {
+			std::any sender = this;
+			GameOverEvent game_over_event{ sender };
+			EventBus::FireEvent(game_over_event);
 			scene::LoadScene(kGameOver);
 			return;
 		}

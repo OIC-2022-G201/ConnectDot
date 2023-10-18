@@ -1,6 +1,6 @@
 ﻿// @PhysicsCommon.h
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/17
 // 
 // @details
@@ -11,4 +11,4 @@
 #define PHYSICS_DEBUG
 #endif
 
-constexpr uint8_t b2_maxManifoldPoints = 2;
+constexpr uint8_t Physics_maxManifoldPoints = 2;

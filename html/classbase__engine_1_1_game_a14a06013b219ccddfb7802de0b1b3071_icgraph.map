@@ -1,5 +1,0 @@
-<map id="base_engine::Game::Shutdown" name="base_engine::Game::Shutdown">
-<area shape="rect" id="node1" title=" " alt="" coords="417,5,564,47"/>
-<area shape="rect" id="node2" href="$class_c_game_app.html#a0576084d03c60cd47c9481e39b845be2" title="アプリケーションの解放" alt="" coords="225,13,369,39"/>
-<area shape="rect" id="node3" href="$class_c_game_app.html#aa1ccf80041cebe116197fec9d63c02ce" title="デストラクタ" alt="" coords="5,13,177,39"/>
-</map>

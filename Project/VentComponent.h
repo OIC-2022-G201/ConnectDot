@@ -29,6 +29,8 @@ class VentComponent final : public base_engine::Component,
 
   void Action(base_engine::Actor* player) override;
 
+  bool CanInteractive(base_engine::Actor* actor);
+
   [[nodiscard]] base_engine::Vector2 GetGoInPosition() const {
     auto pos = owner_->GetPosition();
     pos.x += stage::kStageCellSizeHalf<float>.x;

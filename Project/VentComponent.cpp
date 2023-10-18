@@ -86,3 +86,8 @@ void VentComponent::Action(base_engine::Actor* machine_operator) {
       machine_operator->GetComponent<player::PlayerComponent>().lock();
   player->VentEnter(this);
 }
+
+bool VentComponent::CanInteractive(base_engine::Actor* actor) {
+  if (!GetElectric()) return false;
+  return true;
+}

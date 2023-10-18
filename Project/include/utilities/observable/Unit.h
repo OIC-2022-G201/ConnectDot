@@ -6,6 +6,9 @@
 // @details 
 
 #pragma once
-struct Unit
-{
-};
+namespace observable {
+	struct Unit
+	{
+	};
+}
+

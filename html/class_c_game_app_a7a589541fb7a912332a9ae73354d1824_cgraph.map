@@ -1,6 +1,0 @@
-<map id="CGameApp::Initialize" name="CGameApp::Initialize">
-<area shape="rect" id="node1" title="アプリケーションの初期化" alt="" coords="5,46,149,73"/>
-<area shape="rect" id="node2" href="$classbase__engine_1_1_game.html#a61e43e90378bc137fb74ba342e54c926" title=" " alt="" coords="197,39,344,80"/>
-<area shape="rect" id="node3" href="$classbase__engine_1_1_actor.html#aa98ff31750ed05c40cb23eca3d8dc056" title=" " alt="" coords="392,5,527,47"/>
-<area shape="rect" id="node4" href="$classbase__engine_1_1_actor.html#a139aff5a93815d77d403120e9f14a217" title=" " alt="" coords="392,71,527,112"/>
-</map>

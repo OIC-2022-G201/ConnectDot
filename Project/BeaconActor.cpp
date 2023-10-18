@@ -1,6 +1,7 @@
 #include "BeaconActor.h"
 
 #include "AudioVolume.h"
+#include "BeaconCounterPresenter.h"
 #include "BeaconPowerUpActionEvent.h"
 #include "BeaconReceiver.h"
 #include "BeaconTransmitter.h"
@@ -41,9 +42,8 @@ class BeaconDummyComponent : public Component, public IMachineActionable {
 
   void Action(Actor* actor) override {
     if (const auto transmitter = owner_->GetComponent<TransmitterComponent>();
-        transmitter.expired() || transmitter.lock()->Level() != 1) {
-      return;
-    }
+        transmitter.expired() || transmitter.lock()->Level() != 1) return;
+    
     if (!static_cast<bool>(owner_as_beacon_->ElectricPowerTrigger())) return;
     std::any send = std::make_any<Actor*>(owner_);
 
@@ -51,7 +51,13 @@ class BeaconDummyComponent : public Component, public IMachineActionable {
     EventBus::FireEvent(event);
   }
 
- private:
+  bool CanInteractive(base_engine::Actor* actor) {
+    if (const auto transmitter = owner_->GetComponent<TransmitterComponent>();
+      transmitter.expired() || transmitter.lock()->Level() != 1) return false;
+    if (!static_cast<bool>(owner_as_beacon_->ElectricPowerTrigger())) return false;
+    return true;
+  }
+private:
   BeaconActor* owner_as_beacon_;
 };
 BeaconActor::BeaconActor(Game* game) : Actor(game) {
@@ -141,6 +147,7 @@ BeaconActor::BeaconActor(Game* game) : Actor(game) {
       ComponentServiceLocator::Instance().Resolve<tile_map::TileMapComponent>();
   object_map_ = ComponentServiceLocator::Instance()
                     .Resolve<tile_map::ObjectTileMapComponent>();
+  beacon_counter_model_ = ServiceLocator::Instance().Resolve<BeaconCounterPresenter>()->GetBeaconCounterModel();
 }
 
 BeaconActor::~BeaconActor() = default;
@@ -163,7 +170,7 @@ void BeaconActor::Update() {
   auto bottom_pos = GridPosition::VectorTo(GetPosition()) + GridPosition{0, 1};
   if (map_->GetCell(bottom_pos) == tile_map::kEmptyCell &&
       object_map_->GetCell(bottom_pos) < tile_map::kCanOnPlace) {
-    Break();
+    Break(true);
   }
 }
 
@@ -182,7 +189,7 @@ void BeaconActor::LevelUp() {
   const auto image = RC::GetResource<RC::SpriteResourcePack, RC::Sprite>(
       kBeaconPowerup.data());
   GetComponent<base_engine::SpriteComponent>().lock()->SetImage(*image);
-
+  beacon_counter_model_->DecrementBeaconPowerUpCount();
   range_sprite_->SetEnabled(true);
   range_sprite_->SetColor(MOF_ARGB(255, 255, 255, 255));
 }
@@ -215,6 +222,7 @@ bool BeaconActor::IsOutline() const { return sprite_outline_->GetEnabled(); }
 
 void BeaconActor::Close() {
   if (!animation_->IsEndMotion() && animation_->IsMotion("Close")) return;
+  beacon_counter_model_->IncrementBeaconCount();
   const auto sprite_resource =
       RC::GetResource<RC::AnimationResourcePack, RC::Sprite>(
           kBeaconName.data());
@@ -257,15 +265,20 @@ void BeaconActor::Break(bool fall) {
     GetGame()->RemoveActor(child.lock().get());
   }
   const auto pos = GridPosition::VectorTo(GetPosition());
-  
-  ma_tween::PositionYTween::TweenLocalPositionY(this, GetPosition().y + 128,
-                                                0.5)
-      .SetOnComplete([this, pos] {
-        auto cell  = object_map_->GetCell(pos);
-        if ((cell == 10)) cell = 0;
-        if ((cell == 1)) cell = 0;
-        object_map_->SetCell(pos.x, pos.y, cell);
-        GetGame()->RemoveActor(this);
-      });
-  ;
+  auto breakCallBack = [this, pos] {
+    auto cell = object_map_->GetCell(pos);
+    if ((cell == 10)) cell = 0;
+    if ((cell == 1)) cell = 0;
+    object_map_->SetCell(pos.x, pos.y, cell);
+    GetGame()->RemoveActor(this);
+  };
+
+  if(fall){
+    ma_tween::PositionYTween::TweenLocalPositionY(this, GetPosition().y + 128,
+      0.5).SetOnComplete(breakCallBack);
+  }
+  else{
+    ma_tween::DummyTween::TweenDummy(this, 0.5f).
+  	SetOnComplete(breakCallBack);
+  }
 }

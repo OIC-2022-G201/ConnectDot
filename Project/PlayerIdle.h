@@ -5,6 +5,7 @@
 //
 // @details
 #pragma once
+#include "BeaconCounterModel.h"
 #include "PhysicsBodyComponent.h"
 #include "PlayerState.h"
 
@@ -12,6 +13,7 @@ namespace player {
 class PlayerIdle {
   class PlayerComponent* player_;
   base_engine::PhysicsBodyComponent* body_;
+  std::shared_ptr<BeaconCounterModel> beacon_counter_model_;
   bool is_jump_ = false;
   bool is_move_ = false;
   bool is_sneak_ = false; 

@@ -34,9 +34,9 @@ PhysicsBody* PhysicsWorld::CreateBody(const BodyDef* def) {
 }
 
 void PhysicsWorld::DestroyBody(PhysicsBody* b) {
-  b2ContactEdge* ce = b->m_contactList;
+  PhysicsContactEdge* ce = b->m_contactList;
   while (ce) {
-    b2ContactEdge* ce0 = ce;
+    PhysicsContactEdge* ce0 = ce;
     ce = ce->next;
     m_contactManager.Destroy(ce0->contact);
   }
@@ -84,7 +84,7 @@ void PhysicsWorld::Step(float timeStep) {
   { m_contactManager.Collide(); }
 }
 
-struct b2WorldQueryWrapper {
+struct PhysicsWorldQueryWrapper {
   bool QueryCallback(int32 proxyId) {
     auto proxy =
         static_cast<PhysicsFixtureProxy*>(broadPhase->GetUserData(proxyId));
@@ -97,13 +97,13 @@ struct b2WorldQueryWrapper {
 
 void PhysicsWorld::QueryAABB(PhysicsQueryCallback* callback,
                              const PhysicsAABB& aabb) const {
-  b2WorldQueryWrapper wrapper{&m_contactManager.m_broadPhase, callback};
+  PhysicsWorldQueryWrapper wrapper{&m_contactManager.m_broadPhase, callback};
   wrapper.broadPhase = &m_contactManager.m_broadPhase;
   wrapper.callback = callback;
   m_contactManager.m_broadPhase.Query(&wrapper, aabb);
 }
 
-struct b2WorldRayCastWrapper {
+struct PhysicsWorldRayCastWrapper {
   [[nodiscard]] float RayCastCallback(const PhysicsRayCastInput& input,
                                       const int32 proxyId) const {
     void* userData = broadPhase->GetUserData(proxyId);
@@ -128,7 +128,7 @@ struct b2WorldRayCastWrapper {
 void PhysicsWorld::RayCast(PhysicsRayCastCallback* callback, const PVec2& point1,
                            const PVec2& point2) const
 {
-  b2WorldRayCastWrapper wrapper{&m_contactManager.m_broadPhase, callback};
+  PhysicsWorldRayCastWrapper wrapper{&m_contactManager.m_broadPhase, callback};
   const PhysicsRayCastInput input{point1, point2,1.0f};
   m_contactManager.m_broadPhase.RayCast(&wrapper, input);
 }

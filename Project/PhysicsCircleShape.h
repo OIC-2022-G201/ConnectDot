@@ -13,30 +13,30 @@
 
 namespace base_engine::physics {
 using int32 = int32_t;
-class b2CircleShape : public b2Shape {
+class PhysicsCircleShape : public PhysicsShape {
  public:
-  b2CircleShape();
+  PhysicsCircleShape();
 
-  /// Implement b2Shape.
-  b2Shape* Clone(PhysicsBlockAllocator* allocator) const override;
+  /// Implement PhysicsShape.
+  PhysicsShape* Clone(PhysicsBlockAllocator* allocator) const override;
 
-  /// @see b2Shape::GetChildCount
+  /// @see PhysicsShape::GetChildCount
   int32 GetChildCount() const override;
 
-  /// Implement b2Shape.
-  bool TestPoint(const b2Transform& transform, const PVec2& p) const override;
+  /// Implement PhysicsShape.
+  bool TestPoint(const PhysicsTransform& transform, const PVec2& p) const override;
 
-  /// Implement b2Shape.
+  /// Implement PhysicsShape.
   /// @note because the circle is solid, rays that start inside do not hit
   /// because the normal is not defined.
   bool RayCast(PhysicsRayCastOutput* output, const PhysicsRayCastInput& input,
-               const b2Transform& transform, int32 childIndex) const override;
+               const PhysicsTransform& transform, int32 childIndex) const override;
 
-  /// @see b2Shape::ComputeAABB
-  void ComputeAABB(PhysicsAABB* aabb, const b2Transform& transform,
+  /// @see PhysicsShape::ComputeAABB
+  void ComputeAABB(PhysicsAABB* aabb, const PhysicsTransform& transform,
                    int32 childIndex) const override;
 
-  /// @see b2Shape::ComputeMass
+  /// @see PhysicsShape::ComputeMass
   void ComputeMass(PhysicsMassData* massData, float density) const override;
 
   /// Position

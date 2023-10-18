@@ -102,3 +102,9 @@ void ElevatorComponent::Action(base_engine::Actor* actor) {
       owner_, GridPosition::GridTo(positions_[current_floor_ - 1]).y, 10)
       .SetOnComplete([this] { busy_ = false; });
 }
+
+bool ElevatorComponent::CanInteractive(base_engine::Actor* actor) {
+  if (!electric_power_) return false;
+  if (busy_)return false;
+  return true;
+}

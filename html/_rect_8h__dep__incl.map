@@ -1,9 +1,0 @@
-<map id="Project/Rect.h" name="Project/Rect.h">
-<area shape="rect" id="node1" title=" " alt="" coords="417,5,522,32"/>
-<area shape="rect" id="node2" href="$_circle_8cpp.html" title=" " alt="" coords="5,80,131,107"/>
-<area shape="rect" id="node3" href="$_game_8cpp.html" title=" " alt="" coords="155,80,282,107"/>
-<area shape="rect" id="node4" href="$_player_actor_8cpp.html" title=" " alt="" coords="307,80,467,107"/>
-<area shape="rect" id="node5" href="$_point_8cpp.html" title=" " alt="" coords="491,80,613,107"/>
-<area shape="rect" id="node6" href="$_rect_8cpp.html" title=" " alt="" coords="638,80,757,107"/>
-<area shape="rect" id="node7" href="$_shape_render_component_8cpp.html" title=" " alt="" coords="781,80,1017,107"/>
-</map>

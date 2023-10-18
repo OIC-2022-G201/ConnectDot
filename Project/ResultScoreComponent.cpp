@@ -1,7 +1,5 @@
 ﻿#include "ResultScoreComponent.h"
-
 #include <Utilities/Utilities.h>
-
 #include "EventBus.h"
 
 ResultScoreComponent::ResultScoreComponent(base_engine::Actor* owner,

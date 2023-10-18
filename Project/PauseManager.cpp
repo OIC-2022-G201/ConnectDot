@@ -7,11 +7,13 @@
 #include "ComponentServiceLocator.h"
 #include "EventBus.h"
 #include "EventHandler.h"
+#include "ReStartEvent.h"
 #include "ImageComponent.h"
 #include "InputManager.h"
 #include "ITransitionFadeSystem.h"
 #include "PauseComponent.h"
 #include "PauseEvent.h"
+#include "QuitEvent.h"
 #include "ResourceContainer.h"
 #include "SceneManager.h"
 #include "TransitionParameter.h"
@@ -27,9 +29,9 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
   std::unordered_map<std::string, Actor*> elements_;
   Actor* back_;
 
- public:
+public:
   explicit PauseListener(PauseManager* manager, Game* game)
-      : pause_manager_(manager), game_(game) {
+    : pause_manager_(manager), game_(game) {
     CreateView();
   }
 
@@ -37,18 +39,19 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
     pause_manager_->is_open_ = e.IsOpen();
     if (e.IsOpen()) {
       ShowView();
-    } else {
+    }
+    else {
       HideView();
     }
   }
 
- private:
+private:
   void CreateView() {
     {
       back_ = new Actor(game_);
       const auto image = new ImageComponent(back_, 3000);
       image->SetImage(
-          *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("PauseHaikei"));
+        *RC::GetResource<RC::SpriteResourcePack, RC::Sprite>("PauseHaikei"));
       back_->SetEnable(false);
     }
     { CreateButtons(); }
@@ -69,27 +72,34 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
   void CreateButtons() {
     constexpr bool enable = false;
     const std::vector<std::tuple<Vector2, std::string, std::function<void()>>>
-        main_pack = {{{796, 394},
-                      "ResumeButton",
-                      [this] {
-                        std::any sender = this;
-                        PauseEvent e{sender, false};
-                        EventBus::FireEvent(e);
-                      }},
-                     {{781, 533},
-                      "RestartButton",
-                      [] {
-                        ServiceLocator::Instance()
-                            .Resolve<ITransitionFadeSystem>()
-                            ->SceneTransition(scene::kGame, kPauseToGameFadeIn,
-                                              kPauseToGameFadeOut);
-                      }},
-                     {{828, 671}, "GoTitleButton", [] {
-                        ServiceLocator::Instance()
-                            .Resolve<ITransitionFadeSystem>()
-                            ->SceneTransition(scene::kTitle, kPauseToGameFadeIn,
-                                              kPauseToGameFadeOut);
-                      }}};
+      main_pack = { {{796, 394},
+                    "ResumeButton",
+                    [this] {
+                      std::any sender = this;
+                      PauseEvent e{sender, false};
+                      EventBus::FireEvent(e);
+                    }},
+                   {{781, 533},
+                    "RestartButton",
+                    [this] {
+                      std::any sender = this;
+                      ReStartEvent restart{sender};
+                      EventBus::FireEvent(restart);
+                      ServiceLocator::Instance()
+                          .Resolve<ITransitionFadeSystem>()
+                          ->SceneTransition(scene::kGame, kPauseToGameFadeIn,
+                                            kPauseToGameFadeOut);
+                   }},
+                   {{828, 671}, "GoTitleButton", [this] {
+                      std::any sender = this;
+                      QuitEvent quit{sender};
+                      EventBus::FireEvent(quit);
+                      ServiceLocator::Instance()
+                          .Resolve<ITransitionFadeSystem>()
+                          ->SceneTransition(scene::kTitle, kPauseToGameFadeIn,
+                                            kPauseToGameFadeOut);
+                   }}
+      };
 
     const auto selector = new ButtonSelecter(game_);
     selector->SetInput(InputManager::Instance());
@@ -99,7 +109,7 @@ class PauseManager::PauseListener : public EventHandler<PauseEvent> {
     for (int i = 0; i < main_pack.size(); ++i) {
       const auto& [pos, name, action] = main_pack[i];
       const auto [button, _] = UiFactoryUtilities::ButtonCreate(
-          game_, selector, ButtonFrozenPack{pos.x, pos.y, name, 0, i}, 3001);
+        game_, selector, ButtonFrozenPack{ pos.x, pos.y, name, 0, i }, 3001);
       elements_.emplace(name, button);
       button->SetEvent(action);
       button->SetEnable(enable);

@@ -1,6 +1,6 @@
 ﻿// @PhysicsTransform.h
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/16
 //
 // @details
@@ -10,12 +10,12 @@
 #include "PhysicsVector2.h"
 
 namespace base_engine::physics {
-struct b2Transform {
+struct PhysicsTransform {
   /// The default constructor does nothing.
-  b2Transform() = default;
+  PhysicsTransform() = default;
 
   /// Initialize using a position vector and a rotation.
-  b2Transform(const PVec2& position, const PRot& rotation)
+  PhysicsTransform(const PVec2& position, const PRot& rotation)
       : p(position), q(rotation) {}
 
   /// Set this to the identity transform.

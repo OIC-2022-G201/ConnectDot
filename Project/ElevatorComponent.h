@@ -29,6 +29,7 @@ class ElevatorComponent final : public base_engine::Component,
   void SetElectric(const bool flg) { electric_power_ = flg; }
   [[nodiscard]] bool GetElectric() const { return electric_power_; }
   void Action(base_engine::Actor* actor) override;
+  bool CanInteractive(base_engine::Actor* actor) override;
   void AddFloor(const GridPosition& pos) { positions_.emplace_back(pos); }
 
  private:

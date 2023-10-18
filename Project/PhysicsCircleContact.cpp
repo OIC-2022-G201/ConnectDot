@@ -25,7 +25,7 @@ base_engine::physics::PhysicsCircleContact::PhysicsCircleContact(
 base_engine::physics::PhysicsCircleContact::~PhysicsCircleContact() {}
 
 void base_engine::physics::PhysicsCircleContact::Evaluate(
-    b2Manifold* manifold, const b2Transform& xfA, const b2Transform& xfB)
+    PhysicsManifold* manifold, const PhysicsTransform& xfA, const PhysicsTransform& xfB)
 {
 
 }

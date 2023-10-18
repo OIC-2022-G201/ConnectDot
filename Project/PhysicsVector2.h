@@ -1,6 +1,6 @@
 ﻿// @PhysicsVector2.h
 // @brief
-// @author かき氷氷味
+// @author ICE
 // @date 2022/10/13
 //
 // @details
