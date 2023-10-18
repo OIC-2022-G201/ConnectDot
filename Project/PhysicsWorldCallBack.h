@@ -12,7 +12,7 @@ namespace base_engine::physics {
 class PhysicsFixture;
 
 /// Callback class for AABB queries.
-/// See b2World::Query
+/// See PhysicsWorld::Query
 class PhysicsQueryCallback {
  public:
   virtual ~PhysicsQueryCallback() {}
@@ -23,7 +23,7 @@ class PhysicsQueryCallback {
 };
 
 /// Callback class for ray casts.
-/// See b2World::RayCast
+/// See PhysicsWorld::RayCast
 class PhysicsRayCastCallback {
  public:
   virtual ~PhysicsRayCastCallback() {}

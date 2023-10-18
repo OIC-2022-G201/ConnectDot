@@ -11,18 +11,18 @@
 #include "PhysicsVector2.h"
 
 namespace base_engine::physics {
-class b2PolygonShape : public b2Shape {
+class PhysicsPolygonShape : public PhysicsShape {
  public:
-  b2PolygonShape();
+  PhysicsPolygonShape();
 
-  /// Implement b2Shape.
-  b2Shape* Clone(PhysicsBlockAllocator* allocator) const override;
+  /// Implement PhysicsShape.
+  PhysicsShape* Clone(PhysicsBlockAllocator* allocator) const override;
 
-  /// @see b2Shape::GetChildCount
+  /// @see PhysicsShape::GetChildCount
   [[nodiscard]] int32_t GetChildCount() const override;
 
   /// Create a convex hull from the given array of local points.
-  /// The count must be in the range [3, b2_maxPolygonVertices].
+  /// The count must be in the range [3, Physics_maxPolygonVertices].
   /// @warning the points may be re-ordered, even if they form a convex polygon
   /// @warning collinear points are handled but not removed. Collinear points
   /// may lead to poor stacking behavior.
@@ -58,20 +58,20 @@ class b2PolygonShape : public b2Shape {
     m_normals[3].Set(-1.0f, 0.0f);
     m_centroid.SetZero();
   }
-  /// @see b2Shape::TestPoint
-  bool TestPoint(const b2Transform& transform, const PVec2& p) const override;
+  /// @see PhysicsShape::TestPoint
+  bool TestPoint(const PhysicsTransform& transform, const PVec2& p) const override;
 
-  /// Implement b2Shape.
+  /// Implement PhysicsShape.
   /// @note because the polygon is solid, rays that start inside do not hit
   /// because the normal is not defined.
   bool RayCast(PhysicsRayCastOutput* output, const PhysicsRayCastInput& input,
-               const b2Transform& transform, int32_t childIndex) const override;
+               const PhysicsTransform& transform, int32_t childIndex) const override;
 
-  /// @see b2Shape::ComputeAABB
-  void ComputeAABB(PhysicsAABB* aabb, const b2Transform& transform,
+  /// @see PhysicsShape::ComputeAABB
+  void ComputeAABB(PhysicsAABB* aabb, const PhysicsTransform& transform,
                    int32_t childIndex) const override;
 
-  /// @see b2Shape::ComputeMass
+  /// @see PhysicsShape::ComputeMass
   void ComputeMass(PhysicsMassData* massData, float density) const override {}
 
   /// Validate convexity. This is a very time consuming operation.

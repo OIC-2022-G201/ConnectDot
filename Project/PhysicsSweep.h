@@ -14,13 +14,13 @@
 
 namespace base_engine::physics {
 
-struct b2Sweep {
-  b2Sweep() = default;
+struct PhysicsSweep {
+  PhysicsSweep() = default;
 
   /// Get the interpolated transform at a specific time.
   /// @param transform the output transform
   /// @param beta is a factor in [0,1], where 0 indicates alpha0.
-  void GetTransform(b2Transform* xf, float beta) const {
+  void GetTransform(PhysicsTransform* xf, float beta) const {
     xf->p = (1.0f - beta) * c0 + beta * c;
     float angle = (1.0f - beta) * a0 + beta * a;
     xf->q.Set(angle);

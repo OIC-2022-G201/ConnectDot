@@ -22,7 +22,7 @@ namespace base_engine::physics {
 		}
 		
     // Flag associated contacts for filtering.
-    b2ContactEdge* edge = m_body->GetContactList();
+    PhysicsContactEdge* edge = m_body->GetContactList();
     while (edge) {
       PhysicsContact* contact = edge->contact;
       PhysicsFixture* fixtureA = contact->GetFixtureA();
@@ -75,29 +75,29 @@ void PhysicsFixture::Destroy(PhysicsBlockAllocator* allocator) {
 
   // Free the child shape.
   switch (m_shape->m_type) {
-    case b2Shape::Type::kCircle: {
-      b2CircleShape* s = (b2CircleShape*)m_shape;
-      s->~b2CircleShape();
-      allocator->Free(s, sizeof(b2CircleShape));
+    case PhysicsShape::Type::kCircle: {
+      PhysicsCircleShape* s = (PhysicsCircleShape*)m_shape;
+      s->~PhysicsCircleShape();
+      allocator->Free(s, sizeof(PhysicsCircleShape));
     } break;
 
-    case b2Shape::Type::kEdge: {
-      // b2EdgeShape* s = (b2EdgeShape*)m_shape;
-      // s->~b2EdgeShape();
-      // allocator->Free(s, sizeof(b2EdgeShape));
+    case PhysicsShape::Type::kEdge: {
+      // PhysicsEdgeShape* s = (PhysicsEdgeShape*)m_shape;
+      // s->~PhysicsEdgeShape();
+      // allocator->Free(s, sizeof(PhysicsEdgeShape));
     } break;
 
-    case b2Shape::Type::kPolygon: {
-      auto s = static_cast<b2PolygonShape*>(m_shape);
-      s->~b2PolygonShape();
-      allocator->Free(s, sizeof(b2PolygonShape));
+    case PhysicsShape::Type::kPolygon: {
+      auto s = static_cast<PhysicsPolygonShape*>(m_shape);
+      s->~PhysicsPolygonShape();
+      allocator->Free(s, sizeof(PhysicsPolygonShape));
 
     } break;
 
-    case b2Shape::Type::kChain: {
-      // b2ChainShape* s = (b2ChainShape*)m_shape;
-      // s->~b2ChainShape();
-      // allocator->Free(s, sizeof(b2ChainShape));
+    case PhysicsShape::Type::kChain: {
+      // PhysicsChainShape* s = (PhysicsChainShape*)m_shape;
+      // s->~PhysicsChainShape();
+      // allocator->Free(s, sizeof(PhysicsChainShape));
     } break;
 
     default:
@@ -108,7 +108,7 @@ void PhysicsFixture::Destroy(PhysicsBlockAllocator* allocator) {
 }
 
 void PhysicsFixture::CreateProxies(bp::BroadPhase* broadPhase,
-                                   const b2Transform& xf) {
+                                   const PhysicsTransform& xf) {
   m_proxyCount = m_shape->GetChildCount();
 
   for (int32 i = 0; i < m_proxyCount; ++i) {
@@ -132,8 +132,8 @@ void PhysicsFixture::DestroyProxies(bp::BroadPhase* broadPhase) {
 }
 
 void PhysicsFixture::Synchronize(bp::BroadPhase* broadPhase,
-                                 const b2Transform& xf1,
-                                 const b2Transform& xf2) const {
+                                 const PhysicsTransform& xf1,
+                                 const PhysicsTransform& xf2) const {
   if (m_proxyCount == 0) {
     return;
   }
@@ -143,13 +143,13 @@ void PhysicsFixture::Synchronize(bp::BroadPhase* broadPhase,
 
     // Compute an AABB that covers the swept shape (may miss some rotation
     // effect).
-    PhysicsAABB aabb1, aabb2;
+    PhysicsAABB aabb1, aabPhysics;
     m_shape->ComputeAABB(&aabb1, xf1, proxy->childIndex);
-    m_shape->ComputeAABB(&aabb2, xf2, proxy->childIndex);
+    m_shape->ComputeAABB(&aabPhysics, xf2, proxy->childIndex);
 
-    proxy->aabb.Combine(aabb1, aabb2);
+    proxy->aabb.Combine(aabb1, aabPhysics);
 
-    PVec2 displacement = aabb2.GetCenter() - aabb1.GetCenter();
+    PVec2 displacement = aabPhysics.GetCenter() - aabb1.GetCenter();
 
     broadPhase->MoveProxy(proxy->proxyId, proxy->aabb, displacement);
   }

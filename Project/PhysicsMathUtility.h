@@ -57,7 +57,7 @@ constexpr PVec2 PhysicsAbs(const PVec2& a) noexcept {
 constexpr PVec2 PhysicsMul(const PRot& q, const PVec2& v) {
   return {q.c * v.x - q.s * v.y, q.s * v.x + q.c * v.y};
 }
-constexpr PVec2 PhysicsMul(const b2Transform& T, const PVec2& v) {
+constexpr PVec2 PhysicsMul(const PhysicsTransform& T, const PVec2& v) {
   float x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
   float y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
 

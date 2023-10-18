@@ -111,7 +111,7 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
       case ShapeType::kNone:
         break;
       case ShapeType::kRect: {
-        b2PolygonShape shape;
+        PhysicsPolygonShape shape;
         const auto rect = component->GetShape()->AABB();
         shape.SetAsRect(rect.Left, rect.Top, rect.Right, rect.Bottom);
 
@@ -120,7 +120,7 @@ void BaseEngineCollision::Register(CollisionComponent* component) {
         body->CreateFixture(&fixture_def);
       } break;
       case ShapeType::kCircle: {
-        physics::b2CircleShape shape;
+        physics::PhysicsCircleShape shape;
         const auto circle = static_cast<Circle*>(component->GetShape());
         shape.m_p.x = circle->Position.x;
         shape.m_p.y = circle->Position.y;
@@ -174,24 +174,24 @@ void BaseEngineCollision::Render(physics::PhysicsFixture* fixture) {
   auto p = fixture->GetBody()->GetPosition();
 
   switch (fixture->GetType()) {
-    case b2Shape::Type::kCircle: {
-      auto ciercle = dynamic_cast<b2CircleShape*>(fixture->GetShape());
+    case PhysicsShape::Type::kCircle: {
+      auto ciercle = dynamic_cast<PhysicsCircleShape*>(fixture->GetShape());
 
       CGraphicsUtilities::RenderCircle(
           p.x + ciercle->m_p.x, p.y + ciercle->m_p.y - 500,
           fixture->GetShape()->m_radius, MOF_COLOR_BLUE);
     } break;
-    case b2Shape::Type::kEdge:
+    case PhysicsShape::Type::kEdge:
       break;
-    case b2Shape::Type::kPolygon: {
-      auto polygon = dynamic_cast<b2PolygonShape*>(fixture->GetShape());
+    case PhysicsShape::Type::kPolygon: {
+      auto polygon = dynamic_cast<PhysicsPolygonShape*>(fixture->GetShape());
       CGraphicsUtilities::RenderRect(
           p.x + polygon->m_vertices[0].x, p.y + polygon->m_vertices[0].y - 500,
           p.x + polygon->m_vertices[2].x, p.y + polygon->m_vertices[2].y - 500,
           MOF_COLOR_BLUE);
       break;
     }
-    case b2Shape::Type::kChain:
+    case PhysicsShape::Type::kChain:
       break;
     default:;
   }

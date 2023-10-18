@@ -12,15 +12,15 @@
 #include "PhysicsVector2.h"
 
 namespace base_engine::physics {
-class b2Shape;
-class b2CircleShape;
+class PhysicsShape;
+class PhysicsCircleShape;
 
 
-constexpr uint8_t b2_nullFeature = UCHAR_MAX;
+constexpr uint8_t Physics_nullFeature = UCHAR_MAX;
 
 /// The features that intersect to form the contact point
 /// This must be 4 bytes or less.
-struct b2ContactFeature {
+struct PhysicsContactFeature {
   enum Type { e_vertex = 0, e_face = 1 };
 
   uint8_t indexA;  ///< Feature index on shapeA
@@ -30,8 +30,8 @@ struct b2ContactFeature {
 };
 
 /// Contact ids to facilitate warm starting.
-union b2ContactID {
-  b2ContactFeature cf;
+union PhysicsContactID {
+  PhysicsContactFeature cf;
   uint32_t key;  ///< Used to quickly compare contact ids.
 };
 
@@ -45,17 +45,17 @@ union b2ContactID {
 /// This structure is stored across time steps, so we keep it small.
 /// Note: the impulses are used for internal caching and may not
 /// provide reliable contact forces, especially for high speed collisions.
-struct b2ManifoldPoint {
+struct PhysicsManifoldPoint {
   PVec2 localPoint;     ///< usage depends on manifold type
   float normalImpulse;   ///< the non-penetration impulse
   float tangentImpulse;  ///< the friction impulse
-  b2ContactID id;  ///< uniquely identifies a contact point between two shapes
+  PhysicsContactID id;  ///< uniquely identifies a contact point between two shapes
 };
 
-struct b2Manifold {
+struct PhysicsManifold {
   enum class Type { e_circles, e_faceA, e_faceB };
 
-  b2ManifoldPoint points[b2_maxManifoldPoints];  ///< the points of contact
+  PhysicsManifoldPoint points[Physics_maxManifoldPoints];  ///< the points of contact
   PVec2 localNormal;                             ///< not use for Type::e_points
   PVec2 localPoint;  ///< usage depends on manifold type
   Type type;

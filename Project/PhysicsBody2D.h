@@ -13,9 +13,9 @@
 #include "PhysicsVector2.h"
 
 namespace base_engine::physics {
-class b2ContactEdge;
+class PhysicsContactEdge;
 class PhysicsWorld;
-class b2Shape;
+class PhysicsShape;
 struct PhysicsFixtureDef;
 
 class PhysicsFixture;
@@ -82,14 +82,14 @@ class PhysicsBody {
   PhysicsFixture* CreateFixture(const PhysicsFixtureDef* def);
 
   /// Creates a fixture from a shape and attach it to this body.
-  /// This is a convenience function. Use b2FixtureDef if you need to set
+  /// This is a convenience function. Use PhysicsFixtureDef if you need to set
   /// parameters like friction, restitution, user data, or filtering. If the
   /// density is non-zero, this function automatically updates the mass of the
   /// body.
   /// @param shape the shape to be cloned.
   /// @param density the shape density (set to zero for static bodies).
   /// @warning This function is locked during callbacks.
-  PhysicsFixture* CreateFixture(const b2Shape* shape, float density);
+  PhysicsFixture* CreateFixture(const PhysicsShape* shape, float density);
 
   /// Destroy a fixture. This removes the fixture from the broad-phase and
   /// destroys all contacts associated with this fixture. This will
@@ -103,14 +103,14 @@ class PhysicsBody {
 
   /// Set the position of the body's origin and rotation.
   /// Manipulating a body's transform may cause non-physical behavior.
-  /// Note: contacts are updated on the next call to b2World::Step.
+  /// Note: contacts are updated on the next call to PhysicsWorld::Step.
   /// @param position the world position of the body's local origin.
   /// @param angle the world rotation in radians.
   void SetTransform(const PVec2& position, float angle);
 
   /// Get the body transform for the body's origin.
   /// @return the world transform of the body's origin.
-  [[nodiscard]] const b2Transform& GetTransform() const { return m_xf; }
+  [[nodiscard]] const PhysicsTransform& GetTransform() const { return m_xf; }
 
   /// Get the world body origin position.
   /// @return the world position of the body's origin.
@@ -308,7 +308,7 @@ class PhysicsBody {
   /// Fixtures on a disabled body are implicitly disabled and will
   /// not participate in collisions, ray-casts, or queries.
   /// Joints connected to a disabled body are implicitly disabled.
-  /// An diabled body is still owned by a b2World object and remains
+  /// An diabled body is still owned by a PhysicsWorld object and remains
   /// in the body list.
   void SetEnabled(bool flag);
 
@@ -327,9 +327,9 @@ class PhysicsBody {
 
   /// Get the list of all contacts attached to this body.
   /// @warning this list changes during the time step and you may
-  /// miss some collisions if you don't use b2ContactListener.
-  b2ContactEdge* GetContactList() { return m_contactList; }
-  const b2ContactEdge* GetContactList() const { return m_contactList; }
+  /// miss some collisions if you don't use PhysicsContactListener.
+  PhysicsContactEdge* GetContactList() { return m_contactList; }
+  const PhysicsContactEdge* GetContactList() const { return m_contactList; }
 
   /// Get the next body in the world's body list.
   PhysicsBody* GetNext();
@@ -376,8 +376,8 @@ class PhysicsBody {
 
   int32_t m_islandIndex;
 
-  b2Transform m_xf;  // the body origin transform
-  b2Sweep m_sweep;   // the swept motion for CCD
+  PhysicsTransform m_xf;  // the body origin transform
+  PhysicsSweep m_sweep;   // the swept motion for CCD
 
   PVec2 m_linearVelocity;
   float m_angularVelocity;
@@ -392,7 +392,7 @@ class PhysicsBody {
   PhysicsFixture* m_fixtureList;
   int32_t m_fixtureCount;
 
-  b2ContactEdge* m_contactList = nullptr;
+  PhysicsContactEdge* m_contactList = nullptr;
   float m_mass, m_invMass;
 
   // Rotational inertia about the center of mass.
