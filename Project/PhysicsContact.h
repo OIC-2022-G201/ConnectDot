@@ -74,6 +74,8 @@ class PhysicsContact {
     e_touchingFlag = 0x0002,
 
     e_enabledFlag = 0x0004,
+
+    e_filterFlag = 0x0008,
   };
 
   void FlagForFiltering();
@@ -85,9 +87,7 @@ class PhysicsContact {
   static PhysicsContact* Create(PhysicsFixture* fixtureA, int32_t indexA,
                                 PhysicsFixture* fixtureB, int32_t indexB,
                                 PhysicsBlockAllocator* allocator);
-  static void Destroy(PhysicsContact* contact, PhysicsShape::Type typeA,
-                      PhysicsShape::Type typeB,
-                      PhysicsBlockAllocator* allocator);
+
   static void Destroy(PhysicsContact* contact,
                       PhysicsBlockAllocator* allocator);
 
